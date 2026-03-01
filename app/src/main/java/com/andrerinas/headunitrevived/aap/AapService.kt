@@ -101,6 +101,7 @@ class AapService : Service(), UsbReceiver.Listener {
         setupNightMode()
         observeConnectedState()
         observeDisconnectedState()
+        observeTransportStartedState()
         registerReceivers()
 
         startService(GpsLocationService.intent(this))
@@ -135,6 +136,22 @@ class AapService : Service(), UsbReceiver.Listener {
     }
 
     /**
+     * Observes [CommManager.ConnectionState.TransportStarted] and syncs night mode.
+     * Night mode must be sent after the transport is ready, not at connection time.
+     */
+    private fun observeTransportStartedState() {
+        serviceScope.launch {
+            commManager.connectionState
+                .filterIsInstance<CommManager.ConnectionState.TransportStarted>()
+                .collect {
+                    sendBroadcast(Intent(ACTION_REQUEST_NIGHT_MODE_UPDATE).apply {
+                        setPackage(packageName)
+                    })
+                }
+        }
+    }
+
+    /**
      * Observes [CommManager.ConnectionState.Disconnected] and calls onDisconnect
      * `drop(1)` skips the initial `Disconnected` value that `StateFlow` replays on subscribe.
      */
@@ -157,7 +174,6 @@ class AapService : Service(), UsbReceiver.Listener {
     private fun onConnected() {
         updateNotification()
         mediaSession = MediaSessionCompat(this, "HeadunitRevived").apply { isActive = true }
-        nightModeManager?.resendCurrentState()
         // Start the AAP handshake immediately, before the projection activity even opens.
         // This hides handshake latency (especially the multi-second USB SSL negotiation) behind
         // the activity startup time rather than adding it on top.

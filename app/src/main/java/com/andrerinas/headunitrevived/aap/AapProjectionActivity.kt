@@ -24,7 +24,6 @@ import com.andrerinas.headunitrevived.app.SurfaceActivity
 import com.andrerinas.headunitrevived.connection.CommManager
 import com.andrerinas.headunitrevived.contract.KeyIntent
 import kotlinx.coroutines.flow.filterIsInstance
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import com.andrerinas.headunitrevived.decoder.VideoDecoder
@@ -46,6 +45,7 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
     private val settings: Settings by lazy { Settings(this) }
     private var isSurfaceSet = false
     private val watchdogHandler = android.os.Handler(android.os.Looper.getMainLooper())
+
     private val videoWatchdogRunnable = object : Runnable {
         override fun run() {
             val loadingOverlay = findViewById<View>(R.id.loading_overlay)
@@ -268,48 +268,32 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         AppLog.i("[AapProjectionActivity] onSurfaceChanged. Actual surface dimensions: width=$width, height=$height")
         isSurfaceSet = true
         
-        android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
-            AppLog.i("Delayed setting surface to decoder")
-            videoDecoder.setSurface(surface)
+        videoDecoder.setSurface(surface)
 
-            when (commManager.connectionState.value) {
-                is CommManager.ConnectionState.Connected -> {
-                    // Fallback: AapService didn't start transport yet (e.g. service restarted).
-                    Thread({
-                        runBlocking { commManager.startTransport() }
-                        if (commManager.connectionState.value is CommManager.ConnectionState.TransportStarted) {
-                            sendBroadcast(Intent(AapService.ACTION_REQUEST_NIGHT_MODE_UPDATE).apply {
-                                setPackage(packageName)
-                            })
-                        } else {
-                            commManager.disconnect()
-                        }
-                    }, "TransportStart").start()
-                }
-                is CommManager.ConnectionState.StartingTransport -> {
-                    // AapService already started the handshake in parallel with the activity
-                    // opening. Wait for it to finish, then sync night mode.
-                    lifecycleScope.launch {
-                        commManager.connectionState
-                            .filterIsInstance<CommManager.ConnectionState.TransportStarted>()
-                            .first()
-                        sendBroadcast(Intent(AapService.ACTION_REQUEST_NIGHT_MODE_UPDATE).apply {
-                            setPackage(packageName)
-                        })
+        when (commManager.connectionState.value) {
+            is CommManager.ConnectionState.Connected -> {
+                // Fallback: AapService didn't start transport yet (e.g. service restarted).
+                // Night mode sync is handled by AapService's TransportStarted observer.
+                Thread({
+                    runBlocking { commManager.startTransport() }
+                    if (commManager.connectionState.value !is CommManager.ConnectionState.TransportStarted) {
+                        commManager.disconnect()
                     }
-                }
-                is CommManager.ConnectionState.TransportStarted -> {
-                    // Handshake finished before the surface was ready; request a keyframe now.
-                    commManager.send(VideoFocusEvent(gain = true, unsolicited = true))
-                    sendBroadcast(Intent(AapService.ACTION_REQUEST_NIGHT_MODE_UPDATE).apply {
-                        setPackage(packageName)
-                    })
-                }
-                else -> {
-                    commManager.send(VideoFocusEvent(gain = true, unsolicited = false))
-                }
+                }, "TransportStart").start()
             }
-        }, 50)
+            is CommManager.ConnectionState.StartingTransport -> {
+                // AapService already started the handshake in parallel with the activity opening.
+                // Do nothing here — AapService's TransportStarted observer will sync night mode
+                // when the handshake completes.
+            }
+            is CommManager.ConnectionState.TransportStarted -> {
+                // Surface recreated after transport was already running; request a keyframe.
+                commManager.send(VideoFocusEvent(gain = true, unsolicited = true))
+            }
+            else -> {
+                commManager.send(VideoFocusEvent(gain = true, unsolicited = false))
+            }
+        }
 
         // Explicitly check and set video dimensions if already known by the decoder
         // This handles cases where the activity is recreated but the decoder already has dimensions
@@ -387,10 +371,6 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         super.onDestroy()
         AppLog.i("AapProjectionActivity.onDestroy called. isFinishing=$isFinishing")
         videoDecoder.dimensionsListener = null
-
-        // Note: Disconnect is now only handled via explicit user action (Exit button)
-        // or when the phone closes the connection. This prevents accidental closes
-        // during task switching or launcher interaction.
     }
 
     companion object {
