@@ -1261,7 +1261,7 @@ class SettingsFragment : Fragment() {
             .apply { if (message != null) setMessage(message) }
             .setView(container)
             .setPositiveButton(android.R.string.ok) { dialog, _ ->
-                val newVal = editView.text.toString().toIntOrNull() ?: 0
+                val newVal = (editView.text.toString().toIntOrNull() ?: 0).coerceAtLeast(0)
                 onConfirm(newVal)
                 dialog.dismiss()
             }

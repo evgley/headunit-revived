@@ -281,7 +281,7 @@
     <string name="setup_orientation_landscape">橫向</string>
     <string name="setup_orientation_portrait">縱向</string>
     <string name="setup_result_title">最佳化完成</string>
-    <string name="setup_apply">套용</string>
+    <string name="setup_apply">套用</string>
     <string name="setup_widescreen_detected">偵測到寬螢幕顯示。</string>
     <string name="auto_optimize">自動最佳化設定</string>
     <string name="auto_optimize_desc">執行系統檢查，為您的裝置尋找最佳設定。</string>
