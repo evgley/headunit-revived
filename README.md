@@ -62,6 +62,8 @@ adb shell am start -a android.intent.action.VIEW -d "headunit://connect?ip=192.1
 - Added: Support for Media Button emulation (SWC improvement for MacroDroid etc.)
 - Added: App shortcut and deep link for full app exit (headunit://exit)
 - Added: Improved Wi-Fi Direct reliability with recursive discovery and ping handoff
+- Added: Navigation Status Service. Thanks to @Bastel2020
+- Added: Romanian translation 🇷🇴. Thanks to @LeeWiu
 
 ### v.2.0.0
 - Added Wi-Fi Direct (P2P): Support. Connect your phone to the headunit without a shared network or hotspot. The headunit now automatically becomes visible as a P2P peer.
