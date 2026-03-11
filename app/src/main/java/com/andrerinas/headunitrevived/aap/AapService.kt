@@ -105,7 +105,10 @@ class AapService : Service(), UsbReceiver.Listener {
                 .setState(state, 0, 1.0f)
                 .setActions(android.support.v4.media.session.PlaybackStateCompat.ACTION_PLAY or
                            android.support.v4.media.session.PlaybackStateCompat.ACTION_PAUSE or
-                           android.support.v4.media.session.PlaybackStateCompat.ACTION_STOP)
+                           android.support.v4.media.session.PlaybackStateCompat.ACTION_STOP or
+                           android.support.v4.media.session.PlaybackStateCompat.ACTION_SKIP_TO_NEXT or
+                           android.support.v4.media.session.PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS or
+                           android.support.v4.media.session.PlaybackStateCompat.ACTION_PLAY_PAUSE)
                 .build()
         )
         AppLog.d("MediaSession: State updated to ${if (isPlaying) "PLAYING" else "STOPPED"}")
@@ -889,8 +892,12 @@ class AapService : Service(), UsbReceiver.Listener {
         private var job: Job? = null
 
         fun start() {
-            nsdManager = getSystemService(Context.NSD_SERVICE) as NsdManager
-            registerNsd()
+            nsdManager = getSystemService(Context.NSD_SERVICE) as? NsdManager
+            if (nsdManager == null) {
+                AppLog.e("WirelessServer: NsdManager not available on this device.")
+            } else {
+                registerNsd()
+            }
 
             job = serviceScope.launch(Dispatchers.IO) {
                 try {
