@@ -8,6 +8,7 @@ import android.os.Build
 import androidx.core.content.ContextCompat
 import androidx.multidex.MultiDex
 import com.andrerinas.headunitrevived.main.BackgroundNotification
+import com.andrerinas.headunitrevived.aap.AapNavigation
 import com.andrerinas.headunitrevived.ssl.ConscryptInitializer
 import com.andrerinas.headunitrevived.utils.AppLog
 import com.andrerinas.headunitrevived.utils.Settings
@@ -57,7 +58,7 @@ class App : Application() {
             mediaChannel.setShowBadge(false)
             component.notificationManager.createNotificationChannel(mediaChannel)
 
-            com.andrerinas.headunitrevived.aap.AapNavigation.createNotificationChannel(this)
+            AapNavigation.createNotificationChannel(this)
         }
 
         // Register the main broadcast receiver safely for Android 14+ using ContextCompat

@@ -7,14 +7,15 @@ import android.content.Context
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.andrerinas.headunitrevived.R
+import com.andrerinas.headunitrevived.aap.protocol.Channel
 import com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus
 import com.andrerinas.headunitrevived.contract.NavigationUpdateIntent
 import com.andrerinas.headunitrevived.utils.AppLog
 import com.andrerinas.headunitrevived.utils.Settings
 
 /**
- * Обрабатывает сообщения навигации с канала ID_NAV от любого приложения с поддержкой Android Auto
- * (Google Maps, Яндекс.Карты и др.). Показывает уведомления в формате "Через X метров Y" и текущую улицу.
+ * Handles navigation messages from the ID_NAV channel from any Android Auto-enabled app
+ * (Google Maps, Yandex Maps, etc.). Shows notifications with turn-by-turn directions and current street.
  */
 class AapNavigation(
     private val context: Context,
@@ -24,7 +25,7 @@ class AapNavigation(
     private var currentStreet: String = ""
 
     fun process(message: AapMessage): Boolean {
-        if (message.channel != com.andrerinas.headunitrevived.aap.protocol.Channel.ID_NAV) return false
+        if (message.channel != Channel.ID_NAV) return false
 
         return when (message.type) {
             NavigationStatus.MsgType.NEXTTURNDETAILS_VALUE -> {
