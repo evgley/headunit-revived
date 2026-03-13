@@ -423,9 +423,11 @@ class VideoDecoder(private val settings: Settings) {
                     // Track FPS
                     frameCount++
                     val now = System.currentTimeMillis()
-                    if (now - lastFpsLogTime >= 1000) {
+                    val elapsed = now - lastFpsLogTime
+                    if (elapsed >= 1000) {
                         if (lastFpsLogTime != 0L) {
-                            onFpsChanged?.invoke(frameCount)
+                            val fps = (frameCount * 1000 / elapsed).toInt()
+                            onFpsChanged?.invoke(fps)
                         }
                         frameCount = 0
                         lastFpsLogTime = now
