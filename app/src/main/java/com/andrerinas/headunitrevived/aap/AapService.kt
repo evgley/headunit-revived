@@ -130,20 +130,20 @@ class AapService : Service(), UsbReceiver.Listener {
 
     fun updateMediaSessionState(isPlaying: Boolean) {
         val state = if (isPlaying) {
-            android.support.v4.media.session.PlaybackStateCompat.STATE_PLAYING
+            PlaybackStateCompat.STATE_PLAYING
         } else {
-            android.support.v4.media.session.PlaybackStateCompat.STATE_STOPPED
+            PlaybackStateCompat.STATE_STOPPED
         }
 
         mediaSession?.setPlaybackState(
-            android.support.v4.media.session.PlaybackStateCompat.Builder()
+            PlaybackStateCompat.Builder()
                 .setState(state, 0, 1.0f)
-                .setActions(android.support.v4.media.session.PlaybackStateCompat.ACTION_PLAY or
-                           android.support.v4.media.session.PlaybackStateCompat.ACTION_PAUSE or
-                           android.support.v4.media.session.PlaybackStateCompat.ACTION_STOP or
-                           android.support.v4.media.session.PlaybackStateCompat.ACTION_SKIP_TO_NEXT or
-                           android.support.v4.media.session.PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS or
-                           android.support.v4.media.session.PlaybackStateCompat.ACTION_PLAY_PAUSE)
+                .setActions(PlaybackStateCompat.ACTION_PLAY or
+                           PlaybackStateCompat.ACTION_PAUSE or
+                           PlaybackStateCompat.ACTION_STOP or
+                           PlaybackStateCompat.ACTION_SKIP_TO_NEXT or
+                           PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS or
+                           PlaybackStateCompat.ACTION_PLAY_PAUSE)
                 .build()
         )
         AppLog.d("MediaSession: State updated to ${if (isPlaying) "PLAYING" else "STOPPED"}")
