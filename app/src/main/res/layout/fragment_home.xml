@@ -181,7 +181,7 @@
         android:layout_margin="16dp"
         android:text="@string/exit"
         android:backgroundTint="@color/material_grey_700"
-        android:textColor="@color/text_primary"
+        android:textColor="#FFFFFF"
         app:cornerRadius="8dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
