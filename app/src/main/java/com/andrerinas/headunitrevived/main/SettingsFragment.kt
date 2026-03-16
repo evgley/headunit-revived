@@ -106,6 +106,7 @@ class SettingsFragment : Fragment(), SensorEventListener {
     private var pendingAppThemeManualEnd: Int? = null
     private var pendingMonochromeIcons: Boolean? = null
     private var pendingUseExtremeDarkMode: Boolean? = null
+    private var pendingUseGradientBackground: Boolean? = null
 
     // Direct light sensor reading (independent of AppThemeManager)
     private var cachedLux: Float = -1f
@@ -178,6 +179,7 @@ class SettingsFragment : Fragment(), SensorEventListener {
         pendingAppThemeManualEnd = settings.appThemeManualEnd
         pendingMonochromeIcons = settings.monochromeIcons
         pendingUseExtremeDarkMode = settings.useExtremeDarkMode
+        pendingUseGradientBackground = settings.useGradientBackground
 
         // Intercept system back button
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
@@ -279,6 +281,7 @@ class SettingsFragment : Fragment(), SensorEventListener {
                 pendingAppThemeManualStart != settings.appThemeManualStart ||
                 pendingAppThemeManualEnd != settings.appThemeManualEnd
         val languageChanged = pendingAppLanguage != settings.appLanguage
+        val gradientChanged = pendingUseGradientBackground != settings.useGradientBackground
 
         pendingNightMode?.let { settings.nightMode = it }
         pendingThresholdLux?.let { settings.nightModeThresholdLux = it }
@@ -317,6 +320,7 @@ class SettingsFragment : Fragment(), SensorEventListener {
         pendingAppThemeManualEnd?.let { settings.appThemeManualEnd = it }
         pendingMonochromeIcons?.let { settings.monochromeIcons = it }
         pendingUseExtremeDarkMode?.let { settings.useExtremeDarkMode = it }
+        pendingUseGradientBackground?.let { settings.useGradientBackground = it }
 
         pendingAppTheme?.let { newTheme ->
             settings.appTheme = newTheme
@@ -389,6 +393,11 @@ class SettingsFragment : Fragment(), SensorEventListener {
             }
         }
 
+        // Signal visual change so all activities (including MainActivity) recreate
+        if (gradientChanged) {
+            AppThemeManager.signalVisualChange()
+        }
+
         // Restart activity if language, theme, or app theme thresholds/times changed
         val needsRecreate = languageChanged || themeChanged ||
                 (appThemeThresholdChanged && pendingAppTheme?.let { !AppThemeManager.isStaticMode(it) } == true)
@@ -439,7 +448,8 @@ class SettingsFragment : Fragment(), SensorEventListener {
                         pendingAppThemeManualStart != settings.appThemeManualStart ||
                         pendingAppThemeManualEnd != settings.appThemeManualEnd ||
                         pendingMonochromeIcons != settings.monochromeIcons ||
-                        pendingUseExtremeDarkMode != settings.useExtremeDarkMode
+                        pendingUseExtremeDarkMode != settings.useExtremeDarkMode ||
+                        pendingUseGradientBackground != settings.useGradientBackground
 
         hasChanges = anyChange
 
@@ -625,6 +635,7 @@ class SettingsFragment : Fragment(), SensorEventListener {
                 isChecked = pendingUseExtremeDarkMode!!,
                 onCheckedChanged = { isChecked ->
                     pendingUseExtremeDarkMode = isChecked
+                    if (isChecked) pendingUseGradientBackground = false
                     checkChanges()
                     updateSettingsList()
                 }
@@ -640,6 +651,33 @@ class SettingsFragment : Fragment(), SensorEventListener {
                 isChecked = pendingMonochromeIcons!!,
                 onCheckedChanged = { isChecked ->
                     pendingMonochromeIcons = isChecked
+                    checkChanges()
+                    updateSettingsList()
+                }
+            ))
+        }
+
+        // Gradient background toggle (hidden for Extreme Dark)
+        if (pendingAppTheme != Settings.AppTheme.EXTREME_DARK) {
+            val isAutoMode = pendingAppTheme != Settings.AppTheme.CLEAR &&
+                             pendingAppTheme != Settings.AppTheme.DARK
+            val gradientEnabled = !isAutoMode || pendingUseExtremeDarkMode != true
+            val isGradientOn = pendingUseGradientBackground == true
+            val descResId = when {
+                isGradientOn && isAutoMode -> R.string.use_gradient_background_description_on_auto
+                isGradientOn -> R.string.use_gradient_background_description_on
+                isAutoMode -> R.string.use_gradient_background_description_off_auto
+                else -> R.string.use_gradient_background_description_off
+            }
+
+            items.add(SettingItem.ToggleSettingEntry(
+                stableId = "useGradientBackground",
+                nameResId = R.string.use_gradient_background,
+                descriptionResId = descResId,
+                isChecked = pendingUseGradientBackground!!,
+                isEnabled = gradientEnabled,
+                onCheckedChanged = { isChecked ->
+                    pendingUseGradientBackground = isChecked
                     checkChanges()
                     updateSettingsList()
                 }

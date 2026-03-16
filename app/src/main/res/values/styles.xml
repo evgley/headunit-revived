@@ -67,4 +67,8 @@
         <item name="android:colorBackground">@color/extreme_dark_background</item>
         <item name="android:windowBackground">@color/extreme_dark_background</item>
     </style>
+
+    <style name="ThemeOverlay.GradientBackground" parent="">
+        <item name="android:windowBackground">@drawable/bg_gradient</item>
+    </style>
 </resources>

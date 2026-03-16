@@ -36,6 +36,11 @@
     <string name="app_theme">Modo oscuro (Aplicación)</string>
     <string name="app_theme_description">Controlar la apariencia visual de la app</string>
     <string name="change_app_theme">Cambiar tema</string>
+    <string name="use_gradient_background">Usar fondo degradado</string>
+    <string name="use_gradient_background_description_on">La app dibuja su propio fondo con el círculo de degradado centrado</string>
+    <string name="use_gradient_background_description_off">Se está usando el fondo clásico de la app</string>
+    <string name="use_gradient_background_description_on_auto">La app dibuja su propio fondo con el círculo de degradado centrado. No aplica al modo Oscuro extremo</string>
+    <string name="use_gradient_background_description_off_auto">Se está usando el fondo clásico de la app. No aplica al modo Oscuro extremo</string>
     <string name="category_dark_mode">Modo oscuro</string>
     <string name="category_navigation">Navegación</string>
 
@@ -326,7 +331,7 @@
     <string name="nav_action_ferry_train">Ferry / tren</string>
     <string name="nav_action_destination">Llegada</string>
     <string name="monochrome_icons">Iconos monocromáticos</string>
-    <string name="monochrome_icons_description">Usar iconos en escala de grises en la pantalla principal en modo Oscuro o Oscuro Extremo</string>
+    <string name="monochrome_icons_description">Usar iconos en escala de grises en la pantalla principal en modo Oscuro u Oscuro Extremo</string>
     <string name="use_extreme_dark">Usar oscuro extremo</string>
     <string name="use_extreme_dark_description">Usar fondo negro puro cuando el modo oscuro está activo</string>
     <string name="show_fps_counter">Mostrar contador de FPS</string>

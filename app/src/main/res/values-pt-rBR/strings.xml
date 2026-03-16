@@ -36,6 +36,11 @@
     <string name="app_theme">Modo escuro (Aplicativo)</string>
     <string name="app_theme_description">Controlar a aparência visual do app</string>
     <string name="change_app_theme">Alterar tema</string>
+    <string name="use_gradient_background">Usar fundo gradiente</string>
+    <string name="use_gradient_background_description_on">O app desenha seu próprio fundo com o círculo de gradiente centralizado</string>
+    <string name="use_gradient_background_description_off">O fundo clássico do app está sendo usado</string>
+    <string name="use_gradient_background_description_on_auto">O app desenha seu próprio fundo com o círculo de gradiente centralizado. Não se aplica ao modo Escuro extremo</string>
+    <string name="use_gradient_background_description_off_auto">O fundo clássico do app está sendo usado. Não se aplica ao modo Escuro extremo</string>
     <string name="category_dark_mode">Modo escuro</string>
     <string name="category_navigation">Navegação</string>
 

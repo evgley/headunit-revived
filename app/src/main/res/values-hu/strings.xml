@@ -36,6 +36,11 @@
     <string name="app_theme">Sötét mód (Alkalmazás)</string>
     <string name="app_theme_description">Az alkalmazás megjelenésének vezérlése</string>
     <string name="change_app_theme">Téma módosítása</string>
+    <string name="use_gradient_background">Színátmenetes háttér használata</string>
+    <string name="use_gradient_background_description_on">Az alkalmazás saját hátteret rajzol a középre igazított színátmenetes körrel</string>
+    <string name="use_gradient_background_description_off">Az alkalmazás klasszikus háttere van használatban</string>
+    <string name="use_gradient_background_description_on_auto">Az alkalmazás saját hátteret rajzol a középre igazított színátmenetes körrel. Nem vonatkozik az Extrém sötét módra</string>
+    <string name="use_gradient_background_description_off_auto">Az alkalmazás klasszikus háttere van használatban. Nem vonatkozik az Extrém sötét módra</string>
     <string name="category_dark_mode">Sötét mód</string>
     <string name="category_navigation">Navigáció</string>
 

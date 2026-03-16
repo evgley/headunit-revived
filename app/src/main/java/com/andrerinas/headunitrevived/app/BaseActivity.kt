@@ -17,6 +17,8 @@ open class BaseActivity : AppCompatActivity() {
     private var currentLanguage: String? = null
     private var currentAppTheme: Settings.AppTheme? = null
     private var currentNightMode: Int = 0
+    private var currentUseGradientBackground: Boolean = false
+    private var currentUseExtremeDarkMode: Boolean = false
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(LocaleHelper.wrapContext(newBase))
@@ -28,6 +30,8 @@ open class BaseActivity : AppCompatActivity() {
         currentLanguage = settings.appLanguage
         currentAppTheme = settings.appTheme
         currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        currentUseGradientBackground = settings.useGradientBackground
+        currentUseExtremeDarkMode = settings.useExtremeDarkMode
 
         val appliedVersion = AppThemeManager.themeVersion.value
         AppThemeManager.themeVersion.observe(this) { version ->
@@ -41,7 +45,11 @@ open class BaseActivity : AppCompatActivity() {
         super.onResume()
         val settings = Settings(this)
         val actualNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        if (currentLanguage != settings.appLanguage || currentAppTheme != settings.appTheme || currentNightMode != actualNightMode) {
+        if (currentLanguage != settings.appLanguage ||
+            currentAppTheme != settings.appTheme ||
+            currentNightMode != actualNightMode ||
+            currentUseGradientBackground != settings.useGradientBackground ||
+            currentUseExtremeDarkMode != settings.useExtremeDarkMode) {
             recreate()
         }
     }

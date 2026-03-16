@@ -497,6 +497,10 @@ class Settings(context: Context) {
         get() = prefs.getBoolean("use-extreme-dark-mode", false)
         set(value) { prefs.edit().putBoolean("use-extreme-dark-mode", value).apply() }
 
+    var useGradientBackground: Boolean
+        get() = prefs.getBoolean("use-gradient-background", false)
+        set(value) { prefs.edit().putBoolean("use-gradient-background", value).apply() }
+
     var appTheme: AppTheme
         get() {
             val value = prefs.getInt("app-theme", 0)

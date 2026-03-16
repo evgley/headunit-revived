@@ -36,6 +36,11 @@
     <string name="app_theme">Tmavý režim (Aplikace)</string>
     <string name="app_theme_description">Ovládejte vzhled aplikace</string>
     <string name="change_app_theme">Změnit téma</string>
+    <string name="use_gradient_background">Použít přechodové pozadí</string>
+    <string name="use_gradient_background_description_on">Aplikace kreslí vlastní pozadí s přechodovým kruhem uprostřed</string>
+    <string name="use_gradient_background_description_off">Používá se klasické pozadí aplikace</string>
+    <string name="use_gradient_background_description_on_auto">Aplikace kreslí vlastní pozadí s přechodovým kruhem uprostřed. Neplatí pro režim Extrémně tmavý</string>
+    <string name="use_gradient_background_description_off_auto">Používá se klasické pozadí aplikace. Neplatí pro režim Extrémně tmavý</string>
     <string name="category_dark_mode">Tmavý režim</string>
     <string name="category_navigation">Navigace</string>
 

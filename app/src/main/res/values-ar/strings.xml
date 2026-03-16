@@ -36,6 +36,11 @@
     <string name="app_theme">الوضع الداكن (التطبيق)</string>
     <string name="app_theme_description">التحكم في المظهر المرئي للتطبيق</string>
     <string name="change_app_theme">تغيير سمة التطبيق</string>
+    <string name="use_gradient_background">استخدام خلفية متدرجة</string>
+    <string name="use_gradient_background_description_on">يرسم التطبيق خلفيته الخاصة مع دائرة التدرج في المنتصف</string>
+    <string name="use_gradient_background_description_off">يتم استخدام الخلفية الكلاسيكية للتطبيق</string>
+    <string name="use_gradient_background_description_on_auto">يرسم التطبيق خلفيته الخاصة مع دائرة التدرج في المنتصف. لا ينطبق على وضع الداكن المتطرف</string>
+    <string name="use_gradient_background_description_off_auto">يتم استخدام الخلفية الكلاسيكية للتطبيق. لا ينطبق على وضع الداكن المتطرف</string>
     <string name="category_dark_mode">الوضع الداكن</string>
     <string name="category_navigation">الملاحة</string>
 

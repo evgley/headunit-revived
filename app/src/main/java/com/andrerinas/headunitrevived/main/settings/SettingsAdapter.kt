@@ -28,6 +28,7 @@ sealed class SettingItem {
         @StringRes val nameResId: Int,
         @StringRes val descriptionResId: Int,
         var isChecked: Boolean,
+        val isEnabled: Boolean = true,
         val onCheckedChanged: (Boolean) -> Unit
     ) : SettingItem()
 
@@ -134,13 +135,16 @@ class SettingsAdapter : ListAdapter<SettingItem, RecyclerView.ViewHolder>(Settin
         fun bind(setting: SettingItem.ToggleSettingEntry) {
             settingName.setText(setting.nameResId)
             settingDescription.setText(setting.descriptionResId)
-            settingSwitch.setOnCheckedChangeListener(null) 
+            settingSwitch.setOnCheckedChangeListener(null)
             settingSwitch.isChecked = setting.isChecked
+            settingSwitch.isEnabled = setting.isEnabled
+            itemView.alpha = if (setting.isEnabled) 1.0f else 0.5f
+            itemView.isClickable = setting.isEnabled
             settingSwitch.setOnCheckedChangeListener { _, isChecked ->
                 setting.onCheckedChanged(isChecked)
             }
             itemView.setOnClickListener {
-                settingSwitch.toggle()
+                if (setting.isEnabled) settingSwitch.toggle()
             }
         }
     }
@@ -177,7 +181,7 @@ class SettingsAdapter : ListAdapter<SettingItem, RecyclerView.ViewHolder>(Settin
                 oldItem is SettingItem.SettingEntry && newItem is SettingItem.SettingEntry ->
                     oldItem.nameResId == newItem.nameResId && oldItem.value == newItem.value
                 oldItem is SettingItem.ToggleSettingEntry && newItem is SettingItem.ToggleSettingEntry ->
-                    oldItem.nameResId == newItem.nameResId && oldItem.descriptionResId == newItem.descriptionResId && oldItem.isChecked == newItem.isChecked
+                    oldItem.nameResId == newItem.nameResId && oldItem.descriptionResId == newItem.descriptionResId && oldItem.isChecked == newItem.isChecked && oldItem.isEnabled == newItem.isEnabled
                 oldItem is SettingItem.SliderSettingEntry && newItem is SettingItem.SliderSettingEntry ->
                     oldItem.nameResId == newItem.nameResId && oldItem.value == newItem.value && oldItem.sliderValue == newItem.sliderValue
                 oldItem is SettingItem.CategoryHeader && newItem is SettingItem.CategoryHeader ->

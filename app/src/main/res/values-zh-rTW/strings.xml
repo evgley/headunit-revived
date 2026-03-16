@@ -35,6 +35,11 @@
     <string name="app_theme">深色模式（應用程式）</string>
     <string name="app_theme_description">控制應用的視覺外觀</string>
     <string name="change_app_theme">更改應用主題</string>
+    <string name="use_gradient_background">使用漸層背景</string>
+    <string name="use_gradient_background_description_on">應用程式繪製自己的背景，漸層圓形置中顯示</string>
+    <string name="use_gradient_background_description_off">正在使用應用程式的傳統背景</string>
+    <string name="use_gradient_background_description_on_auto">應用程式繪製自己的背景，漸層圓形置中顯示。不適用於極致深色模式</string>
+    <string name="use_gradient_background_description_off_auto">正在使用應用程式的傳統背景。不適用於極致深色模式</string>
     <string name="category_dark_mode">深色模式</string>
     <string name="category_navigation">導航</string>
 

@@ -40,6 +40,11 @@
     <string name="monochrome_icons_description">Use grayscale icons on the home screen in Dark or Extreme Dark mode</string>
     <string name="use_extreme_dark">Use Extreme Dark</string>
     <string name="use_extreme_dark_description">Use pure black background when dark mode is active</string>
+    <string name="use_gradient_background">Use gradient background</string>
+    <string name="use_gradient_background_description_on">The app draws its own background with the gradient circle centered</string>
+    <string name="use_gradient_background_description_off">The app\'s classic background is being used</string>
+    <string name="use_gradient_background_description_on_auto">The app draws its own background with the gradient circle centered. Does not apply to Extreme Dark mode</string>
+    <string name="use_gradient_background_description_off_auto">The app\'s classic background is being used. Does not apply to Extreme Dark mode</string>
     <string name="category_dark_mode">Dark Mode</string>
     <string name="category_navigation">Navigation</string>
 

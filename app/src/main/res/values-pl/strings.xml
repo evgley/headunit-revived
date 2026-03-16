@@ -36,6 +36,11 @@
     <string name="app_theme">Tryb ciemny (Aplikacja)</string>
     <string name="app_theme_description">Kontroluj wygląd aplikacji</string>
     <string name="change_app_theme">Zmień motyw</string>
+    <string name="use_gradient_background">Użyj tła gradientowego</string>
+    <string name="use_gradient_background_description_on">Aplikacja rysuje własne tło z wyśrodkowanym okręgiem gradientu</string>
+    <string name="use_gradient_background_description_off">Używane jest klasyczne tło aplikacji</string>
+    <string name="use_gradient_background_description_on_auto">Aplikacja rysuje własne tło z wyśrodkowanym okręgiem gradientu. Nie dotyczy trybu Ekstremalnie ciemny</string>
+    <string name="use_gradient_background_description_off_auto">Używane jest klasyczne tło aplikacji. Nie dotyczy trybu Ekstremalnie ciemny</string>
     <string name="category_dark_mode">Tryb ciemny</string>
     <string name="category_navigation">Nawigacja</string>
 

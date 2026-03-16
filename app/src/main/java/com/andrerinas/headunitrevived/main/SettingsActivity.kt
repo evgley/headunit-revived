@@ -20,6 +20,8 @@ class SettingsActivity : BaseActivity() {
         if (appSettings.appTheme == Settings.AppTheme.EXTREME_DARK ||
             (appSettings.useExtremeDarkMode && isNightActive)) {
             theme.applyStyle(R.style.ThemeOverlay_ExtremeDark, true)
+        } else if (appSettings.useGradientBackground) {
+            theme.applyStyle(R.style.ThemeOverlay_GradientBackground, true)
         }
         requestedOrientation = appSettings.screenOrientation.androidOrientation
 

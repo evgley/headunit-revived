@@ -242,6 +242,10 @@ class AppThemeManager(
             themeVersion.value = versionCounter
         }
 
+        fun signalVisualChange() {
+            signalThemeChange()
+        }
+
         fun applyStaticTheme(settings: Settings) {
             val mode = when (settings.appTheme) {
                 Settings.AppTheme.AUTOMATIC -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM

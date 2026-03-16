@@ -36,6 +36,11 @@
     <string name="app_theme">Тёмный режим (Приложение)</string>
     <string name="app_theme_description">Управление внешним видом приложения</string>
     <string name="change_app_theme">Изменить тему</string>
+    <string name="use_gradient_background">Градиентный фон</string>
+    <string name="use_gradient_background_description_on">Приложение рисует собственный фон с центрированным градиентным кругом</string>
+    <string name="use_gradient_background_description_off">Используется классический фон приложения</string>
+    <string name="use_gradient_background_description_on_auto">Приложение рисует собственный фон с центрированным градиентным кругом. Не применяется к режиму Экстремально тёмный</string>
+    <string name="use_gradient_background_description_off_auto">Используется классический фон приложения. Не применяется к режиму Экстремально тёмный</string>
     <string name="category_dark_mode">Тёмный режим</string>
     <string name="category_navigation">Навигация</string>
 

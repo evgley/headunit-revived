@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.graphics.Color
 import android.content.res.ColorStateList
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -313,6 +314,35 @@ class HomeFragment : Fragment() {
         AppLog.i("HomeFragment: onResume. isConnected=${commManager.isConnected}")
         updateProjectionButtonText()
         updateButtonStyle()
+        updateTextColors()
+    }
+
+    private fun updateTextColors() {
+        val appSettings = App.provide(requireContext()).settings
+        val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        val isLightMode = nightModeFlags != Configuration.UI_MODE_NIGHT_YES
+
+        if (appSettings.useGradientBackground && isLightMode) {
+            val darkColor = Color.parseColor("#1a1a1a")
+            val textViews = listOf(self_mode_text, wifi_text_view,
+                view?.findViewById<TextView>(R.id.usb_text),
+                view?.findViewById<TextView>(R.id.settings_text),
+                exitButton)
+            textViews.filterNotNull().forEach { tv ->
+                tv.setTextColor(darkColor)
+                tv.setShadowLayer(2f, 0f, 0f, Color.WHITE)
+            }
+        } else {
+            val lightColor = Color.parseColor("#f7f7f7")
+            val textViews = listOf(self_mode_text, wifi_text_view,
+                view?.findViewById<TextView>(R.id.usb_text),
+                view?.findViewById<TextView>(R.id.settings_text),
+                exitButton)
+            textViews.filterNotNull().forEach { tv ->
+                tv.setTextColor(lightColor)
+                tv.setShadowLayer(0f, 0f, 0f, Color.TRANSPARENT)
+            }
+        }
     }
 
     companion object {

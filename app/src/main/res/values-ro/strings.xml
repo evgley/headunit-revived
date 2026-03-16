@@ -36,6 +36,11 @@
     <string name="app_theme">Mod întunecat (Aplicație)</string>
     <string name="app_theme_description">Controlează aspectul vizual al aplicației</string>
     <string name="change_app_theme">Schimbă tema</string>
+    <string name="use_gradient_background">Folosește fundal degradat</string>
+    <string name="use_gradient_background_description_on">Aplicația desenează propriul fundal cu cercul de degradat centrat</string>
+    <string name="use_gradient_background_description_off">Fundalul clasic al aplicației este utilizat</string>
+    <string name="use_gradient_background_description_on_auto">Aplicația desenează propriul fundal cu cercul de degradat centrat. Nu se aplică modului Întunecat extrem</string>
+    <string name="use_gradient_background_description_off_auto">Fundalul clasic al aplicației este utilizat. Nu se aplică modului Întunecat extrem</string>
     <string name="category_dark_mode">Mod întunecat</string>
     <string name="category_navigation">Navigare</string>
 

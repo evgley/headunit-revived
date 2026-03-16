@@ -35,6 +35,11 @@
     <string name="app_theme">Donkere modus (Applicatie)</string>
     <string name="app_theme_description">Bepaal het uiterlijk van de app</string>
     <string name="change_app_theme">Thema wijzigen</string>
+    <string name="use_gradient_background">Verloopachtergrond gebruiken</string>
+    <string name="use_gradient_background_description_on">De app tekent een eigen achtergrond met de gecentreerde verloopcirkel</string>
+    <string name="use_gradient_background_description_off">De klassieke achtergrond van de app wordt gebruikt</string>
+    <string name="use_gradient_background_description_on_auto">De app tekent een eigen achtergrond met de gecentreerde verloopcirkel. Geldt niet voor de modus Extreem donker</string>
+    <string name="use_gradient_background_description_off_auto">De klassieke achtergrond van de app wordt gebruikt. Geldt niet voor de modus Extreem donker</string>
     <string name="category_dark_mode">Donkere modus</string>
     <string name="category_navigation">Navigatie</string>
 

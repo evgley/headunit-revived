@@ -36,6 +36,11 @@
     <string name="app_theme">Dunkelmodus (Anwendung)</string>
     <string name="app_theme_description">Aussehen der App steuern</string>
     <string name="change_app_theme">Design ändern</string>
+    <string name="use_gradient_background">Verlaufshintergrund verwenden</string>
+    <string name="use_gradient_background_description_on">Die App zeichnet ihren eigenen Hintergrund mit dem zentrierten Verlaufskreis</string>
+    <string name="use_gradient_background_description_off">Der klassische Hintergrund der App wird verwendet</string>
+    <string name="use_gradient_background_description_on_auto">Die App zeichnet ihren eigenen Hintergrund mit dem zentrierten Verlaufskreis. Gilt nicht für den Modus Extrem Dunkel</string>
+    <string name="use_gradient_background_description_off_auto">Der klassische Hintergrund der App wird verwendet. Gilt nicht für den Modus Extrem Dunkel</string>
     <string name="category_dark_mode">Dunkelmodus</string>
     <string name="category_navigation">Navigation</string>
 
