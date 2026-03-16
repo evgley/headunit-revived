@@ -287,12 +287,6 @@ class AapService : Service(), UsbReceiver.Listener {
     private fun setupMediaSession() {
         mediaSession = MediaSessionCompat(this, "HeadunitRevived").apply {
             setCallback(object : MediaSessionCompat.Callback() {
-                override fun onPlay() { commManager.send(android.view.KeyEvent.KEYCODE_MEDIA_PLAY, true); commManager.send(android.view.KeyEvent.KEYCODE_MEDIA_PLAY, false) }
-                override fun onPause() { commManager.send(android.view.KeyEvent.KEYCODE_MEDIA_PAUSE, true); commManager.send(android.view.KeyEvent.KEYCODE_MEDIA_PAUSE, false) }
-                override fun onSkipToNext() { commManager.send(android.view.KeyEvent.KEYCODE_MEDIA_NEXT, true); commManager.send(android.view.KeyEvent.KEYCODE_MEDIA_NEXT, false) }
-                override fun onSkipToPrevious() { commManager.send(android.view.KeyEvent.KEYCODE_MEDIA_PREVIOUS, true); commManager.send(android.view.KeyEvent.KEYCODE_MEDIA_PREVIOUS, false) }
-                override fun onStop() { commManager.send(android.view.KeyEvent.KEYCODE_MEDIA_STOP, true); commManager.send(android.view.KeyEvent.KEYCODE_MEDIA_STOP, false) }
-
                 override fun onMediaButtonEvent(mediaButtonEvent: Intent?): Boolean {
                     val keyEvent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                         mediaButtonEvent?.getParcelableExtra(Intent.EXTRA_KEY_EVENT, android.view.KeyEvent::class.java)
@@ -300,11 +294,23 @@ class AapService : Service(), UsbReceiver.Listener {
                         @Suppress("DEPRECATION")
                         mediaButtonEvent?.getParcelableExtra(Intent.EXTRA_KEY_EVENT)
                     }
-                    keyEvent?.let {
-                        val isPress = it.action == android.view.KeyEvent.ACTION_DOWN
-                        commManager.send(it.keyCode, isPress)
+
+                    // Only handle ACTION_DOWN to ensure instant response and prevent double triggers.
+                    if (keyEvent != null && keyEvent.action == android.view.KeyEvent.ACTION_DOWN) {
+                        val keyCode = keyEvent.keyCode
+                        AppLog.d("MediaSession: Handling key $keyCode via ACTION_DOWN")
+                        
+                        // Send a complete click sequence (press + release) immediately
+                        commManager.send(keyCode, true)
+                        commManager.send(keyCode, false)
                         return true
                     }
+                    
+                    // Consume ACTION_UP to prevent fallback to individual callbacks (onPlay, etc.)
+                    if (keyEvent != null && keyEvent.action == android.view.KeyEvent.ACTION_UP) {
+                        return true
+                    }
+
                     return super.onMediaButtonEvent(mediaButtonEvent)
                 }
             })
