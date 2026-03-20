@@ -58,13 +58,15 @@ adb shell am start -a android.intent.action.VIEW -d "headunit://connect?ip=192.1
 - **Wireless Connection Drops:** If the connection drops frequently, disable **"WiFi Assistant"** or **"Switch between networks"** in your phone's WiFi settings to prevent it from killing the connection due to "no internet."
 
 ## Changelog
-### v.2.0.2-beta
+### v.2.0.2
 - Fixed: 60FPS never applied
 - Fixed: SSL Handshake fix for truncated messages
 - Added: dark mode and xtreme dark mode setting for the app itself thanks to @andrecuellar!
 - Removed: App category="maps" so nav buttons recognize the app again
 - Fixed: Multiple Button Events and double/tripple skips
 - Fixed: USB Permission Request thanks to @Bastel2020
+- Added: Setting for Disable stretch to fit. This will fix  wrong rendering on some devices @thanks to tsabaia
+- Fixed: Touch screen accuracy when not in full screen mode for older devices
 
 ### v.2.0.1
 - Fixed: Multiple volume sliders appearing on modern devices (Pixel 9 fix)
