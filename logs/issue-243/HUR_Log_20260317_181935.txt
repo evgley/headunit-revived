@@ -1,0 +1,1582 @@
+--------- beginning of /dev/log/main
+03-17 18:18:13.290  9010  9452 W HUREV   : [274] m.e | USB read errors (10) for 2s — waiting for recovery...
+03-17 18:18:13.790  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:18:13.840  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 11 errors
+03-17 18:18:13.840  9010  9452 W HUREV   : [274] u0.a | AapVideo: Dropped Flag 11 packet. len=6, buf[10]=?
+03-17 18:18:13.840  9010  9452 I HUREV   : [274] l.d | Media Start Request VIDEO: session=0, config_index=0
+03-17 18:18:14.000  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 1 errors
+03-17 18:18:14.010  9010  9452 I HUREV   : [274] z.c | H.264/AVC config detected in frame (38 bytes)
+03-17 18:18:14.010  9010  9452 I HUREV   : [274] z.m | SPS parsed: 1920x1080
+03-17 18:18:14.010  9010  9452 I HUREV   : [274] AapProjectionActivity.a | [AapProjectionActivity] Received video dimensions: 1920x1080
+03-17 18:18:14.010  9010  9010 I HUREV   : [1] i.a | TextureProjectionView
+03-17 18:18:14.010  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1080, Content: 1920x640, View: 1920x720
+03-17 18:18:14.010  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:18:14.030  9010  9501 I OMXClient: Using client-side OMX mux.
+03-17 18:18:14.050  9010  9452 I HUREV   : [274] z.r | Configuring decoder: OMX.Freescale.std.video_decoder.avc.v3.hw-based with surface
+03-17 18:18:14.050  9010  9501 I ACodec  : Send reorder config(0) to VPU
+03-17 18:18:14.490  9010  9452 I HUREV   : [274] z.r | Codec initialized: OMX.Freescale.std.video_decoder.avc.v3.hw-based for stream 1920x1080
+03-17 18:18:14.490  9010  9507 I HUREV   : [275] z.l | Output thread started
+03-17 18:18:14.590  9010  9452 D dalvikvm: GC_FOR_ALLOC freed 720K, 55% free 8833K/19452K, paused 56ms, total 56ms
+03-17 18:18:14.640  9010  9507 I HUREV   : [275] z.j | Output Format Changed: {height=1088, what=1869968451, color-format=19, slice-height=0, crop-left=0, width=1920, crop-bottom=1079, crop-top=0, mime=video/raw, stride=1920, crop-right=1919}
+03-17 18:18:14.640  9010  9507 I HUREV   : [275] z.j | Video dimensions changed via format: 1920x1088
+03-17 18:18:14.640  9010  9507 I HUREV   : [275] AapProjectionActivity.a | [AapProjectionActivity] Received video dimensions: 1920x1088
+03-17 18:18:14.640  9010  9501 E ACodec  : dequeueBuffer failed.
+03-17 18:18:14.640  9010  9010 I HUREV   : [1] i.a | TextureProjectionView
+03-17 18:18:14.640  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:18:14.640  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:18:14.650  9010  9501 E ACodec  : dequeueBuffer failed.
+03-17 18:18:15.390  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 1 errors
+03-17 18:18:15.590  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 1 errors
+03-17 18:18:15.770  9010  9452 D dalvikvm: GC_FOR_ALLOC freed 821K, 56% free 9012K/20220K, paused 45ms, total 45ms
+03-17 18:18:16.000  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 1 errors
+03-17 18:18:16.390  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 2 errors
+03-17 18:18:16.580  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 1 errors
+03-17 18:18:16.990  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 1 errors
+03-17 18:18:17.170  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 1 errors
+03-17 18:18:18.520  9010  9452 W HUREV   : [274] m.e | USB read errors (10) for 1s — waiting for recovery...
+03-17 18:18:20.850  9010  9452 W HUREV   : [274] m.e | USB read errors (20) for 3s — waiting for recovery...
+03-17 18:18:23.180  9010  9452 W HUREV   : [274] m.e | USB read errors (30) for 5s — waiting for recovery...
+03-17 18:18:25.510  9010  9452 W HUREV   : [274] m.e | USB read errors (40) for 8s — waiting for recovery...
+03-17 18:18:27.800  9010  9010 I HUREV   : [1] AapProjectionActivity.V | Showing reconnecting overlay
+03-17 18:18:27.850  9010  9452 W HUREV   : [274] m.e | USB read errors (50) for 10s — waiting for recovery...
+03-17 18:18:30.180  9010  9452 W HUREV   : [274] m.e | USB read errors (60) for 12s — waiting for recovery...
+03-17 18:18:32.570  9010  9452 W HUREV   : [274] m.e | USB read errors (70) for 15s — waiting for recovery...
+03-17 18:18:34.920  9010  9452 W HUREV   : [274] m.e | USB read errors (80) for 17s — waiting for recovery...
+03-17 18:18:37.260  9010  9452 W HUREV   : [274] m.e | USB read errors (90) for 20s — waiting for recovery...
+03-17 18:18:37.570  9010  9010 I HUREV   : [1] AapProjectionActivity.M | Hiding reconnecting overlay — frames resumed
+03-17 18:18:37.580  9010  9440 I HUREV   : [268] t0.G | AapTransport stopping and sending byebye
+03-17 18:18:37.590  9010  9010 I HUREV   : [1] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-17 18:18:37.610  9010  9010 I HUREV   : [1] AapService.K | WifiLock released
+03-17 18:18:37.630  9010  9507 I HUREV   : [275] z.l | Output thread stopped
+03-17 18:18:37.640  9010  9442 I HUREV   : [270] z.t | Decoder stopped: AapService::onDisconnect
+03-17 18:18:37.660  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:37.730  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:37.730  9010  9440 I HUREV   : [268] t0.o | AapTransport quitting (clean=false)
+03-17 18:18:37.920  9010  9452 W MessageQueue: Handler (android.os.Handler) {424a0360} sending message to a Handler on a dead thread
+03-17 18:18:37.920  9010  9452 W MessageQueue: java.lang.RuntimeException: Handler (android.os.Handler) {424a0360} sending message to a Handler on a dead thread
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.MessageQueue.enqueueMessage(MessageQueue.java:309)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.Handler.enqueueMessage(Handler.java:623)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.Handler.sendMessageAtTime(Handler.java:592)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.Handler.sendMessageDelayed(Handler.java:563)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.Handler.sendEmptyMessageDelayed(Handler.java:527)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.Handler.sendEmptyMessage(Handler.java:512)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at t0.t0.n(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:36)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at t0.t0.c(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:1)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at t0.r0.handleMessage(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:3)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.Handler.dispatchMessage(Handler.java:95)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.Looper.loop(Looper.java:137)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.HandlerThread.run(HandlerThread.java:61)
+03-17 18:18:37.920  9010  9440 D UsbDeviceConnectionJNI: close
+03-17 18:18:37.930  9010  9440 I HUREV   : [268] m.b | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/002/005,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mInterfaces=[Landroid.os.Parcelable;@426f5a70]
+03-17 18:18:37.930  9010  9440 E UsbDeviceConnectionJNI: device is closed in native_release_interface
+03-17 18:18:37.930  9010  9440 I HUREV   : [268] m.b | OK releaseInterface()
+03-17 18:18:38.160  9010  9010 I HUREV   : [1] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-17 18:18:38.170  9010  9010 I HUREV   : [1] i.onSurfaceTextureDestroyed | TextureProjectionView: Surface destroyed
+03-17 18:18:38.170  9010  9010 I HUREV   : [1] AapProjectionActivity.c | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@426397d0)
+03-17 18:18:38.170  9010  9010 I HUREV   : [1] z.t | Decoder stopped: surfaceDestroyed
+03-17 18:18:40.850  9010  9010 I HUREV   : [1] AapService.u | Found device already in accessory mode: Google 18D1:2D00
+03-17 18:18:40.860  9010  9440 I HUREV   : [268] m.l | Established connection: android.hardware.usb.UsbDeviceConnection@427acc60
+03-17 18:18:40.860  9010  9440 I HUREV   : [268] m.l | interfaceCount: 1
+03-17 18:18:40.860  9010  9440 I HUREV   : [268] m.j | Check accessory endpoints
+03-17 18:18:40.860  9010  9440 I HUREV   : [268] m.j | Connected have EPs
+03-17 18:18:40.880  9010  9010 I HUREV   : [1] AapService.t | WifiLock acquired (HIGH_PERF)
+03-17 18:18:40.920  9010  9440 I HUREV   : [268] t0.<init> | Using Java SSL implementation
+03-17 18:18:40.980  9010  9440 D dalvikvm: GC_FOR_ALLOC freed 3670K, 67% free 6723K/20220K, paused 64ms, total 64ms
+03-17 18:18:40.990  9010  9440 I HUREV   : [268] t0.B | Start Aap transport handshake for w0.m@427aca10
+03-17 18:18:41.090  9010  9014 D dalvikvm: GC_CONCURRENT freed 221K, 62% free 7744K/20220K, paused 4ms+7ms, total 61ms
+03-17 18:18:41.090  9010  9010 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 30ms
+03-17 18:18:41.150  9010  9010 I HUREV   : [1] AapProjectionActivity.onCreate | HeadUnit for Android Auto (tm) - Copyright 2011-2015 Michael A. Reid., since 2025 André Rinas All Rights Reserved...
+03-17 18:18:41.150  9010  9010 I HUREV   : [1] AapProjectionActivity.onCreate | Using TextureView
+03-17 18:18:41.160  9010  9010 I HUREV   : [1] i.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 18:18:41.160  9010  9010 I HUREV   : [1] i.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 18:18:41.160  9010  9010 I HUREV   : [1] i.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 18:18:41.160  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:41.160  9010  9010 I HUREV   : [1] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-17 18:18:41.170  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:41.330  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:41.350  9010  9010 I HUREV   : [1] i.onSurfaceTextureAvailable | TextureProjectionView: Surface available: 1920x720
+03-17 18:18:41.350  9010  9010 I HUREV   : [1] AapProjectionActivity.d | [AapProjectionActivity] onSurfaceCreated
+03-17 18:18:41.360  9010  9010 I HUREV   : [1] AapProjectionActivity.b | [AapProjectionActivity] onSurfaceChanged. Actual surface dimensions: width=1920, height=720
+03-17 18:18:41.360  9010  9010 I HUREV   : [1] z.q | New surface set: Surface(name=android.graphics.SurfaceTexture@4270a838)
+03-17 18:18:41.360  9010  9010 I HUREV   : [1] AapProjectionActivity.b | [AapProjectionActivity] Decoder already has dimensions: 1920x1088. Applying to view.
+03-17 18:18:41.360  9010  9010 I HUREV   : [1] i.a | TextureProjectionView
+03-17 18:18:41.370  9010  9010 I HUREV   : [1] i.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 18:18:41.370  9010  9010 I HUREV   : [1] i.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 18:18:41.370  9010  9010 I HUREV   : [1] i.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 18:18:41.380  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:18:41.380  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:18:41.380  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:18:41.390  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:18:41.570  9010  9440 W HUREV   : [268] t0.l | Handshake: Version request send failed (ret=-1), attempt 1
+03-17 18:18:41.810  9010  9440 W HUREV   : [268] t0.l | Handshake: Version request send failed (ret=-1), attempt 2
+03-17 18:18:42.040  9010  9440 W HUREV   : [268] t0.l | Handshake: Version request send failed (ret=-1), attempt 3
+03-17 18:18:42.240  9010  9440 E HUREV   : [268] t0.l | Handshake: Version request/response failed after 3 attempt(s). last ret: -1
+03-17 18:18:42.240  9010  9440 I HUREV   : [268] t0.o | AapTransport quitting (clean=false)
+03-17 18:18:42.250  9010  9441 I HUREV   : [269] t0.o | AapTransport quitting (clean=false)
+03-17 18:18:42.250  9010  9441 D UsbDeviceConnectionJNI: close
+03-17 18:18:42.250  9010  9441 I HUREV   : [269] m.b | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/002/005,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mInterfaces=[Landroid.os.Parcelable;@42631e90]
+03-17 18:18:42.250  9010  9441 E UsbDeviceConnectionJNI: device is closed in native_release_interface
+03-17 18:18:42.250  9010  9441 I HUREV   : [269] m.b | OK releaseInterface()
+03-17 18:18:42.260  9010  9440 E HUREV   : [268] t0.B | Handshake failed
+03-17 18:18:42.280  9010  9010 I HUREV   : [1] AapProjectionActivity.M | Hiding reconnecting overlay — frames resumed
+03-17 18:18:42.290  9010  9010 I HUREV   : [1] AapService.K | WifiLock released
+03-17 18:18:42.300  9010  9440 I HUREV   : [268] z.t | Decoder stopped: AapService::onDisconnect
+03-17 18:18:42.310  9010  9010 I HUREV   : [1] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-17 18:18:42.330  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:42.370  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:42.790  9010  9010 I HUREV   : [1] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-17 18:18:42.790  9010  9010 I HUREV   : [1] i.onSurfaceTextureDestroyed | TextureProjectionView: Surface destroyed
+03-17 18:18:42.790  9010  9010 I HUREV   : [1] AapProjectionActivity.c | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@4270a838)
+03-17 18:18:42.790  9010  9010 I HUREV   : [1] z.t | Decoder stopped: surfaceDestroyed
+03-17 18:19:22.600  9010  9010 I HUREV   : [1] MainActivity.handleIntent | MainActivity received intent: null, data: null
+03-17 18:19:22.670  9010  9010 D zjy     : view visibility = 7
+03-17 18:19:22.840  9010  9010 D zjy     : view visibility = 7
+03-17 18:19:27.310  9010  9014 D dalvikvm: GC_CONCURRENT freed 2364K, 66% free 6964K/20216K, paused 6ms+11ms, total 79ms
+03-17 18:19:27.310  9010  9010 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 34ms
+03-17 18:19:27.360  9010  9010 I HUREV   : [1] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-17 18:19:29.980  9010  9010 D zjy     : view visibility = 7
+03-17 18:19:31.200  9010  9010 I HUREV   : [1] AapService.onStartCommand | Stop action received.
+03-17 18:19:31.240  9010  9010 I HUREV   : [1] AapService.onDestroy | AapService destroying...
+03-17 18:19:31.380  9010  9010 W IInputConnectionWrapper: showStatusIcon on inactive InputConnection
+03-17 18:19:32.270  9010  9010 I HUREV   : [1] MainActivity.onDestroy | MainActivity finishing, resetting auto-start flag.
+03-17 18:19:34.080  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 805K, 68% free 6620K/20200K, paused 116ms, total 122ms
+03-17 18:19:34.600  9010  9014 D dalvikvm: GC_CONCURRENT freed 620K, 65% free 7209K/20200K, paused 32ms+15ms, total 308ms
+03-17 18:19:34.600  9010  9010 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 58ms
+03-17 18:19:34.700  9010  9010 D zjy     : view visibility = 7
+03-17 18:19:34.720  9010  9010 I HUREV   : [1] MainActivity.handleIntent | MainActivity received intent: null, data: null
+03-17 18:19:35.090  9010  9010 D zjy     : view visibility = 7
+03-17 18:19:35.110  9010  9010 I HUREV   : [1] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-17 18:19:35.150  9010  9010 I HUREV   : [1] AapService.onCreate | AapService creating...
+03-17 18:19:35.190  9010  9010 I HUREV   : [1] v.invoke | NightMode update: true
+03-17 18:19:35.460  9010  9010 I HUREV   : [1] AapService.J | Registered runtime MEDIA_BUTTON receiver
+03-17 18:19:35.480  9010  9010 D AudioManager: getStreamVolume=3,index=8
+03-17 18:19:35.870  9010  9010 I HUREV   : [1] AapService.onCreate | Auto-started continuous log capture
+03-17 18:19:36.400  9010  9010 I HUREV   : [1] AapService.onCreate | Auto-started continuous log capture
+03-17 18:19:36.440  9010  9010 I Choreographer: Skipped 72 frames!  The application may be doing too much work on its main thread.
+03-17 18:19:37.460  9010  9016 I dalvikvm: Jit: resizing JitTable from 4096 to 8192
+03-17 18:19:37.520  9010  9010 I Choreographer: Skipped 57 frames!  The application may be doing too much work on its main thread.
+03-17 18:19:39.420  9010  9010 D zjy     : view visibility = 7
+03-17 18:19:41.860  9010  9014 D dalvikvm: GC_CONCURRENT freed 2024K, 66% free 6568K/19068K, paused 5ms+5ms, total 69ms
+03-17 18:19:51.190  9010  9010 I HUREV   : [1] MainActivity.handleIntent | MainActivity received intent: null, data: null
+03-17 18:19:51.210  9010  9010 D zjy     : view visibility = 7
+03-17 18:19:51.260  9010  9010 D zjy     : view visibility = 7
+03-17 18:19:55.420  9010  9010 I HUREV   : [1] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-17 18:19:56.820  9010  9010 D zjy     : view visibility = 7
+03-17 18:19:56.850  9010  9014 D dalvikvm: GC_CONCURRENT freed 768K, 64% free 6990K/19068K, paused 6ms+10ms, total 71ms
+03-17 18:19:56.850  9010  9010 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 27ms
+03-17 18:19:57.380  9010  9014 D dalvikvm: GC_CONCURRENT freed 1489K, 65% free 6833K/19068K, paused 6ms+6ms, total 85ms
+03-17 18:19:57.380  9010  9010 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 23ms
+03-17 18:19:57.810  9010  9010 D zjy     : view visibility = 7
+03-17 18:20:03.210  9010  9014 D dalvikvm: GC_CONCURRENT freed 818K, 63% free 7186K/19068K, paused 7ms+11ms, total 125ms
+03-17 18:20:13.790  9010  9014 D dalvikvm: GC_CONCURRENT freed 770K, 60% free 7771K/19068K, paused 6ms+6ms, total 79ms
+03-17 18:20:19.240  9010  9010 D zjy     : view visibility = 7
+03-17 18:20:38.460  9010  9010 D zjy     : view visibility = 7
+03-17 18:20:45.160  9010  9014 D dalvikvm: GC_CONCURRENT freed 1285K, 58% free 8079K/19068K, paused 6ms+9ms, total 89ms
+03-17 18:20:45.160  9010  9443 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 25ms
+03-17 18:20:45.160  9010  9010 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 22ms
+03-17 18:20:45.240  9010  9010 D zjy     : view visibility = 7
+03-17 18:20:45.260  9010  9010 D AlfusResources: cookie name=/data/app/com.andrerinas.headunitrevived-1.apk
+03-17 18:20:45.280  9010  9010 D AlfusResources: cookie name=/system/framework/framework-res.apk
+03-17 18:20:45.500  9010  9010 I HUREV   : [1] g.onReceive | Received request to resend night mode state
+03-17 18:20:45.500  9010  9010 I HUREV   : [1] v.invoke | NightMode update: true
+03-17 18:20:45.730  9010  9014 D dalvikvm: GC_CONCURRENT freed 1952K, 60% free 7822K/19276K, paused 6ms+8ms, total 81ms
+03-17 18:20:45.740  9010  9010 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 45ms
+03-17 18:20:45.940  9010  9010 D zjy     : view visibility = 7
+03-17 18:20:49.730  9010  9010 D zjy     : view visibility = 7
+03-17 18:20:49.730  9010  9010 I HUREV   : [1] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-17 18:20:49.890  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 515K, 59% free 7970K/19276K, paused 69ms, total 69ms
+03-17 18:20:49.890  9010  9010 I dalvikvm-heap: Grow heap (frag case) to 18.060MB for 1048592-byte allocation
+03-17 18:20:50.030  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 804K, 60% free 8189K/20304K, paused 68ms, total 68ms
+03-17 18:20:50.080  9010  9010 D zjy     : view visibility = 7
+03-17 18:20:50.080  9010  9010 I HUREV   : [1] MainActivity.handleIntent | MainActivity received intent: null, data: null
+03-17 18:20:50.210  9010  9010 D zjy     : view visibility = 7
+03-17 18:20:50.210  9010  9010 I HUREV   : [1] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-17 18:20:50.520  9010  9010 D zjy     : view visibility = 7
+03-17 18:20:56.490  9010  9014 D dalvikvm: GC_CONCURRENT freed 2133K, 63% free 7666K/20304K, paused 5ms+19ms, total 97ms
+03-17 18:21:03.220  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:21:03.220  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:21:39.520  9010  9010 I HUREV   : [1] AapService.u | Found device already in accessory mode: Google 18D1:2D00
+03-17 18:21:39.540  9010  9440 I HUREV   : [268] m.l | Established connection: android.hardware.usb.UsbDeviceConnection@424cff38
+03-17 18:21:39.540  9010  9440 I HUREV   : [268] m.l | interfaceCount: 1
+03-17 18:21:39.550  9010  9440 I HUREV   : [268] m.j | Check accessory endpoints
+03-17 18:21:39.550  9010  9440 I HUREV   : [268] m.j | Connected have EPs
+03-17 18:21:39.560  9010  9010 I HUREV   : [1] AapService.t | WifiLock acquired (HIGH_PERF)
+03-17 18:21:39.600  9010  9440 I HUREV   : [268] t0.<init> | Using Java SSL implementation
+03-17 18:21:39.670  9010  9440 D dalvikvm: GC_FOR_ALLOC freed 1261K, 66% free 6698K/19280K, paused 73ms, total 73ms
+03-17 18:21:39.680  9010  9440 I dalvikvm-heap: Grow heap (frag case) to 16.818MB for 1048656-byte allocation
+03-17 18:21:39.740  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 24K, 63% free 7698K/20308K, paused 60ms, total 60ms
+03-17 18:21:39.740  9010  9440 I HUREV   : [268] t0.B | Start Aap transport handshake for w0.m@42682de0
+--------- beginning of /dev/log/system
+03-17 18:21:39.740  9010  9010 E ActivityThread: Performing pause of activity that is not resumed: {com.andrerinas.headunitrevived/com.andrerinas.headunitrevived.main.MainActivity}
+03-17 18:21:39.740  9010  9010 E ActivityThread: java.lang.RuntimeException: Performing pause of activity that is not resumed: {com.andrerinas.headunitrevived/com.andrerinas.headunitrevived.main.MainActivity}
+03-17 18:21:39.740  9010  9010 E ActivityThread: 	at android.app.ActivityThread.performPauseActivity(ActivityThread.java:3079)
+03-17 18:21:39.740  9010  9010 E ActivityThread: 	at android.app.ActivityThread.performPauseActivity(ActivityThread.java:3067)
+03-17 18:21:39.740  9010  9010 E ActivityThread: 	at android.app.ActivityThread.handlePauseActivity(ActivityThread.java:3042)
+03-17 18:21:39.740  9010  9010 E ActivityThread: 	at android.app.ActivityThread.access$800(ActivityThread.java:143)
+03-17 18:21:39.740  9010  9010 E ActivityThread: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1289)
+03-17 18:21:39.740  9010  9010 E ActivityThread: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+03-17 18:21:39.740  9010  9010 E ActivityThread: 	at android.os.Looper.loop(Looper.java:137)
+03-17 18:21:39.740  9010  9010 E ActivityThread: 	at android.app.ActivityThread.main(ActivityThread.java:5342)
+03-17 18:21:39.740  9010  9010 E ActivityThread: 	at java.lang.reflect.Method.invokeNative(Native Method)
+03-17 18:21:39.740  9010  9010 E ActivityThread: 	at java.lang.reflect.Method.invoke(Method.java:525)
+03-17 18:21:39.740  9010  9010 E ActivityThread: 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:954)
+03-17 18:21:39.740  9010  9010 E ActivityThread: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:765)
+03-17 18:21:39.740  9010  9010 E ActivityThread: 	at dalvik.system.NativeStart.main(Native Method)
+03-17 18:21:39.890  9010  9010 I HUREV   : [1] AapProjectionActivity.onCreate | HeadUnit for Android Auto (tm) - Copyright 2011-2015 Michael A. Reid., since 2025 André Rinas All Rights Reserved...
+03-17 18:21:39.890  9010  9010 I HUREV   : [1] AapProjectionActivity.onCreate | Using TextureView
+03-17 18:21:39.890  9010  9010 I HUREV   : [1] i.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 18:21:39.890  9010  9010 I HUREV   : [1] i.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 18:21:39.900  9010  9010 I HUREV   : [1] i.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 18:21:39.900  9010  9010 D zjy     : view visibility = 7
+03-17 18:21:39.900  9010  9010 I HUREV   : [1] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-17 18:21:39.900  9010  9010 D zjy     : view visibility = 7
+03-17 18:21:39.990  9010  9010 D zjy     : view visibility = 7
+03-17 18:21:40.020  9010  9010 I HUREV   : [1] i.onSurfaceTextureAvailable | TextureProjectionView: Surface available: 1920x720
+03-17 18:21:40.030  9010  9010 I HUREV   : [1] AapProjectionActivity.d | [AapProjectionActivity] onSurfaceCreated
+03-17 18:21:40.030  9010  9010 I HUREV   : [1] AapProjectionActivity.b | [AapProjectionActivity] onSurfaceChanged. Actual surface dimensions: width=1920, height=720
+03-17 18:21:40.030  9010  9010 I HUREV   : [1] z.q | New surface set: Surface(name=android.graphics.SurfaceTexture@4260b440)
+03-17 18:21:40.030  9010  9010 I HUREV   : [1] AapProjectionActivity.b | [AapProjectionActivity] Decoder already has dimensions: 1920x1088. Applying to view.
+03-17 18:21:40.040  9010  9010 I HUREV   : [1] i.a | TextureProjectionView
+03-17 18:21:40.040  9010  9010 I HUREV   : [1] i.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 18:21:40.040  9010  9010 I HUREV   : [1] i.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 18:21:40.040  9010  9010 I HUREV   : [1] i.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 18:21:40.050  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:21:40.050  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:21:40.050  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:21:40.060  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:21:40.320  9010  9440 W HUREV   : [268] t0.l | Handshake: Version request send failed (ret=-1), attempt 1
+03-17 18:21:40.550  9010  9440 W HUREV   : [268] t0.l | Handshake: Version request send failed (ret=-1), attempt 2
+03-17 18:21:40.780  9010  9440 W HUREV   : [268] t0.l | Handshake: Version request send failed (ret=-1), attempt 3
+03-17 18:21:40.990  9010  9440 E HUREV   : [268] t0.l | Handshake: Version request/response failed after 3 attempt(s). last ret: -1
+03-17 18:21:40.990  9010  9440 I HUREV   : [268] t0.o | AapTransport quitting (clean=false)
+03-17 18:21:40.990  9010  9440 E HUREV   : [268] t0.B | Handshake failed
+03-17 18:21:41.010  9010  9010 I HUREV   : [1] AapProjectionActivity.M | Hiding reconnecting overlay — frames resumed
+03-17 18:21:41.020  9010  9010 I HUREV   : [1] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-17 18:21:41.040  9010  9010 D zjy     : view visibility = 7
+03-17 18:21:41.080  9010  9010 D zjy     : view visibility = 7
+03-17 18:21:41.490  9010  9010 I HUREV   : [1] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-17 18:21:41.490  9010  9010 I HUREV   : [1] i.onSurfaceTextureDestroyed | TextureProjectionView: Surface destroyed
+03-17 18:21:41.490  9010  9010 I HUREV   : [1] AapProjectionActivity.c | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@4260b440)
+03-17 18:21:41.490  9010  9010 I HUREV   : [1] z.t | Decoder stopped: surfaceDestroyed
+03-17 18:22:09.020  9010  9010 I HUREV   : [1] AapService.u | Found device already in accessory mode: Google 18D1:2D00
+03-17 18:22:09.040  9010 11251 D UsbDeviceConnectionJNI: close
+03-17 18:22:09.040  9010 11251 I HUREV   : [308] m.b | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/002/005,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mInterfaces=[Landroid.os.Parcelable;@4260c568]
+03-17 18:22:09.040  9010 11251 E UsbDeviceConnectionJNI: device is closed in native_release_interface
+03-17 18:22:09.040  9010 11251 I HUREV   : [308] m.b | OK releaseInterface()
+03-17 18:22:09.040  9010 11251 I HUREV   : [308] m.l | Established connection: android.hardware.usb.UsbDeviceConnection@426c3820
+03-17 18:22:09.040  9010 11251 I HUREV   : [308] m.l | interfaceCount: 1
+03-17 18:22:09.070  9010 11251 I HUREV   : [308] m.j | Check accessory endpoints
+03-17 18:22:09.070  9010 11251 I HUREV   : [308] m.j | Connected have EPs
+03-17 18:22:09.120  9010 11251 I HUREV   : [308] t0.B | Start Aap transport handshake for w0.m@426c3660
+03-17 18:22:09.180  9010  9014 D dalvikvm: GC_CONCURRENT freed 1329K, 62% free 7907K/20308K, paused 8ms+12ms, total 135ms
+03-17 18:22:09.290  9010  9010 I HUREV   : [1] AapProjectionActivity.onCreate | HeadUnit for Android Auto (tm) - Copyright 2011-2015 Michael A. Reid., since 2025 André Rinas All Rights Reserved...
+03-17 18:22:09.290  9010  9010 I HUREV   : [1] AapProjectionActivity.onCreate | Using TextureView
+03-17 18:22:09.290  9010  9010 I HUREV   : [1] i.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 18:22:09.290  9010  9010 I HUREV   : [1] i.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 18:22:09.300  9010  9010 I HUREV   : [1] i.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 18:22:09.300  9010  9010 D zjy     : view visibility = 7
+03-17 18:22:09.300  9010  9010 I HUREV   : [1] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-17 18:22:09.310  9010  9010 D zjy     : view visibility = 7
+03-17 18:22:09.400  9010  9010 D zjy     : view visibility = 7
+03-17 18:22:09.420  9010  9010 I HUREV   : [1] i.onSurfaceTextureAvailable | TextureProjectionView: Surface available: 1920x720
+03-17 18:22:09.430  9010  9010 I HUREV   : [1] AapProjectionActivity.d | [AapProjectionActivity] onSurfaceCreated
+03-17 18:22:09.430  9010  9010 I HUREV   : [1] AapProjectionActivity.b | [AapProjectionActivity] onSurfaceChanged. Actual surface dimensions: width=1920, height=720
+03-17 18:22:09.430  9010  9010 I HUREV   : [1] z.q | New surface set: Surface(name=android.graphics.SurfaceTexture@425b28a8)
+03-17 18:22:09.440  9010  9010 I HUREV   : [1] AapProjectionActivity.b | [AapProjectionActivity] Decoder already has dimensions: 1920x1088. Applying to view.
+03-17 18:22:09.440  9010  9010 I HUREV   : [1] i.a | TextureProjectionView
+03-17 18:22:09.440  9010  9010 I HUREV   : [1] i.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 18:22:09.440  9010  9010 I HUREV   : [1] i.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 18:22:09.450  9010  9010 I HUREV   : [1] i.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 18:22:09.450  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:22:09.450  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:22:09.460  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:22:09.460  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:22:09.690  9010 11251 W HUREV   : [308] t0.l | Handshake: Version request send failed (ret=-1), attempt 1
+03-17 18:22:09.920  9010 11251 W HUREV   : [308] t0.l | Handshake: Version request send failed (ret=-1), attempt 2
+03-17 18:22:10.160  9010 11251 W HUREV   : [308] t0.l | Handshake: Version request send failed (ret=-1), attempt 3
+03-17 18:22:10.360  9010 11251 E HUREV   : [308] t0.l | Handshake: Version request/response failed after 3 attempt(s). last ret: -1
+03-17 18:22:10.360  9010 11251 I HUREV   : [308] t0.o | AapTransport quitting (clean=false)
+03-17 18:22:10.360  9010 11251 E HUREV   : [308] t0.B | Handshake failed
+03-17 18:22:10.390  9010  9010 I HUREV   : [1] AapProjectionActivity.M | Hiding reconnecting overlay — frames resumed
+03-17 18:22:10.400  9010  9010 I HUREV   : [1] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-17 18:22:10.430  9010  9010 D zjy     : view visibility = 7
+03-17 18:22:10.450  9010  9010 D zjy     : view visibility = 7
+03-17 18:22:10.860  9010  9010 I HUREV   : [1] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-17 18:22:10.860  9010  9010 I HUREV   : [1] i.onSurfaceTextureDestroyed | TextureProjectionView: Surface destroyed
+03-17 18:22:10.860  9010  9010 I HUREV   : [1] AapProjectionActivity.c | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@425b28a8)
+03-17 18:22:10.870  9010  9010 I HUREV   : [1] z.t | Decoder stopped: surfaceDestroyed
+03-17 18:22:22.820  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:22:22.830  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:22:23.520  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 18:22:23.540  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 18:22:23.540  9010  9010 I HUREV   : [1] AapService.onUsbAttach | Normal USB device attached: 8921 22D9:2764. Will check auto-connect in 2000ms...
+03-17 18:22:23.600  9010  9010 I HUREV   : [1] UsbAttachedActivity.onCreate | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000000 cmp=com.andrerinas.headunitrevived/.app.UsbAttachedActivity (has extras) }
+03-17 18:22:23.600  9010  9010 I HUREV   : [1] UsbAttachedActivity.onCreate | Skipping device 8921 22D9:2764
+03-17 18:22:23.620  9010  9010 D zjy     : view visibility = 7
+03-17 18:22:23.670  9010  9010 D zjy     : view visibility = 7
+03-17 18:22:25.560  9010  9010 I HUREV   : [1] m.invokeSuspend | UsbAttachedActivity didn't handle 8921 22D9:2764. Trying from service...
+03-17 18:22:27.940  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:22:27.940  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:22:48.400  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 18:22:48.410  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 18:22:48.410  9010  9010 I HUREV   : [1] AapService.onUsbAttach | Normal USB device attached: Google 18D1:4EE1. Will check auto-connect in 2000ms...
+03-17 18:22:48.450  9010  9010 I HUREV   : [1] UsbAttachedActivity.onCreate | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000000 cmp=com.andrerinas.headunitrevived/.app.UsbAttachedActivity (has extras) }
+03-17 18:22:48.450  9010  9010 I HUREV   : [1] UsbAttachedActivity.onCreate | Skipping device Google 18D1:4EE1
+03-17 18:22:48.460  9010  9010 D zjy     : view visibility = 7
+03-17 18:22:48.500  9010  9010 D zjy     : view visibility = 7
+03-17 18:22:50.430  9010  9010 I HUREV   : [1] m.invokeSuspend | UsbAttachedActivity didn't handle Google 18D1:4EE1. Trying from service...
+03-17 18:22:51.350  9010  9010 I HUREV   : [1] n.c | Success controlTransfer len: 2  acc_ver: 2
+03-17 18:22:51.350  9010  9010 I HUREV   : [1] n.c | acc_ver: 2
+03-17 18:22:51.350  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 7  index: 0  string: "Android"
+03-17 18:22:51.350  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 12  index: 1  string: "Android Auto"
+03-17 18:22:51.360  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 12  index: 2  string: "Android Auto"
+03-17 18:22:51.360  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 5  index: 3  string: "2.0.1"
+03-17 18:22:51.360  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 45  index: 4  string: "https://developer.android.com/auto/index.html"
+03-17 18:22:51.360  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 12  index: 5  string: "HU-AAAAAA001"
+03-17 18:22:51.360  9010  9010 I HUREV   : [1] n.c | Sending acc start
+03-17 18:22:51.370  9010  9010 I HUREV   : [1] n.c | Acc start sent (len=0). Waiting for re-enumeration...
+03-17 18:22:51.450  9010  9014 D dalvikvm: GC_CONCURRENT freed 1554K, 62% free 7868K/20300K, paused 4ms+7ms, total 81ms
+03-17 18:22:51.870  9010  9010 D UsbDeviceConnectionJNI: close
+03-17 18:22:51.870  9010  9010 I HUREV   : [1] n.a | Result: true
+03-17 18:22:51.890  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:22:51.890  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:22:51.950  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 18:22:51.960  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 18:22:51.960  9010  9010 I HUREV   : [1] AapService.onUsbAttach | USB accessory device attached, connecting.
+03-17 18:22:51.960  9010  9010 I HUREV   : [1] AapService.u | Found device already in accessory mode: Google 18D1:2D00
+03-17 18:22:51.980  9010 11251 D UsbDeviceConnectionJNI: close
+03-17 18:22:51.980  9010 11251 I HUREV   : [308] m.b | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/002/005,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mInterfaces=[Landroid.os.Parcelable;@42915360]
+03-17 18:22:51.980  9010 11251 E UsbDeviceConnectionJNI: device is closed in native_release_interface
+03-17 18:22:51.980  9010 11251 I HUREV   : [308] m.b | OK releaseInterface()
+03-17 18:22:51.990  9010 11251 I HUREV   : [308] m.l | Established connection: android.hardware.usb.UsbDeviceConnection@42617218
+03-17 18:22:51.990  9010 11251 I HUREV   : [308] m.l | interfaceCount: 1
+03-17 18:22:51.990  9010 11251 I HUREV   : [308] m.j | Check accessory endpoints
+03-17 18:22:52.000  9010 11251 I HUREV   : [308] m.j | Connected have EPs
+03-17 18:22:52.050  9010  9010 I HUREV   : [1] UsbAttachedActivity.onCreate | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000000 cmp=com.andrerinas.headunitrevived/.app.UsbAttachedActivity (has extras) }
+03-17 18:22:52.050  9010  9010 E HUREV   : [1] UsbAttachedActivity.onCreate | Usb in accessory mode
+03-17 18:22:52.100  9010  9010 D zjy     : view visibility = 7
+03-17 18:22:52.130  9010 11251 I HUREV   : [308] t0.B | Start Aap transport handshake for w0.m@4268eea8
+03-17 18:22:52.260  9010  9010 I HUREV   : [1] AapProjectionActivity.onCreate | HeadUnit for Android Auto (tm) - Copyright 2011-2015 Michael A. Reid., since 2025 André Rinas All Rights Reserved...
+03-17 18:22:52.260  9010  9010 I HUREV   : [1] AapProjectionActivity.onCreate | Using TextureView
+03-17 18:22:52.270  9010  9010 I HUREV   : [1] i.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 18:22:52.270  9010  9010 I HUREV   : [1] i.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 18:22:52.270  9010  9010 I HUREV   : [1] i.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 18:22:52.270  9010  9010 D zjy     : view visibility = 7
+03-17 18:22:52.270  9010  9010 I HUREV   : [1] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-17 18:22:52.280  9010  9010 D zjy     : view visibility = 7
+03-17 18:22:52.330  9010  9010 D zjy     : view visibility = 7
+03-17 18:22:52.350  9010  9010 I HUREV   : [1] i.onSurfaceTextureAvailable | TextureProjectionView: Surface available: 1920x720
+03-17 18:22:52.350  9010  9010 I HUREV   : [1] AapProjectionActivity.d | [AapProjectionActivity] onSurfaceCreated
+03-17 18:22:52.350  9010  9010 I HUREV   : [1] AapProjectionActivity.b | [AapProjectionActivity] onSurfaceChanged. Actual surface dimensions: width=1920, height=720
+03-17 18:22:52.360  9010  9010 I HUREV   : [1] z.q | New surface set: Surface(name=android.graphics.SurfaceTexture@4284f920)
+03-17 18:22:52.360  9010  9010 I HUREV   : [1] AapProjectionActivity.b | [AapProjectionActivity] Decoder already has dimensions: 1920x1088. Applying to view.
+03-17 18:22:52.360  9010  9010 I HUREV   : [1] i.a | TextureProjectionView
+03-17 18:22:52.360  9010  9010 I HUREV   : [1] i.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 18:22:52.370  9010  9010 I HUREV   : [1] i.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 18:22:52.370  9010  9010 I HUREV   : [1] i.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 18:22:52.370  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:22:52.380  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:22:52.380  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:22:52.380  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:22:52.680  9010 11251 I HUREV   : [308] m.e | USB reads recovered after 1 errors
+03-17 18:22:52.680  9010 11251 I HUREV   : [308] t0.l | Handshake: Version response received (ret=12, attempt=1).
+03-17 18:22:52.680  9010 11251 I HUREV   : [308] t0.l | Handshake: Version response recv ret: 12
+03-17 18:22:52.750  9010 11251 D dalvikvm: GC_FOR_ALLOC freed 1382K, 62% free 7822K/20300K, paused 71ms, total 71ms
+03-17 18:22:52.960  9010 11251 I HUREV   : [308] o0.performHandshake | SSL handshake complete. Session id: Y/D+mXv/dWIaJ7ChEwWdcR2qq9fwd1LBw8bIL7u5vIo=
+03-17 18:22:52.970  9010 11251 I HUREV   : [308] t0.l | Handshake: Status OK sent: 8
+03-17 18:22:52.970  9010 11251 I HUREV   : [308] i.c | Audio Focus Request: stream=3, type=1
+03-17 18:22:52.970  9010 11251 D AudioManager: Qian:requestAudioFocus:3
+03-17 18:22:52.980  9010  9020 D AudioManager: dispatchAudioFocusChange [android.media.AudioManager@427299b8w0.d@42637928], hint = -1
+03-17 18:22:52.980  9010  9010 D AudioManager: Begin listener.onAudioFocusChange  [android.media.AudioManager@427299b8w0.d@42637928], hint = -1
+03-17 18:22:52.980  9010  9010 D AudioManager: End listener.onAudioFocusChange [android.media.AudioManager@427299b8w0.d@42637928], hint = -1
+03-17 18:22:53.000  9010 11251 I HUREV   : [308] i.c | Audio focus request result (legacy): GRANTED
+03-17 18:22:53.000  9010 11251 I HUREV   : [308] t0.E | Start Aap transport read loop
+03-17 18:22:53.060  9010 11251 D dalvikvm: GC_FOR_ALLOC freed 262K, 62% free 7806K/20300K, paused 59ms, total 60ms
+03-17 18:22:53.060  9010 11251 I dalvikvm-heap: Grow heap (frag case) to 17.150MB for 262176-byte allocation
+03-17 18:22:53.130  9010  9018 D dalvikvm: GC_FOR_ALLOC freed 0K, 61% free 8062K/20560K, paused 61ms, total 61ms
+03-17 18:22:53.180  9010 11251 D dalvikvm: GC_FOR_ALLOC freed 0K, 61% free 8062K/20560K, paused 59ms, total 59ms
+03-17 18:22:53.190  9010 11251 I dalvikvm-heap: Grow heap (frag case) to 17.651MB for 524336-byte allocation
+03-17 18:22:53.240  9010  9018 D dalvikvm: GC_FOR_ALLOC freed 0K, 60% free 8574K/21076K, paused 52ms, total 52ms
+03-17 18:22:53.250  9010 11823 I HUREV   : [313] o.h | Service Discovery Request: Auto
+03-17 18:22:53.250  9010 11823 I HUREV   : [313] a.b | [ServiceDiscovery] Announcing NIGHT sensor support. Strategy: MANUAL_TIME
+03-17 18:22:53.250  9010  9010 I HUREV   : [1] g.onReceive | Received request to resend night mode state
+03-17 18:22:53.250  9010 11823 I HUREV   : [313] a.b | [ServiceDiscovery] NegotiatedResolution is: 1920x1080
+03-17 18:22:53.260  9010 11823 I HUREV   : [313] a.b | [ServiceDiscovery] Margins are: 0x360
+03-17 18:22:53.260  9010 11823 I HUREV   : [313] a.b | BT MAC Address is empty. Skip bluetooth service
+03-17 18:22:53.260  9010  9010 I HUREV   : [1] v.invoke | NightMode update: true
+03-17 18:22:53.280  9010 11823 I HUREV   : [313] o.c | Audio Focus Request: RELEASE
+03-17 18:22:53.280  9010 11823 I HUREV   : [313] i.c | Audio Focus Request: stream=3, type=4
+03-17 18:22:53.280  9010 11823 D AudioManager: Qian:abandonAudioFocus:
+03-17 18:22:53.280  9010 11823 I HUREV   : [313] i.c | Audio focus request result (legacy): GRANTED
+03-17 18:22:53.280  9010 11823 I HUREV   : [313] o.c | Sending immediate AudioFocusNotification: STATE_LOSS
+03-17 18:22:53.320  9010 11823 W HUREV   : [313] u0.a | AapVideo: Dropped Flag 11 packet. len=4, buf[10]=?
+03-17 18:22:53.320  9010 11823 I HUREV   : [313] l.b | Media Sink Setup Request: 3 on channel VIDEO
+03-17 18:22:53.330  9010 11823 I HUREV   : [313] l.b | Config response: status: HEADUNIT
+03-17 18:22:53.330  9010 11823 I HUREV   : max_unacked: 1
+03-17 18:22:53.330  9010 11823 I HUREV   : configuration_indices: 0
+03-17 18:22:53.340  9010 11823 I HUREV   : [313] l.b | Media Sink Setup Request: 2 on channel AUDIO
+03-17 18:22:53.340  9010 11823 I HUREV   : [313] l.b | Config response: status: HEADUNIT
+03-17 18:22:53.340  9010 11823 I HUREV   : max_unacked: 3
+03-17 18:22:53.340  9010 11823 I HUREV   : configuration_indices: 0
+03-17 18:22:53.340  9010 11823 I HUREV   : [313] l.b | Media Sink Setup Request: 2 on channel AUDIO1
+03-17 18:22:53.350  9010 11823 I HUREV   : [313] l.b | Config response: status: HEADUNIT
+03-17 18:22:53.350  9010 11823 I HUREV   : max_unacked: 3
+03-17 18:22:53.350  9010 11823 I HUREV   : configuration_indices: 0
+03-17 18:22:53.350  9010 11823 I HUREV   : [313] l.b | Media Sink Setup Request: 2 on channel AUDIO2
+03-17 18:22:53.350  9010 11823 I HUREV   : [313] l.b | Config response: status: HEADUNIT
+03-17 18:22:53.350  9010 11823 I HUREV   : max_unacked: 3
+03-17 18:22:53.350  9010 11823 I HUREV   : configuration_indices: 0
+03-17 18:22:53.360  9010  9010 I HUREV   : [1] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-17 18:22:53.370  9010  9010 I HUREV   : [1] AapProjectionActivity.onNewIntent | AapProjectionActivity: onNewIntent received
+03-17 18:22:53.370  9010  9010 I HUREV   : [1] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-17 18:22:53.380  9010  9010 D zjy     : view visibility = 7
+03-17 18:22:55.850  9010 11823 W HUREV   : [313] m.e | USB read errors (10) for 2s — waiting for recovery...
+03-17 18:22:56.380  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:22:56.400  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 11 errors
+03-17 18:22:56.400  9010 11823 W HUREV   : [313] u0.a | AapVideo: Dropped Flag 11 packet. len=6, buf[10]=?
+03-17 18:22:56.400  9010 11823 I HUREV   : [313] l.d | Media Start Request VIDEO: session=0, config_index=0
+03-17 18:22:56.530  9010 11823 I HUREV   : [313] z.c | H.264/AVC config detected in frame (38 bytes)
+03-17 18:22:56.530  9010 11823 I HUREV   : [313] z.m | SPS parsed: 1920x1080
+03-17 18:22:56.530  9010 11823 I HUREV   : [313] AapProjectionActivity.a | [AapProjectionActivity] Received video dimensions: 1920x1080
+03-17 18:22:56.530  9010  9010 I HUREV   : [1] i.a | TextureProjectionView
+03-17 18:22:56.530  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1080, Content: 1920x640, View: 1920x720
+03-17 18:22:56.530  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:22:56.540  9010 11852 I OMXClient: Using client-side OMX mux.
+03-17 18:22:56.560  9010 11823 I HUREV   : [313] z.r | Configuring decoder: OMX.Freescale.std.video_decoder.avc.v3.hw-based with surface
+03-17 18:22:56.560  9010 11852 I ACodec  : Send reorder config(0) to VPU
+03-17 18:22:57.070  9010 11823 I HUREV   : [313] z.r | Codec initialized: OMX.Freescale.std.video_decoder.avc.v3.hw-based for stream 1920x1080
+03-17 18:22:57.070  9010 11859 I HUREV   : [314] z.l | Output thread started
+03-17 18:22:57.210  9010 11859 I HUREV   : [314] z.j | Output Format Changed: {height=1088, what=1869968451, color-format=19, slice-height=0, crop-left=0, width=1920, crop-bottom=1079, crop-top=0, mime=video/raw, stride=1920, crop-right=1919}
+03-17 18:22:57.210  9010 11859 I HUREV   : [314] z.j | Video dimensions changed via format: 1920x1088
+03-17 18:22:57.210  9010 11859 I HUREV   : [314] AapProjectionActivity.a | [AapProjectionActivity] Received video dimensions: 1920x1088
+03-17 18:22:57.210  9010  9010 I HUREV   : [1] i.a | TextureProjectionView
+03-17 18:22:57.210  9010 11852 E ACodec  : dequeueBuffer failed.
+03-17 18:22:57.220  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:22:57.220  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:22:57.230  9010 11852 E ACodec  : dequeueBuffer failed.
+03-17 18:23:05.080  9010 11823 D dalvikvm: GC_FOR_ALLOC freed 893K, 59% free 8773K/21068K, paused 67ms, total 67ms
+03-17 18:23:05.080  9010 11823 I dalvikvm-heap: Grow heap (frag case) to 17.963MB for 124780-byte allocation
+03-17 18:23:05.130  9010 11823 D dalvikvm: GC_FOR_ALLOC freed 23K, 59% free 8871K/21192K, paused 50ms, total 50ms
+03-17 18:23:05.130  9010 11823 I dalvikvm-heap: Grow heap (frag case) to 18.060MB for 124780-byte allocation
+03-17 18:23:05.180  9010 11823 D dalvikvm: GC_FOR_ALLOC freed 12K, 58% free 8981K/21316K, paused 50ms, total 50ms
+03-17 18:23:05.380  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:05.590  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:05.790  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:06.180  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:06.380  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:06.590  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:06.790  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:06.990  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:07.160  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:07.390  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:07.580  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:07.810  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:08.010  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:08.190  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:08.420  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:08.620  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:09.020  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:09.620  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:09.820  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:10.020  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:10.190  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:10.620  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:10.820  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:11.040  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:11.460  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:11.650  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:11.880  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:12.050  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:12.500  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:12.690  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:12.890  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:13.080  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:13.490  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:13.690  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:13.890  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:14.080  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:14.480  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:14.690  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:14.880  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:15.090  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:15.500  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:15.680  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:15.920  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:16.120  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:16.330  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:16.520  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:16.730  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:16.930  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:17.120  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:17.320  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:17.520  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:17.720  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:18.120  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:18.520  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:18.720  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:18.920  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:19.130  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:19.520  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:19.720  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:19.920  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:20.120  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:20.520  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:20.760  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:20.960  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:21.160  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:21.560  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:21.750  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:21.950  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:22.170  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:22.560  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:22.760  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:22.960  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:23.160  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:23.560  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:23.750  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:23.960  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:24.160  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:24.550  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:24.750  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:24.950  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:25.160  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:25.550  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:25.760  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:25.950  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:26.150  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:26.590  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:26.790  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:26.990  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:27.190  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:27.580  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:27.790  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:27.990  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:28.590  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:28.790  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:28.990  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:29.190  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:29.590  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:29.790  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:29.980  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:30.190  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:30.620  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:30.820  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:31.040  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:31.220  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:31.620  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:31.850  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:32.020  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:32.220  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:32.620  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:32.820  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:33.020  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:33.220  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:33.610  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:33.870  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:34.080  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:34.250  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:34.450  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:34.650  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:34.850  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:35.050  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:35.260  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:35.450  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:35.650  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:35.850  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:36.080  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:36.690  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:36.850  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:37.050  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:37.290  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:37.490  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:37.700  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:37.920  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:38.090  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:38.290  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:38.480  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:38.690  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:38.890  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:39.080  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:39.290  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:39.480  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:39.680  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:39.890  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:40.080  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:40.290  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:40.490  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:40.690  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:40.880  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:41.080  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:41.290  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:41.490  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:41.690  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:41.890  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:42.120  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:42.290  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:42.520  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:42.730  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:42.880  9010 11823 D dalvikvm: GC_FOR_ALLOC freed 1394K, 58% free 8973K/21316K, paused 58ms, total 58ms
+03-17 18:23:42.880  9010 11823 I dalvikvm-heap: Grow heap (frag case) to 18.245MB for 213955-byte allocation
+03-17 18:23:42.940  9010 11823 D dalvikvm: GC_FOR_ALLOC freed 122K, 58% free 9060K/21528K, paused 52ms, total 52ms
+03-17 18:23:42.940  9010 11823 I dalvikvm-heap: Grow heap (frag case) to 18.329MB for 213955-byte allocation
+03-17 18:23:43.000  9010 11823 D dalvikvm: GC_FOR_ALLOC freed 121K, 58% free 9147K/21740K, paused 53ms, total 53ms
+03-17 18:23:43.290  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:43.520  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:43.720  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:43.920  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:44.120  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:44.290  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:44.520  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:44.710  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:44.920  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:45.120  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:45.290  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:45.520  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:45.740  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:45.920  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:46.120  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:46.300  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:46.520  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:46.720  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:46.960  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:47.280  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:47.550  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:47.730  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:47.960  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:48.150  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:48.560  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:48.760  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:48.970  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:49.160  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:49.320  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:49.560  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:49.760  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:49.950  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:50.150  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:50.330  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:50.550  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:50.750  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:50.950  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:51.750  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:51.950  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:52.360  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:52.550  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:52.950  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:53.120  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:53.750  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:53.950  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:23:54.160  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:03.090  9010  9014 D dalvikvm: GC_CONCURRENT freed 1941K, 58% free 9144K/21740K, paused 8ms+6ms, total 88ms
+03-17 18:24:14.780  9010 11823 D dalvikvm: GC_FOR_ALLOC freed 1835K, 58% free 9144K/21740K, paused 59ms, total 59ms
+03-17 18:24:26.370  9010 11823 D dalvikvm: GC_FOR_ALLOC freed 1813K, 58% free 9144K/21740K, paused 66ms, total 66ms
+03-17 18:24:31.280  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:31.490  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:31.690  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:31.880  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:32.090  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:32.290  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:32.480  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:32.690  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:32.890  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:33.090  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:33.290  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:33.480  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:33.690  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:33.880  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:34.080  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:34.300  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:34.480  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:34.690  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:34.890  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:35.080  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:35.290  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:35.520  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:35.720  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:35.920  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:36.120  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:36.490  9010 11823 I HUREV   : [313] m.e | USB reads recovered after 1 errors
+03-17 18:24:43.290  9010  9014 D dalvikvm: GC_CONCURRENT freed 1928K, 58% free 9148K/21740K, paused 7ms+6ms, total 95ms
+03-17 18:24:51.760  9010  9016 I dalvikvm: Jit: resizing JitTable from 8192 to 16384
+03-17 18:24:52.380  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:24:52.390  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:24:52.400  9010  9010 I HUREV   : [1] AapProjectionActivity.M | Hiding reconnecting overlay — frames resumed
+03-17 18:24:52.410  9010  9010 I HUREV   : [1] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-17 18:24:52.430  9010  9010 I HUREV   : [1] AapService.K | WifiLock released
+03-17 18:24:52.440  9010 11859 I HUREV   : [314] z.l | Output thread stopped
+03-17 18:24:52.450  9010 11251 I HUREV   : [308] z.t | Decoder stopped: AapService::onDisconnect
+03-17 18:24:52.470  9010  9010 D zjy     : view visibility = 7
+03-17 18:24:52.510  9010  9010 D zjy     : view visibility = 7
+03-17 18:24:52.880  9010  9010 I HUREV   : [1] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-17 18:24:52.880  9010  9010 I HUREV   : [1] i.onSurfaceTextureDestroyed | TextureProjectionView: Surface destroyed
+03-17 18:24:52.880  9010  9010 I HUREV   : [1] AapProjectionActivity.c | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@4284f920)
+03-17 18:24:52.880  9010  9010 I HUREV   : [1] z.t | Decoder stopped: surfaceDestroyed
+03-17 18:24:53.250  9010 11823 W HUREV   : [313] m.e | USB read errors (10) for 1s — waiting for recovery...
+03-17 18:24:55.260  9010 11823 W HUREV   : [313] m.e | USB read errors (20) for 3s — waiting for recovery...
+03-17 18:24:57.270  9010 11823 W HUREV   : [313] m.e | USB read errors (30) for 5s — waiting for recovery...
+03-17 18:24:59.260  9010 11823 W HUREV   : [313] m.e | USB read errors (40) for 7s — waiting for recovery...
+03-17 18:25:01.270  9010 11823 W HUREV   : [313] m.e | USB read errors (50) for 9s — waiting for recovery...
+03-17 18:25:03.270  9010 11823 W HUREV   : [313] m.e | USB read errors (60) for 11s — waiting for recovery...
+03-17 18:25:05.270  9010 11823 W HUREV   : [313] m.e | USB read errors (70) for 13s — waiting for recovery...
+03-17 18:25:05.360  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 18:25:05.370  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 18:25:05.370  9010  9010 I HUREV   : [1] AapService.onUsbAttach | Normal USB device attached: Google 18D1:4EE1. Will check auto-connect in 2000ms...
+03-17 18:25:05.430  9010  9010 I HUREV   : [1] UsbAttachedActivity.onCreate | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000000 cmp=com.andrerinas.headunitrevived/.app.UsbAttachedActivity (has extras) }
+03-17 18:25:05.430  9010  9010 I HUREV   : [1] UsbAttachedActivity.onCreate | Skipping device Google 18D1:4EE1
+03-17 18:25:05.440  9010  9010 D zjy     : view visibility = 7
+03-17 18:25:05.490  9010  9010 D zjy     : view visibility = 7
+03-17 18:25:07.280  9010 11823 W HUREV   : [313] m.e | USB read errors (80) for 15s — waiting for recovery...
+03-17 18:25:07.390  9010  9010 I HUREV   : [1] m.invokeSuspend | UsbAttachedActivity didn't handle Google 18D1:4EE1. Trying from service...
+03-17 18:25:09.280  9010 11823 W HUREV   : [313] m.e | USB read errors (90) for 17s — waiting for recovery...
+03-17 18:25:11.280  9010 11823 W HUREV   : [313] m.e | USB read errors (100) for 19s — waiting for recovery...
+03-17 18:25:11.480  9010  9010 I HUREV   : [1] n.c | Success controlTransfer len: 2  acc_ver: 2
+03-17 18:25:11.480  9010  9010 I HUREV   : [1] n.c | acc_ver: 2
+03-17 18:25:11.480  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 7  index: 0  string: "Android"
+03-17 18:25:11.490  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 12  index: 1  string: "Android Auto"
+03-17 18:25:11.490  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 12  index: 2  string: "Android Auto"
+03-17 18:25:11.490  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 5  index: 3  string: "2.0.1"
+03-17 18:25:11.490  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 45  index: 4  string: "https://developer.android.com/auto/index.html"
+03-17 18:25:11.490  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 12  index: 5  string: "HU-AAAAAA001"
+03-17 18:25:11.490  9010  9010 I HUREV   : [1] n.c | Sending acc start
+03-17 18:25:11.490  9010  9010 I HUREV   : [1] n.c | Acc start sent (len=0). Waiting for re-enumeration...
+03-17 18:25:11.990  9010  9010 D UsbDeviceConnectionJNI: close
+03-17 18:25:11.990  9010  9010 I HUREV   : [1] n.a | Result: true
+03-17 18:25:12.020  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:25:12.020  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:25:12.090  9010  9014 D dalvikvm: GC_CONCURRENT freed 2147K, 59% free 8993K/21732K, paused 8ms+10ms, total 97ms
+03-17 18:25:12.090  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 18:25:12.100  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 18:25:12.100  9010  9010 I HUREV   : [1] AapService.onUsbAttach | USB accessory device attached, connecting.
+03-17 18:25:12.100  9010  9010 I HUREV   : [1] AapService.u | Found device already in accessory mode: Google 18D1:2D00
+03-17 18:25:12.160  9010 11251 D UsbDeviceConnectionJNI: close
+03-17 18:25:12.170  9010 11251 I HUREV   : [308] m.b | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/002/008,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mInterfaces=[Landroid.os.Parcelable;@42829338]
+03-17 18:25:12.170  9010 11251 E UsbDeviceConnectionJNI: device is closed in native_release_interface
+03-17 18:25:12.170  9010 11251 I HUREV   : [308] m.b | OK releaseInterface()
+03-17 18:25:12.170  9010  9010 I HUREV   : [1] UsbAttachedActivity.onCreate | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000000 cmp=com.andrerinas.headunitrevived/.app.UsbAttachedActivity (has extras) }
+03-17 18:25:12.170  9010 11251 I HUREV   : [308] m.l | Established connection: android.hardware.usb.UsbDeviceConnection@425a8a58
+03-17 18:25:12.170  9010  9010 E HUREV   : [1] UsbAttachedActivity.onCreate | Usb in accessory mode
+03-17 18:25:12.170  9010 11251 I HUREV   : [308] m.l | interfaceCount: 1
+03-17 18:25:12.170  9010 11251 I HUREV   : [308] m.j | Check accessory endpoints
+03-17 18:25:12.180  9010 11251 I HUREV   : [308] m.j | Connected have EPs
+03-17 18:25:12.210  9010  9010 I HUREV   : [1] AapService.t | WifiLock acquired (HIGH_PERF)
+03-17 18:25:12.230  9010  9010 D zjy     : view visibility = 7
+03-17 18:25:12.280  9010 11251 I HUREV   : [308] t0.B | Start Aap transport handshake for w0.m@42783068
+03-17 18:25:12.290  9010 11823 E HUREV   : [313] f0.a | AapRead: Connection lost. Stopping read loop.
+03-17 18:25:12.290  9010 11823 I HUREV   : [313] t0.n | Quitting because ret < 0
+03-17 18:25:12.290  9010 11823 I HUREV   : [313] t0.o | AapTransport quitting (clean=false)
+03-17 18:25:12.300  9010 11251 W MessageQueue: Handler (android.os.Handler) {42619f40} sending message to a Handler on a dead thread
+03-17 18:25:12.300  9010 11251 W MessageQueue: java.lang.RuntimeException: Handler (android.os.Handler) {42619f40} sending message to a Handler on a dead thread
+03-17 18:25:12.300  9010 11251 W MessageQueue: 	at android.os.MessageQueue.enqueueMessage(MessageQueue.java:309)
+03-17 18:25:12.300  9010 11251 W MessageQueue: 	at android.os.Handler.enqueueMessage(Handler.java:623)
+03-17 18:25:12.300  9010 11251 W MessageQueue: 	at android.os.Handler.sendMessageAtTime(Handler.java:592)
+03-17 18:25:12.300  9010 11251 W MessageQueue: 	at android.os.Handler.sendMessageDelayed(Handler.java:563)
+03-17 18:25:12.300  9010 11251 W MessageQueue: 	at android.os.Handler.post(Handler.java:323)
+03-17 18:25:12.300  9010 11251 W MessageQueue: 	at t0.t0.B(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:114)
+03-17 18:25:12.300  9010 11251 W MessageQueue: 	at w0.b$f.invokeSuspend(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:239)
+03-17 18:25:12.300  9010 11251 W MessageQueue: 	at kotlin.coroutines.jvm.internal.a.resumeWith(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:12)
+03-17 18:25:12.300  9010 11251 W MessageQueue: 	at kotlinx.coroutines.u0.run(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:124)
+03-17 18:25:12.300  9010 11251 W MessageQueue: 	at kotlinx.coroutines.internal.h.run(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:13)
+03-17 18:25:12.300  9010 11251 W MessageQueue: 	at kotlinx.coroutines.scheduling.k.run(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:3)
+03-17 18:25:12.300  9010 11251 W MessageQueue: 	at kotlinx.coroutines.scheduling.a.m(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:1)
+03-17 18:25:12.300  9010 11251 W MessageQueue: 	at kotlinx.coroutines.scheduling.a$c.d(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:15)
+03-17 18:25:12.300  9010 11251 W MessageQueue: 	at kotlinx.coroutines.scheduling.a$c.n(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:29)
+03-17 18:25:12.300  9010 11251 W MessageQueue: 	at kotlinx.coroutines.scheduling.a$c.run(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:1)
+03-17 18:25:12.440  9010  9010 I HUREV   : [1] AapProjectionActivity.onCreate | HeadUnit for Android Auto (tm) - Copyright 2011-2015 Michael A. Reid., since 2025 André Rinas All Rights Reserved...
+03-17 18:25:12.440  9010  9010 I HUREV   : [1] AapProjectionActivity.onCreate | Using TextureView
+03-17 18:25:12.450  9010  9010 I HUREV   : [1] i.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 18:25:12.450  9010  9010 I HUREV   : [1] i.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 18:25:12.450  9010  9010 I HUREV   : [1] i.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 18:25:12.450  9010  9010 D zjy     : view visibility = 7
+03-17 18:25:12.450  9010  9010 I HUREV   : [1] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-17 18:25:12.460  9010  9010 D zjy     : view visibility = 7
+03-17 18:25:12.530  9010  9010 D zjy     : view visibility = 7
+03-17 18:25:12.540  9010  9010 I HUREV   : [1] i.onSurfaceTextureAvailable | TextureProjectionView: Surface available: 1920x720
+03-17 18:25:12.540  9010  9010 I HUREV   : [1] AapProjectionActivity.d | [AapProjectionActivity] onSurfaceCreated
+03-17 18:25:12.550  9010  9010 I HUREV   : [1] AapProjectionActivity.b | [AapProjectionActivity] onSurfaceChanged. Actual surface dimensions: width=1920, height=720
+03-17 18:25:12.550  9010  9010 I HUREV   : [1] z.q | New surface set: Surface(name=android.graphics.SurfaceTexture@429f44a8)
+03-17 18:25:12.550  9010  9010 I HUREV   : [1] AapProjectionActivity.b | [AapProjectionActivity] Decoder already has dimensions: 1920x1088. Applying to view.
+03-17 18:25:12.550  9010  9010 I HUREV   : [1] i.a | TextureProjectionView
+03-17 18:25:12.560  9010  9010 I HUREV   : [1] i.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 18:25:12.560  9010  9010 I HUREV   : [1] i.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 18:25:12.560  9010  9010 I HUREV   : [1] i.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 18:25:12.570  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:25:12.570  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:25:12.570  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:25:12.580  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:25:12.850  9010 11251 I HUREV   : [308] m.e | USB reads recovered after 1 errors
+03-17 18:25:12.850  9010 11251 I HUREV   : [308] t0.l | Handshake: Version response received (ret=12, attempt=1).
+03-17 18:25:12.860  9010 11251 I HUREV   : [308] t0.l | Handshake: Version response recv ret: 12
+03-17 18:25:13.070  9010 11251 I HUREV   : [308] o0.performHandshake | SSL handshake complete. Session id: 4HVARXUaE4A+w0WRIqUDz7dVssmDx/ZK+KKL0CmEtV4=
+03-17 18:25:13.080  9010 11251 I HUREV   : [308] t0.l | Handshake: Status OK sent: 8
+03-17 18:25:13.080  9010 11251 I HUREV   : [308] i.c | Audio Focus Request: stream=3, type=1
+03-17 18:25:13.080  9010 11251 D AudioManager: Qian:requestAudioFocus:3
+03-17 18:25:13.080  9010  9020 D AudioManager: dispatchAudioFocusChange [android.media.AudioManager@427299b8w0.d@42683f58], hint = -1
+03-17 18:25:13.090  9010  9010 D AudioManager: Begin listener.onAudioFocusChange  [android.media.AudioManager@427299b8w0.d@42683f58], hint = -1
+03-17 18:25:13.090  9010  9010 D AudioManager: End listener.onAudioFocusChange [android.media.AudioManager@427299b8w0.d@42683f58], hint = -1
+03-17 18:25:13.090  9010 11251 I HUREV   : [308] i.c | Audio focus request result (legacy): GRANTED
+03-17 18:25:13.090  9010 11251 I HUREV   : [308] t0.E | Start Aap transport read loop
+03-17 18:25:13.160  9010 11251 D dalvikvm: GC_FOR_ALLOC freed 2468K, 63% free 8057K/21732K, paused 70ms, total 70ms
+03-17 18:25:13.180  9010  9010 I HUREV   : [1] g.onReceive | Received request to resend night mode state
+03-17 18:25:13.180  9010  9010 I HUREV   : [1] v.invoke | NightMode update: true
+03-17 18:25:15.460  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:25:15.460  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:25:18.460  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:25:18.460  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:25:21.470  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:25:21.470  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:25:24.470  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:25:24.470  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:25:27.470  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:25:27.470  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:25:30.480  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:25:30.480  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:25:33.480  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:25:33.480  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:25:36.480  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:25:36.480  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:25:39.480  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:25:39.480  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:25:42.480  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:25:42.490  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:25:45.490  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:25:45.490  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:25:48.490  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:25:48.490  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:25:51.490  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:25:51.490  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:25:54.490  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:25:54.490  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:25:57.490  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:25:57.490  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:26:00.500  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:26:00.500  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:26:03.510  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:26:03.510  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:26:06.520  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:26:06.520  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:26:09.540  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:26:09.540  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:26:12.540  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:26:12.540  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:26:15.550  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:26:15.550  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:26:18.550  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:26:18.550  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:26:21.550  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:26:21.550  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:26:24.560  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:26:24.560  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:26:27.560  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:26:27.560  9010  9010 I HUREV   : [1] t0.r | Cannot send message, handler is null (quitting?)
+03-17 18:26:30.160  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:26:30.160  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:26:30.180  9010  9010 I HUREV   : [1] AapProjectionActivity.M | Hiding reconnecting overlay — frames resumed
+03-17 18:26:30.200  9010  9010 I HUREV   : [1] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-17 18:26:30.210  9010  9010 I HUREV   : [1] AapService.K | WifiLock released
+03-17 18:26:30.220  9010 11251 I HUREV   : [308] z.t | Decoder stopped: AapService::onDisconnect
+03-17 18:26:30.240  9010  9010 D zjy     : view visibility = 7
+03-17 18:26:30.280  9010  9010 D zjy     : view visibility = 7
+03-17 18:26:30.660  9010  9010 I HUREV   : [1] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-17 18:26:30.670  9010  9010 I HUREV   : [1] i.onSurfaceTextureDestroyed | TextureProjectionView: Surface destroyed
+03-17 18:26:30.670  9010  9010 I HUREV   : [1] AapProjectionActivity.c | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@429f44a8)
+03-17 18:26:30.670  9010  9010 I HUREV   : [1] z.t | Decoder stopped: surfaceDestroyed
+03-17 18:26:57.140  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 18:26:57.150  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 18:26:57.150  9010  9010 I HUREV   : [1] AapService.onUsbAttach | Normal USB device attached: Google 18D1:4EE1. Will check auto-connect in 2000ms...
+03-17 18:26:57.200  9010  9010 I HUREV   : [1] UsbAttachedActivity.onCreate | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000000 cmp=com.andrerinas.headunitrevived/.app.UsbAttachedActivity (has extras) }
+03-17 18:26:57.200  9010  9010 I HUREV   : [1] UsbAttachedActivity.onCreate | Skipping device Google 18D1:4EE1
+03-17 18:26:57.210  9010  9010 D zjy     : view visibility = 7
+03-17 18:26:57.260  9010  9010 D zjy     : view visibility = 7
+03-17 18:26:57.300  9010  9014 D dalvikvm: GC_CONCURRENT freed 636K, 59% free 8990K/21648K, paused 5ms+6ms, total 69ms
+03-17 18:26:59.160  9010  9010 I HUREV   : [1] m.invokeSuspend | UsbAttachedActivity didn't handle Google 18D1:4EE1. Trying from service...
+03-17 18:27:01.990  9010  9010 I HUREV   : [1] n.c | Success controlTransfer len: 2  acc_ver: 2
+03-17 18:27:01.990  9010  9010 I HUREV   : [1] n.c | acc_ver: 2
+03-17 18:27:02.000  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 7  index: 0  string: "Android"
+03-17 18:27:02.000  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 12  index: 1  string: "Android Auto"
+03-17 18:27:02.000  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 12  index: 2  string: "Android Auto"
+03-17 18:27:02.000  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 5  index: 3  string: "2.0.1"
+03-17 18:27:02.000  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 45  index: 4  string: "https://developer.android.com/auto/index.html"
+03-17 18:27:02.000  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 12  index: 5  string: "HU-AAAAAA001"
+03-17 18:27:02.000  9010  9010 I HUREV   : [1] n.c | Sending acc start
+03-17 18:27:02.010  9010  9010 I HUREV   : [1] n.c | Acc start sent (len=0). Waiting for re-enumeration...
+03-17 18:27:02.510  9010  9010 D UsbDeviceConnectionJNI: close
+03-17 18:27:02.510  9010  9010 I HUREV   : [1] n.a | Result: true
+03-17 18:27:02.520  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:27:02.520  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:27:02.590  9010  9010 D dalvikvm: GC_EXPLICIT freed 386K, 60% free 8804K/21648K, paused 4ms+4ms, total 62ms
+03-17 18:27:02.650  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 18:27:02.670  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 18:27:02.670  9010  9010 I HUREV   : [1] AapService.onUsbAttach | USB accessory device attached, connecting.
+03-17 18:27:02.670  9010  9010 I HUREV   : [1] AapService.u | Found device already in accessory mode: Google 18D1:2D00
+03-17 18:27:02.690  9010 11251 D UsbDeviceConnectionJNI: close
+03-17 18:27:02.690  9010 11251 I HUREV   : [308] m.b | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/002/010,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mInterfaces=[Landroid.os.Parcelable;@4292db20]
+03-17 18:27:02.690  9010 11251 E UsbDeviceConnectionJNI: device is closed in native_release_interface
+03-17 18:27:02.690  9010 11251 I HUREV   : [308] m.b | OK releaseInterface()
+03-17 18:27:02.690  9010 11251 I HUREV   : [308] m.l | Established connection: android.hardware.usb.UsbDeviceConnection@424d80d0
+03-17 18:27:02.690  9010 11251 I HUREV   : [308] m.l | interfaceCount: 1
+03-17 18:27:02.690  9010 11251 I HUREV   : [308] m.j | Check accessory endpoints
+03-17 18:27:02.690  9010 11251 I HUREV   : [308] m.j | Connected have EPs
+03-17 18:27:02.700  9010  9010 I HUREV   : [1] UsbAttachedActivity.onCreate | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000000 cmp=com.andrerinas.headunitrevived/.app.UsbAttachedActivity (has extras) }
+03-17 18:27:02.700  9010  9010 E HUREV   : [1] UsbAttachedActivity.onCreate | Usb in accessory mode
+03-17 18:27:02.730  9010  9010 I HUREV   : [1] AapService.t | WifiLock acquired (HIGH_PERF)
+03-17 18:27:02.740  9010  9010 D zjy     : view visibility = 7
+03-17 18:27:02.760  9010 11251 I HUREV   : [308] t0.B | Start Aap transport handshake for w0.m@427899c8
+03-17 18:27:02.880  9010  9010 I HUREV   : [1] AapProjectionActivity.onCreate | HeadUnit for Android Auto (tm) - Copyright 2011-2015 Michael A. Reid., since 2025 André Rinas All Rights Reserved...
+03-17 18:27:02.880  9010  9010 I HUREV   : [1] AapProjectionActivity.onCreate | Using TextureView
+03-17 18:27:02.880  9010  9010 I HUREV   : [1] i.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 18:27:02.880  9010  9010 I HUREV   : [1] i.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 18:27:02.880  9010  9010 I HUREV   : [1] i.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 18:27:02.890  9010  9010 D zjy     : view visibility = 7
+03-17 18:27:02.890  9010  9010 I HUREV   : [1] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-17 18:27:02.890  9010  9010 D zjy     : view visibility = 7
+03-17 18:27:02.940  9010  9010 D zjy     : view visibility = 7
+03-17 18:27:02.950  9010  9010 I HUREV   : [1] i.onSurfaceTextureAvailable | TextureProjectionView: Surface available: 1920x720
+03-17 18:27:02.960  9010  9010 I HUREV   : [1] AapProjectionActivity.d | [AapProjectionActivity] onSurfaceCreated
+03-17 18:27:02.960  9010  9010 I HUREV   : [1] AapProjectionActivity.b | [AapProjectionActivity] onSurfaceChanged. Actual surface dimensions: width=1920, height=720
+03-17 18:27:02.960  9010  9010 I HUREV   : [1] z.q | New surface set: Surface(name=android.graphics.SurfaceTexture@426eec08)
+03-17 18:27:02.960  9010  9010 I HUREV   : [1] AapProjectionActivity.b | [AapProjectionActivity] Decoder already has dimensions: 1920x1088. Applying to view.
+03-17 18:27:02.960  9010  9010 I HUREV   : [1] i.a | TextureProjectionView
+03-17 18:27:02.970  9010  9010 I HUREV   : [1] i.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 18:27:02.970  9010  9010 I HUREV   : [1] i.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 18:27:02.970  9010  9010 I HUREV   : [1] i.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 18:27:02.970  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:27:02.980  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:27:02.980  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:27:02.980  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:27:03.310  9010 11251 I HUREV   : [308] m.e | USB reads recovered after 1 errors
+03-17 18:27:03.310  9010 11251 I HUREV   : [308] t0.l | Handshake: Version response received (ret=12, attempt=1).
+03-17 18:27:03.310  9010 11251 I HUREV   : [308] t0.l | Handshake: Version response recv ret: 12
+03-17 18:27:03.520  9010 11251 I HUREV   : [308] o0.performHandshake | SSL handshake complete. Session id: yl+QW+myPzwvhnUxnHVa684HS/31kj+zse8qWtMqKiU=
+03-17 18:27:03.530  9010 11251 I HUREV   : [308] t0.l | Handshake: Status OK sent: 8
+03-17 18:27:03.530  9010 11251 I HUREV   : [308] i.c | Audio Focus Request: stream=3, type=1
+03-17 18:27:03.530  9010 11251 D AudioManager: Qian:requestAudioFocus:3
+03-17 18:27:03.530  9010 13372 D AudioManager: dispatchAudioFocusChange [android.media.AudioManager@427299b8w0.d@42790bb0], hint = -1
+03-17 18:27:03.530  9010  9010 D AudioManager: Begin listener.onAudioFocusChange  [android.media.AudioManager@427299b8w0.d@42790bb0], hint = -1
+03-17 18:27:03.530  9010  9010 D AudioManager: End listener.onAudioFocusChange [android.media.AudioManager@427299b8w0.d@42790bb0], hint = -1
+03-17 18:27:03.540  9010 11251 I HUREV   : [308] i.c | Audio focus request result (legacy): GRANTED
+03-17 18:27:03.540  9010 11251 I HUREV   : [308] t0.E | Start Aap transport read loop
+03-17 18:27:03.600  9010 11251 D dalvikvm: GC_FOR_ALLOC freed 1330K, 59% free 8949K/21648K, paused 62ms, total 62ms
+03-17 18:27:03.600  9010 11251 I dalvikvm-heap: Grow heap (frag case) to 18.332MB for 262176-byte allocation
+03-17 18:27:03.650  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 1K, 58% free 9204K/21908K, paused 50ms, total 50ms
+03-17 18:27:03.720  9010 11251 D dalvikvm: GC_FOR_ALLOC freed 0K, 58% free 9205K/21908K, paused 63ms, total 63ms
+03-17 18:27:03.720  9010 11251 I dalvikvm-heap: Grow heap (frag case) to 18.832MB for 524336-byte allocation
+03-17 18:27:03.770  9010  9018 D dalvikvm: GC_FOR_ALLOC freed <1K, 57% free 9717K/22424K, paused 48ms, total 48ms
+03-17 18:27:03.770  9010 13596 I HUREV   : [2274] o.h | Service Discovery Request: Auto
+03-17 18:27:03.780  9010  9010 I HUREV   : [1] g.onReceive | Received request to resend night mode state
+03-17 18:27:03.780  9010 13596 I HUREV   : [2274] a.b | [ServiceDiscovery] Announcing NIGHT sensor support. Strategy: MANUAL_TIME
+03-17 18:27:03.780  9010 13596 I HUREV   : [2274] a.b | [ServiceDiscovery] NegotiatedResolution is: 1920x1080
+03-17 18:27:03.780  9010 13596 I HUREV   : [2274] a.b | [ServiceDiscovery] Margins are: 0x360
+03-17 18:27:03.780  9010  9010 I HUREV   : [1] v.invoke | NightMode update: true
+03-17 18:27:03.780  9010 13596 I HUREV   : [2274] a.b | BT MAC Address is empty. Skip bluetooth service
+03-17 18:27:03.800  9010 13596 I HUREV   : [2274] o.c | Audio Focus Request: RELEASE
+03-17 18:27:03.800  9010 13596 I HUREV   : [2274] i.c | Audio Focus Request: stream=3, type=4
+03-17 18:27:03.800  9010 13596 D AudioManager: Qian:abandonAudioFocus:
+03-17 18:27:03.800  9010 13596 I HUREV   : [2274] i.c | Audio focus request result (legacy): GRANTED
+03-17 18:27:03.800  9010 13596 I HUREV   : [2274] o.c | Sending immediate AudioFocusNotification: STATE_LOSS
+03-17 18:27:03.840  9010 13596 W HUREV   : [2274] u0.a | AapVideo: Dropped Flag 11 packet. len=4, buf[10]=?
+03-17 18:27:03.840  9010 13596 I HUREV   : [2274] l.b | Media Sink Setup Request: 3 on channel VIDEO
+03-17 18:27:03.850  9010 13596 I HUREV   : [2274] l.b | Config response: status: HEADUNIT
+03-17 18:27:03.850  9010 13596 I HUREV   : max_unacked: 1
+03-17 18:27:03.850  9010 13596 I HUREV   : configuration_indices: 0
+03-17 18:27:03.850  9010 13596 I HUREV   : [2274] l.b | Media Sink Setup Request: 2 on channel AUDIO
+03-17 18:27:03.850  9010 13596 I HUREV   : [2274] l.b | Config response: status: HEADUNIT
+03-17 18:27:03.850  9010 13596 I HUREV   : max_unacked: 3
+03-17 18:27:03.850  9010 13596 I HUREV   : configuration_indices: 0
+03-17 18:27:03.850  9010  9010 I HUREV   : [1] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-17 18:27:03.860  9010  9010 I HUREV   : [1] AapProjectionActivity.onNewIntent | AapProjectionActivity: onNewIntent received
+03-17 18:27:03.860  9010 13596 I HUREV   : [2274] l.b | Media Sink Setup Request: 2 on channel AUDIO1
+03-17 18:27:03.860  9010  9010 I HUREV   : [1] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-17 18:27:03.860  9010 13596 I HUREV   : [2274] l.b | Config response: status: HEADUNIT
+03-17 18:27:03.860  9010 13596 I HUREV   : max_unacked: 3
+03-17 18:27:03.860  9010 13596 I HUREV   : configuration_indices: 0
+03-17 18:27:03.860  9010  9010 D zjy     : view visibility = 7
+03-17 18:27:03.860  9010 13596 I HUREV   : [2274] l.b | Media Sink Setup Request: 2 on channel AUDIO2
+03-17 18:27:03.860  9010 13596 I HUREV   : [2274] l.b | Config response: status: HEADUNIT
+03-17 18:27:03.860  9010 13596 I HUREV   : max_unacked: 3
+03-17 18:27:03.860  9010 13596 I HUREV   : configuration_indices: 0
+03-17 18:27:06.360  9010 13596 W HUREV   : [2274] m.e | USB read errors (10) for 2s — waiting for recovery...
+03-17 18:27:06.860  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:27:06.910  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 11 errors
+03-17 18:27:06.910  9010 13596 W HUREV   : [2274] u0.a | AapVideo: Dropped Flag 11 packet. len=6, buf[10]=?
+03-17 18:27:06.910  9010 13596 I HUREV   : [2274] l.d | Media Start Request VIDEO: session=0, config_index=0
+03-17 18:27:07.010  9010 13596 I HUREV   : [2274] z.c | H.264/AVC config detected in frame (38 bytes)
+03-17 18:27:07.010  9010 13596 I HUREV   : [2274] z.m | SPS parsed: 1920x1080
+03-17 18:27:07.010  9010 13596 I HUREV   : [2274] AapProjectionActivity.a | [AapProjectionActivity] Received video dimensions: 1920x1080
+03-17 18:27:07.010  9010  9010 I HUREV   : [1] i.a | TextureProjectionView
+03-17 18:27:07.020  9010 13624 I OMXClient: Using client-side OMX mux.
+03-17 18:27:07.020  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1080, Content: 1920x640, View: 1920x720
+03-17 18:27:07.020  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:27:07.020  9010 13596 I HUREV   : [2274] z.r | Configuring decoder: OMX.Freescale.std.video_decoder.avc.v3.hw-based with surface
+03-17 18:27:07.020  9010 13624 I ACodec  : Send reorder config(0) to VPU
+03-17 18:27:07.410  9010 13627 I HUREV   : [2275] z.l | Output thread started
+03-17 18:27:07.410  9010 13596 I HUREV   : [2274] z.r | Codec initialized: OMX.Freescale.std.video_decoder.avc.v3.hw-based for stream 1920x1080
+03-17 18:27:07.510  9010 13627 I HUREV   : [2275] z.j | Output Format Changed: {height=1088, what=1869968451, color-format=19, slice-height=0, crop-left=0, width=1920, crop-bottom=1079, crop-top=0, mime=video/raw, stride=1920, crop-right=1919}
+03-17 18:27:07.510  9010 13627 I HUREV   : [2275] z.j | Video dimensions changed via format: 1920x1088
+03-17 18:27:07.510  9010 13627 I HUREV   : [2275] AapProjectionActivity.a | [AapProjectionActivity] Received video dimensions: 1920x1088
+03-17 18:27:07.510  9010 13624 E ACodec  : dequeueBuffer failed.
+03-17 18:27:07.510  9010  9010 I HUREV   : [1] i.a | TextureProjectionView
+03-17 18:27:07.510  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:27:07.510  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:27:07.520  9010 13624 E ACodec  : dequeueBuffer failed.
+03-17 18:27:15.130  9010 13596 D dalvikvm: GC_FOR_ALLOC freed 1888K, 61% free 8911K/22424K, paused 50ms, total 50ms
+03-17 18:27:15.380  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:15.780  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:15.980  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:16.180  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:16.380  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:16.560  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:16.780  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:16.980  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:17.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:17.380  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:17.550  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:17.780  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:17.980  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:18.180  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:18.420  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:19.420  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:19.820  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:20.020  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:20.190  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:20.420  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:20.820  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:21.020  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:21.250  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:21.460  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:21.850  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:22.050  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:22.260  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:22.450  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:22.860  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:23.050  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:23.250  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:23.450  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:23.850  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:24.050  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:24.250  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:24.450  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:24.630  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:24.890  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:25.080  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:25.280  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:25.480  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:25.890  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:26.090  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:26.280  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:26.490  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:26.890  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:27.090  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:27.290  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:27.490  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:27.890  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:28.080  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:28.290  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:28.490  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:28.890  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:29.080  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:29.290  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:29.480  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:29.920  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:30.120  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:30.320  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:30.520  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:30.920  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:31.120  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:31.320  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:31.520  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:31.920  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:32.120  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:32.320  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:32.520  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:32.920  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:33.130  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:33.320  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:33.520  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:33.920  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:34.120  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:34.320  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:34.520  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:34.920  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:35.120  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:35.320  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:35.520  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:36.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:36.350  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:36.560  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:36.950  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:37.160  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:37.350  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:37.560  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:37.970  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:38.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:38.350  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:38.560  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:39.350  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:39.560  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:39.950  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:40.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:40.350  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:40.590  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:40.950  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:41.180  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:41.390  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:41.590  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:41.990  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:42.190  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:42.390  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:42.620  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:42.990  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:43.190  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:43.390  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:43.590  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:43.990  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:44.190  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:44.390  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:44.590  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:45.020  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:45.220  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:45.440  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:45.620  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:46.020  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:46.220  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:46.430  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:46.620  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:47.020  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:47.260  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:47.450  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:47.650  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:47.850  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:48.050  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:48.250  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:48.450  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:48.660  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:48.850  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:49.060  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:49.260  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:49.450  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:49.660  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:49.850  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:50.050  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:50.260  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:50.450  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:50.660  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:51.050  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:51.260  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:51.450  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:51.650  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:52.060  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:52.260  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:52.650  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:52.890  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:53.090  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:53.290  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:53.480  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:53.690  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:53.890  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:54.090  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:54.280  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:54.490  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:54.690  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:54.890  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:55.080  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:55.290  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:55.480  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:55.690  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:55.880  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:56.090  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:56.280  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:56.490  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:56.700  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:56.880  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:57.090  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:57.290  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:57.480  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:57.720  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:57.910  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:58.120  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:58.320  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:58.460  9010  9014 D dalvikvm: GC_CONCURRENT freed 1705K, 60% free 9073K/22424K, paused 6ms+8ms, total 118ms
+03-17 18:27:58.530  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:58.720  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:59.120  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:59.320  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:59.520  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:59.720  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:27:59.920  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:00.120  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:00.320  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:00.520  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:00.710  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:00.920  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:01.320  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:01.520  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:01.720  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:01.920  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:02.120  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:02.320  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:02.520  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:02.710  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:02.920  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:03.120  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:03.320  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:03.520  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:03.720  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:03.920  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:04.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:04.350  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:04.550  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:04.720  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:04.950  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:05.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:05.350  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:05.550  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:05.750  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:05.970  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:06.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:06.370  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:06.550  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:06.750  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:06.950  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:07.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:07.380  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:07.550  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:07.750  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:07.950  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:08.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:08.360  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:08.550  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:08.750  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:08.950  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:09.220  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:09.550  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:09.750  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:09.950  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:10.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:10.350  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:10.550  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:10.750  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:10.950  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:11.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:11.390  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:11.580  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:11.760  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:11.990  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:12.180  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:12.380  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:12.580  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:12.760  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:12.990  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:13.180  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:13.390  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:13.580  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:13.760  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:13.990  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:14.180  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:14.400  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:14.580  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:14.750  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:14.980  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:15.180  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:15.380  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:15.580  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:15.750  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:15.990  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:16.190  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:16.380  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:16.590  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:16.750  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:16.980  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:17.180  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:17.440  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:17.620  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:18.020  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:18.210  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:18.420  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:18.620  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:19.020  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:19.220  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:19.420  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:19.620  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:20.020  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:20.220  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:20.420  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:20.620  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:21.020  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:21.220  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:21.420  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:21.610  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:22.020  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:22.220  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:22.420  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:22.610  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:23.090  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:23.420  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:23.620  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:24.060  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:24.250  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:24.450  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:24.650  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:25.050  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:25.250  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:25.460  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:25.660  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:26.050  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:26.250  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:26.450  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:26.650  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:27.050  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:27.250  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:27.450  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:27.650  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:28.050  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:28.250  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:28.450  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:28.650  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:29.050  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:29.250  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:29.460  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:29.690  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:30.090  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:30.290  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:30.490  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:30.690  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:31.090  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:31.290  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:31.490  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:31.680  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:32.090  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:32.280  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:32.520  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:32.720  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:33.120  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:33.320  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:33.510  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:33.720  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:34.110  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:34.320  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:34.530  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:34.720  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:35.110  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:35.320  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:35.520  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:35.720  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:36.320  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:36.520  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:36.720  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:37.120  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:37.320  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:37.550  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:37.760  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:38.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:38.350  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:38.550  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:38.750  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:39.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:39.350  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:39.550  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:39.760  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:40.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:40.350  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:40.550  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:40.760  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:41.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:41.350  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:41.550  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:41.760  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:42.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:42.350  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:42.550  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:42.750  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:43.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:43.360  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:43.590  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:43.780  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:44.230  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:44.390  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:44.790  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:45.180  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:45.380  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:45.580  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:45.780  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:46.180  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:46.380  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:46.590  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:47.250  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:47.420  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:47.650  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:47.860  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:48.650  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:48.860  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:28:49.440  9010  9014 D dalvikvm: GC_CONCURRENT freed 1933K, 60% free 9081K/22288K, paused 29ms+9ms, total 145ms
+03-17 18:29:01.680  9010  9014 D dalvikvm: GC_CONCURRENT freed 1941K, 60% free 9076K/22288K, paused 5ms+8ms, total 82ms
+03-17 18:29:13.980  9010  9014 D dalvikvm: GC_CONCURRENT freed 1941K, 60% free 9072K/22288K, paused 6ms+8ms, total 89ms
+03-17 18:29:25.560  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:25.750  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:25.950  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:26.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:26.360  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:26.550  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:26.750  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:26.950  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:27.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:27.350  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:27.550  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:27.750  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:27.950  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:28.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:28.350  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:28.550  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:28.750  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:28.950  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:29.150  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:29.350  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:29.580  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:29.790  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:29.980  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:30.180  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:30.390  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:30.590  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:30.660  9010  9014 D dalvikvm: GC_CONCURRENT freed 1921K, 60% free 9072K/22288K, paused 5ms+6ms, total 65ms
+03-17 18:29:30.800  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:29:42.550  9010  9014 D dalvikvm: GC_CONCURRENT freed 1929K, 60% free 9076K/22288K, paused 9ms+7ms, total 113ms
+03-17 18:29:54.840  9010  9014 D dalvikvm: GC_CONCURRENT freed 1936K, 60% free 9081K/22288K, paused 5ms+6ms, total 99ms
+03-17 18:30:07.080  9010  9014 D dalvikvm: GC_CONCURRENT freed 1939K, 60% free 9077K/22288K, paused 7ms+7ms, total 72ms
+03-17 18:30:08.120  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:08.310  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:08.510  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:08.710  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:08.920  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:09.110  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:09.310  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:09.510  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:09.720  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:09.910  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:10.120  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:10.310  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:10.510  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:10.710  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:10.920  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:11.110  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:11.310  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:11.510  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:11.710  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:11.910  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:12.110  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:12.510  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:12.720  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:23.210  9010  9014 D dalvikvm: GC_CONCURRENT freed 1933K, 60% free 9076K/22288K, paused 7ms+7ms, total 91ms
+03-17 18:30:24.280  9010 13596 E HUREV   : [2274] o0.decrypt | SSL Decrypt failed
+03-17 18:30:24.280  9010 13596 E HUREV   : javax.net.ssl.SSLProtocolException: Read error: ssl=0x64c6e400: Failure in SSL library, usually a protocol error
+03-17 18:30:24.280  9010 13596 E HUREV   : error:1e000065:Cipher functions:OPENSSL_internal:BAD_DECRYPT (/usr/local/google/home/prb/src/boringssl/crypto/cipher_extra/e_chacha20poly1305.c:261 0x6a38dd46:0x00000000)
+03-17 18:30:24.280  9010 13596 E HUREV   : error:1000008b:SSL routines:OPENSSL_internal:DECRYPTION_FAILED_OR_BAD_RECORD_MAC (/usr/local/google/home/prb/src/boringssl/ssl/tls_record.cc:298 0x6a38dd46:0x00000000)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at org.conscrypt.NativeCrypto.ENGINE_SSL_read_direct(Native Method)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at org.conscrypt.NativeSsl.readDirectByteBuffer(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:17)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at org.conscrypt.ConscryptEngine.readPlaintextDataDirect(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:7)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at org.conscrypt.ConscryptEngine.readPlaintextData(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:22)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at org.conscrypt.ConscryptEngine.unwrap(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:49)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at org.conscrypt.ConscryptEngine.unwrap(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:18)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at org.conscrypt.ConscryptEngine.unwrap(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:2)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at t0.o0.decrypt(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:60)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at t0.u$a.b(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:115)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at t0.f0.d(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:139)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at t0.f0.a(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:98)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at t0.e0$a.read(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:14)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at t0.t0.n(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:15)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at t0.t0.c(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:1)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at t0.r0.handleMessage(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:3)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at android.os.Handler.dispatchMessage(Handler.java:95)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at android.os.Looper.loop(Looper.java:137)
+03-17 18:30:24.280  9010 13596 E HUREV   : 	at android.os.HandlerThread.run(HandlerThread.java:61)
+03-17 18:30:24.350  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 13847  chan: 11 NOTIFICATION flags: 0x10  msg_type: 0x00 Media Data
+03-17 18:30:24.420  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:24.620  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:25.060  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:25.060  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 3189  chan: -20 UNK flags: 0xffffffd1  msg_type: 0x00 Media Data
+03-17 18:30:25.090  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:25.130  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 5552  chan: -29 UNK flags: 0xffffffc6  msg_type: 0x00 Media Data
+03-17 18:30:25.190  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:25.460  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:25.760  9010 13596 I HUREV   : [2274] m.e | USB reads recovered after 1 errors
+03-17 18:30:25.770  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:25.770  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 3086  chan: 63 UNK flags: 0xffffffb0  msg_type: 0x00 Media Data
+03-17 18:30:25.790  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:26.060  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:26.460  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 43326  chan: 20 UNK flags: 0xfffffff3  msg_type: 0x00 Media Data
+03-17 18:30:26.920  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:27.420  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 55815  chan: -10 UNK flags: 0xffffffe2  msg_type: 0x00 Media Data
+03-17 18:30:27.690  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:28.020  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:28.240  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 24372  chan: -103 UNK flags: 0x55  msg_type: 0x00 Media Data
+03-17 18:30:28.750  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:29.030  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 32129  chan: -67 UNK flags: 0x25  msg_type: 0x00 Media Data
+03-17 18:30:29.360  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 43800  chan: -25 UNK flags: 0x16  msg_type: 0x00 Media Data
+03-17 18:30:29.590  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 25324  chan: -48 UNK flags: 0x21  msg_type: 0x00 Media Data
+03-17 18:30:29.890  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:29.920  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 5365  chan: -115 UNK flags: 0xffffffe3  msg_type: 0x00 Media Data
+03-17 18:30:30.420  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 59454  chan: -90 UNK flags: 0xffffff84  msg_type: 0x00 Media Data
+03-17 18:30:30.910  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 59753  chan: 96 UNK flags: 0x65  msg_type: 0x00 Media Data
+03-17 18:30:31.020  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:31.360  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 36426  chan: -26 UNK flags: 0xffffffa4  msg_type: 0x00 Media Data
+03-17 18:30:31.420  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:31.590  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:31.790  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 26686  chan: -75 UNK flags: 0xffffff95  msg_type: 0x00 Media Data
+03-17 18:30:32.220  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 48534  chan: -33 UNK flags: 0x61  msg_type: 0x00 Media Data
+03-17 18:30:32.290  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:32.550  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 33103  chan: -87 UNK flags: 0x16  msg_type: 0x00 Media Data
+03-17 18:30:32.860  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:33.050  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:33.460  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:33.890  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 52005  chan: -9 UNK flags: 0xffffff86  msg_type: 0x00 Media Data
+03-17 18:30:33.890  9010 13596 E HUREV   : [2274] a.b | Decrypted payload too short: 0
+03-17 18:30:34.090  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 22752  chan: 103 UNK flags: 0x15  msg_type: 0x00 Media Data
+03-17 18:30:34.090  9010 13596 E HUREV   : [2274] a.b | WRONG FLAG: enc_len: 1225  chan: 83 UNK flags: 0xfffffff6  msg_type: 0x00 Media Data
+03-17 18:30:35.100  9010  9010 I HUREV   : [1] AapProjectionActivity.V | Showing reconnecting overlay
+03-17 18:30:35.780  9010 13596 W HUREV   : [2274] m.e | USB read errors (10) for 1s — waiting for recovery...
+03-17 18:30:38.110  9010 13596 W HUREV   : [2274] m.e | USB read errors (20) for 3s — waiting for recovery...
+03-17 18:30:38.650  9010  9010 I HUREV   : [1] AapProjectionActivity.M | Hiding reconnecting overlay — frames resumed
+03-17 18:30:38.670  9010  9010 I HUREV   : [1] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-17 18:30:38.690  9010  9010 I HUREV   : [1] AapService.K | WifiLock released
+03-17 18:30:38.710  9010 13627 I HUREV   : [2275] z.l | Output thread stopped
+03-17 18:30:38.740  9010  9010 D zjy     : view visibility = 7
+03-17 18:30:38.740  9010 11251 I HUREV   : [308] z.t | Decoder stopped: AapService::onDisconnect
+03-17 18:30:38.790  9010  9010 D zjy     : view visibility = 7
+03-17 18:30:39.180  9010  9010 I HUREV   : [1] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-17 18:30:39.180  9010  9010 I HUREV   : [1] i.onSurfaceTextureDestroyed | TextureProjectionView: Surface destroyed
+03-17 18:30:39.190  9010  9010 I HUREV   : [1] AapProjectionActivity.c | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@426eec08)
+03-17 18:30:39.190  9010  9010 I HUREV   : [1] z.t | Decoder stopped: surfaceDestroyed
+03-17 18:30:40.440  9010 13596 W HUREV   : [2274] m.e | USB read errors (30) for 5s — waiting for recovery...
+03-17 18:30:42.770  9010 13596 W HUREV   : [2274] m.e | USB read errors (40) for 8s — waiting for recovery...
+03-17 18:30:45.100  9010 13596 W HUREV   : [2274] m.e | USB read errors (50) for 10s — waiting for recovery...
+03-17 18:30:47.430  9010 13596 W HUREV   : [2274] m.e | USB read errors (60) for 12s — waiting for recovery...
+03-17 18:30:49.760  9010 13596 W HUREV   : [2274] m.e | USB read errors (70) for 15s — waiting for recovery...
+03-17 18:30:52.100  9010 13596 W HUREV   : [2274] m.e | USB read errors (80) for 17s — waiting for recovery...
+03-17 18:30:54.440  9010 13596 W HUREV   : [2274] m.e | USB read errors (90) for 19s — waiting for recovery...
+03-17 18:30:56.580  9010  9020 D AudioManager: dispatchAudioFocusChange [android.media.AudioManager@427299b8w0.d@427b0868], hint = -2
+03-17 18:30:56.580  9010  9010 D AudioManager: Begin listener.onAudioFocusChange  [android.media.AudioManager@427299b8w0.d@427b0868], hint = -2
+03-17 18:30:56.580  9010  9010 D AudioManager: End listener.onAudioFocusChange [android.media.AudioManager@427299b8w0.d@427b0868], hint = -2
+03-17 18:30:56.790  9010 13596 W HUREV   : [2274] m.e | USB read errors (100) for 22s — waiting for recovery...
+03-17 18:30:57.470  9010  9010 D zjy     : view visibility = 7
+03-17 18:30:59.130  9010 13596 W HUREV   : [2274] m.e | USB read errors (110) for 24s — waiting for recovery...
+03-17 18:31:00.810  9010  9010 D zjy     : view visibility = 7
+03-17 18:31:01.480  9010 13596 W HUREV   : [2274] m.e | USB read errors (120) for 26s — waiting for recovery...
+03-17 18:31:03.810  9010 13596 W HUREV   : [2274] m.e | USB read errors (130) for 29s — waiting for recovery...
+03-17 18:31:06.140  9010 13596 W HUREV   : [2274] m.e | USB read errors (140) for 31s — waiting for recovery...
+03-17 18:31:08.470  9010 13596 W HUREV   : [2274] m.e | USB read errors (150) for 33s — waiting for recovery...
+03-17 18:31:10.800  9010 13596 W HUREV   : [2274] m.e | USB read errors (160) for 36s — waiting for recovery...
+03-17 18:31:13.130  9010 13596 W HUREV   : [2274] m.e | USB read errors (170) for 38s — waiting for recovery...
+03-17 18:31:15.460  9010 13596 W HUREV   : [2274] m.e | USB read errors (180) for 40s — waiting for recovery...
+03-17 18:31:17.790  9010 13596 W HUREV   : [2274] m.e | USB read errors (190) for 43s — waiting for recovery...
+03-17 18:31:20.120  9010 13596 W HUREV   : [2274] m.e | USB read errors (200) for 45s — waiting for recovery...
+03-17 18:31:22.450  9010 13596 W HUREV   : [2274] m.e | USB read errors (210) for 47s — waiting for recovery...
+03-17 18:31:24.790  9010 13596 W HUREV   : [2274] m.e | USB read errors (220) for 50s — waiting for recovery...
+03-17 18:31:27.120  9010 13596 W HUREV   : [2274] m.e | USB read errors (230) for 52s — waiting for recovery...
+03-17 18:31:29.450  9010 13596 W HUREV   : [2274] m.e | USB read errors (240) for 54s — waiting for recovery...
+03-17 18:31:31.780  9010 13596 W HUREV   : [2274] m.e | USB read errors (250) for 57s — waiting for recovery...
+03-17 18:31:34.110  9010 13596 W HUREV   : [2274] m.e | USB read errors (260) for 59s — waiting for recovery...
+03-17 18:31:34.570  9010 13596 E HUREV   : [2274] m.e | USB read errors persisting for 60s — disconnecting
+03-17 18:31:34.570  9010 13596 D UsbDeviceConnectionJNI: close
+03-17 18:31:34.570  9010 13596 I HUREV   : [2274] m.b | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/002/012,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mInterfaces=[Landroid.os.Parcelable;@426b1528]
+03-17 18:31:34.570  9010 13596 E UsbDeviceConnectionJNI: device is closed in native_release_interface
+03-17 18:31:34.570  9010 13596 I HUREV   : [2274] m.b | OK releaseInterface()
+03-17 18:31:34.570  9010 13596 E HUREV   : [2274] f0.a | AapRead: Connection lost. Stopping read loop.
+03-17 18:31:34.570  9010 13596 I HUREV   : [2274] t0.n | Quitting because ret < 0
+03-17 18:31:34.570  9010 13596 I HUREV   : [2274] t0.o | AapTransport quitting (clean=false)

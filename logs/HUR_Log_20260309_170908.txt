@@ -1,0 +1,476 @@
+--------- beginning of main
+03-09 17:09:00.832  9976  9981 I zygote64: Do full code cache collection, code=505KB, data=350KB
+03-09 17:09:00.833  9976  9981 I zygote64: After code cache collection, code=497KB, data=288KB
+03-09 17:09:01.070  9976  9981 I zygote64: Do partial code cache collection, code=499KB, data=300KB
+03-09 17:09:01.071  9976  9981 I zygote64: After code cache collection, code=499KB, data=300KB
+03-09 17:09:01.071  9976  9981 I zygote64: Increasing code cache capacity to 2MB
+03-09 17:09:06.587  9976  9981 I zygote64: Compiler allocated 10MB to compile void android.view.ViewRootImpl.performTraversals()
+03-09 17:09:11.754  9976 10027 D Surface : Surface::disconnect(this=0x738caad000,api=1)
+--------- beginning of main
+03-09 17:09:23.021  9976 10107 W CAR.HU.J: [542] LogExporter.launchLogcatPipe$lambda$4 | Log capture process exited, restarting (attempt 1/5)
+--------- beginning of main
+03-09 17:09:33.181  9976 10166 W CAR.HU.J: [544] LogExporter.launchLogcatPipe$lambda$4 | Log capture process exited, restarting (attempt 2/5)
+03-09 17:09:40.087  9976  9981 I zygote64: Compiler allocated 5MB to compile boolean android.app.IApplicationThread$Stub.onTransact(int, android.os.Parcel, android.os.Parcel, int)
+--------- beginning of main
+03-09 17:09:51.195  9976 10200 W CAR.HU.J: [545] LogExporter.launchLogcatPipe$lambda$4 | Log capture process exited, restarting (attempt 3/5)
+03-09 17:09:52.554  9976  9976 I CAR.HU.J: [2] UsbReceiver.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x11000010 (has extras) }
+03-09 17:09:52.597  9976  9976 I CAR.HU.J: [2] UsbReceiver.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x11000010 (has extras) }
+03-09 17:09:52.599  9976  9976 I CAR.HU.J: [2] AapService.onUsbAttach | Normal USB device attached: Xiaomi 2717:FF40. Will check auto-connect in 2000ms...
+03-09 17:09:54.604  9976  9976 I CAR.HU.J: [2] 1.invokeSuspend | UsbAttachedActivity didn't handle Xiaomi 2717:FF40. Trying from service...
+03-09 17:09:54.609  9976  9976 I CAR.HU.J: [2] AapService.performSingleUsbConnect | Single USB auto-connect: connecting to Xiaomi 2717:FF40
+03-09 17:09:54.624  9976 10281 I CAR.HU.J: [547] UsbAccessoryMode.switch | Success controlTransfer len: 2  acc_ver: 2
+03-09 17:09:54.626  9976 10281 I CAR.HU.J: [547] UsbAccessoryMode.switch | acc_ver: 2
+03-09 17:09:54.628  9976 10281 I CAR.HU.J: [547] UsbAccessoryMode.initStringControlTransfer | Success controlTransfer len: 7  index: 0  string: "Android"
+03-09 17:09:54.630  9976 10281 I CAR.HU.J: [547] UsbAccessoryMode.initStringControlTransfer | Success controlTransfer len: 12  index: 1  string: "Android Auto"
+03-09 17:09:54.631  9976 10281 I CAR.HU.J: [547] UsbAccessoryMode.initStringControlTransfer | Success controlTransfer len: 12  index: 2  string: "Android Auto"
+03-09 17:09:54.633  9976 10281 I CAR.HU.J: [547] UsbAccessoryMode.initStringControlTransfer | Success controlTransfer len: 5  index: 3  string: "2.0.1"
+03-09 17:09:54.634  9976 10281 I CAR.HU.J: [547] UsbAccessoryMode.initStringControlTransfer | Success controlTransfer len: 45  index: 4  string: "https://developer.android.com/auto/index.html"
+03-09 17:09:54.636  9976 10281 I CAR.HU.J: [547] UsbAccessoryMode.initStringControlTransfer | Success controlTransfer len: 12  index: 5  string: "HU-AAAAAA001"
+03-09 17:09:54.637  9976 10281 I CAR.HU.J: [547] UsbAccessoryMode.switch | Sending acc start
+03-09 17:09:54.638  9976 10281 I CAR.HU.J: [547] UsbAccessoryMode.switch | Acc start sent (len=0). Waiting for re-enumeration...
+03-09 17:09:54.774  9976  9976 I CAR.HU.J: [2] UsbReceiver.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-09 17:09:54.780  9976  9976 I CAR.HU.J: [2] UsbReceiver.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-09 17:09:55.139  9976 10281 D UsbDeviceConnectionJNI: close
+03-09 17:09:55.141  9976 10281 I CAR.HU.J: [547] UsbAccessoryMode.connectAndSwitch | Result: true
+03-09 17:09:55.142  9976 10281 I CAR.HU.J: [547] 1.invokeSuspend | Successfully requested switch to accessory mode for single USB device. Waiting for re-enumeration...
+03-09 17:09:55.145  9976  9976 I CAR.HU.J: [2] UsbReceiver.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x11000010 (has extras) }
+03-09 17:09:55.183  9976  9976 I CAR.HU.J: [2] UsbReceiver.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x11000010 (has extras) }
+03-09 17:09:55.186  9976  9976 I CAR.HU.J: [2] AapService.onUsbAttach | USB accessory device attached, connecting.
+03-09 17:09:55.192  9976  9976 I CAR.HU.J: [2] AapService.checkAlreadyConnectedUsb | Found device already in accessory mode: Google 18D1:2D00
+03-09 17:09:55.203  9976 10281 I CAR.HU.J: [547] UsbAccessoryConnection.usbOpen | Established connection: android.hardware.usb.UsbDeviceConnection@39f1f8a
+03-09 17:09:55.204  9976 10281 I CAR.HU.J: [547] UsbAccessoryConnection.usbOpen | interfaceCount: 1
+03-09 17:09:55.206  9976 10281 I CAR.HU.J: [547] UsbAccessoryConnection.initEndpoint | Check accessory endpoints
+03-09 17:09:55.207  9976 10281 I CAR.HU.J: [547] UsbAccessoryConnection.initEndpoint | Connected have EPs
+03-09 17:09:55.348  9976 10281 I CAR.HU.J: [547] AapTransport.<init> | Using Java SSL implementation
+03-09 17:09:55.360  9976 10281 I CAR.HU.J: [547] AapTransport.startHandshake$com_andrerinas_headunitrevived_2_0_1_debug | Start Aap transport handshake for com.andrerinas.headunitrevived.connection.UsbAccessoryConnection@810cc71
+03-09 17:09:55.590  9976  9976 I CAR.HU.J: [2] AapProjectionActivity.onCreate | HeadUnit for Android Auto (tm) - Copyright 2011-2015 Michael A. Reid., since 2025 André Rinas All Rights Reserved...
+03-09 17:09:55.593  9976  9976 I CAR.HU.J: [2] AapProjectionActivity.onCreate | Using TextureView
+03-09 17:09:55.598  9976  9976 I CAR.HU.J: [2] HeadUnitScreenConfig.recalculate | CarScreen: usable width: 1280 height: 720 (Raw: 1280x720, Insets: L0 T0 R0 B0)
+03-09 17:09:55.600  9976  9976 I CAR.HU.J: [2] HeadUnitScreenConfig.recalculate | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-09 17:09:55.602  9976  9976 I CAR.HU.J: [2] HeadUnitScreenConfig.recalculate | CarScreen using: _1280x720, number: 2, scales: scaleX: 1.0, scaleY: 1.0
+03-09 17:09:55.631  9976  9976 I CAR.HU.J: [2] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-09 17:09:55.641  9976  9976 D WindowClient: Add to mViews: DecorView@8017cf9[AapProjectionActivity], this = android.view.WindowManagerGlobal@fed1acb
+03-09 17:09:55.644  9976  9976 D ViewRootImpl[AapProjectionActivity]: hardware acceleration = true , fakeHwAccelerated = false, sRendererDisabled = false, forceHwAccelerated = false, sSystemRendererDisabled = false
+03-09 17:09:55.666  9976 10281 D CAR.HU.J: [547] AapTransport.handshake | Handshake: Starting version request. TS: 90358261
+03-09 17:09:55.670  9976 10281 D CAR.HU.J: [547] AapTransport.handshake | Handshake: Version request sent. ret: 10. attempt: 1. TS: 90358265
+03-09 17:09:55.671  9976 10281 D CAR.HU.J: [547] AapTransport.handshake | Handshake: Waiting for version response. TS: 90358267
+03-09 17:09:55.689  9976 10281 I CAR.HU.J: [547] AapTransport.handshake | Handshake: Version response received (ret=12, attempt=1).
+03-09 17:09:55.691  9976 10281 I CAR.HU.J: [547] AapTransport.handshake | Handshake: Version response recv ret: 12
+03-09 17:09:55.693  9976 10281 D CAR.HU.J: [547] AapTransport.handshake | Handshake: Starting SSL handshake via performHandshake(). TS: 90358289
+03-09 17:09:55.697  9976  9976 D Surface : Surface::allocateBuffers(this=0x738a8df000)
+03-09 17:09:55.697  9976 10027 D Surface : Surface::connect(this=0x738a8df000,api=1)
+03-09 17:09:55.728  9976  9976 D TextureView: getHardwareLayer, createNewSurface:true
+03-09 17:09:55.728  9976  9976 I BufferQueue: [unnamed-9976-0](this:0x738a8a8800,id:0,api:0,p:-1,c:-1) BufferQueue core=(9976:com.andrerinas.headunitrevived)
+03-09 17:09:55.740  9976  9976 W GuiExt  : Cannot find GuiExtService
+03-09 17:09:55.746  9976  9976 I BufferQueueConsumer: [unnamed-9976-0](this:0x738a8a8800,id:0,api:0,p:-1,c:9976) connect(C): consumer=(9976:com.andrerinas.headunitrevived) controlledByApp=true
+03-09 17:09:55.746  9976  9976 I BufferQueueConsumer: [unnamed-9976-0](this:0x738a8a8800,id:0,api:0,p:-1,c:9976) setConsumerName: unnamed-9976-0
+03-09 17:09:55.746  9976  9976 I BufferQueueConsumer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:0,p:-1,c:9976) setConsumerName: SurfaceTexture-0-9976-0
+03-09 17:09:55.747  9976  9976 I BufferQueueConsumer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:0,p:-1,c:9976) setDefaultBufferSize: width=1280 height=720
+03-09 17:09:55.747  9976  9976 D OpenGLRenderer: 0x738cf1be00 setSurfaceTexture: 0x0 to 0x738c956c00
+03-09 17:09:55.749  9976  9976 I CAR.HU.J: [2] TextureProjectionView.onSurfaceTextureAvailable | TextureProjectionView: Surface available: 1280x720
+03-09 17:09:55.753  9976  9976 I CAR.HU.J: [2] AapProjectionActivity.onSurfaceCreated | [AapProjectionActivity] onSurfaceCreated
+03-09 17:09:55.761  9976  9976 I CAR.HU.J: [2] AapProjectionActivity.onSurfaceChanged | [AapProjectionActivity] onSurfaceChanged. Actual surface dimensions: width=1280, height=720
+03-09 17:09:55.764  9976  9976 I CAR.HU.J: [2] VideoDecoder.setSurface | New surface set: Surface(name=android.graphics.SurfaceTexture@99c60f0)/@0x6be9669
+03-09 17:09:55.784  9976 10027 I GLConsumer: [SurfaceTexture-0-9976-0] attachToContext
+03-09 17:09:55.856  9976 10281 I CAR.HU.J: [547] AapSslContext.performHandshake | SSL handshake complete. Session id: e5+P6KRgPmMqeLflXUsf0GiIfD+YwTNtHjeI3daWG4Y=
+03-09 17:09:55.858  9976 10281 D CAR.HU.J: [547] AapTransport.handshake | Handshake: SSL buffers reset after handshake.
+03-09 17:09:55.862  9976 10281 D CAR.HU.J: [547] AapTransport.handshake | Handshake: SSL handshake complete. TS: 90358455
+03-09 17:09:55.865  9976 10281 D CAR.HU.J: [547] AapTransport.handshake | Handshake: Status OK sent. ret: 8. TS: 90358460
+03-09 17:09:55.871  9976 10281 I CAR.HU.J: [547] AapTransport.handshake | Handshake: Status OK sent: 8
+03-09 17:09:55.873  9976 10281 D CAR.HU.J: [547] AapTransport.handshake | Handshake: Handshake successful. TS: 90358468
+03-09 17:09:55.886  9976 10281 I CAR.HU.J: [547] AapAudio.requestFocusChange | Audio Focus Request: stream=3, type=1
+03-09 17:09:55.906  9976 10281 I CAR.HU.J: [547] AapAudio.requestFocusChange | Audio focus request result: GRANTED
+03-09 17:09:55.914  9976 10281 I CAR.HU.J: [547] AapTransport.startReading$com_andrerinas_headunitrevived_2_0_1_debug | Start Aap transport read loop
+03-09 17:09:55.941  9976 10307 I CAR.HU.J: [551] AapControlService.serviceDiscoveryRequest | Service Discovery Request: Android
+03-09 17:09:55.949  9976  9976 I CAR.HU.J: [2] 1.onReceive | Received request to resend night mode state
+03-09 17:09:55.952  9976 10307 I CAR.HU.J: [551] HeadUnitScreenConfig.recalculate | CarScreen: usable width: 1280 height: 720 (Raw: 1280x720, Insets: L0 T0 R0 B0)
+03-09 17:09:55.955  9976 10307 I CAR.HU.J: [551] HeadUnitScreenConfig.recalculate | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-09 17:09:55.960  9976 10307 I CAR.HU.J: [551] HeadUnitScreenConfig.recalculate | CarScreen using: _1280x720, number: 2, scales: scaleX: 1.0, scaleY: 1.0
+03-09 17:09:55.970  9976  9976 I CAR.HU.J: [2] 1.invoke | NightMode update: true
+03-09 17:09:55.978  9976 10307 I CAR.HU.J: [551] Companion.makeProto | [ServiceDiscovery] Announcing NIGHT sensor support. Strategy: NIGHT
+03-09 17:09:56.009  9976 10307 W AudioCapabilities: Unsupported mime audio/x-adpcm-ms
+03-09 17:09:56.014  9976 10307 W AudioCapabilities: Unsupported mime audio/x-adpcm-dvi-ima
+03-09 17:09:56.018  9976 10307 W AudioCapabilities: Unsupported mime audio/alac
+03-09 17:09:56.031  9976 10307 W AudioCapabilities: Unsupported mime audio/ape
+03-09 17:09:56.120  9976  9987 I zygote64: Background concurrent copying GC freed 27487(1618KB) AllocSpace objects, 2(264KB) LOS objects, 48% free, 6MB/12MB, paused 518us total 193.122ms
+03-09 17:09:56.133  9976 10307 W VideoCapabilities: Unsupported mime video/divx
+03-09 17:09:56.141  9976 10307 W VideoCapabilities: Unsupported mime video/divx3
+03-09 17:09:56.172  9976 10307 W VideoCapabilities: Unrecognized profile/level 1/32 for video/mp4v-es
+03-09 17:09:56.172  9976 10307 W VideoCapabilities: Unrecognized profile/level 32768/2 for video/mp4v-es
+03-09 17:09:56.173  9976 10307 W VideoCapabilities: Unrecognized profile/level 32768/64 for video/mp4v-es
+03-09 17:09:56.203  9976 10307 W VideoCapabilities: Unsupported mime video/x-ms-wmv
+03-09 17:09:56.207  9976 10307 W VideoCapabilities: Unsupported mime video/xvid
+03-09 17:09:56.239  9976 10307 W VideoCapabilities: Unrecognized profile/level 1/32 for video/mp4v-es
+03-09 17:09:56.243  9976 10307 I VideoCapabilities: Unsupported profile 4 for video/mp4v-es
+03-09 17:09:56.258  9976 10307 I CAR.HU.J: [551] Companion.makeProto | [ServiceDiscovery] NegotiatedResolution is: 1280x720
+03-09 17:09:56.261  9976 10307 I CAR.HU.J: [551] Companion.makeProto | [ServiceDiscovery] Margins are: 0x0
+03-09 17:09:56.280  9976 10307 I CAR.HU.J: [551] Companion.makeProto | BT MAC Address is empty. Skip bluetooth service
+03-09 17:09:56.548  9976 10307 I CAR.HU.J: [551] AapControlService.audioFocusRequest | Audio Focus Request: RELEASE
+03-09 17:09:56.549  9976 10307 I CAR.HU.J: [551] AapAudio.requestFocusChange | Audio Focus Request: stream=3, type=4
+03-09 17:09:56.551  9976 10307 I CAR.HU.J: [551] AapAudio.requestFocusChange | Releasing audio focus
+03-09 17:09:56.555  9976 10307 I CAR.HU.J: [551] AapControlService.audioFocusRequest | Sending immediate AudioFocusNotification: STATE_LOSS
+03-09 17:09:57.662  9976 10307 W CAR.HU.J: [551] AapVideo.process | AapVideo: Dropped Flag 11 packet. len=4, buf[10]=?
+03-09 17:09:57.669  9976 10307 I CAR.HU.J: [551] AapControlMedia.mediaSinkSetupRequest | Media Sink Setup Request: 7 on channel VIDEO
+03-09 17:09:57.723  9976 10307 I CAR.HU.J: [551] AapControlMedia.mediaSinkSetupRequest | Config response: status: HEADUNIT
+03-09 17:09:57.723  9976 10307 I CAR.HU.J: max_unacked: 1
+03-09 17:09:57.723  9976 10307 I CAR.HU.J: configuration_indices: 0
+03-09 17:09:57.735  9976 10307 I CAR.HU.J: [551] AapControlMedia.mediaSinkSetupRequest | Media Sink Setup Request: 1 on channel AUDIO2
+03-09 17:09:57.741  9976 10307 I CAR.HU.J: [551] AapControlMedia.mediaSinkSetupRequest | Config response: status: HEADUNIT
+03-09 17:09:57.741  9976 10307 I CAR.HU.J: max_unacked: 3
+03-09 17:09:57.741  9976 10307 I CAR.HU.J: configuration_indices: 0
+03-09 17:09:57.747  9976 10307 I CAR.HU.J: [551] AapControlMedia.mediaSinkSetupRequest | Media Sink Setup Request: 1 on channel AUDIO1
+03-09 17:09:57.751  9976 10307 I CAR.HU.J: [551] AapControlMedia.mediaSinkSetupRequest | Config response: status: HEADUNIT
+03-09 17:09:57.751  9976 10307 I CAR.HU.J: max_unacked: 3
+03-09 17:09:57.751  9976 10307 I CAR.HU.J: configuration_indices: 0
+03-09 17:09:57.754  9976  9976 I CAR.HU.J: [2] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-09 17:09:57.755  9976 10307 I CAR.HU.J: [551] AapControlMedia.mediaSinkSetupRequest | Media Sink Setup Request: 1 on channel AUDIO
+03-09 17:09:57.758  9976 10307 I CAR.HU.J: [551] AapControlMedia.mediaSinkSetupRequest | Config response: status: HEADUNIT
+03-09 17:09:57.758  9976 10307 I CAR.HU.J: max_unacked: 3
+03-09 17:09:57.758  9976 10307 I CAR.HU.J: configuration_indices: 0
+03-09 17:09:57.758  9976  9976 I CAR.HU.J: [2] AapProjectionActivity.onNewIntent | AapProjectionActivity: onNewIntent received
+03-09 17:09:57.760  9976  9976 I CAR.HU.J: [2] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-09 17:09:57.763  9976 10307 I CAR.HU.J: [551] AapControlSensor.sensorStartRequest | Sensor Start Request sensor: DRIVING_STATUS, minUpdatePeriod: 0
+03-09 17:09:57.766  9976 10307 I CAR.HU.J: [551] AapControlSensor.sensorStartRequest | SENSOR Sensor Start Response type: 32770 flags: 11 size: 8 dataOffset: 6
+03-09 17:09:57.783  9976 10307 I CAR.HU.J: [551] AapControlSensor.sensorStartRequest | Sensor Start Request sensor: NIGHT, minUpdatePeriod: 0
+03-09 17:09:57.785  9976 10307 I CAR.HU.J: [551] AapControlSensor.sensorStartRequest | SENSOR Sensor Start Response type: 32770 flags: 11 size: 8 dataOffset: 6
+03-09 17:09:57.786  9976 10307 I CAR.HU.J: [551] AapControlSensor.sensorStartRequest | Night sensor requested. Triggering immediate update.
+03-09 17:09:57.800  9976  9976 I CAR.HU.J: [2] 1.onReceive | Received request to resend night mode state
+03-09 17:09:57.804  9976  9976 I CAR.HU.J: [2] 1.invoke | NightMode update: true
+03-09 17:09:58.028  9976 10307 W CAR.HU.J: [551] AapVideo.process | AapVideo: Dropped Flag 11 packet. len=6, buf[10]=?
+03-09 17:09:58.032  9976 10307 I CAR.HU.J: [551] AapControlMedia.execute | RX: Video Focus Request - mode: VIDEO_FOCUS_PROJECTED, reason: UNKNOWN
+03-09 17:10:00.764  9976  9976 W CAR.HU.J: [2] 1.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-09 17:10:00.773  9976 10307 W CAR.HU.J: [551] AapVideo.process | AapVideo: Dropped Flag 11 packet. len=6, buf[10]=?
+03-09 17:10:00.782  9976 10307 I CAR.HU.J: [551] AapControlMedia.mediaStartRequest | Media Start Request VIDEO: session_id: 0
+03-09 17:10:00.782  9976 10307 I CAR.HU.J: configuration_index: 0
+03-09 17:10:01.053  9976 10307 I CAR.HU.J: [551] VideoDecoder.decode | H.265/HEVC config detected in frame (84 bytes)
+03-09 17:10:01.055  9976 10307 I CAR.HU.J: [551] VideoDecoder.decode | Fallback to negotiated dimensions: 1280x720 (SPS not found/parsed)
+03-09 17:10:01.056  9976 10307 I CAR.HU.J: [551] AapProjectionActivity.onVideoDimensionsChanged | [AapProjectionActivity] Received video dimensions: 1280x720
+03-09 17:10:01.062  9976  9976 I CAR.HU.J: [2] TextureProjectionView.setVideoSize | TextureProjectionView
+03-09 17:10:01.077  9976 10340 I OMXClient: Treble IOmx obtained
+03-09 17:10:01.084  9976  9976 I CAR.HU.J: [2] ProjectionViewScaler.updateScale | ProjectionViewScaler: Dimensions: Video: 1280x720, Content: 1280x720, View: 1280x720
+03-09 17:10:01.087  9976 10307 I CAR.HU.J: [551] VideoDecoder.start | Configuring decoder: OMX.MTK.VIDEO.DECODER.HEVC with surface
+03-09 17:10:01.088  9976  9976 I CAR.HU.J: [2] ProjectionViewScaler.updateScale | ProjectionViewScaler: Scale updated for view TextureProjectionView. scaleX: 1.0, scaleY: 1.0
+03-09 17:10:01.088  9976 10339 D SurfaceUtils: connecting to surface 0x738a904010, reason connectToSurface
+03-09 17:10:01.088  9976 10339 D Surface : Surface::connect(this=0x738a904000,api=3)
+03-09 17:10:01.088  9976 10339 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) connect(P): api=3 producer=(9976:com.andrerinas.headunitrevived) producerControlledByApp=true
+03-09 17:10:01.088  9976 10339 I MediaCodec: [OMX.MTK.VIDEO.DECODER.HEVC] setting surface generation to 10215425
+03-09 17:10:01.088  9976 10339 D SurfaceUtils: disconnecting from surface 0x738a904010, reason connectToSurface(reconnect)
+03-09 17:10:01.088  9976 10339 D Surface : Surface::disconnect(this=0x738a904000,api=3)
+03-09 17:10:01.088  9976 10339 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) disconnect(P): api 3
+03-09 17:10:01.088  9976 10339 D SurfaceUtils: connecting to surface 0x738a904010, reason connectToSurface(reconnect)
+03-09 17:10:01.088  9976 10339 D Surface : Surface::connect(this=0x738a904000,api=3)
+03-09 17:10:01.088  9976 10339 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) connect(P): api=3 producer=(9976:com.andrerinas.headunitrevived) producerControlledByApp=true
+03-09 17:10:01.093  9976 10340 I ACodec_vilte: setMTKParameters, width: 1280
+03-09 17:10:01.093  9976 10340 I ACodec_vilte: setMTKParameters, height: 720
+03-09 17:10:01.141  9976 10340 D SurfaceUtils: set up nativeWindow 0x738a904010 for 1280x720, color 0x32315679, rotation 0, usage 0x2933
+03-09 17:10:01.142  9976 10340 W ACodec  : [OMX.MTK.VIDEO.DECODER.HEVC] setting nBufferCountActual to 7 failed: -22
+03-09 17:10:01.143  9976 10340 W ACodec  : [OMX.MTK.VIDEO.DECODER.HEVC] setting nBufferCountActual to 6 failed: -22
+03-09 17:10:01.145  9976 10340 D Surface : Surface::setBufferCount(this=0x738a904000,bufferCount=5)
+03-09 17:10:01.160  9976 10307 I CAR.HU.J: [551] VideoDecoder.start | Codec initialized: OMX.MTK.VIDEO.DECODER.HEVC for stream 1280x720
+03-09 17:10:01.161  9976 10348 I CAR.HU.J: [555] VideoDecoder.outputThreadLoop | Output thread started
+03-09 17:10:01.169  9976 10340 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-09 17:10:01.173  9976 10340 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-09 17:10:01.206  9976 10340 D BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) cancelBuffer: slot 0
+03-09 17:10:01.206  9976 10340 D BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) cancelBuffer: slot 1
+03-09 17:10:01.209  9976 10340 D SurfaceUtils: set up nativeWindow 0x738a904010 for 1280x736, color 0x32315679, rotation 0, usage 0x2933
+03-09 17:10:01.209  9976 10340 W ACodec  : [OMX.MTK.VIDEO.DECODER.HEVC] setting nBufferCountActual to 11 failed: -22
+03-09 17:10:01.210  9976 10340 W ACodec  : [OMX.MTK.VIDEO.DECODER.HEVC] setting nBufferCountActual to 10 failed: -22
+03-09 17:10:01.210  9976 10340 D Surface : Surface::setBufferCount(this=0x738a904000,bufferCount=9)
+03-09 17:10:01.216  9976 10340 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-09 17:10:01.219  9976 10340 I chatty  : uid=10104(com.andrerinas.headunitrevived) CodecLooper identical 1 line
+03-09 17:10:01.223  9976 10340 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-09 17:10:01.225  9976 10340 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-09 17:10:01.229  9976 10340 I chatty  : uid=10104(com.andrerinas.headunitrevived) CodecLooper identical 1 line
+03-09 17:10:01.232  9976 10340 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-09 17:10:01.240  9976 10348 I CAR.HU.J: [555] VideoDecoder.handleOutputFormatChange | Output Format Changed: {crop-right=1279, color-format=842094201, slice-height=768, mime=video/raw, hdr-static-info=java.nio.HeapByteBuffer[pos=0 lim=25 cap=25], stride=1280, color-standard=1, color-transfer=3, crop-bottom=719, crop-left=0, width=1280, color-range=2, crop-top=0, height=736}
+03-09 17:10:01.243  9976 10348 I CAR.HU.J: [555] VideoDecoder.handleOutputFormatChange | Video dimensions changed via format: 1280x736
+03-09 17:10:01.247  9976 10348 I CAR.HU.J: [555] AapProjectionActivity.onVideoDimensionsChanged | [AapProjectionActivity] Received video dimensions: 1280x736
+03-09 17:10:01.249  9976  9976 I CAR.HU.J: [2] TextureProjectionView.setVideoSize | TextureProjectionView
+03-09 17:10:01.251  9976 10340 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-09 17:10:01.253  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 0 is dropped, handle=0x738cad2780
+03-09 17:10:01.255  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 1 is dropped, handle=0x738cad2600
+03-09 17:10:01.255  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 2 is dropped, handle=0x738cad26c0
+03-09 17:10:01.260  9976  9976 I CAR.HU.J: [2] ProjectionViewScaler.updateScale | ProjectionViewScaler: Dimensions: Video: 1280x736, Content: 1280x720, View: 1280x720
+03-09 17:10:01.264  9976  9976 I CAR.HU.J: [2] ProjectionViewScaler.updateScale | ProjectionViewScaler: Scale updated for view TextureProjectionView. scaleX: 1.0, scaleY: 1.0
+03-09 17:10:01.294  9976 10027 W IMGSRV  : IMGeglCreateImageKHR:1111: 1280x736, crop to (0,0)-(1280,720)
+03-09 17:10:01.295  9976 10027 I GPUAUX  : [AUX]GPUAUXContext:60: create: 0x738c983e90
+03-09 17:10:01.304  9976 10027 W IMGSRV  : IMGeglCreateImageKHR:1111: 1280x736, crop to (0,0)-(1280,720)
+03-09 17:10:01.304  9976 10027 D PQ      : [PQ][PQSessionManager] PQSessionManager()... 
+03-09 17:10:01.305  9976 10027 D PQ      : [PQ][PQSessionManager] m_PQSupport = 2 
+03-09 17:10:01.305  9976 10027 D PQ      : [PQ][PQConfig] PQConfig()... 
+03-09 17:10:01.313  9976 10027 D PQ      : [PQ][PQConfig] PQService is ready
+03-09 17:10:01.314  9976 10027 D PQ      : [PQ][PQConfig] getAshmemArray : get array proxyNum:4 offset:0x0001c800 size:1752
+03-09 17:10:01.315  9976 10027 D MDP     : [PQ][PQAlgorithmFactory] PQAlgorithmFactory()... 
+03-09 17:10:01.316  9976 10027 D PQ      : [PQ][PQAlgorithmAdaptor] PQAlgorithmAdaptor()... 
+03-09 17:10:01.317  9976 10027 D MDP     : [PQ][PQDCAdaptor] PQDCAdaptor()... 
+03-09 17:10:01.317  9976 10027 D MDP     : [PQ][PQConfig] getAshmemArray : get array proxyNum:2 offset:0x00014800 size:87
+03-09 17:10:01.317  9976 10027 D MDP     : [PQ][PQConfig] getAshmemArray : get array proxyNum:2 offset:0x0001495c size:87
+03-09 17:10:01.317  9976 10027 D PQ      : [PQ][PQAlgorithmAdaptor] PQAlgorithmAdaptor()... 
+03-09 17:10:01.317  9976 10027 D MDP     : [PQ][PQDSAdaptor] PQDSAdaptor()... 
+03-09 17:10:01.317  9976 10027 D MDP     : [PQ][PQConfig] getAshmemArray : get array proxyNum:1 offset:0x00010800 size:65
+03-09 17:10:01.317  9976 10027 D MDP     : [PQ][PQConfig] getAshmemArray : get array proxyNum:1 offset:0x00010904 size:715
+03-09 17:10:01.317  9976 10027 D MDP     : [PQ][PQConfig] getAshmemArray : get array proxyNum:1 offset:0x00011430 size:1606
+03-09 17:10:01.317  9976 10027 D MDP     : [PQ][PQConfig] getAshmemArray : get array proxyNum:1 offset:0x00012d48 size:13
+03-09 17:10:01.322  9976 10027 D MDP     : DpEngine_TDSHP: configFrame() time 6 ms
+03-09 17:10:01.334  9976 10027 D HWUIExtension: MTKProgramCache.generateProgram: 824633720832
+03-09 17:10:03.125  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=2.13 dur=1874.88 max=1869.06 min=0.81
+03-09 17:10:03.126  9976 10340 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-09 17:10:03.131  9976 10027 W IMGSRV  : IMGeglCreateImageKHR:1111: 1280x736, crop to (0,0)-(1280,720)
+03-09 17:10:03.132  9976 10027 W IMGSRV  : IMGeglCreateImageKHR:1111: 1280x736, crop to (0,0)-(1280,720)
+03-09 17:10:03.165  9976 10027 W IMGSRV  : IMGeglCreateImageKHR:1111: 1280x736, crop to (0,0)-(1280,720)
+03-09 17:10:03.166  9976 10027 W IMGSRV  : IMGeglCreateImageKHR:1111: 1280x736, crop to (0,0)-(1280,720)
+03-09 17:10:03.200  9976 10027 W IMGSRV  : IMGeglCreateImageKHR:1111: 1280x736, crop to (0,0)-(1280,720)
+03-09 17:10:03.219  9976 10027 W IMGSRV  : IMGeglCreateImageKHR:1111: 1280x736, crop to (0,0)-(1280,720)
+03-09 17:10:03.253  9976 10027 W IMGSRV  : IMGeglCreateImageKHR:1111: 1280x736, crop to (0,0)-(1280,720)
+03-09 17:10:03.288  9976 10027 W IMGSRV  : IMGeglCreateImageKHR:1111: 1280x736, crop to (0,0)-(1280,720)
+03-09 17:10:03.323  9976 10027 W IMGSRV  : IMGeglCreateImageKHR:1111: 1280x736, crop to (0,0)-(1280,720)
+03-09 17:10:04.158  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.01 dur=1032.92 max=42.48 min=19.83
+03-09 17:10:05.387  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=4.88 dur=1229.02 max=1072.37 min=27.85
+03-09 17:10:06.112  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 5 is dropped, handle=0x738cad3a40
+03-09 17:10:06.389  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=27.94 dur=1002.19 max=98.20 min=6.87
+03-09 17:10:07.393  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=31.87 dur=1004.20 max=45.36 min=6.86
+03-09 17:10:07.566  9976 10307 I CAR.HU.J: [551] AapControlService.audioFocusRequest | Audio Focus Request: GAIN
+03-09 17:10:07.567  9976 10307 I CAR.HU.J: [551] AapAudio.requestFocusChange | Audio Focus Request: stream=3, type=1
+03-09 17:10:07.570  9976 10307 I CAR.HU.J: [551] AapAudio.requestFocusChange | Audio focus request result: GRANTED
+03-09 17:10:07.571  9976 10307 I CAR.HU.J: [551] AapControlService.audioFocusRequest | Sending immediate AudioFocusNotification: STATE_GAIN
+03-09 17:10:07.760  9976 10307 I CAR.HU.J: [551] AapControlMedia.mediaStartRequest | Media Start Request AUDIO: session_id: 0
+03-09 17:10:07.760  9976 10307 I CAR.HU.J: configuration_index: 0
+03-09 17:10:07.764  9976 10307 I CAR.HU.J: [551] AapAudio.decode | AudioDecoder.start: channel=6, stream=3, gain=1.0, sampleRate=48000, numberOfBits=16, numberOfChannels=2, isAac=false
+03-09 17:10:07.768  9976 10307 I CAR.HU.J: [551] AudioTrackWrapper.createAudioTrack | Audio stream: 3 buffer size: 65536 (min: 8192) sampleRateInHz: 48000 channelCount: 2
+03-09 17:10:07.770  9976 10307 D AudioTrack: yellowmouse mIsNavi: 0, mIsVoice: 0, mIsBlink:0
+03-09 17:10:07.770  9976 10307 D AudioTrack: set: Create AudioTrackThread, tid = 10370
+03-09 17:10:07.770  9976 10307 D AudioTrack: yellowmouse createTrack_l mStreamType: -1
+03-09 17:10:07.778  9976 10307 D AudioTrack: createTrack_l: 0x738c81b400, mCblk = 0x7383c70000, mLatency = 426, mAfLatency = 85, frameCount = 16384, mSampleRate = 48000, mFlags = 0x8, mReqFrameCount = 16384, mNotificationFramesAct = 8192
+03-09 17:10:07.789  9976 10307 D AudioTrack: start(): 0x738c81b400, mState = 1
+03-09 17:10:07.923  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 5 is dropped, handle=0x738cad3a40
+03-09 17:10:08.434  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.77 dur=1041.24 max=61.89 min=15.28
+03-09 17:10:09.130  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 1 is dropped, handle=0x738cad2600
+03-09 17:10:09.453  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.44 dur=1018.31 max=56.96 min=12.56
+03-09 17:10:10.458  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.85 dur=1005.09 max=43.38 min=21.96
+03-09 17:10:11.490  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=28.09 dur=1032.57 max=100.10 min=18.93
+03-09 17:10:11.559  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 0 is dropped, handle=0x738cad2780
+03-09 17:10:12.530  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.78 dur=1039.66 max=55.44 min=2.81
+03-09 17:10:13.552  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.34 dur=1021.79 max=47.25 min=18.38
+03-09 17:10:14.552  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.98 dur=1000.50 max=46.76 min=22.18
+03-09 17:10:14.755  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 1 is dropped, handle=0x738cad2600
+03-09 17:10:15.591  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.83 dur=1039.19 max=56.51 min=2.31
+03-09 17:10:16.623  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.05 dur=1031.77 max=42.75 min=25.38
+03-09 17:10:17.649  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.21 dur=1026.14 max=40.02 min=19.68
+03-09 17:10:18.683  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.98 dur=1034.18 max=40.28 min=21.92
+03-09 17:10:19.715  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.06 dur=1031.30 max=45.35 min=26.19
+03-09 17:10:20.717  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.94 dur=1002.17 max=47.43 min=17.77
+03-09 17:10:21.749  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.04 dur=1032.02 max=38.48 min=23.05
+03-09 17:10:21.817  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 3 is dropped, handle=0x738cad2840
+03-09 17:10:22.751  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.94 dur=1001.87 max=63.28 min=5.49
+03-09 17:10:23.757  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.81 dur=1006.23 max=43.12 min=26.48
+03-09 17:10:24.785  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.16 dur=1027.79 max=45.17 min=21.38
+03-09 17:10:25.819  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.98 dur=1034.18 max=42.80 min=21.26
+03-09 17:10:26.822  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.91 dur=1003.04 max=38.97 min=20.27
+03-09 17:10:27.549  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 0 is dropped, handle=0x738cad2780
+03-09 17:10:27.841  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.43 dur=1019.39 max=55.30 min=10.84
+03-09 17:10:28.862  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.39 dur=1020.67 max=46.14 min=22.57
+03-09 17:10:29.872  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.71 dur=1009.60 max=48.40 min=19.16
+03-09 17:10:29.884  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 4 is dropped, handle=0x738cad3980
+03-09 17:10:30.886  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.55 dur=1014.67 max=43.98 min=12.77
+03-09 17:10:31.915  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.12 dur=1029.14 max=42.62 min=23.46
+03-09 17:10:32.952  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.91 dur=1036.52 max=39.34 min=25.63
+03-09 17:10:33.953  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.98 dur=1000.62 max=42.36 min=24.39
+03-09 17:10:34.953  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.98 dur=1000.65 max=38.74 min=24.94
+03-09 17:10:35.955  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=22.97 dur=1001.47 max=258.65 min=26.24
+03-09 17:10:36.982  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.17 dur=1027.53 max=40.10 min=22.86
+03-09 17:10:37.992  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.71 dur=1009.86 max=40.62 min=26.80
+03-09 17:10:39.025  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.01 dur=1033.00 max=49.37 min=17.63
+03-09 17:10:40.053  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.16 dur=1027.94 max=40.38 min=25.79
+03-09 17:10:41.080  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.19 dur=1026.74 max=45.60 min=21.97
+03-09 17:10:42.082  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.93 dur=1002.21 max=41.22 min=20.92
+03-09 17:10:43.084  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.93 dur=1002.47 max=42.84 min=19.85
+03-09 17:10:44.115  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.07 dur=1030.92 max=45.29 min=20.61
+03-09 17:10:45.119  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.90 dur=1003.37 max=42.40 min=23.28
+03-09 17:10:46.153  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.98 dur=1033.92 max=44.12 min=26.27
+03-09 17:10:46.886  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 4 is dropped, handle=0x738cad3980
+03-09 17:10:47.184  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.06 dur=1031.26 max=46.50 min=17.76
+03-09 17:10:48.189  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.86 dur=1004.82 max=41.09 min=25.09
+03-09 17:10:49.216  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.17 dur=1027.35 max=44.88 min=25.45
+03-09 17:10:50.079  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 3 is dropped, handle=0x738cad2840
+03-09 17:10:50.221  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.86 dur=1004.85 max=44.70 min=23.46
+03-09 17:10:51.248  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.19 dur=1026.88 max=46.05 min=20.21
+03-09 17:10:52.255  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.78 dur=1007.31 max=41.96 min=26.84
+03-09 17:10:53.285  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.11 dur=1029.61 max=39.19 min=22.63
+03-09 17:10:54.315  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.08 dur=1030.42 max=40.43 min=25.48
+03-09 17:10:55.360  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.68 dur=1044.39 max=44.75 min=24.27
+03-09 17:10:56.385  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.23 dur=1025.60 max=41.31 min=21.56
+03-09 17:10:56.950  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 7 is dropped, handle=0x738cad3bc0
+03-09 17:10:57.413  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.16 dur=1027.89 max=51.13 min=17.90
+03-09 17:10:58.419  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.82 dur=1005.95 max=44.70 min=24.50
+03-09 17:10:59.424  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.84 dur=1005.34 max=45.82 min=20.83
+03-09 17:11:00.446  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.34 dur=1021.89 max=42.64 min=16.93
+03-09 17:11:01.479  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.03 dur=1032.44 max=41.43 min=21.60
+03-09 17:11:02.481  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.93 dur=1002.31 max=47.28 min=24.41
+03-09 17:11:03.519  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.86 dur=1038.18 max=42.84 min=21.38
+03-09 17:11:04.315  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 0 is dropped, handle=0x738cad2780
+03-09 17:11:04.546  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.18 dur=1027.18 max=65.02 min=2.73
+03-09 17:11:05.573  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.21 dur=1026.24 max=43.01 min=25.72
+03-09 17:11:06.583  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.68 dur=1010.70 max=46.45 min=19.20
+03-09 17:11:07.588  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.86 dur=1004.60 max=53.85 min=19.75
+03-09 17:11:08.112  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 7 is dropped, handle=0x738cad3bc0
+03-09 17:11:08.621  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.01 dur=1032.88 max=47.55 min=5.68
+03-09 17:11:09.299  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 4 is dropped, handle=0x738cad3980
+03-09 17:11:09.631  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.68 dur=1010.63 max=71.21 min=5.78
+03-09 17:11:09.718  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 1 is dropped, handle=0x738cad2600
+03-09 17:11:10.154  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 0 is dropped, handle=0x738cad2780
+03-09 17:11:10.637  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.84 dur=1005.48 max=61.36 min=4.26
+03-09 17:11:10.684  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 5 is dropped, handle=0x738cad3a40
+03-09 17:11:11.084  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 7 is dropped, handle=0x738cad3bc0
+03-09 17:11:11.088  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 2 is dropped, handle=0x738cad26c0
+03-09 17:11:11.211  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 0 is dropped, handle=0x738cad2780
+03-09 17:11:11.652  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.55 dur=1014.84 max=65.87 min=4.04
+03-09 17:11:12.690  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.87 dur=1037.85 max=43.29 min=22.96
+03-09 17:11:13.715  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.23 dur=1025.45 max=40.38 min=24.50
+03-09 17:11:14.716  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.99 dur=1000.44 max=46.00 min=23.04
+03-09 17:11:15.717  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.97 dur=1001.03 max=44.43 min=21.18
+03-09 17:11:16.717  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.98 dur=1000.76 max=40.27 min=23.71
+03-09 17:11:17.722  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.87 dur=1004.35 max=42.72 min=21.28
+03-09 17:11:18.747  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.24 dur=1025.25 max=46.20 min=16.72
+03-09 17:11:19.751  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.87 dur=1004.21 max=41.97 min=23.47
+03-09 17:11:20.786  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.97 dur=1034.46 max=41.43 min=23.03
+03-09 17:11:21.817  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.06 dur=1031.32 max=47.49 min=18.98
+03-09 17:11:22.833  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.53 dur=1015.92 max=44.01 min=16.91
+03-09 17:11:23.853  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.40 dur=1019.88 max=44.88 min=14.51
+03-09 17:11:24.887  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.96 dur=1034.80 max=42.26 min=21.81
+03-09 17:11:25.916  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.15 dur=1028.32 max=42.78 min=27.48
+03-09 17:11:26.950  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.97 dur=1034.50 max=48.85 min=24.42
+03-09 17:11:27.998  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=28.62 dur=1048.16 max=55.29 min=17.59
+03-09 17:11:28.017  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 0 is dropped, handle=0x738cad2780
+03-09 17:11:29.016  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.47 dur=1017.23 max=45.35 min=19.16
+03-09 17:11:30.016  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.98 dur=1000.67 max=50.33 min=14.89
+03-09 17:11:31.019  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 6 is dropped, handle=0x738cad3b00
+03-09 17:11:31.020  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.90 dur=1003.30 max=51.70 min=16.22
+03-09 17:11:32.020  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.99 dur=1000.47 max=46.47 min=19.85
+03-09 17:11:33.023  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.93 dur=1002.26 max=49.02 min=23.90
+03-09 17:11:34.059  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.93 dur=1035.92 max=48.71 min=19.11
+03-09 17:11:35.112  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=26.56 dur=1054.14 max=166.47 min=15.23
+03-09 17:11:36.115  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=16.95 dur=1002.66 max=347.20 min=25.92
+03-09 17:11:37.119  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=17.93 dur=1003.92 max=227.91 min=11.37
+03-09 17:11:38.145  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.20 dur=1026.40 max=42.91 min=24.44
+03-09 17:11:39.148  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=27.93 dur=1002.41 max=96.71 min=22.49
+03-09 17:11:40.150  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=11.98 dur=1001.79 max=335.01 min=20.77
+03-09 17:11:41.154  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=16.93 dur=1004.07 max=333.73 min=20.93
+03-09 17:11:41.681  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 5 is dropped, handle=0x738cad3a40
+03-09 17:11:42.190  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=18.33 dur=1036.42 max=363.49 min=11.54
+03-09 17:11:43.213  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=11.73 dur=1023.19 max=351.15 min=28.17
+03-09 17:11:44.244  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=18.43 dur=1030.95 max=335.71 min=20.82
+03-09 17:11:45.244  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=19.00 dur=1000.08 max=300.29 min=23.10
+03-09 17:11:46.264  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=18.64 dur=1019.51 max=297.19 min=28.44
+03-09 17:11:47.264  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=11.00 dur=1000.25 max=397.69 min=23.92
+03-09 17:11:48.282  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=18.66 dur=1018.31 max=288.95 min=18.86
+03-09 17:11:49.326  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.70 dur=1043.72 max=49.24 min=20.03
+03-09 17:11:50.349  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=26.40 dur=1022.82 max=106.25 min=19.03
+03-09 17:11:51.358  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=29.74 dur=1008.62 max=45.94 min=18.54
+03-09 17:11:51.514  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 0 is dropped, handle=0x738cad2780
+03-09 17:11:52.386  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=23.33 dur=1028.76 max=252.60 min=12.29
+03-09 17:11:53.394  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=18.85 dur=1007.97 max=328.14 min=21.32
+03-09 17:11:54.425  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.09 dur=1030.38 max=48.15 min=14.72
+03-09 17:11:55.504  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=17.61 dur=1078.94 max=329.40 min=18.02
+03-09 17:11:56.079  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 3 is dropped, handle=0x738cad2840
+03-09 17:11:56.596  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=13.74 dur=1091.97 max=355.94 min=9.69
+03-09 17:11:57.623  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=17.53 dur=1026.84 max=361.93 min=19.12
+03-09 17:11:58.627  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=17.92 dur=1004.61 max=362.07 min=19.79
+03-09 17:11:59.653  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=10.72 dur=1026.13 max=353.64 min=29.82
+03-09 17:12:00.679  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=22.42 dur=1026.06 max=229.42 min=17.57
+03-09 17:12:01.712  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=19.37 dur=1032.46 max=364.49 min=22.15
+03-09 17:12:02.743  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=30.05 dur=1031.55 max=40.56 min=23.35
+03-09 17:12:03.091  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 5 is dropped, handle=0x738cad3a40
+03-09 17:12:03.222  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: slot 1 is dropped, handle=0x738cad2600
+03-09 17:12:04.118  9976 10340 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) queueBuffer: fps=19.64 dur=1375.07 max=375.97 min=4.00
+03-09 17:12:06.384  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.recvBlocking | Too many read errors, attempting interface reset...
+03-09 17:12:06.385  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | Attempting USB interface soft-reset...
+03-09 17:12:06.487  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | USB interface re-claimed successfully
+03-09 17:12:06.487  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.initEndpoint | Check accessory endpoints
+03-09 17:12:06.488  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.initEndpoint | Connected have EPs
+03-09 17:12:08.048  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.recvBlocking | Too many read errors, attempting interface reset...
+03-09 17:12:08.049  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | Attempting USB interface soft-reset...
+03-09 17:12:08.150  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | USB interface re-claimed successfully
+03-09 17:12:08.151  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.initEndpoint | Check accessory endpoints
+03-09 17:12:08.152  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.initEndpoint | Connected have EPs
+03-09 17:12:09.715  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.recvBlocking | Too many read errors, attempting interface reset...
+03-09 17:12:09.716  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | Attempting USB interface soft-reset...
+03-09 17:12:09.818  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | USB interface re-claimed successfully
+03-09 17:12:09.820  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.initEndpoint | Check accessory endpoints
+03-09 17:12:09.821  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.initEndpoint | Connected have EPs
+03-09 17:12:11.384  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.recvBlocking | Too many read errors, attempting interface reset...
+03-09 17:12:11.385  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | Attempting USB interface soft-reset...
+03-09 17:12:11.486  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | USB interface re-claimed successfully
+03-09 17:12:11.487  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.initEndpoint | Check accessory endpoints
+03-09 17:12:11.488  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.initEndpoint | Connected have EPs
+03-09 17:12:13.052  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.recvBlocking | Too many read errors, attempting interface reset...
+03-09 17:12:13.053  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | Attempting USB interface soft-reset...
+03-09 17:12:13.154  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | USB interface re-claimed successfully
+03-09 17:12:13.155  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.initEndpoint | Check accessory endpoints
+03-09 17:12:13.156  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.initEndpoint | Connected have EPs
+03-09 17:12:14.715  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.recvBlocking | Too many read errors, attempting interface reset...
+03-09 17:12:14.716  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | Attempting USB interface soft-reset...
+03-09 17:12:14.818  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | USB interface re-claimed successfully
+03-09 17:12:14.819  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.initEndpoint | Check accessory endpoints
+03-09 17:12:14.819  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.initEndpoint | Connected have EPs
+03-09 17:12:14.822  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.recvBlocking | Too many read errors, attempting interface reset...
+03-09 17:12:14.823  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | Attempting USB interface soft-reset...
+03-09 17:12:14.924  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | USB interface re-claimed successfully
+03-09 17:12:14.925  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.initEndpoint | Check accessory endpoints
+03-09 17:12:14.925  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.initEndpoint | Connected have EPs
+03-09 17:12:14.927  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.recvBlocking | Too many read errors, attempting interface reset...
+03-09 17:12:14.929  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | Attempting USB interface soft-reset...
+03-09 17:12:15.030  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | USB interface re-claimed successfully
+03-09 17:12:15.031  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.initEndpoint | Check accessory endpoints
+03-09 17:12:15.032  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.initEndpoint | Connected have EPs
+03-09 17:12:15.034  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.recvBlocking | Too many read errors, attempting interface reset...
+03-09 17:12:15.035  9976 10307 W CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | Attempting USB interface soft-reset...
+03-09 17:12:15.062  9976  9976 I CAR.HU.J: [2] UsbReceiver.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-09 17:12:15.067  9976  9976 I CAR.HU.J: [2] UsbReceiver.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-09 17:12:15.137  9976 10307 E CAR.HU.J: [551] UsbAccessoryConnection.resetInterface | Failed to re-claim USB interface — disconnecting
+03-09 17:12:15.137  9976 10307 D UsbDeviceConnectionJNI: close
+03-09 17:12:15.140  9976 10307 I CAR.HU.J: [551] UsbAccessoryConnection.disconnect | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/001/070,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mManufacturerName=Android,mProductName=smartlinkBox,mVersion=2.0,mSerialNumber=LY0123456789,mConfigurations=[
+03-09 17:12:15.140  9976 10307 I CAR.HU.J: UsbConfiguration[mId=1,mName=accessory,mAttributes=128,mMaxPower=75,mInterfaces=[
+03-09 17:12:15.140  9976 10307 I CAR.HU.J: UsbInterface[mId=0,mAlternateSetting=0,mName=Android Accessory Interface,mClass=255,mSubclass=255,mProtocol=0,mEndpoints=[
+03-09 17:12:15.140  9976 10307 I CAR.HU.J: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-09 17:12:15.140  9976 10307 I CAR.HU.J: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=512,mInterval=0]]]]
+03-09 17:12:15.141  9976 10307 E UsbDeviceConnectionJNI: device is closed in native_release_interface
+03-09 17:12:15.142  9976 10307 E CAR.HU.J: [551] UsbAccessoryConnection.disconnect | Error releaseInterface()
+03-09 17:12:15.143  9976 10307 E CAR.HU.J: [551] AapReadMultipleMessages.doRead | AapRead: Connection lost. Stopping read loop.
+03-09 17:12:15.144  9976 10307 I CAR.HU.J: [551] AapTransport.pollHandlerCallback$lambda$2 | Quitting because ret < 0
+03-09 17:12:15.144  9976 10307 I CAR.HU.J: [551] AapTransport.quit$com_andrerinas_headunitrevived_2_0_1_debug | AapTransport quitting (clean=false)
+03-09 17:12:15.148  9976 10281 I CAR.HU.J: [547] AapTransport.quit$com_andrerinas_headunitrevived_2_0_1_debug | AapTransport quitting (clean=false)
+03-09 17:12:15.170  9976  9976 I CAR.HU.J: [2] AapService.scheduleReconnectIfNeeded | AapService: USB disconnect. Scheduling reconnect check in 3000ms...
+03-09 17:12:15.171  9976 10372 D AudioTrack: stop(): 0x738c81b400, mState = 0
+03-09 17:12:15.171  9976 10372 D AudioTrack: stop() called with 5629952 frames delivered
+03-09 17:12:15.173  9976 10372 D AudioTrack: audiotrack 0x738c81b400 stop done
+03-09 17:12:15.179  9976 10348 I CAR.HU.J: [555] VideoDecoder.outputThreadLoop | Output thread stopped
+03-09 17:12:15.185  9976  9976 I CAR.HU.J: [2] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-09 17:12:15.197  9976 10340 D BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) cancelBuffer: slot 1
+03-09 17:12:15.198  9976 10340 D BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) cancelBuffer: slot 2
+03-09 17:12:15.199  9976 10340 D BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) cancelBuffer: slot 4
+03-09 17:12:15.199  9976 10340 D BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) cancelBuffer: slot 5
+03-09 17:12:15.200  9976 10340 D BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) cancelBuffer: slot 6
+03-09 17:12:15.200  9976 10340 D BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) cancelBuffer: slot 7
+03-09 17:12:15.201  9976 10339 D SurfaceUtils: disconnecting from surface 0x738a904010, reason disconnectFromSurface
+03-09 17:12:15.201  9976 10339 D Surface : Surface::disconnect(this=0x738a904000,api=3)
+03-09 17:12:15.201  9976 10339 I BufferQueueProducer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:9976,c:9976) disconnect(P): api 3
+03-09 17:12:15.228  9976 10281 I CAR.HU.J: [547] VideoDecoder.stop | Decoder stopped: AapService::onDisconnect
+03-09 17:12:15.307  9976 10027 D Surface : Surface::connect(this=0x738a8e2000,api=1)
+03-09 17:12:15.307  9976  9976 D Surface : Surface::allocateBuffers(this=0x738a8e2000)
+03-09 17:12:15.451  9976 10027 I GLConsumer: [SurfaceTexture-0-9976-0] detachFromContext
+03-09 17:12:15.452  9976 10027 I GPUAUX  : [AUX]~GPUAUXContext:68: destory: 0x738c983e90
+03-09 17:12:15.453  9976 10027 D Surface : Surface::disconnect(this=0x738a8df000,api=1)
+03-09 17:12:15.683  9976  9976 I CAR.HU.J: [2] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-09 17:12:15.685  9976  9976 I CAR.HU.J: [2] TextureProjectionView.onSurfaceTextureDestroyed | TextureProjectionView: Surface destroyed
+03-09 17:12:15.686  9976  9976 I CAR.HU.J: [2] AapProjectionActivity.onSurfaceDestroyed | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@99c60f0)/@0x6be9669
+03-09 17:12:15.688  9976  9976 I CAR.HU.J: [2] VideoDecoder.stop | Decoder stopped: surfaceDestroyed
+03-09 17:12:15.688  9976  9976 I BufferQueueConsumer: [SurfaceTexture-0-9976-0](this:0x738a8a8800,id:0,api:3,p:-1,c:-1) disconnect(C)
+03-09 17:12:15.694  9976  9976 D View    : [Warning] assignParent to null: this = DecorView@8017cf9[AapProjectionActivity]
+03-09 17:12:15.708  9976  9976 D WindowClient: Remove from mViews: DecorView@8017cf9[AapProjectionActivity], this = android.view.WindowManagerGlobal@fed1acb
+03-09 17:12:17.681  9976 10372 D AudioTrack: stop(): 0x738c81b400, mState = 1
+03-09 17:12:17.682  9976 10372 D AudioTrack: stop(): 0x738c81b400, mState = 1
+03-09 17:12:17.684  9976 10372 I CAR.HU.J: [665] AudioTrackWrapper.run | AudioTrackWrapper thread finished.
+--------- beginning of main
+03-09 17:12:28.296  9976 10277 W CAR.HU.J: [546] LogExporter.launchLogcatPipe$lambda$4 | Log capture process exited, restarting (attempt 4/5)
+03-09 17:12:31.324  9976  9981 I zygote64: Do full code cache collection, code=1007KB, data=673KB
+03-09 17:12:31.326  9976  9981 I zygote64: After code cache collection, code=989KB, data=598KB

@@ -1,0 +1,4 @@
+--------- beginning of main
+03-07 14:48:10.156 26767 26767 I CAR.HU.J: [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-07 14:48:11.076 26767 26767 I zygote64: Deoptimizing android.view.View androidx.appcompat.app.h.e0(android.view.View, java.lang.String, android.content.Context, android.util.AttributeSet) due to JIT inline cache
+03-07 14:48:11.154 26767 26767 I CAR.HU.J: [2] HomeFragment.attemptSingleUsbAutoConnect | HomeFragment: Requesting single-USB auto-connect via AapService

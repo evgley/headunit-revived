@@ -1,0 +1,8 @@
+--------- beginning of main
+02-27 18:11:04.500 19344 19344 I CAR.HU.J: [2] MainActivity.handleIntent | MainActivity received intent: null, data: null
+02-27 18:11:04.506 19344 19344 I CAR.HU.J: [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+02-27 18:11:05.576 19344 19344 I CAR.HU.J: [2] HomeFragment.attemptSingleUsbAutoConnect | HomeFragment: Requesting single-USB auto-connect via AapService
+02-27 18:11:05.646 19344 19344 I CAR.HU.J: [2] AapService.onCreate | AapService creating...
+02-27 18:11:05.676 19344 19344 I CAR.HU.J: [2] h.invoke | NightMode update: false
+02-27 18:11:05.825 19344 19344 I CAR.HU.J: [2] AapService.O | USB stability: Starting 5s timer for Xiaomi 2717:FF40
+02-27 18:11:05.858 19344 19344 I CAR.HU.J: [2] AapService.O | USB stability: Starting 5s timer for Xiaomi 2717:FF40

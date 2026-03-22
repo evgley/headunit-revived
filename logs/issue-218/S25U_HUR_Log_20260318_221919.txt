@@ -1,0 +1,224 @@
+--------- beginning of main
+03-18 22:18:34.370 16091 16091 I Zygote  : Process 16091 created for com.andrerinas.headunitrevived
+03-18 22:18:34.370 16091 16091 I headunitrevived: Late-enabling -Xcheck:jni
+03-18 22:18:34.386 16091 16091 I headunitrevived: Using CollectorTypeCMC GC.
+03-18 22:18:34.391 16091 16091 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+03-18 22:18:34.392 16091 16091 D ActivityThread: setConscryptValidator
+03-18 22:18:34.392 16091 16091 D ActivityThread: setConscryptValidator - put
+03-18 22:18:34.504 16091 16091 D nativeloader: Configuring clns-9 for other apk /data/app/~~KXNY_HPOsa7p-BgqREWMZQ==/com.andrerinas.headunitrevived-L1Jgx1TX-5EaqNeVZkxNjQ==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~KXNY_HPOsa7p-BgqREWMZQ==/com.andrerinas.headunitrevived-L1Jgx1TX-5EaqNeVZkxNjQ==/lib/arm64:/data/app/~~KXNY_HPOsa7p-BgqREWMZQ==/com.andrerinas.headunitrevived-L1Jgx1TX-5EaqNeVZkxNjQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.andrerinas.headunitrevived
+03-18 22:18:34.522 16091 16091 I MultiDex: VM with version 2.1.0 has multidex support
+03-18 22:18:34.522 16091 16091 I MultiDex: Installing application
+03-18 22:18:34.522 16091 16091 I MultiDex: VM has multidex support, MultiDex support library is disabled.
+03-18 22:18:34.528 16091 16091 I HWUI    : Using FreeType backend (prop=Auto)
+03-18 22:18:34.534 16091 16091 D HUREV   : [2] App.onCreate | native library dir /data/app/~~KXNY_HPOsa7p-BgqREWMZQ==/com.andrerinas.headunitrevived-L1Jgx1TX-5EaqNeVZkxNjQ==/lib/arm64
+03-18 22:18:34.534 16091 16091 D HUREV   : [2] App.onCreate |    libhu_jni.so
+03-18 22:18:34.534 16091 16091 D HUREV   : [2] App.onCreate |    libssl_1_1.so
+03-18 22:18:34.534 16091 16091 D HUREV   : [2] App.onCreate |    libconscrypt_jni.so
+03-18 22:18:34.534 16091 16091 D HUREV   : [2] App.onCreate |    libcrypto_1_1.so
+03-18 22:18:34.556 16091 16091 D HUREV   : [2] Companion.createSslContext | Creating SSLContext with default provider
+03-18 22:19:19.150 21903 21903 I Zygote  : Process 21903 created for com.andrerinas.headunitrevived
+03-18 22:19:19.150 21903 21903 I headunitrevived: Late-enabling -Xcheck:jni
+03-18 22:19:19.171 21903 21903 I headunitrevived: Using CollectorTypeCMC GC.
+03-18 22:19:19.178 21903 21903 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+03-18 22:19:19.186 21903 21903 D ActivityThread: setConscryptValidator
+03-18 22:19:19.186 21903 21903 D ActivityThread: setConscryptValidator - put
+03-18 22:19:19.289 21903 21903 D nativeloader: Configuring clns-9 for other apk /data/app/~~KXNY_HPOsa7p-BgqREWMZQ==/com.andrerinas.headunitrevived-L1Jgx1TX-5EaqNeVZkxNjQ==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~KXNY_HPOsa7p-BgqREWMZQ==/com.andrerinas.headunitrevived-L1Jgx1TX-5EaqNeVZkxNjQ==/lib/arm64:/data/app/~~KXNY_HPOsa7p-BgqREWMZQ==/com.andrerinas.headunitrevived-L1Jgx1TX-5EaqNeVZkxNjQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.andrerinas.headunitrevived
+03-18 22:19:19.312 21903 21903 I MultiDex: VM with version 2.1.0 has multidex support
+03-18 22:19:19.312 21903 21903 I MultiDex: Installing application
+03-18 22:19:19.312 21903 21903 I MultiDex: VM has multidex support, MultiDex support library is disabled.
+03-18 22:19:19.318 21903 21903 I HWUI    : Using FreeType backend (prop=Auto)
+03-18 22:19:19.326 21903 21903 D HUREV   : [2] App.onCreate | native library dir /data/app/~~KXNY_HPOsa7p-BgqREWMZQ==/com.andrerinas.headunitrevived-L1Jgx1TX-5EaqNeVZkxNjQ==/lib/arm64
+03-18 22:19:19.326 21903 21903 D HUREV   : [2] App.onCreate |    libhu_jni.so
+03-18 22:19:19.326 21903 21903 D HUREV   : [2] App.onCreate |    libssl_1_1.so
+03-18 22:19:19.326 21903 21903 D HUREV   : [2] App.onCreate |    libconscrypt_jni.so
+03-18 22:19:19.326 21903 21903 D HUREV   : [2] App.onCreate |    libcrypto_1_1.so
+03-18 22:19:19.346 21903 21903 D HUREV   : [2] Companion.createSslContext | Creating SSLContext with default provider
+--------- beginning of system
+03-18 22:19:19.359 21903 21903 D ActivityThread: com.andrerinas.headunitrevived will use render engine as VK
+03-18 22:19:19.359 21903 21903 D HWUI    : HWUI - treat SMPTE_170M as sRGB
+03-18 22:19:19.360 21903 21933 I DisplayManager: Choreographer implicitly registered for the refresh rate.
+03-18 22:19:19.361 21903 21933 D HWUI    : CacheManager constructor. deviceInfo=(1080, 1920)
+03-18 22:19:19.361 21903 21933 D vulkan  : searching for layers in '/data/app/~~KXNY_HPOsa7p-BgqREWMZQ==/com.andrerinas.headunitrevived-L1Jgx1TX-5EaqNeVZkxNjQ==/lib/arm64'
+03-18 22:19:19.361 21903 21933 D vulkan  : searching for layers in '/data/app/~~KXNY_HPOsa7p-BgqREWMZQ==/com.andrerinas.headunitrevived-L1Jgx1TX-5EaqNeVZkxNjQ==/base.apk!/lib/arm64-v8a'
+03-18 22:19:19.367 21903 21903 D DesktopExperienceFlags: Toggle override initialized to: false
+03-18 22:19:19.367 21903 21933 E Adreno-AppProfiles: QSPM AIDL service doesn't exist
+03-18 22:19:19.368 21903 21933 I AdrenoVK-0: ===== BEGIN DUMP OF OVERRIDDEN SETTINGS =====
+03-18 22:19:19.368 21903 21933 I AdrenoVK-0: ===== END DUMP OF OVERRIDDEN SETTINGS =====
+03-18 22:19:19.369 21903 21903 D AppCompatDelegate: Checking for metadata for AppLocalesMetadataHolderService : Service not found
+03-18 22:19:19.371 21903 21933 D qdgralloc: Fetching IMapper5 from QtiMapper5
+03-18 22:19:19.373 21903 21903 E ashmem  : Pinning is deprecated since Android Q. Please use trim or other methods.
+03-18 22:19:19.376 21903 21933 I SnapAlloc: Graphics lib is available
+03-18 22:19:19.380 21903 21933 I Adreno-UNKNOWN: Using previously loaded IMapper library.
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: QUALCOMM build          : 2b9f2d9d70, I13a8a4ea95
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: Build Date              : 01/07/26
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: Shader Compiler Version : E031.47.18.44
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: Local Branch            : 
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: Remote Branch           : refs/tags/AU_LINUX_ANDROID_LA.VENDOR.15.4.0.11.00.00.1088.862
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: Remote Branch           : NONE
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: Reconstruct Branch      : NOTHING
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: Build Config            : S P 18.0.0 AArch64
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: Driver Path             : /vendor/lib64/hw/vulkan.adreno.so
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: Driver Version          : 0800.64.3
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: PFP                     : 0x01500077
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: ME                      : 0x01500014
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: Application Name    : android framework
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: Process Name        : com.andrerinas.headunitrevived
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: Application Version : 0x00000000
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: Engine Name         : android framework
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: Engine Version      : 0x00000000
+03-18 22:19:19.382 21903 21933 I AdrenoVK-0: Api Version         : 0x00401000
+03-18 22:19:19.383 21903 21903 I HUREV   : [2] MainActivity.logLaunchSource | App launched by user tap (referrer: android-app://com.sec.android.app.launcher)
+03-18 22:19:19.386 21903 21903 D CompatChangeReporter: Compat change id reported: 377864165; UID 10701; state: ENABLED
+03-18 22:19:19.387 21903 21903 D DesktopModeFlags: Toggle override initialized to: OVERRIDE_UNSET
+03-18 22:19:19.389 21903 21903 I DecorView: setWindowBackground: isPopOver=false color=ff010102 d=android.graphics.drawable.GradientDrawable@1e6db88
+03-18 22:19:19.392 21903 21903 I headunitrevived: hiddenapi: Accessing hidden method Landroid/view/View;->computeFitSystemWindows(Landroid/graphics/Rect;Landroid/graphics/Rect;)Z (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/appcompat/widget/ViewUtils; (domain=app, TargetSdkVersion=36) using reflection: allowed
+03-18 22:19:19.392 21903 21903 I headunitrevived: hiddenapi: Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/appcompat/widget/ViewUtils; (domain=app, TargetSdkVersion=36) using reflection: allowed
+03-18 22:19:19.430 21903 21903 D HUREV   : [2] UsbReceiver.<init> | UsbReceiver registered
+03-18 22:19:19.431 21903 21903 I HUREV   : [2] MainActivity.handleIntent | MainActivity received intent: android.intent.action.MAIN, data: null
+03-18 22:19:19.451 21903 21903 I HUREV   : [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-18 22:19:19.453 21903 21903 D ViewRootImpl: desktopMode is false
+03-18 22:19:19.453 21903 21903 I ViewRootImpl: dVRR is disabled
+03-18 22:19:19.454 21903 21903 D HardwareRenderer: onDisplayChanged. displayId=0 current wxh=1080x2340 mLargest wxh=0x0
+03-18 22:19:19.454 21903 21903 D HardwareRenderer: Set largestWidth and largestHeight as logical resolution. (1080x2340)
+03-18 22:19:19.454 21903 21933 D HWUI    : setMaxSurfaceArea requested wxh=(1080,2340) requestedSurfaceArea(2527200) mMaxSurfaceArea(2073600)
+03-18 22:19:19.454 21903 21933 D NativeCustomFrequencyManager: [NativeCFMS] BpCustomFrequencyManager::BpCustomFrequencyManager()
+03-18 22:19:19.456 21903 21903 D InsetsController: Setting requestedVisibleTypes to 500 (was 503)
+03-18 22:19:19.456 21903 21903 I InsetsController: setRequestedVisibleTypes: visible=false, mask=statusBars navigationBars, host=com.andrerinas.headunitrevived/com.andrerinas.headunitrevived.main.MainActivity, from=android.view.InsetsController.controlAnimationUnchecked:1646 android.view.InsetsController.applyAnimation:2278 android.view.InsetsController.applyAnimation:2207 android.view.InsetsController.hide:1581 android.view.InsetsController.hide:1521 android.view.PendingInsetsController$HideRequest.replay:295 android.view.PendingInsetsController.replayAndAttach:208 android.view.ViewRootImpl.setView:1967 android.view.WindowManagerGlobal.addView:606 android.view.WindowManagerImpl.addView:167 
+03-18 22:19:19.457 21903 21903 D InputTransport: Input channel constructed: '6e3317c', fd=121
+03-18 22:19:19.457 21903 21903 I InsetsController: onStateChanged: host=com.andrerinas.headunitrevived/com.andrerinas.headunitrevived.main.MainActivity, from=android.view.ViewRootImpl.onInsetsStateChanged:3038, state=InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2340), mDisplayCutout=DisplayCutout{insets=Rect(0, 96 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(514, 0 - 566, 96), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2340 physicalDisplayWidth=1080 physicalDisplayHeight=2340 density={2.8125} cutoutSpec={M 0,0 H -9.333333333333333 V 34.13333333333333 H 9.333333333333333 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}} sideOverrides={}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=34, center=Point(34, 34)}, RoundedCorner{position=TopRight, radius=34, center=Point(1046, 34)}, RoundedCorner{position=BottomRight, radius=34, center=Point(1046, 2306)}, RoundedCorner{position=BottomLeft, radius=34, center=Point(34, 2306)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2340), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(981, 0 - 1080, 96) rotation=0}, mDisplayShape=DisplayShape{ spec=-311912193 displayWidth=1080 displayHeight=2340 physicalPixelDisplaySizeRatio=0.75 rotation=0 offsetX=0 offsetY=0 scale=1.0}, mSources= { InsetsSource: {bc6b0000 mType=statusBars mFrame=[0,0][1080,96] mAttachedInsets=null mVisible=true mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {bc6b0005 mType=mandatorySystemGestures mFrame=[0,0][1080,123] mAttachedInsets=null mVisible=true mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {bc6b0006 mType=tappableElement mFrame=[0,0][1080,96] mAttachedInsets=null mVisible=true mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {3 mType=ime mFrame=[0,0][0,0] mAttachedInsets=null mVisible=false mFlags=INVALID mSideHint=NONE mBoundingRects=null}, InsetsSource: {27 mType=displayCutout mFrame=[0,0][1080,96] mAttachedInsets=null mVisible=true mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {2fd50001 mType=navigationBars mFrame=[0,2307][1080,2340] mAttachedInsets=null mVisible=true mFlags=SUPPRESS_SCRIM mSideHint=BOTTOM mBoundingRects=null}, InsetsSource: {2fd50004 mType=systemGestures mFrame=[0,0][67,2340] mAttachedInsets=null mVisible=true mFlags= mSideHint=LEFT mBoundingRects=null}, InsetsSource: {2fd50005 mType=mandatorySystemGestures mFrame=[0,2268][1080,2340] mAttachedInsets=null mVisible=true mFlags= mSideHint=BOTTOM mBoundingRects=null}, InsetsSource: {2fd50006 mType=tappableElement mFrame=[0,0][0,0] mAttachedInsets=null mVisible=true mFlags= mSideHint=NONE mBoundingRects=null}, InsetsSource: {2fd50024 mType=systemGestures mFrame=[1013,0][1080,2340] mAttachedInsets=null mVisible=true mFlags= mSideHint=RIGHT mBoundingRects=null} }
+03-18 22:19:19.458 21903 21903 I VRI[MainActivity]@9688812: synced displayState. AttachInfo displayState=2
+03-18 22:19:19.458 21903 21903 I VRI[MainActivity]@9688812: setView = com.android.internal.policy.DecorView@38fe155 IsHRR=false mFlingFrameRateChange=0 TM=true
+03-18 22:19:19.458 21903 21903 I IDS_TAG : Starting IDS observe window
+03-18 22:19:19.458 21903 21903 I IDS_TAG : Getting Shared Preference for com.andrerinas.headunitrevived.App@7c926c8 uid = 10701
+03-18 22:19:19.460 21903 21903 I IDS_TAG : App com.andrerinas.headunitrevived.App@7c926c8 has not finished training
+03-18 22:19:19.460 21903 21903 I HUREV   : [2] AapService.onCreate | AapService creating...
+03-18 22:19:19.468 21903 21903 I HUREV   : [2] 1.invoke | NightMode update: false
+03-18 22:19:19.472 21903 21903 D HUREV   : [2] UsbReceiver.<init> | UsbReceiver registered
+03-18 22:19:19.473 21903 21903 I HUREV   : [2] AapService.registerReceivers | Registered runtime MEDIA_BUTTON receiver
+03-18 22:19:19.476 21903 21903 D AudioSystem: onNewService: media.audio_policy service obtained 0xb400007c7e31b8e0
+03-18 22:19:19.476 21903 21903 D AudioSystem: getService: IAudioPolicyService retrieved: 0xb400007c7e31b8e0  cached: 0xb400007c7e31b8e0
+03-18 22:19:19.477 21903 21903 D HUREV   : [2] AapService.updateMediaSessionState | MediaSession: State updated to STOPPED
+03-18 22:19:19.490 21903 21903 I HUREV   : [2] AapService.onCreate | Auto-started continuous log capture
+03-18 22:19:19.499 21903 21903 I HUREV   : [2] AapService.onCreate | Auto-started continuous log capture
+03-18 22:19:19.517 21903 21903 D ConnectivityManager: StackLog: [android.net.ConnectivityManager.sendRequestForNetwork(ConnectivityManager.java:4738)] [android.net.ConnectivityManager.sendRequestForNetwork(ConnectivityManager.java:4906)] [android.net.ConnectivityManager.registerNetworkCallback(ConnectivityManager.java:5323)] [android.net.ConnectivityManager.registerNetworkCallback(ConnectivityManager.java:5293)] [com.andrerinas.headunitrevived.aap.AapService.registerNetworkMonitor(AapService.kt:457)] [com.andrerinas.headunitrevived.aap.AapService.onCreate(AapService.kt:203)] [android.app.ActivityThread.handleCreateService(ActivityThread.java:6283)] [android.app.ActivityThread.-$$Nest$mhandleCreateService(Unknown Source:0)] [android.app.ActivityThread$H.handleMessage(ActivityThread.java:3059)]
+03-18 22:19:19.520 21903 21903 I HUREV   : [2] AapService.registerNetworkMonitor | NetworkMonitor: Registered network change listener
+03-18 22:19:19.524 21903 21933 D HWUI    : HWUI - treat SMPTE_170M as sRGB
+03-18 22:19:19.524 21903 21903 I IDS_TAG : Closing IDS observe window
+03-18 22:19:19.524 21903 21903 I IDS_TAG : Getting Shared Preference for com.andrerinas.headunitrevived.App@7c926c8 uid = 10701
+03-18 22:19:19.525 21903 21903 I IDS_TAG : IDS count updated to 3 for com.andrerinas.headunitrevived.App@7c926c8
+03-18 22:19:19.525 21903 21903 D WindowOnBackDispatcher: setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@666f8b1
+03-18 22:19:19.525 21903 21903 D WindowOnBackDispatcher: setTopOnBackInvokedCallback (unwrapped): androidx.activity.OnBackPressedDispatcher$Api34Impl$createOnBackAnimationCallback$1@3840196
+03-18 22:19:19.527 21903 21953 I HUREV   : [52] 1.onAvailable | NetworkMonitor: Network available: 102
+03-18 22:19:19.527 21903 21903 D VRI[MainActivity]@9688812: WindowInsets changed: 1080x2340 statusBars:[0,96,0,0] navigationBars:[0,0,0,33] mandatorySystemGestures:[0,123,0,72] 
+03-18 22:19:19.527 21903 21953 D HUREV   : [52] 1.onCapabilitiesChanged | NetworkMonitor: Capabilities changed: 102 → [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED LinkUpBandwidth>=204271Kbps LinkDnBandwidth>=88546Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.1.116, Security type: 4, Supplicant state: COMPLETED, Wi-Fi standard: 11ax, RSSI: -40, Link speed: 2161Mbps, Tx Link speed: 2161Mbps, Max Supported Tx Link speed: 2401Mbps, Rx Link speed: 1921Mbps, Max Supported Rx Link speed: 2401Mbps, Frequency: 5300MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -40 UnderlyingNetworks: Null]
+03-18 22:19:19.528 21903 21953 I HUREV   : [52] 1.onAvailable | NetworkMonitor: Network available: 100
+03-18 22:19:19.528 21903 21953 D HUREV   : [52] 1.onCapabilitiesChanged | NetworkMonitor: Capabilities changed: 100 → [ Transports: CELLULAR Capabilities: SUPL&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED LinkUpBandwidth>=23275Kbps LinkDnBandwidth>=23275Kbps Specifier: <TelephonyNetworkSpecifier [mSubId = 1]> SubscriptionIds: {1} UnderlyingNetworks: Null]
+03-18 22:19:19.574 21903 21903 E BufferQueueProducer: Unable to open libpenguin.so: dlopen failed: library "libpenguin.so" not found.
+03-18 22:19:19.574 21903 21903 E headunitrevived: Unable to open libpenguin.so: dlopen failed: library "libpenguin.so" not found.
+03-18 22:19:19.574 21903 21903 I BufferQueueProducer: [](id:558f00000000,api:0,p:-567301744,c:21903) setDequeueTimeout:2077252342
+03-18 22:19:19.574 21903 21903 I BLASTBufferQueue_Java: new BLASTBufferQueue, mName= VRI[MainActivity]@9688812 mNativeObject= 0xb400007b7e2d9430 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3603 android.view.ViewRootImpl.relayoutWindow:11810 android.view.ViewRootImpl.performTraversals:4840 android.view.ViewRootImpl.doTraversal:3959 android.view.ViewRootImpl$TraversalRunnable.run:13031 android.view.Choreographer$CallbackRecord.run:1961 android.view.Choreographer$CallbackRecord.run:1970 android.view.Choreographer.doCallbacks:1423 android.view.Choreographer.doFrame:1348 android.view.Choreographer$FrameDisplayEventReceiver.run:1930 
+03-18 22:19:19.574 21903 21903 I BLASTBufferQueue_Java: update, w= 1080 h= 2340 mName = VRI[MainActivity]@9688812 mNativeObject= 0xb400007b7e2d9430 sc.mNativeObject= 0xb400007c5e2e5e50 format= -1 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3608 android.view.ViewRootImpl.relayoutWindow:11810 android.view.ViewRootImpl.performTraversals:4840 android.view.ViewRootImpl.doTraversal:3959 android.view.ViewRootImpl$TraversalRunnable.run:13031 android.view.Choreographer$CallbackRecord.run:1961 
+03-18 22:19:19.574 21903 21903 I VRI[MainActivity]@9688812: Relayout returned: old=(0,0,1080,2340) new=(0,0,1080,2340) relayoutAsync=false req=(1080,2340)0 dur=1 res=0x3 s={true 0xb400007b2e2f2310} ch=true seqId=0
+03-18 22:19:19.575 21903 21903 I VRI[MainActivity]@9688812: performConfigurationChange setNightDimText nightDimLevel=0
+03-18 22:19:19.578 21903 21903 D VRI[MainActivity]@9688812: mThreadedRenderer.initialize() mSurface={isValid=true 0xb400007b2e2f2310} hwInitialized=true
+03-18 22:19:19.622 21903 21903 D VRI[MainActivity]@9688812: reportNextDraw android.view.ViewRootImpl.performTraversals:5504 android.view.ViewRootImpl.doTraversal:3959 android.view.ViewRootImpl$TraversalRunnable.run:13031 android.view.Choreographer$CallbackRecord.run:1961 android.view.Choreographer$CallbackRecord.run:1970 
+03-18 22:19:19.622 21903 21903 D VRI[MainActivity]@9688812: Setup new sync=wmsSync-VRI[MainActivity]@9688812#0
+03-18 22:19:19.622 21903 21903 I VRI[MainActivity]@9688812: Creating new active sync group VRI[MainActivity]@9688812#1
+03-18 22:19:19.623 21903 21903 D VRI[MainActivity]@9688812: registerCallbacksForSync syncBuffer=false
+03-18 22:19:19.626 21903 21939 D VRI[MainActivity]@9688812: Received frameDrawingCallback syncResult=0 frameNum=1.
+03-18 22:19:19.626 21903 21939 I VRI[MainActivity]@9688812: mWNT: t=0xb400007bfe303dc0 mBlastBufferQueue=0xb400007b7e2d9430 fn= 1 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.ViewRootImpl$12.onFrameDraw:15558 android.view.ThreadedRenderer$1.onFrameDraw:751 <bottom of call stack> 
+03-18 22:19:19.626 21903 21933 I AdrenoUtils: <ReadGpuID:366>: Reading chip ID through GSL
+03-18 22:19:19.627 21903 21939 I VRI[MainActivity]@9688812: Setting up sync and frameCommitCallback
+03-18 22:19:19.634 21903 21933 I BLASTBufferQueue: [VRI[MainActivity]@9688812#0](f:0,a:0,s:0) onFrameAvailable the first frame is available
+03-18 22:19:19.634 21903 21933 I SurfaceComposerClient: apply transaction with the first frame. layerId: 223, bufferData(ID: 94072668684291, frameNumber: 1)
+03-18 22:19:19.634 21903 21933 I VRI[MainActivity]@9688812: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true
+03-18 22:19:19.634 21903 21933 D HWUI    : CFMS:: SetUp Pid : 21903    Tid : 21933
+03-18 22:19:19.634 21903 21903 D VRI[MainActivity]@9688812: reportDrawFinished seqId=0
+03-18 22:19:19.635 21903 21903 I BLASTBufferQueue_Java: update, w= 1080 h= 2340 mName = VRI[MainActivity]@9688812 mNativeObject= 0xb400007b7e2d9430 sc.mNativeObject= 0xb400007c5e2e5e50 format= -1 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3592 android.view.ViewRootImpl.relayoutWindow:11810 android.view.ViewRootImpl.performTraversals:4840 android.view.ViewRootImpl.doTraversal:3959 android.view.ViewRootImpl$TraversalRunnable.run:13031 android.view.Choreographer$CallbackRecord.run:1961 
+03-18 22:19:19.635 21903 21903 I VRI[MainActivity]@9688812: Relayout returned: old=(0,0,1080,2340) new=(0,0,1080,2340) relayoutAsync=true req=(1080,2340)0 dur=0 res=0x0 s={true 0xb400007b2e2f2310} ch=false seqId=0
+03-18 22:19:19.635 21903 21903 I VRI[MainActivity]@9688812: registerCallbackForPendingTransactions
+03-18 22:19:19.635 21903 21940 I VRI[MainActivity]@9688812: mWNT: t=0xb400007bfe30b600 mBlastBufferQueue=0xb400007b7e2d9430 fn= 2 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.ViewRootImpl$10.onFrameDraw:6612 android.view.ViewRootImpl$4.onFrameDraw:2485 android.view.ThreadedRenderer$1.onFrameDraw:751 
+03-18 22:19:19.635 21903 21933 I BLASTBufferQueue_Java: applyPendingTransactions, mName= VRI[MainActivity]@9688812 mNativeObject= 0xb400007b7e2d9430 frameNumber= 2 caller= android.view.ViewRootImpl$10.lambda$onFrameDraw$0:6626 android.view.ViewRootImpl$10.$r8$lambda$9Asgene6-vG9RkigzOD8vEb0AKc:0 android.view.ViewRootImpl$10$$ExternalSyntheticLambda0.onFrameCommit:0 android.view.ThreadedRenderer$1.lambda$onFrameDraw$0:763 android.view.ThreadedRenderer$1$$ExternalSyntheticLambda0.onFrameCommit:0 <bottom of call stack> 
+03-18 22:19:19.636 21903 21903 I HUREV   : [2] GpsLocation.start | Request location updates
+03-18 22:19:19.638 21903 21903 I HUREV   : [2] GpsLocation.start | Last known location:  Unknown
+03-18 22:19:19.710 21903 21908 I headunitrevived: Compiler allocated 5196KB to compile void android.view.ViewRootImpl.performTraversals()
+03-18 22:19:19.717 21903 21903 I HUREV   : [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-18 22:19:19.721 21903 21903 I BLASTBufferQueue_Java: update, w= 1080 h= 2340 mName = VRI[MainActivity]@9688812 mNativeObject= 0xb400007b7e2d9430 sc.mNativeObject= 0xb400007c5e2e5e50 format= -1 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3592 android.view.ViewRootImpl.relayoutWindow:11810 android.view.ViewRootImpl.performTraversals:4840 android.view.ViewRootImpl.doTraversal:3959 android.view.ViewRootImpl$TraversalRunnable.run:13031 android.view.Choreographer$CallbackRecord.run:1961 
+03-18 22:19:19.721 21903 21903 I VRI[MainActivity]@9688812: Relayout returned: old=(0,0,1080,2340) new=(0,0,1080,2340) relayoutAsync=true req=(1080,2340)0 dur=1 res=0x0 s={true 0xb400007b2e2f2310} ch=false seqId=0
+03-18 22:19:19.722 21903 21903 I VRI[MainActivity]@9688812: registerCallbackForPendingTransactions
+03-18 22:19:19.723 21903 21939 I VRI[MainActivity]@9688812: mWNT: t=0xb400007bfe30b850 mBlastBufferQueue=0xb400007b7e2d9430 fn= 2 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.ViewRootImpl$10.onFrameDraw:6612 android.view.ViewRootImpl$4.onFrameDraw:2485 android.view.ThreadedRenderer$1.onFrameDraw:751 
+03-18 22:19:19.725 21903 21903 I InsetsController: onStateChanged: host=com.andrerinas.headunitrevived/com.andrerinas.headunitrevived.main.MainActivity, from=android.view.ViewRootImpl.onInsetsStateChanged:3038, state=InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2340), mDisplayCutout=DisplayCutout{insets=Rect(0, 96 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(514, 0 - 566, 96), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2340 physicalDisplayWidth=1080 physicalDisplayHeight=2340 density={2.8125} cutoutSpec={M 0,0 H -9.333333333333333 V 34.13333333333333 H 9.333333333333333 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}} sideOverrides={}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=34, center=Point(34, 34)}, RoundedCorner{position=TopRight, radius=34, center=Point(1046, 34)}, RoundedCorner{position=BottomRight, radius=34, center=Point(1046, 2306)}, RoundedCorner{position=BottomLeft, radius=34, center=Point(34, 2306)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2340), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(981, 0 - 1080, 96) rotation=0}, mDisplayShape=DisplayShape{ spec=-311912193 displayWidth=1080 displayHeight=2340 physicalPixelDisplaySizeRatio=0.75 rotation=0 offsetX=0 offsetY=0 scale=1.0}, mSources= { InsetsSource: {bc6b0000 mType=statusBars mFrame=[0,0][1080,96] mAttachedInsets=null mVisible=false mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {bc6b0005 mType=mandatorySystemGestures mFrame=[0,0][1080,123] mAttachedInsets=null mVisible=true mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {bc6b0006 mType=tappableElement mFrame=[0,0][1080,96] mAttachedInsets=null mVisible=true mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {3 mType=ime mFrame=[0,0][0,0] mAttachedInsets=null mVisible=false mFlags=INVALID mSideHint=NONE mBoundingRects=null}, InsetsSource: {27 mType=displayCutout mFrame=[0,0][1080,96] mAttachedInsets=null mVisible=true mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {2fd50001 mType=navigationBars mFrame=[0,2307][1080,2340] mAttachedInsets=null mVisible=false mFlags=SUPPRESS_SCRIM mSideHint=BOTTOM mBoundingRects=null}, InsetsSource: {2fd50004 mType=systemGestures mFrame=[0,0][67,2340] mAttachedInsets=null mVisible=true mFlags= mSideHint=LEFT mBoundingRects=null}, InsetsSource: {2fd50005 mType=mandatorySystemGestures mFrame=[0,2268][1080,2340] mAttachedInsets=null mVisible=true mFlags= mSideHint=BOTTOM mBoundingRects=null}, InsetsSource: {2fd50006 mType=tappableElement mFrame=[0,0][0,0] mAttachedInsets=null mVisible=true mFlags= mSideHint=NONE mBoundingRects=null}, InsetsSource: {2fd50024 mType=systemGestures mFrame=[1013,0][1080,2340] mAttachedInsets=null mVisible=true mFlags= mSideHint=RIGHT mBoundingRects=null} }
+03-18 22:19:19.726 21903 21903 I VRI[MainActivity]@9688812: handleResized, frames=ClientWindowFrames{frame=[0,0][1080,2340] display=[0,0][1080,2340] parentFrame=[0,0][0,0]} displayId=0 dragResizing=false compatScale=1.0 frameChanged=false attachedFrameChanged=false configChanged=false displayChanged=false compatScaleChanged=false dragResizingChanged=false
+03-18 22:19:19.726 21903 21903 D VRI[MainActivity]@9688812: WindowInsets changed: statusBars:null navigationBars:null 
+03-18 22:19:19.728 21903 21903 D VRI[MainActivity]@9688812: mThreadedRenderer.initializeIfNeeded()#2 mSurface={isValid=true 0xb400007b2e2f2310}
+03-18 22:19:19.728 21903 21903 D InputMethodManagerUtils: startInputInner - Id : 0
+03-18 22:19:19.729 21903 21903 I InputMethodManager: startInputInner - IInputMethodManagerGlobalInvoker.startInputOrWindowGainedFocus
+03-18 22:19:19.734 21903 21903 I BLASTBufferQueue_Java: update, w= 1080 h= 2340 mName = VRI[MainActivity]@9688812 mNativeObject= 0xb400007b7e2d9430 sc.mNativeObject= 0xb400007c5e2e5e50 format= -1 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3592 android.view.ViewRootImpl.relayoutWindow:11810 android.view.ViewRootImpl.performTraversals:4840 android.view.ViewRootImpl.doTraversal:3959 android.view.ViewRootImpl$TraversalRunnable.run:13031 android.view.Choreographer$CallbackRecord.run:1961 
+03-18 22:19:19.734 21903 21903 I VRI[MainActivity]@9688812: Relayout returned: old=(0,0,1080,2340) new=(0,0,1080,2340) relayoutAsync=true req=(1080,2340)0 dur=0 res=0x0 s={true 0xb400007b2e2f2310} ch=false seqId=0
+03-18 22:19:19.735 21903 21903 I VRI[MainActivity]@9688812: registerCallbackForPendingTransactions
+03-18 22:19:19.735 21903 21940 I VRI[MainActivity]@9688812: mWNT: t=0xb400007bfe2f5fc0 mBlastBufferQueue=0xb400007b7e2d9430 fn= 3 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.ViewRootImpl$10.onFrameDraw:6612 android.view.ViewRootImpl$4.onFrameDraw:2485 android.view.ThreadedRenderer$1.onFrameDraw:751 
+03-18 22:19:19.736 21903 21903 D InsetsController: hide(ime())
+03-18 22:19:19.736 21903 21903 I ImeTracker: com.andrerinas.headunitrevived:f6afa897: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+03-18 22:19:19.742 21903 21915 D InputTransport: Input channel constructed: 'ClientS', fd=162
+03-18 22:19:20.076 21903 22025 W InteractionJankMonitor: Initializing without READ_DEVICE_CONFIG permission. enabled=false, interval=1, missedFrameThreshold=3, frameTimeThreshold=64, package=com.andrerinas.headunitrevived
+03-18 22:19:20.847 21903 21903 I VRI[MainActivity]@9688812: ViewPostIme pointer 0
+03-18 22:19:20.848 21903 21903 I VRI[MainActivity]@9688812: call setFrameRateCategory for touch hint category=high hint, reason=touch, vri=VRI[MainActivity]@9688812
+03-18 22:19:20.919 21903 21903 I VRI[MainActivity]@9688812: ViewPostIme pointer 1
+03-18 22:19:20.932 21903 21903 D ActivityThread: com.andrerinas.headunitrevived will use render engine as VK
+03-18 22:19:20.936 21903 21903 I DecorView: setWindowBackground: isPopOver=false color=ff010102 d=android.graphics.drawable.GradientDrawable@c5f88d8
+03-18 22:19:20.971 21903 21903 D ViewRootImpl: desktopMode is false
+03-18 22:19:20.971 21903 21903 I ViewRootImpl: dVRR is disabled
+03-18 22:19:20.971 21903 21933 D NativeCustomFrequencyManager: [NativeCFMS] BpCustomFrequencyManager::BpCustomFrequencyManager()
+03-18 22:19:20.972 21903 21903 D InsetsController: Setting requestedVisibleTypes to 500 (was 503)
+03-18 22:19:20.972 21903 21903 I InsetsController: setRequestedVisibleTypes: visible=false, mask=statusBars navigationBars, host=com.andrerinas.headunitrevived/com.andrerinas.headunitrevived.main.SettingsActivity, from=android.view.InsetsController.controlAnimationUnchecked:1646 android.view.InsetsController.applyAnimation:2278 android.view.InsetsController.applyAnimation:2207 android.view.InsetsController.hide:1581 android.view.InsetsController.hide:1521 android.view.PendingInsetsController$HideRequest.replay:295 android.view.PendingInsetsController.replayAndAttach:208 android.view.ViewRootImpl.setView:1967 android.view.WindowManagerGlobal.addView:606 android.view.WindowManagerImpl.addView:167 
+03-18 22:19:20.973 21903 21903 D InputTransport: Input channel constructed: 'fb1b05a', fd=173
+03-18 22:19:20.973 21903 21903 I InsetsController: onStateChanged: host=com.andrerinas.headunitrevived/com.andrerinas.headunitrevived.main.SettingsActivity, from=android.view.ViewRootImpl.onInsetsStateChanged:3038, state=InsetsState: {mDisplayFrame=Rect(0, 0 - 1080, 2340), mDisplayCutout=DisplayCutout{insets=Rect(0, 96 - 0, 0) waterfall=Insets{left=0, top=0, right=0, bottom=0} boundingRect={Bounds=[Rect(0, 0 - 0, 0), Rect(514, 0 - 566, 96), Rect(0, 0 - 0, 0), Rect(0, 0 - 0, 0)]} cutoutPathParserInfo={CutoutPathParserInfo{displayWidth=1080 displayHeight=2340 physicalDisplayWidth=1080 physicalDisplayHeight=2340 density={2.8125} cutoutSpec={M 0,0 H -9.333333333333333 V 34.13333333333333 H 9.333333333333333 V 0 H 0 Z @dp} rotation={0} scale={1.0} physicalPixelDisplaySizeRatio={1.0}}} sideOverrides={}}, mRoundedCorners=RoundedCorners{[RoundedCorner{position=TopLeft, radius=34, center=Point(34, 34)}, RoundedCorner{position=TopRight, radius=34, center=Point(1046, 34)}, RoundedCorner{position=BottomRight, radius=34, center=Point(1046, 2306)}, RoundedCorner{position=BottomLeft, radius=34, center=Point(34, 2306)}]}  mRoundedCornerFrame=Rect(0, 0 - 1080, 2340), mPrivacyIndicatorBounds=PrivacyIndicatorBounds {static bounds=Rect(981, 0 - 1080, 96) rotation=0}, mDisplayShape=DisplayShape{ spec=-311912193 displayWidth=1080 displayHeight=2340 physicalPixelDisplaySizeRatio=0.75 rotation=0 offsetX=0 offsetY=0 scale=1.0}, mSources= { InsetsSource: {bc6b0000 mType=statusBars mFrame=[0,0][1080,96] mAttachedInsets=null mVisible=false mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {bc6b0005 mType=mandatorySystemGestures mFrame=[0,0][1080,123] mAttachedInsets=null mVisible=true mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {bc6b0006 mType=tappableElement mFrame=[0,0][1080,96] mAttachedInsets=null mVisible=true mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {3 mType=ime mFrame=[0,0][0,0] mAttachedInsets=null mVisible=false mFlags=INVALID mSideHint=NONE mBoundingRects=null}, InsetsSource: {27 mType=displayCutout mFrame=[0,0][1080,96] mAttachedInsets=null mVisible=true mFlags= mSideHint=TOP mBoundingRects=null}, InsetsSource: {2fd50001 mType=navigationBars mFrame=[0,2307][1080,2340] mAttachedInsets=null mVisible=false mFlags=SUPPRESS_SCRIM mSideHint=BOTTOM mBoundingRects=null}, InsetsSource: {2fd50004 mType=systemGestures mFrame=[0,0][67,2340] mAttachedInsets=null mVisible=true mFlags= mSideHint=LEFT mBoundingRects=null}, InsetsSource: {2fd50005 mType=mandatorySystemGestures mFrame=[0,2268][1080,2340] mAttachedInsets=null mVisible=true mFlags= mSideHint=BOTTOM mBoundingRects=null}, InsetsSource: {2fd50006 mType=tappableElement mFrame=[0,0][0,0] mAttachedInsets=null mVisible=true mFlags= mSideHint=NONE mBoundingRects=null}, InsetsSource: {2fd50024 mType=systemGestures mFrame=[1013,0][1080,2340] mAttachedInsets=null mVisible=true mFlags= mSideHint=RIGHT mBoundingRects=null} }
+03-18 22:19:20.973 21903 21903 I VRI[SettingsActivity]@b78cf65: synced displayState. AttachInfo displayState=2
+03-18 22:19:20.974 21903 21903 I VRI[SettingsActivity]@b78cf65: setView = com.android.internal.policy.DecorView@2e828c7 IsHRR=false mFlingFrameRateChange=0 TM=true
+03-18 22:19:20.974 21903 21933 D HWUI    : HWUI - treat SMPTE_170M as sRGB
+03-18 22:19:20.974 21903 21903 D WindowOnBackDispatcher: setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@a302ef4
+03-18 22:19:20.974 21903 21903 D WindowOnBackDispatcher: setTopOnBackInvokedCallback (unwrapped): androidx.activity.OnBackPressedDispatcher$Api34Impl$createOnBackAnimationCallback$1@98a861d
+03-18 22:19:20.975 21903 21903 D VRI[SettingsActivity]@b78cf65: WindowInsets changed: 1080x2340 mandatorySystemGestures:[0,123,0,72] 
+03-18 22:19:20.976 21903 21903 I BufferQueueProducer: [](id:558f00000001,api:0,p:-567208336,c:21903) setDequeueTimeout:2077252342
+03-18 22:19:20.977 21903 21903 I BLASTBufferQueue_Java: new BLASTBufferQueue, mName= VRI[SettingsActivity]@b78cf65 mNativeObject= 0xb400007b7e2e7f00 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3603 android.view.ViewRootImpl.relayoutWindow:11810 android.view.ViewRootImpl.performTraversals:4840 android.view.ViewRootImpl.doTraversal:3959 android.view.ViewRootImpl$TraversalRunnable.run:13031 android.view.Choreographer$CallbackRecord.run:1961 android.view.Choreographer$CallbackRecord.run:1970 android.view.Choreographer.doCallbacks:1423 android.view.Choreographer.doFrame:1348 android.view.Choreographer$FrameDisplayEventReceiver.run:1930 
+03-18 22:19:20.977 21903 21903 I BLASTBufferQueue_Java: update, w= 1080 h= 2340 mName = VRI[SettingsActivity]@b78cf65 mNativeObject= 0xb400007b7e2e7f00 sc.mNativeObject= 0xb400007c5e2e9390 format= -1 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3608 android.view.ViewRootImpl.relayoutWindow:11810 android.view.ViewRootImpl.performTraversals:4840 android.view.ViewRootImpl.doTraversal:3959 android.view.ViewRootImpl$TraversalRunnable.run:13031 android.view.Choreographer$CallbackRecord.run:1961 
+03-18 22:19:20.977 21903 21903 I VRI[SettingsActivity]@b78cf65: Relayout returned: old=(0,0,1080,2340) new=(0,0,1080,2340) relayoutAsync=false req=(1080,2340)0 dur=1 res=0x3 s={true 0xb400007b2e322790} ch=true seqId=0
+03-18 22:19:20.977 21903 21903 I VRI[SettingsActivity]@b78cf65: performConfigurationChange setNightDimText nightDimLevel=0
+03-18 22:19:20.977 21903 21903 D VRI[SettingsActivity]@b78cf65: mThreadedRenderer.initialize() mSurface={isValid=true 0xb400007b2e322790} hwInitialized=true
+03-18 22:19:21.000 21903 21903 D VRI[SettingsActivity]@b78cf65: reportNextDraw android.view.ViewRootImpl.performTraversals:5504 android.view.ViewRootImpl.doTraversal:3959 android.view.ViewRootImpl$TraversalRunnable.run:13031 android.view.Choreographer$CallbackRecord.run:1961 android.view.Choreographer$CallbackRecord.run:1970 
+03-18 22:19:21.000 21903 21903 D VRI[SettingsActivity]@b78cf65: Setup new sync=wmsSync-VRI[SettingsActivity]@b78cf65#2
+03-18 22:19:21.000 21903 21903 I VRI[SettingsActivity]@b78cf65: Creating new active sync group VRI[SettingsActivity]@b78cf65#3
+03-18 22:19:21.000 21903 21903 D VRI[SettingsActivity]@b78cf65: registerCallbacksForSync syncBuffer=false
+03-18 22:19:21.002 21903 21940 D VRI[SettingsActivity]@b78cf65: Received frameDrawingCallback syncResult=0 frameNum=1.
+03-18 22:19:21.002 21903 21940 I VRI[SettingsActivity]@b78cf65: mWNT: t=0xb400007bfe30eb30 mBlastBufferQueue=0xb400007b7e2e7f00 fn= 1 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.ViewRootImpl$12.onFrameDraw:15558 android.view.ThreadedRenderer$1.onFrameDraw:751 <bottom of call stack> 
+03-18 22:19:21.002 21903 21940 I VRI[SettingsActivity]@b78cf65: Setting up sync and frameCommitCallback
+03-18 22:19:21.005 21903 21933 I BLASTBufferQueue: [VRI[SettingsActivity]@b78cf65#1](f:0,a:0,s:0) onFrameAvailable the first frame is available
+03-18 22:19:21.005 21903 21933 I SurfaceComposerClient: apply transaction with the first frame. layerId: 240, bufferData(ID: 94072668684295, frameNumber: 1)
+03-18 22:19:21.005 21903 21933 I VRI[SettingsActivity]@b78cf65: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true
+03-18 22:19:21.005 21903 21933 D HWUI    : CFMS:: SetUp Pid : 21903    Tid : 21933
+03-18 22:19:21.005 21903 21903 D VRI[SettingsActivity]@b78cf65: reportDrawFinished seqId=0
+03-18 22:19:21.005 21903 21903 I ImeFocusController: onPreWindowFocus: skipped hasWindowFocus=false mHasImeFocus=true
+03-18 22:19:21.005 21903 21903 I ImeFocusController: onPostWindowFocus: skipped hasWindowFocus=false mHasImeFocus=true
+03-18 22:19:21.006 21903 21903 I InsetsSourceConsumer: applyRequestedVisibilityToControl: visible=false, type=navigationBars, host=com.andrerinas.headunitrevived/com.andrerinas.headunitrevived.main.SettingsActivity
+03-18 22:19:21.006 21903 21903 I InsetsSourceConsumer: applyRequestedVisibilityToControl: visible=false, type=statusBars, host=com.andrerinas.headunitrevived/com.andrerinas.headunitrevived.main.SettingsActivity
+03-18 22:19:21.019 21903 21903 D VRI[SettingsActivity]@b78cf65: mThreadedRenderer.initializeIfNeeded()#2 mSurface={isValid=true 0xb400007b2e322790}
+03-18 22:19:21.019 21903 21903 D InputMethodManagerUtils: startInputInner - Id : 0
+03-18 22:19:21.019 21903 21903 I InputMethodManager: startInputInner - IInputMethodManagerGlobalInvoker.startInputOrWindowGainedFocus
+03-18 22:19:21.020 21903 21903 D InsetsController: hide(ime())
+03-18 22:19:21.020 21903 21903 I ImeTracker: com.andrerinas.headunitrevived:b065a22e: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+03-18 22:19:21.021 21903 21915 D InputTransport: Input channel constructed: 'ClientS', fd=195
+03-18 22:19:21.024 21903 21903 I BLASTBufferQueue_Java: update, w= 1080 h= 2340 mName = VRI[SettingsActivity]@b78cf65 mNativeObject= 0xb400007b7e2e7f00 sc.mNativeObject= 0xb400007c5e2e9390 format= -1 caller= android.view.ViewRootImpl.updateBlastSurfaceIfNeeded:3592 android.view.ViewRootImpl.relayoutWindow:11810 android.view.ViewRootImpl.performTraversals:4840 android.view.ViewRootImpl.doTraversal:3959 android.view.ViewRootImpl$TraversalRunnable.run:13031 android.view.Choreographer$CallbackRecord.run:1961 
+03-18 22:19:21.024 21903 21903 I VRI[SettingsActivity]@b78cf65: Relayout returned: old=(0,0,1080,2340) new=(0,0,1080,2340) relayoutAsync=true req=(1080,2340)0 dur=0 res=0x0 s={true 0xb400007b2e322790} ch=false seqId=0
+03-18 22:19:21.024 21903 21903 I VRI[SettingsActivity]@b78cf65: registerCallbackForPendingTransactions
+03-18 22:19:21.024 21903 21939 I VRI[SettingsActivity]@b78cf65: mWNT: t=0xb400007bfe3139d0 mBlastBufferQueue=0xb400007b7e2e7f00 fn= 2 HdrRenderState mRenderHdrSdrRatio=1.0 caller= android.view.ViewRootImpl$10.onFrameDraw:6612 android.view.ViewRootImpl$4.onFrameDraw:2485 android.view.ThreadedRenderer$1.onFrameDraw:751 
+03-18 22:19:21.484 21903 21903 I VRI[MainActivity]@9688812: handleAppVisibility mAppVisible = true visible = false
+03-18 22:19:21.484 21903 21903 D VRI[MainActivity]@9688812: visibilityChanged oldVisibility=true newVisibility=false
+03-18 22:19:21.493 21903 21903 I VRI[MainActivity]@9688812: Relayout returned: old=(0,0,1080,2340) new=(0,0,1080,2340) relayoutAsync=false req=(1080,2340)8 dur=2 res=0x2 s={false 0x0} ch=true seqId=0
+03-18 22:19:21.493 21903 21903 D VRI[MainActivity]@9688812: Not drawing due to not visible. Reason=!mAppVisible && !mForceDecorViewVisibility
+03-18 22:19:21.494 21903 21903 D WindowOnBackDispatcher: setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@666f8b1
+03-18 22:19:21.494 21903 21903 I VRI[MainActivity]@9688812: stopped(true) old = false
+03-18 22:19:21.494 21903 21903 D VRI[MainActivity]@9688812: WindowStopped on com.andrerinas.headunitrevived/com.andrerinas.headunitrevived.main.MainActivity set to true
+03-18 22:19:21.629 21903 21903 I VRI[SettingsActivity]@b78cf65: ViewPostIme pointer 0
+03-18 22:19:21.629 21903 21903 I VRI[SettingsActivity]@b78cf65: call setFrameRateCategory for touch hint category=high hint, reason=touch, vri=VRI[SettingsActivity]@b78cf65
+03-18 22:19:21.718 21903 21903 I VRI[SettingsActivity]@b78cf65: ViewPostIme pointer 1
+03-18 22:19:23.675 21903 21903 I VRI[SettingsActivity]@b78cf65: ViewPostIme pointer 0

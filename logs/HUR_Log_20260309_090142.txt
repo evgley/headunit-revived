@@ -1,0 +1,169 @@
+--------- beginning of main
+03-09 09:01:39.799  3570  3570 I zygote64: Not late-enabling -Xcheck:jni (already on)
+03-09 09:01:39.837  3570  3570 I JDWP    : type=1400 audit(0.0:208073): avc: denied { connectto } for path=006A6477702D636F6E74726F6C scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:su:s0 tclass=unix_stream_socket permissive=1
+03-09 09:01:40.003  3570  3570 I MultiDex: VM with version 2.1.0 has multidex support
+03-09 09:01:40.003  3570  3570 I MultiDex: Installing application
+03-09 09:01:40.003  3570  3570 I MultiDex: VM has multidex support, MultiDex support library is disabled.
+03-09 09:01:40.934  3570  3570 I CAR.HU.J: [2] MainActivity.handleIntent | MainActivity received intent: android.intent.action.MAIN, data: null
+03-09 09:01:40.937  3570  3575 I zygote64: Do partial code cache collection, code=30KB, data=16KB
+03-09 09:01:40.938  3570  3575 I zygote64: After code cache collection, code=24KB, data=15KB
+03-09 09:01:40.938  3570  3575 I zygote64: Increasing code cache capacity to 128KB
+03-09 09:01:41.273  3570  3570 I CAR.HU.J: [2] HomeFragment.attemptSingleUsbAutoConnect | HomeFragment: Requesting single-USB auto-connect via AapService
+03-09 09:01:41.338  3570  3570 I CAR.HU.J: [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-09 09:01:41.347  3570  3570 I SurfaceFactory: [static] sSurfaceFactory = com.mediatek.view.impl.SurfaceFactoryImpl@ab8ba89
+03-09 09:01:41.389  3570  3575 I zygote64: Do partial code cache collection, code=44KB, data=53KB
+03-09 09:01:41.390  3570  3575 I zygote64: After code cache collection, code=43KB, data=53KB
+03-09 09:01:41.390  3570  3575 I zygote64: Increasing code cache capacity to 256KB
+03-09 09:01:41.391  3570  3575 I zygote64: Compiler allocated 8MB to compile void android.widget.TextView.<init>(android.content.Context, android.util.AttributeSet, int, int)
+03-09 09:01:41.393  3570  3570 I Choreographer: Skipped 76 frames!  The application may be doing too much work on its main thread.
+03-09 09:01:41.705  3570  3575 I zygote64: Do full code cache collection, code=124KB, data=73KB
+03-09 09:01:41.706  3570  3575 I zygote64: After code cache collection, code=92KB, data=48KB
+03-09 09:01:41.768  3570  3575 I zygote64: Do partial code cache collection, code=93KB, data=61KB
+03-09 09:01:41.769  3570  3575 I zygote64: After code cache collection, code=93KB, data=61KB
+03-09 09:01:41.769  3570  3575 I zygote64: Increasing code cache capacity to 512KB
+03-09 09:01:41.793  3570  3570 I RenderThread: type=1400 audit(0.0:208074): avc: denied { search } for name="clients" dev="debugfs" ino=6282 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:debugfs_ion:s0 tclass=dir permissive=1
+03-09 09:01:41.811  3570  3592 I com.andrerinas.headunitrevived: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasWideColorDisplay retrieved: 0
+03-09 09:01:41.811  3570  3592 I OpenGLRenderer: Initialized EGL, version 1.4
+03-09 09:01:41.841  3570  3592 I HWUIExtension: Get disable program binary service property (0)
+03-09 09:01:41.841  3570  3592 I HWUIExtension: Initializing program atlas...
+03-09 09:01:41.842  3570  3592 I ProgramBinary/Service: ProgramBinaryService client side disable debugging.
+03-09 09:01:41.842  3570  3592 I ProgramBinary/Service: ProgramBinaryService client side disable binary content debugging.
+03-09 09:01:41.844  3570  3592 I HWUIExtension: Program binary detail: Binary length is 314156, program map length is 104.
+03-09 09:01:41.844  3570  3592 I HWUIExtension: Succeeded to mmap program binaries. File descriptor is 58, and path is /dev/ashmem.
+03-09 09:01:41.844  3570  3592 I HWUIExtension: No need to use file discriptor anymore, close fd(58).
+03-09 09:01:41.925  3570  3570 I CAR.HU.J: [2] AapService.onCreate | AapService creating...
+03-09 09:01:41.987  3570  3570 I CAR.HU.J: [2] 1.invoke | NightMode update: true
+03-09 09:01:42.072  3570  3570 W ContextImpl: Failed to ensure /storage/usbotg2/Android/data/com.andrerinas.headunitrevived/files: 400
+03-09 09:01:42.969  3570  3570 I CAR.HU.J: [2] AapService.onCreate | Auto-started continuous log capture
+03-09 09:01:42.975  3570  3570 I zygote64: Rejecting re-init on previously-failed class java.lang.Class<com.andrerinas.headunitrevived.connection.WifiDirectManager$$ExternalSyntheticLambda0>: java.lang.NoClassDefFoundError: Failed resolution of: Landroid/net/wifi/p2p/WifiP2pManager$DeviceInfoListener;
+03-09 09:01:42.975  3570  3570 I zygote64:   at void com.andrerinas.headunitrevived.aap.AapService.onCreate() (AapService.kt:167)
+03-09 09:01:42.975  3570  3570 I zygote64:   at void android.app.ActivityThread.handleCreateService(android.app.ActivityThread$CreateServiceData) (ActivityThread.java:3380)
+03-09 09:01:42.975  3570  3570 I zygote64:   at void android.app.ActivityThread.-wrap4(android.app.ActivityThread, android.app.ActivityThread$CreateServiceData) (ActivityThread.java:-1)
+03-09 09:01:42.975  3570  3570 I zygote64:   at void android.app.ActivityThread$H.handleMessage(android.os.Message) (ActivityThread.java:1711)
+03-09 09:01:42.975  3570  3570 I zygote64:   at void android.os.Handler.dispatchMessage(android.os.Message) (Handler.java:106)
+03-09 09:01:42.975  3570  3570 I zygote64:   at void android.os.Looper.loop() (Looper.java:164)
+03-09 09:01:42.975  3570  3570 I zygote64:   at void android.app.ActivityThread.main(java.lang.String[]) (ActivityThread.java:6548)
+03-09 09:01:42.975  3570  3570 I zygote64:   at java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+03-09 09:01:42.975  3570  3570 I zygote64:   at void com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run() (RuntimeInit.java:445)
+03-09 09:01:42.975  3570  3570 I zygote64:   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) (ZygoteInit.java:857)
+03-09 09:01:42.975  3570  3570 I zygote64: Caused by: java.lang.ClassNotFoundException: Didn't find class "android.net.wifi.p2p.WifiP2pManager$DeviceInfoListener" on path: DexPathList[[zip file "/data/app/com.andrerinas.headunitrevived-nG1DKtfF0K-uiGKgLzecDg==/base.apk"],nativeLibraryDirectories=[/data/app/com.andrerinas.headunitrevived-nG1DKtfF0K-uiGKgLzecDg==/lib/arm64, /data/app/com.andrerinas.headunitrevived-nG1DKtfF0K-uiGKgLzecDg==/base.apk!/lib/arm64-v8a, /system/lib64, /vendor/lib64]]
+03-09 09:01:42.975  3570  3570 I zygote64:   at java.lang.Class dalvik.system.BaseDexClassLoader.findClass(java.lang.String) (BaseDexClassLoader.java:125)
+03-09 09:01:42.975  3570  3570 I zygote64:   at java.lang.Class java.lang.ClassLoader.loadClass(java.lang.String, boolean) (ClassLoader.java:379)
+03-09 09:01:42.975  3570  3570 I zygote64:   at java.lang.Class java.lang.ClassLoader.loadClass(java.lang.String) (ClassLoader.java:312)
+03-09 09:01:42.975  3570  3570 I zygote64:   at void com.andrerinas.headunitrevived.aap.AapService.onCreate() (AapService.kt:167)
+03-09 09:01:42.975  3570  3570 I zygote64:   at void android.app.ActivityThread.handleCreateService(android.app.ActivityThread$CreateServiceData) (ActivityThread.java:3380)
+03-09 09:01:42.975  3570  3570 I zygote64:   at void android.app.ActivityThread.-wrap4(android.app.ActivityThread, android.app.ActivityThread$CreateServiceData) (ActivityThread.java:-1)
+03-09 09:01:42.975  3570  3570 I zygote64:   at void android.app.ActivityThread$H.handleMessage(android.os.Message) (ActivityThread.java:1711)
+03-09 09:01:42.975  3570  3570 I zygote64:   at void android.os.Handler.dispatchMessage(android.os.Message) (Handler.java:106)
+03-09 09:01:42.975  3570  3570 I zygote64:   at void android.os.Looper.loop() (Looper.java:164)
+03-09 09:01:42.975  3570  3570 I zygote64:   at void android.app.ActivityThread.main(java.lang.String[]) (ActivityThread.java:6548)
+03-09 09:01:42.975  3570  3570 I zygote64:   at java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+03-09 09:01:42.975  3570  3570 I zygote64:   at void com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run() (RuntimeInit.java:445)
+03-09 09:01:42.975  3570  3570 I zygote64:   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) (ZygoteInit.java:857)
+03-09 09:01:42.975  3570  3570 I zygote64: 
+03-09 09:01:42.976  3570  3570 I zygote64: Rejecting re-init on previously-failed class java.lang.Class<com.andrerinas.headunitrevived.connection.WifiDirectManager$$ExternalSyntheticLambda0>: java.lang.NoClassDefFoundError: Failed resolution of: Landroid/net/wifi/p2p/WifiP2pManager$DeviceInfoListener;
+03-09 09:01:42.976  3570  3570 I zygote64:   at void com.andrerinas.headunitrevived.aap.AapService.onCreate() (AapService.kt:167)
+03-09 09:01:42.976  3570  3570 I zygote64:   at void android.app.ActivityThread.handleCreateService(android.app.ActivityThread$CreateServiceData) (ActivityThread.java:3380)
+03-09 09:01:42.976  3570  3570 I zygote64:   at void android.app.ActivityThread.-wrap4(android.app.ActivityThread, android.app.ActivityThread$CreateServiceData) (ActivityThread.java:-1)
+03-09 09:01:42.976  3570  3570 I zygote64:   at void android.app.ActivityThread$H.handleMessage(android.os.Message) (ActivityThread.java:1711)
+03-09 09:01:42.976  3570  3570 I zygote64:   at void android.os.Handler.dispatchMessage(android.os.Message) (Handler.java:106)
+03-09 09:01:42.976  3570  3570 I zygote64:   at void android.os.Looper.loop() (Looper.java:164)
+03-09 09:01:42.976  3570  3570 I zygote64:   at void android.app.ActivityThread.main(java.lang.String[]) (ActivityThread.java:6548)
+03-09 09:01:42.976  3570  3570 I zygote64:   at java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+03-09 09:01:42.976  3570  3570 I zygote64:   at void com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run() (RuntimeInit.java:445)
+03-09 09:01:42.976  3570  3570 I zygote64:   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) (ZygoteInit.java:857)
+03-09 09:01:42.976  3570  3570 I zygote64: Caused by: java.lang.ClassNotFoundException: Didn't find class "android.net.wifi.p2p.WifiP2pManager$DeviceInfoListener" on path: DexPathList[[zip file "/data/app/com.andrerinas.headunitrevived-nG1DKtfF0K-uiGKgLzecDg==/base.apk"],nativeLibraryDirectories=[/data/app/com.andrerinas.headunitrevived-nG1DKtfF0K-uiGKgLzecDg==/lib/arm64, /data/app/com.andrerinas.headunitrevived-nG1DKtfF0K-uiGKgLzecDg==/base.apk!/lib/arm64-v8a, /system/lib64, /vendor/lib64]]
+03-09 09:01:42.976  3570  3570 I zygote64:   at java.lang.Class dalvik.system.BaseDexClassLoader.findClass(java.lang.String) (BaseDexClassLoader.java:125)
+03-09 09:01:42.976  3570  3570 I zygote64:   at java.lang.Class java.lang.ClassLoader.loadClass(java.lang.String, boolean) (ClassLoader.java:379)
+03-09 09:01:42.976  3570  3570 I zygote64:   at java.lang.Class java.lang.ClassLoader.loadClass(java.lang.String) (ClassLoader.java:312)
+03-09 09:01:42.976  3570  3570 I zygote64:   at void com.andrerinas.headunitrevived.aap.AapService.onCreate() (AapService.kt:167)
+03-09 09:01:42.976  3570  3570 I zygote64:   at void android.app.ActivityThread.handleCreateService(android.app.ActivityThread$CreateServiceData) (ActivityThread.java:3380)
+03-09 09:01:42.976  3570  3570 I zygote64:   at void android.app.ActivityThread.-wrap4(android.app.ActivityThread, android.app.ActivityThread$CreateServiceData) (ActivityThread.java:-1)
+03-09 09:01:42.976  3570  3570 I zygote64:   at void android.app.ActivityThread$H.handleMessage(android.os.Message) (ActivityThread.java:1711)
+03-09 09:01:42.976  3570  3570 I zygote64:   at void android.os.Handler.dispatchMessage(android.os.Message) (Handler.java:106)
+03-09 09:01:42.976  3570  3570 I zygote64:   at void android.os.Looper.loop() (Looper.java:164)
+03-09 09:01:42.976  3570  3570 I zygote64:   at void android.app.ActivityThread.main(java.lang.String[]) (ActivityThread.java:6548)
+03-09 09:01:42.976  3570  3570 I zygote64:   at java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+03-09 09:01:42.976  3570  3570 I zygote64:   at void com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run() (RuntimeInit.java:445)
+03-09 09:01:42.976  3570  3570 I zygote64:   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) (ZygoteInit.java:857)
+03-09 09:01:42.976  3570  3570 I zygote64: 
+03-09 09:01:42.976  3570  3570 I zygote64: Rejecting re-init on previously-failed class java.lang.Class<com.andrerinas.headunitrevived.connection.WifiDirectManager$$ExternalSyntheticLambda0>: java.lang.NoClassDefFoundError: Failed resolution of: Landroid/net/wifi/p2p/WifiP2pManager$DeviceInfoListener;
+03-09 09:01:42.976  3570  3570 I zygote64:   at void com.andrerinas.headunitrevived.aap.AapService.onCreate() (AapService.kt:167)
+03-09 09:01:42.977  3570  3570 I zygote64:   at void android.app.ActivityThread.handleCreateService(android.app.ActivityThread$CreateServiceData) (ActivityThread.java:3380)
+03-09 09:01:42.977  3570  3570 I zygote64:   at void android.app.ActivityThread.-wrap4(android.app.ActivityThread, android.app.ActivityThread$CreateServiceData) (ActivityThread.java:-1)
+03-09 09:01:42.977  3570  3570 I zygote64:   at void android.app.ActivityThread$H.handleMessage(android.os.Message) (ActivityThread.java:1711)
+03-09 09:01:42.977  3570  3570 I zygote64:   at void android.os.Handler.dispatchMessage(android.os.Message) (Handler.java:106)
+03-09 09:01:42.977  3570  3570 I zygote64:   at void android.os.Looper.loop() (Looper.java:164)
+03-09 09:01:42.977  3570  3570 I zygote64:   at void android.app.ActivityThread.main(java.lang.String[]) (ActivityThread.java:6548)
+03-09 09:01:42.977  3570  3570 I zygote64:   at java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+03-09 09:01:42.977  3570  3570 I zygote64:   at void com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run() (RuntimeInit.java:445)
+03-09 09:01:42.977  3570  3570 I zygote64:   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) (ZygoteInit.java:857)
+03-09 09:01:42.977  3570  3570 I zygote64: Caused by: java.lang.ClassNotFoundException: Didn't find class "android.net.wifi.p2p.WifiP2pManager$DeviceInfoListener" on path: DexPathList[[zip file "/data/app/com.andrerinas.headunitrevived-nG1DKtfF0K-uiGKgLzecDg==/base.apk"],nativeLibraryDirectories=[/data/app/com.andrerinas.headunitrevived-nG1DKtfF0K-uiGKgLzecDg==/lib/arm64, /data/app/com.andrerinas.headunitrevived-nG1DKtfF0K-uiGKgLzecDg==/base.apk!/lib/arm64-v8a, /system/lib64, /vendor/lib64]]
+03-09 09:01:42.977  3570  3570 I zygote64:   at java.lang.Class dalvik.system.BaseDexClassLoader.findClass(java.lang.String) (BaseDexClassLoader.java:125)
+03-09 09:01:42.977  3570  3570 I zygote64:   at java.lang.Class java.lang.ClassLoader.loadClass(java.lang.String, boolean) (ClassLoader.java:379)
+03-09 09:01:42.977  3570  3570 I zygote64:   at java.lang.Class java.lang.ClassLoader.loadClass(java.lang.String) (ClassLoader.java:312)
+03-09 09:01:42.977  3570  3570 I zygote64:   at void com.andrerinas.headunitrevived.aap.AapService.onCreate() (AapService.kt:167)
+03-09 09:01:42.977  3570  3570 I zygote64:   at void android.app.ActivityThread.handleCreateService(android.app.ActivityThread$CreateServiceData) (ActivityThread.java:3380)
+03-09 09:01:42.977  3570  3570 I zygote64:   at void android.app.ActivityThread.-wrap4(android.app.ActivityThread, android.app.ActivityThread$CreateServiceData) (ActivityThread.java:-1)
+03-09 09:01:42.977  3570  3570 I zygote64:   at void android.app.ActivityThread$H.handleMessage(android.os.Message) (ActivityThread.java:1711)
+03-09 09:01:42.977  3570  3570 I zygote64:   at void android.os.Handler.dispatchMessage(android.os.Message) (Handler.java:106)
+03-09 09:01:42.977  3570  3570 I zygote64:   at void android.os.Looper.loop() (Looper.java:164)
+03-09 09:01:42.977  3570  3570 I zygote64:   at void android.app.ActivityThread.main(java.lang.String[]) (ActivityThread.java:6548)
+03-09 09:01:42.977  3570  3570 I zygote64:   at java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[]) (Method.java:-2)
+03-09 09:01:42.977  3570  3570 I zygote64:   at void com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run() (RuntimeInit.java:445)
+03-09 09:01:42.977  3570  3570 I zygote64:   at void com.android.internal.os.ZygoteInit.main(java.lang.String[]) (ZygoteInit.java:857)
+03-09 09:01:42.977  3570  3570 I zygote64: 
+03-09 09:01:43.003  3570  3570 I CAR.HU.J: [2] AapService.registerNetworkMonitor | NetworkMonitor: Registered network change listener
+03-09 09:01:43.043  3570  3570 I Choreographer: Skipped 90 frames!  The application may be doing too much work on its main thread.
+03-09 09:01:43.117  3570  3592 D HWUIExtension: MTKProgramCache.generateProgram: 1
+03-09 09:01:43.120  3570  3592 D HWUIExtension: createProgram 0x0000000000000001, binary 0x739e08c776, length 11505, format 37168 within 1792ns
+03-09 09:01:43.129  3570  3592 D HWUIExtension: MTKProgramCache.generateProgram: 1168231104520
+03-09 09:01:43.175  3570  3592 D HWUIExtension: MTKProgramCache.generateProgram: 68724719680
+03-09 09:01:43.175  3570  3592 D HWUIExtension: createProgram 0x0000001000500040, binary 0x739e0539f0, length 11377, format 37168 within 647ns
+03-09 09:01:43.177  3570  3592 D HWUIExtension: MTKProgramCache.generateProgram: 562949958664257
+03-09 09:01:43.178  3570  3592 D HWUIExtension: createProgram 0x0002000000500041, binary 0x739e05ebe3, length 11847, format 37168 within 705ns
+03-09 09:01:43.181  3570  3592 D HWUIExtension: MTKProgramCache.generateProgram: 562984313159683
+03-09 09:01:43.182  3570  3592 D HWUIExtension: createProgram 0x0002000800000003, binary 0x739e06458b, length 11447, format 37168 within 641ns
+03-09 09:01:43.217  3570  3570 I CAR.HU.J: [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-09 09:01:43.270  3570  3570 I CAR.HU.J: [2] GpsLocation.start | Request location updates
+03-09 09:01:43.364  3570  3570 I CAR.HU.J: [2] GpsLocation.start | Last known location:  Location[gps -17,852435,-63,193620 hAcc=1 et=+16h57m45s500ms alt=426.6 vel=0.0 bear=210.62 vAcc=??? sAcc=??? bAcc=??? {Bundle[mParcelledData.dataSize=96]}]
+03-09 09:01:47.188  3570  3633 D ProfileInstaller: Installing profile for com.andrerinas.headunitrevived
+03-09 09:01:48.561  3570  3575 I zygote64: Do full code cache collection, code=221KB, data=162KB
+03-09 09:01:48.563  3570  3575 I zygote64: After code cache collection, code=221KB, data=132KB
+03-09 09:01:48.570  3570  3570 I CAR.HU.J: [2] HomeFragment.attemptSingleUsbAutoConnect | HomeFragment: Requesting single-USB auto-connect via AapService
+03-09 09:01:48.932  3570  3570 D WindowClient: Add to mViews: DecorView@a1b88fe[SettingsActivity], this = android.view.WindowManagerGlobal@e697645
+03-09 09:01:48.935  3570  3570 D ViewRootImpl[SettingsActivity]: hardware acceleration = true , fakeHwAccelerated = false, sRendererDisabled = false, forceHwAccelerated = false, sSystemRendererDisabled = false
+03-09 09:01:49.047  3570  3592 D Surface : Surface::connect(this=0x738c776000,api=1)
+03-09 09:01:49.047  3570  3570 D Surface : Surface::allocateBuffers(this=0x738c776000)
+03-09 09:01:49.107  3570  3575 I zygote64: Do partial code cache collection, code=249KB, data=169KB
+03-09 09:01:49.108  3570  3575 I zygote64: After code cache collection, code=249KB, data=169KB
+03-09 09:01:49.108  3570  3575 I zygote64: Increasing code cache capacity to 1024KB
+03-09 09:01:49.622  3570  3570 D View    : [ANR Warning]onLayout time too long, this =androidx.recyclerview.widget.RecyclerView{a1e4486 VFED.V... ......ID 0,64-1280,720 #7f0901b4 app:id/settingsRecyclerView}time =542 ms
+03-09 09:01:49.623  3570  3570 D View    : [ANR Warning]onLayout time too long, this =android.widget.LinearLayout{d3b9d62 V.E...... ......ID 0,0-1280,720}time =560 ms
+03-09 09:01:49.623  3570  3570 D View    : [ANR Warning]onLayout time too long, this =androidx.fragment.app.FragmentContainerView{8220ef3 V.E...... ......ID 0,0-1280,720 #7f0901b6 app:id/settings_nav_host}time =561 ms
+03-09 09:01:49.623  3570  3570 D View    : [ANR Warning]onLayout time too long, this =androidx.fragment.app.FragmentContainerView{a0097b0 V.E...... ......ID 0,0-1280,720 #7f0901b6 app:id/settings_nav_host}time =562 ms
+03-09 09:01:49.624  3570  3570 D View    : [ANR Warning]onLayout time too long, this =androidx.appcompat.widget.ContentFrameLayout{2986629 V.E...... ......ID 0,0-1280,720 #1020002 android:id/content}time =563 ms
+03-09 09:01:49.625  3570  3570 D View    : [ANR Warning]onLayout time too long, this =androidx.appcompat.widget.FitWindowsLinearLayout{6ba2dae V.E...... ......ID 0,0-1280,720 #7f090036 app:id/action_bar_root}time =564 ms
+03-09 09:01:49.625  3570  3570 D View    : [ANR Warning]onLayout time too long, this =android.widget.FrameLayout{9c4a74f V.E...... ......ID 0,0-1280,720}time =565 ms
+03-09 09:01:49.625  3570  3570 D View    : [ANR Warning]onLayout time too long, this =android.widget.LinearLayout{9cf7edc V.E...... ......ID 0,0-1280,720}time =566 ms
+03-09 09:01:49.626  3570  3570 D View    : [ANR Warning]onLayout time too long, this =DecorView@a1b88fe[SettingsActivity]time =567 ms
+03-09 09:01:49.665  3570  3570 I Choreographer: Skipped 37 frames!  The application may be doing too much work on its main thread.
+03-09 09:01:49.767  3570  3592 D HWUIExtension: MTKProgramCache.generateProgram: 0
+03-09 09:01:49.768  3570  3592 D HWUIExtension: createProgram 0x0000000000000000, binary 0x739e051000, length 10736, format 37168 within 1150ns
+03-09 09:01:49.771  3570  3592 D HWUIExtension: MTKProgramCache.generateProgram: 68719476736
+03-09 09:01:49.772  3570  3592 D HWUIExtension: createProgram 0x0000001000000000, binary 0x739e061a2a, length 11105, format 37168 within 725ns
+03-09 09:01:49.773  3570  3592 D HWUIExtension: MTKProgramCache.generateProgram: 103084458048
+03-09 09:01:49.774  3570  3592 D HWUIExtension: createProgram 0x0000001800500040, binary 0x739e09aebb, length 11377, format 37168 within 567ns
+03-09 09:01:49.778  3570  3592 D HWUIExtension: MTKProgramCache.generateProgram: 562949967052865
+03-09 09:01:49.779  3570  3592 D HWUIExtension: createProgram 0x0002000000d00041, binary 0x739e09493f, length 11845, format 37168 within 778ns
+03-09 09:01:49.782  3570  3592 D HWUIExtension: MTKProgramCache.generateProgram: 34364981312
+03-09 09:01:49.784  3570  3592 D HWUIExtension: createProgram 0x0000000800500040, binary 0x739e089c8e, length 10984, format 37168 within 1709ns
+03-09 09:01:50.219  3570  3592 D Surface : Surface::disconnect(this=0x738c5ee000,api=1)
+03-09 09:01:50.337  3570  3592 D HWUIExtension: MTKProgramCache.generateProgram: 562984313159681
+03-09 09:01:50.338  3570  3592 D HWUIExtension: createProgram 0x0002000800000001, binary 0x739e06a600, length 11727, format 37168 within 853ns
+03-09 09:01:53.568  3570  3575 I zygote64: Compiler allocated 10MB to compile void android.view.ViewRootImpl.performTraversals()
+03-09 09:01:55.764  3570  3575 I zygote64: Do full code cache collection, code=504KB, data=369KB
+03-09 09:01:55.767  3570  3575 I zygote64: After code cache collection, code=486KB, data=302KB
+03-09 09:01:57.203  3570  3575 I zygote64: Do partial code cache collection, code=503KB, data=337KB
+03-09 09:01:57.204  3570  3575 I zygote64: After code cache collection, code=503KB, data=337KB
+03-09 09:01:57.204  3570  3575 I zygote64: Increasing code cache capacity to 2MB

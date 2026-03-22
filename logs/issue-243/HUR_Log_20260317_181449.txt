@@ -1,0 +1,54 @@
+--------- beginning of /dev/log/main
+03-17 18:14:48.280  6087  6087 W dalvikvm: Unable to resolve superclass of Lcom/andrerinas/headunitrevived/aap/AapService$q; (289)
+03-17 18:14:48.280  6087  6087 W dalvikvm: Link of class 'Lcom/andrerinas/headunitrevived/aap/AapService$q;' failed
+03-17 18:14:48.280  6087  6087 E dalvikvm: Could not find class 'com.andrerinas.headunitrevived.aap.AapService$q', referenced from method com.andrerinas.headunitrevived.aap.AapService.I
+03-17 18:14:48.280  6087  6087 W dalvikvm: VFY: unable to resolve new-instance 2864 (Lcom/andrerinas/headunitrevived/aap/AapService$q;) in Lcom/andrerinas/headunitrevived/aap/AapService;
+03-17 18:14:48.280  6087  6087 D dalvikvm: VFY: replacing opcode 0x22 at 0x0014
+03-17 18:14:48.280  6087  6087 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/net/Network;)
+03-17 18:14:48.320  6087  6087 W dalvikvm: Unable to resolve superclass of Lcom/andrerinas/headunitrevived/aap/AapService$q; (289)
+03-17 18:14:48.320  6087  6087 W dalvikvm: Link of class 'Lcom/andrerinas/headunitrevived/aap/AapService$q;' failed
+03-17 18:14:48.320  6087  6087 D dalvikvm: DexOpt: unable to opt direct call 0x4150 at 0x16 in Lcom/andrerinas/headunitrevived/aap/AapService;.I
+03-17 18:14:48.320  6087  6087 D dalvikvm: DexOpt: unable to opt direct call 0x05b0 at 0x21 in Lcom/andrerinas/headunitrevived/aap/AapService;.I
+03-17 18:14:48.670  6087  6087 E dalvikvm: Could not find class 'android.os.LocaleList', referenced from method b1.k.a
+03-17 18:14:48.670  6087  6087 W dalvikvm: VFY: unable to resolve new-instance 334 (Landroid/os/LocaleList;) in Lb1/k;
+03-17 18:14:48.670  6087  6087 D dalvikvm: VFY: replacing opcode 0x22 at 0x0035
+03-17 18:14:48.670  6087  6087 D dalvikvm: DexOpt: unable to opt direct call 0x0667 at 0x3d in Lb1/k;.a
+03-17 18:14:48.670  6087  6087 I HUREV   : [1] AapService.onCreate | AapService creating...
+03-17 18:14:48.720  6087  6090 D dalvikvm: GC_CONCURRENT freed 576K, 66% free 5228K/15312K, paused 10ms+4ms, total 87ms
+03-17 18:14:48.930  6087  6087 I dalvikvm: Could not find method android.media.MediaCodecList.<init>, referenced from method y0.a0.f
+03-17 18:14:48.930  6087  6087 W dalvikvm: VFY: unable to resolve direct method 1337: Landroid/media/MediaCodecList;.<init> (I)V
+03-17 18:14:48.930  6087  6087 D dalvikvm: VFY: replacing opcode 0x70 at 0x000a
+03-17 18:14:48.950  6087  6087 I dalvikvm: Could not find method android.media.MediaCodecList.<init>, referenced from method y0.a0$b.a
+03-17 18:14:48.950  6087  6087 W dalvikvm: VFY: unable to resolve direct method 1337: Landroid/media/MediaCodecList;.<init> (I)V
+03-17 18:14:48.950  6087  6087 D dalvikvm: VFY: replacing opcode 0x70 at 0x000b
+03-17 18:14:48.950  6087  6087 D AlfusResources: cookie name=/data/app/com.andrerinas.headunitrevived-1.apk
+03-17 18:14:49.590  6087  6087 I HUREV   : [1] w.invoke | NightMode update: true
+03-17 18:14:49.750  6087  6087 I HUREV   : [1] AapService.J | Registered runtime MEDIA_BUTTON receiver
+03-17 18:14:49.780  6087  6087 W dalvikvm: Unable to resolve superclass of Landroid/support/v4/media/session/MediaSessionCompat$b$b; (279)
+03-17 18:14:49.780  6087  6087 W dalvikvm: Link of class 'Landroid/support/v4/media/session/MediaSessionCompat$b$b;' failed
+03-17 18:14:49.780  6087  6087 E dalvikvm: Could not find class 'android.support.v4.media.session.MediaSessionCompat$b$b', referenced from method android.support.v4.media.session.MediaSessionCompat$b.<init>
+03-17 18:14:49.780  6087  6087 W dalvikvm: VFY: unable to resolve new-instance 447 (Landroid/support/v4/media/session/MediaSessionCompat$b$b;) in Landroid/support/v4/media/session/MediaSessionCompat$b;
+03-17 18:14:49.780  6087  6087 D dalvikvm: VFY: replacing opcode 0x22 at 0x0011
+03-17 18:14:49.780  6087  6087 W dalvikvm: Unable to resolve superclass of Landroid/support/v4/media/session/MediaSessionCompat$b$b; (279)
+03-17 18:14:49.780  6087  6087 W dalvikvm: Link of class 'Landroid/support/v4/media/session/MediaSessionCompat$b$b;' failed
+03-17 18:14:49.780  6087  6087 D dalvikvm: DexOpt: unable to opt direct call 0x07f2 at 0x13 in Landroid/support/v4/media/session/MediaSessionCompat$b;.<init>
+03-17 18:14:49.790  6087  6087 W dalvikvm: Unable to resolve superclass of Lk0/k$a; (274)
+03-17 18:14:49.790  6087  6087 W dalvikvm: Link of class 'Lk0/k$a;' failed
+03-17 18:14:49.790  6087  6087 E dalvikvm: Could not find class 'k0.k$a', referenced from method k0.k.d
+03-17 18:14:49.790  6087  6087 W dalvikvm: VFY: unable to resolve new-instance 5269 (Lk0/k$a;) in Lk0/k;
+03-17 18:14:49.790  6087  6087 D dalvikvm: VFY: replacing opcode 0x22 at 0x000a
+03-17 18:14:49.790  6087  6087 W dalvikvm: Unable to resolve superclass of Lk0/k$b; (274)
+03-17 18:14:49.790  6087  6087 W dalvikvm: Link of class 'Lk0/k$b;' failed
+03-17 18:14:49.790  6087  6087 E dalvikvm: Could not find class 'k0.k$b', referenced from method k0.k.d
+03-17 18:14:49.790  6087  6087 W dalvikvm: VFY: unable to resolve new-instance 5270 (Lk0/k$b;) in Lk0/k;
+03-17 18:14:49.790  6087  6087 D dalvikvm: VFY: replacing opcode 0x22 at 0x0020
+03-17 18:14:49.800  6087  6087 W dalvikvm: Unable to resolve superclass of Lk0/k$a; (274)
+03-17 18:14:49.800  6087  6087 W dalvikvm: Link of class 'Lk0/k$a;' failed
+03-17 18:14:49.800  6087  6087 D dalvikvm: DexOpt: unable to opt direct call 0xd82a at 0x15 in Lk0/k;.d
+03-17 18:14:49.800  6087  6087 W dalvikvm: Unable to resolve superclass of Lk0/k$b; (274)
+03-17 18:14:49.800  6087  6087 W dalvikvm: Link of class 'Lk0/k$b;' failed
+03-17 18:14:49.800  6087  6087 D dalvikvm: DexOpt: unable to opt direct call 0xd82d at 0x28 in Lk0/k;.d
+03-17 18:14:49.950  6087  6087 I HUREV   : [1] AapService.onCreate | Auto-started continuous log capture
+03-17 18:14:50.030  6087  6087 I HUREV   : [1] AapService.onCreate | Auto-started continuous log capture
+03-17 18:14:50.110  6087  6087 I HUREV   : [1] a.a | Request location updates
+03-17 18:14:50.120  6087  6087 I HUREV   : [1] a.a | Last known location:  Unknown

@@ -1,0 +1,30 @@
+--------- beginning of main
+03-07 10:51:17.007  6392  6392 I zygote64: Deoptimizing void androidx.appcompat.widget.ContentFrameLayout.onMeasure(int, int) due to JIT inline cache
+03-07 10:51:17.797  6392  6392 I zygote64: Deoptimizing boolean androidx.appcompat.view.i.dispatchTouchEvent(android.view.MotionEvent) due to JIT inline cache
+03-07 10:51:17.966  6392  6392 W InputEventReceiver: Attempted to finish an input event but the input event receiver has already been disposed.
+03-07 10:51:24.191  6392  6392 I zygote64: Deoptimizing java.lang.String androidx.fragment.app.Fragment.getString(int) due to JIT inline cache
+03-07 10:51:24.195  6392  6392 I zygote64: Deoptimizing android.content.res.Resources androidx.fragment.app.Fragment.getResources() due to JIT inline cache
+03-07 10:51:24.210  6392  6392 I CAR.HU.J: [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-07 10:51:24.233  6392  6414 D Surface : Surface::connect(this=0x73f34ce000,api=1)
+03-07 10:51:24.233  6392  6392 D Surface : Surface::allocateBuffers(this=0x73f34ce000)
+03-07 10:51:24.294  6392  6392 I zygote64: Deoptimizing int n.g.e(java.lang.Object, int) due to JIT same target
+03-07 10:51:24.309  6392  6392 I zygote64: Deoptimizing void androidx.navigation.NavDestination.onInflate(android.content.Context, android.util.AttributeSet) due to JIT inline cache
+03-07 10:51:24.310  6392  6392 I zygote64: Deoptimizing androidx.navigation.NavDestination androidx.navigation.NavInflater.inflate(android.content.res.Resources, android.content.res.XmlResourceParser, android.util.AttributeSet, int) due to JIT inline cache
+03-07 10:51:24.312  6392  6392 I chatty  : uid=10103(com.andrerinas.headunitrevived) identical 3 lines
+03-07 10:51:24.313  6392  6392 I zygote64: Deoptimizing androidx.navigation.NavDestination androidx.navigation.NavInflater.inflate(android.content.res.Resources, android.content.res.XmlResourceParser, android.util.AttributeSet, int) due to JIT inline cache
+03-07 10:51:24.314  6392  6392 I zygote64: Deoptimizing androidx.navigation.NavDestination androidx.navigation.NavInflater.inflate(android.content.res.Resources, android.content.res.XmlResourceParser, android.util.AttributeSet, int) due to JIT inline cache
+03-07 10:51:24.315  6392  6392 I zygote64: Deoptimizing androidx.navigation.NavDestination androidx.navigation.NavInflater.inflate(android.content.res.Resources, android.content.res.XmlResourceParser, android.util.AttributeSet, int) due to JIT inline cache
+03-07 10:51:24.327  6392  6392 I zygote64: Deoptimizing android.view.View androidx.appcompat.app.h.e0(android.view.View, java.lang.String, android.content.Context, android.util.AttributeSet) due to JIT inline cache
+03-07 10:51:24.338  6392  6392 I zygote64: Deoptimizing boolean androidx.appcompat.widget.f1.a(android.content.Context) due to JIT inline cache
+03-07 10:51:24.342  6392  6392 I zygote64: Deoptimizing android.graphics.Typeface androidx.core.content.res.h.m(android.content.Context, int, android.util.TypedValue, int, androidx.core.content.res.h$f, android.os.Handler, boolean, boolean) due to JIT inline cache
+03-07 10:51:24.343  6392  6392 I zygote64: Deoptimizing android.util.TypedValue v1.b.a(android.content.Context, int) due to JIT inline cache
+03-07 10:51:24.370  6392  6392 I CAR.HU.J: [2] MainActivity.handleIntent | MainActivity received intent: null, data: null
+03-07 10:51:24.437  6392  6392 I CAR.HU.J: [2] HomeFragment.attemptSingleUsbAutoConnect | HomeFragment: Requesting single-USB auto-connect via AapService
+03-07 10:51:24.459  6392  6392 I CAR.HU.J: [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-07 10:51:24.465  6392  6392 I zygote64: Deoptimizing void androidx.constraintlayout.widget.ConstraintLayout.onMeasure(int, int) due to JIT inline cache
+03-07 10:51:24.465  6392  6392 I zygote64: Deoptimizing boolean androidx.constraintlayout.widget.ConstraintLayout.k() due to JIT inline cache
+03-07 10:51:24.744  6392  6392 I CAR.HU.J: [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-07 10:51:24.782  6392  6414 D Surface : Surface::disconnect(this=0x73f144a000,api=1)
+03-07 10:51:25.114  6392  6392 D View    : [Warning] assignParent to null: this = DecorView@acacb57[]
+03-07 10:51:25.125  6392  6392 D WindowClient: Remove from mViews: DecorView@acacb57[], this = android.view.WindowManagerGlobal@223046a
+03-07 10:51:29.483  6392  6414 D Surface : Surface::disconnect(this=0x73f34ce000,api=1)

@@ -1,0 +1,20 @@
+--------- beginning of main
+03-02 09:45:52.524  4679  4679 I CAR.HU.J: [2] o.i | USB stability: Device Xiaomi 2717:FF40 stable after 8s, connecting
+03-02 09:45:52.526  4679  4679 I CAR.HU.J: [2] AapService.J | Single USB auto-connect: connecting to Xiaomi 2717:FF40
+03-02 09:45:52.528  4679  4679 I CAR.HU.J: [2] k.c | Success controlTransfer len: 2  acc_ver: 2
+03-02 09:45:52.530  4679  4679 I CAR.HU.J: [2] k.c | acc_ver: 2
+03-02 09:45:52.532  4679  4679 I CAR.HU.J: [2] k.b | Success controlTransfer len: 7  index: 0  string: "Android"
+03-02 09:45:52.534  4679  4679 I CAR.HU.J: [2] k.b | Success controlTransfer len: 12  index: 1  string: "Android Auto"
+03-02 09:45:52.535  4679  4679 I CAR.HU.J: [2] k.b | Success controlTransfer len: 12  index: 2  string: "Android Auto"
+03-02 09:45:52.536  4679  4679 I CAR.HU.J: [2] k.b | Success controlTransfer len: 5  index: 3  string: "2.0.1"
+03-02 09:45:52.537  4679  4679 I CAR.HU.J: [2] k.b | Success controlTransfer len: 45  index: 4  string: "https://developer.android.com/auto/index.html"
+03-02 09:45:52.538  4679  4679 I CAR.HU.J: [2] k.b | Success controlTransfer len: 12  index: 5  string: "HU-AAAAAA001"
+03-02 09:45:52.539  4679  4679 I CAR.HU.J: [2] k.c | Sending acc start
+03-02 09:45:53.040  4679  4679 I CAR.HU.J: [2] k.a | Result: true
+03-02 09:45:53.040  4679  4679 I CAR.HU.J: [2] AapService.J | Successfully requested switch to accessory mode for single USB device
+03-02 09:45:53.042  4679  4679 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-02 09:45:53.043  4679  4679 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-02 09:45:53.117  4679  4679 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x11000010 (has extras) }
+03-02 09:45:53.142  4679  4679 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x11000010 (has extras) }
+03-02 09:45:53.143  4679  4679 I CAR.HU.J: [2] AapService.onUsbAttach | onUsbAttach: device=Google 18D1:2D00, isConnected=false, isConnecting=true
+03-02 09:45:53.144  4679  4679 I CAR.HU.J: [2] AapService.A | checkAlreadyConnectedUsb: skipped (connection in progress)

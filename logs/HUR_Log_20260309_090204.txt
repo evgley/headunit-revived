@@ -1,0 +1,10 @@
+--------- beginning of main
+03-09 09:02:06.108  3570  3592 D HWUIExtension: MTKProgramCache.generateProgram: 103079215104
+03-09 09:02:06.109  3570  3592 D HWUIExtension: createProgram 0x0000001800000000, binary 0x739e06d3cf, length 11105, format 37168 within 615ns
+03-09 09:02:06.237  3570  3570 I CAR.HU.J: [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-09 09:02:06.290  3570  3570 D Surface : Surface::allocateBuffers(this=0x738c5ee000)
+03-09 09:02:06.290  3570  3592 D Surface : Surface::connect(this=0x738c5ee000,api=1)
+03-09 09:02:06.411  3570  3592 D Surface : Surface::disconnect(this=0x738c776000,api=1)
+03-09 09:02:06.412  3570  3592 D OpenGLRenderer: endAllActiveAnimators on 0x738c860000 (RippleDrawable) with handle 0x73a385a6e0
+03-09 09:02:06.712  3570  3570 D View    : [Warning] assignParent to null: this = DecorView@a1b88fe[SettingsActivity]
+03-09 09:02:06.725  3570  3570 D WindowClient: Remove from mViews: DecorView@a1b88fe[SettingsActivity], this = android.view.WindowManagerGlobal@e697645

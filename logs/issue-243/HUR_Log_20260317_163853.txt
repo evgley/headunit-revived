@@ -1,0 +1,332 @@
+--------- beginning of /dev/log/main
+03-17 16:38:50.750  5866  5866 W dalvikvm: Unable to resolve superclass of Lcom/andrerinas/headunitrevived/aap/AapService$q; (289)
+03-17 16:38:50.750  5866  5866 W dalvikvm: Link of class 'Lcom/andrerinas/headunitrevived/aap/AapService$q;' failed
+03-17 16:38:50.750  5866  5866 E dalvikvm: Could not find class 'com.andrerinas.headunitrevived.aap.AapService$q', referenced from method com.andrerinas.headunitrevived.aap.AapService.I
+03-17 16:38:50.750  5866  5866 W dalvikvm: VFY: unable to resolve new-instance 2864 (Lcom/andrerinas/headunitrevived/aap/AapService$q;) in Lcom/andrerinas/headunitrevived/aap/AapService;
+03-17 16:38:50.750  5866  5866 D dalvikvm: VFY: replacing opcode 0x22 at 0x0014
+03-17 16:38:50.770  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/net/Network;)
+03-17 16:38:50.800  5866  5866 W dalvikvm: Unable to resolve superclass of Lcom/andrerinas/headunitrevived/aap/AapService$q; (289)
+03-17 16:38:50.800  5866  5866 W dalvikvm: Link of class 'Lcom/andrerinas/headunitrevived/aap/AapService$q;' failed
+03-17 16:38:50.800  5866  5866 D dalvikvm: DexOpt: unable to opt direct call 0x4150 at 0x16 in Lcom/andrerinas/headunitrevived/aap/AapService;.I
+03-17 16:38:50.800  5866  5866 D dalvikvm: DexOpt: unable to opt direct call 0x05b0 at 0x21 in Lcom/andrerinas/headunitrevived/aap/AapService;.I
+03-17 16:38:51.110  5866  5869 D dalvikvm: GC_CONCURRENT freed 504K, 66% free 5167K/15176K, paused 39ms+8ms, total 195ms
+03-17 16:38:51.110  5866  5866 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 41ms
+03-17 16:38:51.170  5866  5866 E dalvikvm: Could not find class 'android.os.LocaleList', referenced from method b1.k.a
+03-17 16:38:51.170  5866  5866 W dalvikvm: VFY: unable to resolve new-instance 334 (Landroid/os/LocaleList;) in Lb1/k;
+03-17 16:38:51.170  5866  5866 D dalvikvm: VFY: replacing opcode 0x22 at 0x0035
+03-17 16:38:51.180  5866  5866 D dalvikvm: DexOpt: unable to opt direct call 0x0667 at 0x3d in Lb1/k;.a
+03-17 16:38:51.180  5866  5866 I HUREV   : [1] AapService.onCreate | AapService creating...
+03-17 16:38:51.220  5866  5866 I dalvikvm: Could not find method android.media.MediaCodecList.<init>, referenced from method y0.a0.f
+03-17 16:38:51.220  5866  5866 W dalvikvm: VFY: unable to resolve direct method 1337: Landroid/media/MediaCodecList;.<init> (I)V
+03-17 16:38:51.220  5866  5866 D dalvikvm: VFY: replacing opcode 0x70 at 0x000a
+03-17 16:38:51.340  5866  5866 I dalvikvm: Could not find method android.media.MediaCodecList.<init>, referenced from method y0.a0$b.a
+03-17 16:38:51.340  5866  5866 W dalvikvm: VFY: unable to resolve direct method 1337: Landroid/media/MediaCodecList;.<init> (I)V
+03-17 16:38:51.340  5866  5866 D dalvikvm: VFY: replacing opcode 0x70 at 0x000b
+03-17 16:38:51.340  5866  5866 D AlfusResources: cookie name=/data/app/com.andrerinas.headunitrevived-1.apk
+03-17 16:38:52.410  5866  5866 I HUREV   : [1] w.invoke | NightMode update: false
+03-17 16:38:53.130  5866  5866 I HUREV   : [1] AapService.J | Registered runtime MEDIA_BUTTON receiver
+03-17 16:38:53.210  5866  5866 W dalvikvm: Unable to resolve superclass of Landroid/support/v4/media/session/MediaSessionCompat$b$b; (279)
+03-17 16:38:53.210  5866  5866 W dalvikvm: Link of class 'Landroid/support/v4/media/session/MediaSessionCompat$b$b;' failed
+03-17 16:38:53.220  5866  5866 E dalvikvm: Could not find class 'android.support.v4.media.session.MediaSessionCompat$b$b', referenced from method android.support.v4.media.session.MediaSessionCompat$b.<init>
+03-17 16:38:53.220  5866  5866 W dalvikvm: VFY: unable to resolve new-instance 447 (Landroid/support/v4/media/session/MediaSessionCompat$b$b;) in Landroid/support/v4/media/session/MediaSessionCompat$b;
+03-17 16:38:53.220  5866  5866 D dalvikvm: VFY: replacing opcode 0x22 at 0x0011
+03-17 16:38:53.280  5866  5866 W dalvikvm: Unable to resolve superclass of Landroid/support/v4/media/session/MediaSessionCompat$b$b; (279)
+03-17 16:38:53.280  5866  5866 W dalvikvm: Link of class 'Landroid/support/v4/media/session/MediaSessionCompat$b$b;' failed
+03-17 16:38:53.280  5866  5866 D dalvikvm: DexOpt: unable to opt direct call 0x07f2 at 0x13 in Landroid/support/v4/media/session/MediaSessionCompat$b;.<init>
+03-17 16:38:53.280  5866  5866 W dalvikvm: Unable to resolve superclass of Lk0/k$a; (274)
+03-17 16:38:53.280  5866  5866 W dalvikvm: Link of class 'Lk0/k$a;' failed
+03-17 16:38:53.280  5866  5866 E dalvikvm: Could not find class 'k0.k$a', referenced from method k0.k.d
+03-17 16:38:53.280  5866  5866 W dalvikvm: VFY: unable to resolve new-instance 5269 (Lk0/k$a;) in Lk0/k;
+03-17 16:38:53.280  5866  5866 D dalvikvm: VFY: replacing opcode 0x22 at 0x000a
+03-17 16:38:53.280  5866  5866 W dalvikvm: Unable to resolve superclass of Lk0/k$b; (274)
+03-17 16:38:53.280  5866  5866 W dalvikvm: Link of class 'Lk0/k$b;' failed
+03-17 16:38:53.280  5866  5866 E dalvikvm: Could not find class 'k0.k$b', referenced from method k0.k.d
+03-17 16:38:53.280  5866  5866 W dalvikvm: VFY: unable to resolve new-instance 5270 (Lk0/k$b;) in Lk0/k;
+03-17 16:38:53.280  5866  5866 D dalvikvm: VFY: replacing opcode 0x22 at 0x0020
+03-17 16:38:53.280  5866  5866 W dalvikvm: Unable to resolve superclass of Lk0/k$a; (274)
+03-17 16:38:53.280  5866  5866 W dalvikvm: Link of class 'Lk0/k$a;' failed
+03-17 16:38:53.290  5866  5866 D dalvikvm: DexOpt: unable to opt direct call 0xd82a at 0x15 in Lk0/k;.d
+03-17 16:38:53.290  5866  5866 W dalvikvm: Unable to resolve superclass of Lk0/k$b; (274)
+03-17 16:38:53.290  5866  5866 W dalvikvm: Link of class 'Lk0/k$b;' failed
+03-17 16:38:53.290  5866  5866 D dalvikvm: DexOpt: unable to opt direct call 0xd82d at 0x28 in Lk0/k;.d
+03-17 16:38:53.450  5866  5869 D dalvikvm: GC_CONCURRENT freed 575K, 66% free 5315K/15396K, paused 50ms+6ms, total 218ms
+03-17 16:38:53.450  5866  5866 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 120ms
+03-17 16:38:53.530  5866  5866 I HUREV   : [1] AapService.onCreate | Auto-started continuous log capture
+03-17 16:38:53.670  5866  5866 I HUREV   : [1] AapService.onCreate | Auto-started continuous log capture
+03-17 16:38:53.730  5866  5866 I HUREV   : [1] a.a | Request location updates
+03-17 16:38:53.760  5866  5866 I HUREV   : [1] a.a | Last known location:  Unknown
+03-17 16:51:17.150  5866  5866 I dalvikvm: Could not find method android.app.Activity.onMultiWindowModeChanged, referenced from method androidx.activity.ComponentActivity.onMultiWindowModeChanged
+03-17 16:51:17.150  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 220: Landroid/app/Activity;.onMultiWindowModeChanged (ZLandroid/content/res/Configuration;)V
+03-17 16:51:17.150  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:17.160  5866  5866 I dalvikvm: Could not find method android.app.Activity.onPictureInPictureModeChanged, referenced from method androidx.activity.ComponentActivity.onPictureInPictureModeChanged
+03-17 16:51:17.160  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 224: Landroid/app/Activity;.onPictureInPictureModeChanged (ZLandroid/content/res/Configuration;)V
+03-17 16:51:17.160  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:17.160  5866  5866 I dalvikvm: Could not find method android.app.Activity.onRequestPermissionsResult, referenced from method androidx.activity.ComponentActivity.onRequestPermissionsResult
+03-17 16:51:17.160  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 228: Landroid/app/Activity;.onRequestPermissionsResult (I[Ljava/lang/String;[I)V
+03-17 16:51:17.160  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0020
+03-17 16:51:17.170  5866  5866 I dalvikvm: Could not find method android.app.Activity.reportFullyDrawn, referenced from method androidx.activity.ComponentActivity.reportFullyDrawn
+03-17 16:51:17.170  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 242: Landroid/app/Activity;.reportFullyDrawn ()V
+03-17 16:51:17.170  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0014
+03-17 16:51:17.170  5866  5866 I dalvikvm: Could not find method android.app.Activity.reportFullyDrawn, referenced from method androidx.activity.ComponentActivity.reportFullyDrawn
+03-17 16:51:17.170  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 242: Landroid/app/Activity;.reportFullyDrawn ()V
+03-17 16:51:17.170  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0022
+03-17 16:51:17.320  5866  5866 D AppCompatDelegate: Checking for metadata for AppLocalesMetadataHolderService : Service not found
+03-17 16:51:17.670  5866  5866 D AlfusResources: cookie name=/data/app/com.andrerinas.headunitrevived-1.apk
+03-17 16:51:17.950  5866  5866 D dalvikvm: GC_FOR_ALLOC freed 294K, 65% free 5450K/15396K, paused 277ms, total 281ms
+03-17 16:51:17.970  5866  5866 I dalvikvm-heap: Grow heap (frag case) to 15.599MB for 1048592-byte allocation
+03-17 16:51:18.180  5866  5874 D dalvikvm: GC_FOR_ALLOC freed <1K, 61% free 6474K/16424K, paused 213ms, total 213ms
+03-17 16:51:18.430  5866  5869 D dalvikvm: GC_CONCURRENT freed 2K, 61% free 6472K/16424K, paused 71ms+39ms, total 252ms
+03-17 16:51:19.450  5866  5866 D dalvikvm: GC_FOR_ALLOC freed 1120K, 67% free 5469K/16492K, paused 101ms, total 101ms
+03-17 16:51:19.530  5866  5866 I dalvikvm-heap: Grow heap (frag case) to 20.618MB for 6291472-byte allocation
+03-17 16:51:19.670  5866  5869 D dalvikvm: GC_CONCURRENT freed <1K, 49% free 11613K/22640K, paused 24ms+22ms, total 146ms
+03-17 16:51:21.290  5866  5866 D dalvikvm: GC_FOR_ALLOC freed 0K, 49% free 11613K/22640K, paused 100ms, total 100ms
+03-17 16:51:21.310  5866  5866 I dalvikvm-heap: Grow heap (frag case) to 22.118MB for 1572880-byte allocation
+03-17 16:51:21.500  5866  5866 D dalvikvm: GC_FOR_ALLOC freed 0K, 46% free 13149K/24180K, paused 91ms, total 91ms
+03-17 16:51:21.670  5866  5866 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeMaxTextSize, referenced from method androidx.appcompat.widget.g0.e
+03-17 16:51:21.670  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4350: Landroid/widget/TextView;.getAutoSizeMaxTextSize ()I
+03-17 16:51:21.670  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.670  5866  5866 I dalvikvm: Could not find method android.widget.TextView.setFirstBaselineToTopHeight, referenced from method androidx.appcompat.widget.g0.f
+03-17 16:51:21.670  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4432: Landroid/widget/TextView;.setFirstBaselineToTopHeight (I)V
+03-17 16:51:21.670  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.670  5866  5866 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeMinTextSize, referenced from method androidx.appcompat.widget.g0.g
+03-17 16:51:21.670  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4351: Landroid/widget/TextView;.getAutoSizeMinTextSize ()I
+03-17 16:51:21.680  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.680  5866  5866 I dalvikvm: Could not find method android.widget.TextView.setLastBaselineToBottomHeight, referenced from method androidx.appcompat.widget.g0.h
+03-17 16:51:21.690  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4441: Landroid/widget/TextView;.setLastBaselineToBottomHeight (I)V
+03-17 16:51:21.690  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.690  5866  5866 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeStepGranularity, referenced from method androidx.appcompat.widget.g0.i
+03-17 16:51:21.700  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4352: Landroid/widget/TextView;.getAutoSizeStepGranularity ()I
+03-17 16:51:21.700  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.700  5866  5866 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeTextAvailableSizes, referenced from method androidx.appcompat.widget.g0.j
+03-17 16:51:21.700  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4353: Landroid/widget/TextView;.getAutoSizeTextAvailableSizes ()[I
+03-17 16:51:21.700  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.710  5866  5866 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeTextType, referenced from method androidx.appcompat.widget.g0.k
+03-17 16:51:21.710  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4354: Landroid/widget/TextView;.getAutoSizeTextType ()I
+03-17 16:51:21.710  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.710  5866  5866 I dalvikvm: Could not find method android.widget.TextView.getTextClassifier, referenced from method androidx.appcompat.widget.g0.l
+03-17 16:51:21.710  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4389: Landroid/widget/TextView;.getTextClassifier ()Landroid/view/textclassifier/TextClassifier;
+03-17 16:51:21.710  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.710  5866  5866 I dalvikvm: Could not find method android.widget.TextView.setAutoSizeTextTypeUniformWithConfiguration, referenced from method androidx.appcompat.widget.g0.m
+03-17 16:51:21.710  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4413: Landroid/widget/TextView;.setAutoSizeTextTypeUniformWithConfiguration (IIII)V
+03-17 16:51:21.710  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.720  5866  5866 I dalvikvm: Could not find method android.widget.TextView.setAutoSizeTextTypeUniformWithPresetSizes, referenced from method androidx.appcompat.widget.g0.n
+03-17 16:51:21.720  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4414: Landroid/widget/TextView;.setAutoSizeTextTypeUniformWithPresetSizes ([II)V
+03-17 16:51:21.720  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.720  5866  5866 I dalvikvm: Could not find method android.widget.TextView.setAutoSizeTextTypeWithDefaults, referenced from method androidx.appcompat.widget.g0.o
+03-17 16:51:21.720  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4415: Landroid/widget/TextView;.setAutoSizeTextTypeWithDefaults (I)V
+03-17 16:51:21.720  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.730  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 16:51:21.740  5866  5866 I dalvikvm: Could not find method android.widget.TextView.setTextClassifier, referenced from method androidx.appcompat.widget.g0.p
+03-17 16:51:21.740  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4462: Landroid/widget/TextView;.setTextClassifier (Landroid/view/textclassifier/TextClassifier;)V
+03-17 16:51:21.740  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.750  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 16:51:21.750  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 16:51:21.770  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 16:51:21.770  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 16:51:21.790  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 16:51:21.790  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 16:51:21.790  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 16:51:22.010  5866  5866 D zjy     : view visibility = 7
+03-17 16:51:22.210  5866  5866 I HUREV   : [1] MainActivity.handleIntent | MainActivity received intent: android.intent.action.MAIN, data: null
+03-17 16:51:22.400  5866  5866 I dalvikvm: Could not find method android.widget.Button.setElevation, referenced from method com.google.android.material.button.MaterialButton.setElevation
+03-17 16:51:22.400  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3910: Landroid/widget/Button;.setElevation (F)V
+03-17 16:51:22.400  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:22.420  5866  5866 I dalvikvm: Could not find method android.widget.Button.getAutoSizeMaxTextSize, referenced from method androidx.appcompat.widget.f.getAutoSizeMaxTextSize
+03-17 16:51:22.420  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3885: Landroid/widget/Button;.getAutoSizeMaxTextSize ()I
+03-17 16:51:22.420  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:22.420  5866  5866 I dalvikvm: Could not find method android.widget.Button.getAutoSizeMinTextSize, referenced from method androidx.appcompat.widget.f.getAutoSizeMinTextSize
+03-17 16:51:22.420  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3886: Landroid/widget/Button;.getAutoSizeMinTextSize ()I
+03-17 16:51:22.420  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:22.420  5866  5866 I dalvikvm: Could not find method android.widget.Button.getAutoSizeStepGranularity, referenced from method androidx.appcompat.widget.f.getAutoSizeStepGranularity
+03-17 16:51:22.420  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3887: Landroid/widget/Button;.getAutoSizeStepGranularity ()I
+03-17 16:51:22.420  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:22.420  5866  5866 I dalvikvm: Could not find method android.widget.Button.getAutoSizeTextAvailableSizes, referenced from method androidx.appcompat.widget.f.getAutoSizeTextAvailableSizes
+03-17 16:51:22.420  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3888: Landroid/widget/Button;.getAutoSizeTextAvailableSizes ()[I
+03-17 16:51:22.420  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:22.420  5866  5866 I dalvikvm: Could not find method android.widget.Button.getAutoSizeTextType, referenced from method androidx.appcompat.widget.f.getAutoSizeTextType
+03-17 16:51:22.420  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3889: Landroid/widget/Button;.getAutoSizeTextType ()I
+03-17 16:51:22.420  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0005
+03-17 16:51:22.430  5866  5866 I dalvikvm: Could not find method android.widget.Button.setAutoSizeTextTypeUniformWithConfiguration, referenced from method androidx.appcompat.widget.f.setAutoSizeTextTypeUniformWithConfiguration
+03-17 16:51:22.430  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3903: Landroid/widget/Button;.setAutoSizeTextTypeUniformWithConfiguration (IIII)V
+03-17 16:51:22.430  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:22.430  5866  5866 I dalvikvm: Could not find method android.widget.Button.setAutoSizeTextTypeUniformWithPresetSizes, referenced from method androidx.appcompat.widget.f.setAutoSizeTextTypeUniformWithPresetSizes
+03-17 16:51:22.430  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3904: Landroid/widget/Button;.setAutoSizeTextTypeUniformWithPresetSizes ([II)V
+03-17 16:51:22.430  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:22.430  5866  5866 I dalvikvm: Could not find method android.widget.Button.setAutoSizeTextTypeWithDefaults, referenced from method androidx.appcompat.widget.f.setAutoSizeTextTypeWithDefaults
+03-17 16:51:22.430  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3905: Landroid/widget/Button;.setAutoSizeTextTypeWithDefaults (I)V
+03-17 16:51:22.430  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:22.500  5866  5866 E dalvikvm: Could not find class 'android.graphics.drawable.RippleDrawable', referenced from method com.google.android.material.button.e.a
+03-17 16:51:22.500  5866  5866 W dalvikvm: VFY: unable to resolve new-instance 210 (Landroid/graphics/drawable/RippleDrawable;) in Lcom/google/android/material/button/e;
+03-17 16:51:22.500  5866  5866 D dalvikvm: VFY: replacing opcode 0x22 at 0x0056
+03-17 16:51:22.510  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/graphics/drawable/RippleDrawable;)
+03-17 16:51:22.510  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/graphics/drawable/RippleDrawable;)
+03-17 16:51:22.510  5866  5866 D dalvikvm: DexOpt: unable to opt direct call 0x04a0 at 0x6f in Lcom/google/android/material/button/e;.a
+03-17 16:51:23.150  5866  5866 D zjy     : view visibility = 7
+03-17 16:51:23.160  5866  5866 I HUREV   : [1] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-17 16:51:24.190  5866  5866 D libEGL  : loaded /system/lib/egl/libEGL_VIVANTE.so
+03-17 16:51:27.320  5866  5866 D libEGL  : loaded /system/lib/egl/libGLESv1_CM_VIVANTE.so
+03-17 16:51:27.750  5866  5866 D libEGL  : loaded /system/lib/egl/libGLESv2_VIVANTE.so
+03-17 16:51:28.360  5866  5866 D OpenGLRenderer: Enabling debug mode 0
+03-17 16:51:28.460  5866  5866 I Choreographer: Skipped 288 frames!  The application may be doing too much work on its main thread.
+03-17 16:51:28.760  5866  5866 D zjy     : view visibility = 7
+03-17 16:51:30.600  5866  5866 D zjy     : view visibility = 7
+03-17 16:51:30.780  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/ViewOutlineProvider;)
+03-17 16:51:30.780  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/ViewOutlineProvider;)
+03-17 16:51:30.800  5866  5866 I dalvikvm: Could not find method android.widget.LinearLayout.setElevation, referenced from method com.google.android.material.appbar.AppBarLayout.setElevation
+03-17 16:51:30.800  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4194: Landroid/widget/LinearLayout;.setElevation (F)V
+03-17 16:51:30.800  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:30.820  5866  5866 I dalvikvm: Could not find method android.view.ViewGroup.setElevation, referenced from method com.google.android.material.appbar.MaterialToolbar.setElevation
+03-17 16:51:30.830  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3431: Landroid/view/ViewGroup;.setElevation (F)V
+03-17 16:51:30.830  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:30.900  5866  5866 I dalvikvm: Could not find method android.widget.LinearLayout$LayoutParams.<init>, referenced from method com.google.android.material.appbar.AppBarLayout$d.<init>
+03-17 16:51:30.900  5866  5866 W dalvikvm: VFY: unable to resolve direct method 4163: Landroid/widget/LinearLayout$LayoutParams;.<init> (Landroid/widget/LinearLayout$LayoutParams;)V
+03-17 16:51:30.900  5866  5866 D dalvikvm: VFY: replacing opcode 0x70 at 0x0000
+03-17 16:51:30.930  5866  5866 D AlfusResources: cookie name=/system/framework/framework-res.apk
+03-17 16:51:31.590  5866  5869 D dalvikvm: GC_CONCURRENT freed 8561K, 70% free 7974K/26036K, paused 10ms+19ms, total 115ms
+03-17 16:51:31.590  5866  5866 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 20ms
+03-17 16:51:31.940  5866  5866 I Choreographer: Skipped 39 frames!  The application may be doing too much work on its main thread.
+03-17 16:51:32.130  5866  5866 D zjy     : view visibility = 7
+03-17 16:51:37.280  5866  5866 D dalvikvm: GC_FOR_ALLOC freed 1007K, 68% free 8419K/26036K, paused 81ms, total 81ms
+03-17 16:51:39.870  5866  5866 D zjy     : view visibility = 7
+03-17 16:51:41.020  5866  5869 D dalvikvm: GC_CONCURRENT freed 1253K, 66% free 8974K/26036K, paused 8ms+15ms, total 94ms
+03-17 16:51:41.020  5866  5866 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 14ms
+03-17 16:51:46.710  5866  5866 D zjy     : view visibility = 7
+--------- beginning of /dev/log/main
+03-17 16:51:17.150  5866  5866 I dalvikvm: Could not find method android.app.Activity.onMultiWindowModeChanged, referenced from method androidx.activity.ComponentActivity.onMultiWindowModeChanged
+03-17 16:51:17.150  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 220: Landroid/app/Activity;.onMultiWindowModeChanged (ZLandroid/content/res/Configuration;)V
+03-17 16:51:17.150  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:17.160  5866  5866 I dalvikvm: Could not find method android.app.Activity.onPictureInPictureModeChanged, referenced from method androidx.activity.ComponentActivity.onPictureInPictureModeChanged
+03-17 16:51:17.160  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 224: Landroid/app/Activity;.onPictureInPictureModeChanged (ZLandroid/content/res/Configuration;)V
+03-17 16:51:17.160  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:17.160  5866  5866 I dalvikvm: Could not find method android.app.Activity.onRequestPermissionsResult, referenced from method androidx.activity.ComponentActivity.onRequestPermissionsResult
+03-17 16:51:17.160  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 228: Landroid/app/Activity;.onRequestPermissionsResult (I[Ljava/lang/String;[I)V
+03-17 16:51:17.160  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0020
+03-17 16:51:17.170  5866  5866 I dalvikvm: Could not find method android.app.Activity.reportFullyDrawn, referenced from method androidx.activity.ComponentActivity.reportFullyDrawn
+03-17 16:51:17.170  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 242: Landroid/app/Activity;.reportFullyDrawn ()V
+03-17 16:51:17.170  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0014
+03-17 16:51:17.170  5866  5866 I dalvikvm: Could not find method android.app.Activity.reportFullyDrawn, referenced from method androidx.activity.ComponentActivity.reportFullyDrawn
+03-17 16:51:17.170  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 242: Landroid/app/Activity;.reportFullyDrawn ()V
+03-17 16:51:17.170  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0022
+03-17 16:51:17.320  5866  5866 D AppCompatDelegate: Checking for metadata for AppLocalesMetadataHolderService : Service not found
+03-17 16:51:17.670  5866  5866 D AlfusResources: cookie name=/data/app/com.andrerinas.headunitrevived-1.apk
+03-17 16:51:17.950  5866  5866 D dalvikvm: GC_FOR_ALLOC freed 294K, 65% free 5450K/15396K, paused 277ms, total 281ms
+03-17 16:51:17.970  5866  5866 I dalvikvm-heap: Grow heap (frag case) to 15.599MB for 1048592-byte allocation
+03-17 16:51:18.180  5866  5874 D dalvikvm: GC_FOR_ALLOC freed <1K, 61% free 6474K/16424K, paused 213ms, total 213ms
+03-17 16:51:18.430  5866  5869 D dalvikvm: GC_CONCURRENT freed 2K, 61% free 6472K/16424K, paused 71ms+39ms, total 252ms
+03-17 16:51:19.450  5866  5866 D dalvikvm: GC_FOR_ALLOC freed 1120K, 67% free 5469K/16492K, paused 101ms, total 101ms
+03-17 16:51:19.530  5866  5866 I dalvikvm-heap: Grow heap (frag case) to 20.618MB for 6291472-byte allocation
+03-17 16:51:19.670  5866  5869 D dalvikvm: GC_CONCURRENT freed <1K, 49% free 11613K/22640K, paused 24ms+22ms, total 146ms
+03-17 16:51:21.290  5866  5866 D dalvikvm: GC_FOR_ALLOC freed 0K, 49% free 11613K/22640K, paused 100ms, total 100ms
+03-17 16:51:21.310  5866  5866 I dalvikvm-heap: Grow heap (frag case) to 22.118MB for 1572880-byte allocation
+03-17 16:51:21.500  5866  5866 D dalvikvm: GC_FOR_ALLOC freed 0K, 46% free 13149K/24180K, paused 91ms, total 91ms
+03-17 16:51:21.670  5866  5866 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeMaxTextSize, referenced from method androidx.appcompat.widget.g0.e
+03-17 16:51:21.670  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4350: Landroid/widget/TextView;.getAutoSizeMaxTextSize ()I
+03-17 16:51:21.670  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.670  5866  5866 I dalvikvm: Could not find method android.widget.TextView.setFirstBaselineToTopHeight, referenced from method androidx.appcompat.widget.g0.f
+03-17 16:51:21.670  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4432: Landroid/widget/TextView;.setFirstBaselineToTopHeight (I)V
+03-17 16:51:21.670  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.670  5866  5866 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeMinTextSize, referenced from method androidx.appcompat.widget.g0.g
+03-17 16:51:21.670  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4351: Landroid/widget/TextView;.getAutoSizeMinTextSize ()I
+03-17 16:51:21.680  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.680  5866  5866 I dalvikvm: Could not find method android.widget.TextView.setLastBaselineToBottomHeight, referenced from method androidx.appcompat.widget.g0.h
+03-17 16:51:21.690  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4441: Landroid/widget/TextView;.setLastBaselineToBottomHeight (I)V
+03-17 16:51:21.690  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.690  5866  5866 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeStepGranularity, referenced from method androidx.appcompat.widget.g0.i
+03-17 16:51:21.700  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4352: Landroid/widget/TextView;.getAutoSizeStepGranularity ()I
+03-17 16:51:21.700  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.700  5866  5866 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeTextAvailableSizes, referenced from method androidx.appcompat.widget.g0.j
+03-17 16:51:21.700  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4353: Landroid/widget/TextView;.getAutoSizeTextAvailableSizes ()[I
+03-17 16:51:21.700  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.710  5866  5866 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeTextType, referenced from method androidx.appcompat.widget.g0.k
+03-17 16:51:21.710  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4354: Landroid/widget/TextView;.getAutoSizeTextType ()I
+03-17 16:51:21.710  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.710  5866  5866 I dalvikvm: Could not find method android.widget.TextView.getTextClassifier, referenced from method androidx.appcompat.widget.g0.l
+03-17 16:51:21.710  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4389: Landroid/widget/TextView;.getTextClassifier ()Landroid/view/textclassifier/TextClassifier;
+03-17 16:51:21.710  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.710  5866  5866 I dalvikvm: Could not find method android.widget.TextView.setAutoSizeTextTypeUniformWithConfiguration, referenced from method androidx.appcompat.widget.g0.m
+03-17 16:51:21.710  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4413: Landroid/widget/TextView;.setAutoSizeTextTypeUniformWithConfiguration (IIII)V
+03-17 16:51:21.710  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.720  5866  5866 I dalvikvm: Could not find method android.widget.TextView.setAutoSizeTextTypeUniformWithPresetSizes, referenced from method androidx.appcompat.widget.g0.n
+03-17 16:51:21.720  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4414: Landroid/widget/TextView;.setAutoSizeTextTypeUniformWithPresetSizes ([II)V
+03-17 16:51:21.720  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.720  5866  5866 I dalvikvm: Could not find method android.widget.TextView.setAutoSizeTextTypeWithDefaults, referenced from method androidx.appcompat.widget.g0.o
+03-17 16:51:21.720  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4415: Landroid/widget/TextView;.setAutoSizeTextTypeWithDefaults (I)V
+03-17 16:51:21.720  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.730  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 16:51:21.740  5866  5866 I dalvikvm: Could not find method android.widget.TextView.setTextClassifier, referenced from method androidx.appcompat.widget.g0.p
+03-17 16:51:21.740  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4462: Landroid/widget/TextView;.setTextClassifier (Landroid/view/textclassifier/TextClassifier;)V
+03-17 16:51:21.740  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:21.750  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 16:51:21.750  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 16:51:21.770  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 16:51:21.770  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 16:51:21.790  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 16:51:21.790  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 16:51:21.790  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 16:51:22.010  5866  5866 D zjy     : view visibility = 7
+03-17 16:51:22.210  5866  5866 I HUREV   : [1] MainActivity.handleIntent | MainActivity received intent: android.intent.action.MAIN, data: null
+03-17 16:51:22.400  5866  5866 I dalvikvm: Could not find method android.widget.Button.setElevation, referenced from method com.google.android.material.button.MaterialButton.setElevation
+03-17 16:51:22.400  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3910: Landroid/widget/Button;.setElevation (F)V
+03-17 16:51:22.400  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:22.420  5866  5866 I dalvikvm: Could not find method android.widget.Button.getAutoSizeMaxTextSize, referenced from method androidx.appcompat.widget.f.getAutoSizeMaxTextSize
+03-17 16:51:22.420  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3885: Landroid/widget/Button;.getAutoSizeMaxTextSize ()I
+03-17 16:51:22.420  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:22.420  5866  5866 I dalvikvm: Could not find method android.widget.Button.getAutoSizeMinTextSize, referenced from method androidx.appcompat.widget.f.getAutoSizeMinTextSize
+03-17 16:51:22.420  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3886: Landroid/widget/Button;.getAutoSizeMinTextSize ()I
+03-17 16:51:22.420  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:22.420  5866  5866 I dalvikvm: Could not find method android.widget.Button.getAutoSizeStepGranularity, referenced from method androidx.appcompat.widget.f.getAutoSizeStepGranularity
+03-17 16:51:22.420  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3887: Landroid/widget/Button;.getAutoSizeStepGranularity ()I
+03-17 16:51:22.420  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:22.420  5866  5866 I dalvikvm: Could not find method android.widget.Button.getAutoSizeTextAvailableSizes, referenced from method androidx.appcompat.widget.f.getAutoSizeTextAvailableSizes
+03-17 16:51:22.420  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3888: Landroid/widget/Button;.getAutoSizeTextAvailableSizes ()[I
+03-17 16:51:22.420  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:22.420  5866  5866 I dalvikvm: Could not find method android.widget.Button.getAutoSizeTextType, referenced from method androidx.appcompat.widget.f.getAutoSizeTextType
+03-17 16:51:22.420  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3889: Landroid/widget/Button;.getAutoSizeTextType ()I
+03-17 16:51:22.420  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0005
+03-17 16:51:22.430  5866  5866 I dalvikvm: Could not find method android.widget.Button.setAutoSizeTextTypeUniformWithConfiguration, referenced from method androidx.appcompat.widget.f.setAutoSizeTextTypeUniformWithConfiguration
+03-17 16:51:22.430  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3903: Landroid/widget/Button;.setAutoSizeTextTypeUniformWithConfiguration (IIII)V
+03-17 16:51:22.430  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:22.430  5866  5866 I dalvikvm: Could not find method android.widget.Button.setAutoSizeTextTypeUniformWithPresetSizes, referenced from method androidx.appcompat.widget.f.setAutoSizeTextTypeUniformWithPresetSizes
+03-17 16:51:22.430  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3904: Landroid/widget/Button;.setAutoSizeTextTypeUniformWithPresetSizes ([II)V
+03-17 16:51:22.430  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:22.430  5866  5866 I dalvikvm: Could not find method android.widget.Button.setAutoSizeTextTypeWithDefaults, referenced from method androidx.appcompat.widget.f.setAutoSizeTextTypeWithDefaults
+03-17 16:51:22.430  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3905: Landroid/widget/Button;.setAutoSizeTextTypeWithDefaults (I)V
+03-17 16:51:22.430  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 16:51:22.500  5866  5866 E dalvikvm: Could not find class 'android.graphics.drawable.RippleDrawable', referenced from method com.google.android.material.button.e.a
+03-17 16:51:22.500  5866  5866 W dalvikvm: VFY: unable to resolve new-instance 210 (Landroid/graphics/drawable/RippleDrawable;) in Lcom/google/android/material/button/e;
+03-17 16:51:22.500  5866  5866 D dalvikvm: VFY: replacing opcode 0x22 at 0x0056
+03-17 16:51:22.510  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/graphics/drawable/RippleDrawable;)
+03-17 16:51:22.510  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/graphics/drawable/RippleDrawable;)
+03-17 16:51:22.510  5866  5866 D dalvikvm: DexOpt: unable to opt direct call 0x04a0 at 0x6f in Lcom/google/android/material/button/e;.a
+03-17 16:51:23.150  5866  5866 D zjy     : view visibility = 7
+03-17 16:51:23.160  5866  5866 I HUREV   : [1] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-17 16:51:24.190  5866  5866 D libEGL  : loaded /system/lib/egl/libEGL_VIVANTE.so
+03-17 16:51:27.320  5866  5866 D libEGL  : loaded /system/lib/egl/libGLESv1_CM_VIVANTE.so
+03-17 16:51:27.750  5866  5866 D libEGL  : loaded /system/lib/egl/libGLESv2_VIVANTE.so
+03-17 16:51:28.360  5866  5866 D OpenGLRenderer: Enabling debug mode 0
+03-17 16:51:28.460  5866  5866 I Choreographer: Skipped 288 frames!  The application may be doing too much work on its main thread.
+03-17 16:51:28.760  5866  5866 D zjy     : view visibility = 7
+03-17 16:51:30.600  5866  5866 D zjy     : view visibility = 7
+03-17 16:51:30.780  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/ViewOutlineProvider;)
+03-17 16:51:30.780  5866  5866 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/ViewOutlineProvider;)
+03-17 16:51:30.800  5866  5866 I dalvikvm: Could not find method android.widget.LinearLayout.setElevation, referenced from method com.google.android.material.appbar.AppBarLayout.setElevation
+03-17 16:51:30.800  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 4194: Landroid/widget/LinearLayout;.setElevation (F)V
+03-17 16:51:30.800  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:30.820  5866  5866 I dalvikvm: Could not find method android.view.ViewGroup.setElevation, referenced from method com.google.android.material.appbar.MaterialToolbar.setElevation
+03-17 16:51:30.830  5866  5866 W dalvikvm: VFY: unable to resolve virtual method 3431: Landroid/view/ViewGroup;.setElevation (F)V
+03-17 16:51:30.830  5866  5866 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 16:51:30.900  5866  5866 I dalvikvm: Could not find method android.widget.LinearLayout$LayoutParams.<init>, referenced from method com.google.android.material.appbar.AppBarLayout$d.<init>
+03-17 16:51:30.900  5866  5866 W dalvikvm: VFY: unable to resolve direct method 4163: Landroid/widget/LinearLayout$LayoutParams;.<init> (Landroid/widget/LinearLayout$LayoutParams;)V
+03-17 16:51:30.900  5866  5866 D dalvikvm: VFY: replacing opcode 0x70 at 0x0000
+03-17 16:51:30.930  5866  5866 D AlfusResources: cookie name=/system/framework/framework-res.apk
+03-17 16:51:31.590  5866  5869 D dalvikvm: GC_CONCURRENT freed 8561K, 70% free 7974K/26036K, paused 10ms+19ms, total 115ms
+03-17 16:51:31.590  5866  5866 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 20ms
+03-17 16:51:31.940  5866  5866 I Choreographer: Skipped 39 frames!  The application may be doing too much work on its main thread.
+03-17 16:51:32.130  5866  5866 D zjy     : view visibility = 7
+03-17 16:51:37.280  5866  5866 D dalvikvm: GC_FOR_ALLOC freed 1007K, 68% free 8419K/26036K, paused 81ms, total 81ms
+03-17 16:51:39.870  5866  5866 D zjy     : view visibility = 7
+03-17 16:51:41.020  5866  5869 D dalvikvm: GC_CONCURRENT freed 1253K, 66% free 8974K/26036K, paused 8ms+15ms, total 94ms
+03-17 16:51:41.020  5866  5866 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 14ms
+03-17 16:51:46.710  5866  5866 D zjy     : view visibility = 7
+03-17 16:51:51.920  5866  6292 W HUREV   : [173] n.e | Log capture process exited, restarting (attempt 1/5)
+03-17 16:51:54.100  5866  5866 I Choreographer: Skipped 121 frames!  The application may be doing too much work on its main thread.

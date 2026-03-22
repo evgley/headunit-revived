@@ -1,0 +1,66 @@
+--------- beginning of main
+03-07 14:42:29.463 26767 26796 W CAR.HU.J: [432] m0.k | Handshake: No VERSION_RESPONSE within 2s (attempt 3), ret=-1
+03-07 14:42:29.664 26767 26796 E CAR.HU.J: [432] m0.k | Handshake: Version request/response failed after 3 attempt(s). last ret: -1
+03-07 14:42:29.664 26767 26796 I CAR.HU.J: [432] m0.o | AapTransport quitting (clean=false)
+03-07 14:42:29.665 26767 26796 I zygote64: Deoptimizing h2.g$b h2.c.a(h2.g$c) due to JIT inline cache
+03-07 14:42:29.667 26767 26796 E CAR.HU.J: [432] m0.z | Handshake failed
+03-07 14:42:29.667 26767 26794 I CAR.HU.J: [430] m0.o | AapTransport quitting (clean=false)
+03-07 14:42:29.668 26767 26794 I CAR.HU.J: [430] m.a | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/001/038,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mManufacturerName=Android,mProductName=smartlinkBox,mVersion=2.0,mSerialNumber=LY0123456789,mConfigurations=[
+03-07 14:42:29.668 26767 26794 I CAR.HU.J: UsbConfiguration[mId=1,mName=accessory,mAttributes=128,mMaxPower=75,mInterfaces=[
+03-07 14:42:29.668 26767 26794 I CAR.HU.J: UsbInterface[mId=0,mAlternateSetting=0,mName=Android Accessory Interface,mClass=255,mSubclass=255,mProtocol=0,mEndpoints=[
+03-07 14:42:29.668 26767 26794 I CAR.HU.J: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-07 14:42:29.668 26767 26794 I CAR.HU.J: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=512,mInterval=0]]]]
+03-07 14:42:29.669 26767 26794 E UsbDeviceConnectionJNI: device is closed in native_release_interface
+03-07 14:42:29.669 26767 26794 E CAR.HU.J: [430] m.a | Error releaseInterface()
+03-07 14:42:29.675 26767 26767 I CAR.HU.J: [2] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-07 14:42:29.718 26767 26767 I CAR.HU.J: [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-07 14:42:29.828 26767 26789 I GLConsumer: [SurfaceTexture-0-26767-1] detachFromContext
+03-07 14:42:30.082 26767 26767 I CAR.HU.J: [2] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-07 14:42:30.084 26767 26767 I CAR.HU.J: [2] i.onSurfaceTextureDestroyed | TextureProjectionView: Surface destroyed
+03-07 14:42:30.085 26767 26767 I CAR.HU.J: [2] AapProjectionActivity.c | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@c413049)/@0x5edfd4e
+03-07 14:42:30.086 26767 26767 I CAR.HU.J: [2] a0.r | Decoder stopped: surfaceDestroyed
+03-07 14:42:30.086 26767 26767 I BufferQueueConsumer: [SurfaceTexture-0-26767-1](this:0x73f37e0000,id:1,api:0,p:-1,c:-1) disconnect(C)
+03-07 14:42:31.864 26767 26767 I CAR.HU.J: [2] HomeFragment.attemptSingleUsbAutoConnect | HomeFragment: Requesting single-USB auto-connect via AapService
+03-07 14:42:31.894 26767 26767 I zygote64: Deoptimizing java.lang.CharSequence e0.e.filter(java.lang.CharSequence, int, int, android.text.Spanned, int, int) due to JIT inline cache
+03-07 14:42:31.962 26767 26776 I BufferQueue: [SurfaceTexture-0-26767-0](this:0x73f379b800,id:0,api:0,p:-1,c:-1) ~BufferQueueCore
+03-07 14:42:31.964 26767 26776 I BufferQueue: [SurfaceTexture-0-26767-1](this:0x73f37e0000,id:1,api:0,p:-1,c:-1) ~BufferQueueCore
+03-07 14:42:32.002 26767 26767 I zygote64: Deoptimizing java.lang.CharSequence androidx.emoji2.text.l.h(java.lang.CharSequence, int, int, int, boolean) due to JIT inline cache
+03-07 14:42:32.015 26767 26772 I zygote64: Do full code cache collection, code=249KB, data=165KB
+03-07 14:42:32.016 26767 26772 I zygote64: After code cache collection, code=217KB, data=115KB
+03-07 14:42:32.078 26767 26767 I CAR.HU.J: [2] AapService.r | Found device already in accessory mode: Google 18D1:2D00
+03-07 14:42:32.284 26767 26767 I zygote64: Deoptimizing void androidx.constraintlayout.widget.ConstraintLayout$c.b(r.e, s.b$a) due to JIT inline cache
+03-07 14:42:32.287 26767 26772 I zygote64: Do partial code cache collection, code=238KB, data=139KB
+03-07 14:42:32.287 26767 26772 I zygote64: After code cache collection, code=233KB, data=137KB
+03-07 14:42:32.287 26767 26772 I zygote64: Increasing code cache capacity to 1024KB
+03-07 14:42:32.399 26767 26800 I CAR.HU.J: [435] m.m | Established connection: android.hardware.usb.UsbDeviceConnection@1b77c1
+03-07 14:42:32.399 26767 26800 I CAR.HU.J: [435] m.m | interfaceCount: 1
+03-07 14:42:32.400 26767 26800 I CAR.HU.J: [435] m.j | Check accessory endpoints
+03-07 14:42:32.400 26767 26800 I CAR.HU.J: [435] m.j | Connected have EPs
+03-07 14:42:32.566 26767 26800 I CAR.HU.J: [435] m0.<init> | Using Java SSL implementation
+03-07 14:42:32.567 26767 26800 I CAR.HU.J: [435] m0.z | Start Aap transport handshake for x0.m@e3e113e
+03-07 14:42:32.677 26767 26767 I CAR.HU.J: [2] AapProjectionActivity.onCreate | HeadUnit for Android Auto (tm) - Copyright 2011-2015 Michael A. Reid., since 2025 André Rinas All Rights Reserved...
+03-07 14:42:32.678 26767 26767 I CAR.HU.J: [2] AapProjectionActivity.onCreate | Using TextureView
+03-07 14:42:32.679 26767 26767 I CAR.HU.J: [2] g.p | CarScreen: usable width: 1280 height: 720 (Raw: 1280x720, Insets: L0 T0 R0 B0)
+03-07 14:42:32.681 26767 26767 I CAR.HU.J: [2] g.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-07 14:42:32.682 26767 26767 I CAR.HU.J: [2] g.p | CarScreen using: _1280x720, number: 2, scales: scaleX: 1.0, scaleY: 1.0
+03-07 14:42:32.690 26767 26767 I CAR.HU.J: [2] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-07 14:42:32.757 26767 26767 I BufferQueue: [unnamed-26767-2](this:0x73f3e34800,id:2,api:0,p:-1,c:-1) BufferQueue core=(26767:com.andrerinas.headunitrevived)
+03-07 14:42:32.758 26767 26767 W GuiExt  : Cannot find GuiExtService
+03-07 14:42:32.758 26767 26767 I BufferQueueConsumer: [unnamed-26767-2](this:0x73f3e34800,id:2,api:0,p:-1,c:26767) connect(C): consumer=(26767:com.andrerinas.headunitrevived) controlledByApp=true
+03-07 14:42:32.758 26767 26767 I BufferQueueConsumer: [unnamed-26767-2](this:0x73f3e34800,id:2,api:0,p:-1,c:26767) setConsumerName: unnamed-26767-2
+03-07 14:42:32.758 26767 26767 I BufferQueueConsumer: [SurfaceTexture-0-26767-2](this:0x73f3e34800,id:2,api:0,p:-1,c:26767) setConsumerName: SurfaceTexture-0-26767-2
+03-07 14:42:32.759 26767 26767 I BufferQueueConsumer: [SurfaceTexture-0-26767-2](this:0x73f3e34800,id:2,api:0,p:-1,c:26767) setDefaultBufferSize: width=1280 height=720
+03-07 14:42:32.760 26767 26767 I CAR.HU.J: [2] i.onSurfaceTextureAvailable | TextureProjectionView: Surface available: 1280x720
+03-07 14:42:32.761 26767 26767 I CAR.HU.J: [2] AapProjectionActivity.d | [AapProjectionActivity] onSurfaceCreated
+03-07 14:42:32.762 26767 26767 I CAR.HU.J: [2] AapProjectionActivity.b | [AapProjectionActivity] onSurfaceChanged. Actual surface dimensions: width=1280, height=720
+03-07 14:42:32.763 26767 26767 I CAR.HU.J: [2] a0.o | New surface set: Surface(name=android.graphics.SurfaceTexture@5db3898)/@0x72598f1
+03-07 14:42:32.767 26767 26789 I GLConsumer: [SurfaceTexture-0-26767-2] attachToContext
+03-07 14:42:34.196 26767 26767 I CAR.HU.J: [2] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-07 14:42:34.365 26767 26789 I GLConsumer: [SurfaceTexture-0-26767-2] detachFromContext
+03-07 14:42:34.604 26767 26767 I CAR.HU.J: [2] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-07 14:42:34.605 26767 26767 I CAR.HU.J: [2] i.onSurfaceTextureDestroyed | TextureProjectionView: Surface destroyed
+03-07 14:42:34.606 26767 26767 I CAR.HU.J: [2] AapProjectionActivity.c | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@5db3898)/@0x72598f1
+03-07 14:42:34.607 26767 26767 I CAR.HU.J: [2] a0.r | Decoder stopped: surfaceDestroyed
+03-07 14:42:34.608 26767 26767 I BufferQueueConsumer: [SurfaceTexture-0-26767-2](this:0x73f3e34800,id:2,api:0,p:-1,c:-1) disconnect(C)
+03-07 14:42:34.903 26767 26800 W CAR.HU.J: [435] m0.k | Handshake: Version request send failed (ret=-1), attempt 1
+03-07 14:42:35.353 26767 26767 I zygote64: Deoptimizing int androidx.recyclerview.widget.RecyclerView$p$b.e(android.view.View) due to JIT inline cache

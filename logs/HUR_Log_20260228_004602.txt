@@ -1,0 +1,108 @@
+--------- beginning of main
+02-28 00:45:56.115 19020 19058 W CAR.HU.J: [387] g.j | Handshake: Version response recv failed (ret=-1), attempt 2
+02-28 00:45:56.317 19020 19058 W CAR.HU.J: [387] g.j | Handshake: Version request send failed (ret=-1), attempt 3
+02-28 00:45:56.329 19020 19020 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+02-28 00:45:56.333 19020 19020 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+02-28 00:45:56.353 19020 19020 I CAR.HU.J: [2] g.n | AapTransport quitting (clean=false)
+02-28 00:45:56.359 19020 19020 I CAR.HU.J: [2] j.a | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/001/032,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mManufacturerName=Android,mProductName=smartlinkBox,mVersion=2.0,mSerialNumber=LY0123456789,mConfigurations=[
+02-28 00:45:56.359 19020 19020 I CAR.HU.J: UsbConfiguration[mId=1,mName=accessory,mAttributes=128,mMaxPower=75,mInterfaces=[
+02-28 00:45:56.359 19020 19020 I CAR.HU.J: UsbInterface[mId=0,mAlternateSetting=0,mName=Android Accessory Interface,mClass=255,mSubclass=255,mProtocol=0,mEndpoints=[
+02-28 00:45:56.359 19020 19020 I CAR.HU.J: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+02-28 00:45:56.359 19020 19020 I CAR.HU.J: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=512,mInterval=0]]]]
+02-28 00:45:56.359 19020 19060 I CAR.HU.J: [388] a0.r | Decoder stopped: AapService::reset
+02-28 00:45:56.361 19020 19020 E CAR.HU.J: [2] j.a | Error releaseInterface()
+02-28 00:45:56.365 19020 19020 I CAR.HU.J: [2] AapService.F | AapService: Unclean disconnect in Auto Mode. Retrying discovery in 2s...
+02-28 00:45:56.520 19020 19058 E CAR.HU.J: [387] g.j | Handshake: Version request/response failed after 3 attempt(s). last ret: -1
+02-28 00:45:56.522 19020 19058 I CAR.HU.J: [387] g.n | AapTransport quitting (clean=false)
+02-28 00:45:56.526 19020 19058 E CAR.HU.J: [387] g.x | Handshake failed
+02-28 00:45:56.616 19020 19020 I CAR.HU.J: [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+02-28 00:45:56.711 19020 19025 I zygote64: Do full code cache collection, code=241KB, data=155KB
+02-28 00:45:56.712 19020 19025 I zygote64: After code cache collection, code=202KB, data=107KB
+02-28 00:45:56.735 19020 19020 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x11000010 (has extras) }
+02-28 00:45:56.739 19020 19020 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x11000010 (has extras) }
+02-28 00:45:56.740 19020 19020 I CAR.HU.J: [2] AapService.onUsbAttach | USB attached and auto-connect enabled, checking USB.
+02-28 00:45:56.744 19020 19020 I CAR.HU.J: [2] AapService.H | Single USB auto-connect: connecting to Xiaomi 2717:FF40
+02-28 00:45:56.746 19020 19020 I CAR.HU.J: [2] k.c | Success controlTransfer len: 2  acc_ver: 2
+02-28 00:45:56.746 19020 19020 I CAR.HU.J: [2] k.c | acc_ver: 2
+02-28 00:45:56.747 19020 19020 I CAR.HU.J: [2] k.b | Success controlTransfer len: 7  index: 0  string: "Android"
+02-28 00:45:56.748 19020 19020 I CAR.HU.J: [2] k.b | Success controlTransfer len: 12  index: 1  string: "Android Auto"
+02-28 00:45:56.749 19020 19020 I CAR.HU.J: [2] k.b | Success controlTransfer len: 12  index: 2  string: "Android Auto"
+02-28 00:45:56.750 19020 19020 I CAR.HU.J: [2] k.b | Success controlTransfer len: 5  index: 3  string: "2.0.1"
+02-28 00:45:56.751 19020 19020 I CAR.HU.J: [2] k.b | Success controlTransfer len: 45  index: 4  string: "https://developer.android.com/auto/index.html"
+02-28 00:45:56.752 19020 19020 I CAR.HU.J: [2] k.b | Success controlTransfer len: 12  index: 5  string: "HU-AAAAAA001"
+02-28 00:45:56.752 19020 19020 I CAR.HU.J: [2] k.c | Sending acc start
+02-28 00:45:57.254 19020 19020 I CAR.HU.J: [2] k.a | Result: true
+02-28 00:45:57.254 19020 19020 I CAR.HU.J: [2] AapService.H | Successfully requested switch to accessory mode for single USB device
+02-28 00:45:57.255 19020 19020 I CAR.HU.J: [2] AapService.onDestroy | AapService destroying...
+02-28 00:45:57.273 19020 19020 I CAR.HU.J: [2] AapService.F | AapService: Unclean disconnect in Auto Mode. Retrying discovery in 2s...
+02-28 00:45:57.287 19020 19020 I Choreographer: Skipped 31 frames!  The application may be doing too much work on its main thread.
+02-28 00:45:57.294 19020 19020 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+02-28 00:45:57.304 19020 19020 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x11000010 (has extras) }
+02-28 00:45:57.536 19020 19020 I CAR.HU.J: [2] UsbAttachedActivity.onCreate | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x11000000 cmp=com.andrerinas.headunitrevived/.app.UsbAttachedActivity (has extras) }
+02-28 00:45:57.537 19020 19020 I CAR.HU.J: [2] g.<init> | Using Java SSL implementation
+02-28 00:45:57.647 19020 19020 I CAR.HU.J: [2] UsbAttachedActivity.onCreate | USB auto-start: launching app
+02-28 00:45:57.663 19020 19020 E CAR.HU.J: [2] UsbAttachedActivity.onCreate | Usb in accessory mode
+02-28 00:45:57.738 19020 19025 I zygote64: Do partial code cache collection, code=213KB, data=118KB
+02-28 00:45:57.739 19020 19025 I zygote64: After code cache collection, code=213KB, data=118KB
+02-28 00:45:57.739 19020 19025 I zygote64: Increasing code cache capacity to 1024KB
+02-28 00:45:57.751 19020 19020 I CAR.HU.J: [2] MainActivity.handleIntent | MainActivity received intent: null, data: null
+02-28 00:45:57.760 19020 19020 I CAR.HU.J: [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+02-28 00:45:57.775 19020 19020 I CAR.HU.J: [2] AapService.onCreate | AapService creating...
+02-28 00:45:57.795 19020 19020 I CAR.HU.J: [2] h.invoke | NightMode update: true
+02-28 00:45:57.894 19020 19020 I CAR.HU.J: [2] AapService.y | Found device already in accessory mode: Google 18D1:2D00
+02-28 00:45:57.916 19020 19020 I CAR.HU.J: [2] AapService.y | Found device already in accessory mode: Google 18D1:2D00
+02-28 00:45:57.930 19020 19020 I CAR.HU.J: [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+02-28 00:45:58.074 19020 19020 I CAR.HU.J: [2] j.m | Established connection: android.hardware.usb.UsbDeviceConnection@3c9c99d
+02-28 00:45:58.075 19020 19020 I CAR.HU.J: [2] j.m | interfaceCount: 1
+02-28 00:45:58.075 19020 19020 I CAR.HU.J: [2] j.j | Check accessory endpoints
+02-28 00:45:58.076 19020 19020 I CAR.HU.J: [2] j.j | Connected have EPs
+02-28 00:45:58.079 19020 19020 I CAR.HU.J: [2] j.m | Established connection: android.hardware.usb.UsbDeviceConnection@4c6de12
+02-28 00:45:58.080 19020 19020 I CAR.HU.J: [2] j.m | interfaceCount: 1
+02-28 00:45:58.082 19020 19020 I CAR.HU.J: [2] j.j | Check accessory endpoints
+02-28 00:45:58.083 19020 19020 I CAR.HU.J: [2] j.j | Connected have EPs
+02-28 00:45:58.087 19020 19020 I CAR.HU.J: [2] j.m | Established connection: android.hardware.usb.UsbDeviceConnection@44239e3
+02-28 00:45:58.088 19020 19020 I CAR.HU.J: [2] j.m | interfaceCount: 1
+02-28 00:45:58.089 19020 19020 I CAR.HU.J: [2] j.j | Check accessory endpoints
+02-28 00:45:58.090 19020 19020 I CAR.HU.J: [2] j.j | Connected have EPs
+02-28 00:45:58.092 19020 19020 W CAR.HU.J: [2] AapService.E | onConnectionResult: stale attempt 1, current 3
+02-28 00:45:58.094 19020 19020 W CAR.HU.J: [2] AapService.E | onConnectionResult: stale attempt 2, current 3
+02-28 00:45:58.095 19020 19020 I CAR.HU.J: [2] g.n | AapTransport quitting (clean=false)
+02-28 00:45:58.099 19020 19062 I CAR.HU.J: [390] a0.r | Decoder stopped: AapService::reset
+02-28 00:45:58.099 19020 19020 I CAR.HU.J: [2] 1.onReceive | HomeFragment received com.andrerinas.headunitrevived.ACTION_DISCONNECT
+02-28 00:45:58.099 19020 19060 I CAR.HU.J: [388] g.<init> | Using Java SSL implementation
+02-28 00:45:58.223 19020 19060 I CAR.HU.J: [388] g.x | Start Aap transport for x0.j@ed4913f
+02-28 00:45:58.505 19020 19020 I CAR.HU.J: [2] HomeFragment.attemptSingleUsbAutoConnect | HomeFragment: Requesting single-USB auto-connect via AapService
+02-28 00:45:58.551 19020 19060 I CAR.HU.J: [388] g.j | Handshake: Version response received (ret=12). Bytes: 00 03 00 08 00 02 00 01 00 07 00 00 
+02-28 00:45:58.552 19020 19060 I CAR.HU.J: [388] g.j | Handshake: Version response recv ret: 12
+02-28 00:45:58.590 19020 19020 I zygote64: Deoptimizing java.lang.CharSequence e0.e.filter(java.lang.CharSequence, int, int, android.text.Spanned, int, int) due to JIT inline cache
+02-28 00:45:58.672 19020 19020 I CAR.HU.J: [2] AapService.y | Found device already in accessory mode: Google 18D1:2D00
+02-28 00:45:58.714 19020 19020 I CAR.HU.J: [2] j.a | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/001/034,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mManufacturerName=Android,mProductName=smartlinkBox,mVersion=2.0,mSerialNumber=LY0123456789,mConfigurations=[
+02-28 00:45:58.714 19020 19020 I CAR.HU.J: UsbConfiguration[mId=1,mName=accessory,mAttributes=128,mMaxPower=75,mInterfaces=[
+02-28 00:45:58.714 19020 19020 I CAR.HU.J: UsbInterface[mId=0,mAlternateSetting=0,mName=Android Accessory Interface,mClass=255,mSubclass=255,mProtocol=0,mEndpoints=[
+02-28 00:45:58.714 19020 19020 I CAR.HU.J: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+02-28 00:45:58.714 19020 19020 I CAR.HU.J: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=512,mInterval=0]]]]
+02-28 00:45:58.715 19020 19020 I CAR.HU.J: [2] j.a | OK releaseInterface()
+02-28 00:45:58.716 19020 19060 E CAR.HU.J: [388] h0.performHandshake | SSL Handshake: Send failed
+02-28 00:45:58.717 19020 19060 E CAR.HU.J: [388] g.j | Handshake: SSL performHandshake failed.
+02-28 00:45:58.717 19020 19060 I CAR.HU.J: [388] g.n | AapTransport quitting (clean=false)
+02-28 00:45:58.723 19020 19060 E CAR.HU.J: [388] g.x | Handshake failed
+02-28 00:45:58.781 19020 19025 I zygote64: Compiler allocated 4MB to compile void com.andrerinas.headunitrevived.main.SettingsFragment.updateSettingsList()
+02-28 00:45:58.894 19020 19020 I zygote64: Deoptimizing void androidx.constraintlayout.widget.ConstraintLayout$c.b(r.e, s.b$a) due to JIT inline cache
+02-28 00:45:59.102 19020 19020 I CAR.HU.J: [2] j.m | Established connection: android.hardware.usb.UsbDeviceConnection@c832bc
+02-28 00:45:59.103 19020 19020 I CAR.HU.J: [2] j.m | interfaceCount: 1
+02-28 00:45:59.103 19020 19020 I CAR.HU.J: [2] j.j | Check accessory endpoints
+02-28 00:45:59.103 19020 19020 I CAR.HU.J: [2] j.j | Connected have EPs
+02-28 00:45:59.104 19020 19020 I CAR.HU.J: [2] AapService.onDestroy | AapService destroying...
+02-28 00:45:59.107 19020 19020 I CAR.HU.J: [2] g.n | AapTransport quitting (clean=false)
+02-28 00:45:59.110 19020 19020 I CAR.HU.J: [2] j.a | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/001/034,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mManufacturerName=Android,mProductName=smartlinkBox,mVersion=2.0,mSerialNumber=LY0123456789,mConfigurations=[
+02-28 00:45:59.110 19020 19020 I CAR.HU.J: UsbConfiguration[mId=1,mName=accessory,mAttributes=128,mMaxPower=75,mInterfaces=[
+02-28 00:45:59.110 19020 19020 I CAR.HU.J: UsbInterface[mId=0,mAlternateSetting=0,mName=Android Accessory Interface,mClass=255,mSubclass=255,mProtocol=0,mEndpoints=[
+02-28 00:45:59.110 19020 19020 I CAR.HU.J: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+02-28 00:45:59.110 19020 19020 I CAR.HU.J: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=512,mInterval=0]]]]
+02-28 00:45:59.111 19020 19020 I CAR.HU.J: [2] j.a | OK releaseInterface()
+02-28 00:45:59.111 19020 19020 I CAR.HU.J: [2] AapService.F | AapService: Unclean disconnect in Auto Mode. Retrying discovery in 2s...
+02-28 00:45:59.641 19020 19020 I zygote64: Deoptimizing void androidx.appcompat.widget.f0.C(android.content.Context, androidx.appcompat.widget.i1) due to JIT inline cache
+02-28 00:46:00.477 19020 19020 I zygote64: Deoptimizing int androidx.recyclerview.widget.s$b.d(android.view.View) due to JIT inline cache
+02-28 00:46:00.544 19020 19020 I zygote64: Deoptimizing int androidx.recyclerview.widget.s$b.g(android.view.View) due to JIT inline cache
+02-28 00:46:00.845 19020 19025 I zygote64: Do full code cache collection, code=500KB, data=297KB
+02-28 00:46:00.847 19020 19025 I zygote64: After code cache collection, code=481KB, data=254KB

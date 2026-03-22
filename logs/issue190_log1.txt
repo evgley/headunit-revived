@@ -1,0 +1,764 @@
+--------- beginning of system
+03-12 16:25:55.402 14387 14387 W ActivityThread: Application com.andrerinas.headunitrevived can be debugged on port 8100...
+03-12 16:26:17.536 14387 14387 W ViewRootImpl[SettingsActivity]: Dropping event due to root view being removed: MotionEvent { action=ACTION_MOVE, actionButton=0, id[0]=0, x[0]=-144.12411, y[0]=217.60748, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=3382122, downTime=3382111, deviceId=4, source=0x1002 }
+--------- beginning of main
+03-12 16:31:33.779 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.40 dur=1020.32 max=67.14 min=12.93
+03-12 16:31:34.808 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.10 dur=1029.87 max=47.64 min=19.58
+03-12 16:31:35.869 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.22 dur=1060.89 max=65.35 min=16.72
+03-12 16:31:36.876 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.78 dur=1007.14 max=59.58 min=14.22
+03-12 16:31:37.895 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.43 dur=1018.84 max=53.75 min=15.59
+03-12 16:31:38.902 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.81 dur=1006.54 max=51.22 min=17.54
+03-12 16:31:39.903 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.96 dur=1001.21 max=56.60 min=14.51
+03-12 16:31:40.904 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.96 dur=1001.35 max=74.69 min=13.80
+03-12 16:31:41.926 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.34 dur=1021.89 max=65.12 min=13.56
+03-12 16:31:42.932 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.84 dur=1005.35 max=54.47 min=13.77
+03-12 16:31:43.093 14387 14399 I zygote  : Background concurrent copying GC freed 4670(3MB) AllocSpace objects, 180(2MB) LOS objects, 40% free, 8MB/14MB, paused 137us total 109.352ms
+03-12 16:31:43.960 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.14 dur=1028.38 max=53.11 min=21.61
+03-12 16:31:44.961 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.98 dur=1000.65 max=69.21 min=15.79
+03-12 16:31:46.001 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.81 dur=1040.08 max=51.89 min=14.41
+03-12 16:31:47.014 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.60 dur=1013.23 max=50.87 min=15.34
+03-12 16:31:48.020 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.81 dur=1006.26 max=55.88 min=14.55
+03-12 16:31:49.063 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.74 dur=1042.35 max=55.74 min=16.01
+03-12 16:31:49.996 14387 15354 I HUREV   : [2376] UsbAccessoryConnection.recvBlocking | USB reads recovered after 1 errors
+03-12 16:31:50.067 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=25.89 dur=1004.14 max=226.46 min=14.00
+03-12 16:31:51.099 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=31.00 dur=1032.27 max=54.27 min=12.10
+03-12 16:31:52.059 14387 15354 I HUREV   : [2376] UsbAccessoryConnection.recvBlocking | USB reads recovered after 1 errors
+03-12 16:31:52.107 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=25.79 dur=1008.32 max=229.05 min=12.39
+03-12 16:31:53.118 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=31.65 dur=1010.96 max=56.81 min=12.90
+03-12 16:31:54.119 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.97 dur=1001.14 max=61.26 min=12.46
+03-12 16:31:55.120 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.99 dur=1000.50 max=52.41 min=19.16
+03-12 16:31:55.458 14387 14399 I zygote  : Background concurrent copying GC freed 6118(4MB) AllocSpace objects, 86(1664KB) LOS objects, 40% free, 8MB/14MB, paused 2.181ms total 146.800ms
+03-12 16:31:56.123 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.91 dur=1002.86 max=65.34 min=12.21
+03-12 16:31:57.131 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.74 dur=1008.71 max=53.44 min=15.19
+03-12 16:31:58.132 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.97 dur=1000.87 max=56.03 min=13.10
+03-12 16:31:59.134 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.96 dur=1001.39 max=42.74 min=22.94
+03-12 16:32:00.168 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.99 dur=1033.83 max=51.55 min=15.06
+03-12 16:32:01.196 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.13 dur=1028.80 max=46.49 min=18.54
+03-12 16:32:02.235 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.85 dur=1038.39 max=54.01 min=18.02
+03-12 16:32:03.264 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.13 dur=1028.76 max=45.55 min=20.61
+03-12 16:32:04.270 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.81 dur=1006.43 max=58.50 min=21.39
+03-12 16:32:05.297 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.18 dur=1027.32 max=50.87 min=16.42
+03-12 16:32:06.319 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.34 dur=1021.92 max=47.17 min=22.18
+03-12 16:32:07.333 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.59 dur=1013.92 max=57.46 min=17.10
+03-12 16:32:08.341 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.75 dur=1008.36 max=54.16 min=13.73
+03-12 16:32:09.366 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.27 dur=1024.07 max=49.18 min=13.90
+03-12 16:32:10.394 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.16 dur=1028.01 max=55.43 min=17.40
+03-12 16:32:11.395 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.94 dur=1001.89 max=47.42 min=14.78
+03-12 16:32:12.433 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.86 dur=1038.04 max=60.20 min=16.93
+03-12 16:32:13.457 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.28 dur=1023.85 max=62.77 min=17.64
+03-12 16:32:14.482 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.24 dur=1025.02 max=55.70 min=13.13
+03-12 16:32:15.483 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.97 dur=1001.12 max=58.80 min=13.99
+03-12 16:32:16.487 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.90 dur=1003.33 max=61.87 min=13.43
+03-12 16:32:17.489 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.92 dur=1002.65 max=57.36 min=15.13
+03-12 16:32:18.552 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.16 dur=1062.96 max=64.19 min=13.28
+03-12 16:32:19.553 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.99 dur=1000.43 max=61.54 min=14.42
+03-12 16:32:20.570 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.50 dur=1016.82 max=62.25 min=13.56
+03-12 16:32:21.570 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.00 dur=1000.03 max=41.21 min=22.57
+03-12 16:32:22.618 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.58 dur=1047.88 max=59.52 min=14.50
+03-12 16:32:23.636 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.44 dur=1018.31 max=49.75 min=15.60
+03-12 16:32:24.640 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.89 dur=1003.75 max=51.52 min=20.58
+03-12 16:32:25.668 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.16 dur=1028.01 max=52.42 min=14.30
+03-12 16:32:26.683 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.52 dur=1015.71 max=61.95 min=14.65
+03-12 16:32:27.336 14387 15354 I HUREV   : [2376] AapControlService.navigationFocusRequest | Navigation Focus Request: NAV_FOCUS_1
+03-12 16:32:27.337 14387 15354 I HUREV   : [2376] AapControlService.navigationFocusRequest | CONTROL Navigation Focus Notification type: 14 flags: 11 size: 8 dataOffset: 6
+03-12 16:32:27.685 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=44.93 dur=1001.56 max=88.60 min=10.96
+03-12 16:32:28.023 14387 14399 I zygote  : Background concurrent copying GC freed 6541(4MB) AllocSpace objects, 102(1868KB) LOS objects, 40% free, 8MB/14MB, paused 662us total 125.523ms
+03-12 16:32:28.689 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=52.76 dur=1004.49 max=43.23 min=12.06
+03-12 16:32:29.692 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=47.90 dur=1002.14 max=56.69 min=13.90
+03-12 16:32:30.562 14387 14399 I zygote  : Background concurrent copying GC freed 5247(3MB) AllocSpace objects, 155(2MB) LOS objects, 40% free, 8MB/14MB, paused 231us total 131.468ms
+03-12 16:32:30.692 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=36.97 dur=1000.88 max=65.82 min=11.66
+03-12 16:32:31.810 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=39.35 dur=1118.05 max=187.97 min=10.83
+03-12 16:32:32.815 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=11.95 dur=1004.59 max=415.70 min=13.14
+03-12 16:32:33.689 14387 14399 I zygote  : Background concurrent copying GC freed 7145(3MB) AllocSpace objects, 115(2MB) LOS objects, 39% free, 9MB/15MB, paused 258us total 142.811ms
+03-12 16:32:33.822 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=52.64 dur=1006.78 max=32.62 min=11.84
+03-12 16:32:34.843 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=41.15 dur=1020.69 max=279.57 min=10.83
+03-12 16:32:35.857 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=40.43 dur=1014.12 max=86.94 min=12.13
+03-12 16:32:36.136 14387 14399 I zygote  : Background concurrent copying GC freed 4961(3MB) AllocSpace objects, 155(3MB) LOS objects, 39% free, 9MB/15MB, paused 306us total 130.310ms
+03-12 16:32:36.867 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=56.40 dur=1010.59 max=26.86 min=11.46
+03-12 16:32:37.882 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=33.52 dur=1014.27 max=50.66 min=13.30
+03-12 16:32:38.885 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=28.89 dur=1003.89 max=56.35 min=20.49
+03-12 16:32:39.341 14387 14399 I zygote  : Background concurrent copying GC freed 5180(4MB) AllocSpace objects, 121(2MB) LOS objects, 40% free, 8MB/14MB, paused 265us total 112.651ms
+03-12 16:32:39.908 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=34.24 dur=1022.22 max=128.94 min=13.18
+03-12 16:32:41.099 14387 15354 I HUREV   : [2376] UsbAccessoryConnection.recvBlocking | USB reads recovered after 1 errors
+03-12 16:32:41.114 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=38.96 dur=1206.36 max=294.75 min=11.33
+03-12 16:32:42.117 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=31.91 dur=1002.70 max=246.65 min=10.07
+03-12 16:32:43.123 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.80 dur=1006.54 max=243.79 min=11.48
+03-12 16:32:44.134 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=47.48 dur=1011.02 max=74.87 min=15.14
+03-12 16:32:45.136 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=50.90 dur=1001.96 max=30.41 min=14.63
+03-12 16:32:45.246 14387 14399 I zygote  : Background concurrent copying GC freed 4160(2MB) AllocSpace objects, 199(3MB) LOS objects, 39% free, 9MB/15MB, paused 185us total 186.808ms
+03-12 16:32:46.160 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=39.06 dur=1024.19 max=69.24 min=14.62
+03-12 16:32:47.193 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.02 dur=1032.79 max=78.23 min=10.36
+03-12 16:32:48.220 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=28.24 dur=1027.00 max=134.86 min=12.04
+03-12 16:32:49.305 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.43 dur=1084.38 max=127.57 min=13.21
+03-12 16:32:50.310 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.84 dur=1005.19 max=118.72 min=13.35
+03-12 16:32:51.316 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=31.79 dur=1006.60 max=79.32 min=12.63
+03-12 16:32:52.082 14387 14399 I zygote  : Background concurrent copying GC freed 5545(3MB) AllocSpace objects, 95(2MB) LOS objects, 40% free, 8MB/14MB, paused 262us total 123.766ms
+03-12 16:32:52.333 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=53.13 dur=1016.32 max=55.95 min=10.35
+03-12 16:32:53.352 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=53.94 dur=1019.62 max=26.59 min=13.90
+03-12 16:32:54.360 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=35.73 dur=1007.58 max=55.83 min=14.40
+03-12 16:32:55.407 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.60 dur=1047.26 max=55.55 min=12.56
+03-12 16:32:56.408 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.98 dur=1000.59 max=53.68 min=13.50
+03-12 16:32:57.411 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.90 dur=1003.22 max=65.44 min=12.17
+03-12 16:32:58.445 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.00 dur=1034.47 max=82.74 min=12.20
+03-12 16:32:59.451 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.83 dur=1005.66 max=76.97 min=12.90
+03-12 16:33:00.516 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.12 dur=1064.46 max=109.64 min=11.67
+03-12 16:33:01.594 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.67 dur=1078.45 max=119.07 min=10.42
+03-12 16:33:02.595 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=31.98 dur=1000.75 max=108.71 min=11.16
+03-12 16:33:03.645 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=28.57 dur=1049.87 max=88.62 min=11.30
+03-12 16:33:04.660 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=31.50 dur=1015.86 max=81.81 min=10.67
+03-12 16:33:05.668 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.78 dur=1007.46 max=73.40 min=12.16
+03-12 16:33:06.716 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.59 dur=1047.65 max=55.88 min=12.19
+03-12 16:33:07.718 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.91 dur=1002.90 max=124.03 min=12.32
+03-12 16:33:08.801 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=28.63 dur=1082.66 max=117.56 min=12.34
+03-12 16:33:09.820 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.44 dur=1019.05 max=123.08 min=14.88
+03-12 16:33:10.098 14387 14399 I zygote  : Background concurrent copying GC freed 4368(3MB) AllocSpace objects, 152(2MB) LOS objects, 40% free, 8MB/14MB, paused 146us total 107.810ms
+03-12 16:33:10.900 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=28.71 dur=1079.91 max=119.17 min=12.59
+03-12 16:33:11.931 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=32.00 dur=1031.22 max=58.06 min=11.84
+03-12 16:33:12.965 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.98 dur=1033.94 max=73.79 min=12.84
+03-12 16:33:13.986 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.38 dur=1020.57 max=42.53 min=20.95
+03-12 16:33:14.995 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.72 dur=1009.43 max=54.89 min=15.40
+03-12 16:33:15.997 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.94 dur=1002.03 max=71.18 min=13.19
+03-12 16:33:17.033 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.93 dur=1035.60 max=56.16 min=11.28
+03-12 16:33:18.060 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.17 dur=1027.52 max=53.86 min=14.10
+03-12 16:33:19.068 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.77 dur=1007.81 max=47.26 min=16.62
+03-12 16:33:20.095 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.20 dur=1026.35 max=52.05 min=18.72
+03-12 16:33:21.130 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.94 dur=1035.37 max=56.48 min=15.08
+03-12 16:33:22.173 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.71 dur=1043.36 max=76.18 min=13.01
+03-12 16:33:23.200 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.21 dur=1026.92 max=92.61 min=11.84
+03-12 16:33:24.265 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.12 dur=1064.58 max=102.26 min=10.67
+03-12 16:33:25.333 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.95 dur=1068.51 max=114.48 min=12.01
+03-12 16:33:25.420 14387 14399 I zygote  : Background concurrent copying GC freed 6084(4MB) AllocSpace objects, 85(1644KB) LOS objects, 40% free, 8MB/14MB, paused 160us total 105.409ms
+03-12 16:33:26.370 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=31.84 dur=1036.37 max=96.04 min=12.50
+03-12 16:33:27.393 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.30 dur=1023.18 max=55.59 min=13.96
+03-12 16:33:28.393 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.99 dur=1000.19 max=58.79 min=11.80
+03-12 16:33:29.420 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.18 dur=1027.07 max=56.23 min=16.43
+03-12 16:33:30.469 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.55 dur=1048.92 max=56.91 min=13.01
+03-12 16:33:31.469 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.99 dur=1000.23 max=53.36 min=18.01
+03-12 16:33:32.470 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.98 dur=1000.56 max=66.61 min=12.86
+03-12 16:33:33.471 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.98 dur=1000.73 max=57.96 min=13.19
+03-12 16:33:34.472 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.94 dur=1001.88 max=62.86 min=15.26
+03-12 16:33:35.491 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.43 dur=1018.74 max=91.16 min=10.94
+03-12 16:33:36.504 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=28.64 dur=1012.40 max=98.40 min=11.42
+03-12 16:33:37.544 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=28.83 dur=1040.67 max=120.35 min=11.27
+03-12 16:33:38.600 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=25.58 dur=1055.37 max=135.21 min=10.57
+03-12 16:33:39.023 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: slot 8 is dropped, handle=0x8fde6100
+03-12 16:33:39.621 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=32.30 dur=1021.61 max=95.03 min=12.41
+03-12 16:33:40.183 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: slot 7 is dropped, handle=0x8fde6040
+03-12 16:33:40.199 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: slot 0 is dropped, handle=0x8fde5740
+03-12 16:33:40.227 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: slot 1 is dropped, handle=0x8fde5800
+03-12 16:33:40.250 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: slot 2 is dropped, handle=0x8fde58c0
+03-12 16:33:40.306 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: slot 8 is dropped, handle=0x8fde6100
+03-12 16:33:40.643 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=27.41 dur=1021.49 max=65.03 min=16.02
+03-12 16:33:41.046 14387 14387 I HUREV   : [2] 1.invoke | NightMode update: true
+03-12 16:33:41.664 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=31.33 dur=1021.25 max=63.82 min=17.80
+03-12 16:33:42.692 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=31.12 dur=1028.16 max=79.78 min=15.32
+03-12 16:33:43.678 14387 14399 I zygote  : Background concurrent copying GC freed 7792(5MB) AllocSpace objects, 16(300KB) LOS objects, 40% free, 8MB/14MB, paused 199us total 164.138ms
+03-12 16:33:43.697 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.85 dur=1005.12 max=51.33 min=16.86
+03-12 16:33:44.699 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=24.95 dur=1002.20 max=98.24 min=13.38
+03-12 16:33:45.731 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=27.15 dur=1031.23 max=67.27 min=19.61
+03-12 16:33:46.479 14387 14399 I zygote  : Background concurrent copying GC freed 4062(2MB) AllocSpace objects, 155(3MB) LOS objects, 40% free, 8MB/14MB, paused 171us total 154.067ms
+03-12 16:33:46.761 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=33.97 dur=1030.20 max=77.70 min=16.73
+03-12 16:33:47.799 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=26.97 dur=1038.33 max=108.81 min=13.58
+03-12 16:33:48.816 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=31.47 dur=1016.71 max=81.08 min=13.91
+03-12 16:33:49.840 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=31.26 dur=1023.68 max=45.88 min=15.96
+03-12 16:33:50.493 14387 14399 I zygote  : Background concurrent copying GC freed 5696(4MB) AllocSpace objects, 81(1832KB) LOS objects, 40% free, 8MB/14MB, paused 177us total 130.939ms
+03-12 16:33:50.845 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.83 dur=1005.62 max=48.76 min=19.82
+03-12 16:33:51.856 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.66 dur=1011.07 max=43.20 min=16.34
+03-12 16:33:52.289 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: slot 5 is dropped, handle=0x8fde5c80
+03-12 16:33:52.885 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.17 dur=1028.55 max=54.00 min=11.37
+03-12 16:33:53.924 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.81 dur=1038.76 max=79.04 min=11.96
+03-12 16:33:54.924 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=29.98 dur=1000.60 max=96.74 min=10.37
+03-12 16:33:55.934 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=28.72 dur=1009.86 max=122.24 min=11.16
+03-12 16:33:56.083 14387 14387 I HUREV   : [2] AapTransport.send | Unknown: 0
+03-12 16:33:56.125 14387 14399 I zygote  : Background concurrent copying GC freed 8240(5MB) AllocSpace objects, 6(140KB) LOS objects, 40% free, 8MB/14MB, paused 329us total 115.031ms
+03-12 16:33:56.128 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: slot 9 is dropped, handle=0x8fde61c0
+03-12 16:33:56.137 14387 14387 I HUREV   : [2] AapTransport.send | Unknown: 0
+03-12 16:33:56.949 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=40.39 dur=1015.17 max=94.28 min=10.88
+03-12 16:33:57.232 14387 14387 I HUREV   : [2] 1.invoke | NightMode update: false
+03-12 16:33:57.957 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=49.64 dur=1007.31 max=92.02 min=11.94
+03-12 16:33:58.991 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=35.76 dur=1034.77 max=43.44 min=11.00
+03-12 16:34:00.018 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.21 dur=1026.31 max=44.94 min=19.10
+03-12 16:34:01.117 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=28.19 dur=1099.83 max=103.34 min=14.56
+03-12 16:34:02.168 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=28.56 dur=1050.32 max=145.77 min=10.14
+03-12 16:34:03.194 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=30.22 dur=1025.76 max=88.43 min=11.55
+03-12 16:34:04.202 14387 15363 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) queueBuffer: fps=27.77 dur=1008.29 max=131.40 min=12.08
+03-12 16:34:05.247 14387 14387 I HUREV   : [2] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-12 16:34:05.454 14387 14387 I HUREV   : [2] UsbReceiver.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-12 16:34:05.463 14387 14387 I HUREV   : [2] UsbReceiver.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-12 16:34:05.808 14387 15369 I HUREV   : [2382] VideoDecoder.outputThreadLoop | Output thread stopped
+03-12 16:34:05.819 14387 15361 D AudioTrack: stop() called with 9609216 frames delivered
+03-12 16:34:05.920 14387 15363 D BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) cancelBuffer: slot 0
+03-12 16:34:05.922 14387 15363 D BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) cancelBuffer: slot 1
+03-12 16:34:05.923 14387 15363 D BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) cancelBuffer: slot 2
+03-12 16:34:05.925 14387 15363 D BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) cancelBuffer: slot 3
+03-12 16:34:05.926 14387 15363 D BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) cancelBuffer: slot 5
+03-12 16:34:05.927 14387 15363 D BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) cancelBuffer: slot 6
+03-12 16:34:05.928 14387 15363 D BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) cancelBuffer: slot 7
+03-12 16:34:05.928 14387 15363 D BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) cancelBuffer: slot 8
+03-12 16:34:05.929 14387 15363 D BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) cancelBuffer: slot 9
+03-12 16:34:05.931 14387 15363 D BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) cancelBuffer: slot 10
+03-12 16:34:05.933 14387 15362 D SurfaceUtils: disconnecting from surface 0x8e0d3008, reason disconnectFromSurface
+03-12 16:34:05.934 14387 15362 D Surface : Surface::disconnect(this=0x8e0d3000,api=3)
+03-12 16:34:05.934 14387 15362 I BufferQueueProducer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:14387,c:14387) disconnect(P): api 3
+03-12 16:34:05.934 14387 15362 I BufferQueueConsumer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:-1,c:14387) getReleasedBuffers: returning mask 0xffffffffffffffff
+03-12 16:34:05.990 14387 14387 I HUREV   : [2] AapService.scheduleReconnectIfNeeded | AapService: USB disconnect. Scheduling reconnect check in 3000ms...
+03-12 16:34:06.055 14387 14765 I HUREV   : [887] VideoDecoder.stop | Decoder stopped: AapService::onDisconnect
+03-12 16:34:06.206 14387 15354 W HUREV   : [2376] UsbAccessoryConnection.recvBlocking | USB read errors (10) for 1s — waiting for recovery...
+03-12 16:34:07.991 14387 15356 E [EGL-ERROR]: __egl_platform_cancel_buffers:644: surface->num_buffers(4)
+03-12 16:34:07.991 14387 15356 D Surface : Surface::disconnect(this=0x90231000,api=1)
+03-12 16:34:07.992 14387 15356 D GraphicBuffer: unregister, handle(0x8fde5380) (w:720 h:1280 s:720 f:0x2 u:f02)
+03-12 16:34:07.992 14387 15356 D GraphicBuffer: unregister, handle(0x8fde4300) (w:720 h:1280 s:720 f:0x2 u:f02)
+03-12 16:34:07.993 14387 15356 D GraphicBuffer: unregister, handle(0x8fde6640) (w:720 h:1280 s:720 f:0x2 u:f02)
+03-12 16:34:07.993 14387 15356 D GraphicBuffer: unregister, handle(0x8fde6700) (w:720 h:1280 s:720 f:0x2 u:f02)
+03-12 16:34:07.997 14387 14387 D Surface : Surface::disconnect(this=0x90231000,api=-1)
+03-12 16:34:08.000 14387 14407 E [EGL-ERROR]: __egl_platform_cancel_buffers:644: surface->num_buffers(4)
+03-12 16:34:08.001 14387 14407 D Surface : Surface::disconnect(this=0x90192000,api=1)
+03-12 16:34:08.001 14387 14407 D GraphicBuffer: unregister, handle(0x8fde4d80) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:34:08.001 14387 14407 D GraphicBuffer: unregister, handle(0xa2e43ec0) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:34:08.001 14387 14407 D GraphicBuffer: unregister, handle(0x8fde5680) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:34:08.002 14387 14407 D GraphicBuffer: unregister, handle(0x8fde5ec0) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:34:08.132 14387 14387 I HUREV   : [2] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-12 16:34:08.134 14387 14387 I BufferQueueConsumer: [SurfaceTexture-1-14387-5](this:0x8fdfa000,id:5,api:3,p:-1,c:-1) disconnect(C)
+03-12 16:34:08.152 14387 14387 D View    : [Warning] assignParent to null: this = DecorView@18a7193[AapProjectionActivity]
+03-12 16:34:08.158 14387 14387 D WindowClient: Remove from mViews: DecorView@18a7193[AapProjectionActivity], this = android.view.WindowManagerGlobal@9003003
+03-12 16:34:08.162 14387 14387 I HUREV   : [2] AapProjectionActivity.onSurfaceDestroyed | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@76d6ad)/@0x3e9b73a
+03-12 16:34:08.169 14387 14387 I HUREV   : [2] VideoDecoder.stop | Decoder stopped: surfaceDestroyed
+03-12 16:34:08.212 14387 15354 W HUREV   : [2376] UsbAccessoryConnection.recvBlocking | USB read errors (20) for 3s — waiting for recovery...
+03-12 16:34:08.388 14387 15361 I HUREV   : [2379] AudioTrackWrapper.run | AudioTrackWrapper thread finished.
+03-12 16:40:04.237 16134 16134 I zygote  : Late-enabling -Xcheck:jni
+03-12 16:40:04.320 16134 16134 I JDWP    : type=1400 audit(0.0:46997): avc: denied { connectto } for path=006A6477702D636F6E74726F6C scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:r:su:s0 tclass=unix_stream_socket permissive=1
+03-12 16:40:04.527 16134 16134 W ActivityThread: Application com.andrerinas.headunitrevived can be debugged on port 8100...
+03-12 16:40:04.622 16134 16134 I MultiDex: VM with version 2.1.0 has multidex support
+03-12 16:40:04.622 16134 16134 I MultiDex: Installing application
+03-12 16:40:04.622 16134 16134 I MultiDex: VM has multidex support, MultiDex support library is disabled.
+03-12 16:40:06.116 16134 16134 I HUREV   : [2] MainActivity.handleIntent | MainActivity received intent: android.intent.action.MAIN, data: null
+03-12 16:40:06.306 16134 16134 W HookText: Error parsing /system/etc/info_config.xml
+03-12 16:40:06.306 16134 16134 W HookText: java.io.FileNotFoundException: /system/etc/info_config.xml (No such file or directory)
+03-12 16:40:06.306 16134 16134 W HookText: 	at java.io.FileInputStream.open0(Native Method)
+03-12 16:40:06.306 16134 16134 W HookText: 	at java.io.FileInputStream.open(FileInputStream.java:200)
+03-12 16:40:06.306 16134 16134 W HookText: 	at java.io.FileInputStream.<init>(FileInputStream.java:150)
+03-12 16:40:06.306 16134 16134 W HookText: 	at java.io.FileInputStream.<init>(FileInputStream.java:103)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.widget.HookText.loadRules(HookText.java:447)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.widget.HookText.init(HookText.java:128)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.widget.HookText.hookSetTextInternal(HookText.java:189)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.widget.HookText.hookSetText(HookText.java:179)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.widget.TextView.setText(TextView.java:5282)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.widget.TextView.setText(TextView.java:5272)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.widget.TextView.<init>(TextView.java:1634)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.widget.TextView.<init>(TextView.java:828)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.appcompat.widget.AppCompatTextView.<init>(AppCompatTextView.java:113)
+03-12 16:40:06.306 16134 16134 W HookText: 	at com.google.android.material.textview.MaterialTextView.<init>(MaterialTextView.java:92)
+03-12 16:40:06.306 16134 16134 W HookText: 	at com.google.android.material.textview.MaterialTextView.<init>(MaterialTextView.java:87)
+03-12 16:40:06.306 16134 16134 W HookText: 	at com.google.android.material.theme.MaterialComponentsViewInflater.createTextView(MaterialComponentsViewInflater.java:61)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.appcompat.app.AppCompatViewInflater.createView(AppCompatViewInflater.java:148)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.appcompat.app.AppCompatDelegateImpl.createView(AppCompatDelegateImpl.java:1678)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.appcompat.app.AppCompatDelegateImpl.onCreateView(AppCompatDelegateImpl.java:1729)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.view.LayoutInflater$FactoryMerger.onCreateView(LayoutInflater.java:189)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:772)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:730)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:863)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:824)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:866)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:824)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:515)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:423)
+03-12 16:40:06.306 16134 16134 W HookText: 	at com.andrerinas.headunitrevived.main.HomeFragment.onCreateView(HomeFragment.kt:55)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.fragment.app.Fragment.performCreateView(Fragment.java:3114)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.fragment.app.FragmentStateManager.createView(FragmentStateManager.java:557)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.fragment.app.FragmentStateManager.moveToExpectedState(FragmentStateManager.java:272)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.fragment.app.FragmentStore.moveToExpectedState(FragmentStore.java:114)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.fragment.app.FragmentManager.moveToState(FragmentManager.java:1455)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.fragment.app.FragmentManager.dispatchStateChange(FragmentManager.java:3034)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.fragment.app.FragmentManager.dispatchViewCreated(FragmentManager.java:2945)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.fragment.app.Fragment.performViewCreated(Fragment.java:3148)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.fragment.app.FragmentStateManager.createView(FragmentStateManager.java:588)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.fragment.app.FragmentStateManager.moveToExpectedState(FragmentStateManager.java:272)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.fragment.app.FragmentStore.moveToExpectedState(FragmentStore.java:114)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.fragment.app.FragmentManager.moveToState(FragmentManager.java:1455)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.fragment.app.FragmentManager.dispatchStateChange(FragmentManager.java:3034)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.fragment.app.FragmentManager.dispatchActivityCreated(FragmentManager.java:2952)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.fragment.app.FragmentController.dispatchActivityCreated(FragmentController.java:263)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.fragment.app.FragmentActivity.onStart(FragmentActivity.java:350)
+03-12 16:40:06.306 16134 16134 W HookText: 	at androidx.appcompat.app.AppCompatActivity.onStart(AppCompatActivity.java:251)
+03-12 16:40:06.306 16134 16134 W HookText: 	at com.andrerinas.headunitrevived.main.MainActivity.onStart(MainActivity.kt:116)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1334)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.app.Activity.performStart(Activity.java:7043)
+03-12 16:40:06.306 16134 16134 W HookText: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2782)
+03-12 16:40:06.308 16134 16134 W HookText: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2897)
+03-12 16:40:06.308 16134 16134 W HookText: 	at android.app.ActivityThread.-wrap11(Unknown Source:0)
+03-12 16:40:06.308 16134 16134 W HookText: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1623)
+03-12 16:40:06.308 16134 16134 W HookText: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+03-12 16:40:06.308 16134 16134 W HookText: 	at android.os.Looper.loop(Looper.java:164)
+03-12 16:40:06.308 16134 16134 W HookText: 	at android.app.ActivityThread.main(ActivityThread.java:6548)
+03-12 16:40:06.308 16134 16134 W HookText: 	at java.lang.reflect.Method.invoke(Native Method)
+03-12 16:40:06.308 16134 16134 W HookText: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:438)
+03-12 16:40:06.308 16134 16134 W HookText: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:857)
+03-12 16:40:06.480 16134 16139 I zygote  : Do partial code cache collection, code=31KB, data=27KB
+03-12 16:40:06.481 16134 16139 I zygote  : After code cache collection, code=27KB, data=26KB
+03-12 16:40:06.481 16134 16139 I zygote  : Increasing code cache capacity to 128KB
+03-12 16:40:06.551 16134 16134 I HUREV   : [2] HomeFragment.attemptSingleUsbAutoConnect | HomeFragment: Requesting single-USB auto-connect via AapService
+03-12 16:40:06.630 16134 16134 I HUREV   : [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-12 16:40:06.646 16134 16139 I zygote  : Do partial code cache collection, code=29KB, data=46KB
+03-12 16:40:06.648 16134 16139 I zygote  : After code cache collection, code=29KB, data=46KB
+03-12 16:40:06.648 16134 16139 I zygote  : Increasing code cache capacity to 256KB
+03-12 16:40:06.649 16134 16139 I zygote  : Compiler allocated 4MB to compile void android.widget.TextView.<init>(android.content.Context, android.util.AttributeSet, int, int)
+03-12 16:40:06.685 16134 16134 I Choreographer: Skipped 116 frames!  The application may be doing too much work on its main thread.
+03-12 16:40:07.183 16134 16139 I zygote  : Do full code cache collection, code=117KB, data=80KB
+03-12 16:40:07.186 16134 16139 I zygote  : After code cache collection, code=99KB, data=60KB
+03-12 16:40:07.239 16134 16155 E         : appName=com.andrerinas.headunitrevived, acAppName=/system/bin/surfaceflinger
+03-12 16:40:07.239 16134 16155 E         : 0
+03-12 16:40:07.249 16134 16155 I com.andrerinas.headunitrevived: android::hardware::configstore::V1_0::ISurfaceFlingerConfigs::hasWideColorDisplay retrieved: 0
+03-12 16:40:07.253 16134 16155 I OpenGLRenderer: Initialized EGL, version 1.4
+03-12 16:40:07.256 16134 16155 E         : appName=com.andrerinas.headunitrevived, acAppName=com.instagram.android
+03-12 16:40:07.256 16134 16155 E         : 0
+03-12 16:40:07.307 16134 16155 I HWUIExtension: Get disable program binary service property (0)
+03-12 16:40:07.307 16134 16155 I HWUIExtension: Initializing program atlas...
+03-12 16:40:07.308 16134 16155 I ProgramBinary/Service: ProgramBinaryService client side disable debugging.
+03-12 16:40:07.308 16134 16155 I ProgramBinary/Service: ProgramBinaryService client side disable binary content debugging.
+03-12 16:40:07.310 16134 16155 I HWUIExtension: Program binary detail: Binary length is 78196, program map length is 104.
+03-12 16:40:07.310 16134 16155 I HWUIExtension: Succeeded to mmap program binaries. File descriptor is 51, and path is /dev/ashmem.
+03-12 16:40:07.310 16134 16155 I HWUIExtension: No need to use file discriptor anymore, close fd(51).
+03-12 16:40:07.388 16134 16134 I HUREV   : [2] AapService.onCreate | AapService creating...
+03-12 16:40:07.499 16134 16134 I HUREV   : [2] 1.invoke | NightMode update: false
+03-12 16:40:07.674 16134 16134 I HUREV   : [2] AapService.onCreate | Auto-started continuous log capture
+03-12 16:40:07.863 16134 16134 I HUREV   : [2] AapService.performSingleUsbConnect | Single USB auto-connect: connecting to Xiaomi 2717:FF40
+03-12 16:40:07.899 16134 16165 I HUREV   : [913] UsbAccessoryMode.switch | Success controlTransfer len: 2  acc_ver: 2
+03-12 16:40:07.906 16134 16165 I HUREV   : [913] UsbAccessoryMode.switch | acc_ver: 2
+03-12 16:40:07.911 16134 16165 I HUREV   : [913] UsbAccessoryMode.initStringControlTransfer | Success controlTransfer len: 7  index: 0  string: "Android"
+03-12 16:40:07.917 16134 16165 I HUREV   : [913] UsbAccessoryMode.initStringControlTransfer | Success controlTransfer len: 12  index: 1  string: "Android Auto"
+03-12 16:40:07.923 16134 16134 I HUREV   : [2] AapService.registerNetworkMonitor | NetworkMonitor: Registered network change listener
+03-12 16:40:07.924 16134 16165 I HUREV   : [913] UsbAccessoryMode.initStringControlTransfer | Success controlTransfer len: 12  index: 2  string: "Android Auto"
+03-12 16:40:07.929 16134 16165 I HUREV   : [913] UsbAccessoryMode.initStringControlTransfer | Success controlTransfer len: 5  index: 3  string: "2.0.1"
+03-12 16:40:07.939 16134 16165 I HUREV   : [913] UsbAccessoryMode.initStringControlTransfer | Success controlTransfer len: 45  index: 4  string: "https://developer.android.com/auto/index.html"
+03-12 16:40:07.944 16134 16165 I HUREV   : [913] UsbAccessoryMode.initStringControlTransfer | Success controlTransfer len: 12  index: 5  string: "HU-AAAAAA001"
+03-12 16:40:07.947 16134 16165 I HUREV   : [913] UsbAccessoryMode.switch | Sending acc start
+03-12 16:40:07.958 16134 16165 I HUREV   : [913] UsbAccessoryMode.switch | Acc start sent (len=0). Waiting for re-enumeration...
+03-12 16:40:08.046 16134 16134 I Choreographer: Skipped 79 frames!  The application may be doing too much work on its main thread.
+03-12 16:40:08.136 16134 16155 D GraphicBuffer: register, handle(0xa2e40200) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:08.130 16134 16134 I RenderThread: type=1400 audit(0.0:47010): avc: denied { search } for name="clients" dev="debugfs" ino=7071 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:debugfs_ion:s0 tclass=dir permissive=1
+03-12 16:40:08.160 16134 16155 D HWUIExtension: MTKProgramCache.generateProgram: 1
+03-12 16:40:08.161 16134 16155 D HWUIExtension: createProgram 0x0000000000000001, binary 0xaf940e38, length 2736, format 36705 within 599ns
+03-12 16:40:08.167 16134 16155 D HWUIExtension: MTKProgramCache.generateProgram: 1168231104520
+03-12 16:40:08.171 16134 16155 D HWUIExtension: MTKProgramCache.generateProgram: 68724719680
+03-12 16:40:08.172 16134 16155 D HWUIExtension: createProgram 0x0000001000500040, binary 0xaf9329f8, length 2800, format 36705 within 419ns
+03-12 16:40:08.172 16134 16155 D HWUIExtension: MTKProgramCache.generateProgram: 562949958664257
+03-12 16:40:08.173 16134 16155 D HWUIExtension: createProgram 0x0002000000500041, binary 0xaf935544, length 2832, format 36705 within 492ns
+03-12 16:40:08.174 16134 16155 D HWUIExtension: MTKProgramCache.generateProgram: 562984313159683
+03-12 16:40:08.175 16134 16155 D HWUIExtension: createProgram 0x0002000800000003, binary 0xaf936ad4, length 2828, format 36705 within 530ns
+03-12 16:40:08.340 16134 16134 I HUREV   : [2] GpsLocation.start | Request location updates
+03-12 16:40:08.359 16134 16134 I HUREV   : [2] GpsLocation.start | Last known location:  Unknown
+03-12 16:40:08.390 16134 16134 I HUREV   : [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-12 16:40:08.459 16134 16165 D UsbDeviceConnectionJNI: close
+03-12 16:40:08.461 16134 16165 I HUREV   : [913] UsbAccessoryMode.connectAndSwitch | Result: true
+03-12 16:40:08.465 16134 16165 I HUREV   : [913] 1.invokeSuspend | Successfully requested switch to accessory mode for single USB device. Waiting for re-enumeration...
+03-12 16:40:08.631 16134 16139 I zygote  : Do partial code cache collection, code=110KB, data=95KB
+03-12 16:40:08.632 16134 16139 I zygote  : After code cache collection, code=110KB, data=95KB
+03-12 16:40:08.632 16134 16139 I zygote  : Increasing code cache capacity to 512KB
+03-12 16:40:08.678 16134 16155 D GraphicBuffer: register, handle(0xa2e40c80) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:08.695 16134 16134 I HUREV   : [2] UsbReceiver.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-12 16:40:08.707 16134 16134 I HUREV   : [2] UsbReceiver.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-12 16:40:08.708 16134 16134 W InputMethodManager: Ignoring onBind: cur seq=207, given seq=206
+03-12 16:40:08.723 16134 16134 I HUREV   : [2] UsbReceiver.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x11000010 (has extras) }
+03-12 16:40:08.741 16134 16134 I HUREV   : [2] UsbReceiver.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x11000010 (has extras) }
+03-12 16:40:08.743 16134 16134 I HUREV   : [2] AapService.onUsbAttach | USB accessory device attached, connecting.
+03-12 16:40:08.752 16134 16134 I HUREV   : [2] AapService.checkAlreadyConnectedUsb | Found device already in accessory mode: Google 18D1:2D00
+03-12 16:40:08.830 16134 16165 I HUREV   : [913] UsbAccessoryConnection.usbOpen | Established connection: android.hardware.usb.UsbDeviceConnection@3c289c8
+03-12 16:40:08.841 16134 16165 I HUREV   : [913] UsbAccessoryConnection.usbOpen | interfaceCount: 1
+03-12 16:40:08.851 16134 16165 I HUREV   : [913] UsbAccessoryConnection.initEndpoint | Check accessory endpoints
+03-12 16:40:08.854 16134 16165 I HUREV   : [913] UsbAccessoryConnection.initEndpoint | Connected have EPs
+03-12 16:40:08.872 16134 16155 D GraphicBuffer: register, handle(0xa2e40e00) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:09.145 16134 16165 I HUREV   : [913] AapTransport.<init> | Using Java SSL implementation
+03-12 16:40:09.212 16134 16165 I HUREV   : [913] AapTransport.startHandshake$com_andrerinas_headunitrevived_2_0_1_debug | Start Aap transport handshake for com.andrerinas.headunitrevived.connection.UsbAccessoryConnection@b29633f
+03-12 16:40:09.446 16134 16145 I zygote  : Background concurrent copying GC freed 13421(896KB) AllocSpace objects, 0(0B) LOS objects, 49% free, 3MB/6MB, paused 403us total 263.821ms
+03-12 16:40:09.749 16134 16134 I HUREV   : [2] AapProjectionActivity.onCreate | HeadUnit for Android Auto (tm) - Copyright 2011-2015 Michael A. Reid., since 2025 André Rinas All Rights Reserved...
+03-12 16:40:09.753 16134 16134 I HUREV   : [2] AapProjectionActivity.onCreate | Using GlProjectionView
+03-12 16:40:09.767 16134 16134 I HUREV   : [2] HeadUnitScreenConfig.recalculate | CarScreen: usable width: 1280 height: 720 (Raw: 1280x720, Insets: L0 T0 R0 B0)
+03-12 16:40:09.777 16134 16134 I HUREV   : [2] HeadUnitScreenConfig.recalculate | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-12 16:40:09.781 16134 16134 I HUREV   : [2] HeadUnitScreenConfig.recalculate | CarScreen using: _1280x720, number: 2, scales: scaleX: 1.0, scaleY: 1.0
+03-12 16:40:09.826 16134 16134 I HUREV   : [2] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-12 16:40:09.846 16134 16134 D WindowClient: Add to mViews: DecorView@91a0e71[AapProjectionActivity], this = android.view.WindowManagerGlobal@dac6453
+03-12 16:40:09.849 16134 16134 D ViewRootImpl[AapProjectionActivity]: hardware acceleration = true , fakeHwAccelerated = false, sRendererDisabled = false, forceHwAccelerated = false, sSystemRendererDisabled = false
+03-12 16:40:09.925 16134 16134 I Choreographer: Skipped 46 frames!  The application may be doing too much work on its main thread.
+03-12 16:40:09.928 16134 16155 E [EGL-ERROR]: __egl_platform_cancel_buffers:644: surface->num_buffers(4)
+03-12 16:40:09.929 16134 16155 D Surface : Surface::disconnect(this=0x905e4800,api=1)
+03-12 16:40:09.929 16134 16155 D GraphicBuffer: unregister, handle(0xa2e40e00) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:09.930 16134 16155 D GraphicBuffer: unregister, handle(0xa2e40c80) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:09.930 16134 16155 D GraphicBuffer: unregister, handle(0xa2e40200) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:10.037 16134 16155 D Surface : Surface::connect(this=0x905e4800,api=1)
+03-12 16:40:10.039 16134 16155 D Surface : Surface::setBufferCount(this=0x905e4800,bufferCount=4)
+03-12 16:40:10.080 16134 16178 D Surface : Surface::connect(this=0x8fe54000,api=1)
+03-12 16:40:10.082 16134 16178 D Surface : Surface::setBufferCount(this=0x8fe54000,bufferCount=4)
+03-12 16:40:10.086 16134 16178 D GraphicBuffer: register, handle(0xa4924840) (w:720 h:1280 s:720 f:0x2 u:f02)
+03-12 16:40:10.093 16134 16178 I HUREV   : [922] VideoRenderer.onSurfaceCreated | GlProjectionView: onSurfaceCreated (GL Context)
+03-12 16:40:10.098 16134 16178 I BufferQueue: [unnamed-16134-0](this:0x9048a000,id:0,api:0,p:-1,c:-1) BufferQueue core=(16134:com.andrerinas.headunitrevived)
+03-12 16:40:10.117 16134 16178 E DumpTunnel: open libgui_ext failed
+03-12 16:40:10.117 16134 16178 E DumpTunnel: finding regDump() failed
+03-12 16:40:10.118 16134 16178 D GED     : [GED_KPI] ged_kpi is not supported
+03-12 16:40:10.118 16134 16178 I BufferQueueConsumer: [unnamed-16134-0](this:0x9048a000,id:0,api:0,p:-1,c:16134) connect(C): consumer=(16134:com.andrerinas.headunitrevived) controlledByApp=true
+03-12 16:40:10.118 16134 16178 I BufferQueueConsumer: [unnamed-16134-0](this:0x9048a000,id:0,api:0,p:-1,c:16134) setConsumerName: unnamed-16134-0
+03-12 16:40:10.118 16134 16178 I BufferQueueConsumer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:0,p:-1,c:16134) setConsumerName: SurfaceTexture-1-16134-0
+03-12 16:40:10.121 16134 16178 I HUREV   : [922] VideoRenderer.onSurfaceChanged | GlProjectionView: onSurfaceChanged: 1280x720
+03-12 16:40:10.133 16134 16178 D GraphicBuffer: register, handle(0xa4925140) (w:720 h:1280 s:720 f:0x2 u:f02)
+03-12 16:40:10.149 16134 16155 D GraphicBuffer: register, handle(0xa2e40c80) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:10.152 16134 16155 D HWUIExtension: MTKProgramCache.generateProgram: 0
+03-12 16:40:10.153 16134 16155 D HWUIExtension: createProgram 0x0000000000000000, binary 0xaf932000, length 2552, format 36705 within 304ns
+03-12 16:40:10.160 16134 16165 I HUREV   : [913] AapTransport.handshake | Handshake: Version response received (ret=12, attempt=1).
+03-12 16:40:10.169 16134 16165 I HUREV   : [913] AapTransport.handshake | Handshake: Version response recv ret: 12
+03-12 16:40:10.172 16134 16155 D GraphicBuffer: register, handle(0xa2e40a40) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:10.193 16134 16155 D GraphicBuffer: register, handle(0xa2e40ec0) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:10.238 16134 16134 I HUREV   : [2] VideoRenderer.onSurfaceCreated$lambda$4 | GlProjectionView: Reporting Surface Created
+03-12 16:40:10.241 16134 16134 I HUREV   : [2] AapProjectionActivity.onSurfaceCreated | [AapProjectionActivity] onSurfaceCreated
+03-12 16:40:10.244 16134 16134 I HUREV   : [2] AapProjectionActivity.onSurfaceChanged | [AapProjectionActivity] onSurfaceChanged. Actual surface dimensions: width=1280, height=720
+03-12 16:40:10.248 16134 16134 I HUREV   : [2] VideoDecoder.setSurface | New surface set: Surface(name=android.graphics.SurfaceTexture@3c17e78)/@0xb5479bc
+03-12 16:40:10.619 16134 16165 I HUREV   : [913] AapSslContext.performHandshake | SSL handshake complete. Session id: mgeCMhM/9gVn055YTOIp6GJIUMkwj5Zz4LZloVAjrTY=
+03-12 16:40:10.627 16134 16165 I HUREV   : [913] AapTransport.handshake | Handshake: Status OK sent: 8
+03-12 16:40:10.636 16134 16165 I HUREV   : [913] AapAudio.requestFocusChange | Audio Focus Request: stream=3, type=1
+03-12 16:40:10.678 16134 16165 I HUREV   : [913] AapAudio.requestFocusChange | Audio focus request result: GRANTED
+03-12 16:40:10.680 16134 16165 I HUREV   : [913] AapTransport.startReading$com_andrerinas_headunitrevived_2_0_1_debug | Start Aap transport read loop
+03-12 16:40:10.711 16134 16134 I HUREV   : [2] 1.onReceive | Received request to resend night mode state
+03-12 16:40:10.712 16134 16176 I HUREV   : [921] AapControlService.serviceDiscoveryRequest | Service Discovery Request: Android
+03-12 16:40:10.720 16134 16176 I HUREV   : [921] HeadUnitScreenConfig.recalculate | CarScreen: usable width: 1280 height: 720 (Raw: 1280x720, Insets: L0 T0 R0 B0)
+03-12 16:40:10.723 16134 16176 I HUREV   : [921] HeadUnitScreenConfig.recalculate | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-12 16:40:10.725 16134 16134 I HUREV   : [2] 1.invoke | NightMode update: false
+03-12 16:40:10.728 16134 16176 I HUREV   : [921] HeadUnitScreenConfig.recalculate | CarScreen using: _1280x720, number: 2, scales: scaleX: 1.0, scaleY: 1.0
+03-12 16:40:10.745 16134 16176 I HUREV   : [921] Companion.makeProto | [ServiceDiscovery] Announcing NIGHT sensor support. Strategy: SCREEN_BRIGHTNESS
+03-12 16:40:10.756 16134 16176 I HUREV   : [921] Companion.makeProto | [ServiceDiscovery] NegotiatedResolution is: 1280x720
+03-12 16:40:10.758 16134 16176 I HUREV   : [921] Companion.makeProto | [ServiceDiscovery] Margins are: 0x0
+03-12 16:40:10.789 16134 16176 I HUREV   : [921] Companion.makeProto | BT MAC Address is empty. Skip bluetooth service
+03-12 16:40:10.941 16134 16176 I HUREV   : [921] AapControlService.audioFocusRequest | Audio Focus Request: RELEASE
+03-12 16:40:10.944 16134 16176 I HUREV   : [921] AapAudio.requestFocusChange | Audio Focus Request: stream=3, type=4
+03-12 16:40:10.946 16134 16176 I HUREV   : [921] AapAudio.requestFocusChange | Releasing audio focus
+03-12 16:40:10.958 16134 16176 I HUREV   : [921] AapControlService.audioFocusRequest | Sending immediate AudioFocusNotification: STATE_LOSS
+03-12 16:40:11.000 16134 16176 I HUREV   : [921] AapControlSensor.sensorStartRequest | Sensor Start Request sensor: DRIVING_STATUS, minUpdatePeriod: 0
+03-12 16:40:11.004 16134 16176 I HUREV   : [921] AapControlSensor.sensorStartRequest | SENSOR Sensor Start Response type: 32770 flags: 11 size: 8 dataOffset: 6
+03-12 16:40:11.017 16134 16176 W HUREV   : [921] AapVideo.process | AapVideo: Dropped Flag 11 packet. len=4, buf[10]=?
+03-12 16:40:11.021 16134 16176 I HUREV   : [921] AapControlMedia.mediaSinkSetupRequest | Media Sink Setup Request: 3 on channel VIDEO
+03-12 16:40:11.131 16134 16176 I HUREV   : [921] AapControlMedia.mediaSinkSetupRequest | Config response: status: HEADUNIT
+03-12 16:40:11.131 16134 16176 I HUREV   : max_unacked: 1
+03-12 16:40:11.131 16134 16176 I HUREV   : configuration_indices: 0
+03-12 16:40:11.138 16134 16176 I HUREV   : [921] AapControlMedia.mediaSinkSetupRequest | Media Sink Setup Request: 1 on channel AUDIO2
+03-12 16:40:11.143 16134 16176 I HUREV   : [921] AapControlMedia.mediaSinkSetupRequest | Config response: status: HEADUNIT
+03-12 16:40:11.143 16134 16176 I HUREV   : max_unacked: 3
+03-12 16:40:11.143 16134 16176 I HUREV   : configuration_indices: 0
+03-12 16:40:11.150 16134 16176 I HUREV   : [921] AapControlMedia.mediaSinkSetupRequest | Media Sink Setup Request: 1 on channel AUDIO1
+03-12 16:40:11.154 16134 16176 I HUREV   : [921] AapControlMedia.mediaSinkSetupRequest | Config response: status: HEADUNIT
+03-12 16:40:11.154 16134 16176 I HUREV   : max_unacked: 3
+03-12 16:40:11.154 16134 16176 I HUREV   : configuration_indices: 0
+03-12 16:40:11.160 16134 16176 I HUREV   : [921] AapControlMedia.mediaSinkSetupRequest | Media Sink Setup Request: 1 on channel AUDIO
+03-12 16:40:11.161 16134 16134 I HUREV   : [2] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-12 16:40:11.168 16134 16176 I HUREV   : [921] AapControlMedia.mediaSinkSetupRequest | Config response: status: HEADUNIT
+03-12 16:40:11.168 16134 16176 I HUREV   : max_unacked: 3
+03-12 16:40:11.168 16134 16176 I HUREV   : configuration_indices: 0
+03-12 16:40:11.169 16134 16134 I HUREV   : [2] AapProjectionActivity.onNewIntent | AapProjectionActivity: onNewIntent received
+03-12 16:40:11.171 16134 16134 I HUREV   : [2] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-12 16:40:11.172 16134 16176 I HUREV   : [921] AapControlSensor.sensorStartRequest | Sensor Start Request sensor: NIGHT, minUpdatePeriod: 0
+03-12 16:40:11.175 16134 16176 I HUREV   : [921] AapControlSensor.sensorStartRequest | SENSOR Sensor Start Response type: 32770 flags: 11 size: 8 dataOffset: 6
+03-12 16:40:11.178 16134 16176 I HUREV   : [921] AapControlSensor.sensorStartRequest | Night sensor requested. Triggering immediate update.
+03-12 16:40:11.194 16134 16134 I HUREV   : [2] 1.onReceive | Received request to resend night mode state
+03-12 16:40:11.200 16134 16134 I HUREV   : [2] 1.invoke | NightMode update: false
+03-12 16:40:11.222 16134 16176 I HUREV   : [921] AapControlService.audioFocusRequest | Audio Focus Request: GAIN
+03-12 16:40:11.224 16134 16176 I HUREV   : [921] AapAudio.requestFocusChange | Audio Focus Request: stream=3, type=1
+03-12 16:40:11.230 16134 16176 I HUREV   : [921] AapAudio.requestFocusChange | Audio focus request result: GRANTED
+03-12 16:40:11.233 16134 16176 I HUREV   : [921] AapControlService.audioFocusRequest | Sending immediate AudioFocusNotification: STATE_GAIN
+03-12 16:40:11.272 16134 16176 I HUREV   : [921] AapControlService.audioFocusRequest | Audio Focus Request: RELEASE
+03-12 16:40:11.273 16134 16176 I HUREV   : [921] AapAudio.requestFocusChange | Audio Focus Request: stream=3, type=4
+03-12 16:40:11.275 16134 16176 I HUREV   : [921] AapAudio.requestFocusChange | Releasing audio focus
+03-12 16:40:11.283 16134 16176 I HUREV   : [921] AapControlService.audioFocusRequest | Sending immediate AudioFocusNotification: STATE_LOSS
+03-12 16:40:11.305 16134 16176 W HUREV   : [921] AapVideo.process | AapVideo: Dropped Flag 11 packet. len=6, buf[10]=?
+03-12 16:40:11.313 16134 16176 I HUREV   : [921] AapControlMedia.execute | RX: Video Focus Request - mode: VIDEO_FOCUS_PROJECTED, reason: UNKNOWN
+03-12 16:40:11.991 16134 16180 D ProfileInstaller: Installing profile for com.andrerinas.headunitrevived
+03-12 16:40:12.258 16134 16176 I HUREV   : [921] UsbAccessoryConnection.recvBlocking | USB reads recovered after 5 errors
+03-12 16:40:12.456 16134 16176 I HUREV   : [921] UsbAccessoryConnection.recvBlocking | USB reads recovered after 1 errors
+03-12 16:40:13.070 16134 16176 I HUREV   : [921] UsbAccessoryConnection.recvBlocking | USB reads recovered after 3 errors
+03-12 16:40:14.073 16134 16176 I HUREV   : [921] UsbAccessoryConnection.recvBlocking | USB reads recovered after 5 errors
+03-12 16:40:14.177 16134 16134 W HUREV   : [2] 1.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-12 16:40:14.190 16134 16176 I HUREV   : [921] AapControlService.audioFocusRequest | Audio Focus Request: GAIN
+03-12 16:40:14.191 16134 16176 I HUREV   : [921] AapAudio.requestFocusChange | Audio Focus Request: stream=3, type=1
+03-12 16:40:14.198 16134 16176 I HUREV   : [921] AapAudio.requestFocusChange | Audio focus request result: GRANTED
+03-12 16:40:14.200 16134 16176 I HUREV   : [921] AapControlService.audioFocusRequest | Sending immediate AudioFocusNotification: STATE_GAIN
+03-12 16:40:14.203 16134 16176 W HUREV   : [921] AapVideo.process | AapVideo: Dropped Flag 11 packet. len=6, buf[10]=?
+03-12 16:40:14.211 16134 16176 I HUREV   : [921] AapControlMedia.mediaStartRequest | Media Start Request VIDEO: session_id: 0
+03-12 16:40:14.211 16134 16176 I HUREV   : configuration_index: 0
+03-12 16:40:14.263 16134 16176 I HUREV   : [921] AapControlMedia.mediaStartRequest | Media Start Request AUDIO: session_id: 0
+03-12 16:40:14.263 16134 16176 I HUREV   : configuration_index: 0
+03-12 16:40:14.272 16134 16176 I HUREV   : [921] AapAudio.decode | AudioDecoder.start: channel=6, stream=3, gain=1.0, sampleRate=48000, numberOfBits=16, numberOfChannels=2, isAac=false
+03-12 16:40:14.281 16134 16176 I HUREV   : [921] AudioTrackWrapper.createAudioTrack | Audio stream: 3 buffer size: 65664 (min: 8208) sampleRateInHz: 48000 channelCount: 2
+03-12 16:40:14.287 16134 16176 D AudioTrack: yellowmouse mIsNavi: 0, mIsVoice: 0, mIsBlink:0
+03-12 16:40:14.287 16134 16176 D AudioTrack: yellowmouse createTrack_l mStreamType: -1
+03-12 16:40:14.298 16134 16176 D AudioTrack: Client defaulted notificationFrames to 8208 for frameCount 16416
+03-12 16:40:14.606 16134 16176 I HUREV   : [921] VideoDecoder.decode | H.264/AVC config detected in frame (29 bytes)
+03-12 16:40:14.609 16134 16176 I HUREV   : [921] VideoDecoder.scanForSpsPpsH264 | SPS parsed: 1280x720
+03-12 16:40:14.611 16134 16176 I HUREV   : [921] AapProjectionActivity.onVideoDimensionsChanged | [AapProjectionActivity] Received video dimensions: 1280x720
+03-12 16:40:14.614 16134 16134 I HUREV   : [2] GlProjectionView.setVideoSize | GlProjectionView setVideoSize: 1280x720
+03-12 16:40:14.614 16134 16134 I BufferQueueConsumer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:0,p:-1,c:16134) setDefaultBufferSize: width=1280 height=720
+03-12 16:40:14.658 16134 16176 W AudioCapabilities: Unsupported mime audio/x-adpcm-ms
+03-12 16:40:14.661 16134 16176 W AudioCapabilities: Unsupported mime audio/x-adpcm-dvi-ima
+03-12 16:40:14.664 16134 16176 W AudioCapabilities: Unsupported mime audio/alac
+03-12 16:40:14.673 16134 16176 W AudioCapabilities: Unsupported mime audio/ape
+03-12 16:40:14.759 16134 16176 W VideoCapabilities: Unsupported mime video/divx
+03-12 16:40:14.801 16134 16176 W VideoCapabilities: Unrecognized profile/level 1/32 for video/mp4v-es
+03-12 16:40:14.801 16134 16176 W VideoCapabilities: Unrecognized profile/level 32768/2 for video/mp4v-es
+03-12 16:40:14.801 16134 16176 W VideoCapabilities: Unrecognized profile/level 32768/64 for video/mp4v-es
+03-12 16:40:14.817 16134 16176 W VideoCapabilities: Unsupported mime video/flv1
+03-12 16:40:14.843 16134 16176 W VideoCapabilities: Unsupported mime video/x-ms-wmv
+03-12 16:40:14.851 16134 16176 W VideoCapabilities: Unsupported mime video/xvid
+03-12 16:40:14.892 16134 16176 W VideoCapabilities: Unrecognized profile/level 1/32 for video/mp4v-es
+03-12 16:40:14.900 16134 16176 I VideoCapabilities: Unsupported profile 4 for video/mp4v-es
+03-12 16:40:14.949 16134 16187 I OMXClient: Treble IOmx obtained
+03-12 16:40:15.000 16134 16176 I HUREV   : [921] VideoDecoder.start | Configuring decoder: OMX.MTK.VIDEO.DECODER.AVC with surface
+03-12 16:40:15.008 16134 16186 D SurfaceUtils: connecting to surface 0x8feaa808, reason connectToSurface
+03-12 16:40:15.009 16134 16186 D Surface : Surface::connect(this=0x8feaa800,api=3)
+03-12 16:40:15.009 16134 16186 I BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) connect(P): api=3 producer=(16134:com.andrerinas.headunitrevived) producerControlledByApp=true
+03-12 16:40:15.009 16134 16186 I MediaCodec: [OMX.MTK.VIDEO.DECODER.AVC] setting surface generation to 16521217
+03-12 16:40:15.009 16134 16186 D SurfaceUtils: disconnecting from surface 0x8feaa808, reason connectToSurface(reconnect)
+03-12 16:40:15.009 16134 16186 D Surface : Surface::disconnect(this=0x8feaa800,api=3)
+03-12 16:40:15.009 16134 16186 I BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) disconnect(P): api 3
+03-12 16:40:15.009 16134 16186 I BufferQueueConsumer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:-1,c:16134) getReleasedBuffers: returning mask 0xffffffffffffffff
+03-12 16:40:15.009 16134 16186 D SurfaceUtils: connecting to surface 0x8feaa808, reason connectToSurface(reconnect)
+03-12 16:40:15.009 16134 16186 D Surface : Surface::connect(this=0x8feaa800,api=3)
+03-12 16:40:15.010 16134 16186 I BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) connect(P): api=3 producer=(16134:com.andrerinas.headunitrevived) producerControlledByApp=true
+03-12 16:40:15.067 16134 16187 D SurfaceUtils: set up nativeWindow 0x8feaa808 for 1280x720, color 0x23, rotation 0, usage 0x2933
+03-12 16:40:15.067 16134 16187 W ACodec  : [OMX.MTK.VIDEO.DECODER.AVC] setting nBufferCountActual to 8 failed: -22
+03-12 16:40:15.067 16134 16187 W ACodec  : [OMX.MTK.VIDEO.DECODER.AVC] setting nBufferCountActual to 7 failed: -22
+03-12 16:40:15.068 16134 16187 D Surface : Surface::setBufferCount(this=0x8feaa800,bufferCount=6)
+03-12 16:40:15.068 16134 16187 I BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) setMaxDequeuedBufferCount: maxDequeuedBuffers = 4
+03-12 16:40:15.079 16134 16176 I HUREV   : [921] VideoDecoder.start | Codec initialized: OMX.MTK.VIDEO.DECODER.AVC for stream 1280x720
+03-12 16:40:15.080 16134 16187 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-12 16:40:15.080 16134 16194 I HUREV   : [928] VideoDecoder.outputThreadLoop | Output thread started
+03-12 16:40:15.091 16134 16187 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-12 16:40:15.098 16134 16187 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-12 16:40:15.192 16134 16187 D BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) cancelBuffer: slot 0
+03-12 16:40:15.192 16134 16187 D BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) cancelBuffer: slot 1
+03-12 16:40:15.193 16134 16187 D BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) cancelBuffer: slot 2
+03-12 16:40:15.196 16134 16187 D SurfaceUtils: set up nativeWindow 0x8feaa808 for 1280x720, color 0x23, rotation 0, usage 0x2933
+03-12 16:40:15.196 16134 16187 W ACodec  : [OMX.MTK.VIDEO.DECODER.AVC] setting nBufferCountActual to 15 failed: -22
+03-12 16:40:15.196 16134 16187 W ACodec  : [OMX.MTK.VIDEO.DECODER.AVC] setting nBufferCountActual to 14 failed: -22
+03-12 16:40:15.196 16134 16187 D Surface : Surface::setBufferCount(this=0x8feaa800,bufferCount=13)
+03-12 16:40:15.197 16134 16187 I BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) setMaxDequeuedBufferCount: maxDequeuedBuffers = 11
+03-12 16:40:15.203 16134 16187 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-12 16:40:15.211 16134 16187 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-12 16:40:15.218 16134 16187 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-12 16:40:15.228 16134 16187 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-12 16:40:15.238 16134 16187 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-12 16:40:15.252 16134 16187 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-12 16:40:15.270 16134 16187 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-12 16:40:15.306 16134 16194 I HUREV   : [928] VideoDecoder.handleOutputFormatChange | Output Format Changed: {crop-right=1279, color-format=35, slice-height=720, mime=video/raw, hdr-static-info=java.nio.HeapByteBuffer[pos=0 lim=25 cap=25], stride=1280, color-standard=1, color-transfer=3, crop-bottom=719, crop-left=0, width=1280, color-range=2, crop-top=0, height=720}
+03-12 16:40:15.311 16134 16187 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-12 16:40:15.351 16134 16187 W GrallocMapperPassthrough: buffer descriptor with invalid usage bits 0x2000
+03-12 16:40:15.383 16134 16187 I BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) queueBuffer: slot 5 is dropped, handle=0xa2e41b80
+03-12 16:40:15.403 16134 16187 I BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) queueBuffer: slot 6 is dropped, handle=0xa2e41c40
+03-12 16:40:15.612 16134 16178 D GraphicBuffer: register, handle(0xa49258c0) (w:720 h:1280 s:720 f:0x2 u:f02)
+03-12 16:40:15.849 16134 16178 D GraphicBuffer: register, handle(0xa4925980) (w:720 h:1280 s:720 f:0x2 u:f02)
+03-12 16:40:16.140 16134 16187 I BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) queueBuffer: slot 11 is dropped, handle=0x8ff47000
+03-12 16:40:16.315 16134 16187 I BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) queueBuffer: fps=58.72 dur=1004.82 max=37.49 min=10.51
+03-12 16:40:16.423 16134 16187 I BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) queueBuffer: slot 1 is dropped, handle=0xa2e41880
+03-12 16:40:16.882 16134 16139 I zygote  : Do full code cache collection, code=253KB, data=195KB
+03-12 16:40:16.885 16134 16139 I zygote  : After code cache collection, code=253KB, data=152KB
+03-12 16:40:17.317 16134 16187 I BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) queueBuffer: fps=47.86 dur=1002.98 max=51.68 min=13.03
+03-12 16:40:18.328 16134 16187 I BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) queueBuffer: fps=47.51 dur=1010.25 max=27.29 min=13.59
+03-12 16:40:18.984 16134 16139 I zygote  : Do partial code cache collection, code=253KB, data=160KB
+03-12 16:40:18.988 16134 16139 I zygote  : After code cache collection, code=253KB, data=160KB
+03-12 16:40:18.988 16134 16139 I zygote  : Increasing code cache capacity to 1024KB
+03-12 16:40:19.124 16134 16145 I zygote  : Background concurrent copying GC freed 4225(2MB) AllocSpace objects, 136(2MB) LOS objects, 50% free, 5MB/10MB, paused 136us total 116.263ms
+03-12 16:40:19.345 16134 16187 I BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) queueBuffer: fps=48.18 dur=1016.93 max=65.58 min=10.32
+03-12 16:40:19.580 16134 16187 I BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) queueBuffer: slot 2 is dropped, handle=0xa2e41940
+03-12 16:40:20.363 16134 16187 I BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) queueBuffer: fps=32.40 dur=1018.63 max=154.79 min=10.91
+03-12 16:40:21.378 16134 16187 I BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) queueBuffer: fps=17.74 dur=1014.43 max=394.12 min=12.41
+03-12 16:40:21.920 16134 16176 W HUREV   : [921] AapVideo.process | AapVideo: Dropped Flag 11 packet. len=6, buf[10]=?
+03-12 16:40:21.922 16134 16176 I HUREV   : [921] AapControlMedia.execute | RX: Video Focus Request - mode: VIDEO_FOCUS_NATIVE, reason: UNKNOWN
+03-12 16:40:21.924 16134 16176 I HUREV   : [921] AapControlMedia.execute | Video Focus NATIVE received. User likely clicked Exit. Stopping transport.
+03-12 16:40:21.926 16134 16176 I HUREV   : [921] AapTransport.stop$com_andrerinas_headunitrevived_2_0_1_debug | AapTransport stopping and sending byebye
+03-12 16:40:22.083 16134 16176 I HUREV   : [921] AapTransport.quit$com_andrerinas_headunitrevived_2_0_1_debug | AapTransport quitting (clean=false)
+03-12 16:40:22.088 16134 16165 I HUREV   : [913] AapTransport.quit$com_andrerinas_headunitrevived_2_0_1_debug | AapTransport quitting (clean=false)
+03-12 16:40:22.088 16134 16165 D UsbDeviceConnectionJNI: close
+03-12 16:40:22.091 16134 16165 I HUREV   : [913] UsbAccessoryConnection.disconnect | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/001/050,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mManufacturerName=Android,mProductName=VehiConn_CBE4,mVersion=2.0,mSerialNumber=LY0123456789,mConfigurations=[
+03-12 16:40:22.091 16134 16165 I HUREV   : UsbConfiguration[mId=1,mName=accessory,mAttributes=128,mMaxPower=75,mInterfaces=[
+03-12 16:40:22.091 16134 16165 I HUREV   : UsbInterface[mId=0,mAlternateSetting=0,mName=Android Accessory Interface,mClass=255,mSubclass=255,mProtocol=0,mEndpoints=[
+03-12 16:40:22.091 16134 16165 I HUREV   : UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-12 16:40:22.091 16134 16165 I HUREV   : UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=512,mInterval=0]]]]
+03-12 16:40:22.091 16134 16165 E UsbDeviceConnectionJNI: device is closed in native_release_interface
+03-12 16:40:22.093 16134 16165 E HUREV   : [913] UsbAccessoryConnection.disconnect | Error releaseInterface()
+03-12 16:40:22.109 16134 16134 I HUREV   : [2] AapService.scheduleReconnectIfNeeded | AapService: USB disconnect. Scheduling reconnect check in 3000ms...
+03-12 16:40:22.110 16134 16184 D AudioTrack: stop() called with 376832 frames delivered
+03-12 16:40:22.118 16134 16194 I HUREV   : [928] VideoDecoder.outputThreadLoop | Output thread stopped
+03-12 16:40:22.134 16134 16187 D BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) cancelBuffer: slot 0
+03-12 16:40:22.134 16134 16134 I HUREV   : [2] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-12 16:40:22.135 16134 16187 D BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) cancelBuffer: slot 1
+03-12 16:40:22.136 16134 16187 D BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) cancelBuffer: slot 2
+03-12 16:40:22.137 16134 16187 D BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) cancelBuffer: slot 3
+03-12 16:40:22.139 16134 16187 D BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) cancelBuffer: slot 5
+03-12 16:40:22.140 16134 16187 D BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) cancelBuffer: slot 6
+03-12 16:40:22.141 16134 16187 D BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) cancelBuffer: slot 8
+03-12 16:40:22.142 16134 16187 D BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) cancelBuffer: slot 9
+03-12 16:40:22.143 16134 16187 D BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) cancelBuffer: slot 10
+03-12 16:40:22.144 16134 16187 D BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) cancelBuffer: slot 11
+03-12 16:40:22.149 16134 16186 D SurfaceUtils: disconnecting from surface 0x8feaa808, reason disconnectFromSurface
+03-12 16:40:22.149 16134 16186 D Surface : Surface::disconnect(this=0x8feaa800,api=3)
+03-12 16:40:22.149 16134 16186 I BufferQueueProducer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:16134,c:16134) disconnect(P): api 3
+03-12 16:40:22.149 16134 16186 I BufferQueueConsumer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:-1,c:16134) getReleasedBuffers: returning mask 0xffffffffffffffff
+03-12 16:40:22.187 16134 16165 I HUREV   : [913] VideoDecoder.stop | Decoder stopped: AapService::onDisconnect
+03-12 16:40:22.202 16134 16134 D HookText: remove Node { textView:null, text:Rozłącz}
+03-12 16:40:22.202 16134 16134 D HookText: remove Node { textView:null, text:Android Auto uruchamia się…}
+03-12 16:40:22.239 16134 16134 I HUREV   : [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-12 16:40:22.292 16134 16134 D Surface : Surface::allocateBuffers(this=0x904bc000)
+03-12 16:40:22.292 16134 16155 D Surface : Surface::connect(this=0x904bc000,api=1)
+03-12 16:40:22.318 16134 16155 D Surface : Surface::setBufferCount(this=0x904bc000,bufferCount=4)
+03-12 16:40:22.394 16134 16155 D GraphicBuffer: register, handle(0xa2e417c0) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:22.476 16134 16155 D GraphicBuffer: register, handle(0xa2e41940) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:22.476 16134 16178 E [EGL-ERROR]: __egl_platform_cancel_buffers:644: surface->num_buffers(4)
+03-12 16:40:22.477 16134 16178 D Surface : Surface::disconnect(this=0x8fe54000,api=1)
+03-12 16:40:22.477 16134 16178 D GraphicBuffer: unregister, handle(0xa4924840) (w:720 h:1280 s:720 f:0x2 u:f02)
+03-12 16:40:22.477 16134 16178 D GraphicBuffer: unregister, handle(0xa4925140) (w:720 h:1280 s:720 f:0x2 u:f02)
+03-12 16:40:22.478 16134 16178 D GraphicBuffer: unregister, handle(0xa49258c0) (w:720 h:1280 s:720 f:0x2 u:f02)
+03-12 16:40:22.478 16134 16178 D GraphicBuffer: unregister, handle(0xa4925980) (w:720 h:1280 s:720 f:0x2 u:f02)
+03-12 16:40:22.481 16134 16134 D Surface : Surface::disconnect(this=0x8fe54000,api=-1)
+03-12 16:40:22.492 16134 16155 E [EGL-ERROR]: __egl_platform_cancel_buffers:644: surface->num_buffers(4)
+03-12 16:40:22.492 16134 16155 D Surface : Surface::disconnect(this=0x905e4800,api=1)
+03-12 16:40:22.493 16134 16155 D GraphicBuffer: unregister, handle(0xa2e40c80) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:22.493 16134 16155 D GraphicBuffer: unregister, handle(0xa2e40a40) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:22.493 16134 16155 D GraphicBuffer: unregister, handle(0xa2e40ec0) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:22.591 16134 16134 I HUREV   : [2] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-12 16:40:22.594 16134 16134 I BufferQueueConsumer: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:-1,c:-1) disconnect(C)
+03-12 16:40:22.602 16134 16134 D View    : [Warning] assignParent to null: this = DecorView@91a0e71[AapProjectionActivity]
+03-12 16:40:22.608 16134 16134 D WindowClient: Remove from mViews: DecorView@91a0e71[AapProjectionActivity], this = android.view.WindowManagerGlobal@dac6453
+03-12 16:40:22.610 16134 16134 I HUREV   : [2] AapProjectionActivity.onSurfaceDestroyed | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@3c17e78)/@0xb5479bc
+03-12 16:40:22.612 16134 16134 I HUREV   : [2] VideoDecoder.stop | Decoder stopped: surfaceDestroyed
+03-12 16:40:24.621 16134 16184 I HUREV   : [924] AudioTrackWrapper.run | AudioTrackWrapper thread finished.
+03-12 16:40:25.135 16134 16134 I HUREV   : [2] AapService.checkAlreadyConnectedUsb | Found device already in accessory mode: Google 18D1:2D00
+03-12 16:40:25.144 16134 16165 I HUREV   : [913] UsbAccessoryConnection.usbOpen | Established connection: android.hardware.usb.UsbDeviceConnection@d147cb4
+03-12 16:40:25.146 16134 16165 I HUREV   : [913] UsbAccessoryConnection.usbOpen | interfaceCount: 1
+03-12 16:40:25.148 16134 16165 I HUREV   : [913] UsbAccessoryConnection.initEndpoint | Check accessory endpoints
+03-12 16:40:25.149 16134 16165 I HUREV   : [913] UsbAccessoryConnection.initEndpoint | Connected have EPs
+03-12 16:40:25.155 16134 16155 D GraphicBuffer: register, handle(0xa2e40a40) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:25.215 16134 16165 I HUREV   : [913] AapTransport.<init> | Using Java SSL implementation
+03-12 16:40:25.218 16134 16165 I HUREV   : [913] AapTransport.startHandshake$com_andrerinas_headunitrevived_2_0_1_debug | Start Aap transport handshake for com.andrerinas.headunitrevived.connection.UsbAccessoryConnection@7d2edd9
+03-12 16:40:25.530 16134 16134 I HUREV   : [2] AapProjectionActivity.onCreate | HeadUnit for Android Auto (tm) - Copyright 2011-2015 Michael A. Reid., since 2025 André Rinas All Rights Reserved...
+03-12 16:40:25.531 16134 16134 I HUREV   : [2] AapProjectionActivity.onCreate | Using GlProjectionView
+03-12 16:40:25.538 16134 16134 I HUREV   : [2] HeadUnitScreenConfig.recalculate | CarScreen: usable width: 1280 height: 720 (Raw: 1280x720, Insets: L0 T0 R0 B0)
+03-12 16:40:25.539 16134 16134 I HUREV   : [2] HeadUnitScreenConfig.recalculate | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-12 16:40:25.542 16134 16134 I HUREV   : [2] HeadUnitScreenConfig.recalculate | CarScreen using: _1280x720, number: 2, scales: scaleX: 1.0, scaleY: 1.0
+03-12 16:40:25.576 16134 16134 I HUREV   : [2] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-12 16:40:25.592 16134 16134 D WindowClient: Add to mViews: DecorView@9c7aba4[AapProjectionActivity], this = android.view.WindowManagerGlobal@dac6453
+03-12 16:40:25.595 16134 16134 D ViewRootImpl[AapProjectionActivity]: hardware acceleration = true , fakeHwAccelerated = false, sRendererDisabled = false, forceHwAccelerated = false, sSystemRendererDisabled = false
+03-12 16:40:25.675 16134 16155 D Surface : Surface::connect(this=0x8fe67000,api=1)
+03-12 16:40:25.678 16134 16155 D Surface : Surface::setBufferCount(this=0x8fe67000,bufferCount=4)
+03-12 16:40:25.706 16134 16218 D Surface : Surface::connect(this=0x8fefc000,api=1)
+03-12 16:40:25.708 16134 16218 D Surface : Surface::setBufferCount(this=0x8fefc000,bufferCount=4)
+03-12 16:40:25.712 16134 16218 D GraphicBuffer: register, handle(0xa4925080) (w:720 h:1280 s:720 f:0x2 u:f02)
+03-12 16:40:25.714 16134 16218 I HUREV   : [1195] VideoRenderer.onSurfaceCreated | GlProjectionView: onSurfaceCreated (GL Context)
+03-12 16:40:25.716 16134 16218 I BufferQueue: [unnamed-16134-1](this:0x8c4fc000,id:1,api:0,p:-1,c:-1) BufferQueue core=(16134:com.andrerinas.headunitrevived)
+03-12 16:40:25.716 16134 16218 E DumpTunnel: finding regDump() failed
+03-12 16:40:25.717 16134 16218 I BufferQueueConsumer: [unnamed-16134-1](this:0x8c4fc000,id:1,api:0,p:-1,c:16134) connect(C): consumer=(16134:com.andrerinas.headunitrevived) controlledByApp=true
+03-12 16:40:25.717 16134 16218 I BufferQueueConsumer: [unnamed-16134-1](this:0x8c4fc000,id:1,api:0,p:-1,c:16134) setConsumerName: unnamed-16134-1
+03-12 16:40:25.717 16134 16218 I BufferQueueConsumer: [SurfaceTexture-1-16134-1](this:0x8c4fc000,id:1,api:0,p:-1,c:16134) setConsumerName: SurfaceTexture-1-16134-1
+03-12 16:40:25.719 16134 16218 I HUREV   : [1195] VideoRenderer.onSurfaceChanged | GlProjectionView: onSurfaceChanged: 1280x720
+03-12 16:40:25.729 16134 16218 D GraphicBuffer: register, handle(0xa4925380) (w:720 h:1280 s:720 f:0x2 u:f02)
+03-12 16:40:25.735 16134 16165 W HUREV   : [913] AapTransport.handshake | Handshake: Ignoring unexpected message (ch=2, type=0x1703, len=1386). Waiting for VERSION_RESPONSE.
+03-12 16:40:25.738 16134 16165 W HUREV   : [913] AapTransport.handshake | Handshake: Ignoring unexpected message (ch=2, type=0x1703, len=1275). Waiting for VERSION_RESPONSE.
+03-12 16:40:25.743 16134 16165 W HUREV   : [913] AapTransport.handshake | Handshake: Ignoring unexpected message (ch=2, type=0x1703, len=1287). Waiting for VERSION_RESPONSE.
+03-12 16:40:25.746 16134 16165 W HUREV   : [913] AapTransport.handshake | Handshake: Ignoring unexpected message (ch=6, type=0x1703, len=8235). Waiting for VERSION_RESPONSE.
+03-12 16:40:25.748 16134 16165 W HUREV   : [913] AapTransport.handshake | Handshake: Ignoring unexpected message (ch=0, type=0x1703, len=35). Waiting for VERSION_RESPONSE.
+03-12 16:40:25.754 16134 16155 D GraphicBuffer: register, handle(0xa2e40c80) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:25.778 16134 16134 I HUREV   : [2] VideoRenderer.onSurfaceCreated$lambda$4 | GlProjectionView: Reporting Surface Created
+03-12 16:40:25.778 16134 16155 D GraphicBuffer: register, handle(0xa2e40740) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:25.780 16134 16134 I HUREV   : [2] AapProjectionActivity.onSurfaceCreated | [AapProjectionActivity] onSurfaceCreated
+03-12 16:40:25.782 16134 16134 I HUREV   : [2] AapProjectionActivity.onSurfaceChanged | [AapProjectionActivity] onSurfaceChanged. Actual surface dimensions: width=1280, height=720
+03-12 16:40:25.785 16134 16134 I HUREV   : [2] VideoDecoder.setSurface | New surface set: Surface(name=android.graphics.SurfaceTexture@83f45d4)/@0x41ce258
+03-12 16:40:25.787 16134 16134 I HUREV   : [2] AapProjectionActivity.onSurfaceChanged | [AapProjectionActivity] Decoder already has dimensions: 1280x720. Applying to view.
+03-12 16:40:25.790 16134 16134 I HUREV   : [2] GlProjectionView.setVideoSize | GlProjectionView setVideoSize: 1280x720
+03-12 16:40:25.790 16134 16134 I BufferQueueConsumer: [SurfaceTexture-1-16134-1](this:0x8c4fc000,id:1,api:0,p:-1,c:16134) setDefaultBufferSize: width=1280 height=720
+03-12 16:40:25.819 16134 16143 I BufferQueue: [SurfaceTexture-1-16134-0](this:0x9048a000,id:0,api:3,p:-1,c:-1) ~BufferQueueCore
+03-12 16:40:25.829 16134 16165 W HUREV   : [913] AapTransport.handshake | Handshake: No VERSION_RESPONSE within 2s (attempt 1), ret=-1
+03-12 16:40:25.864 16134 16155 D GraphicBuffer: register, handle(0xa2e41b80) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:25.883 16134 16155 E [EGL-ERROR]: __egl_platform_cancel_buffers:644: surface->num_buffers(4)
+03-12 16:40:25.884 16134 16155 D Surface : Surface::disconnect(this=0x904bc000,api=1)
+03-12 16:40:25.884 16134 16155 D GraphicBuffer: unregister, handle(0xa2e40a40) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:25.884 16134 16155 D GraphicBuffer: unregister, handle(0xa2e41940) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:25.884 16134 16155 D GraphicBuffer: unregister, handle(0xa2e417c0) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:26.037 16134 16165 W HUREV   : [913] AapTransport.handshake | Handshake: Version request send failed (ret=-1), attempt 2
+03-12 16:40:26.097 16134 16134 I HUREV   : [2] UsbReceiver.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-12 16:40:26.102 16134 16134 I HUREV   : [2] UsbReceiver.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-12 16:40:26.118 16134 16166 I HUREV   : [914] AapTransport.quit$com_andrerinas_headunitrevived_2_0_1_debug | AapTransport quitting (clean=false)
+03-12 16:40:26.122 16134 16166 D UsbDeviceConnectionJNI: close
+03-12 16:40:26.132 16134 16134 I HUREV   : [2] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-12 16:40:26.134 16134 16166 I HUREV   : [914] UsbAccessoryConnection.disconnect | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/001/050,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mManufacturerName=Android,mProductName=VehiConn_CBE4,mVersion=2.0,mSerialNumber=LY0123456789,mConfigurations=[
+03-12 16:40:26.134 16134 16166 I HUREV   : UsbConfiguration[mId=1,mName=accessory,mAttributes=128,mMaxPower=75,mInterfaces=[
+03-12 16:40:26.134 16134 16166 I HUREV   : UsbInterface[mId=0,mAlternateSetting=0,mName=Android Accessory Interface,mClass=255,mSubclass=255,mProtocol=0,mEndpoints=[
+03-12 16:40:26.134 16134 16166 I HUREV   : UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-12 16:40:26.134 16134 16166 I HUREV   : UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=512,mInterval=0]]]]
+03-12 16:40:26.134 16134 16166 E UsbDeviceConnectionJNI: device is closed in native_release_interface
+03-12 16:40:26.136 16134 16166 E HUREV   : [914] UsbAccessoryConnection.disconnect | Error releaseInterface()
+03-12 16:40:26.191 16134 16134 I HUREV   : [2] AapService.scheduleReconnectIfNeeded | AapService: USB disconnect. Scheduling reconnect check in 3000ms...
+03-12 16:40:26.192 16134 16166 I HUREV   : [914] VideoDecoder.stop | Decoder stopped: AapService::onDisconnect
+03-12 16:40:26.212 16134 16134 D HookText: remove Node { textView:null, text:Rozłącz}
+03-12 16:40:26.213 16134 16134 D HookText: remove Node { textView:null, text:Android Auto uruchamia się…}
+03-12 16:40:26.239 16134 16165 E HUREV   : [913] AapTransport.handshake | Handshake: Version request/response failed after 2 attempt(s). last ret: -1
+03-12 16:40:26.241 16134 16165 I HUREV   : [913] AapTransport.quit$com_andrerinas_headunitrevived_2_0_1_debug | AapTransport quitting (clean=false)
+03-12 16:40:26.243 16134 16165 E HUREV   : [913] AapTransport.startHandshake$com_andrerinas_headunitrevived_2_0_1_debug | Handshake failed
+03-12 16:40:26.254 16134 16134 I HUREV   : [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-12 16:40:26.321 16134 16134 D Surface : Surface::allocateBuffers(this=0x904bc000)
+03-12 16:40:26.322 16134 16155 D Surface : Surface::connect(this=0x904bc000,api=1)
+03-12 16:40:26.327 16134 16155 D Surface : Surface::setBufferCount(this=0x904bc000,bufferCount=4)
+03-12 16:40:26.407 16134 16155 D GraphicBuffer: register, handle(0xa2e41940) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:26.495 16134 16155 D GraphicBuffer: register, handle(0xa2e411c0) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:26.504 16134 16218 E [EGL-ERROR]: __egl_platform_cancel_buffers:644: surface->num_buffers(4)
+03-12 16:40:26.505 16134 16218 D Surface : Surface::disconnect(this=0x8fefc000,api=1)
+03-12 16:40:26.506 16134 16218 D GraphicBuffer: unregister, handle(0xa4925080) (w:720 h:1280 s:720 f:0x2 u:f02)
+03-12 16:40:26.506 16134 16218 D GraphicBuffer: unregister, handle(0xa4925380) (w:720 h:1280 s:720 f:0x2 u:f02)
+03-12 16:40:26.508 16134 16134 D Surface : Surface::disconnect(this=0x8fefc000,api=-1)
+03-12 16:40:26.530 16134 16155 E [EGL-ERROR]: __egl_platform_cancel_buffers:644: surface->num_buffers(4)
+03-12 16:40:26.533 16134 16155 D Surface : Surface::disconnect(this=0x8fe67000,api=1)
+03-12 16:40:26.533 16134 16155 D GraphicBuffer: unregister, handle(0xa2e40c80) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:26.533 16134 16155 D GraphicBuffer: unregister, handle(0xa2e40740) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:26.533 16134 16155 D GraphicBuffer: unregister, handle(0xa2e41b80) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:26.593 16134 16134 I HUREV   : [2] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-12 16:40:26.596 16134 16134 I BufferQueueConsumer: [SurfaceTexture-1-16134-1](this:0x8c4fc000,id:1,api:0,p:-1,c:-1) disconnect(C)
+03-12 16:40:26.603 16134 16134 D View    : [Warning] assignParent to null: this = DecorView@9c7aba4[AapProjectionActivity]
+03-12 16:40:26.609 16134 16134 D WindowClient: Remove from mViews: DecorView@9c7aba4[AapProjectionActivity], this = android.view.WindowManagerGlobal@dac6453
+03-12 16:40:26.611 16134 16134 I HUREV   : [2] AapProjectionActivity.onSurfaceDestroyed | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@83f45d4)/@0x41ce258
+03-12 16:40:26.613 16134 16134 I HUREV   : [2] VideoDecoder.stop | Decoder stopped: surfaceDestroyed
+03-12 16:40:29.387 16134 16155 D GraphicBuffer: register, handle(0xa2e40740) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:29.736 16134 16134 D HookText: remove Node { textView:null, text:Rozłącz}
+03-12 16:40:29.736 16134 16134 D HookText: remove Node { textView:null, text:Android Auto uruchamia się…}
+03-12 16:40:29.927 16134 16134 I HUREV   : [2] HomeFragment.attemptSingleUsbAutoConnect | HomeFragment: Requesting single-USB auto-connect via AapService
+03-12 16:40:30.397 16134 16134 D WindowClient: Add to mViews: DecorView@1658b1f[SettingsActivity], this = android.view.WindowManagerGlobal@dac6453
+03-12 16:40:30.401 16134 16134 D ViewRootImpl[SettingsActivity]: hardware acceleration = true , fakeHwAccelerated = false, sRendererDisabled = false, forceHwAccelerated = false, sSystemRendererDisabled = false
+03-12 16:40:30.410 16134 16134 I Choreographer: Skipped 53 frames!  The application may be doing too much work on its main thread.
+03-12 16:40:30.513 16134 16155 D Surface : Surface::connect(this=0x8fd45000,api=1)
+03-12 16:40:30.513 16134 16134 D Surface : Surface::allocateBuffers(this=0x8fd45000)
+03-12 16:40:30.518 16134 16155 D Surface : Surface::setBufferCount(this=0x8fd45000,bufferCount=4)
+03-12 16:40:30.714 16134 16139 I zygote  : Compiler allocated 5MB to compile void android.view.ViewRootImpl.performTraversals()
+03-12 16:40:31.127 16134 16134 D View    : [ANR Warning]onLayout time too long, this =androidx.recyclerview.widget.RecyclerView{519ee21 VFED.V... ......ID 0,74-1280,720 #7f0901b7 app:id/settingsRecyclerView}time =574 ms
+03-12 16:40:31.127 16134 16134 D View    : [ANR Warning]onLayout time too long, this =android.widget.LinearLayout{1ab4ced V.E...... ......ID 0,0-1280,720}time =592 ms
+03-12 16:40:31.128 16134 16134 D View    : [ANR Warning]onLayout time too long, this =androidx.fragment.app.FragmentContainerView{3ae2722 V.E...... ......ID 0,0-1280,720 #7f0901b9 app:id/settings_nav_host}time =593 ms
+03-12 16:40:31.128 16134 16134 D View    : [ANR Warning]onLayout time too long, this =androidx.fragment.app.FragmentContainerView{75f35b3 V.E...... ......ID 0,0-1280,720 #7f0901b9 app:id/settings_nav_host}time =595 ms
+03-12 16:40:31.132 16134 16134 D View    : [ANR Warning]onLayout time too long, this =androidx.appcompat.widget.ContentFrameLayout{1589770 V.E...... ......ID 0,0-1280,720 #1020002 android:id/content}time =595 ms
+03-12 16:40:31.134 16134 16134 D View    : [ANR Warning]onLayout time too long, this =androidx.appcompat.widget.FitWindowsLinearLayout{17ccae9 V.E...... ......ID 0,0-1280,720 #7f090036 app:id/action_bar_root}time =600 ms
+03-12 16:40:31.134 16134 16134 D View    : [ANR Warning]onLayout time too long, this =android.widget.FrameLayout{12b936e V.E...... ......ID 0,0-1280,720}time =603 ms
+03-12 16:40:31.135 16134 16134 D View    : [ANR Warning]onLayout time too long, this =android.widget.LinearLayout{b8d7a0f V.E...... ......ID 0,0-1280,720}time =604 ms
+03-12 16:40:31.135 16134 16134 D View    : [ANR Warning]onLayout time too long, this =DecorView@1658b1f[SettingsActivity]time =606 ms
+03-12 16:40:31.170 16134 16134 I Choreographer: Skipped 42 frames!  The application may be doing too much work on its main thread.
+03-12 16:40:31.277 16134 16155 D GraphicBuffer: register, handle(0xa2e40c80) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:31.288 16134 16155 D HWUIExtension: MTKProgramCache.generateProgram: 68719476736
+03-12 16:40:31.289 16134 16155 D HWUIExtension: createProgram 0x0000001000000000, binary 0xaf936054, length 2688, format 36705 within 419ns
+03-12 16:40:31.289 16134 16155 D HWUIExtension: MTKProgramCache.generateProgram: 103084458048
+03-12 16:40:31.290 16134 16155 D HWUIExtension: createProgram 0x0000001800500040, binary 0xaf944684, length 2800, format 36705 within 522ns
+03-12 16:40:31.292 16134 16155 D HWUIExtension: MTKProgramCache.generateProgram: 562949967052865
+03-12 16:40:31.293 16134 16155 D HWUIExtension: createProgram 0x0002000000d00041, binary 0xaf942d44, length 2832, format 36705 within 453ns
+03-12 16:40:31.293 16134 16155 D HWUIExtension: MTKProgramCache.generateProgram: 34364981312
+03-12 16:40:31.294 16134 16155 D HWUIExtension: createProgram 0x0000000800500040, binary 0xaf9403d4, length 2660, format 36705 within 252ns
+03-12 16:40:31.369 16134 16155 D GraphicBuffer: register, handle(0x8fed2300) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:31.393 16134 16155 E [EGL-ERROR]: __egl_platform_cancel_buffers:644: surface->num_buffers(4)
+03-12 16:40:31.394 16134 16155 D Surface : Surface::disconnect(this=0x904bc000,api=1)
+03-12 16:40:31.394 16134 16155 D GraphicBuffer: unregister, handle(0xa2e40740) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:31.394 16134 16155 D GraphicBuffer: unregister, handle(0xa2e411c0) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:31.395 16134 16155 D GraphicBuffer: unregister, handle(0xa2e41940) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:32.017 16134 16155 D GraphicBuffer: register, handle(0xa2e411c0) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:32.445 16134 16139 I zygote  : Do full code cache collection, code=501KB, data=415KB
+03-12 16:40:32.448 16134 16139 I zygote  : After code cache collection, code=494KB, data=351KB
+03-12 16:40:33.071 16134 16139 I zygote  : Do partial code cache collection, code=507KB, data=375KB
+03-12 16:40:33.075 16134 16139 I zygote  : After code cache collection, code=507KB, data=375KB
+03-12 16:40:33.075 16134 16139 I zygote  : Increasing code cache capacity to 2MB
+03-12 16:40:33.740 16134 16155 D GraphicBuffer: register, handle(0xa2e40a40) (w:720 h:1280 s:720 f:0x1 u:f02)
+03-12 16:40:33.743 16134 16155 D HWUIExtension: MTKProgramCache.generateProgram: 103079215104
+03-12 16:40:33.744 16134 16155 D HWUIExtension: createProgram 0x0000001800000000, binary 0xaf938da4, length 2688, format 36705 within 502ns

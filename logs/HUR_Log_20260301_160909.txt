@@ -1,0 +1,26 @@
+--------- beginning of main
+03-01 16:09:02.967  4418  4423 I zygote64: Do full code cache collection, code=502KB, data=297KB
+03-01 16:09:02.969  4418  4423 I zygote64: After code cache collection, code=477KB, data=254KB
+03-01 16:09:07.694  4418  4418 I zygote64: Deoptimizing void androidx.recyclerview.widget.RecyclerView$w.H(androidx.recyclerview.widget.RecyclerView$f0) due to JIT inline cache
+03-01 16:09:07.707  4418  4418 I CAR.HU.J: [2] o.i | USB stability: Device Xiaomi 2717:FF40 stable after 8s, connecting
+03-01 16:09:07.709  4418  4418 I CAR.HU.J: [2] AapService.J | Single USB auto-connect: connecting to Xiaomi 2717:FF40
+03-01 16:09:07.710  4418  4418 I CAR.HU.J: [2] k.c | Success controlTransfer len: 2  acc_ver: 2
+03-01 16:09:07.711  4418  4418 I CAR.HU.J: [2] k.c | acc_ver: 2
+03-01 16:09:07.711  4418  4418 I CAR.HU.J: [2] k.b | Success controlTransfer len: 7  index: 0  string: "Android"
+03-01 16:09:07.712  4418  4418 I CAR.HU.J: [2] k.b | Success controlTransfer len: 12  index: 1  string: "Android Auto"
+03-01 16:09:07.712  4418  4418 I CAR.HU.J: [2] k.b | Success controlTransfer len: 12  index: 2  string: "Android Auto"
+03-01 16:09:07.713  4418  4418 I CAR.HU.J: [2] k.b | Success controlTransfer len: 5  index: 3  string: "2.0.1"
+03-01 16:09:07.713  4418  4418 I CAR.HU.J: [2] k.b | Success controlTransfer len: 45  index: 4  string: "https://developer.android.com/auto/index.html"
+03-01 16:09:07.713  4418  4418 I CAR.HU.J: [2] k.b | Success controlTransfer len: 12  index: 5  string: "HU-AAAAAA001"
+03-01 16:09:07.714  4418  4418 I CAR.HU.J: [2] k.c | Sending acc start
+03-01 16:09:08.215  4418  4418 I CAR.HU.J: [2] k.a | Result: true
+03-01 16:09:08.216  4418  4418 I CAR.HU.J: [2] AapService.J | Successfully requested switch to accessory mode for single USB device
+03-01 16:09:08.232  4418  4418 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-01 16:09:08.243  4418  4423 I zygote64: Do partial code cache collection, code=498KB, data=271KB
+03-01 16:09:08.243  4418  4423 I zygote64: After code cache collection, code=494KB, data=269KB
+03-01 16:09:08.244  4418  4423 I zygote64: Increasing code cache capacity to 2MB
+03-01 16:09:08.250  4418  4418 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-01 16:09:08.251  4418  4418 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x11000010 (has extras) }
+03-01 16:09:08.253  4418  4418 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x11000010 (has extras) }
+03-01 16:09:08.254  4418  4418 I CAR.HU.J: [2] AapService.onUsbAttach | onUsbAttach: device=Google 18D1:2D00, isConnected=false, isConnecting=true
+03-01 16:09:08.255  4418  4418 I CAR.HU.J: [2] AapService.A | checkAlreadyConnectedUsb: skipped (connection in progress)

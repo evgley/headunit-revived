@@ -1,0 +1,40 @@
+--------- beginning of main
+03-09 00:07:16.635 23477 23482 I zygote64: Do full code cache collection, code=1510KB, data=996KB
+03-09 00:07:16.640 23477 23482 I zygote64: After code cache collection, code=1507KB, data=894KB
+03-09 00:07:17.333 23477 23477 W InputEventReceiver: Attempted to finish an input event but the input event receiver has already been disposed.
+03-09 00:07:17.852 23477 23482 I zygote64: Do partial code cache collection, code=1509KB, data=904KB
+03-09 00:07:17.856 23477 23482 I zygote64: After code cache collection, code=1509KB, data=904KB
+03-09 00:07:17.856 23477 23482 I zygote64: Increasing code cache capacity to 4MB
+03-09 00:07:17.920 23477 23498 D HWUIExtension: MTKProgramCache.generateProgram: 562984313159681
+03-09 00:07:17.921 23477 23498 D HWUIExtension: createProgram 0x0002000800000001, binary 0x739e06a600, length 11727, format 37168 within 603ns
+03-09 00:07:25.041 23477 23477 D WindowClient: Add to mViews: DecorView@4e707cc[], this = android.view.WindowManagerGlobal@fed1acb
+03-09 00:07:25.043 23477 23477 D ViewRootImpl[SettingsActivity]: hardware acceleration = true , fakeHwAccelerated = false, sRendererDisabled = false, forceHwAccelerated = false, sSystemRendererDisabled = false
+03-09 00:07:25.106 23477 23498 D Surface : Surface::connect(this=0x738c942000,api=1)
+03-09 00:07:25.106 23477 23477 D Surface : Surface::allocateBuffers(this=0x738c942000)
+03-09 00:07:25.147 23477 23498 D HWUIExtension: MTKProgramCache.generateProgram: 8864812498944
+03-09 00:07:25.147 23477 23498 D HWUIExtension: createProgram 0x0000081000000000, binary 0x739e0794f2, length 12999, format 37168 within 618ns
+03-09 00:07:25.149 23477 23498 D HWUIExtension: MTKProgramCache.generateProgram: 8796093022208
+03-09 00:07:25.151 23477 23498 D HWUIExtension: MTKProgramCache.generateProgram: 571780406181891
+03-09 00:07:25.152 23477 23498 D HWUIExtension: createProgram 0x0002080800000003, binary 0x739e086871, length 13341, format 37168 within 553ns
+03-09 00:07:26.459 23477 23498 D Surface : Surface::disconnect(this=0x738c942000,api=1)
+03-09 00:07:26.460 23477 23477 D View    : [Warning] assignParent to null: this = DecorView@4e707cc[]
+03-09 00:07:26.486 23477 23477 D WindowClient: Remove from mViews: DecorView@4e707cc[], this = android.view.WindowManagerGlobal@fed1acb
+03-09 00:07:26.529 23477 23477 I CAR.HU.J: [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-09 00:07:26.560 23477 23498 D Surface : Surface::connect(this=0x738c942000,api=1)
+03-09 00:07:26.560 23477 23477 D Surface : Surface::allocateBuffers(this=0x738c942000)
+03-09 00:07:26.649 23477 23498 D Surface : Surface::disconnect(this=0x738cfdc000,api=1)
+03-09 00:07:26.917 23477 23477 D View    : [Warning] assignParent to null: this = DecorView@a07c513[SettingsActivity]
+03-09 00:07:26.924 23477 23477 D WindowClient: Remove from mViews: DecorView@a07c513[SettingsActivity], this = android.view.WindowManagerGlobal@fed1acb
+03-09 00:07:27.642 23477 23477 I CAR.HU.J: [2] HomeFragment.attemptSingleUsbAutoConnect | HomeFragment: Requesting single-USB auto-connect via AapService
+03-09 00:07:27.787 23477 23477 D WindowClient: Add to mViews: DecorView@abe1cf7[SettingsActivity], this = android.view.WindowManagerGlobal@fed1acb
+03-09 00:07:27.789 23477 23477 D ViewRootImpl[SettingsActivity]: hardware acceleration = true , fakeHwAccelerated = false, sRendererDisabled = false, forceHwAccelerated = false, sSystemRendererDisabled = false
+03-09 00:07:27.848 23477 23498 D Surface : Surface::connect(this=0x7385a86000,api=1)
+03-09 00:07:27.848 23477 23477 D Surface : Surface::allocateBuffers(this=0x7385a86000)
+03-09 00:07:28.155 23477 23498 D Surface : Surface::disconnect(this=0x738c942000,api=1)
+03-09 00:07:30.990 23477 23477 I CAR.HU.J: [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-09 00:07:31.016 23477 23477 D Surface : Surface::allocateBuffers(this=0x738c942000)
+03-09 00:07:31.025 23477 23498 D Surface : Surface::connect(this=0x738c942000,api=1)
+03-09 00:07:31.118 23477 23498 D Surface : Surface::disconnect(this=0x7385a86000,api=1)
+03-09 00:07:31.119 23477 23498 D OpenGLRenderer: endAllActiveAnimators on 0x7385b12c00 (RippleDrawable) with handle 0x738b230380
+03-09 00:07:31.370 23477 23477 D View    : [Warning] assignParent to null: this = DecorView@abe1cf7[SettingsActivity]
+03-09 00:07:31.385 23477 23477 D WindowClient: Remove from mViews: DecorView@abe1cf7[SettingsActivity], this = android.view.WindowManagerGlobal@fed1acb

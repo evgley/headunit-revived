@@ -1,0 +1,13 @@
+--------- beginning of main
+03-02 09:49:10.678  4679  4679 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-02 09:49:11.112  4679  4679 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x11000010 (has extras) }
+03-02 09:49:12.483  4679  4679 I CAR.HU.J: [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-02 09:49:12.764  4679  4679 I zygote64: Deoptimizing java.lang.Object j.b.g(java.lang.Object) due to JIT inline cache
+03-02 09:49:13.622  4679  4679 I CAR.HU.J: [2] HomeFragment.attemptSingleUsbAutoConnect | HomeFragment: Requesting single-USB auto-connect via AapService
+03-02 09:49:13.705  4679  4679 I CAR.HU.J: [2] AapService.onCreate | AapService creating...
+03-02 09:49:13.725  4679  4679 I CAR.HU.J: [2] h.invoke | NightMode update: true
+03-02 09:49:13.726  4679  4679 I CAR.HU.J: [2] g.<init> | Using Java SSL implementation
+03-02 09:49:13.889  4679  4679 I CAR.HU.J: [2] AapService.Q | USB stability: Starting 8s timer for Xiaomi 2717:FF40
+03-02 09:49:13.911  4679  4679 I CAR.HU.J: [2] AapService.onStartCommand | ACTION_CHECK_USB received
+03-02 09:49:13.913  4679  4679 I CAR.HU.J: [2] AapService.Q | USB stability: Starting 8s timer for Xiaomi 2717:FF40
+03-02 09:49:15.355  4679  4679 I zygote64: Deoptimizing void z1.h.<init>(z1.h$c) due to JIT inline cache

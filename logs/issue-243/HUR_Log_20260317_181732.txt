@@ -1,0 +1,529 @@
+--------- beginning of /dev/log/main
+03-17 18:17:11.890  9010  9010 D dalvikvm: Application start trace : fork and set application info end in zygote lib. niceName = com.andrerinas.headunitrevived, seInfo = default
+03-17 18:17:11.920  9010  9010 D Zygote  : Application start trace : Zygote.runOnce pid = 0
+03-17 18:17:11.940  9010  9010 I ActivityThread: ActivityThread main called
+03-17 18:17:11.950  9010  9010 I ActivityThread:  screensize is small
+03-17 18:17:12.100  9010  9014 D dalvikvm: GC_CONCURRENT freed 430K, 77% free 3030K/13004K, paused 14ms+31ms, total 203ms
+03-17 18:17:12.150  9010  9010 I ActivityThread: ActivityThread init context before
+03-17 18:17:12.160  9010  9010 I ActivityThread: ActivityThread init context after
+03-17 18:17:12.460  9010  9010 E dalvikvm: Could not find class 'android.app.NotificationChannel', referenced from method com.andrerinas.headunitrevived.App.onCreate
+03-17 18:17:12.460  9010  9010 W dalvikvm: VFY: unable to resolve new-instance 67 (Landroid/app/NotificationChannel;) in Lcom/andrerinas/headunitrevived/App;
+03-17 18:17:12.460  9010  9010 D dalvikvm: VFY: replacing opcode 0x22 at 0x009e
+03-17 18:17:12.460  9010  9010 D dalvikvm: DexOpt: unable to opt direct call 0x019c at 0xa5 in Lcom/andrerinas/headunitrevived/App;.onCreate
+03-17 18:17:12.470  9010  9010 D dalvikvm: DexOpt: unable to opt direct call 0x019c at 0xc1 in Lcom/andrerinas/headunitrevived/App;.onCreate
+03-17 18:17:12.470  9010  9010 I MultiDex: VM with version 1.6.0 does not have multidex support
+03-17 18:17:12.480  9010  9010 I MultiDex: Installing application
+03-17 18:17:12.580  9010  9010 I MultiDex: MultiDexExtractor(/data/app/com.andrerinas.headunitrevived-1.apk, /data/data/com.andrerinas.headunitrevived/code_cache/secondary-dexes)
+03-17 18:17:12.590  9010  9010 I MultiDex: Blocking on lock /data/data/com.andrerinas.headunitrevived/code_cache/secondary-dexes/MultiDex.lock
+03-17 18:17:12.590  9010  9010 I MultiDex: /data/data/com.andrerinas.headunitrevived/code_cache/secondary-dexes/MultiDex.lock locked
+03-17 18:17:12.590  9010  9010 I MultiDex: MultiDexExtractor.load(/data/app/com.andrerinas.headunitrevived-1.apk, false, )
+03-17 18:17:12.650  9010  9010 I MultiDex: Detected that extraction must be performed.
+03-17 18:17:12.820  9010  9014 D dalvikvm: GC_CONCURRENT freed 224K, 75% free 3302K/13028K, paused 13ms+6ms, total 82ms
+03-17 18:17:12.820  9010  9010 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 23ms
+03-17 18:17:12.830  9010  9010 I MultiDex: load found 0 secondary dex files
+03-17 18:17:12.840  9010  9010 I MultiDex: install done
+03-17 18:17:12.850  9010  9010 I dalvikvm: Could not find method android.os.Trace.isEnabled, referenced from method p0.a.a
+03-17 18:17:12.850  9010  9010 W dalvikvm: VFY: unable to resolve static method 1735: Landroid/os/Trace;.isEnabled ()Z
+03-17 18:17:12.850  9010  9010 D dalvikvm: VFY: replacing opcode 0x71 at 0x0000
+03-17 18:17:12.880  9010  9010 W dalvikvm: Unable to resolve superclass of Lorg/conscrypt/TrustManagerImpl; (5292)
+03-17 18:17:12.880  9010  9010 W dalvikvm: Link of class 'Lorg/conscrypt/TrustManagerImpl;' failed
+03-17 18:17:12.880  9010  9010 I dalvikvm: Could not find method org.conscrypt.TrustManagerImpl.getDefaultHostnameVerifier, referenced from method org.conscrypt.Conscrypt.getDefaultHostnameVerifier
+03-17 18:17:12.880  9010  9010 W dalvikvm: VFY: unable to resolve static method 59763: Lorg/conscrypt/TrustManagerImpl;.getDefaultHostnameVerifier ()Lorg/conscrypt/ConscryptHostnameVerifier;
+03-17 18:17:12.880  9010  9010 D dalvikvm: VFY: replacing opcode 0x71 at 0x0003
+03-17 18:17:12.880  9010  9010 W dalvikvm: Unable to resolve superclass of Lorg/conscrypt/TrustManagerImpl; (5292)
+03-17 18:17:12.880  9010  9010 W dalvikvm: Link of class 'Lorg/conscrypt/TrustManagerImpl;' failed
+03-17 18:17:12.880  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Lorg/conscrypt/TrustManagerImpl;)
+03-17 18:17:12.880  9010  9010 W dalvikvm: Unable to resolve superclass of Lorg/conscrypt/TrustManagerImpl; (5292)
+03-17 18:17:12.880  9010  9010 W dalvikvm: Link of class 'Lorg/conscrypt/TrustManagerImpl;' failed
+03-17 18:17:12.880  9010  9010 I dalvikvm: Could not find method org.conscrypt.TrustManagerImpl.getHostnameVerifier, referenced from method org.conscrypt.Conscrypt.getHostnameVerifier
+03-17 18:17:12.890  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 59765: Lorg/conscrypt/TrustManagerImpl;.getHostnameVerifier ()Lorg/conscrypt/ConscryptHostnameVerifier;
+03-17 18:17:12.890  9010  9010 D dalvikvm: VFY: replacing opcode 0x6e at 0x0004
+03-17 18:17:12.890  9010  9010 W dalvikvm: Unable to resolve superclass of Lorg/conscrypt/TrustManagerImpl; (5292)
+03-17 18:17:12.890  9010  9010 W dalvikvm: Link of class 'Lorg/conscrypt/TrustManagerImpl;' failed
+03-17 18:17:12.890  9010  9010 E dalvikvm: Could not find class 'org.conscrypt.TrustManagerImpl', referenced from method org.conscrypt.Conscrypt.isConscrypt
+03-17 18:17:12.890  9010  9010 W dalvikvm: VFY: unable to resolve instanceof 5928 (Lorg/conscrypt/TrustManagerImpl;) in Lorg/conscrypt/Conscrypt;
+03-17 18:17:12.890  9010  9010 D dalvikvm: VFY: replacing opcode 0x20 at 0x0000
+03-17 18:17:12.900  9010  9010 W dalvikvm: Unable to resolve superclass of Lorg/conscrypt/TrustManagerImpl; (5292)
+03-17 18:17:12.900  9010  9010 W dalvikvm: Link of class 'Lorg/conscrypt/TrustManagerImpl;' failed
+03-17 18:17:12.900  9010  9010 I dalvikvm: Could not find method org.conscrypt.TrustManagerImpl.setDefaultHostnameVerifier, referenced from method org.conscrypt.Conscrypt.setDefaultHostnameVerifier
+03-17 18:17:12.900  9010  9010 W dalvikvm: VFY: unable to resolve static method 59775: Lorg/conscrypt/TrustManagerImpl;.setDefaultHostnameVerifier (Lorg/conscrypt/ConscryptHostnameVerifier;)V
+03-17 18:17:12.900  9010  9010 D dalvikvm: VFY: replacing opcode 0x71 at 0x0003
+03-17 18:17:12.900  9010  9010 W dalvikvm: Unable to resolve superclass of Lorg/conscrypt/TrustManagerImpl; (5292)
+03-17 18:17:12.900  9010  9010 W dalvikvm: Link of class 'Lorg/conscrypt/TrustManagerImpl;' failed
+03-17 18:17:12.900  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Lorg/conscrypt/TrustManagerImpl;)
+03-17 18:17:12.910  9010  9010 W dalvikvm: Unable to resolve superclass of Lorg/conscrypt/TrustManagerImpl; (5292)
+03-17 18:17:12.910  9010  9010 W dalvikvm: Link of class 'Lorg/conscrypt/TrustManagerImpl;' failed
+03-17 18:17:12.910  9010  9010 I dalvikvm: Could not find method org.conscrypt.TrustManagerImpl.setHostnameVerifier, referenced from method org.conscrypt.Conscrypt.setHostnameVerifier
+03-17 18:17:12.910  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 59776: Lorg/conscrypt/TrustManagerImpl;.setHostnameVerifier (Lorg/conscrypt/ConscryptHostnameVerifier;)V
+03-17 18:17:12.910  9010  9010 D dalvikvm: VFY: replacing opcode 0x6e at 0x0004
+03-17 18:17:12.910  9010  9010 W dalvikvm: Unable to resolve superclass of Lorg/conscrypt/TrustManagerImpl; (5292)
+03-17 18:17:12.910  9010  9010 W dalvikvm: Link of class 'Lorg/conscrypt/TrustManagerImpl;' failed
+03-17 18:17:12.910  9010  9010 E dalvikvm: Could not find class 'org.conscrypt.TrustManagerImpl', referenced from method org.conscrypt.Conscrypt.toConscrypt
+03-17 18:17:12.910  9010  9010 W dalvikvm: VFY: unable to resolve check-cast 5928 (Lorg/conscrypt/TrustManagerImpl;) in Lorg/conscrypt/Conscrypt;
+03-17 18:17:12.920  9010  9010 D dalvikvm: VFY: replacing opcode 0x1f at 0x0006
+03-17 18:17:13.030  9010  9014 D dalvikvm: GC_CONCURRENT freed 250K, 74% free 3530K/13292K, paused 10ms+12ms, total 67ms
+03-17 18:17:13.210  9010  9014 D dalvikvm: GC_CONCURRENT freed 428K, 74% free 3588K/13544K, paused 12ms+8ms, total 92ms
+03-17 18:17:13.210  9010  9010 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 53ms
+03-17 18:17:13.260  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 88K, 74% free 3615K/13544K, paused 37ms, total 37ms
+03-17 18:17:13.300  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 30K, 74% free 3647K/13608K, paused 36ms, total 36ms
+03-17 18:17:13.300  9010  9010 I dalvikvm-heap: Grow heap (frag case) to 12.962MB for 129040-byte allocation
+03-17 18:17:13.390  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 62K, 73% free 3711K/13736K, paused 84ms, total 84ms
+03-17 18:17:13.450  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 145K, 74% free 3683K/13736K, paused 58ms, total 58ms
+03-17 18:17:13.510  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 44K, 73% free 3730K/13736K, paused 53ms, total 53ms
+03-17 18:17:13.510  9010  9010 I dalvikvm-heap: Grow heap (frag case) to 13.043MB for 129040-byte allocation
+03-17 18:17:13.560  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 62K, 73% free 3794K/13864K, paused 44ms, total 44ms
+03-17 18:17:13.610  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 149K, 73% free 3787K/13864K, paused 42ms, total 42ms
+03-17 18:17:13.670  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 30K, 73% free 3819K/13864K, paused 55ms, total 55ms
+03-17 18:17:13.760  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 62K, 72% free 3883K/13864K, paused 82ms, total 82ms
+03-17 18:17:13.760  9010  9010 I dalvikvm-heap: Grow heap (frag case) to 13.155MB for 90000-byte allocation
+03-17 18:17:13.840  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 127K, 73% free 3843K/13952K, paused 79ms, total 79ms
+03-17 18:17:14.030  9010  9014 D dalvikvm: GC_CONCURRENT freed 116K, 70% free 4239K/13952K, paused 9ms+6ms, total 79ms
+03-17 18:17:14.030  9010  9010 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 38ms
+03-17 18:17:14.390  9010  9014 D dalvikvm: GC_CONCURRENT freed 130K, 68% free 4624K/14256K, paused 16ms+10ms, total 156ms
+03-17 18:17:14.390  9010  9010 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 27ms
+03-17 18:17:14.670  9010  9014 D dalvikvm: GC_CONCURRENT freed 350K, 68% free 4817K/14668K, paused 13ms+12ms, total 150ms
+03-17 18:17:14.670  9010  9010 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 110ms
+03-17 18:17:14.840  9010  9010 D dalvikvm: Trying to load lib /data/app-lib/com.andrerinas.headunitrevived-1/libconscrypt_jni.so 0x42359eb0
+03-17 18:17:14.920  9010  9014 D dalvikvm: GC_CONCURRENT freed 228K, 66% free 5134K/14868K, paused 5ms+12ms, total 101ms
+03-17 18:17:14.930  9010  9010 D dalvikvm: Added shared lib /data/app-lib/com.andrerinas.headunitrevived-1/libconscrypt_jni.so 0x42359eb0
+03-17 18:17:14.980  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Ljavax/net/ssl/SNIServerName;)
+03-17 18:17:14.980  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Ljavax/net/ssl/SNIServerName;)
+03-17 18:17:14.980  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Ljavax/net/ssl/SNIHostName;)
+03-17 18:17:14.980  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Ljavax/net/ssl/SNIHostName;)
+03-17 18:17:14.980  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Ljavax/net/ssl/SNIServerName;)
+03-17 18:17:14.980  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Ljavax/net/ssl/SNIServerName;)
+03-17 18:17:15.000  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Ljavax/net/ssl/SNIMatcher;)
+03-17 18:17:15.000  9010  9010 E dalvikvm: Could not find class 'javax.net.ssl.SNIHostName', referenced from method org.conscrypt.Platform.serverNamePermittedInternal
+03-17 18:17:15.010  9010  9010 W dalvikvm: VFY: unable to resolve new-instance 5266 (Ljavax/net/ssl/SNIHostName;) in Lorg/conscrypt/Platform;
+03-17 18:17:15.010  9010  9010 D dalvikvm: VFY: replacing opcode 0x22 at 0x0020
+03-17 18:17:15.010  9010  9010 E dalvikvm: Could not find class 'javax.net.ssl.SNIHostName', referenced from method org.conscrypt.Platform.setParametersSniHostname
+03-17 18:17:15.010  9010  9010 W dalvikvm: VFY: unable to resolve new-instance 5266 (Ljavax/net/ssl/SNIHostName;) in Lorg/conscrypt/Platform;
+03-17 18:17:15.010  9010  9010 D dalvikvm: VFY: replacing opcode 0x22 at 0x0022
+03-17 18:17:15.010  9010  9010 E dalvikvm: Could not find class 'javax.net.ssl.SNIHostName', referenced from method org.conscrypt.Platform.setParametersSniHostname
+03-17 18:17:15.010  9010  9010 W dalvikvm: VFY: unable to resolve new-instance 5266 (Ljavax/net/ssl/SNIHostName;) in Lorg/conscrypt/Platform;
+03-17 18:17:15.010  9010  9010 D dalvikvm: VFY: replacing opcode 0x22 at 0x0022
+03-17 18:17:15.020  9010  9010 W dalvikvm: Unable to resolve superclass of Lorg/conscrypt/Java7ExtendedSSLSession; (5258)
+03-17 18:17:15.020  9010  9010 W dalvikvm: Link of class 'Lorg/conscrypt/Java7ExtendedSSLSession;' failed
+03-17 18:17:15.020  9010  9010 W dalvikvm: Unable to resolve superclass of Lorg/conscrypt/Java8ExtendedSSLSession; (5718)
+03-17 18:17:15.020  9010  9010 W dalvikvm: Link of class 'Lorg/conscrypt/Java8ExtendedSSLSession;' failed
+03-17 18:17:15.020  9010  9010 E dalvikvm: Could not find class 'org.conscrypt.Java8ExtendedSSLSession', referenced from method org.conscrypt.Platform.wrapSSLSession
+03-17 18:17:15.030  9010  9010 W dalvikvm: VFY: unable to resolve new-instance 5723 (Lorg/conscrypt/Java8ExtendedSSLSession;) in Lorg/conscrypt/Platform;
+03-17 18:17:15.030  9010  9010 D dalvikvm: VFY: replacing opcode 0x22 at 0x0006
+03-17 18:17:15.030  9010  9010 D dalvikvm: DexOpt: unable to opt direct call 0xd853 at 0x22 in Lorg/conscrypt/Platform;.serverNamePermittedInternal
+03-17 18:17:15.030  9010  9010 D dalvikvm: DexOpt: unable to opt direct call 0xd853 at 0x28 in Lorg/conscrypt/Platform;.setParametersSniHostname
+03-17 18:17:15.030  9010  9010 D dalvikvm: DexOpt: unable to opt direct call 0xd853 at 0x28 in Lorg/conscrypt/Platform;.setParametersSniHostname
+03-17 18:17:15.030  9010  9010 W dalvikvm: Unable to resolve superclass of Lorg/conscrypt/Java7ExtendedSSLSession; (5258)
+03-17 18:17:15.030  9010  9010 W dalvikvm: Link of class 'Lorg/conscrypt/Java7ExtendedSSLSession;' failed
+03-17 18:17:15.030  9010  9010 W dalvikvm: Unable to resolve superclass of Lorg/conscrypt/Java8ExtendedSSLSession; (5718)
+03-17 18:17:15.030  9010  9010 W dalvikvm: Link of class 'Lorg/conscrypt/Java8ExtendedSSLSession;' failed
+03-17 18:17:15.030  9010  9010 D dalvikvm: DexOpt: unable to opt direct call 0xe2a3 at 0x08 in Lorg/conscrypt/Platform;.wrapSSLSession
+03-17 18:17:15.140  9010  9010 I ConscryptInit: Conscrypt installed as security provider (position: 1)
+03-17 18:17:15.180  9010  9010 I HUREV   : [1] App.onCreate | Conscrypt security provider is active
+03-17 18:17:15.200  9010  9010 E dalvikvm: Could not find class 'android.os.LocaleList', referenced from method b1.m.a
+03-17 18:17:15.200  9010  9010 W dalvikvm: VFY: unable to resolve new-instance 333 (Landroid/os/LocaleList;) in Lb1/m;
+03-17 18:17:15.200  9010  9010 D dalvikvm: VFY: replacing opcode 0x22 at 0x0035
+03-17 18:17:15.200  9010  9010 D dalvikvm: DexOpt: unable to opt direct call 0x0666 at 0x3d in Lb1/m;.a
+03-17 18:17:15.220  9010  9010 I HUREV   : [1] UsbAttachedActivity.onCreate | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000000 cmp=com.andrerinas.headunitrevived/.app.UsbAttachedActivity (has extras) }
+03-17 18:17:15.230  9010  9010 I dalvikvm: Could not find method android.media.MediaCodecList.<init>, referenced from method y0.z.f
+03-17 18:17:15.230  9010  9010 W dalvikvm: VFY: unable to resolve direct method 1338: Landroid/media/MediaCodecList;.<init> (I)V
+03-17 18:17:15.230  9010  9010 D dalvikvm: VFY: replacing opcode 0x70 at 0x000a
+03-17 18:17:15.250  9010  9010 I dalvikvm: Could not find method android.media.MediaCodecList.<init>, referenced from method y0.z$b.a
+03-17 18:17:15.250  9010  9010 W dalvikvm: VFY: unable to resolve direct method 1338: Landroid/media/MediaCodecList;.<init> (I)V
+03-17 18:17:15.250  9010  9010 D dalvikvm: VFY: replacing opcode 0x70 at 0x000b
+03-17 18:17:15.260  9010  9010 D AlfusResources: cookie name=/data/app/com.andrerinas.headunitrevived-1.apk
+03-17 18:17:15.540  9010  9014 D dalvikvm: GC_CONCURRENT freed 712K, 67% free 5128K/15352K, paused 11ms+6ms, total 261ms
+03-17 18:17:15.540  9010  9010 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 114ms
+03-17 18:17:16.140  9010  9010 I HUREV   : [1] UsbAttachedActivity.onCreate | Skipping device Google 18D1:4EE1
+03-17 18:17:30.900  9010  9010 I dalvikvm: Could not find method android.app.Activity.onMultiWindowModeChanged, referenced from method androidx.activity.ComponentActivity.onMultiWindowModeChanged
+03-17 18:17:30.900  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 220: Landroid/app/Activity;.onMultiWindowModeChanged (ZLandroid/content/res/Configuration;)V
+03-17 18:17:30.900  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 18:17:30.900  9010  9010 I dalvikvm: Could not find method android.app.Activity.onPictureInPictureModeChanged, referenced from method androidx.activity.ComponentActivity.onPictureInPictureModeChanged
+03-17 18:17:30.900  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 224: Landroid/app/Activity;.onPictureInPictureModeChanged (ZLandroid/content/res/Configuration;)V
+03-17 18:17:30.900  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 18:17:30.900  9010  9010 I dalvikvm: Could not find method android.app.Activity.onRequestPermissionsResult, referenced from method androidx.activity.ComponentActivity.onRequestPermissionsResult
+03-17 18:17:30.900  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 228: Landroid/app/Activity;.onRequestPermissionsResult (I[Ljava/lang/String;[I)V
+03-17 18:17:30.900  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0020
+03-17 18:17:30.900  9010  9010 I dalvikvm: Could not find method android.app.Activity.reportFullyDrawn, referenced from method androidx.activity.ComponentActivity.reportFullyDrawn
+03-17 18:17:30.900  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 242: Landroid/app/Activity;.reportFullyDrawn ()V
+03-17 18:17:30.900  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0014
+03-17 18:17:30.910  9010  9010 I dalvikvm: Could not find method android.app.Activity.reportFullyDrawn, referenced from method androidx.activity.ComponentActivity.reportFullyDrawn
+03-17 18:17:30.910  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 242: Landroid/app/Activity;.reportFullyDrawn ()V
+03-17 18:17:30.910  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0022
+03-17 18:17:31.080  9010  9010 D AppCompatDelegate: Checking for metadata for AppLocalesMetadataHolderService : Service not found
+03-17 18:17:31.190  9010  9014 D dalvikvm: GC_CONCURRENT freed 459K, 66% free 5317K/15352K, paused 53ms+18ms, total 265ms
+03-17 18:17:31.350  9010  9010 D AlfusResources: cookie name=/data/app/com.andrerinas.headunitrevived-1.apk
+03-17 18:17:31.460  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 52K, 66% free 5341K/15352K, paused 93ms, total 95ms
+03-17 18:17:31.470  9010  9010 I dalvikvm-heap: Grow heap (frag case) to 15.494MB for 1048592-byte allocation
+03-17 18:17:31.590  9010  9014 D dalvikvm: GC_CONCURRENT freed <1K, 62% free 6365K/16380K, paused 16ms+10ms, total 121ms
+03-17 18:17:31.870  9010  9010 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeMaxTextSize, referenced from method androidx.appcompat.widget.g0.e
+03-17 18:17:31.870  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 4354: Landroid/widget/TextView;.getAutoSizeMaxTextSize ()I
+03-17 18:17:31.870  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 18:17:31.870  9010  9010 I dalvikvm: Could not find method android.widget.TextView.setFirstBaselineToTopHeight, referenced from method androidx.appcompat.widget.g0.f
+03-17 18:17:31.870  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 4437: Landroid/widget/TextView;.setFirstBaselineToTopHeight (I)V
+03-17 18:17:31.870  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 18:17:31.870  9010  9010 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeMinTextSize, referenced from method androidx.appcompat.widget.g0.g
+03-17 18:17:31.870  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 4355: Landroid/widget/TextView;.getAutoSizeMinTextSize ()I
+03-17 18:17:31.880  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 18:17:31.880  9010  9010 I dalvikvm: Could not find method android.widget.TextView.setLastBaselineToBottomHeight, referenced from method androidx.appcompat.widget.g0.h
+03-17 18:17:31.880  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 4446: Landroid/widget/TextView;.setLastBaselineToBottomHeight (I)V
+03-17 18:17:31.880  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 18:17:31.880  9010  9010 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeStepGranularity, referenced from method androidx.appcompat.widget.g0.i
+03-17 18:17:31.880  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 4356: Landroid/widget/TextView;.getAutoSizeStepGranularity ()I
+03-17 18:17:31.880  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 18:17:31.880  9010  9010 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeTextAvailableSizes, referenced from method androidx.appcompat.widget.g0.j
+03-17 18:17:31.880  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 4357: Landroid/widget/TextView;.getAutoSizeTextAvailableSizes ()[I
+03-17 18:17:31.880  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 18:17:31.880  9010  9010 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeTextType, referenced from method androidx.appcompat.widget.g0.k
+03-17 18:17:31.880  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 4358: Landroid/widget/TextView;.getAutoSizeTextType ()I
+03-17 18:17:31.890  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 18:17:31.890  9010  9010 I dalvikvm: Could not find method android.widget.TextView.getTextClassifier, referenced from method androidx.appcompat.widget.g0.l
+03-17 18:17:31.890  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 4393: Landroid/widget/TextView;.getTextClassifier ()Landroid/view/textclassifier/TextClassifier;
+03-17 18:17:31.890  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 18:17:31.890  9010  9010 I dalvikvm: Could not find method android.widget.TextView.setAutoSizeTextTypeUniformWithConfiguration, referenced from method androidx.appcompat.widget.g0.m
+03-17 18:17:31.890  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 4417: Landroid/widget/TextView;.setAutoSizeTextTypeUniformWithConfiguration (IIII)V
+03-17 18:17:31.890  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 18:17:31.890  9010  9010 I dalvikvm: Could not find method android.widget.TextView.setAutoSizeTextTypeUniformWithPresetSizes, referenced from method androidx.appcompat.widget.g0.n
+03-17 18:17:31.890  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 4418: Landroid/widget/TextView;.setAutoSizeTextTypeUniformWithPresetSizes ([II)V
+03-17 18:17:31.890  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 18:17:31.890  9010  9010 I dalvikvm: Could not find method android.widget.TextView.setAutoSizeTextTypeWithDefaults, referenced from method androidx.appcompat.widget.g0.o
+03-17 18:17:31.890  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 4419: Landroid/widget/TextView;.setAutoSizeTextTypeWithDefaults (I)V
+03-17 18:17:31.890  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 18:17:31.890  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 18:17:31.890  9010  9010 I dalvikvm: Could not find method android.widget.TextView.setTextClassifier, referenced from method androidx.appcompat.widget.g0.p
+03-17 18:17:31.890  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 4467: Landroid/widget/TextView;.setTextClassifier (Landroid/view/textclassifier/TextClassifier;)V
+03-17 18:17:31.900  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 18:17:31.900  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 18:17:31.900  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 18:17:31.900  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 18:17:31.910  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 18:17:31.920  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 18:17:31.920  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 18:17:31.920  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 18:17:32.080  9010  9010 D zjy     : view visibility = 7
+03-17 18:17:32.110  9010  9010 I HUREV   : [1] MainActivity.handleIntent | MainActivity received intent: android.intent.action.MAIN, data: null
+03-17 18:17:32.190  9010  9010 W dalvikvm: Unable to resolve superclass of Lcom/andrerinas/headunitrevived/aap/AapService$q; (288)
+03-17 18:17:32.190  9010  9010 W dalvikvm: Link of class 'Lcom/andrerinas/headunitrevived/aap/AapService$q;' failed
+03-17 18:17:32.190  9010  9010 E dalvikvm: Could not find class 'com.andrerinas.headunitrevived.aap.AapService$q', referenced from method com.andrerinas.headunitrevived.aap.AapService.I
+03-17 18:17:32.190  9010  9010 W dalvikvm: VFY: unable to resolve new-instance 2875 (Lcom/andrerinas/headunitrevived/aap/AapService$q;) in Lcom/andrerinas/headunitrevived/aap/AapService;
+03-17 18:17:32.190  9010  9010 D dalvikvm: VFY: replacing opcode 0x22 at 0x0014
+03-17 18:17:32.210  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/net/Network;)
+03-17 18:17:32.240  9010  9010 W dalvikvm: Unable to resolve superclass of Lcom/andrerinas/headunitrevived/aap/AapService$q; (288)
+03-17 18:17:32.240  9010  9010 W dalvikvm: Link of class 'Lcom/andrerinas/headunitrevived/aap/AapService$q;' failed
+03-17 18:17:32.240  9010  9010 D dalvikvm: DexOpt: unable to opt direct call 0x41a3 at 0x16 in Lcom/andrerinas/headunitrevived/aap/AapService;.I
+03-17 18:17:32.240  9010  9010 D dalvikvm: DexOpt: unable to opt direct call 0x05af at 0x21 in Lcom/andrerinas/headunitrevived/aap/AapService;.I
+03-17 18:17:32.320  9010  9010 I dalvikvm: Could not find method android.widget.Button.setElevation, referenced from method com.google.android.material.button.MaterialButton.setElevation
+03-17 18:17:32.320  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 3910: Landroid/widget/Button;.setElevation (F)V
+03-17 18:17:32.320  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 18:17:32.330  9010  9010 I dalvikvm: Could not find method android.widget.Button.getAutoSizeMaxTextSize, referenced from method androidx.appcompat.widget.f.getAutoSizeMaxTextSize
+03-17 18:17:32.330  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 3885: Landroid/widget/Button;.getAutoSizeMaxTextSize ()I
+03-17 18:17:32.330  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 18:17:32.330  9010  9010 I dalvikvm: Could not find method android.widget.Button.getAutoSizeMinTextSize, referenced from method androidx.appcompat.widget.f.getAutoSizeMinTextSize
+03-17 18:17:32.330  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 3886: Landroid/widget/Button;.getAutoSizeMinTextSize ()I
+03-17 18:17:32.330  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 18:17:32.330  9010  9010 I dalvikvm: Could not find method android.widget.Button.getAutoSizeStepGranularity, referenced from method androidx.appcompat.widget.f.getAutoSizeStepGranularity
+03-17 18:17:32.330  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 3887: Landroid/widget/Button;.getAutoSizeStepGranularity ()I
+03-17 18:17:32.330  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 18:17:32.330  9010  9010 I dalvikvm: Could not find method android.widget.Button.getAutoSizeTextAvailableSizes, referenced from method androidx.appcompat.widget.f.getAutoSizeTextAvailableSizes
+03-17 18:17:32.330  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 3888: Landroid/widget/Button;.getAutoSizeTextAvailableSizes ()[I
+03-17 18:17:32.330  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 18:17:32.330  9010  9010 I dalvikvm: Could not find method android.widget.Button.getAutoSizeTextType, referenced from method androidx.appcompat.widget.f.getAutoSizeTextType
+03-17 18:17:32.330  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 3889: Landroid/widget/Button;.getAutoSizeTextType ()I
+03-17 18:17:32.330  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0005
+03-17 18:17:32.330  9010  9010 I dalvikvm: Could not find method android.widget.Button.setAutoSizeTextTypeUniformWithConfiguration, referenced from method androidx.appcompat.widget.f.setAutoSizeTextTypeUniformWithConfiguration
+03-17 18:17:32.330  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 3903: Landroid/widget/Button;.setAutoSizeTextTypeUniformWithConfiguration (IIII)V
+03-17 18:17:32.330  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 18:17:32.330  9010  9010 I dalvikvm: Could not find method android.widget.Button.setAutoSizeTextTypeUniformWithPresetSizes, referenced from method androidx.appcompat.widget.f.setAutoSizeTextTypeUniformWithPresetSizes
+03-17 18:17:32.330  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 3904: Landroid/widget/Button;.setAutoSizeTextTypeUniformWithPresetSizes ([II)V
+03-17 18:17:32.330  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 18:17:32.330  9010  9010 I dalvikvm: Could not find method android.widget.Button.setAutoSizeTextTypeWithDefaults, referenced from method androidx.appcompat.widget.f.setAutoSizeTextTypeWithDefaults
+03-17 18:17:32.340  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 3905: Landroid/widget/Button;.setAutoSizeTextTypeWithDefaults (I)V
+03-17 18:17:32.340  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 18:17:32.360  9010  9010 E dalvikvm: Could not find class 'android.graphics.drawable.RippleDrawable', referenced from method com.google.android.material.button.e.a
+03-17 18:17:32.360  9010  9010 W dalvikvm: VFY: unable to resolve new-instance 210 (Landroid/graphics/drawable/RippleDrawable;) in Lcom/google/android/material/button/e;
+03-17 18:17:32.360  9010  9010 D dalvikvm: VFY: replacing opcode 0x22 at 0x0056
+03-17 18:17:32.370  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/graphics/drawable/RippleDrawable;)
+03-17 18:17:32.370  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/graphics/drawable/RippleDrawable;)
+03-17 18:17:32.380  9010  9010 D dalvikvm: DexOpt: unable to opt direct call 0x04a1 at 0x6f in Lcom/google/android/material/button/e;.a
+03-17 18:17:32.430  9010  9014 D dalvikvm: GC_CONCURRENT freed 1812K, 67% free 5672K/16992K, paused 6ms+3ms, total 57ms
+03-17 18:17:32.430  9010  9010 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 9ms
+03-17 18:17:32.530  9010  9010 D zjy     : view visibility = 7
+03-17 18:17:32.530  9010  9010 I HUREV   : [1] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-17 18:17:32.550  9010  9010 I HUREV   : [1] AapService.onCreate | AapService creating...
+03-17 18:17:32.570  9010  9010 I HUREV   : [1] v.invoke | NightMode update: true
+03-17 18:17:32.600  9010  9010 I HUREV   : [1] AapService.J | Registered runtime MEDIA_BUTTON receiver
+03-17 18:17:32.610  9010  9010 W dalvikvm: Unable to resolve superclass of Landroid/support/v4/media/session/MediaSessionCompat$b$b; (278)
+03-17 18:17:32.610  9010  9010 W dalvikvm: Link of class 'Landroid/support/v4/media/session/MediaSessionCompat$b$b;' failed
+03-17 18:17:32.610  9010  9010 E dalvikvm: Could not find class 'android.support.v4.media.session.MediaSessionCompat$b$b', referenced from method android.support.v4.media.session.MediaSessionCompat$b.<init>
+03-17 18:17:32.610  9010  9010 W dalvikvm: VFY: unable to resolve new-instance 446 (Landroid/support/v4/media/session/MediaSessionCompat$b$b;) in Landroid/support/v4/media/session/MediaSessionCompat$b;
+03-17 18:17:32.610  9010  9010 D dalvikvm: VFY: replacing opcode 0x22 at 0x0011
+03-17 18:17:32.610  9010  9010 W dalvikvm: Unable to resolve superclass of Landroid/support/v4/media/session/MediaSessionCompat$b$b; (278)
+03-17 18:17:32.610  9010  9010 W dalvikvm: Link of class 'Landroid/support/v4/media/session/MediaSessionCompat$b$b;' failed
+03-17 18:17:32.610  9010  9010 D dalvikvm: DexOpt: unable to opt direct call 0x07f1 at 0x13 in Landroid/support/v4/media/session/MediaSessionCompat$b;.<init>
+03-17 18:17:32.610  9010  9010 D AudioManager: getStreamVolume=3,index=8
+03-17 18:17:32.660  9010  9010 I HUREV   : [1] AapService.onCreate | Auto-started continuous log capture
+03-17 18:17:32.730  9010  9010 I HUREV   : [1] AapService.onCreate | Auto-started continuous log capture
+03-17 18:17:32.880  9010  9014 D dalvikvm: GC_CONCURRENT freed 525K, 66% free 5924K/16992K, paused 6ms+4ms, total 63ms
+03-17 18:17:33.190  9010  9010 D libEGL  : loaded /system/lib/egl/libEGL_VIVANTE.so
+03-17 18:17:34.020  9010  9010 D libEGL  : loaded /system/lib/egl/libGLESv1_CM_VIVANTE.so
+03-17 18:17:34.390  9010  9010 D libEGL  : loaded /system/lib/egl/libGLESv2_VIVANTE.so
+03-17 18:17:34.800  9010  9010 D OpenGLRenderer: Enabling debug mode 0
+03-17 18:17:34.880  9010  9010 I HUREV   : [1] a.a | Request location updates
+03-17 18:17:34.890  9010  9010 I HUREV   : [1] a.a | Last known location:  Unknown
+03-17 18:17:34.890  9010  9010 I Choreographer: Skipped 118 frames!  The application may be doing too much work on its main thread.
+03-17 18:17:35.030  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:02.970  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/ViewOutlineProvider;)
+03-17 18:18:02.970  9010  9010 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/ViewOutlineProvider;)
+03-17 18:18:02.980  9010  9010 I dalvikvm: Could not find method android.widget.LinearLayout.setElevation, referenced from method com.google.android.material.appbar.AppBarLayout.setElevation
+03-17 18:18:02.980  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 4195: Landroid/widget/LinearLayout;.setElevation (F)V
+03-17 18:18:02.980  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 18:18:03.000  9010  9010 I dalvikvm: Could not find method android.view.ViewGroup.setElevation, referenced from method com.google.android.material.appbar.MaterialToolbar.setElevation
+03-17 18:18:03.000  9010  9010 W dalvikvm: VFY: unable to resolve virtual method 3431: Landroid/view/ViewGroup;.setElevation (F)V
+03-17 18:18:03.000  9010  9010 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 18:18:03.040  9010  9010 I dalvikvm: Could not find method android.widget.LinearLayout$LayoutParams.<init>, referenced from method com.google.android.material.appbar.AppBarLayout$d.<init>
+03-17 18:18:03.040  9010  9010 W dalvikvm: VFY: unable to resolve direct method 4164: Landroid/widget/LinearLayout$LayoutParams;.<init> (Landroid/widget/LinearLayout$LayoutParams;)V
+03-17 18:18:03.040  9010  9010 D dalvikvm: VFY: replacing opcode 0x70 at 0x0000
+03-17 18:18:03.370  9010  9014 D dalvikvm: GC_CONCURRENT freed 617K, 64% free 6195K/16992K, paused 3ms+6ms, total 61ms
+03-17 18:18:07.900  9010  9010 I HUREV   : [1] n.c | Success controlTransfer len: 2  acc_ver: 2
+03-17 18:18:07.900  9010  9010 I HUREV   : [1] n.c | acc_ver: 2
+03-17 18:18:07.910  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 7  index: 0  string: "Android"
+03-17 18:18:07.910  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 12  index: 1  string: "Android Auto"
+03-17 18:18:07.930  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 12  index: 2  string: "Android Auto"
+03-17 18:18:07.930  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 5  index: 3  string: "2.0.1"
+03-17 18:18:07.940  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 45  index: 4  string: "https://developer.android.com/auto/index.html"
+03-17 18:18:07.940  9010  9010 I HUREV   : [1] n.b | Success controlTransfer len: 12  index: 5  string: "HU-AAAAAA001"
+03-17 18:18:07.950  9010  9010 I HUREV   : [1] n.c | Sending acc start
+03-17 18:18:07.960  9010  9010 I HUREV   : [1] n.c | Acc start sent (len=0). Waiting for re-enumeration...
+03-17 18:18:08.460  9010  9010 D UsbDeviceConnectionJNI: close
+03-17 18:18:08.460  9010  9010 I HUREV   : [1] n.a | Result: true
+03-17 18:18:08.460  9010  9010 D AlfusResources: cookie name=/system/framework/framework-res.apk
+03-17 18:18:08.490  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:18:08.490  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 18:18:08.790  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 18:18:08.800  9010  9010 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 18:18:08.810  9010  9010 I HUREV   : [1] AapService.onUsbAttach | USB accessory device attached, connecting.
+03-17 18:18:08.810  9010  9010 I HUREV   : [1] AapService.u | Found device already in accessory mode: Google 18D1:2D00
+03-17 18:18:08.860  9010  9440 I HUREV   : [268] m.l | Established connection: android.hardware.usb.UsbDeviceConnection@427009b8
+03-17 18:18:08.860  9010  9440 I HUREV   : [268] m.l | interfaceCount: 1
+03-17 18:18:08.860  9010  9440 I HUREV   : [268] m.j | Check accessory endpoints
+03-17 18:18:08.860  9010  9440 I HUREV   : [268] m.j | Connected have EPs
+03-17 18:18:08.900  9010  9010 I HUREV   : [1] UsbAttachedActivity.onCreate | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000000 cmp=com.andrerinas.headunitrevived/.app.UsbAttachedActivity (has extras) }
+03-17 18:18:08.900  9010  9010 E HUREV   : [1] UsbAttachedActivity.onCreate | Usb in accessory mode
+03-17 18:18:08.940  9010  9010 I HUREV   : [1] AapService.t | WifiLock acquired (HIGH_PERF)
+03-17 18:18:08.990  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:09.080  9010  9440 I HUREV   : [268] t0.<init> | Using Java SSL implementation
+03-17 18:18:09.110  9010  9440 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/media/AudioFocusRequest;)
+03-17 18:18:09.120  9010  9440 E dalvikvm: Could not find class 'android.media.AudioAttributes$Builder', referenced from method t0.i.c
+03-17 18:18:09.120  9010  9440 W dalvikvm: VFY: unable to resolve new-instance 245 (Landroid/media/AudioAttributes$Builder;) in Lt0/i;
+03-17 18:18:09.120  9010  9440 D dalvikvm: VFY: replacing opcode 0x22 at 0x004b
+03-17 18:18:09.120  9010  9440 D dalvikvm: DexOpt: unable to opt direct call 0x04ec at 0x4d in Lt0/i;.c
+03-17 18:18:09.120  9010  9440 D dalvikvm: DexOpt: unable to opt direct call 0x04f3 at 0x62 in Lt0/i;.c
+03-17 18:18:09.180  9010  9440 D dalvikvm: GC_FOR_ALLOC freed 508K, 63% free 6298K/16992K, paused 60ms, total 60ms
+03-17 18:18:09.200  9010  9440 I dalvikvm-heap: Grow heap (frag case) to 16.427MB for 1048656-byte allocation
+03-17 18:18:09.250  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 53K, 60% free 7268K/18020K, paused 54ms, total 54ms
+03-17 18:18:09.260  9010  9440 I HUREV   : [268] t0.B | Start Aap transport handshake for w0.m@426fbbb0
+03-17 18:18:09.310  9010  9014 D dalvikvm: GC_CONCURRENT freed 60K, 60% free 7287K/18020K, paused 5ms+5ms, total 60ms
+03-17 18:18:09.510  9010  9010 I HUREV   : [1] AapProjectionActivity.onCreate | HeadUnit for Android Auto (tm) - Copyright 2011-2015 Michael A. Reid., since 2025 André Rinas All Rights Reserved...
+03-17 18:18:09.510  9010  9010 I HUREV   : [1] AapProjectionActivity.onCreate | Using TextureView
+03-17 18:18:09.510  9010  9010 I HUREV   : [1] i.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 18:18:09.520  9010  9010 I HUREV   : [1] i.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 18:18:09.520  9010  9010 I HUREV   : [1] i.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 18:18:09.520  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:09.520  9010  9010 I HUREV   : [1] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-17 18:18:09.530  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:09.580  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:09.600  9010  9010 I HUREV   : [1] i.onSurfaceTextureAvailable | TextureProjectionView: Surface available: 1920x720
+03-17 18:18:09.600  9010  9010 I HUREV   : [1] AapProjectionActivity.d | [AapProjectionActivity] onSurfaceCreated
+03-17 18:18:09.610  9010  9010 I HUREV   : [1] AapProjectionActivity.b | [AapProjectionActivity] onSurfaceChanged. Actual surface dimensions: width=1920, height=720
+03-17 18:18:09.610  9010  9010 I HUREV   : [1] z.q | New surface set: Surface(name=android.graphics.SurfaceTexture@426397d0)
+03-17 18:18:09.860  9010  9440 I HUREV   : [268] m.e | USB reads recovered after 1 errors
+03-17 18:18:09.860  9010  9440 I HUREV   : [268] t0.l | Handshake: Version response received (ret=12, attempt=1).
+03-17 18:18:09.860  9010  9440 I HUREV   : [268] t0.l | Handshake: Version response recv ret: 12
+03-17 18:18:09.940  9010  9440 D dalvikvm: GC_FOR_ALLOC freed 818K, 60% free 7385K/18152K, paused 74ms, total 74ms
+03-17 18:18:10.300  9010  9440 I HUREV   : [268] o0.performHandshake | SSL handshake complete. Session id: yu3n/EAAoyJh0H8J+VdlCMpuu2TptEeKEpM5zGhO12I=
+03-17 18:18:10.310  9010  9440 I HUREV   : [268] t0.l | Handshake: Status OK sent: 8
+03-17 18:18:10.320  9010  9440 I HUREV   : [268] i.c | Audio Focus Request: stream=3, type=1
+03-17 18:18:10.320  9010  9440 D AudioManager: Qian:requestAudioFocus:3
+03-17 18:18:10.330  9010  9440 I HUREV   : [268] i.c | Audio focus request result (legacy): GRANTED
+03-17 18:18:10.340  9010  9440 I HUREV   : [268] t0.E | Start Aap transport read loop
+03-17 18:18:10.430  9010  9440 D dalvikvm: GC_FOR_ALLOC freed 128K, 59% free 7547K/18172K, paused 62ms, total 62ms
+03-17 18:18:10.430  9010  9440 E dalvikvm: Could not find class 'android.app.NotificationChannel', referenced from method com.andrerinas.headunitrevived.aap.a$a.a
+03-17 18:18:10.430  9010  9440 W dalvikvm: VFY: unable to resolve new-instance 67 (Landroid/app/NotificationChannel;) in Lcom/andrerinas/headunitrevived/aap/a$a;
+03-17 18:18:10.430  9010  9440 D dalvikvm: VFY: replacing opcode 0x22 at 0x000b
+03-17 18:18:10.430  9010  9440 D dalvikvm: DexOpt: unable to opt direct call 0x019c at 0x16 in Lcom/andrerinas/headunitrevived/aap/a$a;.a
+03-17 18:18:10.490  9010  9440 D dalvikvm: GC_FOR_ALLOC freed 12K, 58% free 7803K/18432K, paused 52ms, total 52ms
+03-17 18:18:10.490  9010  9440 I dalvikvm-heap: Grow heap (frag case) to 17.398MB for 524336-byte allocation
+03-17 18:18:10.540  9010  9010 D dalvikvm: GC_FOR_ALLOC freed 0K, 57% free 8316K/18948K, paused 48ms, total 48ms
+03-17 18:18:10.560  9010  9452 I HUREV   : [274] o.h | Service Discovery Request: Auto
+03-17 18:18:10.560  9010  9452 I HUREV   : [274] i.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 18:18:10.560  9010  9452 I HUREV   : [274] i.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 18:18:10.560  9010  9452 I HUREV   : [274] i.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 18:18:10.570  9010  9452 I HUREV   : [274] a.b | [ServiceDiscovery] Announcing NIGHT sensor support. Strategy: MANUAL_TIME
+03-17 18:18:10.570  9010  9452 I HUREV   : [274] a.b | [ServiceDiscovery] NegotiatedResolution is: 1920x1080
+03-17 18:18:10.580  9010  9452 I HUREV   : [274] a.b | [ServiceDiscovery] Margins are: 0x360
+03-17 18:18:10.580  9010  9010 I HUREV   : [1] g.onReceive | Received request to resend night mode state
+03-17 18:18:10.580  9010  9010 I HUREV   : [1] v.invoke | NightMode update: true
+03-17 18:18:10.590  9010  9452 I HUREV   : [274] a.b | BT MAC Address is empty. Skip bluetooth service
+03-17 18:18:10.630  9010  9452 I HUREV   : [274] o.c | Audio Focus Request: RELEASE
+03-17 18:18:10.630  9010  9452 I HUREV   : [274] i.c | Audio Focus Request: stream=3, type=4
+03-17 18:18:10.630  9010  9452 D AudioManager: Qian:abandonAudioFocus:
+03-17 18:18:10.630  9010  9452 I HUREV   : [274] i.c | Audio focus request result (legacy): GRANTED
+03-17 18:18:10.640  9010  9452 I HUREV   : [274] o.c | Sending immediate AudioFocusNotification: STATE_LOSS
+03-17 18:18:10.690  9010  9452 W HUREV   : [274] u0.a | AapVideo: Dropped Flag 11 packet. len=4, buf[10]=?
+03-17 18:18:10.690  9010  9452 I HUREV   : [274] l.b | Media Sink Setup Request: 3 on channel VIDEO
+03-17 18:18:10.770  9010  9452 I HUREV   : [274] l.b | Config response: status: HEADUNIT
+03-17 18:18:10.770  9010  9452 I HUREV   : max_unacked: 1
+03-17 18:18:10.770  9010  9452 I HUREV   : configuration_indices: 0
+03-17 18:18:10.780  9010  9452 I HUREV   : [274] l.b | Media Sink Setup Request: 2 on channel AUDIO1
+03-17 18:18:10.780  9010  9452 I HUREV   : [274] l.b | Config response: status: HEADUNIT
+03-17 18:18:10.780  9010  9452 I HUREV   : max_unacked: 3
+03-17 18:18:10.780  9010  9452 I HUREV   : configuration_indices: 0
+03-17 18:18:10.790  9010  9010 I HUREV   : [1] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-17 18:18:10.790  9010  9452 I HUREV   : [274] l.b | Media Sink Setup Request: 2 on channel AUDIO2
+03-17 18:18:10.790  9010  9452 I HUREV   : [274] l.b | Config response: status: HEADUNIT
+03-17 18:18:10.790  9010  9452 I HUREV   : max_unacked: 3
+03-17 18:18:10.790  9010  9452 I HUREV   : configuration_indices: 0
+03-17 18:18:10.790  9010  9010 I HUREV   : [1] AapProjectionActivity.onNewIntent | AapProjectionActivity: onNewIntent received
+03-17 18:18:10.790  9010  9010 I HUREV   : [1] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-17 18:18:10.790  9010  9452 I HUREV   : [274] l.b | Media Sink Setup Request: 2 on channel AUDIO
+03-17 18:18:10.790  9010  9452 I HUREV   : [274] l.b | Config response: status: HEADUNIT
+03-17 18:18:10.790  9010  9452 I HUREV   : max_unacked: 3
+03-17 18:18:10.790  9010  9452 I HUREV   : configuration_indices: 0
+03-17 18:18:10.790  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:13.290  9010  9452 W HUREV   : [274] m.e | USB read errors (10) for 2s — waiting for recovery...
+03-17 18:18:13.790  9010  9010 W HUREV   : [1] l.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 18:18:13.840  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 11 errors
+03-17 18:18:13.840  9010  9452 W HUREV   : [274] u0.a | AapVideo: Dropped Flag 11 packet. len=6, buf[10]=?
+03-17 18:18:13.840  9010  9452 I HUREV   : [274] l.d | Media Start Request VIDEO: session=0, config_index=0
+03-17 18:18:14.000  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 1 errors
+03-17 18:18:14.010  9010  9452 I HUREV   : [274] z.c | H.264/AVC config detected in frame (38 bytes)
+03-17 18:18:14.010  9010  9452 I HUREV   : [274] z.m | SPS parsed: 1920x1080
+03-17 18:18:14.010  9010  9452 I HUREV   : [274] AapProjectionActivity.a | [AapProjectionActivity] Received video dimensions: 1920x1080
+03-17 18:18:14.010  9010  9010 I HUREV   : [1] i.a | TextureProjectionView
+03-17 18:18:14.010  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1080, Content: 1920x640, View: 1920x720
+03-17 18:18:14.010  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:18:14.030  9010  9501 I OMXClient: Using client-side OMX mux.
+03-17 18:18:14.050  9010  9452 I HUREV   : [274] z.r | Configuring decoder: OMX.Freescale.std.video_decoder.avc.v3.hw-based with surface
+03-17 18:18:14.050  9010  9501 I ACodec  : Send reorder config(0) to VPU
+03-17 18:18:14.490  9010  9452 I HUREV   : [274] z.r | Codec initialized: OMX.Freescale.std.video_decoder.avc.v3.hw-based for stream 1920x1080
+03-17 18:18:14.490  9010  9507 I HUREV   : [275] z.l | Output thread started
+03-17 18:18:14.590  9010  9452 D dalvikvm: GC_FOR_ALLOC freed 720K, 55% free 8833K/19452K, paused 56ms, total 56ms
+03-17 18:18:14.640  9010  9507 I HUREV   : [275] z.j | Output Format Changed: {height=1088, what=1869968451, color-format=19, slice-height=0, crop-left=0, width=1920, crop-bottom=1079, crop-top=0, mime=video/raw, stride=1920, crop-right=1919}
+03-17 18:18:14.640  9010  9507 I HUREV   : [275] z.j | Video dimensions changed via format: 1920x1088
+03-17 18:18:14.640  9010  9507 I HUREV   : [275] AapProjectionActivity.a | [AapProjectionActivity] Received video dimensions: 1920x1088
+03-17 18:18:14.640  9010  9501 E ACodec  : dequeueBuffer failed.
+03-17 18:18:14.640  9010  9010 I HUREV   : [1] i.a | TextureProjectionView
+03-17 18:18:14.640  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:18:14.640  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:18:14.650  9010  9501 E ACodec  : dequeueBuffer failed.
+03-17 18:18:15.390  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 1 errors
+03-17 18:18:15.590  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 1 errors
+03-17 18:18:15.770  9010  9452 D dalvikvm: GC_FOR_ALLOC freed 821K, 56% free 9012K/20220K, paused 45ms, total 45ms
+03-17 18:18:16.000  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 1 errors
+03-17 18:18:16.390  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 2 errors
+03-17 18:18:16.580  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 1 errors
+03-17 18:18:16.990  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 1 errors
+03-17 18:18:17.170  9010  9452 I HUREV   : [274] m.e | USB reads recovered after 1 errors
+03-17 18:18:18.520  9010  9452 W HUREV   : [274] m.e | USB read errors (10) for 1s — waiting for recovery...
+03-17 18:18:20.850  9010  9452 W HUREV   : [274] m.e | USB read errors (20) for 3s — waiting for recovery...
+03-17 18:18:23.180  9010  9452 W HUREV   : [274] m.e | USB read errors (30) for 5s — waiting for recovery...
+03-17 18:18:25.510  9010  9452 W HUREV   : [274] m.e | USB read errors (40) for 8s — waiting for recovery...
+03-17 18:18:27.800  9010  9010 I HUREV   : [1] AapProjectionActivity.V | Showing reconnecting overlay
+03-17 18:18:27.850  9010  9452 W HUREV   : [274] m.e | USB read errors (50) for 10s — waiting for recovery...
+03-17 18:18:30.180  9010  9452 W HUREV   : [274] m.e | USB read errors (60) for 12s — waiting for recovery...
+03-17 18:18:32.570  9010  9452 W HUREV   : [274] m.e | USB read errors (70) for 15s — waiting for recovery...
+03-17 18:18:34.920  9010  9452 W HUREV   : [274] m.e | USB read errors (80) for 17s — waiting for recovery...
+03-17 18:18:37.260  9010  9452 W HUREV   : [274] m.e | USB read errors (90) for 20s — waiting for recovery...
+03-17 18:18:37.570  9010  9010 I HUREV   : [1] AapProjectionActivity.M | Hiding reconnecting overlay — frames resumed
+03-17 18:18:37.580  9010  9440 I HUREV   : [268] t0.G | AapTransport stopping and sending byebye
+03-17 18:18:37.590  9010  9010 I HUREV   : [1] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-17 18:18:37.610  9010  9010 I HUREV   : [1] AapService.K | WifiLock released
+03-17 18:18:37.630  9010  9507 I HUREV   : [275] z.l | Output thread stopped
+03-17 18:18:37.640  9010  9442 I HUREV   : [270] z.t | Decoder stopped: AapService::onDisconnect
+03-17 18:18:37.660  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:37.730  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:37.730  9010  9440 I HUREV   : [268] t0.o | AapTransport quitting (clean=false)
+03-17 18:18:37.920  9010  9452 W MessageQueue: Handler (android.os.Handler) {424a0360} sending message to a Handler on a dead thread
+03-17 18:18:37.920  9010  9452 W MessageQueue: java.lang.RuntimeException: Handler (android.os.Handler) {424a0360} sending message to a Handler on a dead thread
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.MessageQueue.enqueueMessage(MessageQueue.java:309)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.Handler.enqueueMessage(Handler.java:623)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.Handler.sendMessageAtTime(Handler.java:592)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.Handler.sendMessageDelayed(Handler.java:563)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.Handler.sendEmptyMessageDelayed(Handler.java:527)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.Handler.sendEmptyMessage(Handler.java:512)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at t0.t0.n(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:36)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at t0.t0.c(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:1)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at t0.r0.handleMessage(r8-map-id-f1537b069f239da04e78454013a0eb60e949cb54a227911edc102ef5973c8398:3)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.Handler.dispatchMessage(Handler.java:95)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.Looper.loop(Looper.java:137)
+03-17 18:18:37.920  9010  9452 W MessageQueue: 	at android.os.HandlerThread.run(HandlerThread.java:61)
+03-17 18:18:37.920  9010  9440 D UsbDeviceConnectionJNI: close
+03-17 18:18:37.930  9010  9440 I HUREV   : [268] m.b | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/002/005,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mInterfaces=[Landroid.os.Parcelable;@426f5a70]
+03-17 18:18:37.930  9010  9440 E UsbDeviceConnectionJNI: device is closed in native_release_interface
+03-17 18:18:37.930  9010  9440 I HUREV   : [268] m.b | OK releaseInterface()
+03-17 18:18:38.160  9010  9010 I HUREV   : [1] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-17 18:18:38.170  9010  9010 I HUREV   : [1] i.onSurfaceTextureDestroyed | TextureProjectionView: Surface destroyed
+03-17 18:18:38.170  9010  9010 I HUREV   : [1] AapProjectionActivity.c | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@426397d0)
+03-17 18:18:38.170  9010  9010 I HUREV   : [1] z.t | Decoder stopped: surfaceDestroyed
+03-17 18:18:40.850  9010  9010 I HUREV   : [1] AapService.u | Found device already in accessory mode: Google 18D1:2D00
+03-17 18:18:40.860  9010  9440 I HUREV   : [268] m.l | Established connection: android.hardware.usb.UsbDeviceConnection@427acc60
+03-17 18:18:40.860  9010  9440 I HUREV   : [268] m.l | interfaceCount: 1
+03-17 18:18:40.860  9010  9440 I HUREV   : [268] m.j | Check accessory endpoints
+03-17 18:18:40.860  9010  9440 I HUREV   : [268] m.j | Connected have EPs
+03-17 18:18:40.880  9010  9010 I HUREV   : [1] AapService.t | WifiLock acquired (HIGH_PERF)
+03-17 18:18:40.920  9010  9440 I HUREV   : [268] t0.<init> | Using Java SSL implementation
+03-17 18:18:40.980  9010  9440 D dalvikvm: GC_FOR_ALLOC freed 3670K, 67% free 6723K/20220K, paused 64ms, total 64ms
+03-17 18:18:40.990  9010  9440 I HUREV   : [268] t0.B | Start Aap transport handshake for w0.m@427aca10
+03-17 18:18:41.090  9010  9014 D dalvikvm: GC_CONCURRENT freed 221K, 62% free 7744K/20220K, paused 4ms+7ms, total 61ms
+03-17 18:18:41.090  9010  9010 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 30ms
+03-17 18:18:41.150  9010  9010 I HUREV   : [1] AapProjectionActivity.onCreate | HeadUnit for Android Auto (tm) - Copyright 2011-2015 Michael A. Reid., since 2025 André Rinas All Rights Reserved...
+03-17 18:18:41.150  9010  9010 I HUREV   : [1] AapProjectionActivity.onCreate | Using TextureView
+03-17 18:18:41.160  9010  9010 I HUREV   : [1] i.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 18:18:41.160  9010  9010 I HUREV   : [1] i.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 18:18:41.160  9010  9010 I HUREV   : [1] i.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 18:18:41.160  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:41.160  9010  9010 I HUREV   : [1] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-17 18:18:41.170  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:41.330  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:41.350  9010  9010 I HUREV   : [1] i.onSurfaceTextureAvailable | TextureProjectionView: Surface available: 1920x720
+03-17 18:18:41.350  9010  9010 I HUREV   : [1] AapProjectionActivity.d | [AapProjectionActivity] onSurfaceCreated
+03-17 18:18:41.360  9010  9010 I HUREV   : [1] AapProjectionActivity.b | [AapProjectionActivity] onSurfaceChanged. Actual surface dimensions: width=1920, height=720
+03-17 18:18:41.360  9010  9010 I HUREV   : [1] z.q | New surface set: Surface(name=android.graphics.SurfaceTexture@4270a838)
+03-17 18:18:41.360  9010  9010 I HUREV   : [1] AapProjectionActivity.b | [AapProjectionActivity] Decoder already has dimensions: 1920x1088. Applying to view.
+03-17 18:18:41.360  9010  9010 I HUREV   : [1] i.a | TextureProjectionView
+03-17 18:18:41.370  9010  9010 I HUREV   : [1] i.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 18:18:41.370  9010  9010 I HUREV   : [1] i.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 18:18:41.370  9010  9010 I HUREV   : [1] i.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 18:18:41.380  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:18:41.380  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:18:41.380  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 18:18:41.390  9010  9010 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 18:18:41.570  9010  9440 W HUREV   : [268] t0.l | Handshake: Version request send failed (ret=-1), attempt 1
+03-17 18:18:41.810  9010  9440 W HUREV   : [268] t0.l | Handshake: Version request send failed (ret=-1), attempt 2
+03-17 18:18:42.040  9010  9440 W HUREV   : [268] t0.l | Handshake: Version request send failed (ret=-1), attempt 3
+03-17 18:18:42.240  9010  9440 E HUREV   : [268] t0.l | Handshake: Version request/response failed after 3 attempt(s). last ret: -1
+03-17 18:18:42.240  9010  9440 I HUREV   : [268] t0.o | AapTransport quitting (clean=false)
+03-17 18:18:42.250  9010  9441 I HUREV   : [269] t0.o | AapTransport quitting (clean=false)
+03-17 18:18:42.250  9010  9441 D UsbDeviceConnectionJNI: close
+03-17 18:18:42.250  9010  9441 I HUREV   : [269] m.b | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/002/005,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mInterfaces=[Landroid.os.Parcelable;@42631e90]
+03-17 18:18:42.250  9010  9441 E UsbDeviceConnectionJNI: device is closed in native_release_interface
+03-17 18:18:42.250  9010  9441 I HUREV   : [269] m.b | OK releaseInterface()
+03-17 18:18:42.260  9010  9440 E HUREV   : [268] t0.B | Handshake failed
+03-17 18:18:42.280  9010  9010 I HUREV   : [1] AapProjectionActivity.M | Hiding reconnecting overlay — frames resumed
+03-17 18:18:42.290  9010  9010 I HUREV   : [1] AapService.K | WifiLock released
+03-17 18:18:42.300  9010  9440 I HUREV   : [268] z.t | Decoder stopped: AapService::onDisconnect
+03-17 18:18:42.310  9010  9010 I HUREV   : [1] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-17 18:18:42.330  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:42.370  9010  9010 D zjy     : view visibility = 7
+03-17 18:18:42.790  9010  9010 I HUREV   : [1] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-17 18:18:42.790  9010  9010 I HUREV   : [1] i.onSurfaceTextureDestroyed | TextureProjectionView: Surface destroyed
+03-17 18:18:42.790  9010  9010 I HUREV   : [1] AapProjectionActivity.c | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@4270a838)
+03-17 18:18:42.790  9010  9010 I HUREV   : [1] z.t | Decoder stopped: surfaceDestroyed
+03-17 18:19:22.600  9010  9010 I HUREV   : [1] MainActivity.handleIntent | MainActivity received intent: null, data: null
+03-17 18:19:22.670  9010  9010 D zjy     : view visibility = 7
+03-17 18:19:22.840  9010  9010 D zjy     : view visibility = 7
+03-17 18:19:27.310  9010  9014 D dalvikvm: GC_CONCURRENT freed 2364K, 66% free 6964K/20216K, paused 6ms+11ms, total 79ms
+03-17 18:19:27.310  9010  9010 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 34ms
+03-17 18:19:27.360  9010  9010 I HUREV   : [1] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-17 18:19:29.980  9010  9010 D zjy     : view visibility = 7
+03-17 18:19:31.200  9010  9010 I HUREV   : [1] AapService.onStartCommand | Stop action received.
+03-17 18:19:31.240  9010  9010 I HUREV   : [1] AapService.onDestroy | AapService destroying...

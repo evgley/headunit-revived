@@ -120,6 +120,33 @@ object SystemUI {
         root.setPadding(manualL, manualT, manualR, manualB)
         HeadUnitScreenConfig.updateInsets(manualL, manualT, manualR, manualB)
 
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            // Legacy Fallback for Android 4.x
+            root.viewTreeObserver.addOnGlobalLayoutListener(object : android.view.ViewTreeObserver.OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    val rect = android.graphics.Rect()
+                    window.decorView.getWindowVisibleDisplayFrame(rect)
+                    
+                    // The difference between real screen size and visible frame are our insets
+                    @Suppress("DEPRECATION")
+                    val display = window.windowManager.defaultDisplay
+                    val size = android.graphics.Point()
+                    display.getSize(size)
+                    
+                    val insetT = rect.top
+                    val insetB = size.y - rect.bottom
+                    val insetL = rect.left
+                    val insetR = size.x - rect.right
+                    
+                    AppLog.d("Legacy SystemUI: Detected Insets L$insetL T$insetT R$insetR B$insetB")
+                    HeadUnitScreenConfig.updateInsets(manualL + insetL, manualT + insetT, manualR + insetR, manualB + insetB)
+                    
+                    // Remove listener to avoid infinite loops if padding causes layout changes
+                    root.viewTreeObserver.removeGlobalOnLayoutListener(this)
+                }
+            })
+        }
+
         // Set up listener for dynamic system bars (API 21+)
         ViewCompat.setOnApplyWindowInsetsListener(root) { v, insetsCompat ->
             if (mode == Settings.FullscreenMode.IMMERSIVE) {

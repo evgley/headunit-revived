@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Network Diagnostic</string>
+    <string name="start_monitoring">Start Monitoring</string>
+    <string name="stop_monitoring">Stop Monitoring</string>
+    <string name="share_log">Share Log</string>
+    <string name="status_idle">Idle — tap Start to begin monitoring</string>
+    <string name="status_monitoring">Monitoring network events…</string>
+    <string name="notification_channel">Diagnostic Service</string>
+    <string name="notification_title">Network Diagnostic</string>
+    <string name="notification_text">Monitoring network events</string>
+    <string name="no_log">No log to share yet. Start monitoring first.</string>
+    <string name="permissions_required">Permissions are required for full diagnostics</string>
+</resources>

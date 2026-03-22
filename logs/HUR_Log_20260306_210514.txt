@@ -1,0 +1,40 @@
+--------- beginning of main
+03-06 21:05:07.263 27795 27845 E CAR.HU.J: [433] m.l | Failed to re-claim USB interface
+03-06 21:05:07.264 27795 27845 W MessageQueue: Handler (android.os.Handler) {a52d06} sending message to a Handler on a dead thread
+03-06 21:05:07.264 27795 27845 W MessageQueue: java.lang.IllegalStateException: Handler (android.os.Handler) {a52d06} sending message to a Handler on a dead thread
+03-06 21:05:07.264 27795 27845 W MessageQueue: 	at android.os.MessageQueue.enqueueMessage(MessageQueue.java:545)
+03-06 21:05:07.264 27795 27845 W MessageQueue: 	at android.os.Handler.enqueueMessage(Handler.java:662)
+03-06 21:05:07.264 27795 27845 W MessageQueue: 	at android.os.Handler.sendMessageAtTime(Handler.java:631)
+03-06 21:05:07.264 27795 27845 W MessageQueue: 	at android.os.Handler.sendMessageDelayed(Handler.java:601)
+03-06 21:05:07.264 27795 27845 W MessageQueue: 	at android.os.Handler.sendEmptyMessageDelayed(Handler.java:565)
+03-06 21:05:07.264 27795 27845 W MessageQueue: 	at android.os.Handler.sendEmptyMessage(Handler.java:550)
+03-06 21:05:07.264 27795 27845 W MessageQueue: 	at u0.m0.n(r8-map-id-56d63ff9c7c7cd7fbbd994f314f33e998cb67148fc76c6289e3101efe3fcd6a1:36)
+03-06 21:05:07.264 27795 27845 W MessageQueue: 	at u0.m0.c(r8-map-id-56d63ff9c7c7cd7fbbd994f314f33e998cb67148fc76c6289e3101efe3fcd6a1:1)
+03-06 21:05:07.264 27795 27845 W MessageQueue: 	at u0.k0.handleMessage(r8-map-id-56d63ff9c7c7cd7fbbd994f314f33e998cb67148fc76c6289e3101efe3fcd6a1:3)
+03-06 21:05:07.264 27795 27845 W MessageQueue: 	at android.os.Handler.dispatchMessage(Handler.java:102)
+03-06 21:05:07.264 27795 27845 W MessageQueue: 	at android.os.Looper.loop(Looper.java:164)
+03-06 21:05:07.264 27795 27845 W MessageQueue: 	at android.os.HandlerThread.run(HandlerThread.java:65)
+03-06 21:05:07.265 27795 27820 I CAR.HU.J: [425] m.a | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/001/038,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mManufacturerName=Android,mProductName=smartlinkBox,mVersion=2.0,mSerialNumber=LY0123456789,mConfigurations=[
+03-06 21:05:07.265 27795 27820 I CAR.HU.J: UsbConfiguration[mId=1,mName=accessory,mAttributes=128,mMaxPower=75,mInterfaces=[
+03-06 21:05:07.265 27795 27820 I CAR.HU.J: UsbInterface[mId=0,mAlternateSetting=0,mName=Android Accessory Interface,mClass=255,mSubclass=255,mProtocol=0,mEndpoints=[
+03-06 21:05:07.265 27795 27820 I CAR.HU.J: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-06 21:05:07.265 27795 27820 I CAR.HU.J: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=512,mInterval=0]]]]
+03-06 21:05:07.266 27795 27820 E UsbDeviceConnectionJNI: device is closed in native_release_interface
+03-06 21:05:07.267 27795 27820 E CAR.HU.J: [425] m.a | Error releaseInterface()
+03-06 21:05:07.338 27795 27816 I GLConsumer: [SurfaceTexture-0-27795-0] detachFromContext
+03-06 21:05:07.339 27795 27816 I GPUAUX  : [AUX]~GPUAUXContext:68: destory: 0x7169190650
+03-06 21:05:07.577 27795 27795 I CAR.HU.J: [2] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-06 21:05:07.578 27795 27795 I CAR.HU.J: [2] i.onSurfaceTextureDestroyed | TextureProjectionView: Surface destroyed
+03-06 21:05:07.578 27795 27795 I CAR.HU.J: [2] AapProjectionActivity.c | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@2641a28)/@0x7878341
+03-06 21:05:07.579 27795 27795 I CAR.HU.J: [2] a0.r | Decoder stopped: surfaceDestroyed
+03-06 21:05:07.580 27795 27795 I BufferQueueConsumer: [SurfaceTexture-0-27795-0](this:0x7152eec000,id:0,api:3,p:-1,c:-1) disconnect(C)
+03-06 21:05:09.298 27795 27795 I zygote64: Deoptimizing void c1.m0.b(android.view.Window, android.view.View, boolean) due to JIT inline cache
+03-06 21:05:09.398 27795 27795 I CAR.HU.J: [2] HomeFragment.attemptSingleUsbAutoConnect | HomeFragment: Requesting single-USB auto-connect via AapService
+03-06 21:05:09.505 27795 27795 I zygote64: Deoptimizing java.lang.CharSequence e0.e.filter(java.lang.CharSequence, int, int, android.text.Spanned, int, int) due to JIT inline cache
+03-06 21:05:09.513 27795 27795 I zygote64: Deoptimizing java.lang.CharSequence androidx.emoji2.text.l.h(java.lang.CharSequence, int, int, int, boolean) due to JIT inline cache
+03-06 21:05:09.634 27795 27800 I zygote64: Do partial code cache collection, code=246KB, data=166KB
+03-06 21:05:09.635 27795 27800 I zygote64: After code cache collection, code=234KB, data=159KB
+03-06 21:05:09.635 27795 27800 I zygote64: Increasing code cache capacity to 1024KB
+03-06 21:05:09.715 27795 27934 I CAR.HU.J: [728] s.run | AudioTrackWrapper thread finished.
+03-06 21:05:09.762 27795 27800 I zygote64: Compiler allocated 4MB to compile void com.andrerinas.headunitrevived.main.SettingsFragment.updateSettingsList()
+03-06 21:05:10.850 27795 27804 I BufferQueue: [SurfaceTexture-0-27795-0](this:0x7152eec000,id:0,api:3,p:-1,c:-1) ~BufferQueueCore

@@ -1,0 +1,39 @@
+--------- beginning of system
+03-07 14:01:57.923 19013 19013 W ViewRootImpl[SettingsActivity]: Dropping event due to no window focus: MotionEvent { action=ACTION_DOWN, actionButton=0, id[0]=0, x[0]=187.0, y[0]=562.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=3414925, downTime=3414925, deviceId=1, source=0x1002 }
+03-07 14:01:57.925 19013 19013 W ViewRootImpl[SettingsActivity]: Dropping event due to no window focus: MotionEvent { action=ACTION_MOVE, actionButton=0, id[0]=0, x[0]=191.53148, y[0]=523.7481, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=2, eventTime=3414978, downTime=3414925, deviceId=1, source=0x1002 }
+03-07 14:01:58.028 19013 19013 W ViewRootImpl[SettingsActivity]: Dropping event due to no window focus: MotionEvent { action=ACTION_MOVE, actionButton=0, id[0]=0, x[0]=240.0, y[0]=172.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=3, eventTime=3415048, downTime=3414925, deviceId=1, source=0x1002 }
+03-07 14:01:58.029 19013 19013 W ViewRootImpl[SettingsActivity]: Cancelling event due to no window focus: MotionEvent { action=ACTION_CANCEL, actionButton=0, id[0]=0, x[0]=240.0, y[0]=172.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=3415069, downTime=3414925, deviceId=1, source=0x1002 }
+03-07 14:01:58.029 19013 19013 I chatty  : uid=10103(com.andrerinas.headunitrevived) identical 2 lines
+03-07 14:01:58.029 19013 19013 W ViewRootImpl[SettingsActivity]: Cancelling event due to no window focus: MotionEvent { action=ACTION_CANCEL, actionButton=0, id[0]=0, x[0]=240.0, y[0]=172.0, toolType[0]=TOOL_TYPE_FINGER, buttonState=0, metaState=0, flags=0x0, edgeFlags=0x0, pointerCount=1, historySize=0, eventTime=3415069, downTime=3414925, deviceId=1, source=0x1002 }
+--------- beginning of main
+03-07 14:02:15.161 19013 19311 I BufferQueueProducer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:19013,c:19013) queueBuffer: fps=29.99 dur=1033.73 max=64.44 min=8.62
+03-07 14:02:16.192 19013 19311 I BufferQueueProducer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:19013,c:19013) queueBuffer: fps=30.07 dur=1030.99 max=48.52 min=14.62
+03-07 14:02:17.228 19013 19311 I BufferQueueProducer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:19013,c:19013) queueBuffer: fps=29.92 dur=1036.07 max=44.82 min=18.70
+03-07 14:02:18.229 19013 19311 I BufferQueueProducer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:19013,c:19013) queueBuffer: fps=29.97 dur=1000.99 max=48.31 min=22.99
+03-07 14:02:19.029 19013 19013 I CAR.HU.J: [2] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-07 14:02:19.062 19013 19311 I BufferQueueProducer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:19013,c:19013) queueBuffer: slot 6 is dropped, handle=0x73f387f0c0
+03-07 14:02:19.126 19013 19311 I BufferQueueProducer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:19013,c:19013) queueBuffer: slot 2 is dropped, handle=0x741305f640
+03-07 14:02:19.167 19013 19311 I BufferQueueProducer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:19013,c:19013) queueBuffer: slot 1 is dropped, handle=0x741305d540
+03-07 14:02:19.228 19013 19032 I GLConsumer: [SurfaceTexture-0-19013-2] detachFromContext
+03-07 14:02:19.230 19013 19032 I GPUAUX  : [AUX]~GPUAUXContext:68: destory: 0x73f398aec0
+03-07 14:02:19.230 19013 19311 I BufferQueueProducer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:19013,c:19013) queueBuffer: slot 3 is dropped, handle=0x74131c4380
+03-07 14:02:19.230 19013 19311 I BufferQueueProducer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:19013,c:19013) queueBuffer: fps=29.95 dur=1001.75 max=45.03 min=14.66
+03-07 14:02:19.256 19013 19311 I BufferQueueProducer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:19013,c:19013) queueBuffer: slot 4 is dropped, handle=0x74131c4440
+03-07 14:02:19.288 19013 19311 I BufferQueueProducer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:19013,c:19013) queueBuffer: slot 6 is dropped, handle=0x73f387f0c0
+03-07 14:02:19.322 19013 19311 I BufferQueueProducer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:19013,c:19013) queueBuffer: slot 5 is dropped, handle=0x73f387f000
+03-07 14:02:19.363 19013 19311 I BufferQueueProducer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:19013,c:19013) queueBuffer: slot 2 is dropped, handle=0x741305f640
+03-07 14:02:19.391 19013 19311 I BufferQueueProducer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:19013,c:19013) queueBuffer: slot 1 is dropped, handle=0x741305d540
+03-07 14:02:19.429 19013 19311 I BufferQueueProducer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:19013,c:19013) queueBuffer: slot 0 is dropped, handle=0x741305f940
+03-07 14:02:19.454 19013 19311 I BufferQueueProducer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:19013,c:19013) queueBuffer: slot 3 is dropped, handle=0x74131c4380
+03-07 14:02:19.458 19013 19013 I CAR.HU.J: [2] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-07 14:02:19.459 19013 19013 I CAR.HU.J: [2] i.onSurfaceTextureDestroyed | TextureProjectionView: Surface destroyed
+03-07 14:02:19.461 19013 19013 I CAR.HU.J: [2] AapProjectionActivity.c | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@cf919d8)/@0x1000131
+03-07 14:02:19.466 19013 19318 I CAR.HU.J: [427] a0.k | Output thread stopped
+03-07 14:02:19.483 19013 19310 I BufferQueueProducer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:19013,c:19013) disconnect(P): api 3
+03-07 14:02:19.507 19013 19013 I CAR.HU.J: [2] a0.r | Decoder stopped: surfaceDestroyed
+03-07 14:02:19.508 19013 19013 I BufferQueueConsumer: [SurfaceTexture-0-19013-2](this:0x73f3a6d000,id:2,api:3,p:-1,c:-1) disconnect(C)
+03-07 14:02:20.132 19013 19293 W CAR.HU.J: [423] n0.a | AapVideo: Dropped Flag 11 packet. len=2, buf[10]=?
+03-07 14:02:20.132 19013 19293 I CAR.HU.J: [423] m.c | Media Sink Stop Request: VIDEO
+03-07 14:02:20.133 19013 19293 I CAR.HU.J: [423] m.c | Video Sink Stopped -> Ignored (Background)
+03-07 14:02:20.594 19013 19018 I zygote64: Do full code cache collection, code=506KB, data=322KB
+03-07 14:02:20.596 19013 19018 I zygote64: After code cache collection, code=483KB, data=268KB

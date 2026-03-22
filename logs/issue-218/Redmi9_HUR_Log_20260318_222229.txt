@@ -1,0 +1,64 @@
+--------- beginning of main
+03-18 22:22:18.223  7380  7380 I headunitrevived: Late-enabling -Xcheck:jni
+03-18 22:22:18.406  7380  7380 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10244; state: ENABLED
+03-18 22:22:18.513  7380  7380 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+03-18 22:22:18.515  7380  7380 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+03-18 22:22:18.518  7380  7380 I MultiDex: VM with version 2.1.0 has multidex support
+03-18 22:22:18.518  7380  7380 I MultiDex: Installing application
+03-18 22:22:18.518  7380  7380 I MultiDex: VM has multidex support, MultiDex support library is disabled.
+03-18 22:22:18.574  7380  7380 D HUREV   : [2] App.onCreate | native library dir /data/app/~~NaPn4CZ52R3UhCUsEy38Vw==/com.andrerinas.headunitrevived-w0dKHjpm6ffzgFnJvq9P0w==/lib/arm64
+03-18 22:22:18.575  7380  7380 D HUREV   : [2] App.onCreate |    libhu_jni.so
+03-18 22:22:18.576  7380  7380 D HUREV   : [2] App.onCreate |    libssl_1_1.so
+03-18 22:22:18.577  7380  7380 D HUREV   : [2] App.onCreate |    libconscrypt_jni.so
+03-18 22:22:18.578  7380  7380 D HUREV   : [2] App.onCreate |    libcrypto_1_1.so
+03-18 22:22:18.878  7380  7380 D HUREV   : [2] Companion.createSslContext | Creating SSLContext with default provider
+03-18 22:22:24.500  7380  7923 D ProfileInstaller: Installing profile for com.andrerinas.headunitrevived
+03-18 22:22:28.918  7380  7380 I HUREV   : [2] BootCompleteReceiver.onReceive$lambda$0 | Boot auto-start: starting AapService
+03-18 22:22:28.940  7380  7380 I HUREV   : [2] AapService.onCreate | AapService creating...
+03-18 22:22:28.941  7380  7380 D CompatibilityChangeReporter: Compat change id reported: 160794467; UID 10244; state: ENABLED
+03-18 22:22:28.990  7380  7380 I HUREV   : [2] 1.invoke | NightMode update: true
+03-18 22:22:29.011  7380  7380 D HUREV   : [2] UsbReceiver.<init> | UsbReceiver registered
+03-18 22:22:29.016  7380  7380 I HUREV   : [2] AapService.registerReceivers | Registered runtime MEDIA_BUTTON receiver
+03-18 22:22:29.078  7380  7380 D HUREV   : [2] AapService.updateMediaSessionState | MediaSession: State updated to STOPPED
+03-18 22:22:29.960  7380  7380 I HUREV   : [2] AapService.onCreate | Auto-started continuous log capture
+03-18 22:22:29.982  7380  7380 I HUREV   : [2] AapService.onCreate | Auto-started continuous log capture
+03-18 22:22:30.006  7380  7380 I HUREV   : [2] AapService.registerNetworkMonitor | NetworkMonitor: Registered network change listener
+03-18 22:22:30.010  7380  8025 I HUREV   : [35] 1.onAvailable | NetworkMonitor: Network available: 101
+03-18 22:22:30.011  7380  8025 D HUREV   : [35] 1.onCapabilitiesChanged | NetworkMonitor: Capabilities changed: 101 → [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED LinkUpBandwidth>=12000Kbps LinkDnBandwidth>=60000Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.1.114, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 5, RSSI: -46, Link speed: 433Mbps, Tx Link speed: 433Mbps, Max Supported Tx Link speed: 433Mbps, Rx Link speed: -1Mbps, Max Supported Rx Link speed: 433Mbps, Frequency: 5300MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>> SignalStrength: -46 UnderlyingNetworks: Null]
+03-18 22:22:30.026  7380  7380 I HUREV   : [2] GpsLocation.start | Request location updates
+03-18 22:22:35.746  7380  7380 D AppCompatDelegate: Checking for metadata for AppLocalesMetadataHolderService : Service not found
+03-18 22:22:35.801  7380  7380 I HUREV   : [2] MainActivity.logLaunchSource | App launched by user tap (referrer: none)
+03-18 22:22:35.844  7380  7380 W headunitrevived: Accessing hidden method Landroid/view/View;->computeFitSystemWindows(Landroid/graphics/Rect;Landroid/graphics/Rect;)Z (unsupported, reflection, allowed)
+03-18 22:22:35.844  7380  7380 W headunitrevived: Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (unsupported, reflection, allowed)
+03-18 22:22:35.859  7380  7380 D CompatibilityChangeReporter: Compat change id reported: 210923482; UID 10244; state: ENABLED
+03-18 22:22:35.922  7380  7380 D HUREV   : [2] UsbReceiver.<init> | UsbReceiver registered
+03-18 22:22:35.926  7380  7380 I HUREV   : [2] MainActivity.handleIntent | MainActivity received intent: android.intent.action.MAIN, data: null
+03-18 22:22:36.057  7380  7380 W OnBackInvokedCallback: OnBackInvokedCallback is not enabled for the application.
+03-18 22:22:36.057  7380  7380 W OnBackInvokedCallback: Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+03-18 22:22:36.063  7380  7380 I HUREV   : [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-18 22:22:36.080  7380  7380 D CompatibilityChangeReporter: Compat change id reported: 237531167; UID 10244; state: DISABLED
+03-18 22:22:36.087  7380  8045 W Parcel  : Expecting binder but got null!
+03-18 22:22:36.214  7380  8045 E GED     : Failed to get GED Log Buf, err(0)
+03-18 22:22:36.215  7380  8045 E OpenGLRenderer: Device claims wide gamut support, cannot find matching config, error = EGL_SUCCESS
+03-18 22:22:36.216  7380  8045 W OpenGLRenderer: Failed to initialize 101010-2 format, error = EGL_SUCCESS
+03-18 22:22:36.242  7380  8045 E OpenGLRenderer: Unable to match the desired swap behavior.
+03-18 22:22:36.256  7380  8066 I Gralloc4: Adding additional valid usage bits: 0x2000
+03-18 22:22:36.264  7380  8066 E ion     : ioctl c0044901 failed with code -1: Invalid argument
+03-18 22:22:36.469  7380  7380 I HUREV   : [2] MainActivity.logLaunchSource | App launched by user tap (referrer: none)
+03-18 22:22:36.512  7380  7380 W Activity: Can request only one set of permissions at a time
+03-18 22:22:36.516  7380  7380 I HUREV   : [2] MainActivity.handleIntent | MainActivity received intent: android.intent.action.MAIN, data: null
+03-18 22:22:36.614  7380  7380 W OnBackInvokedCallback: OnBackInvokedCallback is not enabled for the application.
+03-18 22:22:36.614  7380  7380 W OnBackInvokedCallback: Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+03-18 22:22:36.619  7380  7380 I HUREV   : [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-18 22:22:36.630  7380  8045 W Parcel  : Expecting binder but got null!
+03-18 22:22:36.704  7380  8045 E OpenGLRenderer: Unable to match the desired swap behavior.
+03-18 22:22:36.773  7380  7380 D CompatibilityChangeReporter: Compat change id reported: 78294732; UID 10244; state: ENABLED
+03-18 22:22:36.779  7380  7380 I HUREV   : [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-18 22:22:37.029  7380  8080 W Choreographer: Frame time is 0.042377 ms in the future!  Check that graphics HAL is generating vsync timestamps using the correct timebase.
+03-18 22:22:37.063  7380  8080 W Choreographer: Frame time is 0.042878 ms in the future!  Check that graphics HAL is generating vsync timestamps using the correct timebase.
+03-18 22:22:37.096  7380  8080 W Choreographer: Frame time is 0.043744 ms in the future!  Check that graphics HAL is generating vsync timestamps using the correct timebase.
+03-18 22:22:38.043  7380  7380 W OnBackInvokedCallback: OnBackInvokedCallback is not enabled for the application.
+03-18 22:22:38.043  7380  7380 W OnBackInvokedCallback: Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+03-18 22:22:38.063  7380  8045 W Parcel  : Expecting binder but got null!
+03-18 22:22:38.091  7380  8045 E OpenGLRenderer: Unable to match the desired swap behavior.
+03-18 22:22:40.457  7380  7380 D CompatibilityChangeReporter: Compat change id reported: 171228096; UID 10244; state: ENABLED

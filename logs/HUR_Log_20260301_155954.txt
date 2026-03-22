@@ -1,0 +1,51 @@
+--------- beginning of main
+03-01 15:59:47.278 31977 31977 I CAR.HU.J: [2] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-01 15:59:48.434 31977 31982 I zygote64: Do partial code cache collection, code=502KB, data=275KB
+03-01 15:59:48.435 31977 31982 I zygote64: After code cache collection, code=501KB, data=274KB
+03-01 15:59:48.435 31977 31982 I zygote64: Increasing code cache capacity to 2MB
+03-01 15:59:48.453 31977 31977 I CAR.HU.J: [2] HomeFragment.attemptSingleUsbAutoConnect | HomeFragment: Requesting single-USB auto-connect via AapService
+03-01 15:59:48.512 31977 31977 I zygote64: Deoptimizing java.lang.CharSequence e0.e.filter(java.lang.CharSequence, int, int, android.text.Spanned, int, int) due to JIT inline cache
+03-01 15:59:48.568 31977 31977 I CAR.HU.J: [2] AapService.onStartCommand | ACTION_CHECK_USB received
+03-01 15:59:48.571 31977 31977 I CAR.HU.J: [2] AapService.A | Found device already in accessory mode: Google 18D1:2D00
+03-01 15:59:48.572 31977 31977 I CAR.HU.J: [2] AapService.F | handleConnectionIntent: type=USB, isConnected=false, isConnecting=false
+03-01 15:59:48.573 31977 31977 I CAR.HU.J: [2] j.a | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/001/043,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mManufacturerName=Android,mProductName=smartlinkBox,mVersion=2.0,mSerialNumber=LY0123456789,mConfigurations=[
+03-01 15:59:48.573 31977 31977 I CAR.HU.J: UsbConfiguration[mId=1,mName=accessory,mAttributes=128,mMaxPower=75,mInterfaces=[
+03-01 15:59:48.573 31977 31977 I CAR.HU.J: UsbInterface[mId=0,mAlternateSetting=0,mName=Android Accessory Interface,mClass=255,mSubclass=255,mProtocol=0,mEndpoints=[
+03-01 15:59:48.573 31977 31977 I CAR.HU.J: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-01 15:59:48.573 31977 31977 I CAR.HU.J: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=512,mInterval=0]]]]
+03-01 15:59:48.574 31977 31977 I CAR.HU.J: [2] j.a | OK releaseInterface()
+03-01 15:59:48.670 31977 31982 I zygote64: Compiler allocated 4MB to compile void com.andrerinas.headunitrevived.main.SettingsFragment.updateSettingsList()
+03-01 15:59:48.723 31977 31977 I zygote64: Deoptimizing void androidx.constraintlayout.widget.ConstraintLayout$c.b(r.e, s.b$a) due to JIT inline cache
+03-01 15:59:48.801 31977 31977 I zygote64: Deoptimizing int androidx.recyclerview.widget.RecyclerView$p$b.b(android.view.View) due to JIT inline cache
+03-01 15:59:48.801 31977 31977 I zygote64: Deoptimizing int androidx.recyclerview.widget.RecyclerView$p.a0(android.view.View) due to JIT inline cache
+03-01 15:59:48.801 31977 31977 I zygote64: Deoptimizing int androidx.recyclerview.widget.RecyclerView$p.t0(android.view.View) due to JIT inline cache
+03-01 15:59:48.801 31977 31977 I zygote64: Deoptimizing int androidx.recyclerview.widget.RecyclerView$p$b.e(android.view.View) due to JIT inline cache
+03-01 15:59:48.802 31977 31977 I zygote64: Deoptimizing int androidx.recyclerview.widget.RecyclerView$p.U(android.view.View) due to JIT inline cache
+03-01 15:59:48.802 31977 31977 I zygote64: Deoptimizing int androidx.recyclerview.widget.RecyclerView$p.o0(android.view.View) due to JIT inline cache
+03-01 15:59:48.802 31977 31977 I zygote64: Deoptimizing int androidx.recyclerview.widget.s$b.g(android.view.View) due to JIT inline cache
+03-01 15:59:48.884 31977 31977 I CAR.HU.J: [2] j.m | Established connection: android.hardware.usb.UsbDeviceConnection@74d8099
+03-01 15:59:48.885 31977 31977 I CAR.HU.J: [2] j.m | interfaceCount: 1
+03-01 15:59:48.885 31977 31977 I CAR.HU.J: [2] j.j | Check accessory endpoints
+03-01 15:59:48.886 31977 31977 I CAR.HU.J: [2] j.j | Connected have EPs
+03-01 15:59:48.914 31977 31977 I CAR.HU.J: [2] g.n | AapTransport quitting (clean=false)
+03-01 15:59:48.916 31977 32049 I CAR.HU.J: [546] a0.r | Decoder stopped: AapService::reset
+03-01 15:59:48.917 31977 32048 I CAR.HU.J: [545] g.<init> | Using Java SSL implementation
+03-01 15:59:49.035 31977 32048 I CAR.HU.J: [545] g.x | Start Aap transport for x0.j@5f5700c
+03-01 15:59:49.771 31977 31977 I zygote64: Deoptimizing void z1.h.<init>(z1.h$c) due to JIT inline cache
+03-01 15:59:49.987 31977 32048 W CAR.HU.J: [545] g.j | Handshake: Version response recv failed (ret=-1), attempt 1
+03-01 15:59:50.188 31977 32048 W CAR.HU.J: [545] g.j | Handshake: Version request send failed (ret=-1), attempt 2
+03-01 15:59:50.198 31977 31977 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-01 15:59:50.200 31977 31977 I CAR.HU.J: [2] m.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-01 15:59:50.219 31977 31977 I CAR.HU.J: [2] g.n | AapTransport quitting (clean=false)
+03-01 15:59:50.225 31977 32049 I CAR.HU.J: [546] a0.r | Decoder stopped: AapService::reset
+03-01 15:59:50.225 31977 31977 I CAR.HU.J: [2] j.a | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/001/043,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mManufacturerName=Android,mProductName=smartlinkBox,mVersion=2.0,mSerialNumber=LY0123456789,mConfigurations=[
+03-01 15:59:50.225 31977 31977 I CAR.HU.J: UsbConfiguration[mId=1,mName=accessory,mAttributes=128,mMaxPower=75,mInterfaces=[
+03-01 15:59:50.225 31977 31977 I CAR.HU.J: UsbInterface[mId=0,mAlternateSetting=0,mName=Android Accessory Interface,mClass=255,mSubclass=255,mProtocol=0,mEndpoints=[
+03-01 15:59:50.225 31977 31977 I CAR.HU.J: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-01 15:59:50.225 31977 31977 I CAR.HU.J: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=512,mInterval=0]]]]
+03-01 15:59:50.226 31977 31977 E CAR.HU.J: [2] j.a | Error releaseInterface()
+03-01 15:59:50.389 31977 32048 E CAR.HU.J: [545] g.j | Handshake: Version request/response failed after 2 attempt(s). last ret: -1
+03-01 15:59:50.389 31977 32048 I CAR.HU.J: [545] g.n | AapTransport quitting (clean=false)
+03-01 15:59:50.391 31977 32048 E CAR.HU.J: [545] g.x | Handshake failed
+03-01 15:59:50.398 31977 31977 I CAR.HU.J: [2] AapService.onDestroy | AapService destroying...
+03-01 15:59:50.918 31977 31986 I BufferQueue: [SurfaceTexture-0-31977-0](this:0x74c0c2b000,id:0,api:3,p:-1,c:-1) ~BufferQueueCore

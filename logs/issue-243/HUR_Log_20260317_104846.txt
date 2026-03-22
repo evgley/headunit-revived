@@ -1,0 +1,1320 @@
+--------- beginning of /dev/log/main
+03-17 10:48:44.200  5712  5712 D dalvikvm: GC_FOR_ALLOC freed <1K, 49% free 11502K/22540K, paused 74ms, total 75ms
+03-17 10:48:44.220  5712  5712 I dalvikvm-heap: Grow heap (frag case) to 22.009MB for 1572880-byte allocation
+03-17 10:48:44.380  5712  5712 D dalvikvm: GC_FOR_ALLOC freed 0K, 46% free 13038K/24080K, paused 74ms, total 74ms
+03-17 10:48:44.540  5712  5712 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeMaxTextSize, referenced from method androidx.appcompat.widget.g0.e
+03-17 10:48:44.540  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 4350: Landroid/widget/TextView;.getAutoSizeMaxTextSize ()I
+03-17 10:48:44.540  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 10:48:44.540  5712  5712 I dalvikvm: Could not find method android.widget.TextView.setFirstBaselineToTopHeight, referenced from method androidx.appcompat.widget.g0.f
+03-17 10:48:44.540  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 4432: Landroid/widget/TextView;.setFirstBaselineToTopHeight (I)V
+03-17 10:48:44.540  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 10:48:44.540  5712  5712 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeMinTextSize, referenced from method androidx.appcompat.widget.g0.g
+03-17 10:48:44.540  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 4351: Landroid/widget/TextView;.getAutoSizeMinTextSize ()I
+03-17 10:48:44.540  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 10:48:44.540  5712  5712 I dalvikvm: Could not find method android.widget.TextView.setLastBaselineToBottomHeight, referenced from method androidx.appcompat.widget.g0.h
+03-17 10:48:44.540  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 4441: Landroid/widget/TextView;.setLastBaselineToBottomHeight (I)V
+03-17 10:48:44.540  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 10:48:44.540  5712  5712 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeStepGranularity, referenced from method androidx.appcompat.widget.g0.i
+03-17 10:48:44.540  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 4352: Landroid/widget/TextView;.getAutoSizeStepGranularity ()I
+03-17 10:48:44.540  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 10:48:44.540  5712  5712 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeTextAvailableSizes, referenced from method androidx.appcompat.widget.g0.j
+03-17 10:48:44.540  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 4353: Landroid/widget/TextView;.getAutoSizeTextAvailableSizes ()[I
+03-17 10:48:44.540  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 10:48:44.540  5712  5712 I dalvikvm: Could not find method android.widget.TextView.getAutoSizeTextType, referenced from method androidx.appcompat.widget.g0.k
+03-17 10:48:44.540  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 4354: Landroid/widget/TextView;.getAutoSizeTextType ()I
+03-17 10:48:44.540  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 10:48:44.540  5712  5712 I dalvikvm: Could not find method android.widget.TextView.getTextClassifier, referenced from method androidx.appcompat.widget.g0.l
+03-17 10:48:44.540  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 4389: Landroid/widget/TextView;.getTextClassifier ()Landroid/view/textclassifier/TextClassifier;
+03-17 10:48:44.540  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 10:48:44.540  5712  5712 I dalvikvm: Could not find method android.widget.TextView.setAutoSizeTextTypeUniformWithConfiguration, referenced from method androidx.appcompat.widget.g0.m
+03-17 10:48:44.540  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 4413: Landroid/widget/TextView;.setAutoSizeTextTypeUniformWithConfiguration (IIII)V
+03-17 10:48:44.540  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 10:48:44.540  5712  5712 I dalvikvm: Could not find method android.widget.TextView.setAutoSizeTextTypeUniformWithPresetSizes, referenced from method androidx.appcompat.widget.g0.n
+03-17 10:48:44.540  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 4414: Landroid/widget/TextView;.setAutoSizeTextTypeUniformWithPresetSizes ([II)V
+03-17 10:48:44.540  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 10:48:44.540  5712  5712 I dalvikvm: Could not find method android.widget.TextView.setAutoSizeTextTypeWithDefaults, referenced from method androidx.appcompat.widget.g0.o
+03-17 10:48:44.540  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 4415: Landroid/widget/TextView;.setAutoSizeTextTypeWithDefaults (I)V
+03-17 10:48:44.540  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 10:48:44.540  5712  5712 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 10:48:44.540  5712  5712 I dalvikvm: Could not find method android.widget.TextView.setTextClassifier, referenced from method androidx.appcompat.widget.g0.p
+03-17 10:48:44.540  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 4462: Landroid/widget/TextView;.setTextClassifier (Landroid/view/textclassifier/TextClassifier;)V
+03-17 10:48:44.540  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 10:48:44.540  5712  5712 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 10:48:44.540  5712  5712 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 10:48:44.550  5712  5712 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 10:48:44.550  5712  5712 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 10:48:44.550  5712  5712 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 10:48:44.550  5712  5712 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 10:48:44.550  5712  5712 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/textclassifier/TextClassifier;)
+03-17 10:48:44.730  5712  5712 D zjy     : view visibility = 7
+03-17 10:48:44.740  5712  5712 I HUREV   : [1] MainActivity.handleIntent | MainActivity received intent: android.intent.action.MAIN, data: null
+03-17 10:48:44.880  5712  5712 W dalvikvm: Unable to resolve superclass of Lcom/andrerinas/headunitrevived/aap/AapService$q; (289)
+03-17 10:48:44.880  5712  5712 W dalvikvm: Link of class 'Lcom/andrerinas/headunitrevived/aap/AapService$q;' failed
+03-17 10:48:44.880  5712  5712 E dalvikvm: Could not find class 'com.andrerinas.headunitrevived.aap.AapService$q', referenced from method com.andrerinas.headunitrevived.aap.AapService.I
+03-17 10:48:44.880  5712  5712 W dalvikvm: VFY: unable to resolve new-instance 2864 (Lcom/andrerinas/headunitrevived/aap/AapService$q;) in Lcom/andrerinas/headunitrevived/aap/AapService;
+03-17 10:48:44.880  5712  5712 D dalvikvm: VFY: replacing opcode 0x22 at 0x0014
+03-17 10:48:44.880  5712  5712 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/net/Network;)
+03-17 10:48:44.900  5712  5712 W dalvikvm: Unable to resolve superclass of Lcom/andrerinas/headunitrevived/aap/AapService$q; (289)
+03-17 10:48:44.900  5712  5712 W dalvikvm: Link of class 'Lcom/andrerinas/headunitrevived/aap/AapService$q;' failed
+03-17 10:48:44.900  5712  5712 D dalvikvm: DexOpt: unable to opt direct call 0x4150 at 0x16 in Lcom/andrerinas/headunitrevived/aap/AapService;.I
+03-17 10:48:44.910  5712  5712 D dalvikvm: DexOpt: unable to opt direct call 0x05b0 at 0x21 in Lcom/andrerinas/headunitrevived/aap/AapService;.I
+03-17 10:48:45.020  5712  5712 I dalvikvm: Could not find method android.widget.Button.setElevation, referenced from method com.google.android.material.button.MaterialButton.setElevation
+03-17 10:48:45.020  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 3910: Landroid/widget/Button;.setElevation (F)V
+03-17 10:48:45.020  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 10:48:45.020  5712  5712 I dalvikvm: Could not find method android.widget.Button.getAutoSizeMaxTextSize, referenced from method androidx.appcompat.widget.f.getAutoSizeMaxTextSize
+03-17 10:48:45.020  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 3885: Landroid/widget/Button;.getAutoSizeMaxTextSize ()I
+03-17 10:48:45.020  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 10:48:45.020  5712  5712 I dalvikvm: Could not find method android.widget.Button.getAutoSizeMinTextSize, referenced from method androidx.appcompat.widget.f.getAutoSizeMinTextSize
+03-17 10:48:45.020  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 3886: Landroid/widget/Button;.getAutoSizeMinTextSize ()I
+03-17 10:48:45.020  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 10:48:45.020  5712  5712 I dalvikvm: Could not find method android.widget.Button.getAutoSizeStepGranularity, referenced from method androidx.appcompat.widget.f.getAutoSizeStepGranularity
+03-17 10:48:45.020  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 3887: Landroid/widget/Button;.getAutoSizeStepGranularity ()I
+03-17 10:48:45.020  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 10:48:45.020  5712  5712 I dalvikvm: Could not find method android.widget.Button.getAutoSizeTextAvailableSizes, referenced from method androidx.appcompat.widget.f.getAutoSizeTextAvailableSizes
+03-17 10:48:45.020  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 3888: Landroid/widget/Button;.getAutoSizeTextAvailableSizes ()[I
+03-17 10:48:45.020  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 10:48:45.020  5712  5712 I dalvikvm: Could not find method android.widget.Button.getAutoSizeTextType, referenced from method androidx.appcompat.widget.f.getAutoSizeTextType
+03-17 10:48:45.020  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 3889: Landroid/widget/Button;.getAutoSizeTextType ()I
+03-17 10:48:45.020  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0005
+03-17 10:48:45.020  5712  5712 I dalvikvm: Could not find method android.widget.Button.setAutoSizeTextTypeUniformWithConfiguration, referenced from method androidx.appcompat.widget.f.setAutoSizeTextTypeUniformWithConfiguration
+03-17 10:48:45.020  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 3903: Landroid/widget/Button;.setAutoSizeTextTypeUniformWithConfiguration (IIII)V
+03-17 10:48:45.020  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 10:48:45.020  5712  5712 I dalvikvm: Could not find method android.widget.Button.setAutoSizeTextTypeUniformWithPresetSizes, referenced from method androidx.appcompat.widget.f.setAutoSizeTextTypeUniformWithPresetSizes
+03-17 10:48:45.020  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 3904: Landroid/widget/Button;.setAutoSizeTextTypeUniformWithPresetSizes ([II)V
+03-17 10:48:45.020  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 10:48:45.030  5712  5712 I dalvikvm: Could not find method android.widget.Button.setAutoSizeTextTypeWithDefaults, referenced from method androidx.appcompat.widget.f.setAutoSizeTextTypeWithDefaults
+03-17 10:48:45.030  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 3905: Landroid/widget/Button;.setAutoSizeTextTypeWithDefaults (I)V
+03-17 10:48:45.030  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0004
+03-17 10:48:45.050  5712  5712 E dalvikvm: Could not find class 'android.graphics.drawable.RippleDrawable', referenced from method com.google.android.material.button.e.a
+03-17 10:48:45.050  5712  5712 W dalvikvm: VFY: unable to resolve new-instance 210 (Landroid/graphics/drawable/RippleDrawable;) in Lcom/google/android/material/button/e;
+03-17 10:48:45.050  5712  5712 D dalvikvm: VFY: replacing opcode 0x22 at 0x0056
+03-17 10:48:45.050  5712  5712 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/graphics/drawable/RippleDrawable;)
+03-17 10:48:45.050  5712  5712 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/graphics/drawable/RippleDrawable;)
+03-17 10:48:45.060  5712  5712 D dalvikvm: DexOpt: unable to opt direct call 0x04a0 at 0x6f in Lcom/google/android/material/button/e;.a
+03-17 10:48:45.330  5712  5712 D zjy     : view visibility = 7
+03-17 10:48:45.330  5712  5712 I HUREV   : [1] HomeFragment.onResume | HomeFragment: onResume. isConnected=false
+03-17 10:48:45.350  5712  5712 I HUREV   : [1] AapService.onCreate | AapService creating...
+03-17 10:48:45.570  5712  5712 I HUREV   : [1] w.invoke | NightMode update: false
+03-17 10:48:45.620  5712  5712 I HUREV   : [1] AapService.J | Registered runtime MEDIA_BUTTON receiver
+03-17 10:48:45.630  5712  5712 W dalvikvm: Unable to resolve superclass of Landroid/support/v4/media/session/MediaSessionCompat$b$b; (279)
+03-17 10:48:45.630  5712  5712 W dalvikvm: Link of class 'Landroid/support/v4/media/session/MediaSessionCompat$b$b;' failed
+03-17 10:48:45.630  5712  5712 E dalvikvm: Could not find class 'android.support.v4.media.session.MediaSessionCompat$b$b', referenced from method android.support.v4.media.session.MediaSessionCompat$b.<init>
+03-17 10:48:45.630  5712  5712 W dalvikvm: VFY: unable to resolve new-instance 447 (Landroid/support/v4/media/session/MediaSessionCompat$b$b;) in Landroid/support/v4/media/session/MediaSessionCompat$b;
+03-17 10:48:45.630  5712  5712 D dalvikvm: VFY: replacing opcode 0x22 at 0x0011
+03-17 10:48:45.640  5712  5712 W dalvikvm: Unable to resolve superclass of Landroid/support/v4/media/session/MediaSessionCompat$b$b; (279)
+03-17 10:48:45.640  5712  5712 W dalvikvm: Link of class 'Landroid/support/v4/media/session/MediaSessionCompat$b$b;' failed
+03-17 10:48:45.640  5712  5712 D dalvikvm: DexOpt: unable to opt direct call 0x07f2 at 0x13 in Landroid/support/v4/media/session/MediaSessionCompat$b;.<init>
+03-17 10:48:45.650  5712  5712 W dalvikvm: Unable to resolve superclass of Lk0/k$a; (274)
+03-17 10:48:45.650  5712  5712 W dalvikvm: Link of class 'Lk0/k$a;' failed
+03-17 10:48:45.650  5712  5712 E dalvikvm: Could not find class 'k0.k$a', referenced from method k0.k.d
+03-17 10:48:45.650  5712  5712 W dalvikvm: VFY: unable to resolve new-instance 5269 (Lk0/k$a;) in Lk0/k;
+03-17 10:48:45.650  5712  5712 D dalvikvm: VFY: replacing opcode 0x22 at 0x000a
+03-17 10:48:45.650  5712  5712 W dalvikvm: Unable to resolve superclass of Lk0/k$b; (274)
+03-17 10:48:45.650  5712  5712 W dalvikvm: Link of class 'Lk0/k$b;' failed
+03-17 10:48:45.650  5712  5712 E dalvikvm: Could not find class 'k0.k$b', referenced from method k0.k.d
+03-17 10:48:45.650  5712  5712 W dalvikvm: VFY: unable to resolve new-instance 5270 (Lk0/k$b;) in Lk0/k;
+03-17 10:48:45.650  5712  5712 D dalvikvm: VFY: replacing opcode 0x22 at 0x0020
+03-17 10:48:45.650  5712  5712 W dalvikvm: Unable to resolve superclass of Lk0/k$a; (274)
+03-17 10:48:45.650  5712  5712 W dalvikvm: Link of class 'Lk0/k$a;' failed
+03-17 10:48:45.650  5712  5712 D dalvikvm: DexOpt: unable to opt direct call 0xd82a at 0x15 in Lk0/k;.d
+03-17 10:48:45.650  5712  5712 W dalvikvm: Unable to resolve superclass of Lk0/k$b; (274)
+03-17 10:48:45.650  5712  5712 W dalvikvm: Link of class 'Lk0/k$b;' failed
+03-17 10:48:45.650  5712  5712 D dalvikvm: DexOpt: unable to opt direct call 0xd82d at 0x28 in Lk0/k;.d
+03-17 10:48:45.970  5712  5712 I HUREV   : [1] AapService.onCreate | Auto-started continuous log capture
+03-17 10:48:46.280  5712  5712 I HUREV   : [1] AapService.onCreate | Auto-started continuous log capture
+03-17 10:48:46.340  5712  5712 I Choreographer: Skipped 54 frames!  The application may be doing too much work on its main thread.
+03-17 10:48:47.340  5712  5712 D libEGL  : loaded /system/lib/egl/libEGL_VIVANTE.so
+03-17 10:48:49.330  5712  5712 D libEGL  : loaded /system/lib/egl/libGLESv1_CM_VIVANTE.so
+03-17 10:48:49.640  5712  5712 D libEGL  : loaded /system/lib/egl/libGLESv2_VIVANTE.so
+03-17 10:48:50.040  5712  5712 D OpenGLRenderer: Enabling debug mode 0
+03-17 10:48:50.200  5712  5712 I HUREV   : [1] a.a | Request location updates
+03-17 10:48:50.200  5712  5712 I HUREV   : [1] a.a | Last known location:  Unknown
+03-17 10:48:50.270  5712  5712 I Choreographer: Skipped 218 frames!  The application may be doing too much work on its main thread.
+03-17 10:48:50.580  5712  5712 D zjy     : view visibility = 7
+03-17 10:48:52.630  5712  5712 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/ViewOutlineProvider;)
+03-17 10:48:52.630  5712  5712 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/view/ViewOutlineProvider;)
+03-17 10:48:52.670  5712  5712 I dalvikvm: Could not find method android.widget.LinearLayout.setElevation, referenced from method com.google.android.material.appbar.AppBarLayout.setElevation
+03-17 10:48:52.670  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 4194: Landroid/widget/LinearLayout;.setElevation (F)V
+03-17 10:48:52.670  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 10:48:52.750  5712  5712 I dalvikvm: Could not find method android.view.ViewGroup.setElevation, referenced from method com.google.android.material.appbar.MaterialToolbar.setElevation
+03-17 10:48:52.750  5712  5712 W dalvikvm: VFY: unable to resolve virtual method 3431: Landroid/view/ViewGroup;.setElevation (F)V
+03-17 10:48:52.750  5712  5712 D dalvikvm: VFY: replacing opcode 0x6f at 0x0000
+03-17 10:48:52.820  5712  5712 I dalvikvm: Could not find method android.widget.LinearLayout$LayoutParams.<init>, referenced from method com.google.android.material.appbar.AppBarLayout$d.<init>
+03-17 10:48:52.820  5712  5712 W dalvikvm: VFY: unable to resolve direct method 4163: Landroid/widget/LinearLayout$LayoutParams;.<init> (Landroid/widget/LinearLayout$LayoutParams;)V
+03-17 10:48:52.820  5712  5712 D dalvikvm: VFY: replacing opcode 0x70 at 0x0000
+03-17 10:48:57.050  5712  5712 I HUREV   : [1] n.c | Success controlTransfer len: 2  acc_ver: 2
+03-17 10:48:57.050  5712  5712 I HUREV   : [1] n.c | acc_ver: 2
+03-17 10:48:57.060  5712  5712 I HUREV   : [1] n.b | Success controlTransfer len: 7  index: 0  string: "Android"
+03-17 10:48:57.060  5712  5712 I HUREV   : [1] n.b | Success controlTransfer len: 12  index: 1  string: "Android Auto"
+03-17 10:48:57.070  5712  5712 I HUREV   : [1] n.b | Success controlTransfer len: 12  index: 2  string: "Android Auto"
+03-17 10:48:57.070  5712  5712 I HUREV   : [1] n.b | Success controlTransfer len: 5  index: 3  string: "2.0.1"
+03-17 10:48:57.070  5712  5712 I HUREV   : [1] n.b | Success controlTransfer len: 45  index: 4  string: "https://developer.android.com/auto/index.html"
+03-17 10:48:57.080  5712  5712 I HUREV   : [1] n.b | Success controlTransfer len: 12  index: 5  string: "HU-AAAAAA001"
+03-17 10:48:57.080  5712  5712 I HUREV   : [1] n.c | Sending acc start
+03-17 10:48:57.080  5712  5712 I HUREV   : [1] n.c | Acc start sent (len=0). Waiting for re-enumeration...
+03-17 10:48:57.580  5712  5712 D UsbDeviceConnectionJNI: close
+03-17 10:48:57.580  5712  5712 I HUREV   : [1] n.a | Result: true
+03-17 10:48:57.590  5712  5712 D AlfusResources: cookie name=/system/framework/framework-res.apk
+03-17 10:48:57.690  5712  5712 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 10:48:57.700  5712  5712 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 10:48:57.870  5712  5712 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 10:48:57.870  5712  5712 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000010 (has extras) }
+03-17 10:48:57.870  5712  5712 I HUREV   : [1] AapService.onUsbAttach | USB accessory device attached, connecting.
+03-17 10:48:57.880  5712  5712 I HUREV   : [1] AapService.u | Found device already in accessory mode: Google 18D1:2D00
+03-17 10:48:57.890  5712  5712 I HUREV   : [1] UsbAttachedActivity.onCreate | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x10000000 cmp=com.andrerinas.headunitrevived/.app.UsbAttachedActivity (has extras) }
+03-17 10:48:57.890  5712  5712 E HUREV   : [1] UsbAttachedActivity.onCreate | Usb in accessory mode
+03-17 10:48:58.040  5712  6408 I HUREV   : [175] m.l | Established connection: android.hardware.usb.UsbDeviceConnection@43958fb8
+03-17 10:48:58.040  5712  6408 I HUREV   : [175] m.l | interfaceCount: 1
+03-17 10:48:58.040  5712  6408 I HUREV   : [175] m.j | Check accessory endpoints
+03-17 10:48:58.040  5712  6408 I HUREV   : [175] m.j | Connected have EPs
+03-17 10:48:58.060  5712  5712 D zjy     : view visibility = 7
+03-17 10:48:58.190  5712  5712 I HUREV   : [1] AapService.t | WifiLock acquired (HIGH_PERF)
+03-17 10:48:58.230  5712  5712 D zjy     : view visibility = 7
+03-17 10:48:58.230  5712  5712 I HUREV   : [1] MainActivity.onResume | MainActivity: Active session detected, bringing projection to front
+03-17 10:48:58.270  5712  6408 I HUREV   : [175] s0.<init> | Using Java SSL implementation
+03-17 10:48:58.290  5712  6408 W dalvikvm: VFY: unable to find class referenced in signature (Landroid/media/AudioFocusRequest;)
+03-17 10:48:58.300  5712  6408 E dalvikvm: Could not find class 'android.media.AudioAttributes$Builder', referenced from method t0.j.c
+03-17 10:48:58.300  5712  6408 W dalvikvm: VFY: unable to resolve new-instance 245 (Landroid/media/AudioAttributes$Builder;) in Lt0/j;
+03-17 10:48:58.300  5712  6408 D dalvikvm: VFY: replacing opcode 0x22 at 0x004b
+03-17 10:48:58.300  5712  6408 D dalvikvm: DexOpt: unable to opt direct call 0x04eb at 0x4d in Lt0/j;.c
+03-17 10:48:58.300  5712  6408 D dalvikvm: DexOpt: unable to opt direct call 0x04f2 at 0x62 in Lt0/j;.c
+03-17 10:48:58.520  5712  5716 D dalvikvm: GC_CONCURRENT freed 8451K, 70% free 7920K/25856K, paused 11ms+33ms, total 266ms
+03-17 10:48:58.520  5712  6408 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 227ms
+03-17 10:48:58.530  5712  6408 I HUREV   : [175] s0.B | Start Aap transport handshake for w0.m@43953838
+03-17 10:48:58.970  5712  5716 D dalvikvm: GC_CONCURRENT freed 663K, 66% free 8899K/25856K, paused 7ms+5ms, total 103ms
+03-17 10:48:58.970  5712  5712 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 55ms
+03-17 10:48:58.970  5712  5712 I HUREV   : [1] AapProjectionActivity.onCreate | HeadUnit for Android Auto (tm) - Copyright 2011-2015 Michael A. Reid., since 2025 André Rinas All Rights Reserved...
+03-17 10:48:58.970  5712  5712 I HUREV   : [1] AapProjectionActivity.onCreate | Using TextureView
+03-17 10:48:58.980  5712  5712 I HUREV   : [1] g.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 10:48:58.980  5712  5712 I HUREV   : [1] g.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 10:48:58.980  5712  5712 I HUREV   : [1] g.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 10:48:58.980  5712  5712 D zjy     : view visibility = 7
+03-17 10:48:58.990  5712  5712 I HUREV   : [1] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-17 10:48:58.990  5712  5712 D zjy     : view visibility = 7
+03-17 10:48:59.100  5712  6408 I HUREV   : [175] m.e | USB reads recovered after 1 errors
+03-17 10:48:59.100  5712  6408 I HUREV   : [175] s0.l | Handshake: Version response received (ret=12, attempt=1).
+03-17 10:48:59.100  5712  6408 I HUREV   : [175] s0.l | Handshake: Version response recv ret: 12
+03-17 10:48:59.160  5712  5712 D zjy     : view visibility = 7
+03-17 10:48:59.460  5712  5712 I HUREV   : [1] i.onSurfaceTextureAvailable | TextureProjectionView: Surface available: 1920x720
+03-17 10:48:59.470  5712  5712 I HUREV   : [1] AapProjectionActivity.d | [AapProjectionActivity] onSurfaceCreated
+03-17 10:48:59.470  5712  5712 I HUREV   : [1] AapProjectionActivity.b | [AapProjectionActivity] onSurfaceChanged. Actual surface dimensions: width=1920, height=720
+03-17 10:48:59.470  5712  5712 I HUREV   : [1] a0.p | New surface set: Surface(name=android.graphics.SurfaceTexture@42e73098)
+03-17 10:48:59.770  5712  6408 I HUREV   : [175] n0.performHandshake | SSL handshake complete. Session id: 7ELego7RWuN7DAQ9fbZjAJPIgbLoPoop8kLvXH6v3Bs=
+03-17 10:48:59.780  5712  6408 I HUREV   : [175] s0.l | Handshake: Status OK sent: 8
+03-17 10:48:59.780  5712  6410 I HUREV   : [177] j.c | Audio Focus Request: stream=3, type=1
+03-17 10:48:59.780  5712  6410 D AudioManager: Qian:requestAudioFocus:3
+03-17 10:48:59.810  5712  6410 I HUREV   : [177] j.c | Audio focus request result (legacy): GRANTED
+03-17 10:48:59.830  5712  6410 I HUREV   : [177] s0.E | Start Aap transport read loop
+03-17 10:48:59.860  5712  6410 E dalvikvm: Could not find class 'android.app.NotificationChannel', referenced from method com.andrerinas.headunitrevived.aap.a$a.a
+03-17 10:48:59.880  5712  6410 W dalvikvm: VFY: unable to resolve new-instance 67 (Landroid/app/NotificationChannel;) in Lcom/andrerinas/headunitrevived/aap/a$a;
+03-17 10:48:59.880  5712  6410 D dalvikvm: VFY: replacing opcode 0x22 at 0x000b
+03-17 10:48:59.890  5712  6410 D dalvikvm: DexOpt: unable to opt direct call 0x019c at 0x16 in Lcom/andrerinas/headunitrevived/aap/a$a;.a
+03-17 10:48:59.920  5712  5712 I HUREV   : [1] g.onReceive | Received request to resend night mode state
+03-17 10:48:59.920  5712  5712 I HUREV   : [1] w.invoke | NightMode update: false
+03-17 10:48:59.920  5712  6428 I HUREV   : [181] p.h | Service Discovery Request: Android
+03-17 10:48:59.930  5712  6428 I HUREV   : [181] g.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 10:48:59.930  5712  6428 I HUREV   : [181] g.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 10:48:59.930  5712  6428 I HUREV   : [181] g.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 10:48:59.940  5712  6428 I HUREV   : [181] a.b | [ServiceDiscovery] Announcing NIGHT sensor support. Strategy: MANUAL_TIME
+03-17 10:48:59.960  5712  6428 I HUREV   : [181] a.b | [ServiceDiscovery] NegotiatedResolution is: 1920x1080
+03-17 10:48:59.960  5712  6428 I HUREV   : [181] a.b | [ServiceDiscovery] Margins are: 0x360
+03-17 10:48:59.980  5712  6428 I HUREV   : [181] a.b | BT MAC Address is empty. Skip bluetooth service
+03-17 10:49:00.120  5712  5716 D dalvikvm: GC_CONCURRENT freed 798K, 62% free 10069K/25856K, paused 12ms+33ms, total 177ms
+03-17 10:49:00.120  5712  5712 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 94ms
+03-17 10:49:00.330  5712  6428 I HUREV   : [181] m.e | USB reads recovered after 2 errors
+03-17 10:49:00.330  5712  6428 I HUREV   : [181] p.c | Audio Focus Request: RELEASE
+03-17 10:49:00.330  5712  6428 I HUREV   : [181] j.c | Audio Focus Request: stream=3, type=4
+03-17 10:49:00.330  5712  6428 D AudioManager: Qian:abandonAudioFocus:
+03-17 10:49:00.330  5712  6428 I HUREV   : [181] j.c | Audio focus request result (legacy): GRANTED
+03-17 10:49:00.340  5712  6428 I HUREV   : [181] p.c | Sending immediate AudioFocusNotification: STATE_LOSS
+03-17 10:49:00.400  5712  6428 I HUREV   : [181] m.b | Media Sink Setup Request: 2 on channel AUDIO2
+03-17 10:49:00.480  5712  6428 I HUREV   : [181] m.b | Config response: status: HEADUNIT
+03-17 10:49:00.480  5712  6428 I HUREV   : max_unacked: 3
+03-17 10:49:00.480  5712  6428 I HUREV   : configuration_indices: 0
+03-17 10:49:00.480  5712  6428 I HUREV   : [181] m.b | Media Sink Setup Request: 2 on channel AUDIO1
+03-17 10:49:00.480  5712  6428 I HUREV   : [181] m.b | Config response: status: HEADUNIT
+03-17 10:49:00.480  5712  6428 I HUREV   : max_unacked: 3
+03-17 10:49:00.480  5712  6428 I HUREV   : configuration_indices: 0
+03-17 10:49:00.490  5712  6428 I HUREV   : [181] n.b | Sensor Start Request sensor: DRIVING_STATUS, minUpdatePeriod: 0
+03-17 10:49:00.490  5712  6428 I HUREV   : [181] n.b | SENSOR Sensor Start Response type: 32770 flags: 11 size: 8 dataOffset: 6
+03-17 10:49:00.490  5712  6428 I HUREV   : [181] m.b | Media Sink Setup Request: 2 on channel AUDIO
+03-17 10:49:00.490  5712  6428 I HUREV   : [181] m.b | Config response: status: HEADUNIT
+03-17 10:49:00.490  5712  6428 I HUREV   : max_unacked: 3
+03-17 10:49:00.490  5712  6428 I HUREV   : configuration_indices: 0
+03-17 10:49:00.500  5712  6428 W HUREV   : [181] t0.a | AapVideo: Dropped Flag 11 packet. len=4, buf[10]=?
+03-17 10:49:00.500  5712  6428 I HUREV   : [181] m.b | Media Sink Setup Request: 3 on channel VIDEO
+03-17 10:49:00.500  5712  6428 I HUREV   : [181] m.b | Config response: status: HEADUNIT
+03-17 10:49:00.500  5712  6428 I HUREV   : max_unacked: 1
+03-17 10:49:00.500  5712  6428 I HUREV   : configuration_indices: 0
+03-17 10:49:00.500  5712  6428 I HUREV   : [181] n.b | Sensor Start Request sensor: NIGHT, minUpdatePeriod: 0
+03-17 10:49:00.500  5712  6428 I HUREV   : [181] n.b | SENSOR Sensor Start Response type: 32770 flags: 11 size: 8 dataOffset: 6
+03-17 10:49:00.500  5712  6428 I HUREV   : [181] n.b | Night sensor requested. Triggering immediate update.
+03-17 10:49:00.530  5712  5712 I HUREV   : [1] g.onReceive | Received request to resend night mode state
+03-17 10:49:00.530  5712  5712 I HUREV   : [1] w.invoke | NightMode update: false
+03-17 10:49:00.540  5712  5712 I HUREV   : [1] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-17 10:49:00.540  5712  5712 I HUREV   : [1] AapProjectionActivity.onNewIntent | AapProjectionActivity: onNewIntent received
+03-17 10:49:00.550  5712  5712 I HUREV   : [1] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-17 10:49:00.550  5712  5712 D zjy     : view visibility = 7
+03-17 10:49:03.010  5712  6428 W HUREV   : [181] m.e | USB read errors (10) for 2s — waiting for recovery...
+03-17 10:49:03.560  5712  5712 W HUREV   : [1] k.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-17 10:49:03.580  5712  6428 I HUREV   : [181] m.e | USB reads recovered after 11 errors
+03-17 10:49:03.580  5712  6428 W HUREV   : [181] t0.a | AapVideo: Dropped Flag 11 packet. len=6, buf[10]=?
+03-17 10:49:03.580  5712  6428 I HUREV   : [181] m.d | Media Start Request VIDEO: session_id: 0
+03-17 10:49:03.580  5712  6428 I HUREV   : configuration_index: 0
+03-17 10:49:04.300  5712  6428 I HUREV   : [181] m.e | USB reads recovered after 4 errors
+03-17 10:49:04.310  5712  6428 I HUREV   : [181] a0.c | H.264/AVC config detected in frame (30 bytes)
+03-17 10:49:04.320  5712  6428 I HUREV   : [181] a0.m | SPS parsed: 1920x1080
+03-17 10:49:04.320  5712  6428 I HUREV   : [181] AapProjectionActivity.a | [AapProjectionActivity] Received video dimensions: 1920x1080
+03-17 10:49:04.330  5712  5712 I HUREV   : [1] i.a | TextureProjectionView
+03-17 10:49:04.340  5712  5712 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1080, Content: 1920x640, View: 1920x720
+03-17 10:49:04.340  5712  5712 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 10:49:04.350  5712  6518 I OMXClient: Using client-side OMX mux.
+03-17 10:49:04.360  5712  6428 I HUREV   : [181] a0.q | Configuring decoder: OMX.Freescale.std.video_decoder.avc.v3.hw-based with surface
+03-17 10:49:04.370  5712  6518 I ACodec  : Send reorder config(0) to VPU
+03-17 10:49:05.250  5712  6428 I HUREV   : [181] a0.q | Codec initialized: OMX.Freescale.std.video_decoder.avc.v3.hw-based for stream 1920x1080
+03-17 10:49:05.260  5712  6529 I HUREV   : [183] a0.l | Output thread started
+03-17 10:49:05.580  5712  6529 I HUREV   : [183] a0.j | Output Format Changed: {height=1088, what=1869968451, color-format=19, slice-height=0, crop-left=0, width=1920, crop-bottom=1079, crop-top=0, mime=video/raw, stride=1920, crop-right=1919}
+03-17 10:49:05.580  5712  6529 I HUREV   : [183] a0.j | Video dimensions changed via format: 1920x1088
+03-17 10:49:05.580  5712  6529 I HUREV   : [183] AapProjectionActivity.a | [AapProjectionActivity] Received video dimensions: 1920x1088
+03-17 10:49:05.590  5712  6518 E ACodec  : dequeueBuffer failed.
+03-17 10:49:05.590  5712  5712 I HUREV   : [1] i.a | TextureProjectionView
+03-17 10:49:05.600  5712  5712 I HUREV   : [1] h.a | ProjectionViewScaler: Dimensions: Video: 1920x1088, Content: 1920x640, View: 1920x720
+03-17 10:49:05.610  5712  5712 I HUREV   : [1] h.a | ProjectionViewScaler: Scale updated for view i. scaleX: 1.0, scaleY: 1.5
+03-17 10:49:05.620  5712  6518 E ACodec  : dequeueBuffer failed.
+03-17 10:49:07.840  5712  6428 I HUREV   : [181] m.e | USB reads recovered after 5 errors
+03-17 10:49:09.310  5712  6428 I HUREV   : [181] m.e | USB reads recovered after 3 errors
+03-17 10:49:10.870  5712  6428 I HUREV   : [181] m.e | USB reads recovered after 6 errors
+03-17 10:49:12.440  5712  6428 I HUREV   : [181] m.e | USB reads recovered after 2 errors
+03-17 10:49:14.180  5712  6428 I HUREV   : [181] p.c | Audio Focus Request: GAIN
+03-17 10:49:14.180  5712  6428 I HUREV   : [181] j.c | Audio Focus Request: stream=3, type=1
+03-17 10:49:14.180  5712  6428 D AudioManager: Qian:requestAudioFocus:3
+03-17 10:49:14.190  5712  5722 D AudioManager: dispatchAudioFocusChange [android.media.AudioManager@4396e758w0.d@42e53ea0], hint = -1
+03-17 10:49:14.190  5712  6428 I HUREV   : [181] j.c | Audio focus request result (legacy): GRANTED
+03-17 10:49:14.190  5712  6428 I HUREV   : [181] p.c | Sending immediate AudioFocusNotification: STATE_GAIN
+03-17 10:49:14.200  5712  5712 D AudioManager: Begin listener.onAudioFocusChange  [android.media.AudioManager@4396e758w0.d@42e53ea0], hint = -1
+03-17 10:49:14.220  5712  5712 D AudioManager: End listener.onAudioFocusChange [android.media.AudioManager@4396e758w0.d@42e53ea0], hint = -1
+03-17 10:49:17.820  5712  5716 D dalvikvm: GC_CONCURRENT freed 1913K, 60% free 10387K/25856K, paused 15ms+7ms, total 132ms
+03-17 10:49:27.130  5712  6428 W HUREV   : [181] a0.e | Decoder input buffer full, retrying...
+03-17 10:49:34.930  5712  6428 W HUREV   : [181] a0.e | Decoder input buffer full, retrying...
+03-17 10:49:35.850  5712  5716 D dalvikvm: GC_CONCURRENT freed 2435K, 60% free 10400K/25856K, paused 36ms+16ms, total 284ms
+03-17 10:49:35.850  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 56ms
+03-17 10:49:35.860  5712  5718 I dalvikvm: Jit: resizing JitTable from 4096 to 8192
+03-17 10:49:38.940  5712  6428 W HUREV   : [181] a0.e | Decoder input buffer full, retrying...
+03-17 10:49:48.520  5712  5716 D dalvikvm: GC_CONCURRENT freed 2375K, 60% free 10392K/25856K, paused 26ms+8ms, total 360ms
+03-17 10:49:50.680  5712  5712 D zjy     : view visibility = 7
+03-17 10:50:04.800  5712  5712 I HUREV   : [1] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-17 10:50:04.880  5712  5712 D zjy     : view visibility = 7
+03-17 10:50:04.990  5712  5712 I HUREV   : [1] AapProjectionActivity.onResume | AapProjectionActivity: onResume
+03-17 10:50:04.990  5712  5712 D zjy     : view visibility = 7
+03-17 10:50:07.790  5712  5716 D dalvikvm: GC_CONCURRENT freed 2352K, 60% free 10388K/25856K, paused 11ms+8ms, total 159ms
+03-17 10:50:23.850  5712  5716 D dalvikvm: GC_CONCURRENT freed 2382K, 60% free 10431K/25856K, paused 11ms+11ms, total 149ms
+03-17 10:50:31.480  5712  5716 D dalvikvm: GC_CONCURRENT freed 2499K, 60% free 10416K/25856K, paused 8ms+10ms, total 147ms
+03-17 10:50:34.990  5712  5716 D dalvikvm: GC_CONCURRENT freed 2442K, 60% free 10392K/25856K, paused 11ms+7ms, total 143ms
+03-17 10:50:36.950  5712  6428 W HUREV   : [181] a0.e | Decoder input buffer full, retrying...
+03-17 10:50:39.160  5712  5716 D dalvikvm: GC_CONCURRENT freed 2353K, 60% free 10405K/25856K, paused 8ms+4ms, total 97ms
+03-17 10:50:43.230  5712  5716 D dalvikvm: GC_CONCURRENT freed 2438K, 60% free 10440K/25856K, paused 13ms+5ms, total 179ms
+03-17 10:50:46.500  5712  5716 D dalvikvm: GC_CONCURRENT freed 2475K, 60% free 10426K/25856K, paused 8ms+11ms, total 190ms
+03-17 10:50:49.790  5712  5716 D dalvikvm: GC_CONCURRENT freed 2448K, 60% free 10409K/25856K, paused 15ms+12ms, total 123ms
+03-17 10:50:54.500  5712  5716 D dalvikvm: GC_CONCURRENT freed 2408K, 60% free 10416K/25856K, paused 16ms+9ms, total 120ms
+03-17 10:51:00.990  5712  5716 D dalvikvm: GC_CONCURRENT freed 2478K, 60% free 10404K/25856K, paused 20ms+9ms, total 183ms
+03-17 10:51:00.990  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 85ms
+03-17 10:51:04.270  5712  5716 D dalvikvm: GC_CONCURRENT freed 2448K, 60% free 10441K/25856K, paused 9ms+11ms, total 181ms
+03-17 10:51:07.080  5712  5716 D dalvikvm: GC_CONCURRENT freed 2463K, 60% free 10417K/25856K, paused 18ms+7ms, total 118ms
+03-17 10:51:08.270  5712  6428 I HUREV   : [181] m.d | Media Start Request AUDIO: session_id: 0
+03-17 10:51:08.270  5712  6428 I HUREV   : configuration_index: 0
+03-17 10:51:08.300  5712  6428 I HUREV   : [181] j.a | AudioDecoder.start: channel=6, stream=3, gain=1.0, sampleRate=48000, numberOfBits=16, numberOfChannels=2, isAac=true
+03-17 10:51:08.300  5712  6428 E dalvikvm: Could not find class 'android.media.AudioAttributes$Builder', referenced from method y0.s.f
+03-17 10:51:08.300  5712  6428 W dalvikvm: VFY: unable to resolve new-instance 245 (Landroid/media/AudioAttributes$Builder;) in Ly0/s;
+03-17 10:51:08.300  5712  6428 D dalvikvm: VFY: replacing opcode 0x22 at 0x0054
+03-17 10:51:08.310  5712  6428 W dalvikvm: Unable to resolve superclass of Ly0/s$a; (257)
+03-17 10:51:08.310  5712  6428 W dalvikvm: Link of class 'Ly0/s$a;' failed
+03-17 10:51:08.310  5712  6428 E dalvikvm: Could not find class 'y0.s$a', referenced from method y0.s.i
+03-17 10:51:08.310  5712  6428 W dalvikvm: VFY: unable to resolve new-instance 6443 (Ly0/s$a;) in Ly0/s;
+03-17 10:51:08.310  5712  6428 D dalvikvm: VFY: replacing opcode 0x22 at 0x0040
+03-17 10:51:08.310  5712  6428 D dalvikvm: DexOpt: unable to opt direct call 0x04eb at 0x56 in Ly0/s;.f
+03-17 10:51:08.310  5712  6428 D dalvikvm: DexOpt: unable to opt direct call 0x04f7 at 0x63 in Ly0/s;.f
+03-17 10:51:08.320  5712  6428 D dalvikvm: DexOpt: unable to opt direct call 0x0514 at 0x78 in Ly0/s;.f
+03-17 10:51:08.320  5712  6428 W dalvikvm: Unable to resolve superclass of Ly0/s$a; (257)
+03-17 10:51:08.320  5712  6428 W dalvikvm: Link of class 'Ly0/s$a;' failed
+03-17 10:51:08.320  5712  6428 D dalvikvm: DexOpt: unable to opt direct call 0xf20a at 0x42 in Ly0/s;.i
+03-17 10:51:08.330  5712  6428 I HUREV   : [181] s.f | Audio stream: 3 buffer size: 245760 (min: 30720) sampleRateInHz: 48000 channelCount: 2
+03-17 10:51:08.340  5712  6428 D AudioTrack: AudioTrack::start 0x40029410,mStreamType=3
+03-17 10:51:08.360  5712  8419 I OMXClient: Using client-side OMX mux.
+03-17 10:51:08.390  5712  8419 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:51:08.390  5712  8419 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:51:08.390  5712  8419 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:51:08.390  5712  8419 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:51:08.390  5712  8419 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:51:08.390  5712  8419 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:51:08.390  5712  8419 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:51:08.390  5712  8419 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:51:08.390  5712  8419 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:51:08.390  5712  8419 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:51:08.390  5712  8419 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:51:08.390  5712  8419 E OMXMaster: A component of name 'OMX.Freescale.std.parser.streaming.sw-based' already exists, ignoring this one.
+03-17 10:51:08.390  5712  8419 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:51:08.410  5712  6428 I HUREV   : [181] s.i | AAC Decoder started for 48000 Hz, 2 channels with is-adts (Async)
+03-17 10:51:08.410  5712  8420 I SoftAAC2: Reconfiguring decoder: 0->48000 Hz, 0->2 channels
+03-17 10:51:08.750  5712  8422 W AudioTrack: releaseBuffer() track 0x40029410 name=0 disabled, restarting
+03-17 10:51:09.150  5712  8422 W AudioTrack: releaseBuffer() track 0x40029410 name=0 disabled, restarting
+03-17 10:51:09.500  5712  5716 D dalvikvm: GC_CONCURRENT freed 2496K, 60% free 10394K/25856K, paused 14ms+9ms, total 202ms
+03-17 10:51:09.500  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 80ms
+03-17 10:51:09.560  5712  8422 W AudioTrack: releaseBuffer() track 0x40029410 name=0 disabled, restarting
+03-17 10:51:11.860  5712  5716 D dalvikvm: GC_CONCURRENT freed 2435K, 60% free 10415K/25856K, paused 11ms+8ms, total 120ms
+03-17 10:51:11.860  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 64ms
+03-17 10:51:12.730  5712  5716 D dalvikvm: GC_CONCURRENT freed 2265K, 59% free 10624K/25856K, paused 7ms+9ms, total 145ms
+03-17 10:51:12.730  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 69ms
+03-17 10:51:12.740  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 49ms
+03-17 10:51:12.740  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 29ms
+03-17 10:51:14.320  5712  5716 D dalvikvm: GC_CONCURRENT freed 2540K, 59% free 10627K/25856K, paused 12ms+7ms, total 128ms
+03-17 10:51:14.320  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 34ms
+03-17 10:51:14.320  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 30ms
+03-17 10:51:16.090  5712  5716 D dalvikvm: GC_CONCURRENT freed 2529K, 59% free 10640K/25856K, paused 25ms+4ms, total 148ms
+03-17 10:51:16.090  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 74ms
+03-17 10:51:16.090  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 71ms
+03-17 10:51:17.970  5712  5716 D dalvikvm: GC_CONCURRENT freed 2551K, 59% free 10636K/25856K, paused 16ms+8ms, total 146ms
+03-17 10:51:17.970  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 99ms
+03-17 10:51:17.970  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 69ms
+03-17 10:51:20.610  5712  5716 D dalvikvm: GC_CONCURRENT freed 2541K, 59% free 10637K/25856K, paused 11ms+4ms, total 105ms
+03-17 10:51:20.610  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 46ms
+03-17 10:51:22.010  5712  5716 D dalvikvm: GC_CONCURRENT freed 2542K, 59% free 10641K/25856K, paused 26ms+5ms, total 120ms
+03-17 10:51:22.010  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 62ms
+03-17 10:51:22.010  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 26ms
+03-17 10:51:23.870  5712  5716 D dalvikvm: GC_CONCURRENT freed 2556K, 59% free 10631K/25856K, paused 8ms+6ms, total 116ms
+03-17 10:51:23.870  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 56ms
+03-17 10:51:25.940  5712  5716 D dalvikvm: GC_CONCURRENT freed 2546K, 59% free 10630K/25856K, paused 10ms+5ms, total 133ms
+03-17 10:51:25.940  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 17ms
+03-17 10:51:25.940  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 31ms
+03-17 10:51:28.010  5712  5716 D dalvikvm: GC_CONCURRENT freed 2544K, 59% free 10641K/25856K, paused 8ms+7ms, total 135ms
+03-17 10:51:28.010  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 30ms
+03-17 10:51:30.060  5712  5716 D dalvikvm: GC_CONCURRENT freed 2554K, 59% free 10639K/25856K, paused 12ms+5ms, total 153ms
+03-17 10:51:30.060  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 33ms
+03-17 10:51:32.080  5712  5716 D dalvikvm: GC_CONCURRENT freed 2548K, 59% free 10640K/25856K, paused 16ms+6ms, total 149ms
+03-17 10:51:32.080  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 53ms
+03-17 10:51:32.080  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 26ms
+03-17 10:51:32.080  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 48ms
+03-17 10:51:34.180  5712  5716 D dalvikvm: GC_CONCURRENT freed 2533K, 59% free 10659K/25856K, paused 8ms+9ms, total 118ms
+03-17 10:51:36.240  5712  5716 D dalvikvm: GC_CONCURRENT freed 2540K, 59% free 10652K/25856K, paused 15ms+8ms, total 138ms
+03-17 10:51:38.100  5712  5716 D dalvikvm: GC_CONCURRENT freed 2561K, 59% free 10637K/25856K, paused 16ms+9ms, total 175ms
+03-17 10:51:38.100  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 82ms
+03-17 10:51:39.920  5712  5716 D dalvikvm: GC_CONCURRENT freed 2538K, 59% free 10636K/25856K, paused 11ms+13ms, total 150ms
+03-17 10:51:39.920  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 58ms
+03-17 10:51:41.850  5712  5716 D dalvikvm: GC_CONCURRENT freed 2548K, 59% free 10645K/25856K, paused 9ms+6ms, total 96ms
+03-17 10:51:43.960  5712  5716 D dalvikvm: GC_CONCURRENT freed 2549K, 59% free 10650K/25856K, paused 9ms+10ms, total 135ms
+03-17 10:51:45.750  5712  5716 D dalvikvm: GC_CONCURRENT freed 2571K, 59% free 10621K/25856K, paused 33ms+5ms, total 171ms
+03-17 10:51:45.750  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 88ms
+03-17 10:51:47.460  5712  5716 D dalvikvm: GC_CONCURRENT freed 2524K, 59% free 10630K/25856K, paused 13ms+9ms, total 149ms
+03-17 10:51:47.460  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 57ms
+03-17 10:51:49.340  5712  5716 D dalvikvm: GC_CONCURRENT freed 2534K, 59% free 10667K/25856K, paused 9ms+8ms, total 137ms
+03-17 10:51:51.120  5712  5716 D dalvikvm: GC_CONCURRENT freed 2571K, 59% free 10656K/25856K, paused 6ms+12ms, total 132ms
+03-17 10:51:51.120  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 43ms
+03-17 10:51:52.850  5712  5716 D dalvikvm: GC_CONCURRENT freed 2568K, 59% free 10643K/25856K, paused 16ms+12ms, total 177ms
+03-17 10:51:52.850  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 82ms
+03-17 10:51:52.850  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 69ms
+03-17 10:51:54.690  5712  5716 D dalvikvm: GC_CONCURRENT freed 2555K, 59% free 10638K/25856K, paused 11ms+8ms, total 169ms
+03-17 10:51:54.690  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 41ms
+03-17 10:51:54.690  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 29ms
+03-17 10:51:56.690  5712  5716 D dalvikvm: GC_CONCURRENT freed 2546K, 59% free 10640K/25856K, paused 9ms+7ms, total 132ms
+03-17 10:51:56.690  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 26ms
+03-17 10:51:56.690  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 25ms
+03-17 10:51:58.510  5712  5716 D dalvikvm: GC_CONCURRENT freed 2541K, 59% free 10644K/25856K, paused 15ms+5ms, total 138ms
+03-17 10:51:58.510  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 70ms
+03-17 10:52:00.510  5712  5716 D dalvikvm: GC_CONCURRENT freed 2551K, 59% free 10641K/25856K, paused 15ms+8ms, total 145ms
+03-17 10:52:00.510  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 67ms
+03-17 10:52:00.510  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 59ms
+03-17 10:52:02.290  5712  5716 D dalvikvm: GC_CONCURRENT freed 2548K, 59% free 10641K/25856K, paused 8ms+19ms, total 162ms
+03-17 10:52:02.290  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 51ms
+03-17 10:52:02.290  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 51ms
+03-17 10:52:04.770  5712  5716 D dalvikvm: GC_CONCURRENT freed 2543K, 59% free 10637K/25856K, paused 8ms+4ms, total 127ms
+03-17 10:52:04.770  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 59ms
+03-17 10:52:06.480  5712  5716 D dalvikvm: GC_CONCURRENT freed 2540K, 59% free 10642K/25856K, paused 9ms+7ms, total 120ms
+03-17 10:52:06.480  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 54ms
+03-17 10:52:08.210  5712  5716 D dalvikvm: GC_CONCURRENT freed 2519K, 59% free 10653K/25856K, paused 8ms+7ms, total 115ms
+03-17 10:52:09.900  5712  5716 D dalvikvm: GC_CONCURRENT freed 2559K, 59% free 10644K/25856K, paused 9ms+6ms, total 131ms
+03-17 10:52:09.900  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 78ms
+03-17 10:52:10.550  5712  6428 I HUREV   : [181] m.d | Media Start Request AUDIO1: session_id: 0
+03-17 10:52:10.550  5712  6428 I HUREV   : configuration_index: 0
+03-17 10:52:10.570  5712  6428 I HUREV   : [181] j.a | AudioDecoder.start: channel=4, stream=3, gain=1.0, sampleRate=16000, numberOfBits=16, numberOfChannels=1, isAac=true
+03-17 10:52:10.570  5712  6428 I HUREV   : [181] s.f | Audio stream: 3 buffer size: 40960 (min: 5120) sampleRateInHz: 16000 channelCount: 1
+03-17 10:52:10.580  5712  6428 D AudioTrack: AudioTrack::start 0x68783688,mStreamType=3
+03-17 10:52:10.580  5712  8949 I OMXClient: Using client-side OMX mux.
+03-17 10:52:10.580  5712  8949 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:52:10.580  5712  8949 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:52:10.580  5712  8949 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:52:10.580  5712  8949 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:52:10.580  5712  8949 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:52:10.580  5712  8949 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:52:10.580  5712  8949 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:52:10.590  5712  8949 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:52:10.590  5712  8949 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:52:10.590  5712  8949 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:52:10.590  5712  8949 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:52:10.590  5712  8949 E OMXMaster: A component of name 'OMX.Freescale.std.parser.streaming.sw-based' already exists, ignoring this one.
+03-17 10:52:10.590  5712  8949 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:52:10.600  5712  6428 I HUREV   : [181] s.i | AAC Decoder started for 16000 Hz, 1 channels with is-adts (Async)
+03-17 10:52:10.600  5712  8950 I SoftAAC2: Reconfiguring decoder: 0->16000 Hz, 0->1 channels
+03-17 10:52:11.010  5712  8952 W AudioTrack: releaseBuffer() track 0x68783688 name=0x1 disabled, restarting
+03-17 10:52:11.520  5712  8952 W AudioTrack: releaseBuffer() track 0x68783688 name=0x1 disabled, restarting
+03-17 10:52:11.780  5712  5716 D dalvikvm: GC_CONCURRENT freed 2553K, 59% free 10639K/25856K, paused 14ms+8ms, total 163ms
+03-17 10:52:11.780  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 106ms
+03-17 10:52:11.870  5712  6428 I HUREV   : [181] m.c | Media Sink Stop Request: AUDIO1
+03-17 10:52:11.870  5712  6428 I HUREV   : [181] j.d | Audio Stop: AUDIO1
+03-17 10:52:11.930  5712  8952 D AudioTrack: AudioTrack::stop 0x68783688,mStreamType=3
+03-17 10:52:11.930  5712  8952 E HUREV   : [3854] s.e | Error during audio track cleanup
+03-17 10:52:11.930  5712  8952 E HUREV   : java.lang.InterruptedException
+03-17 10:52:11.930  5712  8952 E HUREV   : 	at java.lang.VMThread.sleep(Native Method)
+03-17 10:52:11.930  5712  8952 E HUREV   : 	at java.lang.Thread.sleep(Thread.java:1013)
+03-17 10:52:11.930  5712  8952 E HUREV   : 	at java.lang.Thread.sleep(Thread.java:995)
+03-17 10:52:11.930  5712  8952 E HUREV   : 	at y0.s.e(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:125)
+03-17 10:52:11.930  5712  8952 E HUREV   : 	at y0.s.run(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:85)
+03-17 10:52:11.930  5712  8952 D AudioTrack: AudioTrack::stop 0x68783688,mStreamType=3
+03-17 10:52:11.930  5712  8952 D AudioTrack: AudioTrack::stop 0x68783688,mStreamType=3
+03-17 10:52:11.930  5712  8952 D AudioTrack: AudioTrack::stop 0x68783688,mStreamType=3
+03-17 10:52:11.930  5712  8952 I HUREV   : [3854] s.run | AudioTrackWrapper thread finished.
+03-17 10:52:13.380  5712  5716 D dalvikvm: GC_CONCURRENT freed 2543K, 59% free 10641K/25856K, paused 8ms+13ms, total 168ms
+03-17 10:52:13.380  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 94ms
+03-17 10:52:13.380  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 77ms
+03-17 10:52:15.060  5712  5716 D dalvikvm: GC_CONCURRENT freed 2552K, 59% free 10638K/25856K, paused 14ms+8ms, total 159ms
+03-17 10:52:15.060  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 18ms
+03-17 10:52:15.060  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 27ms
+03-17 10:52:16.820  5712  5716 D dalvikvm: GC_CONCURRENT freed 2528K, 59% free 10652K/25856K, paused 8ms+7ms, total 128ms
+03-17 10:52:16.820  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 24ms
+03-17 10:52:18.760  5712  5716 D dalvikvm: GC_CONCURRENT freed 2576K, 59% free 10627K/25856K, paused 14ms+13ms, total 164ms
+03-17 10:52:18.760  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 54ms
+03-17 10:52:20.340  5712  5716 D dalvikvm: GC_CONCURRENT freed 2548K, 59% free 10623K/25856K, paused 15ms+5ms, total 133ms
+03-17 10:52:20.340  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 58ms
+03-17 10:52:20.340  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 56ms
+03-17 10:52:20.340  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 47ms
+03-17 10:52:22.400  5712  5716 D dalvikvm: GC_CONCURRENT freed 2525K, 59% free 10657K/25856K, paused 7ms+7ms, total 100ms
+03-17 10:52:22.400  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 15ms
+03-17 10:52:24.270  5712  5716 D dalvikvm: GC_CONCURRENT freed 2567K, 59% free 10643K/25856K, paused 7ms+7ms, total 126ms
+03-17 10:52:24.270  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 29ms
+03-17 10:52:24.270  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 8ms
+03-17 10:52:26.050  5712  5716 D dalvikvm: GC_CONCURRENT freed 2552K, 59% free 10637K/25856K, paused 10ms+8ms, total 121ms
+03-17 10:52:26.050  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 25ms
+03-17 10:52:26.050  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 21ms
+03-17 10:52:28.430  5712  5716 D dalvikvm: GC_CONCURRENT freed 2549K, 59% free 10635K/25856K, paused 9ms+4ms, total 107ms
+03-17 10:52:28.430  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 54ms
+03-17 10:52:28.430  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 38ms
+03-17 10:52:30.940  5712  5716 D dalvikvm: GC_CONCURRENT freed 2525K, 59% free 10648K/25856K, paused 11ms+6ms, total 131ms
+03-17 10:52:30.940  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 43ms
+03-17 10:52:32.470  5712  5716 D dalvikvm: GC_CONCURRENT freed 2548K, 59% free 10649K/25856K, paused 10ms+9ms, total 132ms
+03-17 10:52:32.470  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 44ms
+03-17 10:52:34.320  5712  5716 D dalvikvm: GC_CONCURRENT freed 2550K, 59% free 10650K/25856K, paused 17ms+5ms, total 145ms
+03-17 10:52:38.500  5712  5716 D dalvikvm: GC_CONCURRENT freed 2568K, 59% free 10622K/25856K, paused 14ms+5ms, total 96ms
+03-17 10:52:38.500  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 48ms
+03-17 10:52:39.440  5712  5716 D dalvikvm: GC_CONCURRENT freed 2540K, 59% free 10625K/25856K, paused 12ms+8ms, total 119ms
+03-17 10:52:39.440  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 37ms
+03-17 10:52:39.440  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 25ms
+03-17 10:52:41.110  5712  5716 D dalvikvm: GC_CONCURRENT freed 2550K, 59% free 10619K/25856K, paused 13ms+6ms, total 142ms
+03-17 10:52:41.110  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 24ms
+03-17 10:52:41.110  5712  6427 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 29ms
+03-17 10:52:42.980  5712  5716 D dalvikvm: GC_CONCURRENT freed 2514K, 59% free 10640K/25856K, paused 12ms+6ms, total 140ms
+03-17 10:52:42.980  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 22ms
+03-17 10:52:44.860  5712  5716 D dalvikvm: GC_CONCURRENT freed 2569K, 59% free 10619K/25856K, paused 14ms+5ms, total 129ms
+03-17 10:52:44.860  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 67ms
+03-17 10:52:44.860  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 65ms
+03-17 10:52:44.860  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 52ms
+03-17 10:52:46.760  5712  5716 D dalvikvm: GC_CONCURRENT freed 2519K, 59% free 10642K/25856K, paused 8ms+4ms, total 153ms
+03-17 10:52:46.760  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 38ms
+03-17 10:52:46.770  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 37ms
+03-17 10:52:46.770  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 27ms
+03-17 10:52:48.370  5712  5716 D dalvikvm: GC_CONCURRENT freed 2562K, 59% free 10622K/25856K, paused 7ms+4ms, total 121ms
+03-17 10:52:48.370  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 56ms
+03-17 10:52:52.710  5712  5716 D dalvikvm: GC_CONCURRENT freed 2457K, 59% free 10641K/25856K, paused 7ms+6ms, total 102ms
+03-17 10:52:57.860  5712  5716 D dalvikvm: GC_CONCURRENT freed 2534K, 59% free 10650K/25856K, paused 14ms+9ms, total 184ms
+03-17 10:53:03.060  5712  5716 D dalvikvm: GC_CONCURRENT freed 2479K, 59% free 10644K/25856K, paused 13ms+8ms, total 108ms
+03-17 10:53:08.180  5712  5716 D dalvikvm: GC_CONCURRENT freed 2462K, 59% free 10642K/25856K, paused 4ms+6ms, total 84ms
+03-17 10:53:13.300  5712  5716 D dalvikvm: GC_CONCURRENT freed 2468K, 59% free 10634K/25856K, paused 8ms+5ms, total 87ms
+03-17 10:53:18.470  5712  5716 D dalvikvm: GC_CONCURRENT freed 2472K, 59% free 10630K/25856K, paused 15ms+5ms, total 112ms
+03-17 10:53:24.720  5712  5716 D dalvikvm: GC_CONCURRENT freed 2439K, 59% free 10638K/25856K, paused 8ms+4ms, total 82ms
+03-17 10:53:28.170  5712  5716 D dalvikvm: GC_CONCURRENT freed 2535K, 59% free 10642K/25856K, paused 10ms+7ms, total 105ms
+03-17 10:53:28.180  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 56ms
+03-17 10:53:29.390  5712  5716 D dalvikvm: GC_CONCURRENT freed 2555K, 59% free 10622K/25856K, paused 10ms+5ms, total 108ms
+03-17 10:53:29.390  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 57ms
+03-17 10:53:30.830  5712  5716 D dalvikvm: GC_CONCURRENT freed 2523K, 59% free 10642K/25856K, paused 15ms+7ms, total 143ms
+03-17 10:53:30.830  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 22ms
+03-17 10:53:30.830  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 14ms
+03-17 10:53:32.860  5712  5716 D dalvikvm: GC_CONCURRENT freed 2561K, 59% free 10628K/25856K, paused 11ms+6ms, total 132ms
+03-17 10:53:32.860  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 47ms
+03-17 10:53:32.860  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 36ms
+03-17 10:53:34.580  5712  5716 D dalvikvm: GC_CONCURRENT freed 2479K, 59% free 10655K/25856K, paused 8ms+6ms, total 125ms
+03-17 10:53:37.310  5712  5716 D dalvikvm: GC_CONCURRENT freed 2569K, 59% free 10639K/25856K, paused 10ms+6ms, total 147ms
+03-17 10:53:37.310  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 21ms
+03-17 10:53:39.630  5712  5716 D dalvikvm: GC_CONCURRENT freed 2541K, 59% free 10645K/25856K, paused 7ms+9ms, total 129ms
+03-17 10:53:39.630  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 46ms
+03-17 10:53:39.630  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 48ms
+03-17 10:53:41.350  5712  5716 D dalvikvm: GC_CONCURRENT freed 2557K, 59% free 10634K/25856K, paused 11ms+7ms, total 135ms
+03-17 10:53:41.350  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 69ms
+03-17 10:53:43.190  5712  5716 D dalvikvm: GC_CONCURRENT freed 2553K, 59% free 10627K/25856K, paused 12ms+7ms, total 159ms
+03-17 10:53:43.190  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 33ms
+03-17 10:53:43.190  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 46ms
+03-17 10:53:43.190  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 21ms
+03-17 10:53:45.640  5712  5716 D dalvikvm: GC_CONCURRENT freed 2441K, 59% free 10634K/25856K, paused 6ms+4ms, total 64ms
+03-17 10:53:51.510  5712  5716 D dalvikvm: GC_CONCURRENT freed 2445K, 59% free 10632K/25856K, paused 4ms+5ms, total 64ms
+03-17 10:53:56.830  5712  5716 D dalvikvm: GC_CONCURRENT freed 2443K, 59% free 10626K/25856K, paused 4ms+4ms, total 56ms
+03-17 10:54:02.270  5712  5716 D dalvikvm: GC_CONCURRENT freed 2480K, 59% free 10637K/25856K, paused 8ms+4ms, total 97ms
+03-17 10:54:05.510  5712  5716 D dalvikvm: GC_CONCURRENT freed 2540K, 59% free 10641K/25856K, paused 5ms+4ms, total 64ms
+03-17 10:54:05.510  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 41ms
+03-17 10:54:05.510  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 15ms
+03-17 10:54:06.240  5712  5716 D dalvikvm: GC_CONCURRENT freed 2561K, 59% free 10628K/25856K, paused 7ms+5ms, total 80ms
+03-17 10:54:06.240  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 37ms
+03-17 10:54:06.240  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 37ms
+03-17 10:54:06.240  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 14ms
+03-17 10:54:06.280  5712  6428 I HUREV   : [181] p.f | Navigation Focus Request: NAV_FOCUS_2
+03-17 10:54:06.280  5712  6428 I HUREV   : [181] p.f | CONTROL Navigation Focus Notification type: 14 flags: 11 size: 8 dataOffset: 6
+03-17 10:54:07.510  5712  5716 D dalvikvm: GC_CONCURRENT freed 2519K, 59% free 10651K/25856K, paused 10ms+7ms, total 139ms
+03-17 10:54:07.510  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 40ms
+03-17 10:54:09.260  5712  5716 D dalvikvm: GC_CONCURRENT freed 2539K, 59% free 10666K/25856K, paused 9ms+6ms, total 115ms
+03-17 10:54:09.260  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 12ms
+03-17 10:54:11.160  5712  5716 D dalvikvm: GC_CONCURRENT freed 2585K, 59% free 10638K/25856K, paused 11ms+5ms, total 156ms
+03-17 10:54:11.160  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 71ms
+03-17 10:54:11.160  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 61ms
+03-17 10:54:12.840  5712  5716 D dalvikvm: GC_CONCURRENT freed 2536K, 59% free 10650K/25856K, paused 12ms+6ms, total 133ms
+03-17 10:54:12.840  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 19ms
+03-17 10:54:12.840  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 21ms
+03-17 10:54:14.890  5712  5716 D dalvikvm: GC_CONCURRENT freed 2562K, 59% free 10639K/25856K, paused 7ms+6ms, total 135ms
+03-17 10:54:14.890  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 27ms
+03-17 10:54:14.890  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 23ms
+03-17 10:54:16.950  5712  5716 D dalvikvm: GC_CONCURRENT freed 2499K, 59% free 10663K/25856K, paused 6ms+6ms, total 100ms
+03-17 10:54:19.040  5712  5716 D dalvikvm: GC_CONCURRENT freed 2559K, 59% free 10658K/25856K, paused 8ms+6ms, total 128ms
+03-17 10:54:19.040  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 34ms
+03-17 10:54:21.120  5712  5716 D dalvikvm: GC_CONCURRENT freed 2565K, 59% free 10673K/25856K, paused 7ms+6ms, total 187ms
+03-17 10:54:23.010  5712  5716 D dalvikvm: GC_CONCURRENT freed 2574K, 59% free 10655K/25856K, paused 6ms+8ms, total 128ms
+03-17 10:54:23.010  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 35ms
+03-17 10:54:24.830  5712  5716 D dalvikvm: GC_CONCURRENT freed 2555K, 59% free 10650K/25856K, paused 7ms+8ms, total 162ms
+03-17 10:54:24.830  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 44ms
+03-17 10:54:26.670  5712  5716 D dalvikvm: GC_CONCURRENT freed 2534K, 59% free 10670K/25856K, paused 9ms+10ms, total 133ms
+03-17 10:54:28.760  5712  5716 D dalvikvm: GC_CONCURRENT freed 2571K, 59% free 10653K/25856K, paused 12ms+7ms, total 129ms
+03-17 10:54:28.760  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 22ms
+03-17 10:54:30.660  5712  5716 D dalvikvm: GC_CONCURRENT freed 2565K, 59% free 10639K/25856K, paused 6ms+7ms, total 155ms
+03-17 10:54:30.660  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 59ms
+03-17 10:54:30.660  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 59ms
+03-17 10:54:32.570  5712  5716 D dalvikvm: GC_CONCURRENT freed 2522K, 59% free 10665K/25856K, paused 9ms+6ms, total 138ms
+03-17 10:54:32.570  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 44ms
+03-17 10:54:32.570  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 45ms
+03-17 10:54:34.290  5712  5716 D dalvikvm: GC_CONCURRENT freed 2572K, 59% free 10649K/25856K, paused 7ms+6ms, total 132ms
+03-17 10:54:34.290  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 57ms
+03-17 10:54:34.290  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 44ms
+03-17 10:54:36.260  5712  5716 D dalvikvm: GC_CONCURRENT freed 2512K, 59% free 10684K/25856K, paused 14ms+8ms, total 127ms
+03-17 10:54:38.250  5712  5716 D dalvikvm: GC_CONCURRENT freed 2600K, 59% free 10646K/25856K, paused 9ms+9ms, total 155ms
+03-17 10:54:38.250  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 26ms
+03-17 10:54:38.250  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 50ms
+03-17 10:54:40.080  5712  5716 D dalvikvm: GC_CONCURRENT freed 2545K, 59% free 10651K/25856K, paused 8ms+8ms, total 141ms
+03-17 10:54:40.080  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 29ms
+03-17 10:54:41.960  5712  5716 D dalvikvm: GC_CONCURRENT freed 2548K, 59% free 10652K/25856K, paused 8ms+9ms, total 135ms
+03-17 10:54:41.960  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 54ms
+03-17 10:54:43.920  5712  5716 D dalvikvm: GC_CONCURRENT freed 2530K, 59% free 10689K/25856K, paused 9ms+6ms, total 155ms
+03-17 10:54:45.890  5712  5716 D dalvikvm: GC_CONCURRENT freed 2622K, 59% free 10631K/25856K, paused 25ms+4ms, total 184ms
+03-17 10:54:45.890  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 48ms
+03-17 10:54:45.890  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 29ms
+03-17 10:54:47.830  5712  5716 D dalvikvm: GC_CONCURRENT freed 2524K, 59% free 10641K/25856K, paused 10ms+6ms, total 138ms
+03-17 10:54:47.830  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 29ms
+03-17 10:54:49.880  5712  5716 D dalvikvm: GC_CONCURRENT freed 2536K, 59% free 10649K/25856K, paused 14ms+5ms, total 134ms
+03-17 10:54:49.880  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 38ms
+03-17 10:54:52.340  5712  5716 D dalvikvm: GC_CONCURRENT freed 2561K, 59% free 10636K/25856K, paused 8ms+4ms, total 102ms
+03-17 10:54:52.340  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 17ms
+03-17 10:54:52.340  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 23ms
+03-17 10:54:54.130  5712  5716 D dalvikvm: GC_CONCURRENT freed 2497K, 59% free 10677K/25856K, paused 7ms+6ms, total 90ms
+03-17 10:54:56.180  5712  5716 D dalvikvm: GC_CONCURRENT freed 2525K, 59% free 10675K/25856K, paused 5ms+5ms, total 79ms
+03-17 10:54:58.050  5712  5716 D dalvikvm: GC_CONCURRENT freed 2564K, 59% free 10654K/25856K, paused 5ms+6ms, total 94ms
+03-17 10:55:00.000  5712  5716 D dalvikvm: GC_CONCURRENT freed 2557K, 59% free 10658K/25856K, paused 6ms+8ms, total 127ms
+03-17 10:55:00.000  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 38ms
+03-17 10:55:00.000  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 26ms
+03-17 10:55:00.000  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 24ms
+03-17 10:55:01.940  5712  5716 D dalvikvm: GC_CONCURRENT freed 2536K, 59% free 10648K/25856K, paused 7ms+5ms, total 110ms
+03-17 10:55:04.060  5712  5716 D dalvikvm: GC_CONCURRENT freed 2518K, 59% free 10663K/25856K, paused 7ms+7ms, total 109ms
+03-17 10:55:05.930  5712  5716 D dalvikvm: GC_CONCURRENT freed 2531K, 59% free 10666K/25856K, paused 5ms+6ms, total 106ms
+03-17 10:55:07.870  5712  5716 D dalvikvm: GC_CONCURRENT freed 2578K, 59% free 10646K/25856K, paused 7ms+5ms, total 141ms
+03-17 10:55:07.870  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 26ms
+03-17 10:55:09.890  5712  5716 D dalvikvm: GC_CONCURRENT freed 2538K, 59% free 10657K/25856K, paused 9ms+7ms, total 156ms
+03-17 10:55:09.890  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 55ms
+03-17 10:55:10.680  5712  6428 I HUREV   : [181] p.f | Navigation Focus Request: NAV_FOCUS_1
+03-17 10:55:10.680  5712  6428 I HUREV   : [181] p.f | CONTROL Navigation Focus Notification type: 14 flags: 11 size: 8 dataOffset: 6
+03-17 10:55:12.040  5712  5716 D dalvikvm: GC_CONCURRENT freed 2566K, 59% free 10660K/25856K, paused 8ms+6ms, total 108ms
+03-17 10:55:13.930  5712  5716 D dalvikvm: GC_CONCURRENT freed 2580K, 59% free 10635K/25856K, paused 12ms+8ms, total 150ms
+03-17 10:55:13.930  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 65ms
+03-17 10:55:15.130  5712  6428 I HUREV   : [181] p.f | Navigation Focus Request: NAV_FOCUS_2
+03-17 10:55:15.130  5712  6428 I HUREV   : [181] p.f | CONTROL Navigation Focus Notification type: 14 flags: 11 size: 8 dataOffset: 6
+03-17 10:55:15.680  5712  5716 D dalvikvm: GC_CONCURRENT freed 2515K, 59% free 10658K/25856K, paused 7ms+5ms, total 110ms
+03-17 10:55:15.680  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 28ms
+03-17 10:55:17.650  5712  5716 D dalvikvm: GC_CONCURRENT freed 2552K, 59% free 10636K/25856K, paused 14ms+8ms, total 135ms
+03-17 10:55:19.560  5712  5716 D dalvikvm: GC_CONCURRENT freed 2544K, 59% free 10639K/25856K, paused 8ms+7ms, total 117ms
+03-17 10:55:19.560  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 40ms
+03-17 10:55:19.560  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 44ms
+03-17 10:55:21.400  5712  5716 D dalvikvm: GC_CONCURRENT freed 2537K, 59% free 10650K/25856K, paused 10ms+6ms, total 157ms
+03-17 10:55:21.400  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 66ms
+03-17 10:55:21.400  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 27ms
+03-17 10:55:21.400  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 40ms
+03-17 10:55:23.370  5712  5716 D dalvikvm: GC_CONCURRENT freed 2530K, 59% free 10660K/25856K, paused 12ms+8ms, total 128ms
+03-17 10:55:23.370  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 5ms
+03-17 10:55:25.450  5712  5716 D dalvikvm: GC_CONCURRENT freed 2577K, 59% free 10638K/25856K, paused 10ms+9ms, total 124ms
+03-17 10:55:25.450  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 22ms
+03-17 10:55:25.450  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 59ms
+03-17 10:55:27.920  5712  5716 D dalvikvm: GC_CONCURRENT freed 2520K, 59% free 10679K/25856K, paused 10ms+6ms, total 170ms
+03-17 10:55:30.190  5712  5716 D dalvikvm: GC_CONCURRENT freed 2551K, 59% free 10668K/25856K, paused 7ms+6ms, total 128ms
+03-17 10:55:32.750  5712  5716 D dalvikvm: GC_CONCURRENT freed 2572K, 59% free 10648K/25856K, paused 8ms+8ms, total 123ms
+03-17 10:55:32.750  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 47ms
+03-17 10:55:35.210  5712  5716 D dalvikvm: GC_CONCURRENT freed 2558K, 59% free 10640K/25856K, paused 8ms+7ms, total 137ms
+03-17 10:55:35.210  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 39ms
+03-17 10:55:37.470  5712  5716 D dalvikvm: GC_CONCURRENT freed 2513K, 59% free 10700K/25856K, paused 11ms+11ms, total 244ms
+03-17 10:55:39.860  5712  5716 D dalvikvm: GC_CONCURRENT freed 2600K, 59% free 10643K/25856K, paused 9ms+8ms, total 173ms
+03-17 10:55:42.540  5712  5716 D dalvikvm: GC_CONCURRENT freed 2517K, 59% free 10666K/25856K, paused 11ms+13ms, total 147ms
+03-17 10:55:42.540  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 7ms
+03-17 10:55:45.040  5712  5716 D dalvikvm: GC_CONCURRENT freed 2580K, 59% free 10643K/25856K, paused 12ms+5ms, total 156ms
+03-17 10:55:45.040  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 81ms
+03-17 10:55:45.040  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 80ms
+03-17 10:55:45.050  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 91ms
+03-17 10:55:47.470  5712  5716 D dalvikvm: GC_CONCURRENT freed 2545K, 59% free 10648K/25856K, paused 9ms+12ms, total 156ms
+03-17 10:55:47.470  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 11ms
+03-17 10:55:47.470  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 33ms
+03-17 10:55:47.470  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 15ms
+03-17 10:55:49.790  5712  5716 D dalvikvm: GC_CONCURRENT freed 2558K, 59% free 10639K/25856K, paused 11ms+8ms, total 171ms
+03-17 10:55:49.790  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 54ms
+03-17 10:55:49.790  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 41ms
+03-17 10:55:52.090  5712  5716 D dalvikvm: GC_CONCURRENT freed 2521K, 59% free 10663K/25856K, paused 5ms+6ms, total 117ms
+03-17 10:55:52.090  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 18ms
+03-17 10:55:52.450  5712  6428 I HUREV   : [181] m.d | Media Start Request AUDIO1: session_id: 1
+03-17 10:55:52.450  5712  6428 I HUREV   : configuration_index: 0
+03-17 10:55:52.450  5712  6428 I HUREV   : [181] j.a | AudioDecoder.start: channel=4, stream=3, gain=1.0, sampleRate=16000, numberOfBits=16, numberOfChannels=1, isAac=true
+03-17 10:55:52.450  5712  6428 I HUREV   : [181] s.f | Audio stream: 3 buffer size: 40960 (min: 5120) sampleRateInHz: 16000 channelCount: 1
+03-17 10:55:52.460  5712  6428 D AudioTrack: AudioTrack::start 0x681572d0,mStreamType=3
+03-17 10:55:52.460  5712 10395 I OMXClient: Using client-side OMX mux.
+03-17 10:55:52.460  5712 10395 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:55:52.460  5712 10395 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:55:52.460  5712 10395 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:55:52.460  5712 10395 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:55:52.460  5712 10395 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:55:52.460  5712 10395 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:55:52.460  5712 10395 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:55:52.470  5712 10395 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:55:52.470  5712 10395 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:55:52.470  5712 10395 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:55:52.470  5712 10395 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:55:52.470  5712 10395 E OMXMaster: A component of name 'OMX.Freescale.std.parser.streaming.sw-based' already exists, ignoring this one.
+03-17 10:55:52.470  5712 10395 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:55:52.470  5712  6428 I HUREV   : [181] s.i | AAC Decoder started for 16000 Hz, 1 channels with is-adts (Async)
+03-17 10:55:52.470  5712 10396 I SoftAAC2: Reconfiguring decoder: 0->16000 Hz, 0->1 channels
+03-17 10:55:52.900  5712 10398 W AudioTrack: releaseBuffer() track 0x681572d0 name=0x1 disabled, restarting
+03-17 10:55:53.140  5712  6428 I HUREV   : [181] m.c | Media Sink Stop Request: AUDIO1
+03-17 10:55:53.140  5712  6428 I HUREV   : [181] j.d | Audio Stop: AUDIO1
+03-17 10:55:53.140  5712 10398 D AudioTrack: AudioTrack::stop 0x681572d0,mStreamType=3
+03-17 10:55:53.840  5712 10398 D AudioTrack: AudioTrack::stop 0x681572d0,mStreamType=3
+03-17 10:55:53.840  5712 10398 D AudioTrack: AudioTrack::stop 0x681572d0,mStreamType=3
+03-17 10:55:53.840  5712 10398 D AudioTrack: AudioTrack::stop 0x681572d0,mStreamType=3
+03-17 10:55:53.850  5712 10398 I HUREV   : [8666] s.run | AudioTrackWrapper thread finished.
+03-17 10:55:54.190  5712  5716 D dalvikvm: GC_CONCURRENT freed 2512K, 59% free 10664K/25856K, paused 9ms+8ms, total 98ms
+03-17 10:55:56.600  5712  5716 D dalvikvm: GC_CONCURRENT freed 2532K, 59% free 10650K/25856K, paused 6ms+5ms, total 70ms
+03-17 10:55:58.610  5712  5716 D dalvikvm: GC_CONCURRENT freed 2466K, 59% free 10646K/25856K, paused 7ms+5ms, total 81ms
+03-17 10:56:00.680  5712  5716 D dalvikvm: GC_CONCURRENT freed 2533K, 59% free 10667K/25856K, paused 6ms+5ms, total 86ms
+03-17 10:56:03.060  5712  5716 D dalvikvm: GC_CONCURRENT freed 2512K, 59% free 10660K/25856K, paused 6ms+4ms, total 95ms
+03-17 10:56:05.860  5712  5716 D dalvikvm: GC_CONCURRENT freed 2560K, 59% free 10666K/25856K, paused 6ms+6ms, total 97ms
+03-17 10:56:08.150  5712  5716 D dalvikvm: GC_CONCURRENT freed 2545K, 59% free 10649K/25856K, paused 11ms+5ms, total 119ms
+03-17 10:56:09.400  5712  6428 I HUREV   : [181] m.d | Media Start Request AUDIO1: session_id: 2
+03-17 10:56:09.400  5712  6428 I HUREV   : configuration_index: 0
+03-17 10:56:09.410  5712  6428 I HUREV   : [181] j.a | AudioDecoder.start: channel=4, stream=3, gain=1.0, sampleRate=16000, numberOfBits=16, numberOfChannels=1, isAac=true
+03-17 10:56:09.410  5712  6428 I HUREV   : [181] s.f | Audio stream: 3 buffer size: 40960 (min: 5120) sampleRateInHz: 16000 channelCount: 1
+03-17 10:56:09.420  5712  6428 D AudioTrack: AudioTrack::start 0x66219640,mStreamType=3
+03-17 10:56:09.420  5712 10512 I OMXClient: Using client-side OMX mux.
+03-17 10:56:09.420  5712 10512 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:56:09.420  5712 10512 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:56:09.420  5712 10512 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:56:09.420  5712 10512 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:56:09.420  5712 10512 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:56:09.420  5712 10512 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:56:09.420  5712 10512 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:56:09.420  5712 10512 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:56:09.420  5712 10512 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:56:09.420  5712 10512 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:56:09.420  5712 10512 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:56:09.420  5712 10512 E OMXMaster: A component of name 'OMX.Freescale.std.parser.streaming.sw-based' already exists, ignoring this one.
+03-17 10:56:09.430  5712 10512 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 10:56:09.430  5712  6428 I HUREV   : [181] s.i | AAC Decoder started for 16000 Hz, 1 channels with is-adts (Async)
+03-17 10:56:09.440  5712 10513 I SoftAAC2: Reconfiguring decoder: 0->16000 Hz, 0->1 channels
+03-17 10:56:09.860  5712 10515 W AudioTrack: releaseBuffer() track 0x66219640 name=0x1 disabled, restarting
+03-17 10:56:10.300  5712 10515 W AudioTrack: releaseBuffer() track 0x66219640 name=0x1 disabled, restarting
+03-17 10:56:10.380  5712  5716 D dalvikvm: GC_CONCURRENT freed 2557K, 59% free 10644K/25856K, paused 10ms+8ms, total 132ms
+03-17 10:56:10.380  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 44ms
+03-17 10:56:10.380  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 35ms
+03-17 10:56:10.380  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 8ms
+03-17 10:56:10.680  5712  6428 I HUREV   : [181] m.c | Media Sink Stop Request: AUDIO1
+03-17 10:56:10.690  5712  6428 I HUREV   : [181] j.d | Audio Stop: AUDIO1
+03-17 10:56:10.700  5712 10515 D AudioTrack: AudioTrack::stop 0x66219640,mStreamType=3
+03-17 10:56:10.700  5712 10515 E HUREV   : [9168] s.e | Error during audio track cleanup
+03-17 10:56:10.700  5712 10515 E HUREV   : java.lang.InterruptedException
+03-17 10:56:10.700  5712 10515 E HUREV   : 	at java.lang.VMThread.sleep(Native Method)
+03-17 10:56:10.700  5712 10515 E HUREV   : 	at java.lang.Thread.sleep(Thread.java:1013)
+03-17 10:56:10.700  5712 10515 E HUREV   : 	at java.lang.Thread.sleep(Thread.java:995)
+03-17 10:56:10.700  5712 10515 E HUREV   : 	at y0.s.e(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:125)
+03-17 10:56:10.700  5712 10515 E HUREV   : 	at y0.s.run(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:85)
+03-17 10:56:10.700  5712 10515 D AudioTrack: AudioTrack::stop 0x66219640,mStreamType=3
+03-17 10:56:10.700  5712 10515 D AudioTrack: AudioTrack::stop 0x66219640,mStreamType=3
+03-17 10:56:10.700  5712 10515 D AudioTrack: AudioTrack::stop 0x66219640,mStreamType=3
+03-17 10:56:10.700  5712 10515 I HUREV   : [9168] s.run | AudioTrackWrapper thread finished.
+03-17 10:56:12.730  5712  5716 D dalvikvm: GC_CONCURRENT freed 2533K, 59% free 10657K/25856K, paused 12ms+5ms, total 128ms
+03-17 10:56:12.730  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 15ms
+03-17 10:56:15.340  5712  5716 D dalvikvm: GC_CONCURRENT freed 2492K, 59% free 10651K/25856K, paused 8ms+8ms, total 118ms
+03-17 10:56:17.470  5712  5716 D dalvikvm: GC_CONCURRENT freed 2525K, 59% free 10675K/25856K, paused 6ms+7ms, total 119ms
+03-17 10:56:19.560  5712  5716 D dalvikvm: GC_CONCURRENT freed 2580K, 59% free 10655K/25856K, paused 11ms+5ms, total 141ms
+03-17 10:56:19.560  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 36ms
+03-17 10:56:19.560  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 36ms
+03-17 10:56:19.560  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 32ms
+03-17 10:56:22.230  5712  5716 D dalvikvm: GC_CONCURRENT freed 2508K, 59% free 10737K/25856K, paused 8ms+11ms, total 141ms
+03-17 10:56:24.980  5712  5716 D dalvikvm: GC_CONCURRENT freed 2660K, 59% free 10654K/25856K, paused 16ms+5ms, total 136ms
+03-17 10:56:27.050  5712  5716 D dalvikvm: GC_CONCURRENT freed 2509K, 59% free 10681K/25856K, paused 6ms+11ms, total 137ms
+03-17 10:56:29.410  5712  5716 D dalvikvm: GC_CONCURRENT freed 2561K, 59% free 10671K/25856K, paused 7ms+13ms, total 133ms
+03-17 10:56:31.940  5712  5716 D dalvikvm: GC_CONCURRENT freed 2572K, 59% free 10660K/25856K, paused 9ms+7ms, total 168ms
+03-17 10:56:31.940  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 31ms
+03-17 10:56:34.210  5712  5716 D dalvikvm: GC_CONCURRENT freed 2580K, 59% free 10635K/25856K, paused 24ms+8ms, total 160ms
+03-17 10:56:34.210  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 44ms
+03-17 10:56:34.210  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 38ms
+03-17 10:56:36.710  5712  5716 D dalvikvm: GC_CONCURRENT freed 2543K, 59% free 10640K/25856K, paused 8ms+7ms, total 129ms
+03-17 10:56:36.710  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 65ms
+03-17 10:56:38.900  5712  5716 D dalvikvm: GC_CONCURRENT freed 2545K, 59% free 10641K/25856K, paused 8ms+7ms, total 207ms
+03-17 10:56:38.900  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 83ms
+03-17 10:56:41.370  5712  5716 D dalvikvm: GC_CONCURRENT freed 2521K, 59% free 10684K/25856K, paused 9ms+9ms, total 140ms
+03-17 10:56:43.930  5712  5716 D dalvikvm: GC_CONCURRENT freed 2560K, 59% free 10678K/25856K, paused 11ms+11ms, total 178ms
+03-17 10:56:45.930  5712  5716 D dalvikvm: GC_CONCURRENT freed 2590K, 59% free 10649K/25856K, paused 14ms+8ms, total 190ms
+03-17 10:56:45.930  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 92ms
+03-17 10:56:45.930  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 70ms
+03-17 10:56:50.050  5712  5716 D dalvikvm: GC_CONCURRENT freed 2482K, 59% free 10653K/25856K, paused 12ms+5ms, total 131ms
+03-17 10:56:55.080  5712  5716 D dalvikvm: GC_CONCURRENT freed 2476K, 59% free 10643K/25856K, paused 9ms+8ms, total 93ms
+03-17 10:56:59.140  5712  5716 D dalvikvm: GC_CONCURRENT freed 2523K, 59% free 10713K/25856K, paused 10ms+5ms, total 111ms
+03-17 10:57:00.880  5712  5716 D dalvikvm: GC_CONCURRENT freed 2632K, 59% free 10655K/25856K, paused 6ms+6ms, total 115ms
+03-17 10:57:00.880  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 69ms
+03-17 10:57:02.390  5712  5716 D dalvikvm: GC_CONCURRENT freed 2553K, 59% free 10655K/25856K, paused 5ms+7ms, total 79ms
+03-17 10:57:02.390  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 30ms
+03-17 10:57:02.390  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 15ms
+03-17 10:57:03.860  5712  5716 D dalvikvm: GC_CONCURRENT freed 2556K, 59% free 10652K/25856K, paused 5ms+6ms, total 96ms
+03-17 10:57:03.860  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 13ms
+03-17 10:57:03.860  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 41ms
+03-17 10:57:05.560  5712  5716 D dalvikvm: GC_CONCURRENT freed 2536K, 59% free 10655K/25856K, paused 5ms+10ms, total 135ms
+03-17 10:57:07.650  5712  5716 D dalvikvm: GC_CONCURRENT freed 2559K, 59% free 10643K/25856K, paused 7ms+7ms, total 113ms
+03-17 10:57:07.650  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 45ms
+03-17 10:57:09.740  5712  5716 D dalvikvm: GC_CONCURRENT freed 2492K, 59% free 10704K/25856K, paused 9ms+10ms, total 122ms
+03-17 10:57:11.910  5712  5716 D dalvikvm: GC_CONCURRENT freed 2632K, 59% free 10643K/25856K, paused 11ms+9ms, total 132ms
+03-17 10:57:11.910  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 27ms
+03-17 10:57:14.240  5712  5716 D dalvikvm: GC_CONCURRENT freed 2544K, 59% free 10646K/25856K, paused 10ms+9ms, total 141ms
+03-17 10:57:14.240  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 24ms
+03-17 10:57:15.990  5712  5716 D dalvikvm: GC_CONCURRENT freed 2522K, 59% free 10685K/25856K, paused 8ms+7ms, total 118ms
+03-17 10:57:18.060  5712  5716 D dalvikvm: GC_CONCURRENT freed 2594K, 59% free 10650K/25856K, paused 7ms+9ms, total 191ms
+03-17 10:57:18.060  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 30ms
+03-17 10:57:18.060  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 72ms
+03-17 10:57:20.080  5712  5716 D dalvikvm: GC_CONCURRENT freed 2544K, 59% free 10655K/25856K, paused 9ms+7ms, total 153ms
+03-17 10:57:20.080  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 55ms
+03-17 10:57:22.250  5712  5716 D dalvikvm: GC_CONCURRENT freed 2530K, 59% free 10656K/25856K, paused 11ms+9ms, total 152ms
+03-17 10:57:24.390  5712  5716 D dalvikvm: GC_CONCURRENT freed 2573K, 59% free 10635K/25856K, paused 13ms+10ms, total 143ms
+03-17 10:57:24.390  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 42ms
+03-17 10:57:26.680  5712  5716 D dalvikvm: GC_CONCURRENT freed 2467K, 59% free 10688K/25856K, paused 9ms+10ms, total 131ms
+03-17 10:57:29.250  5712  5716 D dalvikvm: GC_CONCURRENT freed 2613K, 59% free 10639K/25856K, paused 12ms+6ms, total 155ms
+03-17 10:57:29.250  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 40ms
+03-17 10:57:29.250  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 31ms
+03-17 10:57:29.250  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 29ms
+03-17 10:57:31.710  5712  5716 D dalvikvm: GC_CONCURRENT freed 2525K, 59% free 10649K/25856K, paused 10ms+8ms, total 147ms
+03-17 10:57:31.710  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 27ms
+03-17 10:57:34.020  5712  5716 D dalvikvm: GC_CONCURRENT freed 2544K, 59% free 10657K/25856K, paused 8ms+8ms, total 139ms
+03-17 10:57:34.020  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 12ms
+03-17 10:57:34.020  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 11ms
+03-17 10:57:36.240  5712  5716 D dalvikvm: GC_CONCURRENT freed 2526K, 59% free 10666K/25856K, paused 9ms+9ms, total 146ms
+03-17 10:57:38.550  5712  5716 D dalvikvm: GC_CONCURRENT freed 2572K, 59% free 10650K/25856K, paused 12ms+7ms, total 155ms
+03-17 10:57:38.550  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 50ms
+03-17 10:57:38.550  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 50ms
+03-17 10:57:41.100  5712  5716 D dalvikvm: GC_CONCURRENT freed 2557K, 59% free 10643K/25856K, paused 12ms+10ms, total 203ms
+03-17 10:57:41.100  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 76ms
+03-17 10:57:41.110  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 62ms
+03-17 10:57:43.430  5712  5716 D dalvikvm: GC_CONCURRENT freed 2544K, 59% free 10645K/25856K, paused 7ms+17ms, total 159ms
+03-17 10:57:43.430  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 61ms
+03-17 10:57:45.770  5712  5716 D dalvikvm: GC_CONCURRENT freed 2516K, 59% free 10669K/25856K, paused 12ms+8ms, total 132ms
+03-17 10:57:48.190  5712  5716 D dalvikvm: GC_CONCURRENT freed 2588K, 59% free 10641K/25856K, paused 10ms+8ms, total 134ms
+03-17 10:57:48.190  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 30ms
+03-17 10:57:50.480  5712  5716 D dalvikvm: GC_CONCURRENT freed 2499K, 59% free 10663K/25856K, paused 6ms+7ms, total 82ms
+03-17 10:57:53.040  5712  5716 D dalvikvm: GC_CONCURRENT freed 2527K, 59% free 10648K/25856K, paused 5ms+8ms, total 95ms
+03-17 10:57:55.510  5712  5716 D dalvikvm: GC_CONCURRENT freed 2513K, 59% free 10683K/25856K, paused 7ms+6ms, total 125ms
+03-17 10:57:57.970  5712  5716 D dalvikvm: GC_CONCURRENT freed 2594K, 59% free 10647K/25856K, paused 8ms+7ms, total 106ms
+03-17 10:57:57.970  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 29ms
+03-17 10:58:00.190  5712  5716 D dalvikvm: GC_CONCURRENT freed 2512K, 59% free 10696K/25856K, paused 7ms+6ms, total 87ms
+03-17 10:58:02.480  5712  5716 D dalvikvm: GC_CONCURRENT freed 2574K, 59% free 10661K/25856K, paused 7ms+7ms, total 84ms
+03-17 10:58:04.610  5712  5716 D dalvikvm: GC_CONCURRENT freed 2571K, 59% free 10646K/25856K, paused 6ms+6ms, total 112ms
+03-17 10:58:04.610  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 49ms
+03-17 10:58:04.610  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 29ms
+03-17 10:58:04.610  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 18ms
+03-17 10:58:06.820  5712  5716 D dalvikvm: GC_CONCURRENT freed 2528K, 59% free 10693K/25856K, paused 9ms+16ms, total 129ms
+03-17 10:58:09.390  5712  5716 D dalvikvm: GC_CONCURRENT freed 2623K, 59% free 10636K/25856K, paused 13ms+6ms, total 137ms
+03-17 10:58:09.390  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 84ms
+03-17 10:58:09.390  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 46ms
+03-17 10:58:11.820  5712  5716 D dalvikvm: GC_CONCURRENT freed 2540K, 59% free 10648K/25856K, paused 14ms+7ms, total 152ms
+03-17 10:58:11.820  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 46ms
+03-17 10:58:13.900  5712  5716 D dalvikvm: GC_CONCURRENT freed 2561K, 59% free 10639K/25856K, paused 8ms+5ms, total 108ms
+03-17 10:58:13.900  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 40ms
+03-17 10:58:13.900  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 40ms
+03-17 10:58:13.900  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 22ms
+03-17 10:58:16.340  5712  5716 D dalvikvm: GC_CONCURRENT freed 2524K, 59% free 10659K/25856K, paused 7ms+9ms, total 146ms
+03-17 10:58:18.840  5712  5716 D dalvikvm: GC_CONCURRENT freed 2545K, 59% free 10697K/25856K, paused 14ms+10ms, total 167ms
+03-17 10:58:21.530  5712  5716 D dalvikvm: GC_CONCURRENT freed 2619K, 59% free 10646K/25856K, paused 12ms+9ms, total 168ms
+03-17 10:58:21.530  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 60ms
+03-17 10:58:24.000  5712  5716 D dalvikvm: GC_CONCURRENT freed 2561K, 59% free 10636K/25856K, paused 10ms+14ms, total 172ms
+03-17 10:58:24.000  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 53ms
+03-17 10:58:24.000  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 35ms
+03-17 10:58:24.020  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 51ms
+03-17 10:58:26.450  5712  5716 D dalvikvm: GC_CONCURRENT freed 2527K, 59% free 10655K/25856K, paused 12ms+12ms, total 170ms
+03-17 10:58:26.450  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 65ms
+03-17 10:58:26.450  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 66ms
+03-17 10:58:28.840  5712  5716 D dalvikvm: GC_CONCURRENT freed 2573K, 59% free 10636K/25856K, paused 13ms+18ms, total 169ms
+03-17 10:58:28.840  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 15ms
+03-17 10:58:28.840  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 66ms
+03-17 10:58:31.220  5712  5716 D dalvikvm: GC_CONCURRENT freed 2516K, 59% free 10677K/25856K, paused 6ms+10ms, total 132ms
+03-17 10:58:33.620  5712  5716 D dalvikvm: GC_CONCURRENT freed 2566K, 59% free 10703K/25856K, paused 8ms+9ms, total 145ms
+03-17 10:58:36.070  5712  5716 D dalvikvm: GC_CONCURRENT freed 2602K, 59% free 10670K/25856K, paused 17ms+8ms, total 154ms
+03-17 10:58:38.570  5712  5716 D dalvikvm: GC_CONCURRENT freed 2575K, 59% free 10653K/25856K, paused 8ms+8ms, total 134ms
+03-17 10:58:38.570  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 40ms
+03-17 10:58:38.570  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 25ms
+03-17 10:58:38.570  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 9ms
+03-17 10:58:40.850  5712  5716 D dalvikvm: GC_CONCURRENT freed 2562K, 59% free 10645K/25856K, paused 11ms+18ms, total 159ms
+03-17 10:58:40.850  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 50ms
+03-17 10:58:40.850  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 36ms
+03-17 10:58:43.050  5712  5716 D dalvikvm: GC_CONCURRENT freed 2513K, 59% free 10672K/25856K, paused 10ms+9ms, total 138ms
+03-17 10:58:45.540  5712  5716 D dalvikvm: GC_CONCURRENT freed 2534K, 59% free 10683K/25856K, paused 7ms+10ms, total 142ms
+03-17 10:58:48.020  5712  5716 D dalvikvm: GC_CONCURRENT freed 2566K, 59% free 10651K/25856K, paused 9ms+10ms, total 118ms
+03-17 10:58:50.310  5712  5716 D dalvikvm: GC_CONCURRENT freed 2461K, 59% free 10662K/25856K, paused 6ms+7ms, total 88ms
+03-17 10:58:52.550  5712  5716 D dalvikvm: GC_CONCURRENT freed 2478K, 59% free 10662K/25856K, paused 8ms+7ms, total 87ms
+03-17 10:58:54.570  5712  5716 D dalvikvm: GC_CONCURRENT freed 2509K, 59% free 10644K/25856K, paused 6ms+7ms, total 84ms
+03-17 10:58:56.930  5712  5716 D dalvikvm: GC_CONCURRENT freed 2514K, 59% free 10657K/25856K, paused 7ms+10ms, total 103ms
+03-17 10:58:59.360  5712  5716 D dalvikvm: GC_CONCURRENT freed 2485K, 59% free 10650K/25856K, paused 8ms+8ms, total 92ms
+03-17 10:59:02.510  5712  5716 D dalvikvm: GC_CONCURRENT freed 2544K, 59% free 10656K/25856K, paused 9ms+7ms, total 114ms
+03-17 10:59:02.510  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 65ms
+03-17 10:59:02.510  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 68ms
+03-17 10:59:04.180  5712  5716 D dalvikvm: GC_CONCURRENT freed 2534K, 59% free 10676K/25856K, paused 10ms+6ms, total 113ms
+03-17 10:59:06.470  5712  5716 D dalvikvm: GC_CONCURRENT freed 2576K, 59% free 10666K/25856K, paused 7ms+6ms, total 120ms
+03-17 10:59:06.470  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 35ms
+03-17 10:59:08.950  5712  5716 D dalvikvm: GC_CONCURRENT freed 2554K, 59% free 10682K/25856K, paused 9ms+6ms, total 173ms
+03-17 10:59:11.330  5712  5716 D dalvikvm: GC_CONCURRENT freed 2584K, 59% free 10658K/25856K, paused 7ms+6ms, total 118ms
+03-17 10:59:11.330  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 23ms
+03-17 10:59:13.800  5712  5716 D dalvikvm: GC_CONCURRENT freed 2534K, 59% free 10646K/25856K, paused 10ms+7ms, total 125ms
+03-17 10:59:15.920  5712  5716 D dalvikvm: GC_CONCURRENT freed 2532K, 59% free 10667K/25856K, paused 8ms+5ms, total 145ms
+03-17 10:59:18.310  5712  5716 D dalvikvm: GC_CONCURRENT freed 2508K, 59% free 10685K/25856K, paused 8ms+5ms, total 122ms
+03-17 10:59:20.710  5712  5716 D dalvikvm: GC_CONCURRENT freed 2570K, 59% free 10696K/25856K, paused 8ms+6ms, total 117ms
+03-17 10:59:23.200  5712  5716 D dalvikvm: GC_CONCURRENT freed 2594K, 59% free 10667K/25856K, paused 12ms+7ms, total 149ms
+03-17 10:59:25.700  5712  5716 D dalvikvm: GC_CONCURRENT freed 2566K, 59% free 10655K/25856K, paused 10ms+20ms, total 169ms
+03-17 10:59:25.700  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 42ms
+03-17 10:59:25.700  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 40ms
+03-17 10:59:28.050  5712  5716 D dalvikvm: GC_CONCURRENT freed 2557K, 59% free 10652K/25856K, paused 7ms+7ms, total 134ms
+03-17 10:59:28.050  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 22ms
+03-17 10:59:28.050  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 32ms
+03-17 10:59:30.540  5712  5716 D dalvikvm: GC_CONCURRENT freed 2543K, 59% free 10660K/25856K, paused 12ms+8ms, total 137ms
+03-17 10:59:30.540  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 20ms
+03-17 10:59:32.950  5712  5716 D dalvikvm: GC_CONCURRENT freed 2575K, 59% free 10640K/25856K, paused 12ms+8ms, total 179ms
+03-17 10:59:32.950  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 57ms
+03-17 10:59:32.950  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 65ms
+03-17 10:59:35.180  5712  5716 D dalvikvm: GC_CONCURRENT freed 2541K, 59% free 10657K/25856K, paused 16ms+20ms, total 182ms
+03-17 10:59:35.190  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 39ms
+03-17 10:59:37.560  5712  5716 D dalvikvm: GC_CONCURRENT freed 2557K, 59% free 10653K/25856K, paused 6ms+9ms, total 147ms
+03-17 10:59:37.560  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 26ms
+03-17 10:59:37.560  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 21ms
+03-17 10:59:40.040  5712  5716 D dalvikvm: GC_CONCURRENT freed 2522K, 59% free 10672K/25856K, paused 9ms+9ms, total 149ms
+03-17 10:59:42.440  5712  5716 D dalvikvm: GC_CONCURRENT freed 2582K, 59% free 10653K/25856K, paused 9ms+9ms, total 149ms
+03-17 10:59:44.980  5712  5716 D dalvikvm: GC_CONCURRENT freed 2557K, 59% free 10654K/25856K, paused 9ms+6ms, total 159ms
+03-17 10:59:47.280  5712  5716 D dalvikvm: GC_CONCURRENT freed 2545K, 59% free 10676K/25856K, paused 11ms+7ms, total 158ms
+03-17 10:59:49.530  5712  5716 D dalvikvm: GC_CONCURRENT freed 2574K, 59% free 10665K/25856K, paused 5ms+5ms, total 90ms
+03-17 10:59:51.470  5712  5716 D dalvikvm: GC_CONCURRENT freed 2491K, 59% free 10671K/25856K, paused 5ms+5ms, total 78ms
+03-17 10:59:54.030  5712  5716 D dalvikvm: GC_CONCURRENT freed 2533K, 59% free 10663K/25856K, paused 6ms+6ms, total 105ms
+03-17 10:59:56.380  5712  5716 D dalvikvm: GC_CONCURRENT freed 2518K, 59% free 10670K/25856K, paused 7ms+5ms, total 92ms
+03-17 10:59:58.980  5712  5716 D dalvikvm: GC_CONCURRENT freed 2563K, 59% free 10644K/25856K, paused 8ms+5ms, total 108ms
+03-17 11:00:01.370  5712  5716 D dalvikvm: GC_CONCURRENT freed 2532K, 59% free 10681K/25856K, paused 8ms+7ms, total 155ms
+03-17 11:00:03.800  5712  5716 D dalvikvm: GC_CONCURRENT freed 2575K, 59% free 10646K/25856K, paused 7ms+5ms, total 108ms
+03-17 11:00:06.190  5712  5716 D dalvikvm: GC_CONCURRENT freed 2512K, 59% free 10663K/25856K, paused 7ms+6ms, total 105ms
+03-17 11:00:08.480  5712  5716 D dalvikvm: GC_CONCURRENT freed 2563K, 59% free 10656K/25856K, paused 8ms+7ms, total 179ms
+03-17 11:00:08.480  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 77ms
+03-17 11:00:08.480  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 19ms
+03-17 11:00:08.480  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 44ms
+03-17 11:00:10.710  5712  5716 D dalvikvm: GC_CONCURRENT freed 2566K, 59% free 10645K/25856K, paused 6ms+6ms, total 136ms
+03-17 11:00:10.710  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 30ms
+03-17 11:00:10.710  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 13ms
+03-17 11:00:12.910  5712  5716 D dalvikvm: GC_CONCURRENT freed 2554K, 59% free 10639K/25856K, paused 8ms+7ms, total 131ms
+03-17 11:00:12.910  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 54ms
+03-17 11:00:12.910  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 34ms
+03-17 11:00:14.750  5712  5716 D dalvikvm: GC_CONCURRENT freed 2522K, 59% free 10665K/25856K, paused 8ms+8ms, total 132ms
+03-17 11:00:14.750  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 21ms
+03-17 11:00:17.670  5712  5716 D dalvikvm: GC_CONCURRENT freed 2558K, 59% free 10665K/25856K, paused 9ms+7ms, total 150ms
+03-17 11:00:20.320  5712  5716 D dalvikvm: GC_CONCURRENT freed 2562K, 59% free 10660K/25856K, paused 8ms+6ms, total 125ms
+03-17 11:00:20.320  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 21ms
+03-17 11:00:22.920  5712  5716 D dalvikvm: GC_CONCURRENT freed 2557K, 59% free 10656K/25856K, paused 9ms+11ms, total 158ms
+03-17 11:00:22.920  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 52ms
+03-17 11:00:22.920  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 9ms
+03-17 11:00:25.010  5712  5716 D dalvikvm: GC_CONCURRENT freed 2541K, 59% free 10665K/25856K, paused 8ms+8ms, total 116ms
+03-17 11:00:27.550  5712  5716 D dalvikvm: GC_CONCURRENT freed 2582K, 59% free 10638K/25856K, paused 25ms+5ms, total 135ms
+03-17 11:00:27.550  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 52ms
+03-17 11:00:27.550  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 39ms
+03-17 11:00:29.970  5712  5716 D dalvikvm: GC_CONCURRENT freed 2533K, 59% free 10655K/25856K, paused 12ms+7ms, total 152ms
+03-17 11:00:29.970  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 32ms
+03-17 11:00:32.370  5712  5716 D dalvikvm: GC_CONCURRENT freed 2551K, 59% free 10656K/25856K, paused 12ms+5ms, total 126ms
+03-17 11:00:32.370  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 20ms
+03-17 11:00:32.370  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 39ms
+03-17 11:00:32.370  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 26ms
+03-17 11:00:33.460  5712  6428 I HUREV   : [181] m.d | Media Start Request AUDIO1: session_id: 3
+03-17 11:00:33.460  5712  6428 I HUREV   : configuration_index: 0
+03-17 11:00:33.480  5712  6428 I HUREV   : [181] j.a | AudioDecoder.start: channel=4, stream=3, gain=1.0, sampleRate=16000, numberOfBits=16, numberOfChannels=1, isAac=true
+03-17 11:00:33.490  5712  6428 I HUREV   : [181] s.f | Audio stream: 3 buffer size: 40960 (min: 5120) sampleRateInHz: 16000 channelCount: 1
+03-17 11:00:33.490  5712  6428 D AudioTrack: AudioTrack::start 0x6603d3c0,mStreamType=3
+03-17 11:00:33.490  5712 12202 I OMXClient: Using client-side OMX mux.
+03-17 11:00:33.500  5712 12202 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 11:00:33.500  5712 12202 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 11:00:33.500  5712 12202 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 11:00:33.500  5712 12202 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 11:00:33.500  5712 12202 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 11:00:33.500  5712 12202 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 11:00:33.500  5712 12202 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 11:00:33.500  5712 12202 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 11:00:33.500  5712 12202 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 11:00:33.500  5712 12202 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 11:00:33.500  5712 12202 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 11:00:33.500  5712 12202 E OMXMaster: A component of name 'OMX.Freescale.std.parser.streaming.sw-based' already exists, ignoring this one.
+03-17 11:00:33.500  5712 12202 E OMXMaster: A component of name 'OMX.Freescale.std.parser.fsl.sw-based' already exists, ignoring this one.
+03-17 11:00:33.510  5712  6428 I HUREV   : [181] s.i | AAC Decoder started for 16000 Hz, 1 channels with is-adts (Async)
+03-17 11:00:33.510  5712 12203 I SoftAAC2: Reconfiguring decoder: 0->16000 Hz, 0->1 channels
+03-17 11:00:33.940  5712 12205 W AudioTrack: releaseBuffer() track 0x6603d3c0 name=0x1 disabled, restarting
+03-17 11:00:34.360  5712 12205 W AudioTrack: releaseBuffer() track 0x6603d3c0 name=0x1 disabled, restarting
+03-17 11:00:34.630  5712  5716 D dalvikvm: GC_CONCURRENT freed 2559K, 59% free 10656K/25856K, paused 10ms+8ms, total 132ms
+03-17 11:00:34.630  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 36ms
+03-17 11:00:34.770  5712  6428 I HUREV   : [181] m.c | Media Sink Stop Request: AUDIO1
+03-17 11:00:34.770  5712  6428 I HUREV   : [181] j.d | Audio Stop: AUDIO1
+03-17 11:00:34.800  5712 12205 D AudioTrack: AudioTrack::stop 0x6603d3c0,mStreamType=3
+03-17 11:00:34.810  5712 12205 E HUREV   : [15863] s.e | Error during audio track cleanup
+03-17 11:00:34.810  5712 12205 E HUREV   : java.lang.InterruptedException
+03-17 11:00:34.810  5712 12205 E HUREV   : 	at java.lang.VMThread.sleep(Native Method)
+03-17 11:00:34.810  5712 12205 E HUREV   : 	at java.lang.Thread.sleep(Thread.java:1013)
+03-17 11:00:34.810  5712 12205 E HUREV   : 	at java.lang.Thread.sleep(Thread.java:995)
+03-17 11:00:34.810  5712 12205 E HUREV   : 	at y0.s.e(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:125)
+03-17 11:00:34.810  5712 12205 E HUREV   : 	at y0.s.run(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:85)
+03-17 11:00:34.810  5712 12205 D AudioTrack: AudioTrack::stop 0x6603d3c0,mStreamType=3
+03-17 11:00:34.810  5712 12205 D AudioTrack: AudioTrack::stop 0x6603d3c0,mStreamType=3
+03-17 11:00:34.810  5712 12205 D AudioTrack: AudioTrack::stop 0x6603d3c0,mStreamType=3
+03-17 11:00:34.820  5712 12205 I HUREV   : [15863] s.run | AudioTrackWrapper thread finished.
+03-17 11:00:36.990  5712  5716 D dalvikvm: GC_CONCURRENT freed 2561K, 59% free 10648K/25856K, paused 9ms+6ms, total 152ms
+03-17 11:00:36.990  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 22ms
+03-17 11:00:36.990  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 21ms
+03-17 11:00:39.350  5712  5716 D dalvikvm: GC_CONCURRENT freed 2559K, 59% free 10639K/25856K, paused 12ms+6ms, total 129ms
+03-17 11:00:39.350  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 47ms
+03-17 11:00:39.350  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 36ms
+03-17 11:00:41.740  5712  5716 D dalvikvm: GC_CONCURRENT freed 2531K, 59% free 10656K/25856K, paused 12ms+9ms, total 149ms
+03-17 11:00:41.740  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 43ms
+03-17 11:00:41.740  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 39ms
+03-17 11:00:41.740  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 24ms
+03-17 11:00:43.730  5712  5716 D dalvikvm: GC_CONCURRENT freed 2519K, 59% free 10662K/25856K, paused 10ms+5ms, total 127ms
+03-17 11:00:46.430  5712  5716 D dalvikvm: GC_CONCURRENT freed 2576K, 59% free 10640K/25856K, paused 15ms+7ms, total 122ms
+03-17 11:00:46.430  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 33ms
+03-17 11:00:46.440  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 34ms
+03-17 11:00:48.810  5712  5716 D dalvikvm: GC_CONCURRENT freed 2511K, 59% free 10664K/25856K, paused 5ms+4ms, total 101ms
+03-17 11:00:51.250  5712  5716 D dalvikvm: GC_CONCURRENT freed 2509K, 59% free 10691K/25856K, paused 6ms+5ms, total 83ms
+03-17 11:00:53.580  5712  5716 D dalvikvm: GC_CONCURRENT freed 2576K, 59% free 10655K/25856K, paused 6ms+6ms, total 102ms
+03-17 11:00:55.810  5712  5716 D dalvikvm: GC_CONCURRENT freed 2561K, 59% free 10644K/25856K, paused 8ms+5ms, total 110ms
+03-17 11:00:55.810  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 16ms
+03-17 11:00:58.150  5712  5716 D dalvikvm: GC_CONCURRENT freed 2512K, 59% free 10640K/25856K, paused 5ms+5ms, total 90ms
+03-17 11:01:00.160  5712  5716 D dalvikvm: GC_CONCURRENT freed 2509K, 59% free 10653K/25856K, paused 13ms+5ms, total 110ms
+03-17 11:01:02.940  5712  5716 D dalvikvm: GC_CONCURRENT freed 2556K, 59% free 10672K/25856K, paused 8ms+6ms, total 135ms
+03-17 11:01:05.390  5712  5716 D dalvikvm: GC_CONCURRENT freed 2553K, 59% free 10656K/25856K, paused 8ms+7ms, total 110ms
+03-17 11:01:07.630  5712  5716 D dalvikvm: GC_CONCURRENT freed 2563K, 59% free 10643K/25856K, paused 8ms+8ms, total 125ms
+03-17 11:01:07.630  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 53ms
+03-17 11:01:09.090  5712  6428 E HUREV   : [181] a.b | Nav: failed to parse NextTurnDetail
+03-17 11:01:09.090  5712  6428 E HUREV   : com.google.protobuf.UninitializedMessageException: Message missing required fields: nextturn
+03-17 11:01:09.090  5712  6428 E HUREV   : 	at com.google.protobuf.AbstractMessage$Builder.newUninitializedMessageException(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:7)
+03-17 11:01:09.090  5712  6428 E HUREV   : 	at com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus$NextTurnDetail$Builder.build(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:5)
+03-17 11:01:09.090  5712  6428 E HUREV   : 	at com.andrerinas.headunitrevived.aap.a.b(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:207)
+03-17 11:01:09.090  5712  6428 E HUREV   : 	at t0.u.a(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:123)
+03-17 11:01:09.090  5712  6428 E HUREV   : 	at t0.e0.d(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:149)
+03-17 11:01:09.090  5712  6428 E HUREV   : 	at t0.e0.a(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:98)
+03-17 11:01:09.090  5712  6428 E HUREV   : 	at t0.d0$a.read(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:14)
+03-17 11:01:09.090  5712  6428 E HUREV   : 	at t0.s0.n(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:15)
+03-17 11:01:09.090  5712  6428 E HUREV   : 	at t0.s0.c(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:1)
+03-17 11:01:09.090  5712  6428 E HUREV   : 	at t0.q0.handleMessage(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:3)
+03-17 11:01:09.090  5712  6428 E HUREV   : 	at android.os.Handler.dispatchMessage(Handler.java:95)
+03-17 11:01:09.090  5712  6428 E HUREV   : 	at android.os.Looper.loop(Looper.java:137)
+03-17 11:01:09.090  5712  6428 E HUREV   : 	at android.os.HandlerThread.run(HandlerThread.java:61)
+03-17 11:01:09.480  5712  5716 D dalvikvm: GC_CONCURRENT freed 2505K, 59% free 10685K/25856K, paused 9ms+5ms, total 136ms
+03-17 11:01:09.480  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 33ms
+03-17 11:01:09.480  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 54ms
+03-17 11:01:12.060  5712  6428 E HUREV   : [181] a.b | Nav: failed to parse NextTurnDetail
+03-17 11:01:12.060  5712  6428 E HUREV   : com.google.protobuf.UninitializedMessageException: Message missing required fields: nextturn
+03-17 11:01:12.060  5712  6428 E HUREV   : 	at com.google.protobuf.AbstractMessage$Builder.newUninitializedMessageException(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:7)
+03-17 11:01:12.060  5712  6428 E HUREV   : 	at com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus$NextTurnDetail$Builder.build(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:5)
+03-17 11:01:12.060  5712  6428 E HUREV   : 	at com.andrerinas.headunitrevived.aap.a.b(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:207)
+03-17 11:01:12.060  5712  6428 E HUREV   : 	at t0.u.a(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:123)
+03-17 11:01:12.060  5712  6428 E HUREV   : 	at t0.e0.d(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:149)
+03-17 11:01:12.060  5712  6428 E HUREV   : 	at t0.e0.a(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:98)
+03-17 11:01:12.060  5712  6428 E HUREV   : 	at t0.d0$a.read(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:14)
+03-17 11:01:12.060  5712  6428 E HUREV   : 	at t0.s0.n(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:15)
+03-17 11:01:12.060  5712  6428 E HUREV   : 	at t0.s0.c(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:1)
+03-17 11:01:12.060  5712  6428 E HUREV   : 	at t0.q0.handleMessage(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:3)
+03-17 11:01:12.060  5712  6428 E HUREV   : 	at android.os.Handler.dispatchMessage(Handler.java:95)
+03-17 11:01:12.060  5712  6428 E HUREV   : 	at android.os.Looper.loop(Looper.java:137)
+03-17 11:01:12.060  5712  6428 E HUREV   : 	at android.os.HandlerThread.run(HandlerThread.java:61)
+03-17 11:01:12.120  5712  5716 D dalvikvm: GC_CONCURRENT freed 2561K, 59% free 10688K/25856K, paused 10ms+7ms, total 143ms
+03-17 11:01:12.120  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 29ms
+03-17 11:01:14.610  5712  5716 D dalvikvm: GC_CONCURRENT freed 2534K, 59% free 10717K/25856K, paused 16ms+7ms, total 125ms
+03-17 11:01:15.060  5712  6428 E HUREV   : [181] a.b | Nav: failed to parse NextTurnDetail
+03-17 11:01:15.060  5712  6428 E HUREV   : com.google.protobuf.UninitializedMessageException: Message missing required fields: nextturn
+03-17 11:01:15.060  5712  6428 E HUREV   : 	at com.google.protobuf.AbstractMessage$Builder.newUninitializedMessageException(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:7)
+03-17 11:01:15.060  5712  6428 E HUREV   : 	at com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus$NextTurnDetail$Builder.build(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:5)
+03-17 11:01:15.060  5712  6428 E HUREV   : 	at com.andrerinas.headunitrevived.aap.a.b(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:207)
+03-17 11:01:15.060  5712  6428 E HUREV   : 	at t0.u.a(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:123)
+03-17 11:01:15.060  5712  6428 E HUREV   : 	at t0.e0.d(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:149)
+03-17 11:01:15.060  5712  6428 E HUREV   : 	at t0.e0.a(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:98)
+03-17 11:01:15.060  5712  6428 E HUREV   : 	at t0.d0$a.read(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:14)
+03-17 11:01:15.060  5712  6428 E HUREV   : 	at t0.s0.n(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:15)
+03-17 11:01:15.060  5712  6428 E HUREV   : 	at t0.s0.c(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:1)
+03-17 11:01:15.060  5712  6428 E HUREV   : 	at t0.q0.handleMessage(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:3)
+03-17 11:01:15.060  5712  6428 E HUREV   : 	at android.os.Handler.dispatchMessage(Handler.java:95)
+03-17 11:01:15.060  5712  6428 E HUREV   : 	at android.os.Looper.loop(Looper.java:137)
+03-17 11:01:15.060  5712  6428 E HUREV   : 	at android.os.HandlerThread.run(HandlerThread.java:61)
+03-17 11:01:16.890  5712  5716 D dalvikvm: GC_CONCURRENT freed 2577K, 59% free 10726K/25856K, paused 13ms+10ms, total 164ms
+03-17 11:01:18.050  5712  6428 E HUREV   : [181] a.b | Nav: failed to parse NextTurnDetail
+03-17 11:01:18.050  5712  6428 E HUREV   : com.google.protobuf.UninitializedMessageException: Message missing required fields: nextturn
+03-17 11:01:18.050  5712  6428 E HUREV   : 	at com.google.protobuf.AbstractMessage$Builder.newUninitializedMessageException(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:7)
+03-17 11:01:18.050  5712  6428 E HUREV   : 	at com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus$NextTurnDetail$Builder.build(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:5)
+03-17 11:01:18.050  5712  6428 E HUREV   : 	at com.andrerinas.headunitrevived.aap.a.b(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:207)
+03-17 11:01:18.050  5712  6428 E HUREV   : 	at t0.u.a(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:123)
+03-17 11:01:18.050  5712  6428 E HUREV   : 	at t0.e0.d(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:149)
+03-17 11:01:18.050  5712  6428 E HUREV   : 	at t0.e0.a(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:98)
+03-17 11:01:18.050  5712  6428 E HUREV   : 	at t0.d0$a.read(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:14)
+03-17 11:01:18.050  5712  6428 E HUREV   : 	at t0.s0.n(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:15)
+03-17 11:01:18.050  5712  6428 E HUREV   : 	at t0.s0.c(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:1)
+03-17 11:01:18.050  5712  6428 E HUREV   : 	at t0.q0.handleMessage(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:3)
+03-17 11:01:18.050  5712  6428 E HUREV   : 	at android.os.Handler.dispatchMessage(Handler.java:95)
+03-17 11:01:18.050  5712  6428 E HUREV   : 	at android.os.Looper.loop(Looper.java:137)
+03-17 11:01:18.050  5712  6428 E HUREV   : 	at android.os.HandlerThread.run(HandlerThread.java:61)
+03-17 11:01:19.090  5712  5716 D dalvikvm: GC_CONCURRENT freed 2601K, 59% free 10696K/25856K, paused 7ms+7ms, total 145ms
+03-17 11:01:20.070  5712  6428 E HUREV   : [181] a.b | Nav: failed to parse NextTurnDetail
+03-17 11:01:20.070  5712  6428 E HUREV   : com.google.protobuf.UninitializedMessageException: Message missing required fields: nextturn
+03-17 11:01:20.070  5712  6428 E HUREV   : 	at com.google.protobuf.AbstractMessage$Builder.newUninitializedMessageException(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:7)
+03-17 11:01:20.070  5712  6428 E HUREV   : 	at com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus$NextTurnDetail$Builder.build(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:5)
+03-17 11:01:20.070  5712  6428 E HUREV   : 	at com.andrerinas.headunitrevived.aap.a.b(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:207)
+03-17 11:01:20.070  5712  6428 E HUREV   : 	at t0.u.a(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:123)
+03-17 11:01:20.070  5712  6428 E HUREV   : 	at t0.e0.d(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:149)
+03-17 11:01:20.070  5712  6428 E HUREV   : 	at t0.e0.a(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:98)
+03-17 11:01:20.070  5712  6428 E HUREV   : 	at t0.d0$a.read(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:14)
+03-17 11:01:20.070  5712  6428 E HUREV   : 	at t0.s0.n(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:15)
+03-17 11:01:20.070  5712  6428 E HUREV   : 	at t0.s0.c(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:1)
+03-17 11:01:20.070  5712  6428 E HUREV   : 	at t0.q0.handleMessage(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:3)
+03-17 11:01:20.070  5712  6428 E HUREV   : 	at android.os.Handler.dispatchMessage(Handler.java:95)
+03-17 11:01:20.070  5712  6428 E HUREV   : 	at android.os.Looper.loop(Looper.java:137)
+03-17 11:01:20.070  5712  6428 E HUREV   : 	at android.os.HandlerThread.run(HandlerThread.java:61)
+03-17 11:01:20.090  5712  6428 I HUREV   : [181] p.f | Navigation Focus Request: NAV_FOCUS_1
+03-17 11:01:20.090  5712  6428 I HUREV   : [181] p.f | CONTROL Navigation Focus Notification type: 14 flags: 11 size: 8 dataOffset: 6
+03-17 11:01:21.310  5712  5716 D dalvikvm: GC_CONCURRENT freed 2528K, 59% free 10712K/25856K, paused 8ms+6ms, total 138ms
+03-17 11:01:24.090  5712  5716 D dalvikvm: GC_CONCURRENT freed 2554K, 59% free 10678K/25856K, paused 9ms+8ms, total 101ms
+03-17 11:01:26.350  5712  5716 D dalvikvm: GC_CONCURRENT freed 2537K, 59% free 10753K/25856K, paused 9ms+9ms, total 159ms
+03-17 11:01:28.820  5712  5716 D dalvikvm: GC_CONCURRENT freed 2665K, 59% free 10674K/25856K, paused 8ms+12ms, total 131ms
+03-17 11:01:28.820  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 42ms
+03-17 11:01:28.820  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 41ms
+03-17 11:01:32.220  5712  5716 D dalvikvm: GC_CONCURRENT freed 2541K, 59% free 10689K/25856K, paused 9ms+5ms, total 123ms
+03-17 11:01:32.220  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 46ms
+03-17 11:01:34.490  5712  5716 D dalvikvm: GC_CONCURRENT freed 2573K, 59% free 10681K/25856K, paused 7ms+5ms, total 130ms
+03-17 11:01:34.490  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 67ms
+03-17 11:01:34.490  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 52ms
+03-17 11:01:36.520  5712  5716 D dalvikvm: GC_CONCURRENT freed 2576K, 59% free 10666K/25856K, paused 12ms+6ms, total 133ms
+03-17 11:01:36.520  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 73ms
+03-17 11:01:36.520  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 14ms
+03-17 11:01:38.760  5712  5716 D dalvikvm: GC_CONCURRENT freed 2530K, 59% free 10696K/25856K, paused 16ms+7ms, total 142ms
+03-17 11:01:38.760  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 29ms
+03-17 11:01:40.870  5712  5716 D dalvikvm: GC_CONCURRENT freed 2595K, 59% free 10666K/25856K, paused 7ms+6ms, total 128ms
+03-17 11:01:40.870  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 84ms
+03-17 11:01:40.870  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 85ms
+03-17 11:01:43.050  5712  5716 D dalvikvm: GC_CONCURRENT freed 2502K, 59% free 10715K/25856K, paused 15ms+8ms, total 151ms
+03-17 11:01:45.800  5712  5716 D dalvikvm: GC_CONCURRENT freed 2611K, 59% free 10685K/25856K, paused 9ms+12ms, total 145ms
+03-17 11:01:45.800  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 59ms
+03-17 11:01:48.020  5712  5716 D dalvikvm: GC_CONCURRENT freed 2567K, 59% free 10697K/25856K, paused 7ms+6ms, total 98ms
+03-17 11:01:50.390  5712  5716 D dalvikvm: GC_CONCURRENT freed 2496K, 59% free 10675K/25856K, paused 6ms+5ms, total 83ms
+03-17 11:01:53.520  5712  5716 D dalvikvm: GC_CONCURRENT freed 2463K, 59% free 10677K/25856K, paused 7ms+4ms, total 90ms
+03-17 11:01:56.700  5712  5716 D dalvikvm: GC_CONCURRENT freed 2476K, 59% free 10682K/25856K, paused 6ms+5ms, total 75ms
+03-17 11:01:59.380  5712  5716 D dalvikvm: GC_CONCURRENT freed 2576K, 59% free 10671K/25856K, paused 8ms+5ms, total 79ms
+03-17 11:01:59.380  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 44ms
+03-17 11:02:00.770  5712  5716 D dalvikvm: GC_CONCURRENT freed 2554K, 59% free 10672K/25856K, paused 8ms+5ms, total 106ms
+03-17 11:02:00.770  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 24ms
+03-17 11:02:00.770  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 19ms
+03-17 11:02:02.480  5712  5716 D dalvikvm: GC_CONCURRENT freed 2547K, 59% free 10717K/25856K, paused 10ms+6ms, total 108ms
+03-17 11:02:04.410  5712  5716 D dalvikvm: GC_CONCURRENT freed 2599K, 59% free 10697K/25856K, paused 7ms+7ms, total 127ms
+03-17 11:02:06.830  5712  5716 D dalvikvm: GC_CONCURRENT freed 2590K, 59% free 10684K/25856K, paused 7ms+6ms, total 130ms
+03-17 11:02:06.830  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 31ms
+03-17 11:02:09.040  5712  5716 D dalvikvm: GC_CONCURRENT freed 2550K, 59% free 10684K/25856K, paused 13ms+7ms, total 145ms
+03-17 11:02:11.670  5712  5716 D dalvikvm: GC_CONCURRENT freed 2539K, 59% free 10707K/25856K, paused 10ms+6ms, total 138ms
+03-17 11:02:14.140  5712  5716 D dalvikvm: GC_CONCURRENT freed 2579K, 59% free 10693K/25856K, paused 11ms+7ms, total 148ms
+03-17 11:02:16.440  5712  5716 D dalvikvm: GC_CONCURRENT freed 2515K, 59% free 10706K/25856K, paused 8ms+9ms, total 118ms
+03-17 11:02:18.830  5712  5716 D dalvikvm: GC_CONCURRENT freed 2603K, 59% free 10673K/25856K, paused 8ms+16ms, total 188ms
+03-17 11:02:18.830  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 41ms
+03-17 11:02:18.830  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 28ms
+03-17 11:02:21.220  5712  5716 D dalvikvm: GC_CONCURRENT freed 2525K, 59% free 10703K/25856K, paused 6ms+5ms, total 148ms
+03-17 11:02:23.720  5712  5716 D dalvikvm: GC_CONCURRENT freed 2584K, 59% free 10685K/25856K, paused 9ms+8ms, total 149ms
+03-17 11:02:23.720  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 43ms
+03-17 11:02:23.720  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 27ms
+03-17 11:02:26.110  5712  5716 D dalvikvm: GC_CONCURRENT freed 2567K, 59% free 10679K/25856K, paused 10ms+6ms, total 136ms
+03-17 11:02:26.110  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 23ms
+03-17 11:02:28.230  5712  5716 D dalvikvm: GC_CONCURRENT freed 2571K, 59% free 10668K/25856K, paused 10ms+5ms, total 137ms
+03-17 11:02:28.230  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 77ms
+03-17 11:02:28.230  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 80ms
+03-17 11:02:30.660  5712  5716 D dalvikvm: GC_CONCURRENT freed 2541K, 59% free 10681K/25856K, paused 10ms+5ms, total 145ms
+03-17 11:02:30.660  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 93ms
+03-17 11:02:33.630  5712  5716 D dalvikvm: GC_CONCURRENT freed 2488K, 59% free 10682K/25856K, paused 10ms+8ms, total 125ms
+03-17 11:02:37.010  5712  5716 D dalvikvm: GC_CONCURRENT freed 2555K, 59% free 10686K/25856K, paused 15ms+7ms, total 156ms
+03-17 11:02:37.010  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 72ms
+03-17 11:02:37.010  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 81ms
+03-17 11:02:38.590  5712  5716 D dalvikvm: GC_CONCURRENT freed 2551K, 59% free 10689K/25856K, paused 10ms+6ms, total 133ms
+03-17 11:02:38.590  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 21ms
+03-17 11:02:40.420  5712  5716 D dalvikvm: GC_CONCURRENT freed 2568K, 59% free 10683K/25856K, paused 9ms+6ms, total 145ms
+03-17 11:02:40.420  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 66ms
+03-17 11:02:43.100  5712  5716 D dalvikvm: GC_CONCURRENT freed 2554K, 59% free 10692K/25856K, paused 11ms+6ms, total 139ms
+03-17 11:02:43.100  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 14ms
+03-17 11:02:45.420  5712  5716 D dalvikvm: GC_CONCURRENT freed 2507K, 59% free 10707K/25856K, paused 7ms+6ms, total 85ms
+03-17 11:02:47.760  5712  5716 D dalvikvm: GC_CONCURRENT freed 2585K, 59% free 10687K/25856K, paused 8ms+8ms, total 108ms
+03-17 11:02:50.420  5712  5716 D dalvikvm: GC_CONCURRENT freed 2584K, 59% free 10668K/25856K, paused 7ms+4ms, total 77ms
+03-17 11:02:50.420  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 35ms
+03-17 11:02:50.420  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 24ms
+03-17 11:02:50.430  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 28ms
+03-17 11:02:53.030  5712  5716 D dalvikvm: GC_CONCURRENT freed 2472K, 59% free 10674K/25856K, paused 8ms+5ms, total 113ms
+03-17 11:02:55.370  5712  5716 D dalvikvm: GC_CONCURRENT freed 2484K, 59% free 10686K/25856K, paused 6ms+6ms, total 96ms
+03-17 11:02:57.350  5712  5716 D dalvikvm: GC_CONCURRENT freed 2580K, 59% free 10669K/25856K, paused 6ms+5ms, total 85ms
+03-17 11:02:57.350  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 5ms
+03-17 11:02:57.350  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 21ms
+03-17 11:02:59.500  5712  5716 D dalvikvm: GC_CONCURRENT freed 2486K, 59% free 10698K/25856K, paused 6ms+5ms, total 100ms
+03-17 11:03:01.780  5712  5716 D dalvikvm: GC_CONCURRENT freed 2518K, 59% free 10714K/25856K, paused 6ms+5ms, total 107ms
+03-17 11:03:04.400  5712  5716 D dalvikvm: GC_CONCURRENT freed 2604K, 59% free 10681K/25856K, paused 27ms+8ms, total 149ms
+03-17 11:03:04.400  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 30ms
+03-17 11:03:04.400  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 29ms
+03-17 11:03:06.620  5712  5716 D dalvikvm: GC_CONCURRENT freed 2554K, 59% free 10696K/25856K, paused 8ms+6ms, total 118ms
+03-17 11:03:08.830  5712  5716 D dalvikvm: GC_CONCURRENT freed 2545K, 59% free 10710K/25856K, paused 10ms+11ms, total 142ms
+03-17 11:03:11.560  5712  5716 D dalvikvm: GC_CONCURRENT freed 2583K, 59% free 10699K/25856K, paused 8ms+20ms, total 149ms
+03-17 11:03:11.560  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 20ms
+03-17 11:03:11.560  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 12ms
+03-17 11:03:13.870  5712  5716 D dalvikvm: GC_CONCURRENT freed 2582K, 59% free 10681K/25856K, paused 12ms+6ms, total 164ms
+03-17 11:03:13.870  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 21ms
+03-17 11:03:16.250  5712  5716 D dalvikvm: GC_CONCURRENT freed 2575K, 59% free 10669K/25856K, paused 11ms+5ms, total 167ms
+03-17 11:03:16.250  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 47ms
+03-17 11:03:18.670  5712  5716 D dalvikvm: GC_CONCURRENT freed 2534K, 59% free 10691K/25856K, paused 9ms+6ms, total 133ms
+03-17 11:03:20.910  5712  5716 D dalvikvm: GC_CONCURRENT freed 2563K, 59% free 10723K/25856K, paused 9ms+8ms, total 147ms
+03-17 11:03:23.320  5712  5716 D dalvikvm: GC_CONCURRENT freed 2612K, 59% free 10686K/25856K, paused 10ms+21ms, total 168ms
+03-17 11:03:23.330  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 45ms
+03-17 11:03:23.330  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 58ms
+03-17 11:03:23.330  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 55ms
+03-17 11:03:25.610  5712  5716 D dalvikvm: GC_CONCURRENT freed 2559K, 59% free 10692K/25856K, paused 10ms+5ms, total 123ms
+03-17 11:03:28.110  5712  5716 D dalvikvm: GC_CONCURRENT freed 2508K, 59% free 10703K/25856K, paused 11ms+7ms, total 124ms
+03-17 11:03:30.600  5712  5716 D dalvikvm: GC_CONCURRENT freed 2591K, 59% free 10681K/25856K, paused 9ms+8ms, total 167ms
+03-17 11:03:30.600  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 76ms
+03-17 11:03:30.600  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 41ms
+03-17 11:03:33.040  5712  5716 D dalvikvm: GC_CONCURRENT freed 2510K, 59% free 10711K/25856K, paused 7ms+9ms, total 154ms
+03-17 11:03:35.640  5712  5716 D dalvikvm: GC_CONCURRENT freed 2605K, 59% free 10683K/25856K, paused 11ms+8ms, total 193ms
+03-17 11:03:35.640  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 42ms
+03-17 11:03:38.010  5712  5716 D dalvikvm: GC_CONCURRENT freed 2560K, 59% free 10685K/25856K, paused 14ms+7ms, total 168ms
+03-17 11:03:38.010  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 47ms
+03-17 11:03:38.020  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 27ms
+03-17 11:03:40.800  5712  5716 D dalvikvm: GC_CONCURRENT freed 2566K, 59% free 10681K/25856K, paused 8ms+11ms, total 153ms
+03-17 11:03:40.800  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 44ms
+03-17 11:03:42.980  5712  5716 D dalvikvm: GC_CONCURRENT freed 2512K, 59% free 10736K/25856K, paused 8ms+12ms, total 126ms
+03-17 11:03:45.210  5712  5716 D dalvikvm: GC_CONCURRENT freed 2559K, 59% free 10689K/25856K, paused 7ms+7ms, total 84ms
+03-17 11:03:47.560  5712  5716 D dalvikvm: GC_CONCURRENT freed 2570K, 59% free 10689K/25856K, paused 6ms+7ms, total 91ms
+03-17 11:03:49.930  5712  5716 D dalvikvm: GC_CONCURRENT freed 2529K, 59% free 10681K/25856K, paused 8ms+6ms, total 90ms
+03-17 11:03:52.210  5712  5716 D dalvikvm: GC_CONCURRENT freed 2490K, 59% free 10691K/25856K, paused 6ms+6ms, total 83ms
+03-17 11:03:54.580  5712  5716 D dalvikvm: GC_CONCURRENT freed 2558K, 59% free 10690K/25856K, paused 5ms+6ms, total 82ms
+03-17 11:03:57.090  5712  5716 D dalvikvm: GC_CONCURRENT freed 2535K, 59% free 10698K/25856K, paused 10ms+5ms, total 100ms
+03-17 11:03:59.360  5712  5716 D dalvikvm: GC_CONCURRENT freed 2581K, 59% free 10684K/25856K, paused 6ms+7ms, total 113ms
+03-17 11:03:59.360  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 30ms
+03-17 11:03:59.360  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 29ms
+03-17 11:04:01.710  5712  5716 D dalvikvm: GC_CONCURRENT freed 2555K, 59% free 10695K/25856K, paused 8ms+6ms, total 129ms
+03-17 11:04:01.710  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 27ms
+03-17 11:04:03.880  5712  5716 D dalvikvm: GC_CONCURRENT freed 2539K, 59% free 10681K/25856K, paused 7ms+5ms, total 117ms
+03-17 11:04:06.280  5712  5716 D dalvikvm: GC_CONCURRENT freed 2500K, 59% free 10692K/25856K, paused 7ms+6ms, total 116ms
+03-17 11:04:08.660  5712  5716 D dalvikvm: GC_CONCURRENT freed 2563K, 59% free 10701K/25856K, paused 8ms+6ms, total 107ms
+03-17 11:04:10.990  5712  5716 D dalvikvm: GC_CONCURRENT freed 2576K, 59% free 10694K/25856K, paused 10ms+8ms, total 142ms
+03-17 11:04:10.990  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 10ms
+03-17 11:04:10.990  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 40ms
+03-17 11:04:13.360  5712  5716 D dalvikvm: GC_CONCURRENT freed 2570K, 59% free 10683K/25856K, paused 9ms+4ms, total 138ms
+03-17 11:04:13.360  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 24ms
+03-17 11:04:16.110  5712  5716 D dalvikvm: GC_CONCURRENT freed 2562K, 59% free 10683K/25856K, paused 16ms+7ms, total 147ms
+03-17 11:04:16.110  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 18ms
+03-17 11:04:16.110  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 9ms
+03-17 11:04:16.110  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 29ms
+03-17 11:04:18.600  5712  5716 D dalvikvm: GC_CONCURRENT freed 2557K, 59% free 10761K/25856K, paused 10ms+8ms, total 153ms
+03-17 11:04:20.960  5712  5716 D dalvikvm: GC_CONCURRENT freed 2641K, 59% free 10697K/25856K, paused 14ms+9ms, total 123ms
+03-17 11:04:23.260  5712  5716 D dalvikvm: GC_CONCURRENT freed 2536K, 59% free 10697K/25856K, paused 10ms+8ms, total 130ms
+03-17 11:04:25.980  5712  5716 D dalvikvm: GC_CONCURRENT freed 2575K, 59% free 10689K/25856K, paused 9ms+15ms, total 149ms
+03-17 11:04:25.980  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 10ms
+03-17 11:04:25.980  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 33ms
+03-17 11:04:25.990  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 30ms
+03-17 11:04:28.160  5712  5716 D dalvikvm: GC_CONCURRENT freed 2564K, 59% free 10688K/25856K, paused 19ms+7ms, total 131ms
+03-17 11:04:28.160  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 72ms
+03-17 11:04:30.390  5712  5716 D dalvikvm: GC_CONCURRENT freed 2569K, 59% free 10682K/25856K, paused 9ms+5ms, total 148ms
+03-17 11:04:30.390  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 71ms
+03-17 11:04:30.390  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 67ms
+03-17 11:04:33.040  5712  5716 D dalvikvm: GC_CONCURRENT freed 2569K, 59% free 10678K/25856K, paused 14ms+7ms, total 143ms
+03-17 11:04:33.040  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 32ms
+03-17 11:04:35.630  5712  5716 D dalvikvm: GC_CONCURRENT freed 2565K, 59% free 10671K/25856K, paused 9ms+6ms, total 134ms
+03-17 11:04:35.630  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 55ms
+03-17 11:04:35.630  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 29ms
+03-17 11:04:38.300  5712  5716 D dalvikvm: GC_CONCURRENT freed 2514K, 59% free 10685K/25856K, paused 8ms+6ms, total 130ms
+03-17 11:04:40.650  5712  5716 D dalvikvm: GC_CONCURRENT freed 2546K, 59% free 10704K/25856K, paused 9ms+6ms, total 118ms
+03-17 11:04:43.000  5712  5716 D dalvikvm: GC_CONCURRENT freed 2520K, 59% free 10699K/25856K, paused 6ms+7ms, total 88ms
+03-17 11:04:45.550  5712  5716 D dalvikvm: GC_CONCURRENT freed 2515K, 59% free 10681K/25856K, paused 6ms+5ms, total 81ms
+03-17 11:04:47.760  5712  5716 D dalvikvm: GC_CONCURRENT freed 2512K, 59% free 10676K/25856K, paused 4ms+7ms, total 77ms
+03-17 11:04:51.910  5712  5716 D dalvikvm: GC_CONCURRENT freed 2478K, 59% free 10690K/25856K, paused 7ms+6ms, total 105ms
+03-17 11:04:57.050  5712  5716 D dalvikvm: GC_CONCURRENT freed 2514K, 59% free 10684K/25856K, paused 8ms+7ms, total 152ms
+03-17 11:05:02.130  5712  5716 D dalvikvm: GC_CONCURRENT freed 2484K, 59% free 10683K/25856K, paused 8ms+8ms, total 109ms
+03-17 11:05:07.220  5712  5716 D dalvikvm: GC_CONCURRENT freed 2494K, 59% free 10679K/25856K, paused 9ms+5ms, total 120ms
+03-17 11:05:12.330  5712  5716 D dalvikvm: GC_CONCURRENT freed 2470K, 59% free 10691K/25856K, paused 8ms+8ms, total 120ms
+03-17 11:05:19.850  5712  5716 D dalvikvm: GC_CONCURRENT freed 2567K, 59% free 10688K/25856K, paused 97ms+6ms, total 717ms
+03-17 11:05:19.850  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 369ms
+03-17 11:05:19.850  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 338ms
+03-17 11:05:19.850  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 336ms
+03-17 11:05:25.260  5712  5716 D dalvikvm: GC_CONCURRENT freed 2581K, 59% free 10671K/25856K, paused 7ms+7ms, total 363ms
+03-17 11:05:25.260  5712  6518 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 108ms
+03-17 11:05:25.260  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 137ms
+03-17 11:05:25.260  5712  6428 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 126ms
+03-17 11:05:29.350  5712  5716 D dalvikvm: GC_CONCURRENT freed 2372K, 59% free 10781K/25856K, paused 9ms+7ms, total 113ms
+03-17 11:05:34.550  5712  5716 D dalvikvm: GC_CONCURRENT freed 2541K, 59% free 10792K/25856K, paused 15ms+8ms, total 142ms
+03-17 11:05:38.890  5712  5712 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 11:05:38.890  5712  5712 I HUREV   : [1] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x10 (has extras) }
+03-17 11:05:39.040  5712  5712 I HUREV   : [1] AapProjectionActivity.M | Hiding reconnecting overlay — frames resumed
+03-17 11:05:39.190  5712  6410 I HUREV   : [177] s0.o | AapTransport quitting (clean=false)
+03-17 11:05:39.240  5712  5712 I HUREV   : [1] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-17 11:05:39.290  5712  5712 I HUREV   : [1] AapService.K | WifiLock released
+03-17 11:05:39.370  5712  6529 I HUREV   : [183] a0.l | Output thread stopped
+03-17 11:05:39.390  5712  6428 W MessageQueue: Handler (android.os.Handler) {4382b488} sending message to a Handler on a dead thread
+03-17 11:05:39.390  5712  6428 W MessageQueue: java.lang.RuntimeException: Handler (android.os.Handler) {4382b488} sending message to a Handler on a dead thread
+03-17 11:05:39.390  5712  6428 W MessageQueue: 	at android.os.MessageQueue.enqueueMessage(MessageQueue.java:309)
+03-17 11:05:39.390  5712  6428 W MessageQueue: 	at android.os.Handler.enqueueMessage(Handler.java:623)
+03-17 11:05:39.390  5712  6428 W MessageQueue: 	at android.os.Handler.sendMessageAtTime(Handler.java:592)
+03-17 11:05:39.390  5712  6428 W MessageQueue: 	at android.os.Handler.sendMessageDelayed(Handler.java:563)
+03-17 11:05:39.390  5712  6428 W MessageQueue: 	at android.os.Handler.sendEmptyMessageDelayed(Handler.java:527)
+03-17 11:05:39.390  5712  6428 W MessageQueue: 	at android.os.Handler.sendEmptyMessage(Handler.java:512)
+03-17 11:05:39.390  5712  6428 W MessageQueue: 	at t0.s0.n(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:36)
+03-17 11:05:39.390  5712  6428 W MessageQueue: 	at t0.s0.c(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:1)
+03-17 11:05:39.390  5712  6428 W MessageQueue: 	at t0.q0.handleMessage(r8-map-id-8722f06efe6fab086a70200d597343236d3225d15181a7b075b269dcf50b7ff7:3)
+03-17 11:05:39.390  5712  6428 W MessageQueue: 	at android.os.Handler.dispatchMessage(Handler.java:95)
+03-17 11:05:39.390  5712  6428 W MessageQueue: 	at android.os.Looper.loop(Looper.java:137)
+03-17 11:05:39.390  5712  6428 W MessageQueue: 	at android.os.HandlerThread.run(HandlerThread.java:61)
+03-17 11:05:39.390  5712  6410 D UsbDeviceConnectionJNI: close
+03-17 11:05:39.390  5712  6410 I HUREV   : [177] m.b | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/002/005,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mInterfaces=[Landroid.os.Parcelable;@43937868]
+03-17 11:05:39.390  5712  6410 E UsbDeviceConnectionJNI: device is closed in native_release_interface
+03-17 11:05:39.390  5712  6410 I HUREV   : [177] m.b | OK releaseInterface()
+03-17 11:05:39.440  5712 14186 I HUREV   : [23534] a0.s | Decoder stopped: AapService::onDisconnect
+03-17 11:05:39.550  5712  5716 D dalvikvm: GC_CONCURRENT freed 3785K, 63% free 9607K/25856K, paused 10ms+8ms, total 88ms
+03-17 11:05:39.550  5712  8422 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 28ms
+03-17 11:05:39.550  5712  5712 D dalvikvm: WAIT_FOR_CONCURRENT_GC blocked 33ms
+03-17 11:05:39.680  5712  5712 I HUREV   : [1] AapProjectionActivity.onCreate | HeadUnit for Android Auto (tm) - Copyright 2011-2015 Michael A. Reid., since 2025 André Rinas All Rights Reserved...
+03-17 11:05:39.690  5712  5712 I HUREV   : [1] AapProjectionActivity.onCreate | Using TextureView
+03-17 11:05:39.690  5712  5712 I HUREV   : [1] g.p | CarScreen: usable width: 1920 height: 720 (Raw: 1920x720, Insets: L0 T0 R0 B0)
+03-17 11:05:39.690  5712  5712 I HUREV   : [1] g.p | CarScreen isSmallScreen: true, scaleFactor: 1.0
+03-17 11:05:39.690  5712  5712 I HUREV   : [1] g.p | CarScreen using: _1920x1080, number: 3, scales: scaleX: 1.0, scaleY: 1.5
+03-17 11:05:39.690  5712  5712 D zjy     : view visibility = 7
+03-17 11:05:39.710  5712  5712 I HUREV   : [1] AapProjectionActivity.M | Hiding reconnecting overlay — frames resumed
+03-17 11:05:39.790  5712  5712 D zjy     : view visibility = 7
+03-17 11:05:39.890  5712  5712 D zjy     : view visibility = 7
+03-17 11:05:39.980  5712  5712 I HUREV   : [1] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-17 11:05:40.410  5712  8422 D AudioTrack: AudioTrack::stop 0x40029410,mStreamType=3
+03-17 11:05:41.710  5712  8422 D AudioTrack: AudioTrack::stop 0x40029410,mStreamType=3
+03-17 11:05:41.710  5712  8422 D AudioTrack: AudioTrack::stop 0x40029410,mStreamType=3
+03-17 11:05:41.710  5712  8422 D AudioTrack: AudioTrack::stop 0x40029410,mStreamType=3
+03-17 11:05:41.710  5712  8422 I HUREV   : [2315] s.run | AudioTrackWrapper thread finished.
+03-17 11:05:45.460  5712  6478 D AudioManager: dispatchAudioFocusChange [android.media.AudioManager@4396e758t0.o@43971cf0], hint = -2
+03-17 11:05:45.460  5712  5712 D AudioManager: Begin listener.onAudioFocusChange  [android.media.AudioManager@4396e758t0.o@43971cf0], hint = -2
+03-17 11:05:45.480  5712  5712 I HUREV   : [1] p.d | Audio Focus async change: STATE_GAIN, system focus change: -2 AUDIOFOCUS_LOSS_TRANSIENT
+03-17 11:05:45.480  5712  5712 I HUREV   : [1] p.d | CONTROL Audio Focus Notification type: 19 flags: 11 size: 8 dataOffset: 6
+03-17 11:05:45.480  5712  5712 I HUREV   : [1] s0.r | Cannot send message, handler is null (quitting?)
+03-17 11:05:45.480  5712  5712 D AudioManager: End listener.onAudioFocusChange [android.media.AudioManager@4396e758t0.o@43971cf0], hint = -2
+03-17 11:05:49.710  5712  5712 D zjy     : view visibility = 7

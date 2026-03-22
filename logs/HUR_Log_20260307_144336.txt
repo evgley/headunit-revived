@@ -1,0 +1,27 @@
+--------- beginning of main
+03-07 14:43:29.412 26767 26767 W CAR.HU.J: [2] i.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-07 14:43:30.806 26767 26796 W CAR.HU.J: [432] m0.k | Handshake: Version request send failed (ret=-1), attempt 2
+03-07 14:43:32.412 26767 26767 W CAR.HU.J: [2] i.run | Watchdog: No video received. Requesting Keyframe (Unsolicited Focus)...
+03-07 14:43:33.015 26767 26796 W CAR.HU.J: [432] m0.k | Handshake: Version request send failed (ret=-1), attempt 3
+03-07 14:43:33.215 26767 26796 E CAR.HU.J: [432] m0.k | Handshake: Version request/response failed after 3 attempt(s). last ret: -1
+03-07 14:43:33.216 26767 26796 I CAR.HU.J: [432] m0.o | AapTransport quitting (clean=false)
+03-07 14:43:33.220 26767 26796 E CAR.HU.J: [432] m0.z | Handshake failed
+03-07 14:43:33.221 26767 26800 I CAR.HU.J: [435] m0.o | AapTransport quitting (clean=false)
+03-07 14:43:33.223 26767 26800 I CAR.HU.J: [435] m.a | Google 18D1:2D00 - UsbDevice[mName=/dev/bus/usb/001/042,mVendorId=6353,mProductId=11520,mClass=0,mSubclass=0,mProtocol=0,mManufacturerName=Android,mProductName=smartlinkBox,mVersion=2.0,mSerialNumber=LY0123456789,mConfigurations=[
+03-07 14:43:33.223 26767 26800 I CAR.HU.J: UsbConfiguration[mId=1,mName=accessory,mAttributes=128,mMaxPower=75,mInterfaces=[
+03-07 14:43:33.223 26767 26800 I CAR.HU.J: UsbInterface[mId=0,mAlternateSetting=0,mName=Android Accessory Interface,mClass=255,mSubclass=255,mProtocol=0,mEndpoints=[
+03-07 14:43:33.223 26767 26800 I CAR.HU.J: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-07 14:43:33.223 26767 26800 I CAR.HU.J: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=512,mInterval=0]]]]
+03-07 14:43:33.223 26767 26800 E UsbDeviceConnectionJNI: device is closed in native_release_interface
+03-07 14:43:33.224 26767 26800 E CAR.HU.J: [435] m.a | Error releaseInterface()
+03-07 14:43:33.233 26767 26767 I CAR.HU.J: [2] AapProjectionActivity.onPause | AapProjectionActivity: onPause
+03-07 14:43:33.360 26767 26789 I GLConsumer: [SurfaceTexture-0-26767-5] detachFromContext
+03-07 14:43:33.610 26767 26767 I CAR.HU.J: [2] AapProjectionActivity.onDestroy | AapProjectionActivity.onDestroy called. isFinishing=true
+03-07 14:43:33.611 26767 26767 I CAR.HU.J: [2] i.onSurfaceTextureDestroyed | TextureProjectionView: Surface destroyed
+03-07 14:43:33.611 26767 26767 I CAR.HU.J: [2] AapProjectionActivity.c | SurfaceCallback: onSurfaceDestroyed. Surface: Surface(name=android.graphics.SurfaceTexture@e00db50)/@0x90ff149
+03-07 14:43:33.612 26767 26767 I CAR.HU.J: [2] a0.r | Decoder stopped: surfaceDestroyed
+03-07 14:43:33.613 26767 26767 I BufferQueueConsumer: [SurfaceTexture-0-26767-5](this:0x73f14db800,id:5,api:0,p:-1,c:-1) disconnect(C)
+03-07 14:43:33.786 26767 26767 I CAR.HU.J: [2] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-07 14:43:33.790 26767 26767 I CAR.HU.J: [2] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_DETACHED flg=0x1000010 (has extras) }
+03-07 14:43:34.194 26767 26767 I CAR.HU.J: [2] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x11000010 (has extras) }
+03-07 14:43:34.203 26767 26767 I CAR.HU.J: [2] p.onReceive | USB Intent: Intent { act=android.hardware.usb.action.USB_DEVICE_ATTACHED flg=0x11000010 (has extras) }
