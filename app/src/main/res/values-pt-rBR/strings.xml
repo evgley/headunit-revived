@@ -347,4 +347,8 @@
     <string name="use_extreme_dark_description">Usar fundo preto puro quando o modo escuro está ativo</string>
     <string name="show_fps_counter">Mostrar contador de FPS</string>
     <string name="show_fps_counter_description">Exibe a contagem de FPS em tempo real no canto superior esquerdo durante a projeção.</string>
-</resources>
+
+    <string name="category_input">Configurações de entrada</string>
+    <string name="enable_rotary">Ativar controle giratório (Rotary)</string>
+    <string name="enable_rotary_description">Anuncia suporte para botões e rodas giratórias físicas. Desative isso se sua tela sensível au toque não estiver funcionando corretamente.</string>
+    </resources>

@@ -348,4 +348,8 @@
     <string name="nav_action_destination">Arrival</string>
     <string name="show_fps_counter">Show FPS Counter</string>
     <string name="show_fps_counter_description">Display a real-time FPS overlay in the top-left corner during projection.</string>
+
+    <string name="category_input">Input Settings</string>
+    <string name="enable_rotary">Enable Rotary Controller</string>
+    <string name="enable_rotary_description">Announce support for physical rotary knobs and wheels. Disable this if your touch screen is not working correctly.</string>
 </resources>

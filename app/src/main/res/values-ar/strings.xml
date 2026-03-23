@@ -347,4 +347,8 @@
     <string name="use_extreme_dark_description">استخدام خلفية سوداء بالكامل عند تفعيل الوضع الداكن</string>
     <string name="show_fps_counter">إظهار عداد FPS</string>
     <string name="show_fps_counter_description">إظهار معدل الإطارات في الوقت الفعلي في الزاوية العلوية اليسرى أثناء العرض.</string>
+
+    <string name="category_input">إعدادات الإدخال</string>
+    <string name="enable_rotary">تفعيل وحدة التحكم الدوارة (Rotary)</string>
+    <string name="enable_rotary_description">الإعلان عن دعم مقابض وعجلات الدوران المادية. قم بتعطيل هذا إذا كانت شاشة اللمس لا تعمل بشكل صحيح.</string>
 </resources>

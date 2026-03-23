@@ -347,4 +347,8 @@
     <string name="use_extreme_dark_description">Použít čistě černé pozadí při aktivním tmavém režimu</string>
     <string name="show_fps_counter">Zobrazit počítadlo FPS</string>
     <string name="show_fps_counter_description">Během projekce zobrazí v levém horním rohu aktuální FPS.</string>
+
+    <string name="category_input">Nastavení vstupu</string>
+    <string name="enable_rotary">Povolit otočný ovladač (Rotary)</string>
+    <string name="enable_rotary_description">Oznámit podporu pro fyzické otočné knoflíky a kolečka. Deaktivujte toto, pokud vaše dotyková obrazovka nefunguje správně.</string>
 </resources>

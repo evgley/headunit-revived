@@ -347,4 +347,8 @@
     <string name="use_extreme_dark_description">Rein schwarzen Hintergrund verwenden, wenn der Dunkelmodus aktiv ist</string>
     <string name="show_fps_counter">FPS-Zähler anzeigen</string>
     <string name="show_fps_counter_description">Echtzeit-FPS oben links während der Projektion einblenden.</string>
+
+    <string name="category_input">Eingabeeinstellungen</string>
+    <string name="enable_rotary">Rotary-Controller aktivieren</string>
+    <string name="enable_rotary_description">Unterstützung für physische Drehknöpfe und Räder (BMW, Mazda, Audi etc.) melden. Deaktiviere dies, wenn dein Touchscreen nicht korrekt funktioniert.</string>
 </resources>

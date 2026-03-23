@@ -523,4 +523,8 @@ class Settings(context: Context) {
             prefs.edit().putInt("app-theme", theme.value).apply()
         }
 
+    var enableRotary: Boolean
+        get() = prefs.getBoolean("enable-rotary", false)
+        set(value) { prefs.edit().putBoolean("enable-rotary", value).apply() }
+
 }

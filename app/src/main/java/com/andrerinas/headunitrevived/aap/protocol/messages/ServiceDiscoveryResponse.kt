@@ -100,6 +100,15 @@ class ServiceDiscoveryResponse(private val context: Context)
                         setWidth(HeadUnitScreenConfig.getNegotiatedWidth()) // Use negotiated width
                         setHeight(HeadUnitScreenConfig.getNegotiatedHeight()) // Use negotiated height
                     }.build()
+                    
+                    if (settings.enableRotary) {
+                        AppLog.i("[ServiceDiscovery] Announcing Rotary/Touchpad support")
+                        it.touchpad = Control.Service.InputSourceService.TouchConfig.newBuilder().apply {
+                            setWidth(HeadUnitScreenConfig.getNegotiatedWidth())
+                            setHeight(HeadUnitScreenConfig.getNegotiatedHeight())
+                        }.build()
+                    }
+                    
                     it.addAllKeycodesSupported(KeyCode.supported)
                 }.build()
             }.build()

@@ -345,5 +345,9 @@
     <string name="use_extreme_dark">使用極致黑暗</string>
     <string name="use_extreme_dark_description">在深色模式啟用時使用純黑背景</string>
     <string name="show_fps_counter">顯示 FPS 計數器</string>
-    <string name="show_fps_counter_description">在投影期間於左上角顯示即時 FPS 資訊。</string>
-</resources>
+    <string name="show_fps_counter_description">在投影期間於左上角顯示即時 FPS 疊加層。</string>
+
+    <string name="category_input">輸入設定</string>
+    <string name="enable_rotary">啟用旋鈕控制器 (Rotary)</string>
+    <string name="enable_rotary_description">宣告支援實體旋鈕和控制輪。如果您的觸控螢幕運作不正常，請停用此選項。</string>
+    </resources>

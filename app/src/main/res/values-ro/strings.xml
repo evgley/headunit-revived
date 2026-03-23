@@ -346,5 +346,9 @@
     <string name="use_extreme_dark">Folosiți negru extrem</string>
     <string name="use_extreme_dark_description">Utilizați fundal negru pur când modul întunecat este activ</string>
     <string name="show_fps_counter">Afișează contor FPS</string>
-    <string name="show_fps_counter_description">Afișează FPS în timp real în colțul din stânga sus în timpul proiecției.</string>
-</resources>
+    <string name="show_fps_counter_description">Afișează un overlay cu FPS în timp real în colțul din stânga sus în timpul proiecției.</string>
+
+    <string name="category_input">Setări intrare</string>
+    <string name="enable_rotary">Activează controlerul rotativ (Rotary)</string>
+    <string name="enable_rotary_description">Anunță suportul pentru butoane și rotițe rotative fizice. Dezactivează această opțiune dacă ecranul tactil nu funcționează corect.</string>
+    </resources>

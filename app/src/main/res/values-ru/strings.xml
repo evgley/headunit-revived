@@ -347,4 +347,8 @@
     <string name="use_extreme_dark_description">Использовать чисто чёрный фон при активном тёмном режиме</string>
     <string name="show_fps_counter">Показывать счетчик FPS</string>
     <string name="show_fps_counter_description">Отображать текущую частоту кадров в верхнем левом углу во время проекции.</string>
+
+    <string name="category_input">Настройки ввода</string>
+    <string name="enable_rotary">Включить поворотный контроллер (Rotary)</string>
+    <string name="enable_rotary_description">Объявить поддержку физических поворотных ручек и колес. Отключите это, если ваш сенсорный экран работает неправильно.</string>
 </resources>

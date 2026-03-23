@@ -345,5 +345,9 @@
     <string name="use_extreme_dark">Extrém sötét használata</string>
     <string name="use_extreme_dark_description">Tiszta fekete háttér használata sötét módban</string>
     <string name="show_fps_counter">FPS számláló megjelenítése</string>
-    <string name="show_fps_counter_description">Valós idejű FPS számláló megjelenítése a bal felső sarokban a kivetítés alatt.</string>
-</resources>
+    <string name="show_fps_counter_description">Valós idejű FPS overlay megjelenítése a bal felső sarokban a vetítés alatt.</string>
+
+    <string name="category_input">Beviteli beállítások</string>
+    <string name="enable_rotary">Forgókapcsoló (Rotary) engedélyezése</string>
+    <string name="enable_rotary_description">Fizikai forgatógombok és kerekek támogatásának bejelentése. Kapcsolja ki, ha az érintőképernyő nem működik megfelelően.</string>
+    </resources>

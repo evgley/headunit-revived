@@ -345,5 +345,9 @@
     <string name="use_extreme_dark">Extra donker gebruiken</string>
     <string name="use_extreme_dark_description">Puur zwarte achtergrond gebruiken wanneer donkere modus actief is</string>
     <string name="show_fps_counter">FPS-teller weergeven</string>
-    <string name="show_fps_counter_description">Toon een real-time FPS-overlay in de linkerbovenhoek tijdens projectie.</string>
+    <string name="show_fps_counter_description">Toon een real-time FPS-overlay in de linkerbovenhoek tijdens de projectie.</string>
+
+    <string name="category_input">Invoerinstellingen</string>
+    <string name="enable_rotary">Draaiknop (Rotary) inschakelen</string>
+    <string name="enable_rotary_description">Ondersteuning voor fysieke draaiknoppen en wielen aankondigen. Schakel dit uit als uw touchscreen niet correct werkt.</string>
     </resources>
