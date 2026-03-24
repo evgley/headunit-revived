@@ -87,6 +87,7 @@
 
         <activity
             android:name=".app.UsbAttachedActivity"
+            android:directBootAware="true"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.Translucent"
             android:exported="true">
@@ -198,6 +199,7 @@
         </receiver>
 
         <receiver android:name=".app.AutoStartReceiver"
+            android:directBootAware="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.bluetooth.device.action.ACL_CONNECTED" />

@@ -469,6 +469,58 @@ class Settings(context: Context) {
             }
         }
 
+        private const val KEY_AUTO_START_ON_USB = "auto-start-on-usb"
+        private const val KEY_AUTO_START_BT_MAC = "auto-start-bt-mac"
+
+        /**
+         * Reads auto-start-on-usb from device-protected storage (API 24+),
+         * falling back to regular prefs on older devices.
+         * Safe to call during locked boot when credential storage is unavailable.
+         */
+        fun isAutoStartOnUsbEnabled(context: Context): Boolean {
+            val prefs = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                val deviceContext = context.createDeviceProtectedStorageContext()
+                deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
+            } else {
+                context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            }
+            return prefs.getBoolean(KEY_AUTO_START_ON_USB, false)
+        }
+
+        fun syncAutoStartOnUsbToDeviceStorage(context: Context, enabled: Boolean) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                val deviceContext = context.createDeviceProtectedStorageContext()
+                deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
+                    .edit()
+                    .putBoolean(KEY_AUTO_START_ON_USB, enabled)
+                    .apply()
+            }
+        }
+
+        /**
+         * Reads the Bluetooth auto-start MAC from device-protected storage (API 24+),
+         * falling back to regular prefs on older devices.
+         */
+        fun getAutoStartBtMac(context: Context): String {
+            val prefs = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                val deviceContext = context.createDeviceProtectedStorageContext()
+                deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
+            } else {
+                context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            }
+            return prefs.getString(KEY_AUTO_START_BT_MAC, "") ?: ""
+        }
+
+        fun syncAutoStartBtMacToDeviceStorage(context: Context, mac: String) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                val deviceContext = context.createDeviceProtectedStorageContext()
+                deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
+                    .edit()
+                    .putString(KEY_AUTO_START_BT_MAC, mac)
+                    .apply()
+            }
+        }
+
         val MicSampleRates = listOf(8000, 16000, 24000, 32000, 44100, 48000) // Changed to List
 
         fun getNextMicSampleRate(currentRate: Int): Int {

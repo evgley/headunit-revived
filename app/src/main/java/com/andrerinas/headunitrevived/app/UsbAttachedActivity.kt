@@ -83,7 +83,10 @@ class UsbAttachedActivity : Activity() {
 
         // Launch app UI if USB auto-start is enabled (for any device — a non-AA
         // device simply won't complete the AOA handshake, no harm done)
-        if (settings.autoStartOnUsb && !App.provide(this).commManager.isConnected) {
+        // Use device-protected storage for the auto-start check so it works
+        // during locked boot (before credential storage is available)
+        val autoStartOnUsb = Settings.isAutoStartOnUsbEnabled(this)
+        if (autoStartOnUsb && !App.provide(this).commManager.isConnected) {
             AppLog.i("USB auto-start: launching app for ${deviceCompat.uniqueName}")
             try {
                 startActivity(Intent(this, MainActivity::class.java).apply {
@@ -95,7 +98,7 @@ class UsbAttachedActivity : Activity() {
             }
         }
 
-        if (!settings.autoStartOnUsb && !settings.isConnectingDevice(deviceCompat)) {
+        if (!autoStartOnUsb && !settings.isConnectingDevice(deviceCompat)) {
             AppLog.i("Skipping device ${deviceCompat.uniqueName} (not allowed and USB auto-start disabled)")
             finish()
             return

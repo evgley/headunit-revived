@@ -144,9 +144,15 @@ class AutoStartFragment : Fragment() {
             settings.autoStartOnBoot = it
             Settings.syncAutoStartOnBootToDeviceStorage(requireContext(), it)
         }
-        pendingAutoStartOnUsb?.let { settings.autoStartOnUsb = it }
+        pendingAutoStartOnUsb?.let {
+            settings.autoStartOnUsb = it
+            Settings.syncAutoStartOnUsbToDeviceStorage(requireContext(), it)
+        }
         pendingAutoStartBtName?.let { settings.autoStartBluetoothDeviceName = it }
-        pendingAutoStartBtMac?.let { settings.autoStartBluetoothDeviceMac = it }
+        pendingAutoStartBtMac?.let {
+            settings.autoStartBluetoothDeviceMac = it
+            Settings.syncAutoStartBtMacToDeviceStorage(requireContext(), it)
+        }
         pendingReopenOnReconnection?.let { settings.reopenOnReconnection = it }
 
         // Check for Overlay permission if BT, USB, or Boot Auto-start is configured

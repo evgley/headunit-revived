@@ -36,9 +36,12 @@ class App : Application() {
         val settings = Settings(this) // Create a Settings instance
         AppLog.init(settings) // Initialize AppLog with settings for conditional logging
 
-        // One-time migration: sync autoStartOnBoot to device-protected storage
-        // so that BootCompleteReceiver can read it during locked boot (before user unlock)
+        // Sync auto-start settings to device-protected storage so that
+        // BootCompleteReceiver, UsbAttachedActivity, and AutoStartReceiver
+        // can read them during locked boot (before user unlock)
         Settings.syncAutoStartOnBootToDeviceStorage(this, settings.autoStartOnBoot)
+        Settings.syncAutoStartOnUsbToDeviceStorage(this, settings.autoStartOnUsb)
+        Settings.syncAutoStartBtMacToDeviceStorage(this, settings.autoStartBluetoothDeviceMac)
 
         // Apply app theme
         if (AppThemeManager.isStaticMode(settings.appTheme)) {
