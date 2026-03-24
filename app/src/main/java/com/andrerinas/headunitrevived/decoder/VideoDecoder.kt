@@ -37,6 +37,7 @@ class VideoDecoder(private val settings: Settings) {
     
     private var mWidth = 0
     private var mHeight = 0
+    private var vps: ByteArray? = null
     private var sps: ByteArray? = null
     private var pps: ByteArray? = null
     private var codecConfigured = false
@@ -119,10 +120,7 @@ class VideoDecoder(private val settings: Settings) {
 
     fun decode(buffer: ByteArray, offset: Int, size: Int, forceSoftware: Boolean, codecName: String) {
         synchronized(this) {
-            // Avoid copy if we can, but scanForSpsPps currently needs a copy or we need to optimize it too
-            // For now, only copy if it's not the whole buffer
             val frameData = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-                // On legacy devices, we reuse a single buffer to avoid GC pressure
                 if (legacyFrameBuffer == null || legacyFrameBuffer!!.size < size) {
                     legacyFrameBuffer = ByteArray(size + 1024)
                 }
@@ -132,34 +130,36 @@ class VideoDecoder(private val settings: Settings) {
                 if (offset == 0 && size == buffer.size) buffer else buffer.copyOfRange(offset, offset + size)
             }
             
-            val detectedType = detectCodecType(frameData, 0, size)
-            val typeToUse = detectedType ?: if (codecName.contains("265")) CodecType.H265 else CodecType.H264
-            currentCodecType = typeToUse
+            // Optimization: Only detect codec if not already running
+            if (codec == null) {
+                val detectedType = detectCodecType(frameData, 0, size)
+                val typeToUse = detectedType ?: if (codecName.contains("265")) CodecType.H265 else CodecType.H264
+                currentCodecType = typeToUse
 
-            if (!codecConfigured) {
-                if (containsCodecConfig(frameData, 0, size, typeToUse)) {
-                    AppLog.i("${typeToUse.displayName} config detected in frame ($size bytes)")
-                    codecConfigured = true
+                if (!codecConfigured) {
+                    if (containsCodecConfig(frameData, 0, size, typeToUse)) {
+                        AppLog.i("${typeToUse.displayName} config detected in frame ($size bytes)")
+                        codecConfigured = true
+                        
+                        if (typeToUse == CodecType.H264) {
+                            scanForSpsPpsH264(frameData, 0, size)
+                        } else if (typeToUse == CodecType.H265) {
+                            scanForVpsSpsPpsH265(frameData, 0, size)
+                        }
+                    }
                     
-                    if (typeToUse == CodecType.H264) {
-                        scanForSpsPpsH264(frameData, 0, size)
+                    if (mWidth == 0) {
+                         val negotiatedW = HeadUnitScreenConfig.getNegotiatedWidth()
+                         val negotiatedH = HeadUnitScreenConfig.getNegotiatedHeight()
+                         if (negotiatedW > 0 && negotiatedH > 0) {
+                             AppLog.i("Fallback to negotiated dimensions: ${negotiatedW}x${negotiatedH}")
+                             mWidth = negotiatedW
+                             mHeight = negotiatedH
+                             dimensionsListener?.onVideoDimensionsChanged(mWidth, mHeight)
+                         }
                     }
                 }
-                
-                // Fallback: If dimensions are still 0 (no SPS parsed or H.265), try negotiated dimensions
-                if (mWidth == 0) {
-                     val negotiatedW = HeadUnitScreenConfig.getNegotiatedWidth()
-                     val negotiatedH = HeadUnitScreenConfig.getNegotiatedHeight()
-                     if (negotiatedW > 0 && negotiatedH > 0) {
-                         AppLog.i("Fallback to negotiated dimensions: ${negotiatedW}x${negotiatedH} (SPS not found/parsed)")
-                         mWidth = negotiatedW
-                         mHeight = negotiatedH
-                         dimensionsListener?.onVideoDimensionsChanged(mWidth, mHeight)
-                     }
-                }
-            }
 
-            if (codec == null) {
                 if (mSurface == null || !mSurface!!.isValid) return
                 if (mWidth == 0 || mHeight == 0) return 
                 
@@ -179,7 +179,7 @@ class VideoDecoder(private val settings: Settings) {
 
     private fun detectCodecType(buffer: ByteArray, offset: Int, size: Int): CodecType? {
         if (size < 5) return null
-        val length = offset + size - 5
+        val length = offset + (size.coerceAtMost(100)) - 5 // Only scan first 100 bytes for type
         for (i in offset until length) {
             if (buffer[i].toInt() == 0 && buffer[i+1].toInt() == 0) {
                 if (buffer[i+2].toInt() == 0 && buffer[i+3].toInt() == 1) {
@@ -232,14 +232,10 @@ class VideoDecoder(private val settings: Settings) {
             
             while (i < limit - 3) {
                  if (buffer[i].toInt() == 0 && buffer[i+1].toInt() == 0 && buffer[i+2].toInt() == 0 && buffer[i+3].toInt() == 1) {
-                     nextNal = i
-                     nalStartLen = 4
-                     break
+                     nextNal = i; nalStartLen = 4; break
                  }
                  if (buffer[i].toInt() == 0 && buffer[i+1].toInt() == 0 && buffer[i+2].toInt() == 1) {
-                     nextNal = i
-                     nalStartLen = 3
-                     break
+                     nextNal = i; nalStartLen = 3; break
                  }
                  i++
             }
@@ -251,8 +247,7 @@ class VideoDecoder(private val settings: Settings) {
                 while (j < limit - 3) {
                     if ((buffer[j].toInt() == 0 && buffer[j+1].toInt() == 0 && buffer[j+2].toInt() == 0 && buffer[j+3].toInt() == 1) ||
                         (buffer[j].toInt() == 0 && buffer[j+1].toInt() == 0 && buffer[j+2].toInt() == 1)) {
-                        endNal = j
-                        break
+                        endNal = j; break
                     }
                     j++
                 }
@@ -260,14 +255,9 @@ class VideoDecoder(private val settings: Settings) {
                 if (nalType == 7) {
                     val rawSps = buffer.copyOfRange(nextNal, endNal)
                     sps = if (nalStartLen == 3) {
-                        // Prepend an extra 0x00 to convert 00 00 01 to 00 00 00 01
                         val fixedSps = ByteArray(rawSps.size + 1)
-                        fixedSps[0] = 0
-                        System.arraycopy(rawSps, 0, fixedSps, 1, rawSps.size)
-                        fixedSps
-                    } else {
-                        rawSps
-                    }
+                        fixedSps[0] = 0; System.arraycopy(rawSps, 0, fixedSps, 1, rawSps.size); fixedSps
+                    } else rawSps
                     
                     try {
                         val spsData = SpsParser.parse(sps!!)
@@ -282,17 +272,58 @@ class VideoDecoder(private val settings: Settings) {
                     val rawPps = buffer.copyOfRange(nextNal, endNal)
                     pps = if (nalStartLen == 3) {
                         val fixedPps = ByteArray(rawPps.size + 1)
-                        fixedPps[0] = 0
-                        System.arraycopy(rawPps, 0, fixedPps, 1, rawPps.size)
-                        fixedPps
-                    } else {
-                        rawPps
-                    }
+                        fixedPps[0] = 0; System.arraycopy(rawPps, 0, fixedPps, 1, rawPps.size); fixedPps
+                    } else rawPps
                 }
                 offset = endNal
-            } else {
-                break
+            } else break
+        }
+    }
+
+    private fun scanForVpsSpsPpsH265(buffer: ByteArray, startOffset: Int, size: Int) {
+        var offset = startOffset
+        val limit = startOffset + size
+        while (offset < limit - 4) {
+            var nextNal = -1
+            var nalStartLen = 0
+            var i = offset
+            
+            while (i < limit - 3) {
+                 if (buffer[i].toInt() == 0 && buffer[i+1].toInt() == 0 && buffer[i+2].toInt() == 0 && buffer[i+3].toInt() == 1) {
+                     nextNal = i; nalStartLen = 4; break
+                 }
+                 if (buffer[i].toInt() == 0 && buffer[i+1].toInt() == 0 && buffer[i+2].toInt() == 1) {
+                     nextNal = i; nalStartLen = 3; break
+                 }
+                 i++
             }
+            
+            if (nextNal != -1) {
+                val b = buffer[nextNal + nalStartLen].toInt()
+                val nalType = (b and 0x7E) shr 1
+                var endNal = limit
+                var j = nextNal + nalStartLen
+                while (j < limit - 3) {
+                    if ((buffer[j].toInt() == 0 && buffer[j+1].toInt() == 0 && buffer[j+2].toInt() == 0 && buffer[j+3].toInt() == 1) ||
+                        (buffer[j].toInt() == 0 && buffer[j+1].toInt() == 0 && buffer[j+2].toInt() == 1)) {
+                        endNal = j; break
+                    }
+                    j++
+                }
+                
+                if (nalType == 32 || nalType == 33 || nalType == 34) {
+                    val rawNal = buffer.copyOfRange(nextNal, endNal)
+                    val fixedNal = if (nalStartLen == 3) {
+                        val tmp = ByteArray(rawNal.size + 1)
+                        tmp[0] = 0; System.arraycopy(rawNal, 0, tmp, 1, rawNal.size); tmp
+                    } else rawNal
+                    
+                    if (nalType == 32) vps = fixedNal
+                    if (nalType == 33) sps = fixedNal
+                    if (nalType == 34) pps = fixedNal
+                }
+                offset = endNal
+            } else break
         }
     }
 
@@ -306,12 +337,21 @@ class VideoDecoder(private val settings: Settings) {
             codecBufferInfo = MediaCodec.BufferInfo()
 
             val format = MediaFormat.createVideoFormat(mimeType, width, height)
-            if (sps != null) format.setByteBuffer("csd-0", ByteBuffer.wrap(sps!!))
-            if (pps != null) format.setByteBuffer("csd-1", ByteBuffer.wrap(pps!!))
             
-            // Reduced max input size to 1MB (was 10MB). 
-            // 1MB is sufficient for 1080p I-Frames and saves memory on older devices.
-            format.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, 1048576)
+            if (mimeType == CodecType.H265.mimeType) {
+                val combined = mutableListOf<Byte>()
+                vps?.forEach { combined.add(it) }
+                sps?.forEach { combined.add(it) }
+                pps?.forEach { combined.add(it) }
+                if (combined.isNotEmpty()) {
+                    format.setByteBuffer("csd-0", ByteBuffer.wrap(combined.toByteArray()))
+                }
+                format.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, 4 * 1024 * 1024) // 4MB for H.265
+            } else {
+                if (sps != null) format.setByteBuffer("csd-0", ByteBuffer.wrap(sps!!))
+                if (pps != null) format.setByteBuffer("csd-1", ByteBuffer.wrap(pps!!))
+                format.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, 1024 * 1024) // 1MB for H.264
+            }
 
             if (!mSurface!!.isValid) {
                 throw IllegalStateException("Surface is not valid for codec configuration")
@@ -343,7 +383,6 @@ class VideoDecoder(private val settings: Settings) {
                 start()
             }
             
-
             AppLog.i("Codec initialized: $bestCodec for stream ${width}x${height}")
 
         } catch (e: Exception) {
@@ -420,7 +459,6 @@ class VideoDecoder(private val settings: Settings) {
                     lastFrameRenderedMs = SystemClock.elapsedRealtime()
                     onFirstFrameListener?.let { it(); onFirstFrameListener = null }
 
-                    // Track FPS
                     frameCount++
                     val now = System.currentTimeMillis()
                     val elapsed = now - lastFpsLogTime
@@ -471,7 +509,6 @@ class VideoDecoder(private val settings: Settings) {
     }
 }
 
-// Helpers
 private class BitReader(private val buffer: ByteArray) {
     private var bitPosition = 0
     fun readBit(): Int = (buffer[bitPosition / 8].toInt() shr (7 - (bitPosition++ % 8))) and 1

@@ -9,7 +9,7 @@ import java.nio.ByteBuffer
 
 internal class AapVideo(private val videoDecoder: VideoDecoder, private val settings: Settings) {
 
-    private val messageBuffer = ByteBuffer.allocate(Messages.DEF_BUFFER_LENGTH * 8)
+    private val messageBuffer = ByteBuffer.allocate(Messages.DEF_BUFFER_LENGTH * 32) // ~4MB for H.265 support
     private var legacyAssembledBuffer: ByteArray? = null
 
     fun process(message: AapMessage): Boolean {
