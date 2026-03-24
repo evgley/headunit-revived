@@ -366,4 +366,8 @@
     <string name="category_input">Input Settings</string>
     <string name="enable_rotary">Enable Rotary Controller</string>
     <string name="enable_rotary_description">Announce support for physical rotary knobs and wheels. Disable this if your touch screen is not working correctly.</string>
+
+    <string name="kill_on_disconnect">Kill app on disconnect</string>
+    <string name="kill_on_disconnect_description">Automatically close the app when Android Auto disconnects</string>
+
 </resources>
