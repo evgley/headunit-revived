@@ -620,4 +620,8 @@ class Settings(context: Context) {
         get() = prefs.getBoolean("enable-rotary", false)
         set(value) { prefs.edit().putBoolean("enable-rotary", value).apply() }
 
+    var killOnDisconnect: Boolean
+        get() = prefs.getBoolean("kill-on-disconnect", false)
+        set(value) { prefs.edit().putBoolean("kill-on-disconnect", value).apply() }
+
 }
