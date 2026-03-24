@@ -364,7 +364,7 @@
     <string name="kill_on_disconnect">App sluiten bij verbreken</string>
     <string name="kill_on_disconnect_description">De app automatisch sluiten wanneer Android Auto wordt losgekoppeld</string>
     <string name="kill_on_disconnect_warning_title">Waarschuwing</string>
-    <string name="kill_on_disconnect_warning">De volgende herverbindingsinstellingen conflicteren met het sluiten van de app bij verbreken:\n\n%1$s\n\nUw initiële verbindingsinstellingen (automatisch verbinden, automatisch starten) blijven werken wanneer de headunit wordt ingeschakeld. Na de eerste verbreking wordt de app echter onmiddellijk gesloten in plaats van te proberen opnieuw verbinding te maken.\n\nWilt u de hierboven vermelde herverbindingsinstellingen uitschakelen?</string>
+    <string name="kill_on_disconnect_warning">De volgende herverbindingsinstellingen conflicteren met het sluiten van de app bij verbreken:\n\n%1$s\n\nUw initiële verbindingsinstellingen (automatisch verbinden, automatisch starten) blijven werken wanneer de autoradio wordt ingeschakeld. Na de eerste verbreking wordt de app echter onmiddellijk gesloten in plaats van te proberen opnieuw verbinding te maken.\n\nWilt u de hierboven vermelde herverbindingsinstellingen uitschakelen?</string>
     <string name="kill_on_disconnect_disable_and_enable">Uitschakelen en inschakelen</string>
     <string name="kill_on_disconnect_conflicts_disabled">Conflicterende instellingen zijn uitgeschakeld</string>
 </resources>

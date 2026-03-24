@@ -365,7 +365,7 @@
     <string name="kill_on_disconnect">Închide aplicația la deconectare</string>
     <string name="kill_on_disconnect_description">Închide automat aplicația când Android Auto se deconectează</string>
     <string name="kill_on_disconnect_warning_title">Avertisment</string>
-    <string name="kill_on_disconnect_warning">Următoarele setări de reconectare vor intra în conflict cu închiderea aplicației la deconectare:\n\n%1$s\n\nSetările tale inițiale de conexiune (conectare automată, pornire automată) vor funcționa în continuare când headunit-ul pornește. Cu toate acestea, după prima deconectare aplicația se va închide imediat în loc să încerce să se reconecteze.\n\nDorești să dezactivezi setările de reconectare enumerate mai sus?</string>
+    <string name="kill_on_disconnect_warning">Următoarele setări de reconectare vor intra în conflict cu închiderea aplicației la deconectare:\n\n%1$s\n\nSetările tale inițiale de conexiune (conectare automată, pornire automată) vor funcționa în continuare când radioul mașinii pornește. Cu toate acestea, după prima deconectare aplicația se va închide imediat în loc să încerce să se reconecteze.\n\nDorești să dezactivezi setările de reconectare enumerate mai sus?</string>
     <string name="kill_on_disconnect_disable_and_enable">Dezactivează și activează</string>
     <string name="kill_on_disconnect_conflicts_disabled">Setările conflictuale au fost dezactivate</string>
 </resources>

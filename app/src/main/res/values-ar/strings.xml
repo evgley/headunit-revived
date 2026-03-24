@@ -365,7 +365,7 @@
     <string name="kill_on_disconnect">إغلاق التطبيق عند قطع الاتصال</string>
     <string name="kill_on_disconnect_description">إغلاق التطبيق تلقائيا عند انقطاع اتصال Android Auto</string>
     <string name="kill_on_disconnect_warning_title">تحذير</string>
-    <string name="kill_on_disconnect_warning">إعدادات إعادة الاتصال التالية ستتعارض مع إغلاق التطبيق عند قطع الاتصال:\n\n%1$s\n\nستستمر إعدادات الاتصال الأولية (الاتصال التلقائي، التشغيل التلقائي) في العمل عند تشغيل headunit. ومع ذلك، بعد أول انقطاع سيُغلق التطبيق فوراً بدلاً من محاولة إعادة الاتصال.\n\nهل تريد تعطيل إعدادات إعادة الاتصال المذكورة أعلاه؟</string>
+    <string name="kill_on_disconnect_warning">إعدادات إعادة الاتصال التالية ستتعارض مع إغلاق التطبيق عند قطع الاتصال:\n\n%1$s\n\nستستمر إعدادات الاتصال الأولية (الاتصال التلقائي، التشغيل التلقائي) في العمل عند تشغيل شاشة السيارة. ومع ذلك، بعد أول انقطاع سيُغلق التطبيق فوراً بدلاً من محاولة إعادة الاتصال.\n\nهل تريد تعطيل إعدادات إعادة الاتصال المذكورة أعلاه؟</string>
     <string name="kill_on_disconnect_disable_and_enable">تعطيل وتفعيل</string>
     <string name="kill_on_disconnect_conflicts_disabled">تم تعطيل الإعدادات المتعارضة</string>
 </resources>

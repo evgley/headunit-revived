@@ -365,7 +365,7 @@
     <string name="kill_on_disconnect">Fechar app ao desconectar</string>
     <string name="kill_on_disconnect_description">Fechar automaticamente o aplicativo quando o Android Auto desconectar</string>
     <string name="kill_on_disconnect_warning_title">Aviso</string>
-    <string name="kill_on_disconnect_warning">As seguintes configurações de reconexão entrarão em conflito com o fechamento do app ao desconectar:\n\n%1$s\n\nSuas configurações de conexão inicial (auto-conectar, auto-iniciar) continuarão funcionando quando o headunit ligar. No entanto, após a primeira desconexão o app será fechado imediatamente em vez de tentar reconectar.\n\nDeseja desativar as configurações de reconexão listadas acima?</string>
+    <string name="kill_on_disconnect_warning">As seguintes configurações de reconexão entrarão em conflito com o fechamento do app ao desconectar:\n\n%1$s\n\nSuas configurações de conexão inicial (auto-conectar, auto-iniciar) continuarão funcionando quando o rádio do carro ligar. No entanto, após a primeira desconexão o app será fechado imediatamente em vez de tentar reconectar.\n\nDeseja desativar as configurações de reconexão listadas acima?</string>
     <string name="kill_on_disconnect_disable_and_enable">Desativar e ativar</string>
     <string name="kill_on_disconnect_conflicts_disabled">As configurações conflitantes foram desativadas</string>
 </resources>
