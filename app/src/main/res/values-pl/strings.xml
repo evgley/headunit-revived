@@ -146,6 +146,7 @@
     <string name="auto_start_usb_description">Automatycznie otwórz aplikację i spróbuj połączyć po podłączeniu urządzenia USB</string>
     <string name="auto_start_settings">Ustawienia automatycznego uruchamiania</string>
     <string name="auto_start_settings_description">Skonfiguruj, kiedy aplikacja uruchamia się automatycznie</string>
+    <string name="auto_start_oem_warning">Na niektórych urządzeniach (Xiaomi, Huawei, Samsung, OPPO, Vivo) automatyczne uruchamianie może wymagać ręcznego włączenia w ustawieniach baterii lub uruchamiania urządzenia.</string>
     <string name="auto_start_on_boot_label">Uruchamiaj przy starcie</string>
     <string name="auto_start_on_boot_description">Automatycznie otwórz aplikację po uruchomieniu urządzenia. Wymaga uprawnienia \'Wyświetlaj nad innymi aplikacjami\' na Android 10+</string>
     <string name="select_bt_device">Wybierz urządzenie Bluetooth</string>

@@ -87,6 +87,7 @@
 
         <activity
             android:name=".app.UsbAttachedActivity"
+            android:directBootAware="true"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.Translucent"
             android:exported="true">
@@ -187,13 +188,18 @@
         </receiver>
 
         <receiver android:name=".app.BootCompleteReceiver"
+            android:directBootAware="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
             </intent-filter>
         </receiver>
 
         <receiver android:name=".app.AutoStartReceiver"
+            android:directBootAware="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.bluetooth.device.action.ACL_CONNECTED" />

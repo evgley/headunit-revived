@@ -140,10 +140,19 @@ class AutoStartFragment : Fragment() {
     }
 
     private fun saveSettings() {
-        pendingAutoStartOnBoot?.let { settings.autoStartOnBoot = it }
-        pendingAutoStartOnUsb?.let { settings.autoStartOnUsb = it }
+        pendingAutoStartOnBoot?.let {
+            settings.autoStartOnBoot = it
+            Settings.syncAutoStartOnBootToDeviceStorage(requireContext(), it)
+        }
+        pendingAutoStartOnUsb?.let {
+            settings.autoStartOnUsb = it
+            Settings.syncAutoStartOnUsbToDeviceStorage(requireContext(), it)
+        }
         pendingAutoStartBtName?.let { settings.autoStartBluetoothDeviceName = it }
-        pendingAutoStartBtMac?.let { settings.autoStartBluetoothDeviceMac = it }
+        pendingAutoStartBtMac?.let {
+            settings.autoStartBluetoothDeviceMac = it
+            Settings.syncAutoStartBtMacToDeviceStorage(requireContext(), it)
+        }
         pendingReopenOnReconnection?.let { settings.reopenOnReconnection = it }
 
         // Check for Overlay permission if BT, USB, or Boot Auto-start is configured
@@ -184,6 +193,11 @@ class AutoStartFragment : Fragment() {
         val items = mutableListOf<SettingItem>()
 
         items.add(SettingItem.CategoryHeader("autoStart", R.string.auto_start_settings))
+
+        items.add(SettingItem.InfoBanner(
+            stableId = "autoStartOemWarning",
+            textResId = R.string.auto_start_oem_warning
+        ))
 
         items.add(SettingItem.ToggleSettingEntry(
             stableId = "autoStartOnBoot",

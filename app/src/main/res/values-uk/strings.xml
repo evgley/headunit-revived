@@ -146,6 +146,7 @@
     <string name="auto_start_usb_description">Автоматично відкривати додаток і намагатися підключитися при підключенні USB-пристрою</string>
     <string name="auto_start_settings">Налаштування автозапуску</string>
     <string name="auto_start_settings_description">Налаштуйте, коли додаток запускається автоматично</string>
+    <string name="auto_start_oem_warning">На деяких пристроях (Xiaomi, Huawei, Samsung, OPPO, Vivo) автозапуск може потребувати ручного увімкнення в налаштуваннях батареї або запуску пристрою.</string>
     <string name="auto_start_on_boot_label">Запуск при завантаженні</string>
     <string name="auto_start_on_boot_description">Автоматично відкривати додаток при запуску пристрою. Потрібен дозвіл \'Відображення поверх інших додатків\' на Android 10+</string>
     <string name="select_bt_device">Вибрати Bluetooth-пристрій</string>

@@ -13,8 +13,8 @@ class AutoStartReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         val action = intent.action
-        val settings = Settings(context)
-        val targetMac = settings.autoStartBluetoothDeviceMac
+        // Use device-protected storage so the BT MAC is readable during locked boot
+        val targetMac = Settings.getAutoStartBtMac(context)
 
         if (targetMac.isEmpty()) return
 

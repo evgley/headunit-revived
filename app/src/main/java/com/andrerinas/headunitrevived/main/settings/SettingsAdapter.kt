@@ -45,6 +45,8 @@ sealed class SettingItem {
     ) : SettingItem()
 
     data class CategoryHeader(override val stableId: String, @StringRes val titleResId: Int) : SettingItem()
+
+    data class InfoBanner(override val stableId: String, @StringRes val textResId: Int) : SettingItem()
 }
 
 class SettingsAdapter : ListAdapter<SettingItem, RecyclerView.ViewHolder>(SettingsDiffCallback()) { // Inherit from ListAdapter
@@ -55,6 +57,7 @@ class SettingsAdapter : ListAdapter<SettingItem, RecyclerView.ViewHolder>(Settin
         private const val VIEW_TYPE_SETTING = 1
         private const val VIEW_TYPE_TOGGLE = 3
         private const val VIEW_TYPE_SLIDER = 4
+        private const val VIEW_TYPE_INFO_BANNER = 5
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -63,6 +66,7 @@ class SettingsAdapter : ListAdapter<SettingItem, RecyclerView.ViewHolder>(Settin
             is SettingItem.SettingEntry -> VIEW_TYPE_SETTING
             is SettingItem.ToggleSettingEntry -> VIEW_TYPE_TOGGLE
             is SettingItem.SliderSettingEntry -> VIEW_TYPE_SLIDER
+            is SettingItem.InfoBanner -> VIEW_TYPE_INFO_BANNER
         }
     }
 
@@ -73,6 +77,7 @@ class SettingsAdapter : ListAdapter<SettingItem, RecyclerView.ViewHolder>(Settin
             VIEW_TYPE_SETTING -> SettingViewHolder(inflater.inflate(R.layout.layout_setting_item, parent, false))
             VIEW_TYPE_TOGGLE -> ToggleSettingViewHolder(inflater.inflate(R.layout.layout_setting_item_toggle, parent, false))
             VIEW_TYPE_SLIDER -> SliderSettingViewHolder(inflater.inflate(R.layout.layout_setting_item_slider, parent, false))
+            VIEW_TYPE_INFO_BANNER -> InfoBannerViewHolder(inflater.inflate(R.layout.layout_setting_info_banner, parent, false))
             else -> throw IllegalArgumentException("Unknown view type: $viewType")
         }
     }
@@ -89,6 +94,7 @@ class SettingsAdapter : ListAdapter<SettingItem, RecyclerView.ViewHolder>(Settin
             is SettingItem.SettingEntry -> (holder as SettingViewHolder).bind(item)
             is SettingItem.ToggleSettingEntry -> (holder as ToggleSettingViewHolder).bind(item)
             is SettingItem.SliderSettingEntry -> (holder as SliderSettingViewHolder).bind(item)
+            is SettingItem.InfoBanner -> (holder as InfoBannerViewHolder).bind(item)
         }
     }
 
@@ -151,6 +157,13 @@ class SettingsAdapter : ListAdapter<SettingItem, RecyclerView.ViewHolder>(Settin
         }
     }
 
+    class InfoBannerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val infoText: TextView = itemView.findViewById(R.id.infoText)
+        fun bind(item: SettingItem.InfoBanner) {
+            infoText.setText(item.textResId)
+        }
+    }
+
     class SliderSettingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val settingName: TextView = itemView.findViewById(R.id.settingName)
         private val settingValue: TextView = itemView.findViewById(R.id.settingValue)
@@ -188,6 +201,8 @@ class SettingsAdapter : ListAdapter<SettingItem, RecyclerView.ViewHolder>(Settin
                     oldItem.nameResId == newItem.nameResId && oldItem.value == newItem.value && oldItem.sliderValue == newItem.sliderValue
                 oldItem is SettingItem.CategoryHeader && newItem is SettingItem.CategoryHeader ->
                     oldItem.titleResId == newItem.titleResId
+                oldItem is SettingItem.InfoBanner && newItem is SettingItem.InfoBanner ->
+                    oldItem.textResId == newItem.textResId
                 else -> false
             }
         }

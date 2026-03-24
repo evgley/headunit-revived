@@ -155,6 +155,7 @@
     <string name="auto_start_usb_description">Deschide aplicația automat și încearcă conectarea când un dispozitiv USB este conectat</string>
     <string name="auto_start_settings">Setări pornire automată</string>
     <string name="auto_start_settings_description">Configurează când aplicația pornește automat</string>
+    <string name="auto_start_oem_warning">Pe unele dispozitive (Xiaomi, Huawei, Samsung, OPPO, Vivo), pornirea automată poate necesita activarea manuală din setările de baterie sau de pornire ale dispozitivului.</string>
     <string name="auto_start_on_boot_label">Pornire la boot</string>
     <string name="auto_start_on_boot_description">Deschide aplicația automat când dispozitivul pornește. Necesită permisiunea \'Afișare peste alte aplicații\' pe Android 10+</string>
     <string name="select_bt_device">Selectează dispozitivul Bluetooth</string>
