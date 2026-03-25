@@ -32,12 +32,22 @@ class BootCompleteReceiver : BroadcastReceiver() {
         const val EXTRA_BOOT_START = "com.andrerinas.headunitrevived.EXTRA_BOOT_START"
 
         private val BOOT_ACTIONS = setOf(
+            // Standard Android boot
             Intent.ACTION_BOOT_COMPLETED,
             Intent.ACTION_LOCKED_BOOT_COMPLETED,
+            // Generic / OEM quick boot
             "android.intent.action.QUICKBOOT_POWERON",
             "com.htc.intent.action.QUICKBOOT_POWERON",
+            // MediaTek IPO (Instant Power On)
             "com.mediatek.intent.action.QUICKBOOT_POWERON",
-            "com.mediatek.intent.action.BOOT_IPO"
+            "com.mediatek.intent.action.BOOT_IPO",
+            // FYT / GLSX head units (ACC ignition wake)
+            "com.fyt.boot.ACCON",
+            "com.glsx.boot.ACCON",
+            "android.intent.action.ACTION_MT_COMMAND_SLEEP_OUT",
+            // Microntek / MTCD / PX3 head units (ACC wake)
+            "com.cayboy.action.ACC_ON",
+            "com.carboy.action.ACC_ON"
         )
     }
 }
