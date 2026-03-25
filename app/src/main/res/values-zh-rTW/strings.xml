@@ -366,7 +366,7 @@
     <string name="kill_on_disconnect">斷線時關閉應用程式</string>
     <string name="kill_on_disconnect_description">當 Android Auto 斷線時自動關閉應用程式</string>
     <string name="kill_on_disconnect_warning_title">警告</string>
-    <string name="kill_on_disconnect_warning">以下重新連線設定將與斷線時關閉應用程式發生衝突：\n\n%1$s\n\n您的初始連線設定（自動連線、自動啟動）在車機開啟時仍會正常運作。但在首次斷線後，應用程式將立即關閉，而不會嘗試重新連線。\n\n是否要停用上方列出的重新連線設定？</string>
+    <string name="kill_on_disconnect_warning">以下重新連線設定將與中斷連線時關閉應用程式衝突：\n\n%1$s\n\n您的初始連線設定（自動連線、自動啟動）在主機開機時仍然有效。但在第一次中斷連線後，應用程式將立即關閉，而不是嘗試重新連線。\n\n注意：部分副廠主機永遠不會完全關機，而是進入休眠狀態，類似手機鎖定螢幕但從未真正關機。啟用此選項後，應用程式將在第一次中斷連線後關閉，且可能不會在下次啟動時自動重新開啟。\n\n是否要停用上述重新連線設定？</string>
     <string name="kill_on_disconnect_disable_and_enable">停用並啟用</string>
     <string name="kill_on_disconnect_conflicts_disabled">衝突的設定已被停用</string>
     <string name="wifi_disabled_info">資訊：Wi-Fi 已關閉。</string>

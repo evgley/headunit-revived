@@ -367,7 +367,7 @@
     <string name="kill_on_disconnect">Zavřít aplikaci při odpojení</string>
     <string name="kill_on_disconnect_description">Automaticky zavřít aplikaci, když se Android Auto odpojí</string>
     <string name="kill_on_disconnect_warning_title">Varování</string>
-    <string name="kill_on_disconnect_warning">Následující nastavení opětovného připojení budou v konfliktu se zavřením aplikace při odpojení:\n\n%1$s\n\nVaše počáteční nastavení připojení (automatické připojení, automatické spuštění) budou nadále fungovat při zapnutí autorádia. Po prvním odpojení se však aplikace okamžitě zavře namísto pokusu o opětovné připojení.\n\nChcete deaktivovat výše uvedená nastavení opětovného připojení?</string>
+    <string name="kill_on_disconnect_warning">Následující nastavení opětovného připojení budou v konfliktu s ukončením aplikace při odpojení:\n\n%1$s\n\nVaše nastavení počátečního připojení (automatické připojení, automatické spuštění) budou fungovat i po zapnutí jednotky. Po prvním odpojení se však aplikace okamžitě ukončí místo opětovného připojení.\n\nPoznámka: Některé aftermarket jednotky se nikdy zcela nevypnou — místo toho hibernují, podobně jako telefon, který zamkne obrazovku, ale nikdy se skutečně nevypne. S touto možností se aplikace po prvním odpojení ukončí a nemusí se automaticky znovu otevřít při dalším nastartování.\n\nChcete zakázat výše uvedená nastavení opětovného připojení?</string>
     <string name="kill_on_disconnect_disable_and_enable">Deaktivovat a povolit</string>
     <string name="kill_on_disconnect_conflicts_disabled">Konfliktní nastavení byla deaktivována</string>
     <string name="wifi_disabled_info">Info: Wi-Fi je vypnuto.</string>
