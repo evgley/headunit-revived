@@ -533,8 +533,8 @@ class AapService : Service(), UsbReceiver.Listener {
         mediaSession = null
         commManager.destroy()
         nightModeManager?.stop()
-        unregisterReceiver(nightModeUpdateReceiver)
-        unregisterReceiver(usbReceiver)
+        try { unregisterReceiver(nightModeUpdateReceiver) } catch (_: Exception) {}
+        try { unregisterReceiver(usbReceiver) } catch (_: Exception) {}
         try { unregisterReceiver(mediaButtonReceiver) } catch (_: Exception) {}
         uiModeManager.disableCarMode(0)
         serviceScope.cancel()

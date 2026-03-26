@@ -67,15 +67,19 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
     }
 
     init {
-        if (context.packageManager.hasSystemFeature(android.content.pm.PackageManager.FEATURE_WIFI_DIRECT)) {
-            manager?.let { mgr ->
-                channel = mgr.initialize(context, context.mainLooper, null)
-                val filter = IntentFilter().apply {
-                    addAction(WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION)
-                    addAction(WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION)
+        try {
+            if (context.packageManager.hasSystemFeature(android.content.pm.PackageManager.FEATURE_WIFI_DIRECT)) {
+                manager?.let { mgr ->
+                    channel = mgr.initialize(context, context.mainLooper, null)
+                    val filter = IntentFilter().apply {
+                        addAction(WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION)
+                        addAction(WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION)
+                    }
+                    ContextCompat.registerReceiver(context, receiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED)
                 }
-                ContextCompat.registerReceiver(context, receiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED)
             }
+        } catch (e: SecurityException) {
+            AppLog.w("WifiDirectManager: WiFi Direct unavailable — permission denied: ${e.message}")
         }
     }
 

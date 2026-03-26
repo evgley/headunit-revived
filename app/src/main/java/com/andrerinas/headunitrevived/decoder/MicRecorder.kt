@@ -9,6 +9,7 @@ import android.media.AudioFormat
 import android.media.AudioManager
 import android.media.AudioRecord
 import android.media.MediaRecorder
+import androidx.core.content.ContextCompat
 import androidx.core.content.PermissionChecker
 import com.andrerinas.headunitrevived.utils.AppLog
 import com.andrerinas.headunitrevived.utils.Settings
@@ -151,7 +152,7 @@ class MicRecorder(private val micSampleRate: Int, private val context: Context) 
             }
         }
         
-        context.registerReceiver(scoReceiver, IntentFilter(AudioManager.ACTION_SCO_AUDIO_STATE_UPDATED))
+        ContextCompat.registerReceiver(context, scoReceiver, IntentFilter(AudioManager.ACTION_SCO_AUDIO_STATE_UPDATED), ContextCompat.RECEIVER_EXPORTED)
         
         // 2. Start SCO
         AppLog.i("MicRecorder: Starting Bluetooth SCO...")
