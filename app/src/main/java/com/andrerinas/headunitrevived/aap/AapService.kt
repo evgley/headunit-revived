@@ -495,14 +495,18 @@ class AapService : Service(), UsbReceiver.Listener {
         if (App.provide(this).settings.wifiConnectionMode == 2) {
             startWirelessServer()
             if (App.provide(this).settings.autoEnableHotspot) {
-                AppLog.i("AapService: Auto-enabling hotspot...")
-                HotspotManager.setHotspotEnabled(this, true)
-            }
-            val wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as android.net.wifi.WifiManager
-            if (wifiManager.isWifiEnabled) {
-                wifiDirectManager?.makeVisible()
+                // Run on background thread since hotspot enable may sleep briefly
+                Thread {
+                    AppLog.i("AapService: Auto-enabling hotspot...")
+                    HotspotManager.setHotspotEnabled(this, true)
+                }.start()
             } else {
-                AppLog.i("AapService: WiFi is disabled, skipping Wi-Fi Direct visibility.")
+                val wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as android.net.wifi.WifiManager
+                if (wifiManager.isWifiEnabled) {
+                    wifiDirectManager?.makeVisible()
+                } else {
+                    AppLog.i("AapService: WiFi is disabled, skipping Wi-Fi Direct visibility.")
+                }
             }
         }
     }

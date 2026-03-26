@@ -23,6 +23,20 @@ object HotspotManager {
     fun setHotspotEnabled(context: Context, enabled: Boolean): Boolean {
         AppLog.i("HotspotManager: Setting hotspot enabled=$enabled (API ${Build.VERSION.SDK_INT})")
 
+        // On Android 8+, WiFi must be disabled before tethering can start
+        if (enabled) {
+            try {
+                val wm = context.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+                if (wm.isWifiEnabled) {
+                    AppLog.i("HotspotManager: Disabling WiFi before enabling hotspot...")
+                    wm.isWifiEnabled = false
+                    Thread.sleep(500) // Let the radio settle
+                }
+            } catch (e: Exception) {
+                AppLog.w("HotspotManager: Failed to disable WiFi: ${e.message}")
+            }
+        }
+
         if (tryConnectivityManager(context, enabled)) return true
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             if (tryTetheringManager(context, enabled)) return true
