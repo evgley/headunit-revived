@@ -372,6 +372,7 @@
     <string name="kill_on_disconnect_disable_and_enable">Uitschakelen en inschakelen</string>
     <string name="kill_on_disconnect_enable_anyway">Toch inschakelen</string>
     <string name="kill_on_disconnect_boot_warning">Je hebt \"Starten bij opstarten\" ingeschakeld. Als de app sluit bij het verbreken van de verbinding en dit apparaat in slaapstand gaat in plaats van uit te schakelen, wordt de app mogelijk niet automatisch geopend bij de volgende start omdat er geen opstartgebeurtenis wordt gegenereerd — het apparaat wordt simpelweg uit de slaapstand gewekt.</string>
+    <string name="kill_on_disconnect_screen_on_warning">U hebt \"Starten bij scherm aan\" ingeschakeld. Deze instelling opent de app telkens wanneer het scherm wordt ingeschakeld. Gecombineerd met sluiten bij ontkoppeling zal de app na ontkoppeling sluiten, maar onmiddellijk weer openen wanneer het scherm opnieuw wordt ingeschakeld, waardoor een herstartlus ontstaat.</string>
     <string name="kill_on_disconnect_conflicts_disabled">Conflicterende instellingen zijn uitgeschakeld</string>
     <string name="wifi_disabled_info">Info: Wi-Fi is uitgeschakeld.</string>
 </resources>

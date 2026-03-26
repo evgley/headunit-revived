@@ -373,6 +373,7 @@
     <string name="kill_on_disconnect_disable_and_enable">تعطيل وتفعيل</string>
     <string name="kill_on_disconnect_enable_anyway">تفعيل على أي حال</string>
     <string name="kill_on_disconnect_boot_warning">لديك \"البدء عند التشغيل\" مفعّل. إذا أُغلق التطبيق عند قطع الاتصال وكان هذا الجهاز يدخل وضع السبات بدلاً من الإيقاف الكامل، فقد لا يُعاد فتح التطبيق تلقائياً في دورة التشغيل التالية لأنه لا يتم إنشاء حدث إقلاع — الجهاز يستيقظ ببساطة من وضع السكون.</string>
+    <string name="kill_on_disconnect_screen_on_warning">لديك خيار \"البدء عند تشغيل الشاشة\" مفعّل. هذا الإعداد يفتح التطبيق في كل مرة تُشغّل فيها الشاشة. مع خيار الإغلاق عند قطع الاتصال، سيُغلق التطبيق بعد قطع الاتصال لكنه سيُعاد فتحه فوراً عند تشغيل الشاشة مجدداً، مما يُنشئ حلقة إعادة تشغيل.</string>
     <string name="kill_on_disconnect_conflicts_disabled">تم تعطيل الإعدادات المتعارضة</string>
     <string name="wifi_disabled_info">معلومات: واي فاي معطل.</string>
 </resources>

@@ -373,6 +373,7 @@
     <string name="kill_on_disconnect_disable_and_enable">Deaktivovat a povolit</string>
     <string name="kill_on_disconnect_enable_anyway">Přesto povolit</string>
     <string name="kill_on_disconnect_boot_warning">Máte zapnuté \"Spustit při startu\". Pokud se aplikace zavře při odpojení a toto zařízení přejde do hibernace místo vypnutí, aplikace se při dalším zapnutí nemusí automaticky znovu otevřít, protože nedojde k události spuštění — zařízení se jednoduše probudí z režimu spánku.</string>
+    <string name="kill_on_disconnect_screen_on_warning">Máte zapnutou možnost \"Spustit při zapnutí obrazovky\". Toto nastavení otevře aplikaci při každém zapnutí obrazovky. V kombinaci se zavřením při odpojení se aplikace po odpojení zavře, ale ihned se znovu otevře při dalším zapnutí obrazovky, což vytvoří smyčku restartování.</string>
     <string name="kill_on_disconnect_conflicts_disabled">Konfliktní nastavení byla deaktivována</string>
     <string name="wifi_disabled_info">Info: Wi-Fi je vypnuto.</string>
 </resources>

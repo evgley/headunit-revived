@@ -373,6 +373,7 @@
     <string name="kill_on_disconnect_disable_and_enable">Desativar e ativar</string>
     <string name="kill_on_disconnect_enable_anyway">Ativar mesmo assim</string>
     <string name="kill_on_disconnect_boot_warning">Você tem \"Iniciar na inicialização\" ativado. Se o app fechar ao desconectar e este dispositivo hibernar em vez de desligar, o app pode não reabrir automaticamente no próximo ciclo de ignição porque nenhum evento de inicialização é gerado — o dispositivo simplesmente acorda do modo de suspensão.</string>
+    <string name="kill_on_disconnect_screen_on_warning">Você tem \"Iniciar ao ligar a tela\" ativado. Esta configuração abre o app toda vez que a tela é ligada. Combinado com fechar ao desconectar, o app será fechado após a desconexão, mas reabrirá imediatamente quando a tela ligar novamente, criando um loop de reinício.</string>
     <string name="kill_on_disconnect_conflicts_disabled">As configurações conflitantes foram desativadas</string>
     <string name="wifi_disabled_info">Info: O Wi-Fi está desativado.</string>
 </resources>

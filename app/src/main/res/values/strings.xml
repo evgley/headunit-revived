@@ -379,6 +379,7 @@
     <string name="kill_on_disconnect_enable_anyway">Enable anyway</string>
     <string name="kill_on_disconnect_conflicts_disabled">Conflicting settings have been disabled</string>
     <string name="kill_on_disconnect_boot_warning">You have \"Start on boot\" enabled. If the app closes on disconnect and this device hibernates instead of shutting down, the app may not reopen automatically on the next ignition cycle because no boot event is triggered — the device simply wakes up from sleep.</string>
+    <string name="kill_on_disconnect_screen_on_warning">You have \"Start on screen on\" enabled. This setting opens the app every time the screen turns on. Combined with closing on disconnect, the app will close after disconnection but reopen immediately when the screen turns on again, creating a restart loop.</string>
 
     <string name="wifi_disabled_info">Info: Wi-Fi is disabled.</string>
 </resources>

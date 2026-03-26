@@ -373,6 +373,7 @@
     <string name="kill_on_disconnect_disable_and_enable">Wyłącz i włącz</string>
     <string name="kill_on_disconnect_enable_anyway">Włącz mimo to</string>
     <string name="kill_on_disconnect_boot_warning">Masz włączone \"Uruchom przy starcie\". Jeśli aplikacja zamknie się po rozłączeniu, a to urządzenie przejdzie w tryb hibernacji zamiast się wyłączyć, aplikacja może nie otworzyć się automatycznie przy następnym uruchomieniu, ponieważ nie zostanie wygenerowane zdarzenie rozruchu — urządzenie po prostu budzi się z trybu uśpienia.</string>
+    <string name="kill_on_disconnect_screen_on_warning">Masz włączoną opcję \"Uruchom przy włączeniu ekranu\". To ustawienie otwiera aplikację za każdym razem, gdy ekran się włącza. W połączeniu z zamykaniem przy rozłączeniu, aplikacja zamknie się po rozłączeniu, ale natychmiast otworzy się ponownie, gdy ekran się włączy, tworząc pętlę restartów.</string>
     <string name="kill_on_disconnect_conflicts_disabled">Kolidujące ustawienia zostały wyłączone</string>
     <string name="wifi_disabled_info">Info: Wi-Fi jest wyłączone.</string>
 </resources>

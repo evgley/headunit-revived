@@ -432,12 +432,13 @@ class SettingsFragment : Fragment() {
                 if (isChecked) {
                     val conflicts = getKillOnDisconnectConflicts()
                     val hasAutoStartOnBoot = settings.autoStartOnBoot
-                    if (conflicts.isNotEmpty() || hasAutoStartOnBoot) {
+                    val hasAutoStartOnScreenOn = settings.autoStartOnScreenOn
+                    if (conflicts.isNotEmpty() || hasAutoStartOnBoot || hasAutoStartOnScreenOn) {
                         // Sync data model to true so DiffUtil can detect the
                         // change back to false when the dialog is canceled
                         pendingKillOnDisconnect = true
                         updateSettingsList()
-                        showKillOnDisconnectWarning(conflicts, hasAutoStartOnBoot)
+                        showKillOnDisconnectWarning(conflicts, hasAutoStartOnBoot, hasAutoStartOnScreenOn)
                     } else {
                         pendingKillOnDisconnect = true
                         checkChanges()
@@ -1121,7 +1122,7 @@ class SettingsFragment : Fragment() {
         return conflicts
     }
 
-    private fun showKillOnDisconnectWarning(conflicts: List<String>, hasAutoStartOnBoot: Boolean) {
+    private fun showKillOnDisconnectWarning(conflicts: List<String>, hasAutoStartOnBoot: Boolean, hasAutoStartOnScreenOn: Boolean = false) {
         val message = buildString {
             if (conflicts.isNotEmpty()) {
                 val conflictList = conflicts.joinToString("\n") { "• $it" }
@@ -1130,6 +1131,10 @@ class SettingsFragment : Fragment() {
             if (hasAutoStartOnBoot) {
                 if (conflicts.isNotEmpty()) append("\n\n")
                 append(getString(R.string.kill_on_disconnect_boot_warning))
+            }
+            if (hasAutoStartOnScreenOn) {
+                if (conflicts.isNotEmpty() || hasAutoStartOnBoot) append("\n\n")
+                append(getString(R.string.kill_on_disconnect_screen_on_warning))
             }
         }
 

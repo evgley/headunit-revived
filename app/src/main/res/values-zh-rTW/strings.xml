@@ -372,6 +372,7 @@
     <string name="kill_on_disconnect_disable_and_enable">停用並啟用</string>
     <string name="kill_on_disconnect_enable_anyway">仍然啟用</string>
     <string name="kill_on_disconnect_boot_warning">您已啟用「開機時啟動」。如果應用程式在中斷連線時關閉，而此裝置進入休眠模式而非關機，應用程式可能不會在下次點火時自動重新開啟，因為不會產生開機事件——裝置只是從睡眠模式中喚醒。</string>
+    <string name="kill_on_disconnect_screen_on_warning">您已啟用「螢幕開啟時啟動」。此設定會在每次螢幕開啟時開啟應用程式。結合中斷連線時關閉，應用程式將在中斷連線後關閉，但在螢幕再次開啟時立即重新開啟，形成重啟循環。</string>
     <string name="kill_on_disconnect_conflicts_disabled">衝突的設定已被停用</string>
     <string name="wifi_disabled_info">資訊：Wi-Fi 已關閉。</string>
 </resources>

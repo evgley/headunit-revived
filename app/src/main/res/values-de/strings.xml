@@ -373,6 +373,7 @@
     <string name="kill_on_disconnect_disable_and_enable">Deaktivieren und aktivieren</string>
     <string name="kill_on_disconnect_enable_anyway">Trotzdem aktivieren</string>
     <string name="kill_on_disconnect_boot_warning">\"Beim Booten starten\" ist aktiviert. Wenn die App beim Trennen geschlossen wird und dieses Gerät in den Ruhezustand wechselt statt sich auszuschalten, öffnet sich die App beim nächsten Zündungszyklus möglicherweise nicht automatisch, da kein Boot-Ereignis ausgelöst wird — das Gerät wacht einfach aus dem Schlafmodus auf.</string>
+    <string name="kill_on_disconnect_screen_on_warning">Sie haben \"Bei Bildschirmaktivierung starten\" aktiviert. Diese Einstellung öffnet die App jedes Mal, wenn der Bildschirm eingeschaltet wird. In Kombination mit dem Schließen bei Trennung wird die App nach der Trennung geschlossen, aber sofort wieder geöffnet, wenn der Bildschirm erneut eingeschaltet wird, was eine Neustartschleife erzeugt.</string>
     <string name="kill_on_disconnect_conflicts_disabled">Konfliktierende Einstellungen wurden deaktiviert</string>
     <string name="wifi_disabled_info">Info: WLAN ist deaktiviert.</string>
 </resources>
