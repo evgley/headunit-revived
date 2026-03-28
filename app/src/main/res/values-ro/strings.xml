@@ -157,7 +157,7 @@
     <string name="auto_start_usb_description">Deschide aplicația automat și încearcă conectarea când un dispozitiv USB este conectat</string>
     <string name="auto_start_settings">Setări pornire automată</string>
     <string name="auto_start_settings_description">Configurează când aplicația pornește automat</string>
-    <string name="auto_start_oem_warning">Este posibil ca acest dispozitiv să necesite activarea pornirii automate și eliminarea optimizării bateriei sau a restricțiilor de fundal pentru această aplicație. Acest lucru este frecvent pe dispozitivele Xiaomi, Huawei, Samsung, OPPO și Vivo.</string>
+    <string name="auto_start_oem_warning">Acest dispozitiv poate necesita activarea pornirii automate și eliminarea optimizării bateriei sau a restricțiilor de fundal pentru această aplicație.\n\nDacă unitatea dvs. are Quick Boot (pornire rapidă) activat, pornirea automată ar putea să nu funcționeze. Quick Boot împiedică aplicațiile terțe să pornească automat. Încercați să dezactivați Quick Boot din setările de sistem ale unității.</string>
     <string name="auto_start_on_boot_label">Pornire la boot</string>
     <string name="auto_start_on_boot_description">Deschide aplicația automat când dispozitivul pornește. Necesită permisiunea \'Afișare peste alte aplicații\' pe Android 10+</string>
     <string name="auto_start_screen_on_label">Pornire la aprinderea ecranului</string>

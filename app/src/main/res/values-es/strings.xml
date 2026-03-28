@@ -148,7 +148,7 @@
     <string name="auto_start_usb_description">Abrir la app automáticamente e intentar conectar cuando se conecta un dispositivo USB</string>
     <string name="auto_start_settings">Ajustes de inicio automático</string>
     <string name="auto_start_settings_description">Configura cuándo la aplicación se inicia automáticamente</string>
-    <string name="auto_start_oem_warning">Es posible que este dispositivo requiera habilitar el inicio automático y eliminar las restricciones de ahorro de batería o de segundo plano para esta app. Esto es común en dispositivos de Xiaomi, Huawei, Samsung, OPPO y Vivo.</string>
+    <string name="auto_start_oem_warning">Este dispositivo puede requerir habilitar el inicio automático y eliminar la optimización de batería o las restricciones en segundo plano para esta aplicación.\n\nSi tu radio tiene el inicio rápido (Quick Boot) activado, el inicio automático podría no funcionar. El inicio rápido impide que aplicaciones de terceros se inicien automáticamente. Prueba desactivar el inicio rápido en los ajustes del sistema de la radio.</string>
     <string name="auto_start_on_boot_label">Iniciar al arrancar</string>
     <string name="auto_start_on_boot_description">Abrir la app automáticamente cuando se enciende el dispositivo. Requiere el permiso \'Mostrar sobre otras apps\' en Android 10+</string>
     <string name="auto_start_screen_on_label">Iniciar al encender pantalla</string>

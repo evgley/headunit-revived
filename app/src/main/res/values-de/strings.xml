@@ -151,7 +151,7 @@
     <string name="auto_start_usb_description">Die App automatisch öffnen und eine Verbindung versuchen, wenn ein USB-Gerät angeschlossen wird</string>
     <string name="auto_start_settings">Einstellungen für automatischen Start</string>
     <string name="auto_start_settings_description">Konfigurieren, wann die App automatisch startet</string>
-    <string name="auto_start_oem_warning">Dieses Gerät erfordert möglicherweise die Aktivierung des Autostarts und die Entfernung von Batterieoptimierung oder Hintergrundbeschränkungen für diese App. Dies ist häufig bei Geräten von Xiaomi, Huawei, Samsung, OPPO und Vivo.</string>
+    <string name="auto_start_oem_warning">Dieses Gerät erfordert möglicherweise die Aktivierung des Autostarts und die Entfernung der Batterieoptimierung oder Hintergrundbeschränkungen für diese App.\n\nWenn Ihr Autoradio Quick Boot (Schnellstart) aktiviert hat, funktioniert der Autostart möglicherweise nicht. Quick Boot verhindert, dass Drittanbieter-Apps automatisch starten. Versuchen Sie, Quick Boot in den Systemeinstellungen des Autoradios zu deaktivieren.</string>
     <string name="auto_start_on_boot_label">Start beim Hochfahren</string>
     <string name="auto_start_on_boot_description">Die App automatisch öffnen, wenn das Gerät startet. Erfordert die Berechtigung \'Über anderen Apps einblenden\' ab Android 10+</string>
     <string name="auto_start_screen_on_label">Start bei Bildschirm an</string>
