@@ -20,13 +20,19 @@ import com.andrerinas.headunitrevived.utils.AppLog
 import java.net.InetSocketAddress
 import java.net.Socket
 
-class WifiDirectManager(private val context: Context) : WifiP2pManager.ConnectionInfoListener {
+class WifiDirectManager(private val context: Context) : WifiP2pManager.ConnectionInfoListener, WifiP2pManager.GroupInfoListener {
 
     private val manager: WifiP2pManager? = context.getSystemService(Context.WIFI_P2P_SERVICE) as? WifiP2pManager
     private var channel: WifiP2pManager.Channel? = null
     private var isGroupOwner = false
     private var isConnected = false
     private val handler = Handler(Looper.getMainLooper())
+
+    private var onCredentialsReady: ((ssid: String, psk: String, ip: String) -> Unit)? = null
+
+    fun setCredentialsListener(callback: (String, String, String) -> Unit) {
+        this.onCredentialsReady = callback
+    }
 
     private val discoveryRunnable = object : Runnable {
         override fun run() {
@@ -90,8 +96,10 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
             isGroupOwner = info.isGroupOwner
             AppLog.i("WifiDirectManager: Group formed. Owner: $isGroupOwner, GO IP: ${info.groupOwnerAddress?.hostAddress}")
 
-            // HUR Trick: If NOT Group Owner, connect to the phone (GO) on port 5289 to announce tablet presence
-            if (!isGroupOwner && info.groupOwnerAddress != null) {
+            if (isGroupOwner) {
+                // Request group info to get SSID and Passphrase
+                manager?.requestGroupInfo(channel, this)
+            } else if (info.groupOwnerAddress != null) {
                 Thread {
                     var socket: Socket? = null
                     try {
@@ -105,6 +113,18 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
                     }
                 }.start()
             }
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    override fun onGroupInfoAvailable(group: android.net.wifi.p2p.WifiP2pGroup?) {
+        group?.let {
+            val ssid = it.networkName
+            val psk = it.passphrase ?: ""
+            // When we are GO, our IP is always the gateway .1 in the P2P range
+            val ip = "192.168.49.1" 
+            AppLog.i("WifiDirectManager: Group credentials ready. SSID: $ssid")
+            onCredentialsReady?.invoke(ssid, psk, ip)
         }
     }
 
