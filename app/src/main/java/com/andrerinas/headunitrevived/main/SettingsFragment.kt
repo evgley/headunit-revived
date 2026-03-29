@@ -376,6 +376,17 @@ class SettingsFragment : Fragment() {
             }
         ))
 
+        items.add(SettingItem.SettingEntry(
+            stableId = "vehicleInfoSettings",
+            nameResId = R.string.vehicle_info_settings,
+            value = getString(R.string.vehicle_info_settings_description),
+            onClick = {
+                try {
+                    findNavController().navigate(R.id.action_settingsFragment_to_vehicleInfoFragment)
+                } catch (e: Exception) { }
+            }
+        ))
+
         val wifiModes = resources.getStringArray(R.array.wireless_connection_modes)
         items.add(SettingItem.SettingEntry(
             stableId = "wifiConnectionMode",
@@ -463,17 +474,6 @@ class SettingsFragment : Fragment() {
                     checkChanges()
                     updateSettingsList()
                 }
-            }
-        ))
-
-        items.add(SettingItem.SettingEntry(
-            stableId = "vehicleInfoSettings",
-            nameResId = R.string.vehicle_info_settings,
-            value = getString(R.string.vehicle_info_settings_description),
-            onClick = {
-                try {
-                    findNavController().navigate(R.id.action_settingsFragment_to_vehicleInfoFragment)
-                } catch (e: Exception) { }
             }
         ))
 
