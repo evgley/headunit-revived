@@ -656,6 +656,7 @@ class AapService : Service(), UsbReceiver.Listener {
         if (selfMode) {
             AppLog.i("AapService: Self Mode disconnected. Not restarting.")
             selfMode = false
+            stopWirelessServer()
             return
         }
 

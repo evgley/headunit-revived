@@ -17,6 +17,7 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
@@ -171,6 +172,20 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         }
 
         setContentView(R.layout.activity_headunit)
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val currentTime = System.currentTimeMillis()
+                if (currentTime - lastBackPressTime < 2000) {
+                    AppLog.i("AapProjectionActivity: Double back press detected. Disconnecting...")
+                    commManager.disconnect()
+                    finish()
+                } else {
+                    lastBackPressTime = currentTime
+                    Toast.makeText(this@AapProjectionActivity, getString(R.string.press_back_again_to_exit), Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
 
         if (settings.showFpsCounter) {
             val container = findViewById<FrameLayout>(R.id.container)
@@ -398,18 +413,6 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
     }
 
     private var lastBackPressTime = 0L
-
-    override fun onBackPressed() {
-        val currentTime = System.currentTimeMillis()
-        if (currentTime - lastBackPressTime < 2000) {
-            AppLog.i("AapProjectionActivity: Double back press detected. Disconnecting...")
-            commManager.disconnect()
-            super.onBackPressed()
-        } else {
-            lastBackPressTime = currentTime
-            Toast.makeText(this, getString(R.string.press_back_again_to_exit), Toast.LENGTH_SHORT).show()
-        }
-    }
 
     private val commManager get() = App.provide(this).commManager
 
