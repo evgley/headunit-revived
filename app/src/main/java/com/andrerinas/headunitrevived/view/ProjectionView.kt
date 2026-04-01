@@ -66,6 +66,19 @@ class ProjectionView @JvmOverloads constructor(
         AppLog.i("Video size set to ${width}x$height")
         videoWidth = width
         videoHeight = height
+
+        if (com.andrerinas.headunitrevived.utils.HeadUnitScreenConfig.forcedScale) {
+            val settings = com.andrerinas.headunitrevived.App.provide(context).settings
+            if (settings.stretchToFill) {
+                holder.setSizeFromLayout()
+            } else {
+                AppLog.i("FORCED SCALE: Setting fixed size to ${width}x$height")
+                holder.setFixedSize(width, height)
+            }
+        } else {
+            holder.setSizeFromLayout()
+        }
+
         ProjectionViewScaler.updateScale(this, videoWidth, videoHeight)
     }
 

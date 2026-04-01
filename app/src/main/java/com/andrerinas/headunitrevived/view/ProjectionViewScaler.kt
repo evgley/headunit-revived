@@ -2,6 +2,8 @@ package com.andrerinas.headunitrevived.view
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.view.Gravity
 import com.andrerinas.headunitrevived.App
 import com.andrerinas.headunitrevived.utils.AppLog
 import com.andrerinas.headunitrevived.utils.HeadUnitScreenConfig
@@ -13,52 +15,68 @@ object ProjectionViewScaler {
             return
         }
 
-        // Initialize/Update config
-        HeadUnitScreenConfig.init(view.context, view.resources.displayMetrics, App.provide(view.context).settings)
+        val settings = App.provide(view.context).settings
+        HeadUnitScreenConfig.init(view.context, view.resources.displayMetrics, settings)
+
+        val usableW = HeadUnitScreenConfig.getUsableWidth()
+        val usableH = HeadUnitScreenConfig.getUsableHeight()
 
         if (HeadUnitScreenConfig.forcedScale && view is ProjectionView) {
-            // HUR Legacy Fix: Physically resize the view to the adjusted resolution
-            // calculated by HeadUnitScreenConfig (preserving aspect ratio).
             val lp = view.layoutParams
-            val targetW = HeadUnitScreenConfig.getAdjustedWidth()
-            val targetH = HeadUnitScreenConfig.getAdjustedHeight()
             
-            if (lp.width != targetW || lp.height != targetH) {
+            if (settings.stretchToFill) {
+                // Mode A: Preserve aspect ratio using Adjusted dimensions
+                val targetW = HeadUnitScreenConfig.getAdjustedWidth()
+                val targetH = HeadUnitScreenConfig.getAdjustedHeight()
+
                 lp.width = targetW
                 lp.height = targetH
+
+                // Center the view in the usable area
+                if (lp is FrameLayout.LayoutParams) {
+                    lp.gravity = Gravity.CENTER
+                }
                 view.layoutParams = lp
+
+                view.scaleX = 1.0f
+                view.scaleY = 1.0f
+                view.translationX = 0f
+                view.translationY = 0f
+
+                AppLog.i("FORCED & STRETCH On: Resized view to ${targetW}x${targetH} (centered)")
+            } else {
+                // Mode B: Stretch to fill the usable area exactly (ignores aspect ratio)
+                lp.width = usableW
+                lp.height = usableH
+                if (lp is FrameLayout.LayoutParams) {
+                    lp.gravity = Gravity.TOP or Gravity.START
+                }
+                view.layoutParams = lp
+
+                view.scaleX = 1.0f
+                view.scaleY = 1.0f
+                view.translationX = 0f
+                view.translationY = 0f
+
+                AppLog.i("FORCED & STRETCH Off: Resized view to match screen exactly: ${usableW}x${usableH}")
             }
-            
-            // In this mode, we don't use scaleX/Y (hardware props)
-            view.scaleX = 1.0f
-            view.scaleY = 1.0f
-            
-            // Align center using margins from config
-            // HeadUnitScreenConfig.getWidthMargin() returns the total black bar space.
-            // We shift by half of that to center the view.
-            view.translationX = -(HeadUnitScreenConfig.getWidthMargin().toFloat() / 2.0f)
-            view.translationY = -(HeadUnitScreenConfig.getHeightMargin().toFloat() / 2.0f)
-            
-            AppLog.i("FORCED. Resized view to ${targetW}x${targetH}. Centering via Trans: ${view.translationX}x${view.translationY}")
         } else {
             // Modern way / TextureView: Use View scaling properties on a full-screen view
             val finalScaleX = HeadUnitScreenConfig.getScaleX()
             val finalScaleY = HeadUnitScreenConfig.getScaleY()
 
-            // Reset layout params to match parent if they were changed
             if (view.layoutParams.width != ViewGroup.LayoutParams.MATCH_PARENT || 
                 view.layoutParams.height != ViewGroup.LayoutParams.MATCH_PARENT) {
                 val lp = view.layoutParams
                 lp.width = ViewGroup.LayoutParams.MATCH_PARENT
                 lp.height = ViewGroup.LayoutParams.MATCH_PARENT
+                if (lp is FrameLayout.LayoutParams) {
+                    lp.gravity = Gravity.NO_GRAVITY
+                }
                 view.layoutParams = lp
             }
 
-            // Ensure pivot is centered (Android default)
-            view.pivotX = view.width / 2.0f
-            view.pivotY = view.height / 2.0f
-            
-            // Reset translation
+            // Normal centering for non-forced modes
             view.translationX = 0f
             view.translationY = 0f
 
