@@ -28,6 +28,7 @@ internal class AapMessageHandlerType(
         val flags = message.flags
 
         // 1. Try processing as Video stream first (ID_VID)
+        // High priority for the smoothest possible display.
         if (message.channel == Channel.ID_VID) {
              // Send ACK IMMEDIATELY before processing to keep the stream flowing
              // This prevents blocking the message thread if the decoder is slow.

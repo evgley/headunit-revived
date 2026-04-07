@@ -17,10 +17,17 @@ interface VideoDimensionsListener {
     fun onVideoDimensionsChanged(width: Int, height: Int)
 }
 
+/**
+ * Main video decoding engine. 
+ * Handles H.264/H.265 streams via MediaCodec.
+ */
 class VideoDecoder(private val settings: Settings) {
     companion object {
         private const val TIMEOUT_US = 10000L
 
+        /**
+         * Checks if H.265 (HEVC) hardware decoding is supported on the current device.
+         */
         fun isHevcSupported(): Boolean {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) return false
             val codecList = MediaCodecList(MediaCodecList.ALL_CODECS)
@@ -43,7 +50,7 @@ class VideoDecoder(private val settings: Settings) {
     private var codecConfigured = false
     private var currentCodecType = CodecType.H264
 
-    // Buffers cache for API < 21
+    // Reuse buffers for older API levels to minimize GC pressure
     private var inputBuffers: Array<ByteBuffer>? = null
     private var legacyFrameBuffer: ByteArray? = null
 
@@ -62,6 +69,9 @@ class VideoDecoder(private val settings: Settings) {
         H265("video/hevc", "H.265/HEVC")
     }
 
+    /**
+     * Handles dynamic video dimension changes during the session.
+     */
     private fun handleOutputFormatChange(format: MediaFormat) {
         AppLog.i("Output Format Changed: $format")
         val newWidth = try { format.getInteger(MediaFormat.KEY_WIDTH) } catch (e: Exception) { mWidth }
@@ -77,6 +87,9 @@ class VideoDecoder(private val settings: Settings) {
         } catch (e: Exception) {}
     }
 
+    /**
+     * Sets the rendering surface and restarts the decoder if necessary.
+     */
     fun setSurface(surface: Surface?) {
         synchronized(this) {
             if (mSurface === surface) return
@@ -89,53 +102,76 @@ class VideoDecoder(private val settings: Settings) {
         }
     }
 
+    /**
+     * Stops the decoder, terminates the output thread, and releases hardware resources.
+     */
     fun stop(reason: String = "unknown") {
         synchronized(this) {
             running = false
             try {
-                outputThread?.interrupt()
-                outputThread?.join(500)
+                // If calling from output thread, don't join itself to avoid deadlock
+                if (outputThread != null && outputThread != Thread.currentThread()) {
+                    outputThread?.interrupt()
+                    outputThread?.join(500)
+                }
             } catch (e: Exception) {}
             outputThread = null
             
             try {
                 codec?.stop()
+            } catch (e: Exception) {}
+            try {
                 codec?.release()
             } catch (e: Exception) {
                 AppLog.e("Error releasing decoder", e)
             }
+            
             codec = null
             inputBuffers = null
             legacyFrameBuffer = null
             codecBufferInfo = null
             codecConfigured = false
+            vps = null
+            sps = null
+            pps = null
             onFirstFrameListener = null
             lastFrameRenderedMs = 0L
             AppLog.i("Decoder stopped: $reason")
         }
     }
 
+    /**
+     * Main entry point for decoding a video/control packet.
+     */
     fun decode(buffer: ByteArray, offset: Int, size: Int, forceSoftware: Boolean, codecName: String) {
         synchronized(this) {
-            val frameData = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            // Buffer management for backward compatibility
+            // Modern devices (API 21+) use the original buffer with offset/size to avoid GC pressure.
+            val frameData: ByteArray
+            val frameOffset: Int
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
                 if (legacyFrameBuffer == null || legacyFrameBuffer!!.size < size) {
                     legacyFrameBuffer = ByteArray(size + 1024)
                 }
                 System.arraycopy(buffer, offset, legacyFrameBuffer!!, 0, size)
-                legacyFrameBuffer!!
+                frameData = legacyFrameBuffer!!
+                frameOffset = 0
             } else {
-                if (offset == 0 && size == buffer.size) buffer else buffer.copyOfRange(offset, offset + size)
+                frameData = buffer
+                frameOffset = offset
             }
             
+            // Initialization phase: detect codec and configuration (SPS/PPS)
             if (codec == null) {
-                val detectedType = detectCodecType(frameData, 0, size)
+                val detectedType = detectCodecType(frameData, frameOffset, size)
                 val typeToUse = detectedType ?: if (codecName.contains("265")) CodecType.H265 else CodecType.H264
                 currentCodecType = typeToUse
 
                 if (!codecConfigured) {
-                    scanAndApplyConfig(frameData, 0, size, typeToUse)
+                    scanAndApplyConfig(frameData, frameOffset, size, typeToUse)
                     
                     if (mWidth == 0) {
+                         // Fallback dimensions if SPS/PPS parsing fails or is missing
                          val negotiatedW = HeadUnitScreenConfig.getNegotiatedWidth()
                          val negotiatedH = HeadUnitScreenConfig.getNegotiatedHeight()
                          if (negotiatedW > 0 && negotiatedH > 0) {
@@ -155,7 +191,8 @@ class VideoDecoder(private val settings: Settings) {
 
             if (codec == null) return
 
-            val buf = ByteBuffer.wrap(frameData, 0, size)
+            // Feed frame data into MediaCodec input buffers
+            val buf = ByteBuffer.wrap(frameData, frameOffset, size)
             while (buf.hasRemaining()) {
                 if (!feedInputBuffer(buf)) {
                     return
@@ -172,10 +209,8 @@ class VideoDecoder(private val settings: Settings) {
                 if ((buffer[i+2].toInt() == 0 && buffer[i+3].toInt() == 1) || (buffer[i+2].toInt() == 1)) {
                     val headerPos = if (buffer[i+2].toInt() == 1) i + 3 else i + 4
                     val b = buffer[headerPos].toInt()
-                    // H.265: NAL type is in bits 1-6
                     val hevcType = (b and 0x7E) shr 1
                     if (hevcType in 32..34) return CodecType.H265
-                    // H.264: NAL type is in bits 0-4
                     val avcType = b and 0x1F
                     if (avcType == 7 || avcType == 8) return CodecType.H264
                 }
@@ -185,8 +220,7 @@ class VideoDecoder(private val settings: Settings) {
     }
 
     /**
-     * Iterates through all NAL units in the buffer and provides them to the callback.
-     * Automatically fixes 3-byte start codes to 4-byte start codes for MediaCodec compatibility.
+     * Splits a combined packet into multiple NAL units and normalizes start codes.
      */
     private fun forEachNalUnit(buffer: ByteArray, offset: Int, size: Int, callback: (ByteArray, Int) -> Unit) {
         var currentPos = offset
@@ -196,7 +230,6 @@ class VideoDecoder(private val settings: Settings) {
             var nalStart = -1
             var startCodeLen = 0
             
-            // Find next start code
             for (i in currentPos until limit - 3) {
                 if (buffer[i].toInt() == 0 && buffer[i+1].toInt() == 0) {
                     if (buffer[i+2].toInt() == 0 && buffer[i+3].toInt() == 1) {
@@ -209,7 +242,6 @@ class VideoDecoder(private val settings: Settings) {
             
             if (nalStart != -1) {
                 var nalEnd = limit
-                // Find end of this NAL (start of next one)
                 for (j in (nalStart + startCodeLen) until limit - 3) {
                     if (buffer[j].toInt() == 0 && buffer[j+1].toInt() == 0 && 
                         (buffer[j+2].toInt() == 1 || (buffer[j+2].toInt() == 0 && buffer[j+3].toInt() == 1))) {
@@ -219,6 +251,7 @@ class VideoDecoder(private val settings: Settings) {
                 
                 val rawNal = buffer.copyOfRange(nalStart, nalEnd)
                 val fixedNal = if (startCodeLen == 3) {
+                    // Normalize to 4-byte start codes for better decoder compatibility
                     ByteArray(rawNal.size + 1).apply {
                         this[0] = 0; System.arraycopy(rawNal, 0, this, 1, rawNal.size)
                     }
@@ -230,6 +263,9 @@ class VideoDecoder(private val settings: Settings) {
         }
     }
 
+    /**
+     * Extracts SPS/PPS/VPS data for the decoder configuration (CSD).
+     */
     private fun scanAndApplyConfig(buffer: ByteArray, offset: Int, size: Int, type: CodecType) {
         forEachNalUnit(buffer, offset, size) { nalData, headerLen ->
             val nalFirstByte = nalData[headerLen].toInt()
@@ -239,7 +275,8 @@ class VideoDecoder(private val settings: Settings) {
                     sps = nalData
                     codecConfigured = true
                     try {
-                        SpsParser.parse(sps!!)?.let {
+                        val offsetInNal = if (sps!![2].toInt() == 1) 3 else 4
+                        SpsParser.parse(sps!!, offsetInNal, sps!!.size - offsetInNal)?.let {
                             if (mWidth != it.width || mHeight != it.height) {
                                 AppLog.i("H.264 SPS parsed: ${it.width}x${it.height}")
                                 mWidth = it.width; mHeight = it.height
@@ -257,6 +294,9 @@ class VideoDecoder(private val settings: Settings) {
         }
     }
 
+    /**
+     * Configures and starts the native MediaCodec.
+     */
     private fun start(mimeType: String, forceSoftware: Boolean, width: Int, height: Int) {
         try {
             startTime = System.nanoTime()
@@ -268,6 +308,7 @@ class VideoDecoder(private val settings: Settings) {
 
             val format = MediaFormat.createVideoFormat(mimeType, width, height)
             
+            // Apply Codec Specific Data (CSD) from parsed SPS/PPS/VPS
             if (mimeType == CodecType.H265.mimeType) {
                 val combined = (vps ?: byteArrayOf()) + (sps ?: byteArrayOf()) + (pps ?: byteArrayOf())
                 if (combined.isNotEmpty()) {
@@ -305,6 +346,36 @@ class VideoDecoder(private val settings: Settings) {
         }
     }
 
+    /**
+     * Checks if the data contains SPS/PPS/VPS configuration data.
+     */
+    private fun isCodecConfigData(data: ByteArray, offset: Int, size: Int): Boolean {
+        if (size < 5) return false
+        for (i in offset until (offset + size - 4).coerceAtMost(offset + 32)) {
+            if (data[i].toInt() == 0 && data[i + 1].toInt() == 0) {
+                val headerPos: Int
+                if (data[i + 2].toInt() == 0 && data[i + 3].toInt() == 1) {
+                    headerPos = i + 4
+                } else if (data[i + 2].toInt() == 1) {
+                    headerPos = i + 3
+                } else continue
+                if (headerPos >= offset + size) return false
+                val b = data[headerPos].toInt()
+                if (currentCodecType == CodecType.H265) {
+                    val nalType = (b and 0x7E) shr 1
+                    return nalType in 32..34 
+                } else {
+                    val nalType = b and 0x1F
+                    return nalType == 7 || nalType == 8
+                }
+            }
+        }
+        return false
+    }
+
+    /**
+     * Feeds the raw byte stream into the decoder buffer.
+     */
     private fun feedInputBuffer(buffer: ByteBuffer): Boolean {
         val currentCodec = codec ?: return false
         try {
@@ -331,6 +402,13 @@ class VideoDecoder(private val settings: Settings) {
             inputBuffer.clear()
             
             val capacity = inputBuffer.capacity()
+            
+            // Set BUFFER_FLAG_CODEC_CONFIG only until the first frame is rendered.
+            // This initializes hardware decoders while reducing logcat spam once the stream is active.
+            val flags = if (lastFrameRenderedMs == 0L && buffer.hasArray() && isCodecConfigData(buffer.array(), buffer.position(), buffer.remaining())) {
+                MediaCodec.BUFFER_FLAG_CODEC_CONFIG
+            } else 0
+
             if (buffer.remaining() <= capacity) {
                 inputBuffer.put(buffer)
             } else {
@@ -343,7 +421,7 @@ class VideoDecoder(private val settings: Settings) {
             
             inputBuffer.flip()
             val pts = (System.nanoTime() - startTime) / 1000
-            currentCodec.queueInputBuffer(inputIndex, 0, inputBuffer.limit(), pts, 0)
+            currentCodec.queueInputBuffer(inputIndex, 0, inputBuffer.limit(), pts, flags)
             return true
         } catch (e: Exception) {
             AppLog.e("Error feeding input buffer", e)
@@ -351,6 +429,9 @@ class VideoDecoder(private val settings: Settings) {
         }
     }
 
+    /**
+     * Dedicated thread to pull decoded frames and render them to the surface.
+     */
     private fun outputThreadLoop() {
         AppLog.i("Output thread started")
         while (running) {
@@ -383,12 +464,18 @@ class VideoDecoder(private val settings: Settings) {
                     handleOutputFormatChange(currentCodec.outputFormat)
                 }
             } catch (e: Exception) {
-                if (running) AppLog.w("Codec exception in output thread")
+                if (running) {
+                    AppLog.w("Codec exception in output thread: ${e.message}")
+                    try { Thread.sleep(50) } catch (ignore: Exception) {}
+                }
             }
         }
         AppLog.i("Output thread stopped")
     }
 
+    /**
+     * Resolves the best available hardware or software decoder for the given mime type.
+     */
     private fun findBestCodec(mimeType: String, preferHardware: Boolean): String? {
         val codecInfos = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             MediaCodecList(MediaCodecList.ALL_CODECS).codecInfos.toList()
@@ -410,25 +497,40 @@ class VideoDecoder(private val settings: Settings) {
     }
 }
 
-private class BitReader(private val buffer: ByteArray) {
-    private var bitPosition = 0
-    fun readBit(): Int = (buffer[bitPosition / 8].toInt() shr (7 - (bitPosition++ % 8))) and 1
-    fun readBits(count: Int): Int {
-        var res = 0; repeat(count) { res = (res shl 1) or readBit() }; return res
+/**
+ * Helper to parse Bitstreams for SPS data.
+ */
+private class BitReader(private val buffer: ByteArray, private val offset: Int, private val size: Int) {
+    private var bitPosition = offset * 8
+    private val bitLimit = (offset + size) * 8
+
+    fun readBit(): Int {
+        if (bitPosition >= bitLimit) return 0
+        return (buffer[bitPosition / 8].toInt() shr (7 - (bitPosition++ % 8))) and 1
     }
+
+    fun readBits(count: Int): Int {
+        var res = 0
+        repeat(count) { res = (res shl 1) or readBit() }
+        return res
+    }
+
     fun readUE(): Int {
-        var zeros = 0; while (readBit() == 0) zeros++
-        return if (zeros == 0) 0 else (2.0.pow(zeros.toDouble()) - 1 + readBits(zeros)).toInt()
+        var zeros = 0
+        while (readBit() == 0 && bitPosition < bitLimit) zeros++
+        return if (zeros == 0) 0 else (1 shl zeros) - 1 + readBits(zeros)
     }
 }
 
 data class SpsData(val width: Int, val height: Int)
 
+/**
+ * Parses AVC/H.264 Sequence Parameter Sets to extract video dimensions.
+ */
 private object SpsParser {
-    fun parse(sps: ByteArray): SpsData? {
+    fun parse(sps: ByteArray, offset: Int, size: Int): SpsData? {
         try {
-            val offset = if (sps[2].toInt() == 1) 3 else 4
-            val reader = BitReader(sps.copyOfRange(offset, sps.size))
+            val reader = BitReader(sps, offset, size)
             reader.readBits(8)
             val profileIdc = reader.readBits(8)
             reader.readBits(16)
