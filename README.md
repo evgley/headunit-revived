@@ -66,6 +66,7 @@ adb shell am start -a android.intent.action.VIEW -d "headunit://connect?ip=192.1
 - Added: New Immersive Fullscreen with avoided notch area. This should fix problems for eg. Pixel Phones
 - Enhanced: Video Decoder Error Handling
 - Added: 2 new WiFi-Options for a WiFi-Direct. Thanks to @andrecuellar
+- Added Japanese language 🇯🇵 thanks to @mattyann87
 - More to come...
 
 ### v.2.1.1
