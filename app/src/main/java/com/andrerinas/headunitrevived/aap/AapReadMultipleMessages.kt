@@ -20,27 +20,12 @@ internal class AapReadMultipleMessages(
     private val msgBuffer = ByteArray(2 * 1024 * 1024) 
     private val skipBuffer = ByteArray(4)
 
-    // Throughput monitoring
-    private var lastLogTime = 0L
-    private var bytesInLastSecond = 0L
-
     override fun doRead(connection: AccessoryConnection): Int {
         val size = try {
             connection.recvBlocking(recvBuffer, recvBuffer.size, 150, false)
         } catch (e: Exception) {
             AppLog.e("AapRead: Fatal read error: ${e.message}")
             return -1
-        }
-
-        if (size > 0) {
-            bytesInLastSecond += size
-            val now = System.currentTimeMillis()
-            if (now - lastLogTime >= 1000) {
-                val mbit = (bytesInLastSecond * 8.0) / (1024.0 * 1024.0)
-                AppLog.i(">>> THROUGHPUT: %.2f Mbit/s (%d KB/s) <<<".format(mbit, bytesInLastSecond / 1024))
-                bytesInLastSecond = 0
-                lastLogTime = now
-            }
         }
 
         if (size < 0) {
