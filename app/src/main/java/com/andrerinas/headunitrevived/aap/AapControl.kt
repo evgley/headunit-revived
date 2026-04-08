@@ -92,6 +92,14 @@ internal class AapControlMedia(
             aapTransport.gainVideoFocus()
         }
 
+        // Pushing AudioFocusNotification
+        if (Channel.isAudio(channel)) {
+            val focusNotification = Control.AudioFocusNotification.newBuilder()
+                .setFocusState(Control.AudioFocusNotification.AudioFocusStateType.STATE_GAIN)
+                .build()
+            aapTransport.send(AapMessage(Channel.ID_CTR, Control.ControlMsgType.MESSAGE_AUDIO_FOCUS_NOTIFICATION_VALUE, focusNotification))
+        }
+
         return 0
     }
 
