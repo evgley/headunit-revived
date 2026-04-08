@@ -1191,6 +1191,21 @@ class AapService : Service(), UsbReceiver.Listener {
         }
     }
 
+    override fun onUsbAccessoryDetach() {
+        AppLog.i("USB Accessory detached. This might be a transient state (e.g., 100% battery). Attempting to re-sync...")
+        userExitedAA = false
+        if (commManager.isConnected) {
+            commManager.disconnect(sendByeBye = false)
+        }
+        
+        // Wait a bit and check if the device is still there in normal mode
+        serviceScope.launch {
+            delay(1500) // Give the phone/system time to settle its USB state
+            AppLog.i("Accessory detach cooldown finished. Checking for re-connection...")
+            checkAlreadyConnectedUsb(force = true)
+        }
+    }
+
     override fun onUsbPermission(granted: Boolean, connect: Boolean, device: UsbDevice) {
         val deviceName = UsbDeviceCompat(device).uniqueName
         if (granted) {

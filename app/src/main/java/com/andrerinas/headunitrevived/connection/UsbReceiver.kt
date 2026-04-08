@@ -22,19 +22,27 @@ class UsbReceiver(private val mListener: Listener)          // USB Broadcast Rec
     interface Listener {
         fun onUsbDetach(device: UsbDevice)
         fun onUsbAttach(device: UsbDevice)
+        fun onUsbAccessoryDetach()
         fun onUsbPermission(granted: Boolean, connect: Boolean, device: UsbDevice)
     }
 
     override fun onReceive(context: Context, intent: Intent) {
+        val action = intent.action ?: return
+        AppLog.i("USB Intent: $intent")
+
+        if (action == UsbManager.ACTION_USB_ACCESSORY_DETACHED) {
+            mListener.onUsbAccessoryDetach()
+            return
+        }
+
         val device: UsbDevice = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra(UsbManager.EXTRA_DEVICE, UsbDevice::class.java)
         } else {
             @Suppress("DEPRECATION")
             intent.getParcelableExtra(UsbManager.EXTRA_DEVICE)
         } ?: return
-        AppLog.i("USB Intent: $intent")
 
-        when (intent.action) {
+        when (action) {
             UsbManager.ACTION_USB_DEVICE_DETACHED -> // If detach...
                 mListener.onUsbDetach(device)
             // Handle detached device
@@ -69,6 +77,7 @@ class UsbReceiver(private val mListener: Listener)          // USB Broadcast Rec
             val filter = IntentFilter()
             filter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED)
             filter.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED)
+            filter.addAction(UsbManager.ACTION_USB_ACCESSORY_DETACHED)
             filter.addAction(ACTION_USB_DEVICE_PERMISSION)
             return filter
         }
@@ -77,6 +86,7 @@ class UsbReceiver(private val mListener: Listener)          // USB Broadcast Rec
             return when (action) {
                 UsbManager.ACTION_USB_DEVICE_DETACHED -> true
                 UsbManager.ACTION_USB_DEVICE_ATTACHED -> true
+                UsbManager.ACTION_USB_ACCESSORY_DETACHED -> true
                 ACTION_USB_DEVICE_PERMISSION -> true
                 else -> false
             }
