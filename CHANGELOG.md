@@ -8,6 +8,7 @@
 - Enhanced: Video Decoder Error Handling
 - Added: 2 new WiFi-Options for a WiFi-Direct. Thanks to @andrecuellar
 - Added Japanese language 🇯🇵 thanks to @mattyann87
+- Enhanced: Media Session Announcement. Thanks to @irwanrhmn
 - More to come...
 
 ### v.2.1.1
