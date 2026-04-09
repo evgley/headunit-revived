@@ -9,7 +9,10 @@
 - Added: 2 new WiFi-Options for a WiFi-Direct. Thanks to @andrecuellar
 - Added Japanese language 🇯🇵 thanks to @mattyann87
 - Enhanced: Media Session Announcement. Thanks to @irwanrhmn
-- 
+- Added: Pip-Support
+- Added: Google Nearby Support
+- Added: 4K in select
+
 ### v.2.1.1
 - Fixed: Layout crash on Android 4.2
 - Added: Enable Hotspot option. Note: This will not work on every device. Especially after Android 13!

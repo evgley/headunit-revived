@@ -75,8 +75,8 @@ internal class AapControlMedia(
 
         val configResponse = Media.Config.newBuilder().apply {
             status = Media.Config.ConfigStatus.HEADUNIT
-            // Use 16 for maxUnacked (very safe value for WiFi to avoid buffer bloat/stalls)
-            maxUnacked = 16
+            // Use 30 for maxUnacked on wireless to avoid stalls due to jitter, 16 for USB.
+            maxUnacked = if (aapTransport.isWireless) 30 else 16
             
             addConfigurationIndices(0)
         }.build()

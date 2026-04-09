@@ -30,6 +30,12 @@ class AapBroadcastReceiver : BroadcastReceiver() {
         val component = App.provide(context)
         if (intent.action == LocationUpdateIntent.action) {
             val location = LocationUpdateIntent.extractLocation(intent)
+            
+            // Apply Fake Speed if enabled
+            if (component.settings.fakeSpeed) {
+                location.speed = 0.5f // 0.5 m/s corresponds to 500 mm/s in Emil's logic
+            }
+
             if (component.settings.useGpsForNavigation) {
                 component.commManager.send(LocationUpdateEvent(location))
             }

@@ -98,6 +98,9 @@ class AapTransport(
     private var connection: AccessoryConnection? = null
     private var aapRead: AapRead? = null
     var isQuittingAllowed: Boolean = false
+    
+    val isWireless: Boolean
+        get() = connection is com.andrerinas.headunitrevived.connection.SocketAccessoryConnection
     var ignoreNextStopRequest: Boolean = false
     /** Set by [AapControl] when VIDEO_FOCUS_NATIVE triggers a stop (user tapped Exit). */
     @Volatile var wasUserExit: Boolean = false

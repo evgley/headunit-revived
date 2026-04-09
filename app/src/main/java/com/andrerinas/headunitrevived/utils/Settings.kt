@@ -149,6 +149,12 @@ class Settings(context: Context) {
             prefs.edit().putInt("dpi-pixel-density", value).apply()
         }
 
+    var fakeSpeed: Boolean
+        get() = prefs.getBoolean("fake_speed", true)
+        set(value) {
+            prefs.edit().putBoolean("fake_speed", value).apply()
+        }
+
     // Custom Insets (Screen Margins)
     var insetLeft: Int
         get() = prefs.getInt("inset-left", 0)
@@ -398,15 +404,13 @@ class Settings(context: Context) {
         _800x480(1, "480p", 800, 480, Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._800x480),
         _1280x720(2, "720p", 1280, 720, Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._1280x720),
         _1920x1080(3, "1080p", 1920, 1080, Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._1920x1080),
-        _2560x1440(4, "1440p", 2560, 1440, Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._2560x1440);
+        _2560x1440(4, "1440p (2K)", 2560, 1440, Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._2560x1440),
+        _3840x2160(5, "2160p (4K)", 3840, 2160, Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._3840x2160),
+        _720x1280(6, "720p (Portrait)", 720, 1280, Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._720x1280),
+        _1080x1920(7, "1080p (Portrait)", 1080, 1920, Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._1080x1920),
+        _1440x2560(8, "1440p (Portrait)", 1440, 2560, Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._1440x2560),
+        _2160x3840(9, "2160p (Portrait)", 2160, 3840, Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._2160x3840);
 
-        // TODO: Portrait and higher Resolutions later
-        /*        _2560x1440(4, "2560x1440 (Experimental)", 2560,1440, Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._2560x1440),
-        _3840x2160(5, "3840x2160 (Experimental)", 3840,2160, Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._3840x2160),
-        _720x1280(6, "720x1280 (Portrait)", 720,1280, Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._720x1280),
-        _1080x1920(7, "1080x1920 (Portrait)", 1080,1920, Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._1080x1920),
-        _1440x2560(8, "1440x2560 (Portrait)", 1440,2560, Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._1440x2560),
-        _2160x3840(9, "2160x3840 (Portrait)", 2160,3840, Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._2160x3840);*/
         companion object {
             private val map = values().associateBy(Resolution::id)
             fun fromId(id: Int) = map[id]
