@@ -3,7 +3,9 @@ package com.andrerinas.headunitrevived.main
 import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings as SystemSettings
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
@@ -504,6 +506,11 @@ class SettingsFragment : Fragment() {
                     updateSettingsList()
                 }
             ))
+
+            // Mode 1 (Auto Server) can also use the auto-hotspot feature
+            if (pendingWifiConnectionMode == 1) {
+                addHotspotToggle(items)
+            }
         }
 
         // Sub-setting for Wireless Helper Strategy
@@ -525,6 +532,11 @@ class SettingsFragment : Fragment() {
                         .show()
                 }
             ))
+
+            // Mode 2 only shows Hotspot toggle for Strategy 4 (Headunit Hotspot)
+            if (pendingHelperConnectionStrategy == 4) {
+                addHotspotToggle(items)
+            }
 
             if (pendingHelperConnectionStrategy == 1) { // WiFi Direct (P2P)
                 items.add(SettingItem.ToggleSettingEntry(
@@ -1166,6 +1178,43 @@ class SettingsFragment : Fragment() {
             .show()
     }
 
+    private fun showPermissionDialog() {
+        MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+            .setTitle(R.string.hotspot_permission_title)
+            .setMessage(R.string.hotspot_permission_message)
+            .setPositiveButton(R.string.open_settings) { dialog, _ ->
+                val intent = Intent(SystemSettings.ACTION_MANAGE_WRITE_SETTINGS).apply {
+                    data = Uri.parse("package:${requireContext().packageName}")
+                }
+                startActivity(intent)
+                dialog.dismiss()
+            }
+            .setNegativeButton(R.string.cancel) { _, _ ->
+                pendingAutoEnableHotspot = false
+                checkChanges()
+                updateSettingsList()
+            }
+            .show()
+    }
+
+    private fun showExperimentalWarning() {
+        MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+            .setTitle(R.string.hotspot_warning_title)
+            .setMessage(R.string.hotspot_warning_message)
+            .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                pendingAutoEnableHotspot = true
+                checkChanges()
+                updateSettingsList()
+                dialog.dismiss()
+            }
+            .setNegativeButton(android.R.string.cancel) { _, _ ->
+                pendingAutoEnableHotspot = false
+                checkChanges()
+                updateSettingsList()
+            }
+            .show()
+    }
+
     private fun showCustomInsetsDialog() {
         val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_custom_insets, null)
         
@@ -1411,6 +1460,28 @@ class SettingsFragment : Fragment() {
             }
             .show()
     }
+    private fun addHotspotToggle(items: MutableList<SettingItem>) {
+        items.add(SettingItem.ToggleSettingEntry(
+            stableId = "autoEnableHotspot",
+            nameResId = R.string.auto_enable_hotspot,
+            descriptionResId = R.string.auto_enable_hotspot_description,
+            isChecked = pendingAutoEnableHotspot ?: false,
+            onCheckedChanged = { isChecked ->
+                if (isChecked) {
+                    if (Build.VERSION.SDK_INT >= 23 && !SystemSettings.System.canWrite(requireContext())) {
+                        showPermissionDialog()
+                    } else {
+                        showExperimentalWarning()
+                    }
+                } else {
+                    pendingAutoEnableHotspot = false
+                    checkChanges()
+                    updateSettingsList()
+                }
+            }
+        ))
+    }
+
 
     private fun getAutoConnectSummary(): String {
         val order = settings.autoConnectPriorityOrder

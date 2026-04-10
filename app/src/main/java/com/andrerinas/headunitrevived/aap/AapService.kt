@@ -1555,7 +1555,8 @@ class AapService : Service(), UsbReceiver.Listener {
         val strategy = settings.helperConnectionStrategy
 
         if (mode == 3) return
-        if (mode == 2 && strategy != 0) return // Only use NSD scans for Strategy 0
+        // Allow discovery for Strategy 0 (NSD), 3 (Phone Hotspot) and 4 (Headunit Hotspot)
+        if (mode == 2 && strategy != 0 && strategy != 3 && strategy != 4) return
         if (commManager.isConnected || (wirelessServer == null && !oneShot)) return
 
         networkDiscovery?.stop()

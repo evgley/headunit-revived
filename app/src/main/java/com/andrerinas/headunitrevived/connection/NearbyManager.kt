@@ -102,10 +102,10 @@ class NearbyManager(private val context: Context, private val onSocketReady: (So
 
     private fun startDiscovery() {
         val discoveryOptions = DiscoveryOptions.Builder()
-            .setStrategy(Strategy.P2P_POINT_TO_POINT)
+            .setStrategy(Strategy.P2P_STAR) // Changed from P2P_POINT_TO_POINT for better throughput
             .build()
 
-        AppLog.i("NearbyManager: Requesting Discovery with SERVICE_ID: $SERVICE_ID")
+        AppLog.i("NearbyManager: Requesting Discovery with SERVICE_ID: $SERVICE_ID (Strategy: P2P_STAR)")
         connectionsClient.startDiscovery(SERVICE_ID, endpointDiscoveryCallback, discoveryOptions)
             .addOnSuccessListener { AppLog.d("NearbyManager: [OK] Discovery started.") }
             .addOnFailureListener { e -> 

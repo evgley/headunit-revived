@@ -1,68 +1,63 @@
 package com.andrerinas.headunitrevived.connection
 
-import android.os.ParcelFileDescriptor
 import java.io.InputStream
 import java.io.OutputStream
 import java.net.InetAddress
 import java.net.Socket
+import java.util.concurrent.CountDownLatch
 
 class NearbySocket : Socket() {
-    @Volatile var inputStreamWrapper: InputStream? = null
-    @Volatile var outputStreamWrapper: OutputStream? = null
-
-    override fun isConnected(): Boolean {
-        return true
-    }
+    private var internalInputStream: InputStream? = null
+    private var internalOutputStream: OutputStream? = null
     
-    override fun getInetAddress(): InetAddress {
-        return InetAddress.getLoopbackAddress()
-    }
+    private val inputLatch = CountDownLatch(1)
+    private val outputLatch = CountDownLatch(1)
+
+    var inputStreamWrapper: InputStream?
+        get() = internalInputStream
+        set(value) {
+            internalInputStream = value
+            if (value != null) inputLatch.countDown()
+        }
+
+    var outputStreamWrapper: OutputStream?
+        get() = internalOutputStream
+        set(value) {
+            internalOutputStream = value
+            if (value != null) outputLatch.countDown()
+        }
+
+    override fun isConnected() = true
+    
+    override fun getInetAddress(): InetAddress = InetAddress.getLoopbackAddress()
 
     override fun getInputStream(): InputStream {
         return object : InputStream() {
-            override fun read(): Int {
-                val stream = inputStreamWrapper
-                while (stream == null) {
-                    Thread.sleep(10)
-                }
-                return stream.read()
+            private fun waitForStream(): InputStream {
+                inputLatch.await()
+                return internalInputStream!!
             }
 
-            override fun read(b: ByteArray, off: Int, len: Int): Int {
-                val stream = inputStreamWrapper
-                while (stream == null) {
-                    Thread.sleep(10)
-                }
-                return stream.read(b, off, len)
-            }
-            
-            override fun available(): Int {
-                return inputStreamWrapper?.available() ?: 0
-            }
+            override fun read(): Int = waitForStream().read()
+            override fun read(b: ByteArray): Int = waitForStream().read(b)
+            override fun read(b: ByteArray, off: Int, len: Int): Int = waitForStream().read(b, off, len)
+            override fun available(): Int = if (inputLatch.count == 0L) internalInputStream!!.available() else 0
+            override fun close() = if (inputLatch.count == 0L) internalInputStream!!.close() else Unit
         }
     }
 
     override fun getOutputStream(): OutputStream {
         return object : OutputStream() {
-            override fun write(b: Int) {
-                val stream = outputStreamWrapper
-                while (stream == null) {
-                    Thread.sleep(10)
-                }
-                stream.write(b)
+            private fun waitForStream(): OutputStream {
+                outputLatch.await()
+                return internalOutputStream!!
             }
 
-            override fun write(b: ByteArray, off: Int, len: Int) {
-                val stream = outputStreamWrapper
-                while (stream == null) {
-                    Thread.sleep(10)
-                }
-                stream.write(b, off, len)
-            }
-
-            override fun flush() {
-                outputStreamWrapper?.flush()
-            }
+            override fun write(b: Int) = waitForStream().write(b)
+            override fun write(b: ByteArray) = waitForStream().write(b)
+            override fun write(b: ByteArray, off: Int, len: Int) = waitForStream().write(b, off, len)
+            override fun flush() = if (outputLatch.count == 0L) internalOutputStream!!.flush() else Unit
+            override fun close() = if (outputLatch.count == 0L) internalOutputStream!!.close() else Unit
         }
     }
 }
