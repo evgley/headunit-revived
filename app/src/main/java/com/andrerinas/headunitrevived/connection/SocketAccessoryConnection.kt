@@ -25,6 +25,16 @@ class SocketAccessoryConnection(private val ip: String, private val port: Int, p
 
     constructor(socket: Socket, context: Context) : this(socket.inetAddress.hostAddress ?: "", socket.port, context) {
         this.transport = socket
+        // Pre-connected sockets (like NearbySocket) need their streams initialized immediately
+        // because connect() might not be called or might be bypassed.
+        if (socket.isConnected) {
+            try {
+                this.input = DataInputStream(socket.getInputStream())
+                this.output = socket.getOutputStream()
+            } catch (e: IOException) {
+                AppLog.e("Failed to get streams from pre-connected socket", e)
+            }
+        }
     }
 
 

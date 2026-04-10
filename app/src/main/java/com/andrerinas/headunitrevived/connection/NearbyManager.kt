@@ -8,6 +8,9 @@ import androidx.core.content.ContextCompat
 import com.andrerinas.headunitrevived.utils.AppLog
 import com.google.android.gms.nearby.Nearby
 import com.google.android.gms.nearby.connection.*
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.gms.tasks.Task
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import java.net.Socket
@@ -79,9 +82,22 @@ class NearbyManager(private val context: Context, private val onSocketReady: (So
      * Called from HomeFragment when user taps a device in the list.
      */
     fun connectToEndpoint(endpointId: String) {
-        AppLog.i("NearbyManager: Requesting connection to $endpointId...")
+        AppLog.i("NearbyManager: Requesting connection to $endpointId. Stopping discovery first...")
+        isRunning = false
+        
+        try {
+            connectionsClient.stopDiscovery()
+        } catch (e: Exception) {
+            AppLog.w("NearbyManager: Error calling stopDiscovery: ${e.message}")
+        }
+
+        // Give the radio a moment to switch from scanning to connecting mode
+        // since stopDiscovery might be asynchronous even if it returns void.
+        AppLog.i("NearbyManager: Discovery stopped. Requesting connection to $endpointId...")
         connectionsClient.requestConnection(android.os.Build.MODEL, endpointId, connectionLifecycleCallback)
-            .addOnFailureListener { e -> AppLog.e("NearbyManager: Failed to request connection: ${e.message}") }
+            .addOnFailureListener { e -> 
+                AppLog.e("NearbyManager: Failed to request connection: ${e.message}") 
+            }
     }
 
     private fun startDiscovery() {
@@ -130,15 +146,20 @@ class NearbyManager(private val context: Context, private val onSocketReady: (So
             
             when (status.statusCode) {
                 ConnectionsStatusCodes.STATUS_OK -> {
-                    AppLog.i("NearbyManager: Successfully CONNECTED to $endpointId. Establishing Stream Tunnel...")
+                    AppLog.i("NearbyManager: Successfully CONNECTED to $endpointId. Initiating Bidirectional Stream Tunnel...")
                     val socket = NearbySocket()
                     activeNearbySocket = socket
                     
+                    // 1. Create outgoing pipe (Tablet -> Phone)
                     val pipes = android.os.ParcelFileDescriptor.createPipe()
                     socket.outputStreamWrapper = android.os.ParcelFileDescriptor.AutoCloseOutputStream(pipes[1])
-                    val streamPayload = Payload.fromStream(android.os.ParcelFileDescriptor.AutoCloseInputStream(pipes[0]))
-                    connectionsClient.sendPayload(endpointId, streamPayload)
+                    val tabletToPhonePayload = Payload.fromStream(android.os.ParcelFileDescriptor.AutoCloseInputStream(pipes[0]))
                     
+                    AppLog.d("NearbyManager: Sending Tablet->Phone stream payload...")
+                    connectionsClient.sendPayload(endpointId, tabletToPhonePayload)
+                    
+                    // 2. The inputStream will be set in onPayloadReceived when the phone sends its stream back.
+                    // We can already notify the service, the socket will block on read() until the stream arrives.
                     onSocketReady(socket)
                 }
                 ConnectionsStatusCodes.STATUS_CONNECTION_REJECTED -> AppLog.w("NearbyManager: Connection REJECTED by $endpointId")
@@ -155,10 +176,11 @@ class NearbyManager(private val context: Context, private val onSocketReady: (So
     private val payloadCallback = object : PayloadCallback() {
         override fun onPayloadReceived(endpointId: String, payload: Payload) {
             if (payload.type == Payload.Type.STREAM) {
-                AppLog.i("NearbyManager: Received STREAM payload from $endpointId")
+                AppLog.i("NearbyManager: Received STREAM payload from $endpointId. Completing bidirectional tunnel.")
                 activeNearbySocket?.inputStreamWrapper = payload.asStream()?.asInputStream()
             }
         }
+
 
         override fun onPayloadTransferUpdate(endpointId: String, update: PayloadTransferUpdate) {}
     }

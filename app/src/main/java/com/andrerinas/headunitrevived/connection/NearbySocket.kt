@@ -8,7 +8,7 @@ import java.net.Socket
 
 class NearbySocket : Socket() {
     @Volatile var inputStreamWrapper: InputStream? = null
-    @Volatile var outputStreamWrapper: ParcelFileDescriptor.AutoCloseOutputStream? = null
+    @Volatile var outputStreamWrapper: OutputStream? = null
 
     override fun isConnected(): Boolean {
         return true
@@ -21,25 +21,48 @@ class NearbySocket : Socket() {
     override fun getInputStream(): InputStream {
         return object : InputStream() {
             override fun read(): Int {
-                while (inputStreamWrapper == null) {
+                val stream = inputStreamWrapper
+                while (stream == null) {
                     Thread.sleep(10)
                 }
-                return inputStreamWrapper!!.read()
+                return stream.read()
             }
 
             override fun read(b: ByteArray, off: Int, len: Int): Int {
-                while (inputStreamWrapper == null) {
+                val stream = inputStreamWrapper
+                while (stream == null) {
                     Thread.sleep(10)
                 }
-                return inputStreamWrapper!!.read(b, off, len)
+                return stream.read(b, off, len)
+            }
+            
+            override fun available(): Int {
+                return inputStreamWrapper?.available() ?: 0
             }
         }
     }
 
     override fun getOutputStream(): OutputStream {
-        while (outputStreamWrapper == null) {
-            Thread.sleep(10)
+        return object : OutputStream() {
+            override fun write(b: Int) {
+                val stream = outputStreamWrapper
+                while (stream == null) {
+                    Thread.sleep(10)
+                }
+                stream.write(b)
+            }
+
+            override fun write(b: ByteArray, off: Int, len: Int) {
+                val stream = outputStreamWrapper
+                while (stream == null) {
+                    Thread.sleep(10)
+                }
+                stream.write(b, off, len)
+            }
+
+            override fun flush() {
+                outputStreamWrapper?.flush()
+            }
         }
-        return outputStreamWrapper!!
     }
 }

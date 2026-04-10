@@ -1,6 +1,6 @@
 package com.andrerinas.headunitrevived.main
 
-import android.app.AlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,7 +15,7 @@ import java.net.InetAddress
 class AddNetworkAddressDialog : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): android.app.Dialog {
-        val builder = AlertDialog.Builder(activity, R.style.DarkAlertDialog)
+        val builder = MaterialAlertDialogBuilder(requireActivity(), R.style.DarkAlertDialog)
         val content = LayoutInflater.from(builder.context)
                 .inflate(R.layout.fragment_add_network_address, null, false)
 

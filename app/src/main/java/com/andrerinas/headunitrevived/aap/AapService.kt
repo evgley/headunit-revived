@@ -452,14 +452,15 @@ class AapService : Service(), UsbReceiver.Listener {
         
         initWifiModeWithOptionalWait()
         wifiDirectManager?.setCredentialsListener { ssid, psk, ip, bssid ->
-            AppLog.i("AapService: Received WiFi credentials from manager (SSID=$ssid, IP=$ip). Updating HandshakeManager.")
-            nativeAaHandshakeManager?.updateWifiCredentials(ssid, psk, ip, bssid)
+            val settings = App.provide(this).settings
+            if (settings.wifiConnectionMode == 3) {
+                AppLog.i("AapService: Received WiFi credentials from manager (SSID=$ssid, IP=$ip). Updating NativeAaHandshakeManager.")
+                nativeAaHandshakeManager?.updateWifiCredentials(ssid, psk, ip, bssid)
+            } else {
+                AppLog.d("AapService: WiFi credentials received, but not in Native AA mode. Skipping HandshakeManager update.")
+            }
         }
 
-        // Start the BT handshake server if enabled
-        if (App.provide(this).settings.wifiConnectionMode == 3) {
-            nativeAaHandshakeManager?.start()
-        }
 
         carKeyReceiver = CarKeyReceiver()
         silentAudioPlayer = SilentAudioPlayer(this)
@@ -973,21 +974,19 @@ class AapService : Service(), UsbReceiver.Listener {
         stopWirelessServer()
         networkDiscovery?.stop()
         nearbyManager?.stop()
+        nativeAaHandshakeManager?.stop()
 
         // Mode 1: Auto (Headunit Server), Mode 2: Helper (Wireless Launcher), Mode 3: Native AA
         if (mode == 1 || mode == 2 || mode == 3) {
             startWirelessServer()
 
-            // 1. Google Nearby (Always run in background for IP exchange, if supported)
-            nearbyManager?.start()
-
-            // 2. Headunit Server Mode (Mode 1)
+            // Mode 1: Headunit Server Mode
             if (mode == 1) {
-                // Auto discovery for standard server mode
+                // Auto discovery for standard server mode via NSD/mDNS
                 startDiscovery(oneShot = false)
             }
 
-            // 3. Wireless Helper Mode (Mode 2)
+            // Mode 2: Wireless Helper Mode
             if (mode == 2) {
                 when (strategy) {
                     0 -> startDiscovery(oneShot = false) // Common Wifi (NSD)
@@ -997,7 +996,9 @@ class AapService : Service(), UsbReceiver.Listener {
                             wifiDirectManager?.makeVisible()
                         }
                     }
-                    2 -> { /* Google Nearby - handled by nearbyManager.start() above */ }
+                    2 -> { // Google Nearby
+                        nearbyManager?.start()
+                    }
                     3, 4 -> { /* Host/Passive - just wait for connection on WirelessServer port */ }
                 }
                 
@@ -1010,11 +1011,15 @@ class AapService : Service(), UsbReceiver.Listener {
                 }
             }
 
+            // Mode 3: Native AA Wireless
             if (mode == 3) {
                 val wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as android.net.wifi.WifiManager
                 if (wifiManager.isWifiEnabled) {
+                    // Start WiFi Direct as a "quiet host" (P2P Group for phone to join)
                     wifiDirectManager?.startNativeAaQuietHost()
                 }
+                // Start the official Bluetooth handshake servers
+                nativeAaHandshakeManager?.start()
             }
         }
         

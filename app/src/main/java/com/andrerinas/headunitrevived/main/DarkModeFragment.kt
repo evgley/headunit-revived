@@ -155,7 +155,7 @@ class DarkModeFragment : Fragment(), SensorEventListener {
 
     private fun handleBackPress() {
         if (hasChanges) {
-            AlertDialog.Builder(requireContext())
+            MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
                 .setTitle(R.string.unsaved_changes)
                 .setMessage(R.string.unsaved_changes_message)
                 .setPositiveButton(R.string.discard) { _, _ ->
@@ -306,7 +306,7 @@ class DarkModeFragment : Fragment(), SensorEventListener {
             nameResId = R.string.app_theme,
             value = appThemeTitles[pendingAppTheme!!.value],
             onClick = { _ ->
-                AlertDialog.Builder(requireContext())
+                MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
                     .setTitle(R.string.change_app_theme)
                     .setSingleChoiceItems(appThemeTitles, pendingAppTheme!!.value) { dialog, which ->
                         pendingAppTheme = Settings.AppTheme.fromInt(which)
@@ -498,7 +498,7 @@ class DarkModeFragment : Fragment(), SensorEventListener {
             onClick = { _ ->
                 val nightModeTitles = resources.getStringArray(R.array.night_mode)
 
-                AlertDialog.Builder(requireContext())
+                MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
                     .setTitle(R.string.night_mode)
                     .setSingleChoiceItems(nightModeTitles, pendingNightMode!!.value) { dialog, which ->
                         pendingNightMode = Settings.NightMode.fromInt(which)!!

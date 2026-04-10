@@ -186,7 +186,7 @@ class SettingsFragment : Fragment() {
 
     private fun handleBackPress() {
         if (hasChanges) {
-            AlertDialog.Builder(requireContext())
+            MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
                 .setTitle(R.string.unsaved_changes)
                 .setMessage(R.string.unsaved_changes_message)
                 .setPositiveButton(R.string.discard) { _, _ ->
@@ -398,7 +398,7 @@ class SettingsFragment : Fragment() {
 
                 val currentIndex = localeCodes.indexOf(pendingAppLanguage ?: "").coerceAtLeast(0)
 
-                AlertDialog.Builder(requireContext())
+                MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
                     .setTitle(R.string.change_language)
                     .setSingleChoiceItems(languageNames.toTypedArray(), currentIndex) { dialog, which ->
                         pendingAppLanguage = localeCodes[which]
@@ -677,7 +677,7 @@ class SettingsFragment : Fragment() {
             nameResId = R.string.resolution,
             value = Settings.Resolution.fromId(pendingResolution!!)?.resName ?: "",
             onClick = { _ ->
-                AlertDialog.Builder(requireContext())
+                MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
                     .setTitle(R.string.change_resolution)
                     .setSingleChoiceItems(Settings.Resolution.allRes, pendingResolution!!) { dialog, which ->
                         pendingResolution = which
@@ -767,7 +767,7 @@ class SettingsFragment : Fragment() {
             onClick = { _ ->
                 val viewModes = arrayOf(getString(R.string.surface_view), getString(R.string.texture_view), getString(R.string.gles_view))
                 val currentIdx = pendingViewMode!!.value
-                AlertDialog.Builder(requireContext())
+                MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
                     .setTitle(R.string.change_view_mode)
                     .setSingleChoiceItems(viewModes, currentIdx) { dialog, which ->
                         pendingViewMode = Settings.ViewMode.fromInt(which)!!
@@ -786,7 +786,7 @@ class SettingsFragment : Fragment() {
             onClick = { _ ->
                 val orientationOptions = resources.getStringArray(R.array.screen_orientation)
                 val currentIdx = pendingScreenOrientation!!.value
-                AlertDialog.Builder(requireContext())
+                MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
                     .setTitle(R.string.change_screen_orientation)
                     .setSingleChoiceItems(orientationOptions, currentIdx) { dialog, whiches ->
                         pendingScreenOrientation = Settings.ScreenOrientation.fromInt(whiches)
@@ -849,7 +849,7 @@ class SettingsFragment : Fragment() {
             onClick = { _ ->
                 val codecs = arrayOf("Auto", "H.264", "H.265")
                 val currentCodecIndex = codecs.indexOf(pendingVideoCodec)
-                AlertDialog.Builder(requireContext())
+                MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
                     .setTitle(R.string.video_codec)
                     .setSingleChoiceItems(codecs, currentCodecIndex) { dialog, which ->
                         pendingVideoCodec = codecs[which]
@@ -868,7 +868,7 @@ class SettingsFragment : Fragment() {
             onClick = { _ ->
                 val fpsOptions = arrayOf("30", "60")
                 val currentFpsIndex = fpsOptions.indexOf(pendingFpsLimit.toString())
-                AlertDialog.Builder(requireContext())
+                MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
                     .setTitle(R.string.fps_limit)
                     .setSingleChoiceItems(fpsOptions, currentFpsIndex) { dialog, which ->
                         pendingFpsLimit = fpsOptions[which].toInt()
@@ -943,7 +943,7 @@ class SettingsFragment : Fragment() {
                 val currentSampleRateIndex = Settings.MicSampleRates.indexOf(pendingMicSampleRate!!)
                 val sampleRateNames = Settings.MicSampleRates.map { "${it / 1000}kHz" }.toTypedArray()
 
-                AlertDialog.Builder(requireContext())
+                MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
                     .setTitle(R.string.mic_sample_rate)
                     .setSingleChoiceItems(sampleRateNames, currentSampleRateIndex) { dialog, which ->
                         val newValue = Settings.MicSampleRates.elementAt(which)
@@ -1318,7 +1318,7 @@ class SettingsFragment : Fragment() {
             R.string.kill_on_disconnect_enable_anyway
         }
 
-        val dialog = MaterialAlertDialogBuilder(requireContext())
+        val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
             .setTitle(R.string.kill_on_disconnect_warning_title)
             .setMessage(message)
             .setPositiveButton(positiveTextRes) { _, _ ->
