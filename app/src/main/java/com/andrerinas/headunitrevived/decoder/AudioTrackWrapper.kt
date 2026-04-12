@@ -320,10 +320,13 @@ class AudioTrackWrapper(
         if (!isRunning) return
 
         try {
-            // put() blocks if queue is full (Backpressure)
-            dataQueue.put(buffer.copyOfRange(offset, offset + size))
+            // offer() doesn't block if the queue is full. This prevents the network thread from blocking.
+            val success = dataQueue.offer(buffer.copyOfRange(offset, offset + size), 5, TimeUnit.MILLISECONDS)
+            if (!success) {
+                AppLog.w("Audio queue is full, dropping audio frame to prevent stalling")
+            }
         } catch (e: InterruptedException) {
-            AppLog.w("Interrupted while putting audio data to queue")
+            AppLog.w("Interrupted while offering audio data to queue")
         }
     }
 

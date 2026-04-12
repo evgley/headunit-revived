@@ -1,1 +1,0 @@
-sed -i '/var useAacAudio/i \    var audioLatencyMultiplier: Int\n        get() = prefs.getInt("audio-latency-multiplier", 2)\n        set(value) { prefs.edit().putInt("audio-latency-multiplier", value).apply() }\n' app/src/main/java/com/andrerinas/headunitrevived/utils/Settings.kt
