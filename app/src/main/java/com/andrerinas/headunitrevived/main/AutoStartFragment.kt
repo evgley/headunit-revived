@@ -154,6 +154,7 @@ class AutoStartFragment : Fragment() {
         pendingAutoStartOnUsb?.let {
             settings.autoStartOnUsb = it
             Settings.syncAutoStartOnUsbToDeviceStorage(requireContext(), it)
+            Settings.setUsbAttachedActivityEnabled(requireContext(), it)
         }
         pendingAutoStartBtName?.let { settings.autoStartBluetoothDeviceName = it }
         pendingAutoStartBtMac?.let {
@@ -297,6 +298,7 @@ class AutoStartFragment : Fragment() {
             if (settings.autoStartOnUsb) {
                 settings.autoStartOnUsb = false
                 pendingAutoStartOnUsb = false
+                Settings.setUsbAttachedActivityEnabled(requireContext(), false)
                 disabled = true
             }
             if (!settings.autoStartBluetoothDeviceMac.isNullOrEmpty()) {

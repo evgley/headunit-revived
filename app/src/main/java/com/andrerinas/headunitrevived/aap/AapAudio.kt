@@ -126,8 +126,8 @@ internal class AapAudio(
             }
             val gain = (1.0f + (offset / 100.0f)).coerceIn(0.0f, 2.0f)
 
-            AppLog.i("AudioDecoder.start: channel=$channel, stream=$stream, gain=$gain, sampleRate=${config.sampleRate}, numberOfBits=${config.numberOfBits}, numberOfChannels=${config.numberOfChannels}, isAac=${settings.useAacAudio}")
-            audioDecoder.start(channel, stream, config.sampleRate, config.numberOfBits, config.numberOfChannels, settings.useAacAudio, gain)
+            AppLog.i("AudioDecoder.start: channel=$channel, stream=$stream, gain=$gain, sampleRate=${config.sampleRate}, numberOfBits=${config.numberOfBits}, numberOfChannels=${config.numberOfChannels}, isAac=${settings.useAacAudio}, latencyMultiplier=${settings.audioLatencyMultiplier}, queueCapacity=${settings.audioQueueCapacity}")
+            audioDecoder.start(channel, stream, config.sampleRate, config.numberOfBits, config.numberOfChannels, settings.useAacAudio, gain, settings.audioLatencyMultiplier, settings.audioQueueCapacity)
         }
 
         audioDecoder.decode(channel, buf, start, length)

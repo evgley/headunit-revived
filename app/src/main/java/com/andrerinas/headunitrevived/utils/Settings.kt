@@ -1,11 +1,14 @@
 package com.andrerinas.headunitrevived.utils
 
 import android.annotation.SuppressLint
+import android.content.ComponentName
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Build
 import com.andrerinas.headunitrevived.aap.protocol.proto.Control
+import com.andrerinas.headunitrevived.app.UsbAttachedActivity
 import com.andrerinas.headunitrevived.connection.UsbDeviceCompat
 
 class Settings(context: Context) {
@@ -326,6 +329,14 @@ class Settings(context: Context) {
         get() = prefs.getInt("mic-input-source", 0) // Default: DEFAULT
         set(value) { prefs.edit().putInt("mic-input-source", value).apply() }
 
+    var audioLatencyMultiplier: Int
+        get() = prefs.getInt("audio-latency-multiplier", 8)
+        set(value) { prefs.edit().putInt("audio-latency-multiplier", value).apply() }
+    
+    var audioQueueCapacity: Int
+        get() = prefs.getInt("audio-queue-capacity", 0)
+        set(value) { prefs.edit().putInt("audio-queue-capacity", value).apply() }
+
     var useAacAudio: Boolean
         get() = prefs.getBoolean("use-aac-audio", false)
         set(value) { prefs.edit().putBoolean("use-aac-audio", value).apply() }
@@ -569,6 +580,19 @@ class Settings(context: Context) {
                     .edit()
                     .putBoolean(KEY_AUTO_START_ON_USB, enabled)
                     .apply()
+            }
+        }
+
+        fun setUsbAttachedActivityEnabled(context: Context, enabled: Boolean) {
+            val component = ComponentName(context, UsbAttachedActivity::class.java)
+            val newState = if (enabled)
+                PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+            else
+                PackageManager.COMPONENT_ENABLED_STATE_DISABLED
+            if (context.packageManager.getComponentEnabledSetting(component) != newState) {
+                context.packageManager.setComponentEnabledSetting(
+                    component, newState, PackageManager.DONT_KILL_APP
+                )
             }
         }
 

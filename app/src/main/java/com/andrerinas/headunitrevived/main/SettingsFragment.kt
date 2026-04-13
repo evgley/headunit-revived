@@ -54,6 +54,8 @@ class SettingsFragment : Fragment() {
     private var pendingMicInputSource: Int? = null
     private var pendingUseNativeSsl: Boolean? = null
     private var pendingEnableRotary: Boolean? = null
+    private var pendingAudioLatencyMultiplier: Int? = null
+    private var pendingAudioQueueCapacity: Int? = null
     private var pendingShowFpsCounter: Boolean? = null
     private var pendingScreenOrientation: Settings.ScreenOrientation? = null
     private var pendingAppLanguage: String? = null
@@ -111,6 +113,8 @@ class SettingsFragment : Fragment() {
         pendingMicInputSource = settings.micInputSource
         pendingUseNativeSsl = settings.useNativeSsl
         pendingEnableRotary = settings.enableRotary
+        pendingAudioLatencyMultiplier = settings.audioLatencyMultiplier
+        pendingAudioQueueCapacity = settings.audioQueueCapacity
         pendingShowFpsCounter = settings.showFpsCounter
         pendingScreenOrientation = settings.screenOrientation
         pendingAppLanguage = settings.appLanguage
@@ -236,6 +240,8 @@ class SettingsFragment : Fragment() {
         pendingMicInputSource?.let { settings.micInputSource = it }
         pendingUseNativeSsl?.let { settings.useNativeSsl = it }
         pendingEnableRotary?.let { settings.enableRotary = it }
+        pendingAudioLatencyMultiplier?.let { settings.audioLatencyMultiplier = it }
+        pendingAudioQueueCapacity?.let { settings.audioQueueCapacity = it }
         pendingShowFpsCounter?.let { settings.showFpsCounter = it }
         pendingScreenOrientation?.let { settings.screenOrientation = it }
 
@@ -316,6 +322,8 @@ class SettingsFragment : Fragment() {
                         pendingMicInputSource != settings.micInputSource ||
                         pendingUseNativeSsl != settings.useNativeSsl ||
                         pendingEnableRotary != settings.enableRotary ||
+                        pendingAudioLatencyMultiplier != settings.audioLatencyMultiplier ||
+                        pendingAudioQueueCapacity != settings.audioQueueCapacity ||
                         pendingShowFpsCounter != settings.showFpsCounter ||
                         pendingScreenOrientation != settings.screenOrientation ||
                         pendingAppLanguage != settings.appLanguage ||
@@ -347,6 +355,8 @@ class SettingsFragment : Fragment() {
                           pendingEnableRotary != settings.enableRotary ||
                           pendingEnableAudioSink != settings.enableAudioSink ||
                           pendingUseAacAudio != settings.useAacAudio ||
+                          pendingAudioLatencyMultiplier != settings.audioLatencyMultiplier ||
+                          pendingAudioQueueCapacity != settings.audioQueueCapacity ||
                           pendingUseNativeSsl != settings.useNativeSsl ||
                           pendingInsetLeft != settings.insetLeft ||
                           pendingInsetTop != settings.insetTop ||
@@ -995,6 +1005,46 @@ class SettingsFragment : Fragment() {
             value = "${(100 + (pendingMediaVolumeOffset ?: 0))}% / ${(100 + (pendingAssistantVolumeOffset ?: 0))}% / ${(100 + (pendingNavigationVolumeOffset ?: 0))}%",
             onClick = {
                 showAudioOffsetsDialog()
+            }
+        ))
+
+        items.add(SettingItem.SettingEntry(
+            stableId = "audioLatencyMultiplier",
+            nameResId = R.string.audio_latency_multiplier,
+            value = "${pendingAudioLatencyMultiplier}x",
+            onClick = { _ ->
+                val options = arrayOf("1x (Lowest Latency)", "2x (Low Latency)", "4x (High Latency)", "8x (Very High Latency)")
+                val values = intArrayOf(1, 2, 4, 8)
+                val currentIndex = values.indexOf(pendingAudioLatencyMultiplier ?: 8).coerceAtLeast(0)
+                AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.audio_latency_multiplier)
+                    .setSingleChoiceItems(options, currentIndex) { dialog, which ->
+                        pendingAudioLatencyMultiplier = values[which]
+                        checkChanges()
+                        dialog.dismiss()
+                        updateSettingsList()
+                    }
+                    .show()
+            }
+        ))
+
+        items.add(SettingItem.SettingEntry(
+            stableId = "audioQueueCapacity",
+            nameResId = R.string.audio_queue_capacity,
+            value = if (pendingAudioQueueCapacity == 0) "Unbounded (Legacy)" else "${pendingAudioQueueCapacity} chunks",
+            onClick = { _ ->
+                val options = arrayOf("10 chunks (Low Latency)", "20 chunks (Balanced)", "50 chunks (High Latency)", "Unbounded (Max Backlog)")
+                val values = intArrayOf(10, 20, 50, 0)
+                val currentIndex = values.indexOf(pendingAudioQueueCapacity ?: 0).coerceAtLeast(0)
+                AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.audio_queue_capacity)
+                    .setSingleChoiceItems(options, currentIndex) { dialog, which ->
+                        pendingAudioQueueCapacity = values[which]
+                        checkChanges()
+                        dialog.dismiss()
+                        updateSettingsList()
+                    }
+                    .show()
             }
         ))
 
