@@ -13,13 +13,18 @@ import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.*
 import java.net.Socket
 
 /**
  * Manages Google Nearby Connections on the Headunit (Tablet).
  * The Tablet acts as a DISCOVERER only.
  */
-class NearbyManager(private val context: Context, private val onSocketReady: (Socket) -> Unit) {
+class NearbyManager(
+    private val context: Context, 
+    private val scope: CoroutineScope,
+    private val onSocketReady: (Socket) -> Unit
+) {
 
     data class DiscoveredEndpoint(val id: String, val name: String)
 
@@ -29,9 +34,10 @@ class NearbyManager(private val context: Context, private val onSocketReady: (So
     }
 
     private val connectionsClient = Nearby.getConnectionsClient(context)
-    private val SERVICE_ID = "com.andrerinas.headunitrevived.NEARBY"
+    private val SERVICE_ID = "com.borconi.emil.hur"
     private var isRunning = false
     private var activeNearbySocket: NearbySocket? = null
+    private var activePipes: Array<android.os.ParcelFileDescriptor>? = null
 
     fun start() {
         if (!hasRequiredPermissions()) {
@@ -82,18 +88,8 @@ class NearbyManager(private val context: Context, private val onSocketReady: (So
      * Called from HomeFragment when user taps a device in the list.
      */
     fun connectToEndpoint(endpointId: String) {
-        AppLog.i("NearbyManager: Requesting connection to $endpointId. Stopping discovery first...")
-        isRunning = false
+        AppLog.i("NearbyManager: Requesting connection to $endpointId...")
         
-        try {
-            connectionsClient.stopDiscovery()
-        } catch (e: Exception) {
-            AppLog.w("NearbyManager: Error calling stopDiscovery: ${e.message}")
-        }
-
-        // Give the radio a moment to switch from scanning to connecting mode
-        // since stopDiscovery might be asynchronous even if it returns void.
-        AppLog.i("NearbyManager: Discovery stopped. Requesting connection to $endpointId...")
         connectionsClient.requestConnection(android.os.Build.MODEL, endpointId, connectionLifecycleCallback)
             .addOnFailureListener { e -> 
                 AppLog.e("NearbyManager: Failed to request connection: ${e.message}") 
@@ -102,10 +98,10 @@ class NearbyManager(private val context: Context, private val onSocketReady: (So
 
     private fun startDiscovery() {
         val discoveryOptions = DiscoveryOptions.Builder()
-            .setStrategy(Strategy.P2P_STAR) // Changed from P2P_POINT_TO_POINT for better throughput
+            .setStrategy(Strategy.P2P_CLUSTER)
             .build()
 
-        AppLog.i("NearbyManager: Requesting Discovery with SERVICE_ID: $SERVICE_ID (Strategy: P2P_STAR)")
+        AppLog.i("NearbyManager: Requesting Discovery with SERVICE_ID: $SERVICE_ID (Strategy: P2P_CLUSTER)")
         connectionsClient.startDiscovery(SERVICE_ID, endpointDiscoveryCallback, discoveryOptions)
             .addOnSuccessListener { AppLog.d("NearbyManager: [OK] Discovery started.") }
             .addOnFailureListener { e -> 
@@ -146,21 +142,38 @@ class NearbyManager(private val context: Context, private val onSocketReady: (So
             
             when (status.statusCode) {
                 ConnectionsStatusCodes.STATUS_OK -> {
-                    AppLog.i("NearbyManager: Successfully CONNECTED to $endpointId. Initiating Bidirectional Stream Tunnel...")
-                    val socket = NearbySocket()
-                    activeNearbySocket = socket
+                    AppLog.i("NearbyManager: Successfully CONNECTED to $endpointId. Waiting 500ms before initiating tunnel...")
                     
-                    // 1. Create outgoing pipe (Tablet -> Phone)
-                    val pipes = android.os.ParcelFileDescriptor.createPipe()
-                    socket.outputStreamWrapper = android.os.ParcelFileDescriptor.AutoCloseOutputStream(pipes[1])
-                    val tabletToPhonePayload = Payload.fromStream(android.os.ParcelFileDescriptor.AutoCloseInputStream(pipes[0]))
-                    
-                    AppLog.d("NearbyManager: Sending Tablet->Phone stream payload...")
-                    connectionsClient.sendPayload(endpointId, tabletToPhonePayload)
-                    
-                    // 2. The inputStream will be set in onPayloadReceived when the phone sends its stream back.
-                    // We can already notify the service, the socket will block on read() until the stream arrives.
-                    onSocketReady(socket)
+                    scope.launch(Dispatchers.IO) {
+                        kotlinx.coroutines.delay(500)
+                        
+                        val socket = NearbySocket()
+                        activeNearbySocket = socket
+                        
+                        // 1. Create outgoing pipe (Tablet -> Phone)
+                        val pipes = android.os.ParcelFileDescriptor.createPipe()
+                        activePipes = pipes
+                        socket.outputStreamWrapper = android.os.ParcelFileDescriptor.AutoCloseOutputStream(pipes[1])
+
+                        // Initiating stream tunnel to Phone
+                        AppLog.i("NearbyManager: Initiating symmetric stream tunnel to $endpointId...")
+                        
+                        // We pass the PFD directly to Nearby - it's more robust than passing an InputStream
+                        val tabletToPhonePayload = Payload.fromStream(pipes[0])
+                        
+                        connectionsClient.sendPayload(endpointId, tabletToPhonePayload)
+                            .addOnSuccessListener { 
+                                AppLog.i("NearbyManager: [OK] Tablet->Phone payload registered successfully.") 
+                                // Test basic BYTES communication
+                                connectionsClient.sendPayload(endpointId, Payload.fromBytes("PING_FROM_TABLET".toByteArray()))
+                            }
+                            .addOnFailureListener { e -> 
+                                AppLog.e("NearbyManager: [ERROR] Failed to send payload: ${e.message}") 
+                            }
+                        
+                        // CRITICAL: Start handshake immediately so data is waiting in the pipe
+                        onSocketReady(socket)
+                    }
                 }
                 ConnectionsStatusCodes.STATUS_CONNECTION_REJECTED -> AppLog.w("NearbyManager: Connection REJECTED by $endpointId")
                 ConnectionsStatusCodes.STATUS_ERROR -> AppLog.e("NearbyManager: Connection ERROR with $endpointId")
@@ -175,13 +188,23 @@ class NearbyManager(private val context: Context, private val onSocketReady: (So
 
     private val payloadCallback = object : PayloadCallback() {
         override fun onPayloadReceived(endpointId: String, payload: Payload) {
+            AppLog.i("NearbyManager: Payload RECEIVED from $endpointId. Type: ${payload.type}")
             if (payload.type == Payload.Type.STREAM) {
-                AppLog.i("NearbyManager: Received STREAM payload from $endpointId. Completing bidirectional tunnel.")
+                AppLog.i("NearbyManager: Received incoming STREAM payload. Completing bidirectional tunnel.")
                 activeNearbySocket?.inputStreamWrapper = payload.asStream()?.asInputStream()
+            } else if (payload.type == Payload.Type.BYTES) {
+                val msg = String(payload.asBytes() ?: byteArrayOf())
+                AppLog.i("NearbyManager: Received BYTES payload: $msg")
             }
         }
 
 
-        override fun onPayloadTransferUpdate(endpointId: String, update: PayloadTransferUpdate) {}
+        override fun onPayloadTransferUpdate(endpointId: String, update: PayloadTransferUpdate) {
+            if (update.status == PayloadTransferUpdate.Status.SUCCESS) {
+                AppLog.d("NearbyManager: Payload transfer SUCCESS for endpoint $endpointId")
+            } else if (update.status == PayloadTransferUpdate.Status.FAILURE) {
+                AppLog.e("NearbyManager: Payload transfer FAILURE for endpoint $endpointId")
+            }
+        }
     }
 }

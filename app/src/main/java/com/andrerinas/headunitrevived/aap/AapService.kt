@@ -440,8 +440,8 @@ class AapService : Service(), UsbReceiver.Listener {
         
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             try {
-                nearbyManager = NearbyManager(this) { socket ->
-                    serviceScope.launch {
+                nearbyManager = NearbyManager(this, serviceScope) { socket ->
+                    serviceScope.launch(Dispatchers.IO) {
                         commManager.connect(socket)
                     }
                 }
@@ -531,6 +531,9 @@ class AapService : Service(), UsbReceiver.Listener {
             commManager.connectionState.collect { state ->
                 when (state) {
                     is CommManager.ConnectionState.Connected -> onConnected()
+                    is CommManager.ConnectionState.HandshakeComplete -> {
+                        launchAapProjectionActivity()
+                    }
                     is CommManager.ConnectionState.TransportStarted -> {
                         hasEverConnected = true
                         accessoryHandshakeFailures = 0
@@ -599,6 +602,9 @@ class AapService : Service(), UsbReceiver.Listener {
         }
 
         serviceScope.launch { commManager.startHandshake() }
+    }
+
+    private fun launchAapProjectionActivity() {
         startActivity(AapProjectionActivity.intent(this).apply {
             putExtra(AapProjectionActivity.EXTRA_FOCUS, true)
             addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
