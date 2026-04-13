@@ -1,4 +1,7 @@
 # Changelog
+### v.2.2.1-beta1
+- Enhanced: Video-Codec
+
 ### v.2.2.0
 - Added: Native AA. 🎉  Warning! This will only work on a limited amount of headunits! Most Android devices do not support connecting 2 Android devices via Bluetooth which is essential for this to work.
 - Added: Google Nearby Support as connection method. Needs Wireless Helper 1.6.0 or later
