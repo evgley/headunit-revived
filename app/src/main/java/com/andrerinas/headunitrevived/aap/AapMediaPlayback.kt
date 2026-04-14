@@ -35,7 +35,7 @@ class AapMediaPlayback(
             val status = message.parse(MediaPlayback.MediaPlaybackStatus.newBuilder()).build()
             onAaPlaybackStatus?.invoke(status)
             AppLog.d(
-                "AapMediaPlayback: status source='${status.source}', seconds=${status.seconds}, state=${status.state}"
+                "AapMediaPlayback: status mediaSource='${status.mediaSource}', playbackSeconds=${status.playbackSeconds}, state=${status.state}"
             )
         } catch (e: Exception) {
             AppLog.w("AapMediaPlayback: Failed to parse playback status: ${e.message}")

@@ -38,7 +38,7 @@ class BackgroundNotification(private val context: Context) {
         val playPause = PendingIntent.getBroadcast(context, 1, MediaKeyIntent(playPauseKey), broadcastFlags)
         val next = PendingIntent.getBroadcast(context, 2, MediaKeyIntent(nextKey), broadcastFlags)
         val prev = PendingIntent.getBroadcast(context, 3, MediaKeyIntent(prevKey), broadcastFlags)
-        val durationSeconds = if (metadata.hasDuration()) metadata.duration.toLong() else 0L
+        val durationSeconds = if (metadata.hasDurationSeconds()) metadata.durationSeconds.toLong() else 0L
         val clampedPlayback = playbackSeconds.coerceAtLeast(0L).coerceAtMost(durationSeconds.takeIf { it > 0 } ?: playbackSeconds.coerceAtLeast(0L))
         val progressText = if (durationSeconds > 0) {
             "${formatAsMmSs(clampedPlayback)} / ${formatAsMmSs(durationSeconds)}"
@@ -65,8 +65,8 @@ class BackgroundNotification(private val context: Context) {
                 .addAction(R.drawable.ic_skip_next_black_24dp, context.getString(R.string.media_action_next), next)
 
 
-        if (!metadata.albumart.isEmpty) {
-            val image = BitmapFactory.decodeByteArray(metadata.albumart.toByteArray(), 0, metadata.albumart.size())
+        if (metadata.hasAlbumArt() && !metadata.albumArt.isEmpty) {
+            val image = BitmapFactory.decodeByteArray(metadata.albumArt.toByteArray(), 0, metadata.albumArt.size())
             notification
                     .setStyle(NotificationCompat.BigPictureStyle().bigPicture(image))
                     .setLargeIcon(image)

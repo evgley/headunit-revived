@@ -109,6 +109,7 @@ class AapService : Service(), UsbReceiver.Listener {
 
     private var lastAaMediaMetadata: MediaPlayback.MediaMetaData? = null
     private var lastAaPlaybackPositionMs: Long = 0L
+    private var lastAaPlaybackIsPlaying: Boolean? = null
     private var mediaSessionIsPlaying = false
     private var mediaMetadataDecodeJob: Job? = null
     private var settingsPrefs: SharedPreferences? = null
@@ -251,24 +252,26 @@ class AapService : Service(), UsbReceiver.Listener {
 
     private fun onAaPlaybackStatusFromPhone(status: MediaPlayback.MediaPlaybackStatus) {
         if (isDestroying) return
-        if (status.hasSeconds()) {
-            lastAaPlaybackPositionMs = status.seconds * 1000L
+        if (status.hasPlaybackSeconds()) {
+            lastAaPlaybackPositionMs = status.playbackSeconds * 1000L
         }
+        val isPlayingFromStatus = resolveIsPlayingFromStatus(status)
+        lastAaPlaybackIsPlaying = isPlayingFromStatus
+        mediaSessionIsPlaying = isPlayingFromStatus
+
         if (!App.provide(this).settings.syncMediaSessionWithAaMetadata) return
-
-        val isPlayingFromStatus = if (status.hasState()) {
-            when (status.state) {
-                MediaPlayback.MediaPlaybackStatus.State.MEDIA_SERVICE_STATE_PLAYING -> true
-                MediaPlayback.MediaPlaybackStatus.State.MEDIA_SERVICE_STATE_PAUSE,
-                MediaPlayback.MediaPlaybackStatus.State.MEDIA_SERVICE_STATE_STOPPED -> false
-                else -> mediaSessionIsPlaying
-            }
-        } else {
-            mediaSessionIsPlaying
-        }
-
         updateMediaSessionState(isPlayingFromStatus)
         lastAaMediaMetadata?.let { updateMediaNotification(it) }
+    }
+
+    private fun resolveIsPlayingFromStatus(status: MediaPlayback.MediaPlaybackStatus): Boolean {
+        if (!status.hasState()) return lastAaPlaybackIsPlaying ?: mediaSessionIsPlaying
+        return when (val s = status.state) {
+            null -> lastAaPlaybackIsPlaying ?: mediaSessionIsPlaying
+            MediaPlayback.MediaPlaybackStatus.State.PLAYING -> true
+            MediaPlayback.MediaPlaybackStatus.State.STOPPED,
+            MediaPlayback.MediaPlaybackStatus.State.PAUSED -> false
+        }
     }
 
     private fun updateMediaNotification(meta: MediaPlayback.MediaMetaData) {
@@ -276,14 +279,14 @@ class AapService : Service(), UsbReceiver.Listener {
         mediaNotification.notify(
             metadata = meta,
             playbackSeconds = lastAaPlaybackPositionMs / 1000L,
-            isPlaying = mediaSessionIsPlaying
+            isPlaying = lastAaPlaybackIsPlaying ?: mediaSessionIsPlaying
         )
     }
 
     private fun scheduleApplyAaMediaMetadata(meta: MediaPlayback.MediaMetaData) {
         mediaMetadataDecodeJob?.cancel()
         mediaMetadataDecodeJob = serviceScope.launch(Dispatchers.Default) {
-            val bytes = if (meta.hasAlbumart() && !meta.albumart.isEmpty) meta.albumart.toByteArray() else null
+            val bytes = if (meta.hasAlbumArt() && !meta.albumArt.isEmpty) meta.albumArt.toByteArray() else null
             val bitmap = bytes?.let { decodeAlbumArt(it) }
             if (!isActive) return@launch
             withContext(Dispatchers.Main) {
@@ -334,8 +337,8 @@ class AapService : Service(), UsbReceiver.Listener {
         if (meta.hasAlbum() && meta.album.isNotBlank()) {
             b.putString(MediaMetadataCompat.METADATA_KEY_ALBUM, meta.album)
         }
-        if (meta.hasDuration() && meta.duration > 0) {
-            b.putLong(MediaMetadataCompat.METADATA_KEY_DURATION, meta.duration * 1000L)
+        if (meta.hasDurationSeconds() && meta.durationSeconds > 0) {
+            b.putLong(MediaMetadataCompat.METADATA_KEY_DURATION, meta.durationSeconds * 1000L)
         }
         if (albumArt != null) {
             b.putBitmap(MediaMetadataCompat.METADATA_KEY_ALBUM_ART, albumArt)
@@ -863,6 +866,7 @@ class AapService : Service(), UsbReceiver.Listener {
         mediaMetadataDecodeJob = null
         lastAaMediaMetadata = null
         lastAaPlaybackPositionMs = 0L
+        lastAaPlaybackIsPlaying = null
         mediaNotification.cancel()
         applyPlaceholderMediaMetadata()
         // Keep MediaSession alive across disconnect/reconnect cycles.
