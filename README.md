@@ -67,6 +67,8 @@ adb shell am start -a android.intent.action.VIEW -d "headunit://connect?ip=192.1
 ## Changelog
 ### v.2.2.1-beta1
 - Enhanced: Video-Codec
+- Google Nearby Connection is now auto connecting if auto connect is enabled
+
 
 ### v.2.2.0
 - Added: Native AA. 🎉  Warning! This will only work on a limited amount of headunits! Most Android devices do not support connecting 2 Android devices via Bluetooth which is essential for this to work.

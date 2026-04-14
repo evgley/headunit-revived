@@ -440,6 +440,8 @@ class AapService : Service(), UsbReceiver.Listener {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             try {
                 nearbyManager = NearbyManager(this, serviceScope) { socket ->
+                    val settings = App.provide(this).settings
+                    settings.saveLastConnection(Settings.CONNECTION_TYPE_NEARBY)
                     serviceScope.launch(Dispatchers.IO) {
                         commManager.connect(socket)
                     }
@@ -709,6 +711,7 @@ class AapService : Service(), UsbReceiver.Listener {
         mediaSession?.isActive = false
         updateMediaSessionState(false)
         serviceScope.launch(Dispatchers.IO) {
+            nearbyManager?.stop() // Disconnect Nearby tunnel
             App.provide(this@AapService).audioDecoder.stop()
             App.provide(this@AapService).videoDecoder.stop("AapService::onDisconnect")
         }
@@ -732,16 +735,23 @@ class AapService : Service(), UsbReceiver.Listener {
             return
         }
 
+        val settings = App.provide(this).settings
+
         if (wirelessServer != null) {
             AppLog.i("AapService: Disconnected. Restarting discovery loop in 2s...")
             serviceScope.launch {
                 delay(2000)
-                if (!commManager.isConnected) startDiscovery()
+                if (!commManager.isConnected) {
+                    if (settings.wifiConnectionMode == 2 && settings.helperConnectionStrategy == 2) {
+                        nearbyManager?.start()
+                    } else {
+                        startDiscovery()
+                    }
+                }
             }
             return
         }
 
-        val settings = App.provide(this).settings
         val lastType = settings.lastConnectionType
 
         // USB auto-reconnect: try again after a delay to give dongles time to re-enumerate.

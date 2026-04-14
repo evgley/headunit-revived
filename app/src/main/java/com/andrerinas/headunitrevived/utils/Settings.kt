@@ -485,6 +485,7 @@ class Settings(context: Context) {
     companion object {
         const val CONNECTION_TYPE_WIFI = "wifi"
         const val CONNECTION_TYPE_USB = "usb"
+        const val CONNECTION_TYPE_NEARBY = "nearby"
 
         const val AUTO_CONNECT_LAST_SESSION = "last-session"
         const val AUTO_CONNECT_SELF_MODE = "self-mode"
@@ -740,5 +741,9 @@ class Settings(context: Context) {
     var helperConnectionStrategy: Int
         get() = prefs.getInt("helper-connection-strategy", 0)
         set(value) = prefs.edit().putInt("helper-connection-strategy", value).apply()
+
+    var lastNearbyDeviceName: String
+        get() = prefs.getString("last-nearby-device-name", "")!!
+        set(value) = prefs.edit().putString("last-nearby-device-name", value).apply()
 
 }
