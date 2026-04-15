@@ -271,7 +271,7 @@ class AapService : Service(), UsbReceiver.Listener {
 
     private fun resolveIsPlayingFromStatus(status: MediaPlayback.MediaPlaybackStatus): Boolean {
         if (!status.hasState()) return lastAaPlaybackIsPlaying ?: mediaSessionIsPlaying
-        return when (val s = status.state) {
+        return when (status.state) {
             MediaPlayback.MediaPlaybackStatus.State.PLAYING -> true
             MediaPlayback.MediaPlaybackStatus.State.STOPPED,
             MediaPlayback.MediaPlaybackStatus.State.PAUSED -> false
