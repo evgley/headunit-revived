@@ -25,8 +25,10 @@ object ProjectionViewScaler {
             val lp = view.layoutParams
             var paramsChanged = false
             
+            // NOTE: For legacy forcedScale (SurfaceView), the 'stretchToFill' setting logic
+            // is historically inverted compared to its name.
             if (settings.stretchToFill) {
-                // Mode A: Preserve aspect ratio using Adjusted dimensions
+                // stretchToFill = TRUE results in Aspect Ratio preservation (Centered with bars)
                 val targetW = HeadUnitScreenConfig.getAdjustedWidth()
                 val targetH = HeadUnitScreenConfig.getAdjustedHeight()
 

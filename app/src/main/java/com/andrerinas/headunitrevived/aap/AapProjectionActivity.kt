@@ -657,8 +657,10 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         }
 
         val view = projectionView as View
-        val viewW = view.width.toFloat()
-        val viewH = view.height.toFloat()
+        // Use the container's "Anchor" dimensions (full touch surface) as the reference, 
+        // not the potentially resized projectionView's dimensions.
+        val viewW = HeadUnitScreenConfig.getUsableWidth().toFloat()
+        val viewH = HeadUnitScreenConfig.getUsableHeight().toFloat()
 
         if (viewW <= 0 || viewH <= 0) return
 
@@ -668,7 +670,14 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         val uiW = videoW - marginW
         val uiH = videoH - marginH
 
-        val isStretch = settings.stretchToFill
+        // Logic check: When forcedScale is active, the visual behavior of 'stretchToFill' 
+        // is inverted (True = Aspect Ratio Centered, False = Stretched to Screen).
+        // We adjust the touch mapping to match this visual reality.
+        val isStretch = if (HeadUnitScreenConfig.forcedScale) {
+            !settings.stretchToFill 
+        } else {
+            settings.stretchToFill
+        }
 
         val pointerData = mutableListOf<Triple<Int, Int, Int>>()
         repeat(event.pointerCount) { pointerIndex ->
