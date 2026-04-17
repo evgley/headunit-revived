@@ -712,6 +712,18 @@ class AapService : Service(), UsbReceiver.Listener {
         updateMediaSessionState(false)
         serviceScope.launch(Dispatchers.IO) {
             nearbyManager?.stop() // Disconnect Nearby tunnel
+            
+            // [FIX] Reset Native AA manager so it's ready for a fresh start/poke
+            val settings = App.provide(this@AapService).settings
+            if (settings.wifiConnectionMode == 3) {
+                AppLog.i("AapService: Native AA Mode disconnected. Resetting manager and group in 1.5s...")
+                nativeAaHandshakeManager?.stop()
+                serviceScope.launch {
+                    delay(1500) // Give hardware time to settle before re-initializing P2P
+                    initWifiMode(force = true) 
+                }
+            }
+
             App.provide(this@AapService).audioDecoder.stop()
             App.provide(this@AapService).videoDecoder.stop("AapService::onDisconnect")
         }
