@@ -72,6 +72,11 @@ adb shell am start -a android.intent.action.VIEW -d "headunit://connect?ip=192.1
 - **Self-mode on Android 10 (Q) and below:** Google has disabled the automatic wireless projection startup for Android 10 and below in Android Auto versions 16.4 and higher. While Self-mode still work on newer Android versions, it is currently impossible to trigger projection on Android 10 with recent Google app updates.
 
 ## Changelog
+### v.2.2.2-beta1
+- Fixed: Exit on disconnect now stops the carmode too
+- Fixed: Exit intent not closing the app
+- Fixed: Orientation not working great on app switch, if you have "auto or sensor" enabled
+
 ### v.2.2.1
 - **Fixed a fatal error in UBS conncetions since 2.2.0. This is important so releasing this version while not fixing all planned issues**
 - Google Nearby Connection is now auto connecting if auto connect is enabled
