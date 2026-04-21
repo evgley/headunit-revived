@@ -96,7 +96,7 @@ class AapTransport(
     private val sessionIds = SparseIntArray(4)
     private val startedSensors = HashSet<Int>(4)
     private val keyCodes = settings.keyCodes.entries.associateTo(mutableMapOf()) {
-        it.value to it.key
+        it.key to it.value
     }
     private val modeManager: UiModeManager =
         context.getSystemService(UI_MODE_SERVICE) as UiModeManager

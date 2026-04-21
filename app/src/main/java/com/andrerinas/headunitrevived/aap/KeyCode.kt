@@ -69,53 +69,18 @@ object KeyCode {
                 keyCode == KeyEvent.KEYCODE_MEDIA_REWIND
 
     internal fun convert(keyCode: Int): Int {
-        when (keyCode) {
-            KeyEvent.KEYCODE_DPAD_UP,
-            KeyEvent.KEYCODE_DPAD_DOWN,
-            KeyEvent.KEYCODE_DPAD_LEFT,
-            KeyEvent.KEYCODE_DPAD_RIGHT,
-            KeyEvent.KEYCODE_DPAD_CENTER,
-            KeyEvent.KEYCODE_BACK,
-            KeyEvent.KEYCODE_MEDIA_PLAY,
-            KeyEvent.KEYCODE_MEDIA_PAUSE,
-            KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE,
-            KeyEvent.KEYCODE_MEDIA_NEXT,
-            KeyEvent.KEYCODE_MEDIA_PREVIOUS,
-            KeyEvent.KEYCODE_SEARCH,
-            KeyEvent.KEYCODE_CALL,
-            KeyEvent.KEYCODE_SOFT_LEFT,
-            KeyEvent.KEYCODE_SOFT_RIGHT,
-            KeyEvent.KEYCODE_MUSIC,
-            KeyEvent.KEYCODE_TAB,
-            KeyEvent.KEYCODE_SPACE,
-            KeyEvent.KEYCODE_VOLUME_UP,
-            KeyEvent.KEYCODE_VOLUME_DOWN,
-            KeyEvent.KEYCODE_HOME,
-            KeyEvent.KEYCODE_ENDCALL,
-            KeyEvent.KEYCODE_0,
-            KeyEvent.KEYCODE_1,
-            KeyEvent.KEYCODE_2,
-            KeyEvent.KEYCODE_3,
-            KeyEvent.KEYCODE_4,
-            KeyEvent.KEYCODE_5,
-            KeyEvent.KEYCODE_6,
-            KeyEvent.KEYCODE_7,
-            KeyEvent.KEYCODE_8,
-            KeyEvent.KEYCODE_9,
-            KeyEvent.KEYCODE_STAR,
-            KeyEvent.KEYCODE_POUND
-                -> return keyCode
-            KeyEvent.KEYCODE_ENTER -> return KeyEvent.KEYCODE_DPAD_CENTER
-            KeyEvent.KEYCODE_HEADSETHOOK -> return KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE
-            KeyEvent.KEYCODE_MEDIA_STOP -> return KeyEvent.KEYCODE_MEDIA_PAUSE
-            // Add any custom or rotary codes that should be passed through directly
-            1, 2, 81, 268, 269, 270, 271, 65536, 65537, 65538 -> return keyCode
-            // C3 / FlyAudio steering wheel (STEM & WAKEUP keycodes)
-            264 -> return KeyEvent.KEYCODE_MEDIA_PREVIOUS   // STEM_PRIMARY
-            265 -> return KeyEvent.KEYCODE_MEDIA_NEXT        // STEM_1
-            267 -> return KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE  // STEM_3
-            224 -> return KeyEvent.KEYCODE_SEARCH            // WAKEUP → Voice
+        // If it's in our supported list or a standard media key, pass it through.
+        // We no longer force ENTER -> DPAD_CENTER here to allow users to map it specifically.
+        if (supported.contains(keyCode) || 
+            keyCode == KeyEvent.KEYCODE_MEDIA_FAST_FORWARD || 
+            keyCode == KeyEvent.KEYCODE_MEDIA_REWIND || 
+            keyCode == KeyEvent.KEYCODE_MUTE || 
+            keyCode == KeyEvent.KEYCODE_VOLUME_MUTE) {
+            return keyCode
         }
+
+        // Return KEYCODE_UNKNOWN for anything else to avoid sending invalid codes to AA
+        AppLog.w("KeyCode: Unknown or unsupported keycode $keyCode - returning KEYCODE_UNKNOWN")
         return KeyEvent.KEYCODE_UNKNOWN
     }
 }
