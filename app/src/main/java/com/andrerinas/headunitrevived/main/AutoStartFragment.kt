@@ -36,6 +36,7 @@ class AutoStartFragment : Fragment() {
 
     private var pendingAutoStartOnBoot: Boolean? = null
     private var pendingAutoStartOnScreenOn: Boolean? = null
+    private var pendingListenForUsbDevices: Boolean? = null
     private var pendingAutoStartOnUsb: Boolean? = null
     private var pendingAutoStartBtName: String? = null
     private var pendingAutoStartBtMac: String? = null
@@ -73,6 +74,7 @@ class AutoStartFragment : Fragment() {
 
         pendingAutoStartOnBoot = settings.autoStartOnBoot
         pendingAutoStartOnScreenOn = settings.autoStartOnScreenOn
+        pendingListenForUsbDevices = settings.listenForUsbDevices
         pendingAutoStartOnUsb = settings.autoStartOnUsb
         pendingAutoStartBtName = settings.autoStartBluetoothDeviceName
         pendingAutoStartBtMac = settings.autoStartBluetoothDeviceMac
@@ -151,10 +153,14 @@ class AutoStartFragment : Fragment() {
             settings.autoStartOnScreenOn = it
             Settings.syncAutoStartOnScreenOnToDeviceStorage(requireContext(), it)
         }
+        pendingListenForUsbDevices?.let {
+            settings.listenForUsbDevices = it
+            Settings.syncListenForUsbDevicesToDeviceStorage(requireContext(), it)
+            Settings.setUsbAttachedActivityEnabled(requireContext(), it)
+        }
         pendingAutoStartOnUsb?.let {
             settings.autoStartOnUsb = it
             Settings.syncAutoStartOnUsbToDeviceStorage(requireContext(), it)
-            Settings.setUsbAttachedActivityEnabled(requireContext(), it)
         }
         pendingAutoStartBtName?.let { settings.autoStartBluetoothDeviceName = it }
         pendingAutoStartBtMac?.let {
@@ -197,6 +203,7 @@ class AutoStartFragment : Fragment() {
     private fun checkChanges() {
         hasChanges = pendingAutoStartOnBoot != settings.autoStartOnBoot ||
                 pendingAutoStartOnScreenOn != settings.autoStartOnScreenOn ||
+                pendingListenForUsbDevices != settings.listenForUsbDevices ||
                 pendingAutoStartOnUsb != settings.autoStartOnUsb ||
                 pendingAutoStartBtMac != settings.autoStartBluetoothDeviceMac ||
                 pendingReopenOnReconnection != settings.reopenOnReconnection
@@ -234,6 +241,18 @@ class AutoStartFragment : Fragment() {
             isChecked = pendingAutoStartOnScreenOn!!,
             onCheckedChanged = { isChecked ->
                 pendingAutoStartOnScreenOn = isChecked
+                checkChanges()
+                updateSettingsList()
+            }
+        ))
+
+        items.add(SettingItem.ToggleSettingEntry(
+            stableId = "listenForUsbDevices",
+            nameResId = R.string.listen_for_usb_devices_label,
+            descriptionResId = R.string.listen_for_usb_devices_description,
+            isChecked = pendingListenForUsbDevices!!,
+            onCheckedChanged = { isChecked ->
+                pendingListenForUsbDevices = isChecked
                 checkChanges()
                 updateSettingsList()
             }
@@ -298,7 +317,6 @@ class AutoStartFragment : Fragment() {
             if (settings.autoStartOnUsb) {
                 settings.autoStartOnUsb = false
                 pendingAutoStartOnUsb = false
-                Settings.setUsbAttachedActivityEnabled(requireContext(), false)
                 disabled = true
             }
             if (!settings.autoStartBluetoothDeviceMac.isNullOrEmpty()) {

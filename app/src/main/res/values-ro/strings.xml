@@ -157,6 +157,8 @@
     <string name="usb_auto_connect_description">Conectează automat un dispozitiv USB cunoscut când deschizi aplicația.</string>
     <string name="auto_start_bt_label">Pornire automată pe Bluetooth</string>
     <string name="auto_start_bt_description">Deschide automat Headunit Revived când se conectează un anumit dispozitiv Bluetooth.</string>
+    <string name="listen_for_usb_devices_label">Ascultați dispozitive USB</string>
+    <string name="listen_for_usb_devices_description">Afișați solicitarea sistemului Android când este conectat un dispozitiv USB.</string>
     <string name="auto_start_usb_label">Pornire automată pe USB</string>
     <string name="auto_start_usb_description">Deschide aplicația automat și încearcă conectarea când un dispozitiv USB este conectat</string>
     <string name="auto_start_settings">Setări pornire automată</string>

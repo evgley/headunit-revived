@@ -85,11 +85,11 @@ class MainActivity : BaseActivity() {
         val appSettings = Settings(this)
         requestedOrientation = appSettings.screenOrientation.androidOrientation
 
-        // Sync UsbAttachedActivity component state with the auto-start USB setting.
+        // Sync UsbAttachedActivity component state with the listen for USB devices setting.
         // This covers first install, app updates (manifest may reset component state),
-        // and ensures the USB modal only appears when the user has opted in.
+        // and ensures the USB system modal only appears when the user has opted in to listen for ALL USB devices.
         lifecycleScope.launch(Dispatchers.IO) {
-            Settings.setUsbAttachedActivityEnabled(applicationContext, appSettings.autoStartOnUsb)
+            Settings.setUsbAttachedActivityEnabled(applicationContext, appSettings.listenForUsbDevices)
         }
 
         // Start main service immediately to handle connections and wireless server

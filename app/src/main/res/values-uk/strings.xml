@@ -146,6 +146,8 @@
     <string name="usb_auto_connect_description">Автоматично підключатися до відомого USB-пристрою при запуску програми.</string>
     <string name="auto_start_bt_label">Автозапуск при Bluetooth</string>
     <string name="auto_start_bt_description">Автоматично відкривати Headunit Revived при підключенні певного пристрою Bluetooth.</string>
+    <string name="listen_for_usb_devices_label">Реагувати на USB-пристрої</string>
+    <string name="listen_for_usb_devices_description">Показувати системне вікно Android під час підключення USB-пристрою.</string>
     <string name="auto_start_usb_label">Автозапуск через USB</string>
     <string name="auto_start_usb_description">Автоматично відкривати додаток і намагатися підключитися при підключенні USB-пристрою</string>
     <string name="auto_start_settings">Налаштування автозапуску</string>
