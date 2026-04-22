@@ -2,6 +2,7 @@ package com.andrerinas.headunitrevived.aap
 
 import android.view.KeyEvent
 import com.andrerinas.headunitrevived.aap.protocol.messages.ScrollWheelEvent // Not directly in supported list, but used in AapTransport
+import com.andrerinas.headunitrevived.utils.AppLog
 
 object KeyCode {
 
@@ -84,4 +85,3 @@ object KeyCode {
         return KeyEvent.KEYCODE_UNKNOWN
     }
 }
-
