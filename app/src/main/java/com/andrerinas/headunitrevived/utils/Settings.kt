@@ -188,6 +188,19 @@ class Settings(context: Context) {
         get() = prefs.getInt("inset-bottom", 0)
         set(value) { prefs.edit().putInt("inset-bottom", value).apply() }
 
+    // Cached Surface Dimensions (used to avoid mismatch flicker on next start)
+    var cachedSurfaceWidth: Int
+        get() = prefs.getInt("cached-surface-width", 0)
+        set(value) { prefs.edit().putInt("cached-surface-width", value).apply() }
+
+    var cachedSurfaceHeight: Int
+        get() = prefs.getInt("cached-surface-height", 0)
+        set(value) { prefs.edit().putInt("cached-surface-height", value).apply() }
+
+    var cachedSurfaceSettingsHash: Int
+        get() = prefs.getInt("cached-surface-settings-hash", 0)
+        set(value) { prefs.edit().putInt("cached-surface-settings-hash", value).apply() }
+
     // Legacy Margins (can be removed later if unused)
     var marginLeft: Int
         get() = prefs.getInt("margin-left", 0)

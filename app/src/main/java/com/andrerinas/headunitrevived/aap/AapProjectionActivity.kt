@@ -370,6 +370,10 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
                 }
             }
         }
+
+        commManager.onUpdateUiConfigReplyReceived = {
+            AppLog.i("[UI_DEBUG_FIX] UpdateUiConfig reply received. AA acknowledged new margins.")
+        }
     }
 
     override fun onPause() {
@@ -608,6 +612,32 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         isSurfaceSet = true
         
         videoDecoder.setSurface(surface)
+
+        // --- Surface Mismatch Detection ---
+        // Compare actual surface dimensions with what HeadUnitScreenConfig negotiated.
+        // If they differ (e.g. system bars appeared/disappeared), update margins.
+        val prevUsableW = HeadUnitScreenConfig.getUsableWidth()
+        val prevUsableH = HeadUnitScreenConfig.getUsableHeight()
+
+        if (HeadUnitScreenConfig.updateSurfaceDimensions(width, height)) {
+            AppLog.i("[UI_DEBUG_FIX] Surface mismatch! Expected: ${prevUsableW}x${prevUsableH}, Actual: ${width}x${height}")
+
+            // Cache the real surface size for next session
+            settings.cachedSurfaceWidth = width
+            settings.cachedSurfaceHeight = height
+            settings.cachedSurfaceSettingsHash = HeadUnitScreenConfig.computeSettingsHash(settings)
+
+            if (commManager.connectionState.value is CommManager.ConnectionState.TransportStarted) {
+                // AA is already running → send corrected per-side margins dynamically
+                commManager.sendUpdateUiConfigRequest(
+                    HeadUnitScreenConfig.getLeftMargin(),
+                    HeadUnitScreenConfig.getTopMargin(),
+                    HeadUnitScreenConfig.getRightMargin(),
+                    HeadUnitScreenConfig.getBottomMargin()
+                )
+            }
+            // If transport not started yet, ServiceDiscoveryResponse will use the corrected values automatically.
+        }
 
         when (commManager.connectionState.value) {
             is CommManager.ConnectionState.Connected -> {

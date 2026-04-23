@@ -405,7 +405,11 @@ class CommManager(
 
     fun sendUpdateUiConfigRequest(left: Int, top: Int, right: Int, bottom: Int) {
         val request = com.andrerinas.headunitrevived.aap.protocol.messages.UpdateUiConfigRequest(left, top, right, bottom)
+        AppLog.i("[UI_DEBUG_FIX] TX UpdateUiConfigRequest: L=$left T=$top R=$right B=$bottom")
         send(request)
+        // HUR always sends VideoFocusNotification(PROJECTED, unsolicited=true) after
+        // updating the UI config. This triggers a keyframe from the phone.
+        send(com.andrerinas.headunitrevived.aap.protocol.messages.VideoFocusEvent(gain = true, unsolicited = true))
     }
 
     // -----------------------------------------------------------------------------------------
