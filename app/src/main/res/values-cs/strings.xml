@@ -217,6 +217,8 @@
 <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Povolit audio výstup (Sink)</string>
     <string name="enable_audio_sink_description">Pokud je zakázáno, hlavní jednotka nebude přijímat zvuk. Zvuk se bude přehrávat z telefonu.</string>
+    <string name="separate_audio_streams">Oddělit zvukové streamy</string>
+    <string name="separate_audio_streams_description">Odděluje zvukové kanály pro hudbu, hovory a oznámení místo jednoho multimediálního streamu (nemusí na některých zařízeních fungovat správně).</string>
     <string name="use_aac_audio">Použít AAC audio</string>
     <string name="use_aac_audio_description">Použít kodek AAC pro zvuk pro úsporu šířky pásma (experimentální).</string>
     <string name="audio_volume_offset">Posun hlasitosti</string>

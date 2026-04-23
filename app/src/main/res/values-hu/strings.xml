@@ -216,6 +216,8 @@
 <string name="category_audio">Hang</string>
     <string name="enable_audio_sink">Hang fogadása</string>
     <string name="enable_audio_sink_description">Ha nincs engedélyezve, a fejegység nem kap hangot. A hang a telefonon fog szólni.</string>
+    <string name="separate_audio_streams">Különálló hangfolyamok</string>
+    <string name="separate_audio_streams_description">Különálló hangcsatornák a zene, a hívások és az értesítések számára az egységes multimédia folyam helyett (előfordulhat, hogy néhány eszközön nem működik megfelelően).</string>
     <string name="use_aac_audio">AAC hang használata</string>
     <string name="use_aac_audio_description">AAC kódek használata a sávszélesség csökkentéséért (Kísérleti).</string>
     <string name="audio_volume_offset">Hangerő-eltolás</string>

@@ -217,6 +217,8 @@
 <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Salida de audio</string>
     <string name="enable_audio_sink_description">Si se desactiva, el audio sonará en el móvil.</string>
+    <string name="separate_audio_streams">Separar flujos de audio</string>
+    <string name="separate_audio_streams_description">Separar los canales de audio para música, llamadas y notificaciones en lugar de un único flujo multimedia (puede no funcionar correctamente en algunos dispositivos).</string>
     <string name="use_aac_audio">Usar audio AAC</string>
     <string name="use_aac_audio_description">Usar códec AAC para ahorrar ancho de banda.</string>
     <string name="audio_volume_offset">Ajuste de volumen</string>
