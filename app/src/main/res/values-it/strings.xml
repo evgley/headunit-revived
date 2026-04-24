@@ -161,6 +161,8 @@
     <string name="usb_auto_connect_description">Connettiti automaticamente a un dispositivo USB noto all\'apertura dell\'applicazione.</string>
     <string name="auto_start_bt_label">Avvio automatico su Bluetooth</string>
     <string name="auto_start_bt_description">Apri automaticamente Headunit Revived quando si connette un dispositivo Bluetooth specifico.</string>
+    <string name="listen_for_usb_devices_label">Ascolta dispositivi USB</string>
+    <string name="listen_for_usb_devices_description">Mostra la richiesta di sistema Android quando viene collegato un dispositivo USB.</string>
     <string name="auto_start_usb_label">Avvio automatico su USB</string>
     <string name="auto_start_usb_description">Apri automaticamente l\'app e tenta la connessione quando viene collegato un dispositivo USB</string>
     <string name="auto_start_settings">Impostazioni avvio automatico</string>

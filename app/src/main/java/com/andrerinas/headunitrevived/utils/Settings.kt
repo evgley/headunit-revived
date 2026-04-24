@@ -188,6 +188,19 @@ class Settings(context: Context) {
         get() = prefs.getInt("inset-bottom", 0)
         set(value) { prefs.edit().putInt("inset-bottom", value).apply() }
 
+    // Cached Surface Dimensions (used to avoid mismatch flicker on next start)
+    var cachedSurfaceWidth: Int
+        get() = prefs.getInt("cached-surface-width", 0)
+        set(value) { prefs.edit().putInt("cached-surface-width", value).apply() }
+
+    var cachedSurfaceHeight: Int
+        get() = prefs.getInt("cached-surface-height", 0)
+        set(value) { prefs.edit().putInt("cached-surface-height", value).apply() }
+
+    var cachedSurfaceSettingsHash: Int
+        get() = prefs.getInt("cached-surface-settings-hash", 0)
+        set(value) { prefs.edit().putInt("cached-surface-settings-hash", value).apply() }
+
     // Legacy Margins (can be removed later if unused)
     var marginLeft: Int
         get() = prefs.getInt("margin-left", 0)
@@ -276,7 +289,7 @@ class Settings(context: Context) {
                 prefs.edit().putInt("wifi-connection-mode", 3).remove("native-aa-wireless").apply()
                 return 3
             }
-            return prefs.getInt("wifi-connection-mode", 1) // Default 1 (Auto)
+            return prefs.getInt("wifi-connection-mode", 2) // Default 2 (Wireless Helper)
         }
         set(value) { prefs.edit().putInt("wifi-connection-mode", value).apply() }
 
@@ -367,6 +380,10 @@ class Settings(context: Context) {
     var autoStartOnScreenOn: Boolean
         get() = prefs.getBoolean("auto-start-on-screen-on", false)
         set(value) { prefs.edit().putBoolean("auto-start-on-screen-on", value).apply() }
+        
+    var listenForUsbDevices: Boolean
+        get() = prefs.getBoolean("listen-for-usb-devices", true)
+        set(value) { prefs.edit().putBoolean("listen-for-usb-devices", value).apply() }
 
     var reopenOnReconnection: Boolean
         get() = prefs.getBoolean("reopen-on-reconnection", true)
@@ -567,6 +584,7 @@ class Settings(context: Context) {
         }
 
         private const val KEY_AUTO_START_ON_USB = "auto-start-on-usb"
+        private const val KEY_LISTEN_FOR_USB_DEVICES = "listen-for-usb-devices"
         private const val KEY_AUTO_START_BT_MAC = "auto-start-bt-mac"
 
         /**
@@ -593,6 +611,27 @@ class Settings(context: Context) {
                     .apply()
             }
         }
+        
+        fun isListenForUsbDevicesEnabled(context: Context): Boolean {
+            val prefs = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                val deviceContext = context.createDeviceProtectedStorageContext()
+                deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
+            } else {
+                context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            }
+            return prefs.getBoolean(KEY_LISTEN_FOR_USB_DEVICES, true) // Default is TRUE
+        }
+
+        fun syncListenForUsbDevicesToDeviceStorage(context: Context, enabled: Boolean) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                val deviceContext = context.createDeviceProtectedStorageContext()
+                deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
+                    .edit()
+                    .putBoolean(KEY_LISTEN_FOR_USB_DEVICES, enabled)
+                    .apply()
+            }
+        }
+
 
         fun setUsbAttachedActivityEnabled(context: Context, enabled: Boolean) {
             val component = ComponentName(context, UsbAttachedActivity::class.java)
@@ -749,7 +788,7 @@ class Settings(context: Context) {
 
     // 0 = Common Wifi (NSD), 1 = Wifi Direct P2P, 2 = Nearby Devices, 3 = Phone Hotspot (Host), 4 = Headunit Hotspot (Passive)
     var helperConnectionStrategy: Int
-        get() = prefs.getInt("helper-connection-strategy", 0)
+        get() = prefs.getInt("helper-connection-strategy", 2) // Default to Nearby Devices (2)
         set(value) = prefs.edit().putInt("helper-connection-strategy", value).apply()
 
     var lastNearbyDeviceName: String

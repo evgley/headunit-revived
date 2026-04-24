@@ -160,6 +160,8 @@
     <string name="usb_auto_connect_description">Uygulama açıldığında bilinen bir USB cihazına otomatik olarak bağlan.</string>
     <string name="auto_start_bt_label">Bluetooth ile otomatik başlat</string>
     <string name="auto_start_bt_description">Belirli bir Bluetooth cihazı bağlandığında Headunit Revived\'ı otomatik olarak aç.</string>
+    <string name="listen_for_usb_devices_label">USB Cihazlarını Dinle</string>
+    <string name="listen_for_usb_devices_description">Bir USB cihazı takıldığında Android sistem istemini göster.</string>
     <string name="auto_start_usb_label">USB ile otomatik başlat</string>
     <string name="auto_start_usb_description">Bir USB cihazı takıldığında uygulamayı otomatik olarak aç ve bağlanmayı dene</string>
     <string name="auto_start_settings">Otomatik başlatma ayarları</string>
@@ -338,6 +340,9 @@
 
     <string name="show_navigation_notifications">Navigasyon bildirimleri</string>
     <string name="show_navigation_notifications_description">Bildirimlerde \"X metre sonra Y yap\" ve mevcut caddeyi göster (hata ayıklama için)</string>
+    <string name="media_session_aa_status_placeholder">Bağlı</string>
+    <string name="sync_media_session_aa_metadata">AA çalıyor bilgisi medya oturumunda</string>
+    <string name="sync_media_session_aa_metadata_description">Telefondan gelen parça adı, sanatçı, süre ve albüm kapağını sistem medya oturumunda ve bildiriminde göster</string>
     <string name="nav_notification_channel_name">Navigasyon</string>
     <string name="nav_notification_channel_description">Android Auto\'dan adım adım navigasyon güncellemeleri</string>
     <string name="nav_notification_title_format">%1$d m içinde — %2$s</string>
@@ -455,5 +460,9 @@
     <string name="audio_latency_multiplier">Ses Gecikme Çarpanı</string>
     <string name="audio_latency_multiplier_description">Ses tampon boyutunu ayarlar (Düşük = Daha az gecikme, Yüksek = Daha az takılma)</string>
     <string name="audio_queue_capacity">Ses Kuyruğu Kapasitesi (Backpressure)</string>
+    <string name="media_action_previous">Önceki</string>
+    <string name="media_action_play">Oynat</string>
+    <string name="media_action_pause">Duraklat</string>
+    <string name="media_action_next">Sonraki</string>
     <string name="error_usb_permission_failed">Sistem hatası: USB izin iletişim kutusu istenemedi.</string>
 </resources>

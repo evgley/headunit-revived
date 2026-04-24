@@ -6901,48 +6901,48 @@ public final class Media {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 left = 1;</code>
-     * @return Whether the left field is set.
-     */
-    boolean hasLeft();
-    /**
-     * <code>optional int32 left = 1;</code>
-     * @return The left.
-     */
-    int getLeft();
-
-    /**
-     * <code>optional int32 top = 2;</code>
+     * <code>optional int32 top = 1;</code>
      * @return Whether the top field is set.
      */
     boolean hasTop();
     /**
-     * <code>optional int32 top = 2;</code>
+     * <code>optional int32 top = 1;</code>
      * @return The top.
      */
     int getTop();
 
     /**
-     * <code>optional int32 right = 3;</code>
-     * @return Whether the right field is set.
-     */
-    boolean hasRight();
-    /**
-     * <code>optional int32 right = 3;</code>
-     * @return The right.
-     */
-    int getRight();
-
-    /**
-     * <code>optional int32 bottom = 4;</code>
+     * <code>optional int32 bottom = 2;</code>
      * @return Whether the bottom field is set.
      */
     boolean hasBottom();
     /**
-     * <code>optional int32 bottom = 4;</code>
+     * <code>optional int32 bottom = 2;</code>
      * @return The bottom.
      */
     int getBottom();
+
+    /**
+     * <code>optional int32 left = 3;</code>
+     * @return Whether the left field is set.
+     */
+    boolean hasLeft();
+    /**
+     * <code>optional int32 left = 3;</code>
+     * @return The left.
+     */
+    int getLeft();
+
+    /**
+     * <code>optional int32 right = 4;</code>
+     * @return Whether the right field is set.
+     */
+    boolean hasRight();
+    /**
+     * <code>optional int32 right = 4;</code>
+     * @return The right.
+     */
+    int getRight();
   }
   /**
    * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.Insets}
@@ -6980,37 +6980,18 @@ public final class Media {
     }
 
     private int bitField0_;
-    public static final int LEFT_FIELD_NUMBER = 1;
-    private int left_ = 0;
-    /**
-     * <code>optional int32 left = 1;</code>
-     * @return Whether the left field is set.
-     */
-    @java.lang.Override
-    public boolean hasLeft() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional int32 left = 1;</code>
-     * @return The left.
-     */
-    @java.lang.Override
-    public int getLeft() {
-      return left_;
-    }
-
-    public static final int TOP_FIELD_NUMBER = 2;
+    public static final int TOP_FIELD_NUMBER = 1;
     private int top_ = 0;
     /**
-     * <code>optional int32 top = 2;</code>
+     * <code>optional int32 top = 1;</code>
      * @return Whether the top field is set.
      */
     @java.lang.Override
     public boolean hasTop() {
-      return ((bitField0_ & 0x00000002) != 0);
+      return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>optional int32 top = 2;</code>
+     * <code>optional int32 top = 1;</code>
      * @return The top.
      */
     @java.lang.Override
@@ -7018,42 +6999,61 @@ public final class Media {
       return top_;
     }
 
-    public static final int RIGHT_FIELD_NUMBER = 3;
-    private int right_ = 0;
-    /**
-     * <code>optional int32 right = 3;</code>
-     * @return Whether the right field is set.
-     */
-    @java.lang.Override
-    public boolean hasRight() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-    /**
-     * <code>optional int32 right = 3;</code>
-     * @return The right.
-     */
-    @java.lang.Override
-    public int getRight() {
-      return right_;
-    }
-
-    public static final int BOTTOM_FIELD_NUMBER = 4;
+    public static final int BOTTOM_FIELD_NUMBER = 2;
     private int bottom_ = 0;
     /**
-     * <code>optional int32 bottom = 4;</code>
+     * <code>optional int32 bottom = 2;</code>
      * @return Whether the bottom field is set.
      */
     @java.lang.Override
     public boolean hasBottom() {
-      return ((bitField0_ & 0x00000008) != 0);
+      return ((bitField0_ & 0x00000002) != 0);
     }
     /**
-     * <code>optional int32 bottom = 4;</code>
+     * <code>optional int32 bottom = 2;</code>
      * @return The bottom.
      */
     @java.lang.Override
     public int getBottom() {
       return bottom_;
+    }
+
+    public static final int LEFT_FIELD_NUMBER = 3;
+    private int left_ = 0;
+    /**
+     * <code>optional int32 left = 3;</code>
+     * @return Whether the left field is set.
+     */
+    @java.lang.Override
+    public boolean hasLeft() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional int32 left = 3;</code>
+     * @return The left.
+     */
+    @java.lang.Override
+    public int getLeft() {
+      return left_;
+    }
+
+    public static final int RIGHT_FIELD_NUMBER = 4;
+    private int right_ = 0;
+    /**
+     * <code>optional int32 right = 4;</code>
+     * @return Whether the right field is set.
+     */
+    @java.lang.Override
+    public boolean hasRight() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>optional int32 right = 4;</code>
+     * @return The right.
+     */
+    @java.lang.Override
+    public int getRight() {
+      return right_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7071,16 +7071,16 @@ public final class Media {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt32(1, left_);
+        output.writeInt32(1, top_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeInt32(2, top_);
+        output.writeInt32(2, bottom_);
       }
       if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeInt32(3, right_);
+        output.writeInt32(3, left_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
-        output.writeInt32(4, bottom_);
+        output.writeInt32(4, right_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -7093,19 +7093,19 @@ public final class Media {
       size = 0;
       if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, left_);
+          .computeInt32Size(1, top_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, top_);
+          .computeInt32Size(2, bottom_);
       }
       if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, right_);
+          .computeInt32Size(3, left_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, bottom_);
+          .computeInt32Size(4, right_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -7122,25 +7122,25 @@ public final class Media {
       }
       com.andrerinas.headunitrevived.aap.protocol.proto.Media.Insets other = (com.andrerinas.headunitrevived.aap.protocol.proto.Media.Insets) obj;
 
-      if (hasLeft() != other.hasLeft()) return false;
-      if (hasLeft()) {
-        if (getLeft()
-            != other.getLeft()) return false;
-      }
       if (hasTop() != other.hasTop()) return false;
       if (hasTop()) {
         if (getTop()
             != other.getTop()) return false;
       }
-      if (hasRight() != other.hasRight()) return false;
-      if (hasRight()) {
-        if (getRight()
-            != other.getRight()) return false;
-      }
       if (hasBottom() != other.hasBottom()) return false;
       if (hasBottom()) {
         if (getBottom()
             != other.getBottom()) return false;
+      }
+      if (hasLeft() != other.hasLeft()) return false;
+      if (hasLeft()) {
+        if (getLeft()
+            != other.getLeft()) return false;
+      }
+      if (hasRight() != other.hasRight()) return false;
+      if (hasRight()) {
+        if (getRight()
+            != other.getRight()) return false;
       }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
@@ -7153,21 +7153,21 @@ public final class Media {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasLeft()) {
-        hash = (37 * hash) + LEFT_FIELD_NUMBER;
-        hash = (53 * hash) + getLeft();
-      }
       if (hasTop()) {
         hash = (37 * hash) + TOP_FIELD_NUMBER;
         hash = (53 * hash) + getTop();
       }
-      if (hasRight()) {
-        hash = (37 * hash) + RIGHT_FIELD_NUMBER;
-        hash = (53 * hash) + getRight();
-      }
       if (hasBottom()) {
         hash = (37 * hash) + BOTTOM_FIELD_NUMBER;
         hash = (53 * hash) + getBottom();
+      }
+      if (hasLeft()) {
+        hash = (37 * hash) + LEFT_FIELD_NUMBER;
+        hash = (53 * hash) + getLeft();
+      }
+      if (hasRight()) {
+        hash = (37 * hash) + RIGHT_FIELD_NUMBER;
+        hash = (53 * hash) + getRight();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -7300,10 +7300,10 @@ public final class Media {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        left_ = 0;
         top_ = 0;
-        right_ = 0;
         bottom_ = 0;
+        left_ = 0;
+        right_ = 0;
         return this;
       }
 
@@ -7339,19 +7339,19 @@ public final class Media {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.left_ = left_;
+          result.top_ = top_;
           to_bitField0_ |= 0x00000001;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.top_ = top_;
+          result.bottom_ = bottom_;
           to_bitField0_ |= 0x00000002;
         }
         if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.right_ = right_;
+          result.left_ = left_;
           to_bitField0_ |= 0x00000004;
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.bottom_ = bottom_;
+          result.right_ = right_;
           to_bitField0_ |= 0x00000008;
         }
         result.bitField0_ |= to_bitField0_;
@@ -7401,17 +7401,17 @@ public final class Media {
 
       public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.Media.Insets other) {
         if (other == com.andrerinas.headunitrevived.aap.protocol.proto.Media.Insets.getDefaultInstance()) return this;
-        if (other.hasLeft()) {
-          setLeft(other.getLeft());
-        }
         if (other.hasTop()) {
           setTop(other.getTop());
         }
-        if (other.hasRight()) {
-          setRight(other.getRight());
-        }
         if (other.hasBottom()) {
           setBottom(other.getBottom());
+        }
+        if (other.hasLeft()) {
+          setLeft(other.getLeft());
+        }
+        if (other.hasRight()) {
+          setRight(other.getRight());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -7440,22 +7440,22 @@ public final class Media {
                 done = true;
                 break;
               case 8: {
-                left_ = input.readInt32();
+                top_ = input.readInt32();
                 bitField0_ |= 0x00000001;
                 break;
               } // case 8
               case 16: {
-                top_ = input.readInt32();
+                bottom_ = input.readInt32();
                 bitField0_ |= 0x00000002;
                 break;
               } // case 16
               case 24: {
-                right_ = input.readInt32();
+                left_ = input.readInt32();
                 bitField0_ |= 0x00000004;
                 break;
               } // case 24
               case 32: {
-                bottom_ = input.readInt32();
+                right_ = input.readInt32();
                 bitField0_ |= 0x00000008;
                 break;
               } // case 32
@@ -7476,57 +7476,17 @@ public final class Media {
       }
       private int bitField0_;
 
-      private int left_ ;
-      /**
-       * <code>optional int32 left = 1;</code>
-       * @return Whether the left field is set.
-       */
-      @java.lang.Override
-      public boolean hasLeft() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>optional int32 left = 1;</code>
-       * @return The left.
-       */
-      @java.lang.Override
-      public int getLeft() {
-        return left_;
-      }
-      /**
-       * <code>optional int32 left = 1;</code>
-       * @param value The left to set.
-       * @return This builder for chaining.
-       */
-      public Builder setLeft(int value) {
-
-        left_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 left = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearLeft() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        left_ = 0;
-        onChanged();
-        return this;
-      }
-
       private int top_ ;
       /**
-       * <code>optional int32 top = 2;</code>
+       * <code>optional int32 top = 1;</code>
        * @return Whether the top field is set.
        */
       @java.lang.Override
       public boolean hasTop() {
-        return ((bitField0_ & 0x00000002) != 0);
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
-       * <code>optional int32 top = 2;</code>
+       * <code>optional int32 top = 1;</code>
        * @return The top.
        */
       @java.lang.Override
@@ -7534,79 +7494,39 @@ public final class Media {
         return top_;
       }
       /**
-       * <code>optional int32 top = 2;</code>
+       * <code>optional int32 top = 1;</code>
        * @param value The top to set.
        * @return This builder for chaining.
        */
       public Builder setTop(int value) {
 
         top_ = value;
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 top = 2;</code>
+       * <code>optional int32 top = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearTop() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         top_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int right_ ;
-      /**
-       * <code>optional int32 right = 3;</code>
-       * @return Whether the right field is set.
-       */
-      @java.lang.Override
-      public boolean hasRight() {
-        return ((bitField0_ & 0x00000004) != 0);
-      }
-      /**
-       * <code>optional int32 right = 3;</code>
-       * @return The right.
-       */
-      @java.lang.Override
-      public int getRight() {
-        return right_;
-      }
-      /**
-       * <code>optional int32 right = 3;</code>
-       * @param value The right to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRight(int value) {
-
-        right_ = value;
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 right = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRight() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        right_ = 0;
         onChanged();
         return this;
       }
 
       private int bottom_ ;
       /**
-       * <code>optional int32 bottom = 4;</code>
+       * <code>optional int32 bottom = 2;</code>
        * @return Whether the bottom field is set.
        */
       @java.lang.Override
       public boolean hasBottom() {
-        return ((bitField0_ & 0x00000008) != 0);
+        return ((bitField0_ & 0x00000002) != 0);
       }
       /**
-       * <code>optional int32 bottom = 4;</code>
+       * <code>optional int32 bottom = 2;</code>
        * @return The bottom.
        */
       @java.lang.Override
@@ -7614,24 +7534,104 @@ public final class Media {
         return bottom_;
       }
       /**
-       * <code>optional int32 bottom = 4;</code>
+       * <code>optional int32 bottom = 2;</code>
        * @param value The bottom to set.
        * @return This builder for chaining.
        */
       public Builder setBottom(int value) {
 
         bottom_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 bottom = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBottom() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        bottom_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int left_ ;
+      /**
+       * <code>optional int32 left = 3;</code>
+       * @return Whether the left field is set.
+       */
+      @java.lang.Override
+      public boolean hasLeft() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>optional int32 left = 3;</code>
+       * @return The left.
+       */
+      @java.lang.Override
+      public int getLeft() {
+        return left_;
+      }
+      /**
+       * <code>optional int32 left = 3;</code>
+       * @param value The left to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLeft(int value) {
+
+        left_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 left = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLeft() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        left_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int right_ ;
+      /**
+       * <code>optional int32 right = 4;</code>
+       * @return Whether the right field is set.
+       */
+      @java.lang.Override
+      public boolean hasRight() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <code>optional int32 right = 4;</code>
+       * @return The right.
+       */
+      @java.lang.Override
+      public int getRight() {
+        return right_;
+      }
+      /**
+       * <code>optional int32 right = 4;</code>
+       * @param value The right to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRight(int value) {
+
+        right_ = value;
         bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 bottom = 4;</code>
+       * <code>optional int32 right = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearBottom() {
+      public Builder clearRight() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        bottom_ = 0;
+        right_ = 0;
         onChanged();
         return this;
       }
@@ -10043,8 +10043,8 @@ public final class Media {
       "ived.aap.protocol.proto.Config.ConfigSta" +
       "tus\022\023\n\013max_unacked\030\002 \002(\r\022\035\n\025configuratio" +
       "n_indices\030\003 \003(\r\"(\n\014ConfigStatus\022\n\n\006DEVIC" +
-      "E\020\001\022\014\n\010HEADUNIT\020\002\"B\n\006Insets\022\014\n\004left\030\001 \001(" +
-      "\005\022\013\n\003top\030\002 \001(\005\022\r\n\005right\030\003 \001(\005\022\016\n\006bottom\030" +
+      "E\020\001\022\014\n\010HEADUNIT\020\002\"B\n\006Insets\022\013\n\003top\030\001 \001(\005" +
+      "\022\016\n\006bottom\030\002 \001(\005\022\014\n\004left\030\003 \001(\005\022\r\n\005right\030" +
       "\004 \001(\005\"\225\002\n\010UiConfig\022J\n\007margins\030\001 \001(\01329.co" +
       "m.andrerinas.headunitrevived.aap.protoco" +
       "l.proto.Insets\022Q\n\016content_insets\030\002 \001(\01329" +
@@ -10145,7 +10145,7 @@ public final class Media {
     internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_Insets_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_Insets_descriptor,
-        new java.lang.String[] { "Left", "Top", "Right", "Bottom", });
+        new java.lang.String[] { "Top", "Bottom", "Left", "Right", });
     internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_UiConfig_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_UiConfig_fieldAccessorTable = new

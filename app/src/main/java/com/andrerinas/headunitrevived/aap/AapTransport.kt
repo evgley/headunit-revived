@@ -96,7 +96,7 @@ class AapTransport(
     private val sessionIds = SparseIntArray(4)
     private val startedSensors = HashSet<Int>(4)
     private val keyCodes = settings.keyCodes.entries.associateTo(mutableMapOf()) {
-        it.value to it.key
+        it.key to it.value
     }
     private val modeManager: UiModeManager =
         context.getSystemService(UI_MODE_SERVICE) as UiModeManager
@@ -111,6 +111,7 @@ class AapTransport(
     @Volatile var wasUserExit: Boolean = false
     @Volatile var onQuit: ((Boolean) -> Unit)? = null
     var onAudioFocusStateChanged: ((Boolean) -> Unit)? = null
+    var onUpdateUiConfigReplyReceived: (() -> Unit)? = null
     private var pollHandler: Handler? = null
     private val pollHandlerCallback = Handler.Callback {
         val readInstance = aapRead

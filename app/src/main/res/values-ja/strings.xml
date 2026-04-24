@@ -161,6 +161,8 @@
     <string name="usb_auto_connect_description">アプリケーションが開始された時に既知のUSBデバイスに接続されると自動的に接続します。</string>
     <string name="auto_start_bt_label">Bluetooth自動開始</string>
     <string name="auto_start_bt_description">特定のBluetoothデバイスが接続されたときに、Headunit Revivedを自動的に起動します。</string>
+    <string name="listen_for_usb_devices_label">USBデバイスへの反応</string>
+    <string name="listen_for_usb_devices_description">USBデバイスが接続されたときにAndroidのシステムプロンプトを表示します。</string>
     <string name="auto_start_usb_label">USBから自動起動</string>
     <string name="auto_start_usb_description">USBデバイスが接続されたら、アプリを自動的に起動して接続を試みます</string>
     <string name="auto_start_settings">自動起動設定</string>

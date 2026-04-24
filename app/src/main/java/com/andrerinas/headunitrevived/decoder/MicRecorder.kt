@@ -9,6 +9,9 @@ import android.media.AudioFormat
 import android.media.AudioManager
 import android.media.AudioRecord
 import android.media.MediaRecorder
+import android.media.audiofx.AcousticEchoCanceler
+import android.media.audiofx.AutomaticGainControl
+import android.media.audiofx.NoiseSuppressor
 import androidx.core.content.ContextCompat
 import androidx.core.content.PermissionChecker
 import com.andrerinas.headunitrevived.utils.AppLog
@@ -17,6 +20,9 @@ import com.andrerinas.headunitrevived.utils.Settings
 class MicRecorder(private val micSampleRate: Int, private val context: Context) {
 
     private var audioRecord: AudioRecord? = null
+    private var aec: AcousticEchoCanceler? = null
+    private var ns: NoiseSuppressor? = null
+    private var agc: AutomaticGainControl? = null
     private val settings = Settings(context)
 
     private val micBufferSize: Int
@@ -73,6 +79,17 @@ class MicRecorder(private val micSampleRate: Int, private val context: Context) 
             }
         }
         audioRecord = null
+        
+        try {
+            aec?.release()
+            ns?.release()
+            agc?.release()
+        } catch (e: Exception) {
+            AppLog.e("MicRecorder: Error releasing AudioFX", e)
+        }
+        aec = null
+        ns = null
+        agc = null
 
         if (bluetoothScoStarted) {
             cleanupSco()
@@ -166,13 +183,44 @@ class MicRecorder(private val micSampleRate: Int, private val context: Context) 
         try {
             if (audioRecord != null) return // Already recording
             
-            AppLog.i("MicRecorder: Initializing AudioRecord with source $source")
+            AppLog.i("MicRecorder: Initializing AudioRecord with source: ${getAudioSourceName(source)} ($source), SampleRate: $micSampleRate, BufferSize: $micBufferSize")
             audioRecord = AudioRecord(source, micSampleRate, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, micBufferSize)
             
             if (audioRecord?.state != AudioRecord.STATE_INITIALIZED) {
                 AppLog.e("MicRecorder: Failed to initialize AudioRecord")
                 audioRecord = null
                 return
+            }
+            
+            val audioSessionId = audioRecord?.audioSessionId ?: 0
+            if (audioSessionId != 0) {
+                try {
+                    if (NoiseSuppressor.isAvailable()) {
+                        ns = NoiseSuppressor.create(audioSessionId)
+                        ns?.enabled = true
+                        AppLog.i("MicRecorder: NoiseSuppressor: ${if (ns?.enabled == true) "ON" else "failed"}")
+                    } else {
+                        AppLog.i("MicRecorder: NoiseSuppressor: Unsupported on this device")
+                    }
+                    
+                    if (AutomaticGainControl.isAvailable()) {
+                        agc = AutomaticGainControl.create(audioSessionId)
+                        agc?.enabled = true
+                        AppLog.i("MicRecorder: AutomaticGainControl: ${if (agc?.enabled == true) "ON" else "failed"}")
+                    } else {
+                        AppLog.i("MicRecorder: AutomaticGainControl: Unsupported on this device")
+                    }
+                    
+                    if (AcousticEchoCanceler.isAvailable()) {
+                        aec = AcousticEchoCanceler.create(audioSessionId)
+                        aec?.enabled = true
+                        AppLog.i("MicRecorder: AcousticEchoCanceler: ${if (aec?.enabled == true) "ON" else "failed"}")
+                    } else {
+                        AppLog.i("MicRecorder: AcousticEchoCanceler: Unsupported on this device")
+                    }
+                } catch (e: Exception) {
+                    AppLog.e("MicRecorder: Error initializing AudioFX", e)
+                }
             }
             
             audioRecord?.startRecording()
@@ -187,6 +235,23 @@ class MicRecorder(private val micSampleRate: Int, private val context: Context) 
         } catch (e: Exception) {
             AppLog.e("MicRecorder: Error during startRecording", e)
             audioRecord = null
+        }
+    }
+
+    private fun getAudioSourceName(source: Int): String {
+        return when (source) {
+            MediaRecorder.AudioSource.DEFAULT -> "DEFAULT"
+            MediaRecorder.AudioSource.MIC -> "MIC"
+            MediaRecorder.AudioSource.VOICE_UPLINK -> "VOICE_UPLINK"
+            MediaRecorder.AudioSource.VOICE_DOWNLINK -> "VOICE_DOWNLINK"
+            MediaRecorder.AudioSource.VOICE_CALL -> "VOICE_CALL"
+            MediaRecorder.AudioSource.CAMCORDER -> "CAMCORDER"
+            MediaRecorder.AudioSource.VOICE_RECOGNITION -> "VOICE_RECOGNITION"
+            MediaRecorder.AudioSource.VOICE_COMMUNICATION -> "VOICE_COMMUNICATION"
+            MediaRecorder.AudioSource.REMOTE_SUBMIX -> "REMOTE_SUBMIX"
+            MediaRecorder.AudioSource.UNPROCESSED -> "UNPROCESSED"
+            SOURCE_BLUETOOTH_SCO -> "BLUETOOTH_SCO"
+            else -> "UNKNOWN ($source)"
         }
     }
 }

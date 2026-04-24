@@ -167,6 +167,15 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         }
     }
 
+    private val finishReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            if (intent.action == "com.andrerinas.headunitrevived.ACTION_FINISH_ACTIVITIES") {
+                AppLog.i("AapProjectionActivity: Received finish request. Closing.")
+                finish()
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             enableEdgeToEdge()
@@ -175,11 +184,14 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
 
         val screenOrientation = settings.screenOrientation
         if (screenOrientation == Settings.ScreenOrientation.AUTO) {
-            // AUTO mode: lock to current orientation at launch (existing behavior)
-            if (Build.VERSION.SDK_INT >= 18) {
-                requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LOCKED
-            } else {
-                requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_NOSENSOR
+            applyStickyOrientation()
+            if (!HeadUnitScreenConfig.isResolutionLocked) {
+                // Initial start: lock to current orientation at launch
+                if (Build.VERSION.SDK_INT >= 18) {
+                    requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LOCKED
+                } else {
+                    requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_NOSENSOR
+                }
             }
         } else {
             requestedOrientation = screenOrientation.androidOrientation
@@ -260,6 +272,9 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
                             }
                         }
                         is CommManager.ConnectionState.HandshakeComplete -> {
+                            // Lock the resolution so that orientation changes don't cause re-negotiation
+                            HeadUnitScreenConfig.lockResolution()
+                            
                             // Handshake done. If the surface is already ready (e.g. reconnect
                             // while the activity is in the foreground), start reading immediately.
                             // If not, onSurfaceChanged() will call startReading() when the surface
@@ -273,6 +288,8 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
                 }
             }
         }
+        
+        ContextCompat.registerReceiver(this, finishReceiver, android.content.IntentFilter("com.andrerinas.headunitrevived.ACTION_FINISH_ACTIVITIES"), ContextCompat.RECEIVER_NOT_EXPORTED)
 
         AppLog.i("HeadUnit for Android Auto (tm) - Copyright 2011-2015 Michael A. Reid., since 2025 André Rinas All Rights Reserved...")
 
@@ -334,6 +351,14 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         setFullscreen() // Call setFullscreen here as well
 
         val loadingOverlay = findViewById<View>(R.id.loading_overlay)
+        
+        // [FIX] If we are already connected and frames are flowing (e.g. activity recreation),
+        // hide the overlay immediately to prevent the "Android Auto is starting" flicker.
+        if (commManager.isConnected && videoDecoder.lastFrameRenderedMs > 0) {
+            loadingOverlay?.visibility = View.GONE
+            overlayState = OverlayState.HIDDEN
+        }
+
         // Ensure loading overlay is on top of everything
         loadingOverlay?.bringToFront()
 
@@ -353,6 +378,10 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
                 }
             }
         }
+
+        commManager.onUpdateUiConfigReplyReceived = {
+            AppLog.i("[UI_DEBUG_FIX] UpdateUiConfig reply received. AA acknowledged new margins.")
+        }
     }
 
     override fun onPause() {
@@ -368,6 +397,7 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
     override fun onResume() {
         AppLog.i("AapProjectionActivity: onResume")
         super.onResume()
+        applyStickyOrientation()
         watchdogHandler.postDelayed(watchdogRunnable, 2000)
         watchdogHandler.postDelayed(videoWatchdogRunnable, 3000)
         watchdogHandler.postDelayed(reconnectingWatchdog, 5000)
@@ -591,6 +621,33 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         
         videoDecoder.setSurface(surface)
 
+        // --- Surface Mismatch Detection ---
+        // Compare actual surface dimensions with what HeadUnitScreenConfig negotiated.
+        // If they differ (e.g. system bars appeared/disappeared), update margins.
+        val prevUsableW = HeadUnitScreenConfig.getUsableWidth()
+        val prevUsableH = HeadUnitScreenConfig.getUsableHeight()
+
+        if (HeadUnitScreenConfig.updateSurfaceDimensions(width, height)) {
+            AppLog.i("[UI_DEBUG_FIX] Surface mismatch! Expected: ${prevUsableW}x${prevUsableH}, Actual: ${width}x${height}")
+
+            // Cache the real surface size for next session
+            settings.cachedSurfaceWidth = width
+            settings.cachedSurfaceHeight = height
+            settings.cachedSurfaceSettingsHash = HeadUnitScreenConfig.computeSettingsHash(settings)
+
+            if (commManager.connectionState.value is CommManager.ConnectionState.TransportStarted) {
+                // AA is already running → send corrected per-side margins dynamically
+                commManager.sendUpdateUiConfigRequest(
+                    HeadUnitScreenConfig.getLeftMargin(),
+                    HeadUnitScreenConfig.getTopMargin(),
+                    HeadUnitScreenConfig.getRightMargin(),
+                    HeadUnitScreenConfig.getBottomMargin()
+                )
+                AppLog.i("[UI_DEBUG_FIX] AA is already running, send corrected via sendUpdateUiConfigRequest")
+            }
+            // If transport not started yet, ServiceDiscoveryResponse will use the corrected values automatically.
+        }
+
         when (commManager.connectionState.value) {
             is CommManager.ConnectionState.Connected -> {
                 // AapService should have started the handshake already, but as a fallback
@@ -745,8 +802,23 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         commManager.send(keyCode, isPress)
     }
 
+    private fun applyStickyOrientation() {
+        if (settings.screenOrientation == Settings.ScreenOrientation.AUTO && HeadUnitScreenConfig.isResolutionLocked) {
+            val target = if (HeadUnitScreenConfig.getNegotiatedWidth() > HeadUnitScreenConfig.getNegotiatedHeight()) {
+                android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+            } else {
+                android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            }
+            if (requestedOrientation != target) {
+                AppLog.i("[UI_DEBUG] Sticky Orientation: Session active, forcing orientation to $target")
+                requestedOrientation = target
+            }
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
+        try { unregisterReceiver(finishReceiver) } catch (e: Exception) {}
         AppLog.i("AapProjectionActivity.onDestroy called. isFinishing=$isFinishing")
         videoDecoder.dimensionsListener = null
     }

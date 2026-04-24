@@ -119,6 +119,7 @@ class CommManager(
 
     /** @Volatile: written on IO thread, read on Main and IO threads. */
     @Volatile private var _transport: AapTransport? = null
+    var onUpdateUiConfigReplyReceived: (() -> Unit)? = null
     @Volatile private var _connection: AccessoryConnection? = null
 
     /**
@@ -301,6 +302,7 @@ class CommManager(
                     )
                     _transport!!.onQuit = { isClean -> transportedQuited(isClean) }
                     _transport!!.onAudioFocusStateChanged = { isPlaying -> onAudioFocusStateChanged?.invoke(isPlaying) }
+                    _transport!!.onUpdateUiConfigReplyReceived = { onUpdateUiConfigReplyReceived?.invoke() }
                 }
                 if (_transport?.startHandshake(_connection!!) == true) {
                     _connectionState.emit(ConnectionState.HandshakeComplete)
@@ -366,12 +368,12 @@ class CommManager(
                 val stopIntent = android.content.Intent(context, com.andrerinas.headunitrevived.aap.AapService::class.java).apply {
                     action = com.andrerinas.headunitrevived.aap.AapService.ACTION_STOP_SERVICE
                 }
+                com.andrerinas.headunitrevived.aap.AapService.killProcessOnDestroy = true
                 context.stopService(stopIntent)
-                // Finish all tasks and exit
+                // Finish all tasks
                 val app = context.applicationContext as Application
                 val activityManager = app.getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
                 activityManager.appTasks.forEach { it.finishAndRemoveTask() }
-                System.exit(0)
             }, 500)
         }
     }
@@ -401,6 +403,15 @@ class CommManager(
         }
     }
 
+    fun sendUpdateUiConfigRequest(left: Int, top: Int, right: Int, bottom: Int) {
+        val request = com.andrerinas.headunitrevived.aap.protocol.messages.UpdateUiConfigRequest(left, top, right, bottom)
+        AppLog.i("[UI_DEBUG_FIX] TX UpdateUiConfigRequest: L=$left T=$top R=$right B=$bottom")
+        send(request)
+        // HUR always sends VideoFocusNotification(PROJECTED, unsolicited=true) after
+        // updating the UI config. This triggers a keyframe from the phone.
+        send(com.andrerinas.headunitrevived.aap.protocol.messages.VideoFocusEvent(gain = true, unsolicited = true))
+    }
+
     // -----------------------------------------------------------------------------------------
     // Disconnect
     // -----------------------------------------------------------------------------------------
@@ -415,7 +426,10 @@ class CommManager(
     fun disconnect(sendByeBye: Boolean = true) {
         if (_connectionState.value is ConnectionState.Disconnected) return
 
+        com.andrerinas.headunitrevived.utils.HeadUnitScreenConfig.unlockResolution()
+
         _connectionState.value = ConnectionState.Disconnected(isUserExit = true)
+        _transport?.wasUserExit = true
         _disconnectJob = _scope.launch { doDisconnect(sendByeBye) }
         if (settings.killOnDisconnect) {
             android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
@@ -423,12 +437,12 @@ class CommManager(
                 val stopIntent = android.content.Intent(context, com.andrerinas.headunitrevived.aap.AapService::class.java).apply {
                     action = com.andrerinas.headunitrevived.aap.AapService.ACTION_STOP_SERVICE
                 }
+                com.andrerinas.headunitrevived.aap.AapService.killProcessOnDestroy = true
                 context.stopService(stopIntent)
-                // Finish all tasks and exit
+                // Finish all tasks
                 val app = context.applicationContext as Application
                 val activityManager = app.getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
                 activityManager.appTasks.forEach { it.finishAndRemoveTask() }
-                System.exit(0)
             }, 500)
         }
     }
