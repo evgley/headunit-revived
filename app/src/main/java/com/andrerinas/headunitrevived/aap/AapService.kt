@@ -927,7 +927,7 @@ class AapService : Service(), UsbReceiver.Listener {
         // The WirelessServer checks this flag to reject instant reconnections.
         if (state.isUserExit) {
             userExitedAA = true
-            userExitCooldownUntil = System.currentTimeMillis() + USER_EXIT_COOLDOWN_MS
+            userExitCooldownUntil = android.os.SystemClock.elapsedRealtime() + USER_EXIT_COOLDOWN_MS
             AppLog.i("AapService: User exit cooldown active for ${USER_EXIT_COOLDOWN_MS}ms")
         }
 
@@ -2216,7 +2216,7 @@ class AapService : Service(), UsbReceiver.Listener {
                                 withContext(Dispatchers.IO) {
                                     try { clientSocket.close() } catch (e: Exception) {}
                                 }
-                            } else if (System.currentTimeMillis() < userExitCooldownUntil) {
+                            } else if (android.os.SystemClock.elapsedRealtime() < userExitCooldownUntil) {
                                 // [FIX] User just exited AA — reject the instant reconnection.
                                 AppLog.w("WirelessServer: Rejecting connection from ${clientSocket.inetAddress} — user exit cooldown active (${userExitCooldownUntil - System.currentTimeMillis()}ms remaining)")
                                 withContext(Dispatchers.IO) {

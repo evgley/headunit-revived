@@ -57,7 +57,7 @@ internal class AapControlMedia(
                 return micRequest(micRequest)
             }
             Media.MsgType.MEDIA_MESSAGE_UPDATE_UI_CONFIG_REPLY_VALUE -> {
-                AppLog.i("RX: Update UI Config Reply received. Restarting Video Decoder!")
+                AppLog.i("RX: Update UI Config Reply received. Acknowledging UI Config change.")
                 aapTransport.onUpdateUiConfigReplyReceived?.invoke()
                 return 0
             }
