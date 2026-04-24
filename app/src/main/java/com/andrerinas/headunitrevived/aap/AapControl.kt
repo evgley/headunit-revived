@@ -311,7 +311,7 @@ internal class AapControlService(
 
         // Best-effort: request system audio focus to duck other apps on the headunit.
         // The result is intentionally ignored for the protocol response above.
-        aapAudio.requestFocusChange(AudioConfigs.stream(channel), notification.request.number, AudioManager.OnAudioFocusChangeListener {
+        aapAudio.requestFocusChange(AudioConfigs.stream(channel, settings.separateAudioStreams), notification.request.number, AudioManager.OnAudioFocusChangeListener {
             AppLog.i("System audio focus changed: $it ${systemFocusName[it]}")
         })
 

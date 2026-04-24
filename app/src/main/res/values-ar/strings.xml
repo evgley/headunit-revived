@@ -217,6 +217,8 @@
 <string name="category_audio">الصوت</string>
     <string name="enable_audio_sink">مخرج الصوت</string>
     <string name="enable_audio_sink_description">إذا كان معطلا، لن تستقبل وحدة الرأس الصوت. سيشغل الصوت من الهاتف.</string>
+    <string name="separate_audio_streams">فصل تيارات الصوت</string>
+    <string name="separate_audio_streams_description">فصل قنوات الصوت للموسيقى والمكالمات والإشعارات بدلاً من تيار وسائط واحد (قد لا يعمل بشكل صحيح على بعض الأجهزة).</string>
     <string name="use_aac_audio">استخدام ترميز AAC للصوت</string>
     <string name="use_aac_audio_description">استخدام ترميز AAC للصوت لتوفير عرض النطاق الترددي (تجريبي).</string>
     <string name="audio_volume_offset">تعويض مستوى الصوت</string>

@@ -229,6 +229,8 @@
     <string name="category_audio">Ses</string>
     <string name="enable_audio_sink">Dahili Ses Çıkışı</string>
     <string name="enable_audio_sink_description">Devre dışı bırakılırsa multimedya sistemi ses almaz; ses doğrudan telefondan çalmaya devam eder.</string>
+    <string name="separate_audio_streams">Ayrı Ses Akışları</string>
+    <string name="separate_audio_streams_description">Tek bir multimedya akışının yerine müzik, aramalar ve bildirimler için ses kanallarını ayırın (bazı cihazlarda düzgün çalışmayabilir).</string>
     <string name="use_aac_audio">AAC Ses Kullan</string>
     <string name="use_aac_audio_description">Bant genişliğinden tasarruf etmek için ses için AAC kodeğini kullan (Deneysel).</string>
     <string name="audio_volume_offset">Ses Seviyesi Dengesi (Offset)</string>

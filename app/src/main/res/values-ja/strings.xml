@@ -232,6 +232,8 @@
     <string name="category_audio">オーディオ</string>
     <string name="enable_audio_sink">オーディオシンク</string>
     <string name="enable_audio_sink_description">無効にすると、ヘッドユニットは音声を受信しなくなります。音声はスマートフォンから再生されます。</string>
+    <string name="separate_audio_streams">音声ストリームの分離</string>
+    <string name="separate_audio_streams_description">単一のマルチメディアストリームの代わりに、音楽、通話、通知の音声チャネルを分離します（一部のデバイスでは正しく機能しない場合があります）。</string>
     <string name="use_aac_audio">AAC Audioを利用する</string>
     <string name="use_aac_audio_description">帯域幅を節約するために、音声にAACコーデックを使用します（実験的機能）。</string>
     <string name="audio_volume_offset">オーディオボリュームオフセット</string>

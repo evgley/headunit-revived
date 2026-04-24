@@ -228,6 +228,8 @@
 <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Receptor Audio (Sink)</string>
     <string name="enable_audio_sink_description">Dacă dezactivezi asta, playerul nu va primi semnal audio. Sunetul se va auzi din telefon.</string>
+    <string name="separate_audio_streams">Fluxuri audio separate</string>
+    <string name="separate_audio_streams_description">Se separă canalele audio pentru muzică, apeluri și notificări în locul unui singur flux multimedia (s-ar putea să nu funcționeze corect pe anumite dispozitive).</string>
     <string name="use_aac_audio">Folosește Audio AAC</string>
     <string name="use_aac_audio_description">Folosește codecul AAC pentru audio pentru a salva lățime de bandă (Experimental).</string>
     <string name="audio_volume_offset">Ajustare volum audio</string>

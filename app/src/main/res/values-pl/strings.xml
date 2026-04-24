@@ -217,6 +217,8 @@
 <string name="category_audio">Dźwięk</string>
     <string name="enable_audio_sink">Włącz wyjście dźwięku</string>
     <string name="enable_audio_sink_description">Jeśli wyłączone, jednostka nie będzie działać jako wyjście dźwięku. Dźwięk będzie odtwarzany z telefonu.</string>
+    <string name="separate_audio_streams">Oddzielne strumienie audio</string>
+    <string name="separate_audio_streams_description">Rozdziel kanały audio dla muzyki, połączeń i powiadomień zamiast pojedynczego strumienia multimediów (może nie działać poprawnie na niektórych urządzeniach).</string>
     <string name="use_aac_audio">Użyj dźwięku AAC</string>
     <string name="use_aac_audio_description">Użyj kodeka AAC dla dźwięku, aby oszczędzać przepustowość (Eksperymentalne).</string>
     <string name="audio_volume_offset">Przesunięcie głośności</string>

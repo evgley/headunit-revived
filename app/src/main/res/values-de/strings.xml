@@ -231,6 +231,8 @@
     <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Audio-Ausgabe</string>
     <string name="enable_audio_sink_description">Wenn deaktiviert, empfängt die Headunit keinen Ton. Der Ton wird über das Handy abgespielt.</string>
+    <string name="separate_audio_streams">Separate Audio-Streams</string>
+    <string name="separate_audio_streams_description">Trenne Audiokanäle für Musik, Anrufe und Benachrichtigungen statt eines einzelnen Multimedia-Streams (funktioniert auf einigen Geräten möglicherweise nicht richtig).</string>
     <string name="use_aac_audio">AAC-Audio verwenden</string>
     <string name="use_aac_audio_description">Verwendet den AAC-Codec für Audio, um Bandbreite zu sparen (Experimentell).</string>
     <string name="audio_volume_offset">Lautstärke-Offsets</string>

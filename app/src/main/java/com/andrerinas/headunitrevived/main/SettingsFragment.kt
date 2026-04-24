@@ -51,6 +51,7 @@ class SettingsFragment : Fragment() {
     private var pendingFpsLimit: Int? = null
     private var pendingBluetoothAddress: String? = null
     private var pendingEnableAudioSink: Boolean? = null
+    private var pendingSeparateAudioStreams: Boolean? = null
     private var pendingUseAacAudio: Boolean? = null
     private var pendingMicInputSource: Int? = null
     private var pendingUseNativeSsl: Boolean? = null
@@ -111,6 +112,7 @@ class SettingsFragment : Fragment() {
         pendingFpsLimit = settings.fpsLimit
         pendingBluetoothAddress = settings.bluetoothAddress
         pendingEnableAudioSink = settings.enableAudioSink
+        pendingSeparateAudioStreams = settings.separateAudioStreams
         pendingUseAacAudio = settings.useAacAudio
         pendingMicInputSource = settings.micInputSource
         pendingUseNativeSsl = settings.useNativeSsl
@@ -239,6 +241,7 @@ class SettingsFragment : Fragment() {
         pendingFpsLimit?.let { settings.fpsLimit = it }
         pendingBluetoothAddress?.let { settings.bluetoothAddress = it }
         pendingEnableAudioSink?.let { settings.enableAudioSink = it }
+        pendingSeparateAudioStreams?.let { settings.separateAudioStreams = it }
         pendingUseAacAudio?.let { settings.useAacAudio = it }
         pendingMicInputSource?.let { settings.micInputSource = it }
         pendingUseNativeSsl?.let { settings.useNativeSsl = it }
@@ -323,6 +326,7 @@ class SettingsFragment : Fragment() {
                         pendingFpsLimit != settings.fpsLimit ||
                         pendingBluetoothAddress != settings.bluetoothAddress ||
                         pendingEnableAudioSink != settings.enableAudioSink ||
+                        pendingSeparateAudioStreams != settings.separateAudioStreams ||
                         pendingUseAacAudio != settings.useAacAudio ||
                         pendingMicInputSource != settings.micInputSource ||
                         pendingUseNativeSsl != settings.useNativeSsl ||
@@ -359,6 +363,7 @@ class SettingsFragment : Fragment() {
                           pendingForceSoftware != settings.forceSoftwareDecoding ||
                           pendingEnableRotary != settings.enableRotary ||
                           pendingEnableAudioSink != settings.enableAudioSink ||
+                          pendingSeparateAudioStreams != settings.separateAudioStreams ||
                           pendingUseAacAudio != settings.useAacAudio ||
                           pendingAudioLatencyMultiplier != settings.audioLatencyMultiplier ||
                           pendingAudioQueueCapacity != settings.audioQueueCapacity ||
@@ -945,6 +950,18 @@ class SettingsFragment : Fragment() {
             isChecked = pendingEnableAudioSink!!,
             onCheckedChanged = { isChecked ->
                 pendingEnableAudioSink = isChecked
+                checkChanges()
+                updateSettingsList()
+            }
+        ))
+
+        items.add(SettingItem.ToggleSettingEntry(
+            stableId = "separateAudioStreams",
+            nameResId = R.string.separate_audio_streams,
+            descriptionResId = R.string.separate_audio_streams_description,
+            isChecked = pendingSeparateAudioStreams ?: true,
+            onCheckedChanged = { isChecked ->
+                pendingSeparateAudioStreams = isChecked
                 checkChanges()
                 updateSettingsList()
             }

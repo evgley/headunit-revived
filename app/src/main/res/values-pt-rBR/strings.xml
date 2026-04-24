@@ -217,6 +217,8 @@
 <string name="category_audio">Áudio</string>
     <string name="enable_audio_sink">Ativar receptor de áudio</string>
     <string name="enable_audio_sink_description">Se desativado, a central não atuará como receptor de áudio. O áudio tocará no celular.</string>
+    <string name="separate_audio_streams">Separar fluxos de áudio</string>
+    <string name="separate_audio_streams_description">Separar canais de áudio para música, chamadas e notificações em vez de um único fluxo multimídia (pode não funcionar corretamente em alguns dispositivos).</string>
     <string name="use_aac_audio">Usar áudio AAC</string>
     <string name="use_aac_audio_description">Usa o codec AAC para áudio para economizar banda (experimental).</string>
     <string name="audio_volume_offset">Ajustes de volume</string>
