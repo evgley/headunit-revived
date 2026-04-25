@@ -126,58 +126,26 @@ class AapService : Service(), UsbReceiver.Listener {
                 }
             }
 
-            if (key == Settings.KEY_LOG_LEVEL) {
+            if (key == Settings.KEY_LOG_LEVEL || key == Settings.KEY_LOG_CAPTURE_ENABLED) {
                 serviceScope.launch(Dispatchers.Main) {
                     try {
                         val settings = App.provide(this@AapService).settings
-                        val level = settings.exporterLogLevel
-                        val current = LogExporter.currentLevel
+                        val newLogLevel = settings.exporterLogLevel
+                        val exporterCaptureEnabled = settings.exporterCaptureEnabled
+                        val isCapturing = LogExporter.isCapturing
+                        val currentLogLevel = LogExporter.currentLevel
 
-                        if (level == LogExporter.LogLevel.SILENT) {
-                            if (LogExporter.isCapturing) {
+                        if (!exporterCaptureEnabled || newLogLevel == LogExporter.LogLevel.SILENT) {
+                            if (isCapturing) {
                                 LogExporter.stopCapture()
-                                AppLog.d("LogExporter: stopped due to SILENT level")
+                                AppLog.d("LogExporter: stopped (enabled=$exporterCaptureEnabled, level=${newLogLevel.name})")
                             }
-                        } else {
-                            if (settings.exporterCaptureEnabled) {
-                                if (!LogExporter.isCapturing || current != level) {
-                                    LogExporter.startCapture(this@AapService, level)
-                                    AppLog.d("LogExporter: started with level ${level.name}")
-                                } else {
-                                    AppLog.d("LogExporter: no restart needed (isCapturing=${LogExporter.isCapturing}, current=${current?.name})")
-                                }
-                            } else {
-                                AppLog.d("LogExporter: level changed but capture disabled by prefs (level=${level.name})")
-                            }
+                        } else if (!isCapturing || currentLogLevel != newLogLevel) {
+                            LogExporter.startCapture(this@AapService, newLogLevel)
+                            AppLog.d("LogExporter: started with level ${newLogLevel.name}")
                         }
                     } catch (e: Exception) {
-                        AppLog.e("LogExporter: failed to handle log-level change", e)
-                    }
-                }
-            }
-
-            // Keep the service-internal LogExporter state in sync with persisted prefs.
-            // The SettingsFragment updates prefs when the user toggles capture, but
-            // the service runs independently and must react to preference changes
-            // even when the UI isn't active (or when prefs are changed by other
-            // components, adb, restore, etc.). Listening for KEY_LOG_CAPTURE_ENABLED
-            // here ensures the service can start/stop the exporter reliably without
-            // requiring explicit IPC from the UI.
-            if (key == Settings.KEY_LOG_CAPTURE_ENABLED) {
-                serviceScope.launch(Dispatchers.Main) {
-                    try {
-                        val settings = App.provide(this@AapService).settings
-                        val enabled = settings.exporterCaptureEnabled
-                        val level = settings.exporterLogLevel
-                        if (enabled && level != LogExporter.LogLevel.SILENT && !LogExporter.isCapturing) {
-                            LogExporter.startCapture(this@AapService, level)
-                            AppLog.d("LogExporter: started due to prefs enabled (level=${level.name})")
-                        } else if (!enabled && LogExporter.isCapturing) {
-                            LogExporter.stopCapture()
-                            AppLog.d("LogExporter: stopped due to prefs disabled")
-                        } 
-                    } catch (e: Exception) {
-                        AppLog.e("LogExporter: failed to handle capture-enabled change", e)
+                        AppLog.e("LogExporter: failed to sync state", e)
                     }
                 }
             }

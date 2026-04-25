@@ -26,6 +26,7 @@ import com.andrerinas.headunitrevived.main.settings.SettingsAdapter
 import com.andrerinas.headunitrevived.utils.Settings
 import com.andrerinas.headunitrevived.utils.LocaleHelper
 import com.andrerinas.headunitrevived.BuildConfig
+import com.andrerinas.headunitrevived.utils.LogExporter
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -1097,7 +1098,7 @@ class SettingsFragment : Fragment() {
             }
         ))
 
-        val logLevels = com.andrerinas.headunitrevived.utils.LogExporter.LogLevel.entries
+        val logLevels = LogExporter.LogLevel.entries
         val logLevelNames = logLevels.map { it.name.lowercase().replaceFirstChar { c -> c.uppercase() } }.toTypedArray()
         items.add(SettingItem.SettingEntry(
             stableId = "logLevel",
@@ -1110,10 +1111,10 @@ class SettingsFragment : Fragment() {
                     .setSingleChoiceItems(logLevelNames, currentIndex) { dialog, which ->
                         val newLevel = logLevels[which]
                         settings.exporterLogLevel = newLevel
-                        if (newLevel == com.andrerinas.headunitrevived.utils.LogExporter.LogLevel.SILENT) {
+                        if (newLevel == LogExporter.LogLevel.SILENT) {
                             settings.exporterCaptureEnabled = false
-                            if (com.andrerinas.headunitrevived.utils.LogExporter.isCapturing) {
-                                com.andrerinas.headunitrevived.utils.LogExporter.stopCapture()
+                            if (LogExporter.isCapturing) {
+                                LogExporter.stopCapture()
                             }
                         }
                         dialog.dismiss()
@@ -1125,25 +1126,25 @@ class SettingsFragment : Fragment() {
 
         items.add(SettingItem.SettingEntry(
             stableId = "captureLog",
-            nameResId = if (settings.exporterLogLevel == com.andrerinas.headunitrevived.utils.LogExporter.LogLevel.SILENT) R.string.start_log_capture else if (com.andrerinas.headunitrevived.utils.LogExporter.isCapturing) R.string.stop_log_capture else R.string.start_log_capture,
+            nameResId = if (LogExporter.isCapturing) R.string.stop_log_capture else R.string.start_log_capture,
             value = when {
-                settings.exporterLogLevel == com.andrerinas.headunitrevived.utils.LogExporter.LogLevel.SILENT -> getString(R.string.start_log_capture_description)
-                com.andrerinas.headunitrevived.utils.LogExporter.isCapturing -> getString(R.string.stop_log_capture_description)
+                settings.exporterLogLevel == LogExporter.LogLevel.SILENT -> getString(R.string.start_log_capture_description)
+                LogExporter.isCapturing -> getString(R.string.stop_log_capture_description)
                 else -> getString(R.string.start_log_capture_description)
             },
             onClick = {
                 val context = requireContext()
                 val exporterLevel = settings.exporterLogLevel
-                if (exporterLevel == com.andrerinas.headunitrevived.utils.LogExporter.LogLevel.SILENT) {
+                if (exporterLevel == LogExporter.LogLevel.SILENT) {
                     Toast.makeText(context, getString(R.string.start_log_capture_in_silent), Toast.LENGTH_LONG).show()
                     return@SettingEntry
                 }
 
-                if (com.andrerinas.headunitrevived.utils.LogExporter.isCapturing) {
-                    com.andrerinas.headunitrevived.utils.LogExporter.stopCapture()
+                if (LogExporter.isCapturing) {
+                    LogExporter.stopCapture()
                     settings.exporterCaptureEnabled = false
                 } else {
-                    com.andrerinas.headunitrevived.utils.LogExporter.startCapture(context, exporterLevel)
+                    LogExporter.startCapture(context, exporterLevel)
                     settings.exporterCaptureEnabled = true
                 }
                 updateSettingsList()
@@ -1157,15 +1158,15 @@ class SettingsFragment : Fragment() {
             onClick = {
                 val context = requireContext()
                 val exporterLevel = settings.exporterLogLevel
-                if (exporterLevel == com.andrerinas.headunitrevived.utils.LogExporter.LogLevel.SILENT) {
+                if (exporterLevel == LogExporter.LogLevel.SILENT) {
                     Toast.makeText(context, getString(R.string.failed_export_in_silent_logs), Toast.LENGTH_LONG).show()
                     return@SettingEntry
                 }
 
-                if (com.andrerinas.headunitrevived.utils.LogExporter.isCapturing) {
-                    com.andrerinas.headunitrevived.utils.LogExporter.stopCapture()
+                if (LogExporter.isCapturing) {
+                    LogExporter.stopCapture()
                 }
-                val logFile = com.andrerinas.headunitrevived.utils.LogExporter.saveLogToPublicFile(context, exporterLevel)
+                val logFile = LogExporter.saveLogToPublicFile(context, exporterLevel)
                 updateSettingsList()
 
                 if (logFile != null) {
@@ -1173,7 +1174,7 @@ class SettingsFragment : Fragment() {
                         .setTitle(R.string.logs_exported)
                         .setMessage(getString(R.string.log_saved_to, logFile.absolutePath))
                         .setPositiveButton(R.string.share) { _, _ ->
-                            com.andrerinas.headunitrevived.utils.LogExporter.shareLogFile(context, logFile)
+                            LogExporter.shareLogFile(context, logFile)
                         }
                         .setNegativeButton(R.string.close) { dialog, _ ->
                             dialog.dismiss()
