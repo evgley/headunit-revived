@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat
 import com.andrerinas.headunitrevived.R
 import com.andrerinas.headunitrevived.aap.AapService
 import com.andrerinas.headunitrevived.utils.AppLog
+import com.andrerinas.headunitrevived.utils.LynkCoWiFi
 import java.net.InetSocketAddress
 import java.net.Socket
 
@@ -244,7 +245,7 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
         val ch = channel ?: return
 
         // Ensure WiFi is enabled (Required for P2P)
-        val wifiManager = context.applicationContext.getSystemService(Context.WIFI_SERVICE) as android.net.wifi.WifiManager
+        val wifiManager = LynkCoWiFi.getWifiManager(context) as android.net.wifi.WifiManager
         if (!wifiManager.isWifiEnabled) {
             AppLog.w("WifiDirectManager: WiFi is disabled. Cannot start P2P discovery.")
             Toast.makeText(context, context.getString(R.string.wifi_disabled_info), Toast.LENGTH_LONG).show()
@@ -352,7 +353,7 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
         }
 
         // Ensure WiFi is enabled (Required for P2P)
-        val wifiManager = context.applicationContext.getSystemService(Context.WIFI_SERVICE) as android.net.wifi.WifiManager
+        val wifiManager = LynkCoWiFi.getWifiManager(context) as android.net.wifi.WifiManager
         if (!wifiManager.isWifiEnabled) {
             AppLog.i("WifiDirectManager: WiFi is disabled but needed for Native AA. Attempting to enable...")
             if (Build.VERSION.SDK_INT < 29) {

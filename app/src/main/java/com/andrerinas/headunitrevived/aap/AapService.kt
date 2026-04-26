@@ -69,6 +69,7 @@ import com.andrerinas.headunitrevived.connection.CarKeyReceiver
 import com.andrerinas.headunitrevived.connection.NativeAaHandshakeManager
 import com.andrerinas.headunitrevived.connection.NearbyManager
 import com.andrerinas.headunitrevived.main.BackgroundNotification
+import com.andrerinas.headunitrevived.utils.LynkCoWiFi
 import com.andrerinas.headunitrevived.utils.Settings
 import com.andrerinas.headunitrevived.utils.protoUint32ToLong
 import java.net.ServerSocket
@@ -966,7 +967,7 @@ class AapService : Service(), UsbReceiver.Listener {
                     if (settings.wifiConnectionMode == 2 && settings.helperConnectionStrategy == 2) {
                         nearbyManager?.start()
                     } else if (settings.wifiConnectionMode == 2 && settings.helperConnectionStrategy == 1) {
-                        val wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as android.net.wifi.WifiManager
+                        val wifiManager = LynkCoWiFi.getWifiManager(applicationContext) as android.net.wifi.WifiManager
                         if (wifiManager.isWifiEnabled) {
                             wifiDirectManager?.makeVisible()
                         }
@@ -1232,7 +1233,7 @@ class AapService : Service(), UsbReceiver.Listener {
                 when (strategy) {
                     0 -> startDiscovery(oneShot = false) // Common Wifi (NSD)
                     1 -> { // WiFi Direct (P2P)
-                        val wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as android.net.wifi.WifiManager
+                        val wifiManager = LynkCoWiFi.getWifiManager(this) as android.net.wifi.WifiManager
                         if (wifiManager.isWifiEnabled) {
                             wifiDirectManager?.makeVisible()
                         }
@@ -1254,8 +1255,8 @@ class AapService : Service(), UsbReceiver.Listener {
 
             // Mode 3: Native AA Wireless
             if (mode == 3) {
-                val wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as android.net.wifi.WifiManager
-                if (wifiManager.isWifiEnabled) {
+                val wifiManager = LynkCoWiFi.getWifiManager(this) as android.net.wifi.WifiManager
+                if (true /*wifiManager.isWifiEnabled*/) {
                     // Start WiFi Direct as a "quiet host" (P2P Group for phone to join)
                     wifiDirectManager?.startNativeAaQuietHost()
                 }
@@ -1270,7 +1271,7 @@ class AapService : Service(), UsbReceiver.Listener {
 
     private fun acquireWifiLock() {
         if (wifiLock == null) {
-            val wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+            val wifiManager = LynkCoWiFi.getWifiManager(this) as WifiManager
             wifiLock = wifiManager.createWifiLock(WifiManager.WIFI_MODE_FULL_HIGH_PERF, "HeadunitRevived:Connection")
         }
         if (wifiLock?.isHeld == false) {
@@ -1446,7 +1447,7 @@ class AapService : Service(), UsbReceiver.Listener {
                     nearbyManager?.start()
                 } else if (mode == 2 && strategy == 1) {
                     AppLog.i("AapService: Force-starting WiFi Direct discovery from UI")
-                    val wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as android.net.wifi.WifiManager
+                    val wifiManager = LynkCoWiFi.getWifiManager(applicationContext) as android.net.wifi.WifiManager
                     if (wifiManager.isWifiEnabled) {
                         wifiDirectManager?.makeVisible()
                     } else {

@@ -28,6 +28,8 @@ internal class AapMessageHandlerType(
         val msgType = message.type
         val flags = message.flags
 
+        AppLog.e(message.toString())
+
         // 1. Try processing as Video stream first (ID_VID)
         // High priority for the smoothest possible display.
         if (message.channel == Channel.ID_VID) {

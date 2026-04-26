@@ -26,7 +26,7 @@ object HotspotManager {
         // On Android 8+, WiFi must be disabled before tethering can start
         if (enabled) {
             try {
-                val wm = context.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+                val wm = LynkCoWiFi.getWifiManager(context) as WifiManager
                 if (wm.isWifiEnabled) {
                     AppLog.i("HotspotManager: Disabling WiFi before enabling hotspot...")
                     wm.isWifiEnabled = false
@@ -140,7 +140,7 @@ object HotspotManager {
 
     private fun tryLegacyWifiManager(context: Context, enabled: Boolean): Boolean {
         try {
-            val wm = context.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+            val wm = LynkCoWiFi.getWifiManager(context) as WifiManager
             val method = wm.javaClass.getMethod("setWifiApEnabled", android.net.wifi.WifiConfiguration::class.java, Boolean::class.javaPrimitiveType)
             return method.invoke(wm, null, enabled) as Boolean
         } catch (_: Exception) { return false }
