@@ -279,7 +279,7 @@
     <string name="already_searching_phone">이미 휴대폰 검색 중…</string>
     <string name="searching_phone">휴대폰 검색 중…</string>
     <string name="key_mappings_reset">키 매핑 초기화</string>
-    <string name="press_key_to_assign">\'%s\'에 할당할 키를 눌러세요…</string>
+    <string name="press_key_to_assign">\'%s\'에 할당할 키를 누르세요…</string>
     <string name="key_assigned">\'%1$s\'에 \'%2$s\'에 할당됨</string>
     <string name="last_key_press">마지막 키 누름: %1$s (%2$d)</string>
     <string name="scan">검색</string>
