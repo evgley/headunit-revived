@@ -446,7 +446,7 @@
     <string name="wireless_mode_native">Native</string>
     <string name="wireless_mode_server">Headunit Server</string>
     <string name="server_mode_label">Server Mode</string>
-    <string name="server_mode_manual">수동l</string>
+    <string name="server_mode_manual">수동</string>
     <string name="server_mode_auto">자동</string>
 
     <string name="helper_strategy_label">Helper 연결 방법</string>
