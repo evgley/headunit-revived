@@ -442,7 +442,7 @@
     <string name="wireless_24ghz_warning">참고: 2.4GHz 기기에서 무선 Android Auto는 지연, 끊임 없는 연결 문제를 일으킬 수 있습니다. 문제가 발생하면 USB를 통해 테스트하여 네트워크 제한이 있는지 확인하세요.</string>
     <string name="fake_speed_title">비디오 잠금 비활성화 (가짜 속도)</string>
     <string name="fake_speed_description">드라이빙 중 비디오 콘텐츠가 차단되는 것을 방지하기 위해 휴대폰에 일정한 저속(0.5 m/s)을 보고합니다. 주의해서 사용하세요.</string>
-    <string name="wireless_mode_helper">Wireless Helper무</string>
+    <string name="wireless_mode_helper">Wireless Helper</string>
     <string name="wireless_mode_native">Native</string>
     <string name="wireless_mode_server">Headunit Server</string>
     <string name="server_mode_label">Server Mode</string>
