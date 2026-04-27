@@ -50,7 +50,7 @@
     <string name="dark_mode_settings">다크 모드 설정</string>
     <string name="app_theme_short">애플리케이션</string>
     <string name="night_mode_short">안드로이드 오토</string>
-    <string name="aa_monochrome">안드로이드 오토를 회색조으로 만듭니다</string>
+    <string name="aa_monochrome">안드로이드 오토를 회색조로 만듭니다</string>
     <string name="aa_monochrome_description">밤 드라이빙을 위해 안드로이드 오토 색상을 줄입니다. GLES 뷰 모드가 필요합니다. 다크모드가 활성화될 때만 적용됩니다</string>
     <string name="aa_desaturation">회색조 제거</string>
     <string name="aa_desaturation_description">회색조 제거 정도를 제어합니다. 다크모드가 활성화될 때만 적용됩니다</string>
