@@ -58,6 +58,8 @@ import java.util.concurrent.atomic.AtomicBoolean
 import android.app.NotificationManager
 import android.content.pm.ServiceInfo
 import android.graphics.PixelFormat
+import android.media.AudioAttributes
+import android.media.AudioFocusRequest
 import android.provider.Settings as AndroidSettings
 import android.view.View
 import android.view.WindowManager
@@ -116,6 +118,7 @@ class AapService : Service(), UsbReceiver.Listener {
     /** Decoded on a background thread in [scheduleApplyAaMediaMetadata]; reused for notification updates on position ticks. */
     private var cachedAaAlbumArtBitmap: Bitmap? = null
     private var settingsPrefs: SharedPreferences? = null
+    private val settings: Settings by lazy { App.provide(this).settings }
     private val mediaNotification by lazy { BackgroundNotification(this) }
 
     private val settingsPreferenceListener =
@@ -129,7 +132,6 @@ class AapService : Service(), UsbReceiver.Listener {
             if (key == Settings.KEY_LOG_LEVEL || key == Settings.KEY_LOG_CAPTURE_ENABLED) {
                 serviceScope.launch(Dispatchers.Main) {
                     try {
-                        val settings = App.provide(this@AapService).settings
                         val newLogLevel = settings.exporterLogLevel
                         val exporterCaptureEnabled = settings.exporterCaptureEnabled
                         val isCapturing = LogExporter.isCapturing
@@ -683,31 +685,37 @@ class AapService : Service(), UsbReceiver.Listener {
         // Grab permanent AUDIOFOCUS_GAIN at service start.
         // This ensures the headunit owns system audio focus before any AA connection,
         // preventing other apps from stealing it and causing AA to keep audio on the phone.
-        val audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val attrs = android.media.AudioAttributes.Builder()
-                .setUsage(android.media.AudioAttributes.USAGE_MEDIA)
-                .setContentType(android.media.AudioAttributes.CONTENT_TYPE_MUSIC)
-                .build()
-            permanentFocusRequest = android.media.AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
-                .setAudioAttributes(attrs)
-                .setWillPauseWhenDucked(false)
-                .setOnAudioFocusChangeListener(AudioManager.OnAudioFocusChangeListener { focusChange ->
-                    AppLog.d("Permanent audio focus changed: $focusChange")
-                })
-                .build()
-            audioManager.requestAudioFocus(permanentFocusRequest!!)
+        if (settings.enableAudioSink) {
+            val audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                if (permanentFocusRequest == null) {
+                    val attrs = AudioAttributes.Builder()
+                        .setUsage(AudioAttributes.USAGE_MEDIA)
+                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                        .build()
+                    permanentFocusRequest = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
+                        .setAudioAttributes(attrs)
+                        .setWillPauseWhenDucked(false)
+                        .setOnAudioFocusChangeListener { focusChange ->
+                            AppLog.d("Permanent audio focus changed: $focusChange")
+                        }
+                        .build()
+                }
+                audioManager.requestAudioFocus(permanentFocusRequest!!)
+            } else {
+                @Suppress("DEPRECATION")
+                audioManager.requestAudioFocus(
+                    { focusChange ->
+                        AppLog.d("Permanent audio focus changed: $focusChange")
+                    },
+                    AudioManager.STREAM_MUSIC,
+                    AudioManager.AUDIOFOCUS_GAIN
+                )
+            }
+            AppLog.i("Grabbed permanent AUDIOFOCUS_GAIN at service start")
         } else {
-            @Suppress("DEPRECATION")
-            audioManager.requestAudioFocus(
-                AudioManager.OnAudioFocusChangeListener { focusChange ->
-                    AppLog.d("Permanent audio focus changed: $focusChange")
-                },
-                AudioManager.STREAM_MUSIC,
-                AudioManager.AUDIOFOCUS_GAIN
-            )
+            AppLog.i("Audio Sink disabled - skipping permanent audio focus request.")
         }
-        AppLog.i("Grabbed permanent AUDIOFOCUS_GAIN at service start")
     }
 
     /** Enables Android Automotive UI mode so the system uses car-optimised layouts. */
@@ -785,7 +793,9 @@ class AapService : Service(), UsbReceiver.Listener {
         acquireWifiLock()
 
         // Start silent audio hack to keep media focus (helps with steering wheel buttons)
-        silentAudioPlayer?.start()
+        if (settings.enableAudioSink) {
+            silentAudioPlayer?.start()
+        }
 
         // Register the comprehensive steering wheel key receiver
         val filter = IntentFilter().apply {

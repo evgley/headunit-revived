@@ -80,7 +80,10 @@ adb shell am start -a android.intent.action.VIEW -d "headunit://connect?ip=192.1
 - Extend mic debugging and add NoiseSuppressor, AutomaticGainControl and AcousticEchoCanceler for better voice quality
 - Fixed an issue where the Android USB system prompt wouldn't appear for phones. The prompt is now enabled by default and can be separately disabled for USB thumb drives. It calls "Listen for USB Devices" setting and it decouples the system USB prompt from the Auto-Start behavior. This will bring back the old functionality for all and can be disabled for those who are annoyed of the popup for non Android Auto devices
 - Fixed: Rescale and UpdateUI if the useable area differs from the one negiotated. This happens on devices which lie about their navbars.
+- Fixed: Fatal Crash on devices below lollipop on disconnection
+- Fixed: Auto-Night mode over 3 hours of in the UK and other countries, thanks to @BinarySimple17
 - Add separate audio streams setting and update related functionality thanks to @Anton111111
+- Enhanced: When audio sink is off, the app no longer tries to get media focus at all
 
 ### v.2.2.1
 - **Fixed a fatal error in UBS conncetions since 2.2.0. This is important so releasing this version while not fixing all planned issues**
