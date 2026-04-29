@@ -36,6 +36,9 @@ class MainActivity : BaseActivity() {
 
     private var lastBackPressTime: Long = 0
     var keyListener: KeyListener? = null
+    
+    private var isOrientationReceiverRegistered = false
+    private var isFinishReceiverRegistered = false
 
     private val viewModel: MainViewModel by viewModels()
 
@@ -145,6 +148,7 @@ class MainActivity : BaseActivity() {
             android.content.IntentFilter("com.andrerinas.headunitrevived.ACTION_FINISH_ACTIVITIES"),
             ContextCompat.RECEIVER_NOT_EXPORTED
         )
+        isFinishReceiverRegistered = true
     }
 
     private fun showSplashWithDelay(delayMs: Long) {
@@ -326,6 +330,7 @@ class MainActivity : BaseActivity() {
 
         requestedOrientation = Settings(this).screenOrientation.androidOrientation
         ContextCompat.registerReceiver(this, orientationReceiver, android.content.IntentFilter(AapService.ACTION_ORIENTATION_CHANGED), ContextCompat.RECEIVER_NOT_EXPORTED)
+        isOrientationReceiverRegistered = true
 
         // If an Android Auto session is active, bring the projection activity to front
         if (App.provide(this).commManager.isConnected) {
@@ -340,7 +345,10 @@ class MainActivity : BaseActivity() {
 
     override fun onPause() {
         super.onPause()
-        try { unregisterReceiver(orientationReceiver) } catch (_: Exception) {}
+        if (isOrientationReceiverRegistered) {
+            unregisterReceiver(orientationReceiver)
+            isOrientationReceiverRegistered = false
+        }
     }
 
     fun checkSetupFlow() {
@@ -377,7 +385,10 @@ class MainActivity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        try { unregisterReceiver(finishReceiver) } catch (e: Exception) {}
+        if (isFinishReceiverRegistered) {
+            unregisterReceiver(finishReceiver)
+            isFinishReceiverRegistered = false
+        }
         if (isFinishing) {
             AppLog.i("MainActivity finishing, resetting auto-start flag.")
             HomeFragment.resetAutoStart()
