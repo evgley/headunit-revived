@@ -336,7 +336,6 @@ object HeadUnitScreenConfig {
     fun getUsableWidth(): Int = screenWidthPx
     fun getUsableHeight(): Int = screenHeightPx
 
-    // --- Per-side margins for UpdateUiConfigRequest (matching HUR's pattern) ---
     // These are half the total margin, distributed symmetrically.
     fun getLeftMargin(): Int = getWidthMargin() / 2
     fun getRightMargin(): Int = getWidthMargin() - getLeftMargin()
