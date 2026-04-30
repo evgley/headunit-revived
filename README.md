@@ -84,7 +84,6 @@ adb shell am start -a android.intent.action.VIEW -d "headunit://connect?ip=192.1
 - Fixed: Auto-Night mode over 3 hours of in the UK and other countries, thanks to @BinarySimple17
 - Add separate audio streams setting and update related functionality thanks to @Anton111111
 - Enhanced: When audio sink is off, the app no longer tries to get media focus at all
-- Fixed Fatal on connection close
 
 ### v.2.2.1
 - **Fixed a fatal error in UBS conncetions since 2.2.0. This is important so releasing this version while not fixing all planned issues**
