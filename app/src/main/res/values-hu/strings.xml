@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="app_name">Headunit Revived</string>
     <string name="menu">Menü</string>
     <string name="settings">Beállítások</string>
@@ -216,6 +216,8 @@
 <string name="category_audio">Hang</string>
     <string name="enable_audio_sink">Hang fogadása</string>
     <string name="enable_audio_sink_description">Ha nincs engedélyezve, a fejegység nem kap hangot. A hang a telefonon fog szólni.</string>
+    <string name="separate_audio_streams">Különálló hangfolyamok</string>
+    <string name="separate_audio_streams_description">Különálló hangcsatornák a zene, a hívások és az értesítések számára az egységes multimédia folyam helyett (előfordulhat, hogy néhány eszközön nem működik megfelelően).</string>
     <string name="use_aac_audio">AAC hang használata</string>
     <string name="use_aac_audio_description">AAC kódek használata a sávszélesség csökkentéséért (Kísérleti).</string>
     <string name="audio_volume_offset">Hangerő-eltolás</string>
@@ -280,6 +282,7 @@
     <string name="share">Megosztás</string>
     <string name="close">Bezárás</string>
     <string name="failed_export_logs">Naplók exportálása sikertelen</string>
+    <string name="failed_export_in_silent_logs">A naplók exportálása nem sikerült: Csendes naplózási szint kiválasztva</string>
     <string name="switching_to_android_auto">Váltás Android Auto-ra…</string>
     <string name="switch_failed">Sikertelen váltás</string>
     <string name="requesting_usb_permission">USB-hozzáférés kérése…</string>
@@ -336,6 +339,7 @@
     <string name="log_level_description">A hibaelhárításhoz szükséges részletesség beállítása.</string>
     <string name="start_log_capture">Naplózás indítása</string>
     <string name="start_log_capture_description">Rögzíti a rendszernaplókat egy helyi fájlba a hibaelhárításhoz.</string>
+    <string name="start_log_capture_in_silent">Nem lehet elindítani a rögzítést: Csendes naplózási szint kiválasztva</string>
     <string name="stop_log_capture">Naplózás leállítása</string>
     <string name="stop_log_capture_description">Leállítja a naplózást és menti a fájlt.</string>
 

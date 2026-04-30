@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="app_name">Headunit Revived</string>
     <string name="menu">メニュー</string>
     <string name="settings">設定</string>
@@ -120,6 +120,7 @@
     <string name="log_level_description">エクスポート時にログレベルをフィルタリングする</string>
     <string name="start_log_capture">ログ取得を開始する</string>
     <string name="start_log_capture_description">デバッグのためにログの記録を開始します</string>
+    <string name="start_log_capture_in_silent">記録を開始できません: サイレントログレベルが選択されています</string>
     <string name="stop_log_capture">ログ取得を停止</string>
     <string name="stop_log_capture_description">録画中です...タップして停止</string>
     <string name="export_logs">ログをエクスポート</string>
@@ -232,6 +233,8 @@
     <string name="category_audio">オーディオ</string>
     <string name="enable_audio_sink">オーディオシンク</string>
     <string name="enable_audio_sink_description">無効にすると、ヘッドユニットは音声を受信しなくなります。音声はスマートフォンから再生されます。</string>
+    <string name="separate_audio_streams">音声ストリームの分離</string>
+    <string name="separate_audio_streams_description">単一のマルチメディアストリームの代わりに、音楽、通話、通知の音声チャネルを分離します（一部のデバイスでは正しく機能しない場合があります）。</string>
     <string name="use_aac_audio">AAC Audioを利用する</string>
     <string name="use_aac_audio_description">帯域幅を節約するために、音声にAACコーデックを使用します（実験的機能）。</string>
     <string name="audio_volume_offset">オーディオボリュームオフセット</string>
@@ -296,6 +299,7 @@
     <string name="share">シェア</string>
     <string name="close">閉じる</string>
     <string name="failed_export_logs">ログのエクスポートに失敗しました</string>
+    <string name="failed_export_in_silent_logs">ログをエクスポートできません: サイレントログレベルが選択されています</string>
     <string name="switching_to_android_auto">Android Autoに切り替え中…</string>
     <string name="switch_failed">切り替えに失敗しました</string>
     <string name="requesting_usb_permission">USBアクセス許可を要求しています…</string>

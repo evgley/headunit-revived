@@ -9,11 +9,13 @@ import com.andrerinas.headunitrevived.utils.AppLog
 import com.andrerinas.headunitrevived.main.BackgroundNotification
 import com.andrerinas.headunitrevived.ssl.SingleKeyKeyManager
 import com.andrerinas.headunitrevived.utils.Settings
+import com.andrerinas.headunitrevived.utils.HeadUnitScreenConfig
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import com.andrerinas.headunitrevived.decoder.AudioDecoder
 import com.andrerinas.headunitrevived.decoder.VideoDecoder
 import android.media.AudioManager
+import android.os.Build
 import com.andrerinas.headunitrevived.aap.AapMessage
 import com.andrerinas.headunitrevived.aap.protocol.messages.SensorEvent
 import com.andrerinas.headunitrevived.aap.protocol.proto.MediaPlayback
@@ -169,6 +171,7 @@ class CommManager(
         if (_connectionState.value is ConnectionState.Connecting)
             return@withContext
 
+
         val usbManager = context.getSystemService(Context.USB_SERVICE) as UsbManager
         if (!usbManager.hasPermission(device)) {
             _connectionState.emit(ConnectionState.Error("USB permission not granted for device"))
@@ -208,6 +211,7 @@ class CommManager(
         // Another caller already started the connection — do nothing.
         if (_connectionState.value is ConnectionState.Connecting)
             return@withContext
+
 
         _disconnectJob?.join()
 
@@ -370,10 +374,11 @@ class CommManager(
                 }
                 com.andrerinas.headunitrevived.aap.AapService.killProcessOnDestroy = true
                 context.stopService(stopIntent)
-                // Finish all tasks
-                val app = context.applicationContext as Application
-                val activityManager = app.getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
-                activityManager.appTasks.forEach { it.finishAndRemoveTask() }
+                // Finish all tasks (API 21+)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
+                    activityManager.appTasks.forEach { it.finishAndRemoveTask() }
+                }
             }, 500)
         }
     }
@@ -426,7 +431,7 @@ class CommManager(
     fun disconnect(sendByeBye: Boolean = true) {
         if (_connectionState.value is ConnectionState.Disconnected) return
 
-        com.andrerinas.headunitrevived.utils.HeadUnitScreenConfig.unlockResolution()
+        HeadUnitScreenConfig.unlockResolution()
 
         _connectionState.value = ConnectionState.Disconnected(isUserExit = true)
         _transport?.wasUserExit = true
@@ -439,10 +444,11 @@ class CommManager(
                 }
                 com.andrerinas.headunitrevived.aap.AapService.killProcessOnDestroy = true
                 context.stopService(stopIntent)
-                // Finish all tasks
-                val app = context.applicationContext as Application
-                val activityManager = app.getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
-                activityManager.appTasks.forEach { it.finishAndRemoveTask() }
+                // Finish all tasks (API 21+)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
+                    activityManager.appTasks.forEach { it.finishAndRemoveTask() }
+                }
             }, 500)
         }
     }
@@ -473,6 +479,11 @@ class CommManager(
             // disconnect). When the transport self-quit (read error, soTimeout), the connection
             // is already dead — skip the send and the 150 ms sleep inside stop().
             if (sendByeBye) transport?.stop() else transport?.quit()
+            
+            // Explicitly stop and release decoders to prevent MediaCodec finalize() timeouts
+            videoDecoder.stop("CommManager: doDisconnect")
+            audioDecoder.stop()
+            
             connection?.disconnect()
         } catch (e: Exception) {
             AppLog.e("doDisconnect error: ${e.message}")

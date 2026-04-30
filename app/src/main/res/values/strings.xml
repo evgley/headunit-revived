@@ -120,6 +120,7 @@
     <string name="log_level_description">Filter log level when exporting</string>
     <string name="start_log_capture">Start Capturing Logs</string>
     <string name="start_log_capture_description">Begin recording full logs for debugging</string>
+    <string name="start_log_capture_in_silent">Unable to start recording: Silent logging level selected</string>
     <string name="stop_log_capture">Stop Capturing Logs</string>
     <string name="stop_log_capture_description">Recording in progress… tap to stop</string>
     <string name="export_logs">Export Logs</string>
@@ -232,6 +233,8 @@
     <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Audio Sink</string>
     <string name="enable_audio_sink_description">If disabled, the headunit will not receive audio. Sound will play from the phone.</string>
+    <string name="separate_audio_streams">Separate Audio Streams</string>
+    <string name="separate_audio_streams_description">Separate audio channels for music, calls, and notifications instead of a single multimedia stream (may not work correctly on some devices).</string>
     <string name="use_aac_audio">Use AAC Audio</string>
     <string name="use_aac_audio_description">Use AAC codec for audio to save bandwidth (Experimental).</string>
     <string name="audio_volume_offset">Audio Volume Offset</string>
@@ -296,6 +299,7 @@
     <string name="share">Share</string>
     <string name="close">Close</string>
     <string name="failed_export_logs">Failed to export logs</string>
+    <string name="failed_export_in_silent_logs">Unable to export logs: Silent logging level selected</string>
     <string name="switching_to_android_auto">Switching to Android Auto…</string>
     <string name="switch_failed">Switch failed</string>
     <string name="requesting_usb_permission">Requesting USB Permission…</string>

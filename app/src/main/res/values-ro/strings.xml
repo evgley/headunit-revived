@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="app_name">Headunit Revived</string>
     <string name="menu">Meniu</string>
     <string name="settings">Setări</string>
@@ -116,6 +116,7 @@
     <string name="log_level_description">Filtrează nivelul logurilor la export</string>
     <string name="start_log_capture">Începe capturarea logurilor</string>
     <string name="start_log_capture_description">Începe înregistrarea completă a logurilor pentru depanare</string>
+    <string name="start_log_capture_in_silent">Nu se poate începe înregistrarea: nivelul jurnalului Silențios selectat</string>
     <string name="stop_log_capture">Oprește capturarea logurilor</string>
     <string name="stop_log_capture_description">Înregistrare în curs… apasă pentru a opri</string>
     <string name="export_logs">Exportă logurile</string>
@@ -228,6 +229,8 @@
 <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Receptor Audio (Sink)</string>
     <string name="enable_audio_sink_description">Dacă dezactivezi asta, playerul nu va primi semnal audio. Sunetul se va auzi din telefon.</string>
+    <string name="separate_audio_streams">Fluxuri audio separate</string>
+    <string name="separate_audio_streams_description">Se separă canalele audio pentru muzică, apeluri și notificări în locul unui singur flux multimedia (s-ar putea să nu funcționeze corect pe anumite dispozitive).</string>
     <string name="use_aac_audio">Folosește Audio AAC</string>
     <string name="use_aac_audio_description">Folosește codecul AAC pentru audio pentru a salva lățime de bandă (Experimental).</string>
     <string name="audio_volume_offset">Ajustare volum audio</string>
@@ -292,6 +295,7 @@
     <string name="share">Distribuie</string>
     <string name="close">Închide</string>
     <string name="failed_export_logs">Exportul logurilor a eșuat</string>
+    <string name="failed_export_in_silent_logs">Nu se pot exporta jurnalele: nivelul jurnalului Silențios selectat</string>
     <string name="switching_to_android_auto">Se trece la Android Auto…</string>
     <string name="switch_failed">Trecerea a eșuat</string>
     <string name="requesting_usb_permission">Se cere permisiunea USB…</string>

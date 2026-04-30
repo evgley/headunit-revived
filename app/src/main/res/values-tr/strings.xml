@@ -121,6 +121,7 @@
     <string name="log_level_description">Dışa aktarırken günlük seviyesini filtrele</string>
     <string name="start_log_capture">Günlük Kaydını Başlat</string>
     <string name="start_log_capture_description">Hata ayıklama için tam günlükleri kaydetmeye başla</string>
+    <string name="start_log_capture_in_silent">Kayıt başlatılamıyor: Sessiz günlükleme seviyesi seçildi</string>
     <string name="stop_log_capture">Günlük Kaydını Durdur</string>
     <string name="stop_log_capture_description">Kayıt yapılıyor… durdurmak için dokunun</string>
     <string name="export_logs">Günlükleri Dışa Aktar</string>
@@ -229,6 +230,8 @@
     <string name="category_audio">Ses</string>
     <string name="enable_audio_sink">Dahili Ses Çıkışı</string>
     <string name="enable_audio_sink_description">Devre dışı bırakılırsa multimedya sistemi ses almaz; ses doğrudan telefondan çalmaya devam eder.</string>
+    <string name="separate_audio_streams">Ayrı Ses Akışları</string>
+    <string name="separate_audio_streams_description">Tek bir multimedya akışının yerine müzik, aramalar ve bildirimler için ses kanallarını ayırın (bazı cihazlarda düzgün çalışmayabilir).</string>
     <string name="use_aac_audio">AAC Ses Kullan</string>
     <string name="use_aac_audio_description">Bant genişliğinden tasarruf etmek için ses için AAC kodeğini kullan (Deneysel).</string>
     <string name="audio_volume_offset">Ses Seviyesi Dengesi (Offset)</string>
@@ -290,6 +293,7 @@
     <string name="share">Paylaş</string>
     <string name="close">Kapat</string>
     <string name="failed_export_logs">Günlükler dışa aktarılamadı</string>
+    <string name="failed_export_in_silent_logs">Günlükler dışa aktarılamıyor: Sessiz günlükleme seviyesi seçildi</string>
     <string name="switching_to_android_auto">Android Auto\'ya geçiliyor…</string>
     <string name="switch_failed">Geçiş başarısız</string>
     <string name="requesting_usb_permission">USB İzni İsteniyor…</string>

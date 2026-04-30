@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="app_name">Headunit Revived</string>
     <string name="menu">Меню</string>
     <string name="settings">Настройки</string>
@@ -217,6 +217,8 @@
 <string name="category_audio">Аудио</string>
     <string name="enable_audio_sink">Включить вывод звука</string>
     <string name="enable_audio_sink_description">Если выключить этот параметр, то ГУ не будет выводить звук. Звук будет воспроизводиться на телефоне.</string>
+    <string name="separate_audio_streams">Раздельные аудиопотоки</string>
+    <string name="separate_audio_streams_description">Разделять каналы звука для музыки, звонков и уведомлений вместо единого мультимедийного потока (может некорректно работать на некоторых устройствах).</string>
     <string name="use_aac_audio">Использовать AAC</string>
     <string name="use_aac_audio_description">Использовать кодек AAC для аудио для экономии трафика (Экспериментально).</string>
     <string name="audio_volume_offset">Смещение громкости</string>
@@ -281,6 +283,7 @@
     <string name="share">Поделиться</string>
     <string name="close">Закрыть</string>
     <string name="failed_export_logs">Ошибка экспорта логов</string>
+    <string name="failed_export_in_silent_logs">Невозможно экспортировать логи: выбран Silent уровень логирования</string>
     <string name="switching_to_android_auto">Переключение в Android Auto…</string>
     <string name="switch_failed">Ошибка переключения</string>
     <string name="requesting_usb_permission">Запрос разрешения USB…</string>
@@ -325,18 +328,19 @@
     <string name="setup_apply">Применить</string>
     <string name="setup_widescreen_detected">Обнаружен широкоформатный дисплей.</string>
     <string name="auto_optimize">Автоматическая оптимизация</string>
-    <string name="auto_optimize_desc">Запустить проверку системы для подбора лучших настроек für вашего устройства.</string>
+    <string name="auto_optimize_desc">Запустить проверку системы для подбора лучших настроек для вашего устройства.</string>
     <string name="fullscreen_none">Обычный (Все панели видны)</string>
     <string name="fullscreen_immersive">Погружение (Все панели скрыты)</string>
     <string name="fullscreen_immersive_avoid_notch">Иммерсивный (Избегать выреза)</string>
     <string name="fullscreen_immersive_avoid_notch_desc">Скрывает все полосы и добавляет отступы, чтобы предотвратить перекрытие проекции вырезом или челкой.</string>
     <string name="fullscreen_status_only">Скрыть только строку состояния</string>
     <string name="log_level">Уровень логирования</string>
-    <string name="log_level_description">Выберите уровень детализации логов für отладки.</string>
+    <string name="log_level_description">Фильтр уровня логирования при экспорте.</string>
     <string name="start_log_capture">Начать запись лога</string>
     <string name="start_log_capture_description">Начинает запись системных логов в файл.</string>
+    <string name="start_log_capture_in_silent">Невозможно начать запись: выбран Silent уровень логирования</string>
     <string name="stop_log_capture">Остановить запись лога</string>
-    <string name="stop_log_capture_description">Останавливает запись и сохраняет файл лога.</string>
+    <string name="stop_log_capture_description">Идет запись… нажмите, чтобы остановить.</string>
 
     <!-- Navigation notifications -->
     <string name="show_navigation_notifications">Уведомления навигации</string>

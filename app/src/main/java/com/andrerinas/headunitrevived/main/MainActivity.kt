@@ -1,6 +1,8 @@
 package com.andrerinas.headunitrevived.main
 
 import android.Manifest
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -34,6 +36,9 @@ class MainActivity : BaseActivity() {
 
     private var lastBackPressTime: Long = 0
     var keyListener: KeyListener? = null
+    
+    private var isOrientationReceiverRegistered = false
+    private var isFinishReceiverRegistered = false
 
     private val viewModel: MainViewModel by viewModels()
 
@@ -48,6 +53,15 @@ class MainActivity : BaseActivity() {
 
     interface KeyListener {
         fun onKeyEvent(event: KeyEvent?): Boolean
+    }
+
+    private val orientationReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            if (intent.action == AapService.ACTION_ORIENTATION_CHANGED) {
+                AppLog.i("MainActivity: Orientation change broadcast received. Updating.")
+                requestedOrientation = Settings(this@MainActivity).screenOrientation.androidOrientation
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -134,6 +148,7 @@ class MainActivity : BaseActivity() {
             android.content.IntentFilter("com.andrerinas.headunitrevived.ACTION_FINISH_ACTIVITIES"),
             ContextCompat.RECEIVER_NOT_EXPORTED
         )
+        isFinishReceiverRegistered = true
     }
 
     private fun showSplashWithDelay(delayMs: Long) {
@@ -313,6 +328,10 @@ class MainActivity : BaseActivity() {
 
         checkSetupFlow()
 
+        requestedOrientation = Settings(this).screenOrientation.androidOrientation
+        ContextCompat.registerReceiver(this, orientationReceiver, android.content.IntentFilter(AapService.ACTION_ORIENTATION_CHANGED), ContextCompat.RECEIVER_NOT_EXPORTED)
+        isOrientationReceiverRegistered = true
+
         // If an Android Auto session is active, bring the projection activity to front
         if (App.provide(this).commManager.isConnected) {
             AppLog.i("MainActivity: Active session detected, bringing projection to front")
@@ -321,6 +340,14 @@ class MainActivity : BaseActivity() {
                 addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_SINGLE_TOP)
             }
             startActivity(aapIntent)
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (isOrientationReceiverRegistered) {
+            unregisterReceiver(orientationReceiver)
+            isOrientationReceiverRegistered = false
         }
     }
 
@@ -358,7 +385,10 @@ class MainActivity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        try { unregisterReceiver(finishReceiver) } catch (e: Exception) {}
+        if (isFinishReceiverRegistered) {
+            unregisterReceiver(finishReceiver)
+            isFinishReceiverRegistered = false
+        }
         if (isFinishing) {
             AppLog.i("MainActivity finishing, resetting auto-start flag.")
             HomeFragment.resetAutoStart()
