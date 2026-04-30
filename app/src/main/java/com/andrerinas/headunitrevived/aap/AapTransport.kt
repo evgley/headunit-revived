@@ -192,6 +192,7 @@ class AapTransport(
 
         AppLog.i("AapTransport quitting (clean=$clean)")
         cb.invoke(clean)
+        micRecorder.stop()
         micRecorder.listener = null
         pollThread?.quit()
         sendThread?.quit()

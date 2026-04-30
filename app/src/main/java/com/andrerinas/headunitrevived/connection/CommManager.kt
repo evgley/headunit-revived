@@ -479,6 +479,11 @@ class CommManager(
             // disconnect). When the transport self-quit (read error, soTimeout), the connection
             // is already dead — skip the send and the 150 ms sleep inside stop().
             if (sendByeBye) transport?.stop() else transport?.quit()
+            
+            // Explicitly stop and release decoders to prevent MediaCodec finalize() timeouts
+            videoDecoder.stop("CommManager: doDisconnect")
+            audioDecoder.stop()
+            
             connection?.disconnect()
         } catch (e: Exception) {
             AppLog.e("doDisconnect error: ${e.message}")
