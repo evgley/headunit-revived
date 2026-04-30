@@ -20,6 +20,7 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.core.content.ContextCompat
+import androidx.core.content.IntentCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -66,6 +67,7 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
     private var isOrientationReceiverRegistered = false
     private var isNightModeReceiverRegistered = false
     private var isFinishReceiverRegistered = false
+    private var isKeyEventReceiverRegistered = false
 
     private val videoWatchdogRunnable = object : Runnable {
         override fun run() {
@@ -164,6 +166,16 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
             if (intent.action == AapService.ACTION_ORIENTATION_CHANGED) {
                 AppLog.i("AapProjectionActivity: Orientation change broadcast received. Updating.")
                 applyOrientationSettings()
+            }
+        }
+    }
+
+    private val keyEventReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            val event: KeyEvent? = IntentCompat.getParcelableExtra(intent, KeyIntent.extraEvent, KeyEvent::class.java)
+            event?.let {
+                AppLog.i("AapProjectionActivity: Received key from broadcast: code=${it.keyCode} (isDown=${it.action == KeyEvent.ACTION_DOWN})")
+                onKeyEvent(it.keyCode, it.action == KeyEvent.ACTION_DOWN)
             }
         }
     }
@@ -388,6 +400,10 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
             unregisterReceiver(nightModeReceiver)
             isNightModeReceiverRegistered = false
         }
+        if (isKeyEventReceiverRegistered) {
+            unregisterReceiver(keyEventReceiver)
+            isKeyEventReceiverRegistered = false
+        }
     }
 
     override fun onResume() {
@@ -397,6 +413,11 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         watchdogHandler.postDelayed(watchdogRunnable, 2000)
         watchdogHandler.postDelayed(videoWatchdogRunnable, 3000)
         watchdogHandler.postDelayed(reconnectingWatchdog, 5000)
+
+        if (!isKeyEventReceiverRegistered) {
+            ContextCompat.registerReceiver(this, keyEventReceiver, IntentFilters.keyEvent, ContextCompat.RECEIVER_EXPORTED)
+            isKeyEventReceiverRegistered = true
+        }
 
         // Register orientation receiver
         ContextCompat.registerReceiver(this, orientationReceiver, IntentFilter(AapService.ACTION_ORIENTATION_CHANGED), ContextCompat.RECEIVER_NOT_EXPORTED)
@@ -796,9 +817,7 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_MUTE) {
             return super.onKeyDown(keyCode, event)
         }
-        if (isMediaKey(keyCode)) {
-            return super.onKeyDown(keyCode, event)
-        }
+        // Always pass keys to AA during projection, unless they are handled by super (volume/back)
         onKeyEvent(keyCode, true)
         return true
     }
@@ -807,16 +826,15 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_MUTE) {
             return super.onKeyUp(keyCode, event)
         }
-        if (isMediaKey(keyCode)) {
-            return super.onKeyUp(keyCode, event)
-        }
         onKeyEvent(keyCode, false)
         return true
     }
 
     private fun onKeyEvent(keyCode: Int, isPress: Boolean) {
-        AppLog.d("AapProjectionActivity: onKeyEvent code=$keyCode, isPress=$isPress")
-        commManager.send(keyCode, isPress)
+        // Mapping: Physical (HW) -> Logical (AA)
+        val logicalCode = settings.keyCodes.entries.find { it.value == keyCode }?.key ?: keyCode
+        AppLog.i("AapProjectionActivity: onKeyEvent HW=$keyCode -> AA=$logicalCode, isPress=$isPress")
+        commManager.send(logicalCode, isPress)
     }
 
     private fun applyStickyOrientation() {
@@ -838,6 +856,10 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         if (isFinishReceiverRegistered) {
             unregisterReceiver(finishReceiver)
             isFinishReceiverRegistered = false
+        }
+        if (isKeyEventReceiverRegistered) {
+            unregisterReceiver(keyEventReceiver)
+            isKeyEventReceiverRegistered = false
         }
         AppLog.i("AapProjectionActivity.onDestroy called. isFinishing=$isFinishing")
         videoDecoder.dimensionsListener = null

@@ -95,9 +95,7 @@ class AapTransport(
     private val micRecorder: MicRecorder = MicRecorder(settings.micSampleRate, context)
     private val sessionIds = SparseIntArray(4)
     private val startedSensors = HashSet<Int>(4)
-    private val keyCodes = settings.keyCodes.entries.associateTo(mutableMapOf()) {
-        it.key to it.value
-    }
+    private val keyCodes = mutableMapOf<Int, Int>()
     private val modeManager: UiModeManager =
         context.getSystemService(UI_MODE_SERVICE) as UiModeManager
     private var connection: AccessoryConnection? = null
@@ -388,10 +386,9 @@ class AapTransport(
     }
 
     fun send(keyCode: Int, isPress: Boolean) {
-        val mapped = keyCodes[keyCode] ?: keyCode
-        val aapKeyCode = KeyCode.convert(mapped)
+        val aapKeyCode = KeyCode.convert(keyCode)
 
-        if (mapped == KeyEvent.KEYCODE_GUIDE) {
+        if (keyCode == KeyEvent.KEYCODE_GUIDE) {
             // Hack for navigation button to simulate touch
             val action = if (isPress)
                 Input.TouchEvent.PointerAction.TOUCH_ACTION_DOWN else Input.TouchEvent.PointerAction.TOUCH_ACTION_UP
@@ -399,7 +396,7 @@ class AapTransport(
             return
         }
 
-        if (mapped == KeyEvent.KEYCODE_N) {
+        if (keyCode == KeyEvent.KEYCODE_N) {
             val intent = Intent(AapService.ACTION_REQUEST_NIGHT_MODE_UPDATE)
             intent.setPackage(context.packageName)
             context.sendBroadcast(intent)
