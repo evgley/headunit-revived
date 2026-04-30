@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="app_name">Headunit Revived</string>
     <string name="menu">選單</string>
     <string name="settings">設定</string>
@@ -216,6 +216,8 @@
 <string name="category_audio">音訊</string>
     <string name="enable_audio_sink">啟用音訊接收器</string>
     <string name="enable_audio_sink_description">如果已停用，主機將不會作為音訊接收器。 音訊將從手機播放。</string>
+    <string name="separate_audio_streams">分離音訊串流</string>
+    <string name="separate_audio_streams_description">為音樂、通話和通知分離音訊頻道，而不是單一的多媒體串流（可能在某些設備上無法正常運作）。</string>
     <string name="use_aac_audio">使用 AAC 音訊</string>
     <string name="use_aac_audio_description">使用 AAC 編碼器進行音訊處理以節省頻寬 (實驗性)。</string>
     <string name="audio_volume_offset">音量偏移</string>
@@ -280,6 +282,7 @@
     <string name="share">分享</string>
     <string name="close">關閉</string>
     <string name="failed_export_logs">匯出日誌失敗</string>
+    <string name="failed_export_in_silent_logs">無法導出日誌：已選擇靜音日誌級別</string>
     <string name="switching_to_android_auto">切換至 Android Auto…</string>
     <string name="switch_failed">切換失敗</string>
     <string name="requesting_usb_permission">請求 USB 權限…</string>
@@ -334,6 +337,7 @@
     <string name="log_level_description">選擇日誌輸出的詳細程度以進行偵錯。</string>
     <string name="start_log_capture">開始擷取日誌</string>
     <string name="start_log_capture_description">開始將系統日誌記錄到檔案中。</string>
+    <string name="start_log_capture_in_silent">無法開始記錄：已選擇靜音日誌級別</string>
     <string name="stop_log_capture">停止擷取日誌</string>
     <string name="stop_log_capture_description">停止記錄並儲存日誌檔案。</string>
 

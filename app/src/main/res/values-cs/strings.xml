@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="app_name">Headunit Revived</string>
     <string name="menu">Menu</string>
     <string name="settings">Nastavení</string>
@@ -217,6 +217,8 @@
 <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Povolit audio výstup (Sink)</string>
     <string name="enable_audio_sink_description">Pokud je zakázáno, hlavní jednotka nebude přijímat zvuk. Zvuk se bude přehrávat z telefonu.</string>
+    <string name="separate_audio_streams">Oddělit zvukové streamy</string>
+    <string name="separate_audio_streams_description">Odděluje zvukové kanály pro hudbu, hovory a oznámení místo jednoho multimediálního streamu (nemusí na některých zařízeních fungovat správně).</string>
     <string name="use_aac_audio">Použít AAC audio</string>
     <string name="use_aac_audio_description">Použít kodek AAC pro zvuk pro úsporu šířky pásma (experimentální).</string>
     <string name="audio_volume_offset">Posun hlasitosti</string>
@@ -281,6 +283,7 @@
     <string name="share">Sdílet</string>
     <string name="close">Zavřít</string>
     <string name="failed_export_logs">Export protokolů selhal</string>
+    <string name="failed_export_in_silent_logs">Nelze exportovat protokoly: vybrána úroveň tichého protokolování</string>
     <string name="switching_to_android_auto">Přepínání do Android Auto…</string>
     <string name="switch_failed">Přepnutí selhalo</string>
     <string name="requesting_usb_permission">Vyžadování oprávnění USB…</string>
@@ -337,6 +340,7 @@
     <string name="log_level_description">Vyberte úroveň podrobnosti výstupu protokolu pro ladění.</string>
     <string name="start_log_capture">Spustit záznam protokolu</string>
     <string name="start_log_capture_description">Spustí nahrávání systémových protokolů do souboru.</string>
+    <string name="start_log_capture_in_silent">Nelze zahájit záznam: vybrána úroveň tichého protokolování</string>
     <string name="stop_log_capture">Zastavit záznam protokolu</string>
     <string name="stop_log_capture_description">Zastaví nahrávání a uloží soubor protokolu.</string>
 

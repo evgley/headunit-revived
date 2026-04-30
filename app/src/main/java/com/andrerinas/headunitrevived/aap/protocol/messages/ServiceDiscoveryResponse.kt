@@ -47,11 +47,21 @@ class ServiceDiscoveryResponse(private val context: Context)
                 service.id = Channel.ID_VID
                 service.mediaSinkService = Control.Service.MediaSinkService.newBuilder().also { mediaSinkServiceBuilder ->
                     val codecToRequest = when (settings.videoCodec) {
-                        "H.265" -> Media.MediaCodecType.MEDIA_CODEC_VIDEO_H265
-                        "Auto" -> if (com.andrerinas.headunitrevived.decoder.VideoDecoder.isHevcSupported()) {
+                        "H.265" -> if (com.andrerinas.headunitrevived.decoder.VideoDecoder.isHevcSupported()) {
                             Media.MediaCodecType.MEDIA_CODEC_VIDEO_H265
                         } else {
                             Media.MediaCodecType.MEDIA_CODEC_VIDEO_H264_BP
+                        }
+                        "Auto" -> {
+                            // Only use H.265 in Auto mode for 4K or if explicitly needed, 
+                            // otherwise prefer stable H.264
+                            val negotiatedResolution = HeadUnitScreenConfig.negotiatedResolutionType
+                            if (negotiatedResolution == Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._3840x2160 &&
+                                com.andrerinas.headunitrevived.decoder.VideoDecoder.isHevcReliable()) {
+                                Media.MediaCodecType.MEDIA_CODEC_VIDEO_H265
+                            } else {
+                                Media.MediaCodecType.MEDIA_CODEC_VIDEO_H264_BP
+                            }
                         }
                         else -> Media.MediaCodecType.MEDIA_CODEC_VIDEO_H264_BP
                     }
@@ -61,9 +71,10 @@ class ServiceDiscoveryResponse(private val context: Context)
                     val phoneWidthMargin = HeadUnitScreenConfig.getWidthMargin()
                     val phoneHeightMargin = HeadUnitScreenConfig.getHeightMargin()
 
-                    // Enforce H.265 for 1440p resolution as required by Android Auto
-                    val effectiveCodec = if (negotiatedResolution == Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._2560x1440 ||
-                        negotiatedResolution == Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._1440x2560) {
+                    // Enforce H.265 for 1440p resolution as required by Android Auto, but ONLY if hardware supports it
+                    val effectiveCodec = if ((negotiatedResolution == Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._2560x1440 ||
+                        negotiatedResolution == Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._1440x2560) &&
+                        com.andrerinas.headunitrevived.decoder.VideoDecoder.isHevcReliable()) {
                         AppLog.i("Resolution is 1440p -> Enforcing H.265 codec")
                         Media.MediaCodecType.MEDIA_CODEC_VIDEO_H265
                     } else {

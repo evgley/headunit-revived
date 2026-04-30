@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="app_name">Headunit Revived</string>
     <string name="menu">Menu</string>
     <string name="settings">Ustawienia</string>
@@ -217,6 +217,8 @@
 <string name="category_audio">Dźwięk</string>
     <string name="enable_audio_sink">Włącz wyjście dźwięku</string>
     <string name="enable_audio_sink_description">Jeśli wyłączone, jednostka nie będzie działać jako wyjście dźwięku. Dźwięk będzie odtwarzany z telefonu.</string>
+    <string name="separate_audio_streams">Oddzielne strumienie audio</string>
+    <string name="separate_audio_streams_description">Rozdziel kanały audio dla muzyki, połączeń i powiadomień zamiast pojedynczego strumienia multimediów (może nie działać poprawnie na niektórych urządzeniach).</string>
     <string name="use_aac_audio">Użyj dźwięku AAC</string>
     <string name="use_aac_audio_description">Użyj kodeka AAC dla dźwięku, aby oszczędzać przepustowość (Eksperymentalne).</string>
     <string name="audio_volume_offset">Przesunięcie głośności</string>
@@ -281,6 +283,7 @@
     <string name="share">Udostępnij</string>
     <string name="close">Zamknij</string>
     <string name="failed_export_logs">Eksport logów nieudany</string>
+    <string name="failed_export_in_silent_logs">Nie można wyeksportować dzienników: wybrano cichy poziom rejestrowania</string>
     <string name="switching_to_android_auto">Przełączanie do Android Auto…</string>
     <string name="switch_failed">Przełączanie nieudane</string>
     <string name="requesting_usb_permission">Żądanie uprawnień USB…</string>
@@ -335,6 +338,7 @@
     <string name="log_level_description">Wybierz poziom szczegółowości logów do debugowania.</string>
     <string name="start_log_capture">Rozpocznij przechwytywanie logów</string>
     <string name="start_log_capture_description">Rozpoczyna zapisywanie logów systemowych do pliku.</string>
+    <string name="start_log_capture_in_silent">Nie można rozpocząć nagrywania: wybrano cichy poziom rejestrowania</string>
     <string name="stop_log_capture">Zatrzymaj przechwytywanie logów</string>
     <string name="stop_log_capture_description">Zatrzymuje zapisywanie i zapisuje plik logu.</string>
 

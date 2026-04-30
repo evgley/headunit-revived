@@ -90,6 +90,9 @@ object AppLog {
     }
 
     private fun loge(message: String, tr: Throwable?) {
+        if (LOG_LEVEL > Log.ERROR) {
+            return
+        }
         val trace = if (LOGGER is Logger.Android) Log.getStackTraceString(tr) else ""
         LOGGER.println(Log.ERROR, TAG, message + '\n' + trace)
     }

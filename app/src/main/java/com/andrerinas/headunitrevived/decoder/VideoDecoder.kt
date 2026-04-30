@@ -27,10 +27,56 @@ class VideoDecoder(private val settings: Settings) {
         /**
          * Checks if H.265 (HEVC) hardware decoding is supported on the current device.
          */
+        /**
+         * Checks if H.265 (HEVC) hardware decoding is supported and reliable on the current device.
+         * Used for AUTO codec selection.
+         */
+        fun isHevcReliable(): Boolean {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) return false
+
+            // 1. Chipset Reliability Check (from SystemOptimizer)
+            val hw = Build.HARDWARE.lowercase()
+            val soc = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                Build.SOC_MANUFACTURER.lowercase()
+            } else ""
+
+            val isReliable = hw.startsWith("qcom") || hw.startsWith("msm") || // Qualcomm
+                    hw.startsWith("exynos") || // Samsung
+                    hw.startsWith("gs") || hw.contains("google") || // Google Tensor
+                    soc.contains("qualcomm") || soc.contains("samsung") || soc.contains("google") ||
+                    // High-end MediaTek (Dimensity 700/800/900/1000/9000+ series)
+                    hw.startsWith("mt68") || hw.startsWith("mt69")
+
+            if (!isReliable) return false
+
+            return isHevcSupported()
+        }
+
+        /**
+         * Checks if ANY H.265 (HEVC) hardware decoding is present, regardless of reliability.
+         * Used for MANUAL codec selection (User override).
+         */
         fun isHevcSupported(): Boolean {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) return false
+
             val codecList = MediaCodecList(MediaCodecList.ALL_CODECS)
-            return codecList.codecInfos.any { !it.isEncoder && it.supportedTypes.any { t -> t.equals("video/hevc", true) } }
+            for (info in codecList.codecInfos) {
+                if (info.isEncoder) continue
+                for (type in info.supportedTypes) {
+                    if (type.equals("video/hevc", ignoreCase = true)) {
+                        val name = info.name.lowercase()
+                        // Filter out known software codecs
+                        val isSoftware = name.startsWith("omx.google.") ||
+                                name.startsWith("c2.android.") ||
+                                name.startsWith("omx.ffmpeg.") ||
+                                name.contains(".sw.") ||
+                                name.contains("software")
+
+                        if (!isSoftware) return true
+                    }
+                }
+            }
+            return false
         }
     }
 
@@ -213,10 +259,11 @@ class VideoDecoder(private val settings: Settings) {
                 } else continue
                 if (headerPos >= limit) return null
                 val b = buffer[headerPos].toInt()
-                val hevcType = (b and 0x7E) shr 1
-                if (hevcType in 32..34) return CodecType.H265
                 val avcType = b and 0x1F
                 if (avcType == 7 || avcType == 8) return CodecType.H264
+                
+                val hevcType = (b and 0x7E) shr 1
+                if (hevcType in 32..34 && isHevcSupported()) return CodecType.H265
             }
             // Only scan the first ~100 bytes for performance
             if (i - offset >= 96) break

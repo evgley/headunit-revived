@@ -26,6 +26,7 @@ import com.andrerinas.headunitrevived.main.settings.SettingsAdapter
 import com.andrerinas.headunitrevived.utils.Settings
 import com.andrerinas.headunitrevived.utils.LocaleHelper
 import com.andrerinas.headunitrevived.BuildConfig
+import com.andrerinas.headunitrevived.utils.LogExporter
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -51,6 +52,7 @@ class SettingsFragment : Fragment() {
     private var pendingFpsLimit: Int? = null
     private var pendingBluetoothAddress: String? = null
     private var pendingEnableAudioSink: Boolean? = null
+    private var pendingSeparateAudioStreams: Boolean? = null
     private var pendingUseAacAudio: Boolean? = null
     private var pendingMicInputSource: Int? = null
     private var pendingUseNativeSsl: Boolean? = null
@@ -111,6 +113,7 @@ class SettingsFragment : Fragment() {
         pendingFpsLimit = settings.fpsLimit
         pendingBluetoothAddress = settings.bluetoothAddress
         pendingEnableAudioSink = settings.enableAudioSink
+        pendingSeparateAudioStreams = settings.separateAudioStreams
         pendingUseAacAudio = settings.useAacAudio
         pendingMicInputSource = settings.micInputSource
         pendingUseNativeSsl = settings.useNativeSsl
@@ -239,6 +242,7 @@ class SettingsFragment : Fragment() {
         pendingFpsLimit?.let { settings.fpsLimit = it }
         pendingBluetoothAddress?.let { settings.bluetoothAddress = it }
         pendingEnableAudioSink?.let { settings.enableAudioSink = it }
+        pendingSeparateAudioStreams?.let { settings.separateAudioStreams = it }
         pendingUseAacAudio?.let { settings.useAacAudio = it }
         pendingMicInputSource?.let { settings.micInputSource = it }
         pendingUseNativeSsl?.let { settings.useNativeSsl = it }
@@ -323,6 +327,7 @@ class SettingsFragment : Fragment() {
                         pendingFpsLimit != settings.fpsLimit ||
                         pendingBluetoothAddress != settings.bluetoothAddress ||
                         pendingEnableAudioSink != settings.enableAudioSink ||
+                        pendingSeparateAudioStreams != settings.separateAudioStreams ||
                         pendingUseAacAudio != settings.useAacAudio ||
                         pendingMicInputSource != settings.micInputSource ||
                         pendingUseNativeSsl != settings.useNativeSsl ||
@@ -359,6 +364,7 @@ class SettingsFragment : Fragment() {
                           pendingForceSoftware != settings.forceSoftwareDecoding ||
                           pendingEnableRotary != settings.enableRotary ||
                           pendingEnableAudioSink != settings.enableAudioSink ||
+                          pendingSeparateAudioStreams != settings.separateAudioStreams ||
                           pendingUseAacAudio != settings.useAacAudio ||
                           pendingAudioLatencyMultiplier != settings.audioLatencyMultiplier ||
                           pendingAudioQueueCapacity != settings.audioQueueCapacity ||
@@ -816,7 +822,18 @@ class SettingsFragment : Fragment() {
                 MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
                     .setTitle(R.string.change_screen_orientation)
                     .setSingleChoiceItems(orientationOptions, currentIdx) { dialog, whiches ->
-                        pendingScreenOrientation = Settings.ScreenOrientation.fromInt(whiches)
+                        val newOrientation = Settings.ScreenOrientation.fromInt(whiches) ?: Settings.ScreenOrientation.SYSTEM
+                        pendingScreenOrientation = newOrientation
+                        
+                        // Apply immediately
+                        settings.screenOrientation = newOrientation
+                        settings.commit()
+                        
+                        requireActivity().requestedOrientation = newOrientation.androidOrientation
+                        requireContext().sendBroadcast(Intent(AapService.ACTION_ORIENTATION_CHANGED).apply {
+                            setPackage(requireContext().packageName)
+                        })
+                        
                         checkChanges()
                         dialog.dismiss()
                         updateSettingsList()
@@ -945,6 +962,18 @@ class SettingsFragment : Fragment() {
             isChecked = pendingEnableAudioSink!!,
             onCheckedChanged = { isChecked ->
                 pendingEnableAudioSink = isChecked
+                checkChanges()
+                updateSettingsList()
+            }
+        ))
+
+        items.add(SettingItem.ToggleSettingEntry(
+            stableId = "separateAudioStreams",
+            nameResId = R.string.separate_audio_streams,
+            descriptionResId = R.string.separate_audio_streams_description,
+            isChecked = pendingSeparateAudioStreams ?: true,
+            onCheckedChanged = { isChecked ->
+                pendingSeparateAudioStreams = isChecked
                 checkChanges()
                 updateSettingsList()
             }
@@ -1080,7 +1109,7 @@ class SettingsFragment : Fragment() {
             }
         ))
 
-        val logLevels = com.andrerinas.headunitrevived.utils.LogExporter.LogLevel.entries
+        val logLevels = LogExporter.LogLevel.entries
         val logLevelNames = logLevels.map { it.name.lowercase().replaceFirstChar { c -> c.uppercase() } }.toTypedArray()
         items.add(SettingItem.SettingEntry(
             stableId = "logLevel",
@@ -1091,7 +1120,14 @@ class SettingsFragment : Fragment() {
                 MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
                     .setTitle(R.string.log_level)
                     .setSingleChoiceItems(logLevelNames, currentIndex) { dialog, which ->
-                        settings.exporterLogLevel = logLevels[which]
+                        val newLevel = logLevels[which]
+                        settings.exporterLogLevel = newLevel
+                        if (newLevel == LogExporter.LogLevel.SILENT) {
+                            settings.exporterCaptureEnabled = false
+                            if (LogExporter.isCapturing) {
+                                LogExporter.stopCapture()
+                            }
+                        }
                         dialog.dismiss()
                         updateSettingsList()
                     }
@@ -1101,14 +1137,26 @@ class SettingsFragment : Fragment() {
 
         items.add(SettingItem.SettingEntry(
             stableId = "captureLog",
-            nameResId = if (com.andrerinas.headunitrevived.utils.LogExporter.isCapturing) R.string.stop_log_capture else R.string.start_log_capture,
-            value = getString(if (com.andrerinas.headunitrevived.utils.LogExporter.isCapturing) R.string.stop_log_capture_description else R.string.start_log_capture_description),
+            nameResId = if (LogExporter.isCapturing) R.string.stop_log_capture else R.string.start_log_capture,
+            value = when {
+                settings.exporterLogLevel == LogExporter.LogLevel.SILENT -> getString(R.string.start_log_capture_description)
+                LogExporter.isCapturing -> getString(R.string.stop_log_capture_description)
+                else -> getString(R.string.start_log_capture_description)
+            },
             onClick = {
                 val context = requireContext()
-                if (com.andrerinas.headunitrevived.utils.LogExporter.isCapturing) {
-                    com.andrerinas.headunitrevived.utils.LogExporter.stopCapture()
+                val exporterLevel = settings.exporterLogLevel
+                if (exporterLevel == LogExporter.LogLevel.SILENT) {
+                    Toast.makeText(context, getString(R.string.start_log_capture_in_silent), Toast.LENGTH_LONG).show()
+                    return@SettingEntry
+                }
+
+                if (LogExporter.isCapturing) {
+                    LogExporter.stopCapture()
+                    settings.exporterCaptureEnabled = false
                 } else {
-                    com.andrerinas.headunitrevived.utils.LogExporter.startCapture(context, settings.exporterLogLevel)
+                    LogExporter.startCapture(context, exporterLevel)
+                    settings.exporterCaptureEnabled = true
                 }
                 updateSettingsList()
             }
@@ -1120,10 +1168,16 @@ class SettingsFragment : Fragment() {
             value = getString(R.string.export_logs_description),
             onClick = {
                 val context = requireContext()
-                if (com.andrerinas.headunitrevived.utils.LogExporter.isCapturing) {
-                    com.andrerinas.headunitrevived.utils.LogExporter.stopCapture()
+                val exporterLevel = settings.exporterLogLevel
+                if (exporterLevel == LogExporter.LogLevel.SILENT) {
+                    Toast.makeText(context, getString(R.string.failed_export_in_silent_logs), Toast.LENGTH_LONG).show()
+                    return@SettingEntry
                 }
-                val logFile = com.andrerinas.headunitrevived.utils.LogExporter.saveLogToPublicFile(context, settings.exporterLogLevel)
+
+                if (LogExporter.isCapturing) {
+                    LogExporter.stopCapture()
+                }
+                val logFile = LogExporter.saveLogToPublicFile(context, exporterLevel)
                 updateSettingsList()
 
                 if (logFile != null) {
@@ -1131,7 +1185,7 @@ class SettingsFragment : Fragment() {
                         .setTitle(R.string.logs_exported)
                         .setMessage(getString(R.string.log_saved_to, logFile.absolutePath))
                         .setPositiveButton(R.string.share) { _, _ ->
-                            com.andrerinas.headunitrevived.utils.LogExporter.shareLogFile(context, logFile)
+                            LogExporter.shareLogFile(context, logFile)
                         }
                         .setNegativeButton(R.string.close) { dialog, _ ->
                             dialog.dismiss()

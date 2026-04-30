@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="app_name">Headunit Revived</string>
     <string name="menu">Menu</string>
     <string name="settings">Impostazioni</string>
@@ -120,6 +120,7 @@
     <string name="log_level_description">Filtra livello log durante l\'esportazione</string>
     <string name="start_log_capture">Avvia acquisizione log</string>
     <string name="start_log_capture_description">Inizia a registrare i log completi per il debug</string>
+    <string name="start_log_capture_in_silent">Impossibile avviare la registrazione: livello di registrazione silenzioso selezionato</string>
     <string name="stop_log_capture">Ferma acquisizione log</string>
     <string name="stop_log_capture_description">Registrazione in corso… tocca per fermare</string>
     <string name="export_logs">Esporta Log</string>
@@ -232,6 +233,8 @@
     <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Audio Sink</string>
     <string name="enable_audio_sink_description">Se disabilitato, la headunit non riceverà l\'audio. Il suono verrà riprodotto dal telefono.</string>
+    <string name="separate_audio_streams">Flussi audio separati</string>
+    <string name="separate_audio_streams_description">Separa i canali audio per musica, chiamate e notifiche invece di un singolo flusso multimediale (potrebbe non funzionare correttamente su alcuni dispositivi).</string>
     <string name="use_aac_audio">Usa Audio AAC</string>
     <string name="use_aac_audio_description">Usa il codec AAC per l\'audio per risparmiare larghezza di banda (Sperimentale).</string>
     <string name="audio_volume_offset">Offset volume audio</string>
@@ -296,6 +299,7 @@
     <string name="share">Condividi</string>
     <string name="close">Chiudi</string>
     <string name="failed_export_logs">Esportazione log fallita</string>
+    <string name="failed_export_in_silent_logs">Impossibile esportare i log: livello di registrazione silenzioso selezionato</string>
     <string name="switching_to_android_auto">Passaggio ad Android Auto…</string>
     <string name="switch_failed">Passaggio fallito</string>
     <string name="requesting_usb_permission">Richiesta permesso USB…</string>

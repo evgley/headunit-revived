@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.util.DisplayMetrics
 import com.andrerinas.headunitrevived.aap.protocol.proto.Control
+import com.andrerinas.headunitrevived.decoder.VideoDecoder
 import kotlin.math.roundToInt
 
 object HeadUnitScreenConfig {
@@ -16,6 +17,7 @@ object HeadUnitScreenConfig {
     private var isSmallScreen: Boolean = true
     private var isPortraitScaled: Boolean = false
     private var isInitialized: Boolean = false
+    private var lastSettingsHash: Int = 0
     
     // Flag to determine if the projection should stretch and ignore aspect ratio
     private var stretchToFill: Boolean = false 
@@ -80,11 +82,19 @@ object HeadUnitScreenConfig {
         }
 
         // Only update if dimensions or settings changed
-        if (isInitialized && realScreenWidthPx == realW && realScreenHeightPx == realH && this::currentSettings.isInitialized && currentSettings == settings) {
+        val currentHash = computeSettingsHash(settings)
+        if (isInitialized && realScreenWidthPx == realW && realScreenHeightPx == realH && lastSettingsHash == currentHash) {
             return
         }
 
+        // If settings changed (e.g. orientation swap), unlock resolution before recalculating
+        if (isInitialized && lastSettingsHash != 0 && lastSettingsHash != currentHash) {
+            AppLog.i("[UI_DEBUG] HeadUnitScreenConfig: Settings changed ($lastSettingsHash -> $currentHash). Unlocking resolution.")
+            unlockResolution()
+        }
+
         isInitialized = true
+        lastSettingsHash = currentHash
         currentSettings = settings
 
         // Determine if we are planning to hide the bars (Immersive)
@@ -110,7 +120,6 @@ object HeadUnitScreenConfig {
         // Check if we have cached surface dimensions from a previous session.
         // If the settings haven't changed (same hash), use the cached values
         // to avoid a mid-session UpdateUiConfigRequest and potential flicker.
-        val currentHash = computeSettingsHash(settings)
         val cachedW = settings.cachedSurfaceWidth
         val cachedH = settings.cachedSurfaceHeight
         val cachedHash = settings.cachedSurfaceSettingsHash
@@ -163,8 +172,18 @@ object HeadUnitScreenConfig {
 
         // 1. Determine base negotiated resolution
         if (isResolutionLocked) {
-            AppLog.i("[UI_DEBUG] CarScreen: RESOLUTION LOCKED to $negotiatedResolutionType. Skipping re-negotiation.")
-        } else if (selectedResolution == Settings.Resolution.AUTO) {
+            // Safety Check: If the locked resolution's orientation (Landscape/Portrait) 
+            // no longer matches the display orientation, the lock is stale and must be dropped.
+            val isPortraitRes = getNegotiatedHeight() > getNegotiatedWidth()
+            if (isPortraitRes != isPortraitDisplay) {
+                AppLog.i("[UI_DEBUG] CarScreen: Orientation mismatch detected (Res: ${if(isPortraitRes) "P" else "L"}, Display: ${if(isPortraitDisplay) "P" else "L"}). DROPPING LOCK.")
+                unlockResolution()
+            } else {
+                AppLog.i("[UI_DEBUG] CarScreen: RESOLUTION LOCKED to $negotiatedResolutionType. Usable area is ${screenWidthPx}x${screenHeightPx}. Skipping re-negotiation.")
+            }
+        }
+        
+        if (!isResolutionLocked && selectedResolution == Settings.Resolution.AUTO) {
             if (isPortraitDisplay) {
                 negotiatedResolutionType = if (screenWidthPx > 720 || screenHeightPx > 1280) {
                     Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._1080x1920
@@ -174,9 +193,9 @@ object HeadUnitScreenConfig {
             } else {
                 negotiatedResolutionType = when {
                     screenWidthPx <= 800 && screenHeightPx <= 480 -> Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._800x480
-                    (screenWidthPx >= 3840 || screenHeightPx >= 2160) && com.andrerinas.headunitrevived.decoder.VideoDecoder.isHevcSupported() && Build.VERSION.SDK_INT >= 24 -> 
+                    (screenWidthPx >= 3840 || screenHeightPx >= 2160) && VideoDecoder.isHevcSupported() && Build.VERSION.SDK_INT >= 24 -> 
                         Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._3840x2160
-                    (screenWidthPx >= 2560 || screenHeightPx >= 1440) && com.andrerinas.headunitrevived.decoder.VideoDecoder.isHevcSupported() && Build.VERSION.SDK_INT >= 24 -> 
+                    (screenWidthPx >= 2560 || screenHeightPx >= 1440) && VideoDecoder.isHevcSupported() && Build.VERSION.SDK_INT >= 24 -> 
                         Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._2560x1440
                     screenWidthPx > 1280 || screenHeightPx > 720 -> Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._1920x1080
                     else -> Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType._1280x720
@@ -317,7 +336,6 @@ object HeadUnitScreenConfig {
     fun getUsableWidth(): Int = screenWidthPx
     fun getUsableHeight(): Int = screenHeightPx
 
-    // --- Per-side margins for UpdateUiConfigRequest (matching HUR's pattern) ---
     // These are half the total margin, distributed symmetrically.
     fun getLeftMargin(): Int = getWidthMargin() / 2
     fun getRightMargin(): Int = getWidthMargin() - getLeftMargin()
@@ -334,6 +352,11 @@ object HeadUnitScreenConfig {
         val diffH = kotlin.math.abs(surfaceH - screenHeightPx)
 
         if (diffW <= SURFACE_MISMATCH_TOLERANCE && diffH <= SURFACE_MISMATCH_TOLERANCE) {
+            return false
+        }
+
+        if( (diffW > 0 && getNegotiatedWidth() == surfaceW) || (diffH > 0 && getNegotiatedHeight() == surfaceH)) {
+            AppLog.i("[UI_DEBUG_FIX] Surface mismatch detected but matches negotiated resolution. Usable: ${screenWidthPx}x${screenHeightPx}, Actual surface: ${surfaceW}x${surfaceH}. Ignoring.")
             return false
         }
 
@@ -367,17 +390,25 @@ object HeadUnitScreenConfig {
         hash = 31 * hash + settings.fullscreenMode.value
         hash = 31 * hash + (if (settings.stretchToFill) 1 else 0)
         hash = 31 * hash + (if (settings.forcedScale) 1 else 0)
+        // Include physical dimensions in the hash. If the screen rotates or a foldable is unfolded,
+        // the hash will change, triggering a clean unlock and recalculation.
+        hash = 31 * hash + realScreenWidthPx
+        hash = 31 * hash + realScreenHeightPx
         return hash
     }
 
     fun lockResolution() {
-        AppLog.i("[UI_DEBUG] HeadUnitScreenConfig: Locking resolution.")
-        isResolutionLocked = true
+        if (!isResolutionLocked) {
+            AppLog.i("[UI_DEBUG] HeadUnitScreenConfig: Locking resolution at $negotiatedResolutionType")
+            isResolutionLocked = true
+        }
     }
 
     fun unlockResolution() {
-        AppLog.i("[UI_DEBUG] HeadUnitScreenConfig: Unlocking resolution.")
-        isResolutionLocked = false
+        if (isResolutionLocked) {
+            AppLog.i("[UI_DEBUG] HeadUnitScreenConfig: Unlocking resolution (was $negotiatedResolutionType)")
+            isResolutionLocked = false
+        }
     }
 
     private const val SURFACE_MISMATCH_TOLERANCE = 4

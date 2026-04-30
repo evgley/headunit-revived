@@ -27,46 +27,8 @@ class SystemOptimizer(private val context: Context) {
         LARGE_11_PLUS(12.5f)
     }
 
-    private fun isReliableHevcChipset(): Boolean {
-        val hw = Build.HARDWARE.lowercase()
-        val soc = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            Build.SOC_MANUFACTURER.lowercase()
-        } else ""
-
-        // Only allow known-reliable chipsets for high-bitrate HEVC Auto-Discovery.
-        // This avoids issues with low-end devices that 'lie' about stable support.
-        return hw.startsWith("qcom") || hw.startsWith("msm") || // Qualcomm
-               hw.startsWith("exynos") || // Samsung
-               hw.startsWith("gs") || hw.contains("google") || // Google Tensor
-               soc.contains("qualcomm") || soc.contains("samsung") || soc.contains("google") ||
-               // High-end MediaTek (Dimensity 700/800/900/1000/9000+ series)
-               hw.startsWith("mt68") || hw.startsWith("mt69")
-    }
-
     fun checkH265HardwareSupport(): Boolean {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) return false
-        
-        // Hardening: even if a codec exists, we skip it if the chipset is known to be unreliable
-        if (!isReliableHevcChipset()) return false
-
-        val codecList = MediaCodecList(MediaCodecList.ALL_CODECS)
-        for (info in codecList.codecInfos) {
-            if (info.isEncoder) continue
-            for (type in info.supportedTypes) {
-                if (type.equals("video/hevc", ignoreCase = true)) {
-                    val name = info.name.lowercase()
-                    // Filter out known software codecs
-                    val isSoftware = name.startsWith("omx.google.") || 
-                                   name.startsWith("c2.android.") || 
-                                   name.startsWith("omx.ffmpeg.") ||
-                                   name.contains(".sw.") ||
-                                   name.contains("software")
-                    
-                    if (!isSoftware) return true
-                }
-            }
-        }
-        return false
+        return com.andrerinas.headunitrevived.decoder.VideoDecoder.isHevcSupported()
     }
 
     fun calculateOptimalSettings(

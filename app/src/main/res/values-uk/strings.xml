@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="app_name">Headunit Revived</string>
     <string name="menu">Меню</string>
     <string name="settings">Налаштування</string>
@@ -217,6 +217,8 @@
 <string name="category_audio">Звук</string>
     <string name="enable_audio_sink">Увімкнути аудіоприймач</string>
     <string name="enable_audio_sink_description">Якщо вимкнено, головний пристрій не працюватиме як аудіоприймач. Звук відтворюватиметься з телефону.</string>
+    <string name="separate_audio_streams">Роздільні аудіопотоки</string>
+    <string name="separate_audio_streams_description">Розділяти канали звуку для музики, дзвінків та сповіщень замість єдиного мультимедійного потоку (може некоректно працювати на деяких пристроях).</string>
     <string name="use_aac_audio">Використовувати аудіокодек AAC</string>
     <string name="use_aac_audio_description">Використовувати кодек AAC для збереження швидкості (експериментально).</string>
     <string name="audio_volume_offset">Налаштування гучності</string>
@@ -281,6 +283,7 @@
     <string name="share">Поділитися</string>
     <string name="close">Закрити</string>
     <string name="failed_export_logs">Помилка експорту журналу</string>
+    <string name="failed_export_in_silent_logs">Не вдалося експортувати логи: вибрано рівень логування Silent</string>
     <string name="switching_to_android_auto">Перемикання на Android Auto…</string>
     <string name="switch_failed">Помилка перемикання</string>
     <string name="requesting_usb_permission">Запит дозволу USB…</string>
@@ -335,6 +338,7 @@
     <string name="log_level_description">Виберіть рівень деталізації виводу логів для налагодження.</string>
     <string name="start_log_capture">Почати запис лога</string>
     <string name="start_log_capture_description">Починає запис системних логів у файл.</string>
+    <string name="start_log_capture_in_silent">Не вдалося розпочати запис: вибрано рівень логування Silent</string>
     <string name="stop_log_capture">Зупинити запис лога</string>
     <string name="stop_log_capture_description">Зупиняє запис і зберігає файл лога.</string>
 

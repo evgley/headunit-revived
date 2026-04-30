@@ -1,4 +1,4 @@
-<resources>
+﻿<resources>
     <string name="app_name">Headunit Revived</string>
     <string name="menu">Menu</string>
     <string name="settings">Instellingen</string>
@@ -216,6 +216,8 @@
 <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Audio-sink inschakelen</string>
     <string name="enable_audio_sink_description">Indien uitgeschakeld, fungeert de autoradio niet als audio-uitgang. Het geluid wordt dan vanaf de telefoon afgespeeld.</string>
+    <string name="separate_audio_streams">Afzonderlijke audiostreams</string>
+    <string name="separate_audio_streams_description">Scheid audiokanalen voor muziek, oproepen en meldingen in plaats van één multimediastroom (werkt mogelijk niet correct op sommige apparaten).</string>
     <string name="use_aac_audio">Gebruik AAC Audio</string>
     <string name="use_aac_audio_description">Gebruik de AAC-codec voor audio om bandbreedte te besparen (experimenteel).</string>
     <string name="audio_volume_offset">Volume-offsets</string>
@@ -280,6 +282,7 @@
     <string name="share">Delen</string>
     <string name="close">Sluiten</string>
     <string name="failed_export_logs">Exporteren van logs mislukt</string>
+    <string name="failed_export_in_silent_logs">Kan de logbestanden niet exporteren: Stille logboekregistratie geselecteerd</string>
     <string name="switching_to_android_auto">Overschakelen naar Android Auto…</string>
     <string name="switch_failed">Overschakelen mislukt</string>
     <string name="requesting_usb_permission">USB-toestemming aanvragen…</string>
@@ -334,6 +337,7 @@
     <string name="log_level_description">Kies het detailniveau van de loguitvoer voor foutopsporing.</string>
     <string name="start_log_capture">Logboekregistratie starten</string>
     <string name="start_log_capture_description">Begint met het opnemen van systeemlogs in een bestand.</string>
+    <string name="start_log_capture_in_silent">Kan opname niet starten: Stille logboekregistratie geselecteerd</string>
     <string name="stop_log_capture">Logboekregistratie stoppen</string>
     <string name="stop_log_capture_description">Stopt de opname en slaat het logbestand op.</string>
 
