@@ -47,6 +47,8 @@
     <style name="DialogButton.Positive" parent="Widget.Material3.Button">
         <item name="android:textColor">@android:color/white</item>
         <item name="backgroundTint">@color/brand_teal</item>
+        <item name="android:backgroundTint">@color/brand_teal</item>
+        <item name="android:background">@drawable/btn_primary_teal</item>
     </style>
 
     <style name="DialogButton.Negative" parent="Widget.Material3.Button.TextButton">

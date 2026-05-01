@@ -376,7 +376,14 @@ class VideoDecoder(private val settings: Settings) {
             } else {
                 if (sps != null) format.setByteBuffer("csd-0", ByteBuffer.wrap(sps!!))
                 if (pps != null) format.setByteBuffer("csd-1", ByteBuffer.wrap(pps!!))
-                format.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, 2 * 1024 * 1024)
+                
+                // [BUG_FIX] Lower buffer for legacy devices (Android < 9) to prevent startup stalls
+                val maxInputSize = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+                    1 * 1024 * 1024 // 1MB for legacy
+                } else {
+                    2 * 1024 * 1024 // 2MB for modern
+                }
+                format.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, maxInputSize)
             }
 
             if (!mSurface!!.isValid) throw IllegalStateException("Surface not valid")

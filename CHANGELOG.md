@@ -1,5 +1,5 @@
 # Changelog
-### v.2.2.2-beta
+### v.2.2.2
 - Fixed: Exit on disconnect now stops the carmode too
 - Fixed: Exit intent not closing the app
 - Fixed: Orientation not working great on app switch, if you have "auto or sensor" enabled
