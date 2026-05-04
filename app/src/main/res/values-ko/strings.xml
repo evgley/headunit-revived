@@ -246,6 +246,8 @@
     <string name="category_audio">오디오</string>
     <string name="enable_audio_sink">오디오 싱크</string>
     <string name="enable_audio_sink_description">비활성화되면 헤드유닛이 오디오를 수신하지 않습니다. 소리는 휴대폰에서 재생됩니다.</string>
+    <string name="separate_audio_streams">오디오 스트림 분리</string>
+    <string name="separate_audio_streams_description">단일 멀티미디어 스트림 대신 음악, 통화 및 알림에 대해 별도의 오디오 채널을 사용합니다 (일부 기기에서 제대로 작동하지 않을 수 있음).</string>
     <string name="use_aac_audio">AAC 오디오 사용</string>
     <string name="use_aac_audio_description">AAC 코덱을 사용하여 대역폭을 절약합니다 (실험적).</string>
     <string name="audio_volume_offset">오디오 볼륨 오프셋</string>

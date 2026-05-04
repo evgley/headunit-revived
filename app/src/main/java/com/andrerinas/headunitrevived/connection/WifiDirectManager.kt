@@ -27,6 +27,7 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
     private var isGroupOwner = false
     private var isConnected = false
     private val handler = Handler(Looper.getMainLooper())
+    private var localDeviceAddress: String? = null
 
     private var onCredentialsReady: ((ssid: String, psk: String, ip: String, bssid: String) -> Unit)? = null
 
@@ -56,9 +57,10 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
                     }
                     device?.let {
                         if (com.andrerinas.headunitrevived.App.provide(context).settings.wifiConnectionMode != 3) {
-                            AppLog.i("WifiDirectManager: Local name: ${it.deviceName}")
+                            AppLog.i("WifiDirectManager: Local name: ${it.deviceName}, Address: ${it.deviceAddress}")
                         }
                         AapService.wifiDirectName.value = it.deviceName
+                        localDeviceAddress = it.deviceAddress
                     }
                 }
                 WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION -> {
@@ -129,8 +131,20 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
             groupInfoRetries = 0
             val ssid = group.networkName
             val psk = group.passphrase ?: ""
-            val bssid = getWifiDirectMac(group.`interface`)
+            var bssid = getWifiDirectMac(group.`interface`)
             val isOwner = group.isGroupOwner
+
+            // [FIX] If getWifiDirectMac failed (returned zeros), try fallbacks
+            if (bssid == "00:00:00:00:00:00") {
+                val ownerAddr = group.owner?.deviceAddress
+                if (!ownerAddr.isNullOrEmpty() && ownerAddr != "00:00:00:00:00:00") {
+                    AppLog.i("WifiDirectManager: getWifiDirectMac failed, using group.owner.deviceAddress: $ownerAddr")
+                    bssid = ownerAddr
+                } else if (!localDeviceAddress.isNullOrEmpty() && localDeviceAddress != "00:00:00:00:00:00") {
+                    AppLog.i("WifiDirectManager: getWifiDirectMac failed, using captured localDeviceAddress: $localDeviceAddress")
+                    bssid = localDeviceAddress!!
+                }
+            }
 
             // Try to get frequency via reflection (hidden field in WifiP2pGroup)
             var frequency = 0
