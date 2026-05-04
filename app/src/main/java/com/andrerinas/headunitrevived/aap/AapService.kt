@@ -107,6 +107,18 @@ class AapService : Service(), UsbReceiver.Listener {
     private var wirelessServer: WirelessServer? = null
     private var networkDiscovery: NetworkDiscovery? = null
     private var mediaSession: MediaSessionCompat? = null
+
+    private inline fun <T> safeMediaSessionCall(crossinline block: (MediaSessionCompat) -> T): T? {
+        if (isDestroying) return null
+        val session = mediaSession ?: return null
+        return try {
+            block(session)
+        } catch (e: Exception) {
+            // Catching binder death: DeadObjectException or DeadSystemException
+            AppLog.e("MediaSession call failed (Binder dead?): ${e.message}")
+            null
+        }
+    }
     private var permanentFocusRequest: android.media.AudioFocusRequest? = null
     private var lastMediaButtonClickTime = 0L
 
@@ -188,7 +200,7 @@ class AapService : Service(), UsbReceiver.Listener {
         override fun onReceive(context: Context, intent: Intent) {
             if (Intent.ACTION_MEDIA_BUTTON == intent.action) {
                 AppLog.i("Runtime MEDIA_BUTTON receiver fired")
-                mediaSession?.let {
+                safeMediaSessionCall {
                     MediaButtonReceiver.handleIntent(it, intent)
                 }
             }
@@ -235,24 +247,28 @@ class AapService : Service(), UsbReceiver.Listener {
             actions = actions or PlaybackStateCompat.ACTION_PLAY
         }
 
-        mediaSession?.setPlaybackState(
-            PlaybackStateCompat.Builder()
-                .setState(state, lastAaPlaybackPositionMs, if (isPlaying) 1.0f else 0.0f)
-                .setActions(actions)
-                .build()
-        )
+        safeMediaSessionCall {
+            it.setPlaybackState(
+                PlaybackStateCompat.Builder()
+                    .setState(state, lastAaPlaybackPositionMs, if (isPlaying) 1.0f else 0.0f)
+                    .setActions(actions)
+                    .build()
+            )
+        }
         AppLog.d(
             "MediaSession: State updated to ${if (isPlaying) "PLAYING" else "STOPPED"}, positionMs=$lastAaPlaybackPositionMs"
         )
     }
 
     private fun applyPlaceholderMediaMetadata() {
-        mediaSession?.setMetadata(
-            MediaMetadataCompat.Builder()
-                .putString(MediaMetadataCompat.METADATA_KEY_TITLE, getString(R.string.video))
-                .putString(MediaMetadataCompat.METADATA_KEY_ARTIST, getString(R.string.media_session_aa_status_placeholder))
-                .build()
-        )
+        safeMediaSessionCall {
+            it.setMetadata(
+                MediaMetadataCompat.Builder()
+                    .putString(MediaMetadataCompat.METADATA_KEY_TITLE, getString(R.string.video))
+                    .putString(MediaMetadataCompat.METADATA_KEY_ARTIST, getString(R.string.media_session_aa_status_placeholder))
+                    .build()
+            )
+        }
     }
 
     private fun refreshMediaSessionMetadataForPrefsChange() {
@@ -383,7 +399,7 @@ class AapService : Service(), UsbReceiver.Listener {
         if (albumArt != null) {
             b.putBitmap(MediaMetadataCompat.METADATA_KEY_ALBUM_ART, albumArt)
         }
-        session.setMetadata(b.build())
+        safeMediaSessionCall { it.setMetadata(b.build()) }
     }
 
     // Receives ACTION_REQUEST_NIGHT_MODE_UPDATE broadcasts sent by the key-binding handler
@@ -622,7 +638,7 @@ class AapService : Service(), UsbReceiver.Listener {
         if (mediaSession == null) {
             setupMediaSession()
         }
-        mediaSession?.isActive = true
+        safeMediaSessionCall { it.isActive = true }
         updateMediaSessionState(false) // Set initial PlaybackState so system knows our actions
 
         commManager.onAaMediaMetadata = { meta -> onAaMediaMetadataFromPhone(meta) }
@@ -855,7 +871,7 @@ class AapService : Service(), UsbReceiver.Listener {
         }
 
         // Reactivate the existing MediaSession (created in onCreate, kept alive across disconnects)
-        mediaSession?.isActive = true
+        safeMediaSessionCall { it.isActive = true }
         updateMediaSessionState(true)
         applyPlaceholderMediaMetadata()
 
@@ -981,7 +997,7 @@ class AapService : Service(), UsbReceiver.Listener {
         // Only deactivate it — do NOT release it. A released session can no longer
         // receive media button events, which means the keymap stops working until
         // the next connection. HURev keeps its session alive the entire service lifetime.
-        mediaSession?.isActive = false
+        safeMediaSessionCall { it.isActive = false }
         updateMediaSessionState(false)
         serviceScope.launch(Dispatchers.IO) {
             nearbyManager?.stop() // Disconnect Nearby tunnel
@@ -1446,8 +1462,10 @@ class AapService : Service(), UsbReceiver.Listener {
         stopWirelessServer()
         wifiDirectManager?.stop()
         nearbyManager?.stop()
-        mediaSession?.isActive = false
-        mediaSession?.release()
+        safeMediaSessionCall {
+            it.isActive = false
+            it.release()
+        }
         mediaSession = null
         commManager.destroy()
         nightModeManager?.stop()
@@ -1487,7 +1505,7 @@ class AapService : Service(), UsbReceiver.Listener {
         }
 
         // Route MEDIA_BUTTON intents to the active MediaSession.
-        mediaSession?.let { MediaButtonReceiver.handleIntent(it, intent) }
+        safeMediaSessionCall { MediaButtonReceiver.handleIntent(it, intent) }
         // Launch the UI after boot.
         // Direct startActivity() is silently blocked on MIUI/HyperOS even from
         // a foreground service. We use an overlay window trampoline: creating a
