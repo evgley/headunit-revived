@@ -397,6 +397,14 @@ class Settings(context: Context) {
     var autoStartOnScreenOn: Boolean
         get() = prefs.getBoolean("auto-start-on-screen-on", false)
         set(value) { prefs.edit().putBoolean("auto-start-on-screen-on", value).apply() }
+
+    var autoStartOnWifi: Boolean
+        get() = prefs.getBoolean("auto-start-on-wifi", false)
+        set(value) { prefs.edit().putBoolean("auto-start-on-wifi", value).apply() }
+
+    var autoStartWifiSsid: String
+        get() = prefs.getString("auto-start-wifi-ssid", "")!!
+        set(value) { prefs.edit().putString("auto-start-wifi-ssid", value).apply() }
         
     var listenForUsbDevices: Boolean
         get() = prefs.getBoolean("listen-for-usb-devices", true)
@@ -631,6 +639,49 @@ class Settings(context: Context) {
                 deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
                     .edit()
                     .putBoolean(KEY_AUTO_START_ON_USB, enabled)
+                    .apply()
+            }
+        }
+
+        private const val KEY_AUTO_START_ON_WIFI = "auto-start-on-wifi"
+        private const val KEY_AUTO_START_WIFI_SSID = "auto-start-wifi-ssid"
+
+        fun isAutoStartOnWifiEnabled(context: Context): Boolean {
+            val prefs = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                val deviceContext = context.createDeviceProtectedStorageContext()
+                deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
+            } else {
+                context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            }
+            return prefs.getBoolean(KEY_AUTO_START_ON_WIFI, false)
+        }
+
+        fun syncAutoStartOnWifiToDeviceStorage(context: Context, enabled: Boolean) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                val deviceContext = context.createDeviceProtectedStorageContext()
+                deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
+                    .edit()
+                    .putBoolean(KEY_AUTO_START_ON_WIFI, enabled)
+                    .apply()
+            }
+        }
+
+        fun getAutoStartWifiSsid(context: Context): String {
+            val prefs = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                val deviceContext = context.createDeviceProtectedStorageContext()
+                deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
+            } else {
+                context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            }
+            return prefs.getString(KEY_AUTO_START_WIFI_SSID, "") ?: ""
+        }
+
+        fun syncAutoStartWifiSsidToDeviceStorage(context: Context, ssid: String) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                val deviceContext = context.createDeviceProtectedStorageContext()
+                deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
+                    .edit()
+                    .putString(KEY_AUTO_START_WIFI_SSID, ssid)
                     .apply()
             }
         }

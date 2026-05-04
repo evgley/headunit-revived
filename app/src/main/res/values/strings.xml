@@ -180,6 +180,13 @@
     <string name="auto_start_screen_on_description">Open the app every time the screen turns on. Ideal for head units that never fully shut down or use fast boot modes where the other auto-start options don\'t work. Not recommended for phones or tablets.</string>
     <string name="select_bt_device">Select Bluetooth Device</string>
     <string name="bt_device_not_set">Not set</string>
+    <string name="auto_start_wifi_label">Auto-start on WiFi</string>
+    <string name="auto_start_wifi_description">Automatically open Headunit Revived when connected to a specific WiFi SSID.</string>
+    <string name="auto_start_wifi_ssid_label">WiFi SSID</string>
+    <string name="auto_start_wifi_ssid_description">Connect only when connected to this WiFi SSID</string>
+    <string name="auto_start_wifi_warning">Legacy Feature: This may not work reliably on Android 8+ due to background restrictions. Ensure the app is excluded from battery optimization.</string>
+    <string name="enter_wifi_ssid">Enter WiFi SSID</string>
+    <string name="wifi_ssid_not_set">Not set</string>
     <string name="bt_permission_denied_title">Bluetooth Permission Required</string>
     <string name="bt_permission_denied_message">Bluetooth permission is required to select paired devices. Please grant it in app settings.</string>
     <string name="overlay_permission_title">Background Start Permission</string>
