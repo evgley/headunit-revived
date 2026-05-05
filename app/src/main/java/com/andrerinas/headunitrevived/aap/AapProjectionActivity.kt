@@ -831,7 +831,14 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
 
     private fun onKeyEvent(keyCode: Int, isPress: Boolean) {
         // Mapping: Physical (HW) -> Logical (AA)
-        val logicalCode = settings.keyCodes.entries.find { it.value == keyCode }?.key ?: keyCode
+        var logicalCode = settings.keyCodes.entries.find { it.value == keyCode }?.key ?: keyCode
+
+        // [FIX] BMW/Rotary Enter remapping: Most AA apps expect DPAD_CENTER (23) for selection,
+        // but physical rotary knobs often send ENTER (66). Remap 66 -> 23 to ensure selection works.
+        if (logicalCode == KeyEvent.KEYCODE_ENTER) {
+            logicalCode = KeyEvent.KEYCODE_DPAD_CENTER
+        }
+
         AppLog.i("AapProjectionActivity: onKeyEvent HW=$keyCode -> AA=$logicalCode, isPress=$isPress")
         commManager.send(logicalCode, isPress)
     }
