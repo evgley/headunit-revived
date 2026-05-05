@@ -109,6 +109,8 @@ class CommManager(
      *  failing child from cancelling the rest. */
     private val _scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
+    private val lastKeyEvents = mutableMapOf<Int, Long>()
+
     private val _connectionState = MutableStateFlow<ConnectionState>(ConnectionState.Disconnected())
 
     /** Callback for audio focus state changes (isPlaying). Set by AapService. */
@@ -390,6 +392,18 @@ class CommManager(
     /** Sends a key press or release event to the phone. */
     fun send(keyCode: Int, isPress: Boolean) {
         if (_connectionState.value is ConnectionState.TransportStarted) {
+            // Deduplication: ignore same press/release for same key within 100ms
+            // We encode keyCode and isPress into a single key: (keyCode << 1) | (if (isPress) 1 else 0)
+            val eventKey = (keyCode shl 1) or (if (isPress) 1 else 0)
+            val now = SystemClock.elapsedRealtime()
+            val last = lastKeyEvents[eventKey] ?: 0L
+            
+            if (now - last < 100) {
+                AppLog.d("CommManager: Deduplicating key $keyCode (isPress=$isPress) - dropped duplicate within ${now - last}ms")
+                return
+            }
+            lastKeyEvents[eventKey] = now
+            
             _transport?.send(keyCode, isPress)
         }
     }
@@ -474,6 +488,7 @@ class CommManager(
         val connection = _connection
         _transport = null
         _connection = null
+        lastKeyEvents.clear()
         try {
             // Only send ByeByeRequest when we are initiating the disconnect (e.g. user pressed
             // disconnect). When the transport self-quit (read error, soTimeout), the connection
