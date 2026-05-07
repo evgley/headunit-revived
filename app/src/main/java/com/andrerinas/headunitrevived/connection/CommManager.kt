@@ -418,20 +418,26 @@ class CommManager(
             return
         }
 
-        // 3. Time-based Debouncing (200ms window)
-        // We use the logical code for debouncing to catch "Click Emulations" vs "Real Time" conflicts.
-        val eventKey = (logicalCode shl 1) or (if (isPress) 1 else 0)
+        // 3. Time-based Debouncing (Improved for "Double Key" issues)
+        // We debounce based on the LOGICAL code to catch cases where multiple physical sources
+        // (e.g. proprietary intent + standard MEDIA_BUTTON) trigger the same action.
         val now = SystemClock.elapsedRealtime()
-        val last = lastKeyEvents[eventKey] ?: 0L
         
-        if (now - last < 200) {
-            AppLog.d("CommManager: Debouncing logical key $logicalCode (isPress=$isPress) - dropped duplicate within ${now - last}ms")
-            return
+        if (isPress) {
+            val lastPressTime = lastKeyEvents[logicalCode] ?: 0L
+            // Use a 300ms window to ignore duplicate "DOWN" events for the same logical action.
+            if (now - lastPressTime < 300) {
+                AppLog.i("CommManager: Debouncing logical key $logicalCode (DOWN) - dropped duplicate trigger within ${now - lastPressTime}ms (likely multi-intent source)")
+                return
+            }
+            lastKeyEvents[logicalCode] = now
+        } else {
+            // For UP events, if we don't have a record of a recent DOWN event that wasn't filtered,
+            // the state tracking above (isPress == isCurrentlyDown) already handles dropping the UP.
         }
-        
-        // Update state and timestamp
+
+        // Update state
         keyStates[logicalCode] = isPress
-        lastKeyEvents[eventKey] = now
         
         AppLog.i("CommManager: TX Key -> AA=$logicalCode (isPress=$isPress)")
         _transport?.send(logicalCode, isPress)

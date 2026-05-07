@@ -39,7 +39,7 @@ class CarKeyReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent?) {
         val action = intent?.action ?: return
-        AppLog.d("CarKeyReceiver: Received action: $action")
+        AppLog.i("CarKeyReceiver: Handling intent action: $action")
 
         // Broadcast for KeymapFragment debugger (raw intent data)
         context.sendBroadcast(Intent("com.andrerinas.headunitrevived.DEBUG_KEY").apply {

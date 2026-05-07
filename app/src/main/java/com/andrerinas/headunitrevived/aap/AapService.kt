@@ -122,7 +122,6 @@ class AapService : Service(), UsbReceiver.Listener {
         }
     }
     private var permanentFocusRequest: android.media.AudioFocusRequest? = null
-    private var lastMediaButtonClickTime = 0L
 
     private var lastAaMediaMetadata: MediaPlayback.MediaMetaData? = null
     private var lastAaPlaybackPositionMs: Long = 0L
@@ -909,15 +908,9 @@ class AapService : Service(), UsbReceiver.Listener {
                         val actionStr = if (keyEvent.action == android.view.KeyEvent.ACTION_DOWN) "DOWN" else "UP"
                         AppLog.d("MediaButtonEvent: Received key ${keyEvent.keyCode} ($actionStr)")
 
-                        // Only handle ACTION_DOWN to prevent double triggers.
+                        // Only handle ACTION_DOWN to prevent double triggers from standard Android behavior.
+                        // Physical double triggers are handled by CommManager.sendKey deduplication.
                         if (keyEvent.action == android.view.KeyEvent.ACTION_DOWN) {
-                            val now = System.currentTimeMillis()
-                            if (now - lastMediaButtonClickTime < 300) {
-                                AppLog.i("MediaButtonEvent: Debouncing key ${keyEvent.keyCode} (too fast)")
-                                return true
-                            }
-                            lastMediaButtonClickTime = now
-                            
                             AppLog.i("MediaButtonEvent: Processing key ${keyEvent.keyCode}")
                             // Send a complete click sequence (press + release) immediately
                             commManager.sendKey(keyEvent.keyCode, true)
