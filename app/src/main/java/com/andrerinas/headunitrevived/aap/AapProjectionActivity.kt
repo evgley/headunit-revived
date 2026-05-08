@@ -188,9 +188,6 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            enableEdgeToEdge()
-        }
         super.onCreate(savedInstanceState)
 
         applyOrientationSettings()
