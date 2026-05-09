@@ -1,5 +1,6 @@
 package com.andrerinas.headunitrevived
 
+import androidx.appcompat.app.AppCompatDelegate
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -30,6 +31,9 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        
+        // Enable vector drawable support on older Android versions
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
 
         if (ConscryptInitializer.isNeededForTls12()) {
             ConscryptInitializer.initialize()

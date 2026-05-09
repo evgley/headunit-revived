@@ -80,6 +80,8 @@ adb shell am start -a android.intent.action.VIEW -d "headunit://connect?ip=192.1
 - Remap Enter (66) to Dpad Center (23) for Rotary Knob #459
 - Debounce multiple key events if key event is the same in 100ms #465
 - Moved Mic settings to own fragment and added 3 new options for the new mic enhancement from version 2.2.2, which defaults to off for better compatibility
+- Merged PR #481 - Apply MediaTek 60fps and audio optimizations, thanks to @mrkontrast-coder
+- Some rewrite of the AudioTrackWrapper, to enhance stability and minimize stutters
 
 ### v.2.2.2
 - Fixed: Exit on disconnect now stops the carmode too
