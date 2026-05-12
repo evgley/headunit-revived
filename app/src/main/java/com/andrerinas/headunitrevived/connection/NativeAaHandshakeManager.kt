@@ -316,7 +316,13 @@ class NativeAaHandshakeManager(
             val ip = currentIp!!
             val ssid = currentSsid!!
             val psk = currentPsk ?: ""
-            val bssid = currentBssid ?: ""
+            var bssid = currentBssid ?: ""
+
+            // [FIX] Ensure BSSID is uppercase and not zeroed if possible
+            bssid = bssid.uppercase()
+            if (bssid == "00:00:00:00:00:00" || bssid == "02:00:00:00:00:00") {
+                AppLog.w("NativeAA: BSSID is still masked ($bssid) at Type 3 time!")
+            }
 
             AppLog.i("NativeAA: Starting Handshake Exchange:")
             AppLog.i("  > Target SSID: $ssid")
@@ -332,8 +338,8 @@ class NativeAaHandshakeManager(
 
             if (response.type == 2) {
                 AppLog.i("NativeAA: Phone ready for WiFi association. Delivering credentials...")
-                AppLog.i("NativeAA: [TX] Sending WifiInfoResponse (Type 3) with full credentials in 500ms...")
-                delay(500)
+                AppLog.i("NativeAA: [TX] Sending WifiInfoResponse (Type 3) with full credentials in 1000ms...")
+                delay(1000) // [FIX] Increased delay to give phone more processing time
                 sendWifiSecurityResponse(output, ssid, psk, bssid)
                 AppLog.i("NativeAA: Handshake completed successfully on Bluetooth side.")
                 

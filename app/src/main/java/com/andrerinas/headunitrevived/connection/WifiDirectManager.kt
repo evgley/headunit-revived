@@ -30,6 +30,7 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
     private var localDeviceAddress: String? = null
     private var lastKnownBssid: String? = null
     private var isReceiverRegistered = false
+    private var discoveredInterface: String? = null
 
     private var onCredentialsReady: ((ssid: String, psk: String, ip: String, bssid: String) -> Unit)? = null
 
@@ -163,8 +164,19 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
             groupInfoRetries = 0
             val ssid = group.networkName
             val psk = group.passphrase ?: ""
-            var bssid = getWifiDirectMac(group.`interface`)
             val isOwner = group.isGroupOwner
+
+            // [FIX] Robust interface detection. group.interface is often null on Android 11+ (hidden API)
+            var iface = group.`interface`
+            if (iface.isNullOrEmpty()) {
+                iface = getInterfaceByIp("192.168.49.1")
+                if (iface != null) {
+                    AppLog.i("WifiDirectManager: Discovered interface name by IP 192.168.49.1: $iface")
+                }
+            }
+            discoveredInterface = iface
+
+            var bssid = getWifiDirectMac(iface)
 
             // [FIX] Robust BSSID detection for masked MACs (00:00 or 02:00)
             if (bssid == "00:00:00:00:00:00" || bssid == "02:00:00:00:00:00") {
@@ -185,15 +197,19 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
                         AppLog.i("WifiDirectManager: BSSID masked, using group.owner.deviceAddress: $ownerAddr")
                         bssid = ownerAddr
                     } 
-                    // Fallback 4: Shell command "ip link"
+                    // Fallback 4: Shell command or sysfs
                     else {
-                        val shellMac = getMacFromShell(group.`interface`)
+                        val shellMac = getMacFromShell(iface)
                         if (shellMac != null) {
-                            AppLog.i("WifiDirectManager: BSSID masked, using shell fallback: $shellMac")
+                            AppLog.i("WifiDirectManager: BSSID masked, using shell/sysfs fallback: $shellMac")
                             bssid = shellMac
                         }
                     }
                 }
+            }
+
+            if (bssid != "00:00:00:00:00:00" && bssid != "02:00:00:00:00:00") {
+                lastKnownBssid = bssid
             }
 
             // Try to get frequency via reflection (hidden field in WifiP2pGroup)
@@ -212,25 +228,29 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
             } catch (e: Exception) {}
 
             val band = if (frequency > 4000) "5GHz" else if (frequency > 0) "2.4GHz" else "unknown"
-            AppLog.i("WifiDirectManager: onGroupInfoAvailable: SSID: $ssid, BSSID: $bssid, GO: $isOwner, Freq: $frequency MHz ($band)")
+            AppLog.i("WifiDirectManager: onGroupInfoAvailable: SSID: $ssid, BSSID: $bssid, GO: $isOwner, IFACE: ${iface ?: "null"}, Freq: $frequency MHz ($band)")
 
             if (ssid.isNotEmpty()) {
                 // Wait for the IP address to be assigned to the interface
                 Thread {
                     try {
-                        var ip = getWifiDirectIp(group.`interface`)
+                        var ip = getWifiDirectIp(iface)
                         var retries = 0
-                        while (ip == null && retries < 10) {
-                            AppLog.d("WifiDirectManager: Waiting for IP on interface ${group.`interface`} (Attempt ${retries + 1}/10)...")
+                        while (ip == null && retries < 15) {
+                            AppLog.d("WifiDirectManager: Waiting for IP on interface ${iface ?: "any p2p"} (Attempt ${retries + 1}/15)...")
                             Thread.sleep(1000)
-                            ip = getWifiDirectIp(group.`interface`)
+                            ip = getWifiDirectIp(iface)
                             retries++
                         }
 
                         // For Native AA, we almost always expect 192.168.49.1 if we are GO
-                        val finalIp = ip ?: "192.168.49.1"
-                        AppLog.i("WifiDirectManager: SUCCESS - Providing credentials to listener. SSID=$ssid, IP=$finalIp, BSSID=$bssid")
-                        onCredentialsReady?.invoke(ssid, psk, finalIp, bssid)
+                        val finalIp = ip ?: (if (isOwner) "192.168.49.1" else null)
+                        if (finalIp != null) {
+                            AppLog.i("WifiDirectManager: SUCCESS - Providing credentials to listener. SSID=$ssid, IP=$finalIp, BSSID=$bssid")
+                            onCredentialsReady?.invoke(ssid, psk, finalIp, bssid)
+                        } else {
+                            AppLog.e("WifiDirectManager: FAILED to get valid IP for credentials delivery.")
+                        }
                     } catch (e: Exception) {
                         AppLog.e("WifiDirectManager: Error in credential delivery thread", e)
                     }
@@ -251,13 +271,35 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
         }
     }
 
+    private fun getInterfaceByIp(targetIp: String): String? {
+        try {
+            val interfaces = java.net.NetworkInterface.getNetworkInterfaces()
+            while (interfaces.hasMoreElements()) {
+                val iface = interfaces.nextElement()
+                val addresses = iface.inetAddresses
+                while (addresses.hasMoreElements()) {
+                    val addr = addresses.nextElement()
+                    if (addr.hostAddress == targetIp) return iface.name
+                }
+            }
+        } catch (e: Exception) {}
+        return null
+    }
+
     private fun getWifiDirectMac(ifaceName: String?): String {
         try {
             val interfaces = java.net.NetworkInterface.getNetworkInterfaces()
             while (interfaces.hasMoreElements()) {
                 val iface = interfaces.nextElement()
+                
+                // If we have a name, it must match.
                 if (ifaceName != null && iface.name != ifaceName) continue
-                if (ifaceName == null && !iface.name.contains("p2p")) continue
+                
+                // If we don't have a name, look for common P2P interface patterns
+                if (ifaceName == null) {
+                    val name = iface.name.lowercase()
+                    if (!name.contains("p2p") && !name.contains("wlan") && !name.contains("ap")) continue
+                }
 
                 val mac = iface.hardwareAddress
                 if (mac != null) {
@@ -265,7 +307,10 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
                     for (i in mac.indices) {
                         sb.append(String.format("%02X%s", mac[i], if (i < mac.size - 1) ":" else ""))
                     }
-                    return sb.toString()
+                    val result = sb.toString()
+                    if (result != "00:00:00:00:00:00" && result != "02:00:00:00:00:00") {
+                        return result
+                    }
                 }
             }
         } catch (e: Exception) {}
@@ -281,21 +326,14 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
                 while (addresses.hasMoreElements()) {
                     val addr = addresses.nextElement()
                     if (!addr.isLoopbackAddress && addr is java.net.Inet4Address) {
-                        // Prioritize explicitly requested interface, or generic p2p interfaces
+                        // Prioritize explicitly requested interface
                         if (ifaceName != null && iface.name == ifaceName) return addr.hostAddress
-                        if (iface.name.contains("p2p")) return addr.hostAddress
-                    }
-                }
-            }
-            // Fallback pass: return any valid IPv4 that isn't loopback
-            val interfaces2 = java.net.NetworkInterface.getNetworkInterfaces()
-            while (interfaces2.hasMoreElements()) {
-                val iface = interfaces2.nextElement()
-                val addresses = iface.inetAddresses
-                while (addresses.hasMoreElements()) {
-                    val addr = addresses.nextElement()
-                    if (!addr.isLoopbackAddress && addr is java.net.Inet4Address) {
-                        return addr.hostAddress
+                        
+                        // Fallback: search for 192.168.49.1 (Standard P2P GO IP)
+                        if (addr.hostAddress == "192.168.49.1") return addr.hostAddress
+
+                        // Fallback: search for any interface with "p2p" in name
+                        if (ifaceName == null && iface.name.lowercase().contains("p2p")) return addr.hostAddress
                     }
                 }
             }
@@ -561,24 +599,29 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
     }
 
     private fun getMacFromShell(iface: String?): String? {
-        if (iface == null) return null
+        // Fallback: If iface is null, try to find a p2p interface name
+        val targetIface = iface ?: getInterfaceByIp("192.168.49.1") ?: discoveredInterface
+        if (targetIface == null) {
+            AppLog.w("WifiDirectManager: getMacFromShell: No interface name available for shell/sysfs lookup.")
+            return null
+        }
         
         // Try reading directly from sysfs (often allowed even when ip link is not)
         try {
-            val file = java.io.File("/sys/class/net/$iface/address")
+            val file = java.io.File("/sys/class/net/$targetIface/address")
             if (file.exists()) {
                 val mac = file.readText().trim().lowercase()
                 if (mac.isNotEmpty() && mac != "00:00:00:00:00:00" && mac != "02:00:00:00:00:00") {
-                    AppLog.i("WifiDirectManager: MAC retrieved via sysfs: $mac")
+                    AppLog.i("WifiDirectManager: MAC retrieved via sysfs ($targetIface): $mac")
                     return mac
                 }
             }
         } catch (e: Exception) {
-            AppLog.w("WifiDirectManager: Failed to read MAC from sysfs: ${e.message}")
+            AppLog.w("WifiDirectManager: Failed to read MAC from sysfs for $targetIface: ${e.message}")
         }
 
         return try {
-            val process = Runtime.getRuntime().exec("ip link show $iface")
+            val process = Runtime.getRuntime().exec("ip link show $targetIface")
             val reader = process.inputStream.bufferedReader()
             var line: String?
             var mac: String? = null
