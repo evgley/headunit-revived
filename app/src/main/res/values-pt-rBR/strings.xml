@@ -132,6 +132,12 @@
     <string name="key_music">Música</string>
     <string name="key_nav">Navegação</string>
     <string name="key_night">Alternar Modo Noturno</string>
+    <string name="key_enter">Enter</string>
+    <string name="key_home">Home</string>
+    <string name="key_app_switch">Aplicativos recentes</string>
+    <string name="key_button_a">Botão A (Selecionar)</string>
+    <string name="key_button_b">Botão B (Voltar)</string>
+
 
     <!-- Language Settings -->
     <string name="app_language">Idioma do aplicativo</string>
@@ -146,6 +152,16 @@
     <string name="usb_auto_connect_description">Conecta-se automaticamente a um dispositivo USB conhecido assim que o aplicativo é aberto.</string>
     <string name="auto_start_bt_label">Início automático por Bluetooth</string>
     <string name="auto_start_bt_description">Abrir automaticamente o Headunit Revived quando um dispositivo Bluetooth específico se conectar.</string>
+    <string name="auto_start_wifi_label">Início automático por Wi-Fi</string>
+    <string name="auto_start_wifi_description">Abre o Headunit Revived automaticamente quando conectado a um SSID Wi-Fi específico.</string>
+    <string name="auto_start_wifi_ssid_label">SSID Wi-Fi</string>
+    <string name="auto_start_wifi_ssid_description">Conectar apenas se estiver associado a este SSID Wi-Fi</string>
+    <string name="auto_start_wifi_warning">Recurso legacy: Pode não funcionar de forma confiável no Android 8+ devido a restrições em segundo plano. Certifique-se de que o app esteja excluído da otimização de bateria.</string>
+    <string name="enter_wifi_ssid">Digite o SSID Wi-Fi</string>
+    <string name="wifi_ssid_not_set">Não definido</string>
+
+    <string name="listen_for_usb_devices_label">Ouvir dispositivos USB</string>
+    <string name="listen_for_usb_devices_description">Mostrar o aviso do sistema Android quando um dispositivo USB for conectado.</string>
     <string name="auto_start_usb_label">Início automático por USB</string>
     <string name="auto_start_usb_description">Abrir o app automaticamente e tentar conectar quando um dispositivo USB for conectado</string>
     <string name="auto_start_settings">Configurações de início automático</string>
@@ -215,6 +231,8 @@
 <string name="category_audio">Áudio</string>
     <string name="enable_audio_sink">Ativar receptor de áudio</string>
     <string name="enable_audio_sink_description">Se desativado, a central não atuará como receptor de áudio. O áudio tocará no celular.</string>
+    <string name="separate_audio_streams">Separar fluxos de áudio</string>
+    <string name="separate_audio_streams_description">Separar canais de áudio para música, chamadas e notificações em vez de um único fluxo multimídia (pode não funcionar corretamente em alguns dispositivos).</string>
     <string name="use_aac_audio">Usar áudio AAC</string>
     <string name="use_aac_audio_description">Usa o codec AAC para áudio para economizar banda (experimental).</string>
     <string name="audio_volume_offset">Ajustes de volume</string>
@@ -279,6 +297,7 @@
     <string name="share">Compartilhar</string>
     <string name="close">Fechar</string>
     <string name="failed_export_logs">Falha ao exportar logs</string>
+    <string name="failed_export_in_silent_logs">Não é possível exportar os registros: nível de registro Silencioso selecionado</string>
     <string name="switching_to_android_auto">Alternando para Android Auto…</string>
     <string name="switch_failed">Falha ao alternar</string>
     <string name="requesting_usb_permission">Solicitando permissão USB…</string>
@@ -333,6 +352,7 @@
     <string name="log_level_description">Escolha o nível de detalhe da saída de log para depuração.</string>
     <string name="start_log_capture">Iniciar captura de log</string>
     <string name="start_log_capture_description">Começa a registrar os logs do sistema em um arquivo.</string>
+    <string name="start_log_capture_in_silent">Não é possível iniciar a gravação: nível de registro Silencioso selecionado</string>
     <string name="stop_log_capture">Parar captura de log</string>
     <string name="stop_log_capture_description">Interrompe a gravação e salva o arquivo de log.</string>
 
@@ -391,6 +411,9 @@
     <!-- Vehicle Info Settings -->
     <string name="vehicle_info_settings">Informações do veículo</string>
     <string name="vehicle_info_settings_description">Personalize como seu veículo aparece no celular</string>
+    <string name="ui_scale">Escala da interface</string>
+    <string name="ui_scale_home">Tela inicial</string>
+    <string name="ui_scale_settings">Tela de configurações</string>
     <string name="category_vehicle">Veículo</string>
     <string name="category_head_unit">Central multimídia</string>
     <string name="vehicle_display_name_label">Nome de exibição</string>

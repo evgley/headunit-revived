@@ -56,7 +56,7 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" /> <!-- Added -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
 
     <application
@@ -75,6 +75,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="sensor"
             android:supportsPictureInPicture="true"
+            android:resizeableActivity="true"
             android:exported="true"
             android:theme="@style/AppTheme">
 
@@ -83,7 +84,6 @@
         <activity
             android:name=".app.UsbAttachedActivity"
             android:directBootAware="true"
-            android:enabled="false"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.Translucent"
             android:exported="true">
@@ -233,6 +233,7 @@
                 <!-- Standard Android boot -->
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_UNLOCKED" />
                 <!-- Generic / OEM quick boot -->
                 <action android:name="android.intent.action.QUICKBOOT_POWERON" />
                 <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
@@ -254,6 +255,14 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.bluetooth.device.action.ACL_CONNECTED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".app.WifiAutoStartReceiver"
+            android:directBootAware="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.wifi.STATE_CHANGE" />
             </intent-filter>
         </receiver>
 

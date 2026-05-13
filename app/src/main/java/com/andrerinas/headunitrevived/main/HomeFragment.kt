@@ -11,14 +11,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.net.VpnService
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.activity.result.contract.ActivityResultContracts
+import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.os.Build
 import androidx.fragment.app.Fragment
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.andrerinas.headunitrevived.App
 import com.andrerinas.headunitrevived.R
@@ -50,6 +51,14 @@ class HomeFragment : Fragment() {
         } else {
             AppLog.w("VPN permission denied. Offline Self Mode might fail.")
             Toast.makeText(requireContext(), getString(R.string.failed_start_android_auto), Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private val bluetoothPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+        if (isGranted) {
+            showNativeAaDeviceSelector()
+        } else {
+            Toast.makeText(requireContext(), R.string.bt_permission_denied, Toast.LENGTH_LONG).show()
         }
     }
 
@@ -121,8 +130,9 @@ class HomeFragment : Fragment() {
                     }
                 }
                 Settings.AUTO_CONNECT_SELF_MODE -> {
-                    if (appSettings.autoStartSelfMode && !hasAutoStarted && !commManager.isConnected) {
+                    if ((appSettings.autoStartSelfMode || forceSelfModeLaunch) && !hasAutoStarted && !commManager.isConnected) {
                         hasAutoStarted = true
+                        forceSelfModeLaunch = false // Reset once processed
                         startSelfMode()
                     }
                 }
@@ -168,6 +178,13 @@ class HomeFragment : Fragment() {
 
     private fun attemptAutoConnect() {
         val appSettings = App.provide(requireContext()).settings
+
+        // [FIX] Skip manual WiFi connection if Native AA is selected.
+        // Native AA handles its own handshake via Bluetooth/P2P.
+        if (appSettings.wifiConnectionMode == 3) {
+            AppLog.i("HomeFragment: Native AA mode active. Skipping manual auto-connect attempt.")
+            return
+        }
 
         if (!appSettings.autoConnectLastSession ||
             !appSettings.hasAcceptedDisclaimer ||
@@ -351,7 +368,12 @@ class HomeFragment : Fragment() {
                     }
                 }
                 3 -> { // Native AA
-                    showNativeAaDeviceSelector()
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && 
+                        ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                        bluetoothPermissionLauncher.launch(android.Manifest.permission.BLUETOOTH_CONNECT)
+                    } else {
+                        showNativeAaDeviceSelector()
+                    }
                 }
                 else -> { // Manual (0) -> Open List
                     val controller = findNavController()
@@ -564,6 +586,7 @@ class HomeFragment : Fragment() {
 
     companion object {
         private var hasAutoStarted = false
+        var forceSelfModeLaunch = false
         fun resetAutoStart() {
             hasAutoStarted = false
         }

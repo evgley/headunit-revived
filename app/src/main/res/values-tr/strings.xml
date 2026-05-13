@@ -121,6 +121,7 @@
     <string name="log_level_description">Dışa aktarırken günlük seviyesini filtrele</string>
     <string name="start_log_capture">Günlük Kaydını Başlat</string>
     <string name="start_log_capture_description">Hata ayıklama için tam günlükleri kaydetmeye başla</string>
+    <string name="start_log_capture_in_silent">Kayıt başlatılamıyor: Sessiz günlükleme seviyesi seçildi</string>
     <string name="stop_log_capture">Günlük Kaydını Durdur</string>
     <string name="stop_log_capture_description">Kayıt yapılıyor… durdurmak için dokunun</string>
     <string name="export_logs">Günlükleri Dışa Aktar</string>
@@ -148,6 +149,12 @@
     <string name="key_music">Müzik</string>
     <string name="key_nav">Navigasyon</string>
     <string name="key_night">Gece Moduna Geç</string>
+    <string name="key_enter">Enter</string>
+    <string name="key_home">Ana Ekran</string>
+    <string name="key_app_switch">Son Uygulamalar</string>
+    <string name="key_button_a">A Butonu (Seç)</string>
+    <string name="key_button_b">B Butonu (Geri)</string>
+
 
     <string name="app_language">Uygulama Dili</string>
     <string name="system_default">Sistem Varsayılanı</string>
@@ -160,6 +167,16 @@
     <string name="usb_auto_connect_description">Uygulama açıldığında bilinen bir USB cihazına otomatik olarak bağlan.</string>
     <string name="auto_start_bt_label">Bluetooth ile otomatik başlat</string>
     <string name="auto_start_bt_description">Belirli bir Bluetooth cihazı bağlandığında Headunit Revived\'ı otomatik olarak aç.</string>
+    <string name="auto_start_wifi_label">WiFi ile otomatik başlat</string>
+    <string name="auto_start_wifi_description">Belirli bir WiFi SSID\'sine bağlandığında Headunit Revived\'ı otomatik olarak aç.</string>
+    <string name="auto_start_wifi_ssid_label">WiFi SSID</string>
+    <string name="auto_start_wifi_ssid_description">Sadece bu WiFi SSID\'sine bağlandığında bağlan</string>
+    <string name="auto_start_wifi_warning">Eski özellik: Arka plan kısıtlamaları nedeniyle Android 8+ sürümlerinde güvenilir şekilde çalışmayabilir. Uygulamanın pil optimizasyonundan muaf tutulduğundan emin olun.</string>
+    <string name="enter_wifi_ssid">WiFi SSID girin</string>
+    <string name="wifi_ssid_not_set">Ayarlanmadı</string>
+
+    <string name="listen_for_usb_devices_label">USB Cihazlarını Dinle</string>
+    <string name="listen_for_usb_devices_description">Bir USB cihazı takıldığında Android sistem istemini göster.</string>
     <string name="auto_start_usb_label">USB ile otomatik başlat</string>
     <string name="auto_start_usb_description">Bir USB cihazı takıldığında uygulamayı otomatik olarak aç ve bağlanmayı dene</string>
     <string name="auto_start_settings">Otomatik başlatma ayarları</string>
@@ -227,6 +244,8 @@
     <string name="category_audio">Ses</string>
     <string name="enable_audio_sink">Dahili Ses Çıkışı</string>
     <string name="enable_audio_sink_description">Devre dışı bırakılırsa multimedya sistemi ses almaz; ses doğrudan telefondan çalmaya devam eder.</string>
+    <string name="separate_audio_streams">Ayrı Ses Akışları</string>
+    <string name="separate_audio_streams_description">Tek bir multimedya akışının yerine müzik, aramalar ve bildirimler için ses kanallarını ayırın (bazı cihazlarda düzgün çalışmayabilir).</string>
     <string name="use_aac_audio">AAC Ses Kullan</string>
     <string name="use_aac_audio_description">Bant genişliğinden tasarruf etmek için ses için AAC kodeğini kullan (Deneysel).</string>
     <string name="audio_volume_offset">Ses Seviyesi Dengesi (Offset)</string>
@@ -288,6 +307,7 @@
     <string name="share">Paylaş</string>
     <string name="close">Kapat</string>
     <string name="failed_export_logs">Günlükler dışa aktarılamadı</string>
+    <string name="failed_export_in_silent_logs">Günlükler dışa aktarılamıyor: Sessiz günlükleme seviyesi seçildi</string>
     <string name="switching_to_android_auto">Android Auto\'ya geçiliyor…</string>
     <string name="switch_failed">Geçiş başarısız</string>
     <string name="requesting_usb_permission">USB İzni İsteniyor…</string>
@@ -338,6 +358,9 @@
 
     <string name="show_navigation_notifications">Navigasyon bildirimleri</string>
     <string name="show_navigation_notifications_description">Bildirimlerde \"X metre sonra Y yap\" ve mevcut caddeyi göster (hata ayıklama için)</string>
+    <string name="media_session_aa_status_placeholder">Bağlı</string>
+    <string name="sync_media_session_aa_metadata">AA çalıyor bilgisi medya oturumunda</string>
+    <string name="sync_media_session_aa_metadata_description">Telefondan gelen parça adı, sanatçı, süre ve albüm kapağını sistem medya oturumunda ve bildiriminde göster</string>
     <string name="nav_notification_channel_name">Navigasyon</string>
     <string name="nav_notification_channel_description">Android Auto\'dan adım adım navigasyon güncellemeleri</string>
     <string name="nav_notification_title_format">%1$d m içinde — %2$s</string>
@@ -388,6 +411,9 @@
 
     <string name="vehicle_info_settings">Araç bilgileri</string>
     <string name="vehicle_info_settings_description">Aracınızın telefonunuzda nasıl görüneceğini özelleştirin</string>
+    <string name="ui_scale">UI Ölçeği</string>
+    <string name="ui_scale_home">Ana ekran</string>
+    <string name="ui_scale_settings">Ayarlar ekranı</string>
     <string name="category_vehicle">Araç</string>
     <string name="category_head_unit">Multimedya Sistemi</string>
     <string name="vehicle_display_name_label">Görünen ad</string>
@@ -455,5 +481,9 @@
     <string name="audio_latency_multiplier">Ses Gecikme Çarpanı</string>
     <string name="audio_latency_multiplier_description">Ses tampon boyutunu ayarlar (Düşük = Daha az gecikme, Yüksek = Daha az takılma)</string>
     <string name="audio_queue_capacity">Ses Kuyruğu Kapasitesi (Backpressure)</string>
+    <string name="media_action_previous">Önceki</string>
+    <string name="media_action_play">Oynat</string>
+    <string name="media_action_pause">Duraklat</string>
+    <string name="media_action_next">Sonraki</string>
     <string name="error_usb_permission_failed">Sistem hatası: USB izin iletişim kutusu istenemedi.</string>
 </resources>

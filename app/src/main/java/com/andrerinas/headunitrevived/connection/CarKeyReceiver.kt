@@ -39,7 +39,7 @@ class CarKeyReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent?) {
         val action = intent?.action ?: return
-        AppLog.d("CarKeyReceiver: Received action: $action")
+        AppLog.i("CarKeyReceiver: Handling intent action: $action")
 
         // Broadcast for KeymapFragment debugger (raw intent data)
         context.sendBroadcast(Intent("com.andrerinas.headunitrevived.DEBUG_KEY").apply {
@@ -70,7 +70,7 @@ class CarKeyReceiver : BroadcastReceiver() {
             return
         }
 
-        // 2. Proprietary extraction — extract keycode, then use unified handlers
+        // 2. Proprietary extraction — extract keycode or use virtual IDs for mapping
         when (action) {
             // --- Protocols with proper DOWN/UP separation ---
             "com.microntek.irkeyDown", "com.microntek.irkeyUp" -> {
@@ -78,20 +78,15 @@ class CarKeyReceiver : BroadcastReceiver() {
                 if (keyCode != -1) handleKey(context, commManager, keyCode, action.endsWith("keyDown"))
             }
             "android.intent.action.C3_HARDKEY" -> {
-                val keyCode = intent.getIntExtra("c3_hardkey_keycode", -1)
-                val c3Action = intent.getIntExtra("c3_hardkey_action", -1)
-                if (keyCode != -1 && c3Action != -1) handleKey(context, commManager, keyCode, c3Action == 1)
+                val keyCode = intent.getIntExtra("android.intent.extra.c3_hardkey_keycode", -1)
+                val c3Action = intent.getIntExtra("android.intent.extra.c3_hardkey_action", -1)
+                if (keyCode != -1 && c3Action != -1) handleKey(context, commManager, keyCode, c3Action == 0)
             }
 
-            // --- Protocols that fire once (no DOWN/UP) → simulate full click ---
+            // --- Protocols that fire once (no DOWN/UP) → use virtual IDs for mapping ---
             "com.nwd.action.ACTION_KEY_VALUE" -> {
-                val mapped = when (intent.getByteExtra("extra_key_value", 0).toInt()) {
-                    1 -> KeyEvent.KEYCODE_MEDIA_NEXT
-                    2 -> KeyEvent.KEYCODE_MEDIA_PREVIOUS
-                    3 -> KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE
-                    else -> -1
-                }
-                if (mapped > 0) handleClick(context, commManager, mapped)
+                val value = intent.getByteExtra("extra_key_value", 0).toInt()
+                if (value != 0) handleClick(context, commManager, 1000 + value)
             }
             "com.winca.service.Setting.KEY_ACTION" ->
                 intent.getIntExtra("com.winca.service.Setting.KEY_ACTION_EXTRA", -1)
@@ -99,24 +94,26 @@ class CarKeyReceiver : BroadcastReceiver() {
             "IKeyClick.KEY_CLICK" ->
                 intent.getIntExtra("CLICK_KEY", -1)
                     .takeIf { it != -1 }?.let { handleClick(context, commManager, it) }
-            "com.eryanet.music.prev" -> handleClick(context, commManager, KeyEvent.KEYCODE_MEDIA_PREVIOUS)
-            "com.eryanet.music.next" -> handleClick(context, commManager, KeyEvent.KEYCODE_MEDIA_NEXT)
-            "com.eryanet.media.playorpause", "com.eryanet.media.play", "com.eryanet.media.pause" ->
-                handleClick(context, commManager, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE)
-            "com.bz.action.phone.pickup" -> handleClick(context, commManager, KeyEvent.KEYCODE_CALL)
-            "com.bz.action.phone.hangup" -> handleClick(context, commManager, KeyEvent.KEYCODE_ENDCALL)
+            "com.eryanet.music.prev" -> handleClick(context, commManager, 2001)
+            "com.eryanet.music.next" -> handleClick(context, commManager, 2002)
+            "com.eryanet.media.playorpause" -> handleClick(context, commManager, 2003)
+            "com.eryanet.media.play" -> handleClick(context, commManager, 2004)
+            "com.eryanet.media.pause" -> handleClick(context, commManager, 2005)
+            "com.bz.action.phone.pickup" -> handleClick(context, commManager, 3001)
+            "com.bz.action.phone.hangup" -> handleClick(context, commManager, 3002)
         }
     }
 
-    /** Single key press or release — broadcasts for learning AND sends to AA. */
+    /** Single key press or release — broadcasts for learning and projection handling. */
     private fun handleKey(context: Context, commManager: CommManager, keyCode: Int, isDown: Boolean) {
+        AppLog.d("CarKeyReceiver: Broadcasting key event: code=$keyCode, isDown=$isDown")
         context.sendBroadcast(Intent(KeyIntent.action).apply {
             setPackage(context.packageName)
             putExtra(KeyIntent.extraEvent, KeyEvent(
                 if (isDown) KeyEvent.ACTION_DOWN else KeyEvent.ACTION_UP, keyCode
             ))
         })
-        if (commManager.isConnected) commManager.send(keyCode, isDown)
+        commManager.sendKey(keyCode, isDown)
     }
 
     /** Full click (DOWN + UP) — broadcasts both events for learning AND sends to AA. */

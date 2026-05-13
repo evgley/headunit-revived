@@ -120,6 +120,7 @@
     <string name="log_level_description">Filtra livello log durante l\'esportazione</string>
     <string name="start_log_capture">Avvia acquisizione log</string>
     <string name="start_log_capture_description">Inizia a registrare i log completi per il debug</string>
+    <string name="start_log_capture_in_silent">Impossibile avviare la registrazione: livello di registrazione silenzioso selezionato</string>
     <string name="stop_log_capture">Ferma acquisizione log</string>
     <string name="stop_log_capture_description">Registrazione in corso… tocca per fermare</string>
     <string name="export_logs">Esporta Log</string>
@@ -147,6 +148,12 @@
     <string name="key_music">Musica</string>
     <string name="key_nav">Navigazione</string>
     <string name="key_night">Alterna modalità notte</string>
+    <string name="key_enter">Invio</string>
+    <string name="key_home">Home</string>
+    <string name="key_app_switch">App recenti</string>
+    <string name="key_button_a">Pulsante A (Seleziona)</string>
+    <string name="key_button_b">Pulsante B (Indietro)</string>
+
 
     <!-- Language Settings -->
     <string name="app_language">Lingua app</string>
@@ -161,6 +168,16 @@
     <string name="usb_auto_connect_description">Connettiti automaticamente a un dispositivo USB noto all\'apertura dell\'applicazione.</string>
     <string name="auto_start_bt_label">Avvio automatico su Bluetooth</string>
     <string name="auto_start_bt_description">Apri automaticamente Headunit Revived quando si connette un dispositivo Bluetooth specifico.</string>
+    <string name="auto_start_wifi_label">Avvio automatico su WiFi</string>
+    <string name="auto_start_wifi_description">Apre Headunit Revived automaticamente quando ci si connette a un SSID WiFi specifico.</string>
+    <string name="auto_start_wifi_ssid_label">SSID WiFi</string>
+    <string name="auto_start_wifi_ssid_description">Connetti solo se associato a questo SSID WiFi</string>
+    <string name="auto_start_wifi_warning">Funzione legacy: Potrebbe non funzionare in modo affidabile su Android 8+ a causa delle restrizioni in background. Assicurati che l\'app sia esclusa dall\'ottimizzazione della batteria.</string>
+    <string name="enter_wifi_ssid">Inserisci SSID WiFi</string>
+    <string name="wifi_ssid_not_set">Non impostato</string>
+
+    <string name="listen_for_usb_devices_label">Ascolta dispositivi USB</string>
+    <string name="listen_for_usb_devices_description">Mostra la richiesta di sistema Android quando viene collegato un dispositivo USB.</string>
     <string name="auto_start_usb_label">Avvio automatico su USB</string>
     <string name="auto_start_usb_description">Apri automaticamente l\'app e tenta la connessione quando viene collegato un dispositivo USB</string>
     <string name="auto_start_settings">Impostazioni avvio automatico</string>
@@ -230,6 +247,8 @@
     <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Audio Sink</string>
     <string name="enable_audio_sink_description">Se disabilitato, la headunit non riceverà l\'audio. Il suono verrà riprodotto dal telefono.</string>
+    <string name="separate_audio_streams">Flussi audio separati</string>
+    <string name="separate_audio_streams_description">Separa i canali audio per musica, chiamate e notifiche invece di un singolo flusso multimediale (potrebbe non funzionare correttamente su alcuni dispositivi).</string>
     <string name="use_aac_audio">Usa Audio AAC</string>
     <string name="use_aac_audio_description">Usa il codec AAC per l\'audio per risparmiare larghezza di banda (Sperimentale).</string>
     <string name="audio_volume_offset">Offset volume audio</string>
@@ -294,6 +313,7 @@
     <string name="share">Condividi</string>
     <string name="close">Chiudi</string>
     <string name="failed_export_logs">Esportazione log fallita</string>
+    <string name="failed_export_in_silent_logs">Impossibile esportare i log: livello di registrazione silenzioso selezionato</string>
     <string name="switching_to_android_auto">Passaggio ad Android Auto…</string>
     <string name="switch_failed">Passaggio fallito</string>
     <string name="requesting_usb_permission">Richiesta permesso USB…</string>
@@ -398,6 +418,9 @@
     <!-- Vehicle Info Settings -->
     <string name="vehicle_info_settings">Informazioni veicolo</string>
     <string name="vehicle_info_settings_description">Personalizza come il tuo veicolo appare sul telefono</string>
+    <string name="ui_scale">Scala UI</string>
+    <string name="ui_scale_home">Schermata Home</string>
+    <string name="ui_scale_settings">Schermata Impostazioni</string>
     <string name="category_vehicle">Veicolo</string>
     <string name="category_head_unit">Head Unit</string>
     <string name="vehicle_display_name_label">Nome visualizzato</string>

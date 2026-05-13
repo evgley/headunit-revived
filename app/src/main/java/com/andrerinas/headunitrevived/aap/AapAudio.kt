@@ -116,7 +116,7 @@ internal class AapAudio(
 
         if (audioDecoder.getTrack(channel) == null) {
             val config = AudioConfigs.get(channel)
-            val stream = AudioConfigs.stream(channel)
+            val stream = AudioConfigs.stream(channel, settings.separateAudioStreams)
 
             val offset = when (channel) {
                 Channel.ID_AUD -> settings.mediaVolumeOffset

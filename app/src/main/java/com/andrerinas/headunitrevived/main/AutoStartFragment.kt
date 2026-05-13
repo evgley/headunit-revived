@@ -5,9 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
@@ -36,9 +38,12 @@ class AutoStartFragment : Fragment() {
 
     private var pendingAutoStartOnBoot: Boolean? = null
     private var pendingAutoStartOnScreenOn: Boolean? = null
+    private var pendingListenForUsbDevices: Boolean? = null
     private var pendingAutoStartOnUsb: Boolean? = null
     private var pendingAutoStartBtName: String? = null
     private var pendingAutoStartBtMac: String? = null
+    private var pendingAutoStartOnWifi: Boolean? = null
+    private var pendingAutoStartWifiSsid: String? = null
     private var pendingReopenOnReconnection: Boolean? = null
 
     private var hasChanges = false
@@ -73,9 +78,12 @@ class AutoStartFragment : Fragment() {
 
         pendingAutoStartOnBoot = settings.autoStartOnBoot
         pendingAutoStartOnScreenOn = settings.autoStartOnScreenOn
+        pendingListenForUsbDevices = settings.listenForUsbDevices
         pendingAutoStartOnUsb = settings.autoStartOnUsb
         pendingAutoStartBtName = settings.autoStartBluetoothDeviceName
         pendingAutoStartBtMac = settings.autoStartBluetoothDeviceMac
+        pendingAutoStartOnWifi = settings.autoStartOnWifi
+        pendingAutoStartWifiSsid = settings.autoStartWifiSsid
         pendingReopenOnReconnection = settings.reopenOnReconnection
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
@@ -151,20 +159,34 @@ class AutoStartFragment : Fragment() {
             settings.autoStartOnScreenOn = it
             Settings.syncAutoStartOnScreenOnToDeviceStorage(requireContext(), it)
         }
+        pendingListenForUsbDevices?.let {
+            settings.listenForUsbDevices = it
+            Settings.syncListenForUsbDevicesToDeviceStorage(requireContext(), it)
+            Settings.setUsbAttachedActivityEnabled(requireContext(), it)
+        }
         pendingAutoStartOnUsb?.let {
             settings.autoStartOnUsb = it
             Settings.syncAutoStartOnUsbToDeviceStorage(requireContext(), it)
-            Settings.setUsbAttachedActivityEnabled(requireContext(), it)
         }
         pendingAutoStartBtName?.let { settings.autoStartBluetoothDeviceName = it }
         pendingAutoStartBtMac?.let {
             settings.autoStartBluetoothDeviceMac = it
             Settings.syncAutoStartBtMacToDeviceStorage(requireContext(), it)
         }
+        pendingAutoStartOnWifi?.let {
+            settings.autoStartOnWifi = it
+            Settings.syncAutoStartOnWifiToDeviceStorage(requireContext(), it)
+        }
+        pendingAutoStartWifiSsid?.let {
+            settings.autoStartWifiSsid = it
+            Settings.syncAutoStartWifiSsidToDeviceStorage(requireContext(), it)
+        }
         pendingReopenOnReconnection?.let { settings.reopenOnReconnection = it }
 
         // Check for Overlay permission if any auto-start is configured
-        if ((!pendingAutoStartBtMac.isNullOrEmpty() || pendingAutoStartOnUsb == true || pendingAutoStartOnBoot == true || pendingAutoStartOnScreenOn == true) && Build.VERSION.SDK_INT >= 23) {
+        if ((!pendingAutoStartBtMac.isNullOrEmpty() || pendingAutoStartOnUsb == true || 
+            pendingAutoStartOnBoot == true || pendingAutoStartOnScreenOn == true || 
+            pendingAutoStartOnWifi == true) && Build.VERSION.SDK_INT >= 23) {
             if (!android.provider.Settings.canDrawOverlays(requireContext())) {
                 MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
                     .setTitle(R.string.overlay_permission_title)
@@ -197,8 +219,11 @@ class AutoStartFragment : Fragment() {
     private fun checkChanges() {
         hasChanges = pendingAutoStartOnBoot != settings.autoStartOnBoot ||
                 pendingAutoStartOnScreenOn != settings.autoStartOnScreenOn ||
+                pendingListenForUsbDevices != settings.listenForUsbDevices ||
                 pendingAutoStartOnUsb != settings.autoStartOnUsb ||
                 pendingAutoStartBtMac != settings.autoStartBluetoothDeviceMac ||
+                pendingAutoStartOnWifi != settings.autoStartOnWifi ||
+                pendingAutoStartWifiSsid != settings.autoStartWifiSsid ||
                 pendingReopenOnReconnection != settings.reopenOnReconnection
 
         updateSaveButtonState()
@@ -240,6 +265,18 @@ class AutoStartFragment : Fragment() {
         ))
 
         items.add(SettingItem.ToggleSettingEntry(
+            stableId = "listenForUsbDevices",
+            nameResId = R.string.listen_for_usb_devices_label,
+            descriptionResId = R.string.listen_for_usb_devices_description,
+            isChecked = pendingListenForUsbDevices!!,
+            onCheckedChanged = { isChecked ->
+                pendingListenForUsbDevices = isChecked
+                checkChanges()
+                updateSettingsList()
+            }
+        ))
+
+        items.add(SettingItem.ToggleSettingEntry(
             stableId = "autoStartUsb",
             nameResId = R.string.auto_start_usb_label,
             descriptionResId = R.string.auto_start_usb_description,
@@ -273,6 +310,36 @@ class AutoStartFragment : Fragment() {
             }
         ))
 
+        if (Build.VERSION.SDK_INT <= 32) {
+            items.add(SettingItem.InfoBanner(
+                stableId = "autoStartWifiWarning",
+                textResId = R.string.auto_start_wifi_warning
+            ))
+
+            items.add(SettingItem.ToggleSettingEntry(
+                stableId = "autoStartWifi",
+                nameResId = R.string.auto_start_wifi_label,
+                descriptionResId = R.string.auto_start_wifi_description,
+                isChecked = pendingAutoStartOnWifi!!,
+                onCheckedChanged = { isChecked ->
+                    pendingAutoStartOnWifi = isChecked
+                    checkChanges()
+                    updateSettingsList()
+                }
+            ))
+
+            if (pendingAutoStartOnWifi == true) {
+                items.add(SettingItem.SettingEntry(
+                    stableId = "autoStartWifiSsid",
+                    nameResId = R.string.auto_start_wifi_ssid_label,
+                    value = if (pendingAutoStartWifiSsid.isNullOrEmpty()) getString(R.string.wifi_ssid_not_set) else pendingAutoStartWifiSsid!!,
+                    onClick = {
+                        showSsidInputDialog()
+                    }
+                ))
+            }
+        }
+
         settingsAdapter.submitList(items) {
             scrollState?.let { recyclerView.layoutManager?.onRestoreInstanceState(it) }
         }
@@ -298,7 +365,6 @@ class AutoStartFragment : Fragment() {
             if (settings.autoStartOnUsb) {
                 settings.autoStartOnUsb = false
                 pendingAutoStartOnUsb = false
-                Settings.setUsbAttachedActivityEnabled(requireContext(), false)
                 disabled = true
             }
             if (!settings.autoStartBluetoothDeviceMac.isNullOrEmpty()) {
@@ -306,6 +372,15 @@ class AutoStartFragment : Fragment() {
                 settings.autoStartBluetoothDeviceName = ""
                 pendingAutoStartBtMac = ""
                 pendingAutoStartBtName = ""
+                disabled = true
+            }
+            if (settings.autoStartOnWifi) {
+                settings.autoStartOnWifi = false
+                settings.autoStartWifiSsid = ""
+                Settings.syncAutoStartOnWifiToDeviceStorage(requireContext(), false)
+                Settings.syncAutoStartWifiSsidToDeviceStorage(requireContext(), "")
+                pendingAutoStartOnWifi = false
+                pendingAutoStartWifiSsid = ""
                 disabled = true
             }
             if (disabled) {
@@ -374,6 +449,24 @@ class AutoStartFragment : Fragment() {
                     android.net.Uri.parse("package:${requireContext().packageName}")
                 )
                 startActivity(intent)
+            }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
+    }
+
+    private fun showSsidInputDialog() {
+        val input = EditText(requireContext())
+        input.inputType = InputType.TYPE_CLASS_TEXT
+        input.setText(pendingAutoStartWifiSsid)
+        input.setSelection(input.text.length)
+
+        MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+            .setTitle(R.string.enter_wifi_ssid)
+            .setView(input)
+            .setPositiveButton(R.string.save) { _, _ ->
+                pendingAutoStartWifiSsid = input.text.toString()
+                checkChanges()
+                updateSettingsList()
             }
             .setNegativeButton(R.string.cancel, null)
             .show()

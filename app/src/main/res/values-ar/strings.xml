@@ -132,6 +132,12 @@
     <string name="key_music">الموسيقى</string>
     <string name="key_nav">الملاحة</string>
     <string name="key_night">تبديل الوضع الليلي</string>
+    <string name="key_enter">إدخال (Enter)</string>
+    <string name="key_home">القائمة الرئيسية (Home)</string>
+    <string name="key_app_switch">التطبيقات الأخيرة</string>
+    <string name="key_button_a">الزر A (اختيار)</string>
+    <string name="key_button_b">الزر B (رجوع)</string>
+
 
     <!-- Language Settings -->
     <string name="app_language">لغة التطبيق</string>
@@ -146,6 +152,16 @@
     <string name="usb_auto_connect_description">الاتصال تلقائيا بجهاز USB معروف عند فتح التطبيق.</string>
     <string name="auto_start_bt_label">التشغيل التلقائي عبر البلوتوث</string>
     <string name="auto_start_bt_description">فتح Headunit Revived تلقائيا عند اتصال جهاز بلوتوث محدد.</string>
+    <string name="auto_start_wifi_label">تشغيل تلقائي عبر الواي فاي</string>
+    <string name="auto_start_wifi_description">فتح Headunit Revived تلقائياً عند الاتصال بشبكة واي فاي محددة (SSID).</string>
+    <string name="auto_start_wifi_ssid_label">اسم شبكة الواي فاي (SSID)</string>
+    <string name="auto_start_wifi_ssid_description">الاتصال فقط عند الارتباط بشبكة الواي فاي هذه</string>
+    <string name="auto_start_wifi_warning">ميزة قديمة: قد لا تعمل بشكل موثوق على Android 8+ بسبب قيود الخلفية. تأكد من استثناء التطبيق من تحسين البطارية.</string>
+    <string name="enter_wifi_ssid">أدخل اسم شبكة الواي فاي (SSID)</string>
+    <string name="wifi_ssid_not_set">غير محدد</string>
+
+    <string name="listen_for_usb_devices_label">الاستماع لأجهزة USB</string>
+    <string name="listen_for_usb_devices_description">إظهار مطالبة نظام Android عند توصيل جهاز USB.</string>
     <string name="auto_start_usb_label">تشغيل تلقائي عند توصيل USB</string>
     <string name="auto_start_usb_description">فتح التطبيق تلقائيًا ومحاولة الاتصال عند توصيل جهاز USB</string>
     <string name="auto_start_settings">إعدادات التشغيل التلقائي</string>
@@ -215,6 +231,8 @@
 <string name="category_audio">الصوت</string>
     <string name="enable_audio_sink">مخرج الصوت</string>
     <string name="enable_audio_sink_description">إذا كان معطلا، لن تستقبل وحدة الرأس الصوت. سيشغل الصوت من الهاتف.</string>
+    <string name="separate_audio_streams">فصل تيارات الصوت</string>
+    <string name="separate_audio_streams_description">فصل قنوات الصوت للموسيقى والمكالمات والإشعارات بدلاً من تيار وسائط واحد (قد لا يعمل بشكل صحيح على بعض الأجهزة).</string>
     <string name="use_aac_audio">استخدام ترميز AAC للصوت</string>
     <string name="use_aac_audio_description">استخدام ترميز AAC للصوت لتوفير عرض النطاق الترددي (تجريبي).</string>
     <string name="audio_volume_offset">تعويض مستوى الصوت</string>
@@ -279,6 +297,7 @@
     <string name="share">مشاركة</string>
     <string name="close">إغلاق</string>
     <string name="failed_export_logs">فشل تصدير السجلات</string>
+    <string name="failed_export_in_silent_logs">تعذر تصدير السجلات: تم تحديد مستوى التسجيل الصامت</string>
     <string name="switching_to_android_auto">جار التبديل إلى Android Auto…</string>
     <string name="switch_failed">فشل التبديل</string>
     <string name="requesting_usb_permission">طلب إذن USB…</string>
@@ -335,6 +354,7 @@
     <string name="log_level_description">اختر مستوى تفصيل مخرجات السجل للتصحيح.</string>
     <string name="start_log_capture">بدء التقاط السجل</string>
     <string name="start_log_capture_description">يبدأ تسجيل سجلات النظام في ملف.</string>
+    <string name="start_log_capture_in_silent">تعذر بدء التسجيل: تم تحديد مستوى التسجيل الصامت</string>
     <string name="stop_log_capture">إيقاف التقاط السجل</string>
     <string name="stop_log_capture_description">يوقف التسجيل ويحفظ ملف السجل.</string>
 
@@ -393,6 +413,9 @@
     <!-- Vehicle Info Settings -->
     <string name="vehicle_info_settings">معلومات المركبة</string>
     <string name="vehicle_info_settings_description">خصص كيف تظهر مركبتك على هاتفك</string>
+    <string name="ui_scale">مقياس واجهة المستخدم</string>
+    <string name="ui_scale_home">الشاشة الرئيسية</string>
+    <string name="ui_scale_settings">شاشة الإعدادات</string>
     <string name="category_vehicle">المركبة</string>
     <string name="category_head_unit">وحدة الوسائط</string>
     <string name="vehicle_display_name_label">اسم العرض</string>

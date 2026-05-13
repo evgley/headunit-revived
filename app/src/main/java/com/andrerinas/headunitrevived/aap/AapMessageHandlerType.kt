@@ -20,7 +20,6 @@ internal class AapMessageHandlerType(
     private val aapControl: AapControl = AapControlGateway(transport, recorder, aapAudio, settings, context)
     private val mediaPlayback = AapMediaPlayback(onAaMediaMetadata, onAaPlaybackStatus)
     private val aapNavigation = AapNavigation(context, settings)
-    private var videoPacketCount = 0
 
     @Throws(AapMessageHandler.HandleException::class)
     override fun handle(message: AapMessage) {
@@ -32,7 +31,6 @@ internal class AapMessageHandlerType(
         // High priority for the smoothest possible display.
         if (message.channel == Channel.ID_VID) {
              if (aapVideo.process(message)) {
-                 videoPacketCount++
                  // Send ACK AFTER processing
                  if (msgType == 0 || msgType == 1) {
                      transport.sendMediaAck(message.channel)

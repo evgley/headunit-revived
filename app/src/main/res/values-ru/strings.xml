@@ -132,6 +132,12 @@
     <string name="key_music">Музыка</string>
     <string name="key_nav">Навигация</string>
     <string name="key_night">Переключить ночной режим</string>
+    <string name="key_enter">Ввод (Enter)</string>
+    <string name="key_home">Домой (Home)</string>
+    <string name="key_app_switch">Недавние приложения</string>
+    <string name="key_button_a">Кнопка A (Выбрать)</string>
+    <string name="key_button_b">Кнопка B (Назад)</string>
+
 
     <!-- Language Settings -->
     <string name="app_language">Язык приложения</string>
@@ -146,6 +152,16 @@
     <string name="usb_auto_connect_description">Автоматически подключаться к известному USB-устройству при запуске приложения.</string>
     <string name="auto_start_bt_label">Автозапуск при Bluetooth</string>
     <string name="auto_start_bt_description">Автоматически открывать Headunit Revived при подключении определенного Bluetooth-устройства.</string>
+    <string name="auto_start_wifi_label">Автозапуск при WiFi</string>
+    <string name="auto_start_wifi_description">Автоматически открывать Headunit Revived при подключении к определенной WiFi-сети (SSID).</string>
+    <string name="auto_start_wifi_ssid_label">SSID WiFi</string>
+    <string name="auto_start_wifi_ssid_description">Подключаться только при сопряжении with этой WiFi-сетью (SSID)</string>
+    <string name="auto_start_wifi_warning">Устаревшая функция: может работать нестабильно на Android 8+ из-за фоновых ограничений. Убедитесь, что приложение исключено из оптимизации батареи.</string>
+    <string name="enter_wifi_ssid">Введите SSID WiFi</string>
+    <string name="wifi_ssid_not_set">Не задано</string>
+
+    <string name="listen_for_usb_devices_label">Реагировать на USB-устройства</string>
+    <string name="listen_for_usb_devices_description">Показывать системное окно Android при подключении USB-устройства.</string>
     <string name="auto_start_usb_label">Автозапуск при USB</string>
     <string name="auto_start_usb_description">Автоматически открывать приложение и пытаться подключиться при подключении USB-устройства</string>
     <string name="auto_start_settings">Настройки автозапуска</string>
@@ -215,6 +231,8 @@
 <string name="category_audio">Аудио</string>
     <string name="enable_audio_sink">Включить вывод звука</string>
     <string name="enable_audio_sink_description">Если выключить этот параметр, то ГУ не будет выводить звук. Звук будет воспроизводиться на телефоне.</string>
+    <string name="separate_audio_streams">Раздельные аудиопотоки</string>
+    <string name="separate_audio_streams_description">Разделять каналы звука для музыки, звонков и уведомлений вместо единого мультимедийного потока (может некорректно работать на некоторых устройствах).</string>
     <string name="use_aac_audio">Использовать AAC</string>
     <string name="use_aac_audio_description">Использовать кодек AAC для аудио для экономии трафика (Экспериментально).</string>
     <string name="audio_volume_offset">Смещение громкости</string>
@@ -279,6 +297,7 @@
     <string name="share">Поделиться</string>
     <string name="close">Закрыть</string>
     <string name="failed_export_logs">Ошибка экспорта логов</string>
+    <string name="failed_export_in_silent_logs">Невозможно экспортировать логи: выбран Silent уровень логирования</string>
     <string name="switching_to_android_auto">Переключение в Android Auto…</string>
     <string name="switch_failed">Ошибка переключения</string>
     <string name="requesting_usb_permission">Запрос разрешения USB…</string>
@@ -323,18 +342,19 @@
     <string name="setup_apply">Применить</string>
     <string name="setup_widescreen_detected">Обнаружен широкоформатный дисплей.</string>
     <string name="auto_optimize">Автоматическая оптимизация</string>
-    <string name="auto_optimize_desc">Запустить проверку системы для подбора лучших настроек für вашего устройства.</string>
+    <string name="auto_optimize_desc">Запустить проверку системы для подбора лучших настроек для вашего устройства.</string>
     <string name="fullscreen_none">Обычный (Все панели видны)</string>
     <string name="fullscreen_immersive">Погружение (Все панели скрыты)</string>
     <string name="fullscreen_immersive_avoid_notch">Иммерсивный (Избегать выреза)</string>
     <string name="fullscreen_immersive_avoid_notch_desc">Скрывает все полосы и добавляет отступы, чтобы предотвратить перекрытие проекции вырезом или челкой.</string>
     <string name="fullscreen_status_only">Скрыть только строку состояния</string>
     <string name="log_level">Уровень логирования</string>
-    <string name="log_level_description">Выберите уровень детализации логов für отладки.</string>
+    <string name="log_level_description">Фильтр уровня логирования при экспорте.</string>
     <string name="start_log_capture">Начать запись лога</string>
     <string name="start_log_capture_description">Начинает запись системных логов в файл.</string>
+    <string name="start_log_capture_in_silent">Невозможно начать запись: выбран Silent уровень логирования</string>
     <string name="stop_log_capture">Остановить запись лога</string>
-    <string name="stop_log_capture_description">Останавливает запись и сохраняет файл лога.</string>
+    <string name="stop_log_capture_description">Идет запись… нажмите, чтобы остановить.</string>
 
     <!-- Navigation notifications -->
     <string name="show_navigation_notifications">Уведомления навигации</string>
@@ -394,6 +414,9 @@
     <!-- Vehicle Info Settings -->
     <string name="vehicle_info_settings">Информация о транспортном средстве</string>
     <string name="vehicle_info_settings_description">Настройте, как ваш автомобиль отображается на телефоне</string>
+    <string name="ui_scale">Масштаб интерфейса</string>
+    <string name="ui_scale_home">Главный экран</string>
+    <string name="ui_scale_settings">Экран настроек</string>
     <string name="category_vehicle">Транспортное средство</string>
     <string name="category_head_unit">Головное устройство</string>
     <string name="vehicle_display_name_label">Отображаемое имя</string>

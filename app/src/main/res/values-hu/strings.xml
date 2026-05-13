@@ -131,6 +131,12 @@
     <string name="key_music">Zene</string>
     <string name="key_nav">Navigáció</string>
     <string name="key_night">Éjszakai mód kapcsolása</string>
+    <string name="key_enter">Enter</string>
+    <string name="key_home">Kezdőlap</string>
+    <string name="key_app_switch">Legutóbbi alkalmazások</string>
+    <string name="key_button_a">A gomb (Kiválasztás)</string>
+    <string name="key_button_b">B gomb (Vissza)</string>
+
 
     <!-- Language Settings -->
     <string name="app_language">Alkalmazás nyelve</string>
@@ -145,6 +151,16 @@
     <string name="usb_auto_connect_description">Az alkalmazás megnyitásakor automatikus csatlakozás egy ismert USB-eszközhöz.</string>
     <string name="auto_start_bt_label">Bluetooth automatikus indítás</string>
     <string name="auto_start_bt_description">A Headunit Revived automatikus megnyitása, amikor egy adott Bluetooth-eszköz csatlakozik.</string>
+    <string name="auto_start_wifi_label">WiFi automatikus indítás</string>
+    <string name="auto_start_wifi_description">A Headunit Revived automatikus megnyitása egy adott WiFi SSID-hez való csatlakozáskor.</string>
+    <string name="auto_start_wifi_ssid_label">WiFi SSID</string>
+    <string name="auto_start_wifi_ssid_description">Csak akkor csatlakozzon, ha ehhez a WiFi SSID-hez kapcsolódik</string>
+    <string name="auto_start_wifi_warning">Régi funkció: a háttérbeli korlátozások miatt Android 8+ rendszeren nem biztos, hogy megbízhatóan működik. Győződjön meg róla, hogy az alkalmazás ki van véve az akkumulátor-optimalizálás alól.</string>
+    <string name="enter_wifi_ssid">Adja meg a WiFi SSID-t</string>
+    <string name="wifi_ssid_not_set">Nen beállítva</string>
+
+    <string name="listen_for_usb_devices_label">USB-eszközök figyelése</string>
+    <string name="listen_for_usb_devices_description">Android rendszerüzenet megjelenítése, ha USB-eszköz van csatlakoztatva.</string>
     <string name="auto_start_usb_label">Automatikus indítás USB-n</string>
     <string name="auto_start_usb_description">Az alkalmazás automatikus megnyitása és csatlakozási kísérlet USB-eszköz csatlakoztatásakor</string>
     <string name="auto_start_settings">Automatikus indítás beállításai</string>
@@ -214,6 +230,8 @@
 <string name="category_audio">Hang</string>
     <string name="enable_audio_sink">Hang fogadása</string>
     <string name="enable_audio_sink_description">Ha nincs engedélyezve, a fejegység nem kap hangot. A hang a telefonon fog szólni.</string>
+    <string name="separate_audio_streams">Különálló hangfolyamok</string>
+    <string name="separate_audio_streams_description">Különálló hangcsatornák a zene, a hívások és az értesítések számára az egységes multimédia folyam helyett (előfordulhat, hogy néhány eszközön nem működik megfelelően).</string>
     <string name="use_aac_audio">AAC hang használata</string>
     <string name="use_aac_audio_description">AAC kódek használata a sávszélesség csökkentéséért (Kísérleti).</string>
     <string name="audio_volume_offset">Hangerő-eltolás</string>
@@ -278,6 +296,7 @@
     <string name="share">Megosztás</string>
     <string name="close">Bezárás</string>
     <string name="failed_export_logs">Naplók exportálása sikertelen</string>
+    <string name="failed_export_in_silent_logs">A naplók exportálása nem sikerült: Csendes naplózási szint kiválasztva</string>
     <string name="switching_to_android_auto">Váltás Android Auto-ra…</string>
     <string name="switch_failed">Sikertelen váltás</string>
     <string name="requesting_usb_permission">USB-hozzáférés kérése…</string>
@@ -334,6 +353,7 @@
     <string name="log_level_description">A hibaelhárításhoz szükséges részletesség beállítása.</string>
     <string name="start_log_capture">Naplózás indítása</string>
     <string name="start_log_capture_description">Rögzíti a rendszernaplókat egy helyi fájlba a hibaelhárításhoz.</string>
+    <string name="start_log_capture_in_silent">Nem lehet elindítani a rögzítést: Csendes naplózási szint kiválasztva</string>
     <string name="stop_log_capture">Naplózás leállítása</string>
     <string name="stop_log_capture_description">Leállítja a naplózást és menti a fájlt.</string>
 
@@ -392,6 +412,9 @@
     <!-- Vehicle Info Settings -->
     <string name="vehicle_info_settings">Járműinformáció</string>
     <string name="vehicle_info_settings_description">Testreszabhatja, hogyan jelenik meg járműve a telefonján</string>
+    <string name="ui_scale">UI méretezés</string>
+    <string name="ui_scale_home">Kezdőképernyő</string>
+    <string name="ui_scale_settings">Beállítások képernyő</string>
     <string name="category_vehicle">Jármű</string>
     <string name="category_head_unit">Fejegység</string>
     <string name="vehicle_display_name_label">Megjelenítési név</string>

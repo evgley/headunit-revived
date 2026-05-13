@@ -131,6 +131,12 @@
     <string name="key_music">音樂</string>
     <string name="key_nav">導航</string>
     <string name="key_night">切換夜間模式</string>
+    <string name="key_enter">Enter</string>
+    <string name="key_home">首頁</string>
+    <string name="key_app_switch">最近使用的應用程式</string>
+    <string name="key_button_a">A 按鈕 (選擇)</string>
+    <string name="key_button_b">B 按鈕 (返回)</string>
+
 
     <!-- Language Settings -->
     <string name="app_language">應用程式語言</string>
@@ -145,6 +151,16 @@
     <string name="usb_auto_connect_description">應用程式開啟時自動連接到已知的 USB 裝置。</string>
     <string name="auto_start_bt_label">藍牙自動啟動</string>
     <string name="auto_start_bt_description">當特定藍牙裝置連接時，自動開啟 Headunit Revived。</string>
+    <string name="auto_start_wifi_label">Wi-Fi 自動啟動</string>
+    <string name="auto_start_wifi_description">當連接到特定 Wi-Fi SSID 時，自動開啟 Headunit Revived。</string>
+    <string name="auto_start_wifi_ssid_label">Wi-Fi SSID</string>
+    <string name="auto_start_wifi_ssid_description">僅在連線到此 Wi-Fi SSID 時進行連線</string>
+    <string name="auto_start_wifi_warning">舊版功能：由於背景限制，在 Android 8+ 上可能無法可靠運行。請確保已將應用程式排除在電池最佳化之外。</string>
+    <string name="enter_wifi_ssid">輸入 Wi-Fi SSID</string>
+    <string name="wifi_ssid_not_set">未設定</string>
+
+    <string name="listen_for_usb_devices_label">監聽 USB 裝置</string>
+    <string name="listen_for_usb_devices_description">當插入 USB 裝置時顯示 Android 系統提示。</string>
     <string name="auto_start_usb_label">USB 自動啟動</string>
     <string name="auto_start_usb_description">當連接 USB 裝置時，自動開啟應用程式並嘗試連線</string>
     <string name="auto_start_settings">自動啟動設定</string>
@@ -214,6 +230,8 @@
 <string name="category_audio">音訊</string>
     <string name="enable_audio_sink">啟用音訊接收器</string>
     <string name="enable_audio_sink_description">如果已停用，主機將不會作為音訊接收器。 音訊將從手機播放。</string>
+    <string name="separate_audio_streams">分離音訊串流</string>
+    <string name="separate_audio_streams_description">為音樂、通話和通知分離音訊頻道，而不是單一的多媒體串流（可能在某些設備上無法正常運作）。</string>
     <string name="use_aac_audio">使用 AAC 音訊</string>
     <string name="use_aac_audio_description">使用 AAC 編碼器進行音訊處理以節省頻寬 (實驗性)。</string>
     <string name="audio_volume_offset">音量偏移</string>
@@ -278,6 +296,7 @@
     <string name="share">分享</string>
     <string name="close">關閉</string>
     <string name="failed_export_logs">匯出日誌失敗</string>
+    <string name="failed_export_in_silent_logs">無法導出日誌：已選擇靜音日誌級別</string>
     <string name="switching_to_android_auto">切換至 Android Auto…</string>
     <string name="switch_failed">切換失敗</string>
     <string name="requesting_usb_permission">請求 USB 權限…</string>
@@ -332,6 +351,7 @@
     <string name="log_level_description">選擇日誌輸出的詳細程度以進行偵錯。</string>
     <string name="start_log_capture">開始擷取日誌</string>
     <string name="start_log_capture_description">開始將系統日誌記錄到檔案中。</string>
+    <string name="start_log_capture_in_silent">無法開始記錄：已選擇靜音日誌級別</string>
     <string name="stop_log_capture">停止擷取日誌</string>
     <string name="stop_log_capture_description">停止記錄並儲存日誌檔案。</string>
 
@@ -390,6 +410,9 @@
     <!-- Vehicle Info Settings -->
     <string name="vehicle_info_settings">車輛資訊</string>
     <string name="vehicle_info_settings_description">自訂您的車輛在手機上的顯示方式</string>
+    <string name="ui_scale">UI 縮放</string>
+    <string name="ui_scale_home">主畫面</string>
+    <string name="ui_scale_settings">設定畫面</string>
     <string name="category_vehicle">車輛</string>
     <string name="category_head_unit">車機</string>
     <string name="vehicle_display_name_label">顯示名稱</string>

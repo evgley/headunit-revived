@@ -120,6 +120,7 @@
     <string name="log_level_description">エクスポート時にログレベルをフィルタリングする</string>
     <string name="start_log_capture">ログ取得を開始する</string>
     <string name="start_log_capture_description">デバッグのためにログの記録を開始します</string>
+    <string name="start_log_capture_in_silent">記録を開始できません: サイレントログレベルが選択されています</string>
     <string name="stop_log_capture">ログ取得を停止</string>
     <string name="stop_log_capture_description">録画中です...タップして停止</string>
     <string name="export_logs">ログをエクスポート</string>
@@ -147,6 +148,12 @@
     <string name="key_music">音楽</string>
     <string name="key_nav">ナビゲーション</string>
     <string name="key_night">ナイトモードの切り替え</string>
+    <string name="key_enter">エンター</string>
+    <string name="key_home">ホーム</string>
+    <string name="key_app_switch">履歴</string>
+    <string name="key_button_a">Aボタン (選択)</string>
+    <string name="key_button_b">Bボタン (戻る)</string>
+
 
     <!-- Language Settings -->
     <string name="app_language">アプリ言語</string>
@@ -161,6 +168,16 @@
     <string name="usb_auto_connect_description">アプリケーションが開始された時に既知のUSBデバイスに接続されると自動的に接続します。</string>
     <string name="auto_start_bt_label">Bluetooth自動開始</string>
     <string name="auto_start_bt_description">特定のBluetoothデバイスが接続されたときに、Headunit Revivedを自動的に起動します。</string>
+    <string name="auto_start_wifi_label">Wi-Fi自動起動</string>
+    <string name="auto_start_wifi_description">特定のWi-Fi SSIDに接続されたときにHeadunit Revivedを自動的に起動します。</string>
+    <string name="auto_start_wifi_ssid_label">Wi-Fi SSID</string>
+    <string name="auto_start_wifi_ssid_description">このWi-Fi SSIDに接続されている場合のみ接続を試みます</string>
+    <string name="auto_start_wifi_warning">レガシー機能：バックグラウンド制限のため、Android 8以降では動作が不安定になる場合があります。アプリをバッテリー最適化から除外してください。</string>
+    <string name="enter_wifi_ssid">Wi-Fi SSIDを入力してください</string>
+    <string name="wifi_ssid_not_set">未設定</string>
+
+    <string name="listen_for_usb_devices_label">USBデバイスへの反応</string>
+    <string name="listen_for_usb_devices_description">USBデバイスが接続されたときにAndroidのシステムプロンプトを表示します。</string>
     <string name="auto_start_usb_label">USBから自動起動</string>
     <string name="auto_start_usb_description">USBデバイスが接続されたら、アプリを自動的に起動して接続を試みます</string>
     <string name="auto_start_settings">自動起動設定</string>
@@ -230,6 +247,8 @@
     <string name="category_audio">オーディオ</string>
     <string name="enable_audio_sink">オーディオシンク</string>
     <string name="enable_audio_sink_description">無効にすると、ヘッドユニットは音声を受信しなくなります。音声はスマートフォンから再生されます。</string>
+    <string name="separate_audio_streams">音声ストリームの分離</string>
+    <string name="separate_audio_streams_description">単一のマルチメディアストリームの代わりに、音楽、通話、通知の音声チャネルを分離します（一部のデバイスでは正しく機能しない場合があります）。</string>
     <string name="use_aac_audio">AAC Audioを利用する</string>
     <string name="use_aac_audio_description">帯域幅を節約するために、音声にAACコーデックを使用します（実験的機能）。</string>
     <string name="audio_volume_offset">オーディオボリュームオフセット</string>
@@ -294,6 +313,7 @@
     <string name="share">シェア</string>
     <string name="close">閉じる</string>
     <string name="failed_export_logs">ログのエクスポートに失敗しました</string>
+    <string name="failed_export_in_silent_logs">ログをエクスポートできません: サイレントログレベルが選択されています</string>
     <string name="switching_to_android_auto">Android Autoに切り替え中…</string>
     <string name="switch_failed">切り替えに失敗しました</string>
     <string name="requesting_usb_permission">USBアクセス許可を要求しています…</string>
@@ -399,6 +419,9 @@
     <!-- Vehicle Info Settings -->
     <string name="vehicle_info_settings">車両情報</string>
     <string name="vehicle_info_settings_description">お使いのスマートフォン上で、車両情報の表示方法をカスタマイズできます。</string>
+    <string name="ui_scale">UI スケール</string>
+    <string name="ui_scale_home">ホーム画面</string>
+    <string name="ui_scale_settings">設定画面</string>
     <string name="category_vehicle">車両</string>
     <string name="category_head_unit">車載機</string>
     <string name="vehicle_display_name_label">表示ネーム</string>

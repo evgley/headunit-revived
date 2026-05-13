@@ -120,6 +120,7 @@
     <string name="log_level_description">Filter log level when exporting</string>
     <string name="start_log_capture">Start Capturing Logs</string>
     <string name="start_log_capture_description">Begin recording full logs for debugging</string>
+    <string name="start_log_capture_in_silent">Unable to start recording: Silent logging level selected</string>
     <string name="stop_log_capture">Stop Capturing Logs</string>
     <string name="stop_log_capture_description">Recording in progress… tap to stop</string>
     <string name="export_logs">Export Logs</string>
@@ -147,6 +148,11 @@
     <string name="key_music">Music</string>
     <string name="key_nav">Navigation</string>
     <string name="key_night">Toggle Night Mode</string>
+    <string name="key_enter">Enter</string>
+    <string name="key_home">Home</string>
+    <string name="key_app_switch">App Switch / Recents</string>
+    <string name="key_button_a">Button A (Select)</string>
+    <string name="key_button_b">Button B (Back)</string>
 
     <!-- Language Settings -->
     <string name="app_language">App Language</string>
@@ -161,6 +167,8 @@
     <string name="usb_auto_connect_description">Automatically connect to a known USB device when the application is opened.</string>
     <string name="auto_start_bt_label">Auto-start on Bluetooth</string>
     <string name="auto_start_bt_description">Automatically open Headunit Revived when a specific Bluetooth device connects.</string>
+    <string name="listen_for_usb_devices_label">Listen for USB Devices</string>
+    <string name="listen_for_usb_devices_description">Show the Android system prompt when a USB device is plugged in.</string>
     <string name="auto_start_usb_label">Auto-start on USB</string>
     <string name="auto_start_usb_description">Automatically open the app and attempt connection when a USB device is plugged in</string>
     <string name="auto_start_settings">Auto-start settings</string>
@@ -172,6 +180,13 @@
     <string name="auto_start_screen_on_description">Open the app every time the screen turns on. Ideal for head units that never fully shut down or use fast boot modes where the other auto-start options don\'t work. Not recommended for phones or tablets.</string>
     <string name="select_bt_device">Select Bluetooth Device</string>
     <string name="bt_device_not_set">Not set</string>
+    <string name="auto_start_wifi_label">Auto-start on WiFi</string>
+    <string name="auto_start_wifi_description">Automatically open Headunit Revived when connected to a specific WiFi SSID.</string>
+    <string name="auto_start_wifi_ssid_label">WiFi SSID</string>
+    <string name="auto_start_wifi_ssid_description">Connect only when connected to this WiFi SSID</string>
+    <string name="auto_start_wifi_warning">Legacy Feature: This may not work reliably on Android 8+ due to background restrictions. Ensure the app is excluded from battery optimization.</string>
+    <string name="enter_wifi_ssid">Enter WiFi SSID</string>
+    <string name="wifi_ssid_not_set">Not set</string>
     <string name="bt_permission_denied_title">Bluetooth Permission Required</string>
     <string name="bt_permission_denied_message">Bluetooth permission is required to select paired devices. Please grant it in app settings.</string>
     <string name="overlay_permission_title">Background Start Permission</string>
@@ -230,12 +245,16 @@
     <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Audio Sink</string>
     <string name="enable_audio_sink_description">If disabled, the headunit will not receive audio. Sound will play from the phone.</string>
+    <string name="separate_audio_streams">Separate Audio Streams</string>
+    <string name="separate_audio_streams_description">Separate audio channels for music, calls, and notifications instead of a single multimedia stream (may not work correctly on some devices).</string>
     <string name="use_aac_audio">Use AAC Audio</string>
     <string name="use_aac_audio_description">Use AAC codec for audio to save bandwidth (Experimental).</string>
     <string name="audio_volume_offset">Audio Volume Offset</string>
     <string name="media_volume_offset">Media Volume Offset</string>
     <string name="assistant_volume_offset">Assistant Volume Offset</string>
     <string name="navigation_volume_offset">Navigation Volume Offset</string>
+    <string name="microphone_settings">Microphone Settings</string>
+    <string name="microphone_settings_description">Configure microphone input and audio processing.</string>
     <string name="mic_input_source">Microphone Input Source</string>
     <string name="mic_input_source_description">Choose the audio source for the microphone.</string>
     <string-array name="mic_input_sources">
@@ -245,6 +264,12 @@
         <item>Voice Communication (Echo + noise cancelled)</item>
         <item>Bluetooth Headset (SCO)</item>
     </string-array>
+    <string name="mic_echo_canceler">Echo cancellation (AEC)</string>
+    <string name="mic_echo_canceler_description">Attempts to remove echo from the microphone. Disable if you experience silence or distortion.</string>
+    <string name="mic_noise_suppressor">Noise suppression (NS)</string>
+    <string name="mic_noise_suppressor_description">Attempts to reduce background noise. Disable if your voice sounds muffled.</string>
+    <string name="mic_auto_gain_control">Automatic gain control (AGC)</string>
+    <string name="mic_auto_gain_control_description">Automatically adjusts microphone volume. Disable if the volume is unstable.</string>
 
     <!-- Info Settings -->
     <string name="category_info">Info</string>
@@ -294,6 +319,7 @@
     <string name="share">Share</string>
     <string name="close">Close</string>
     <string name="failed_export_logs">Failed to export logs</string>
+    <string name="failed_export_in_silent_logs">Unable to export logs: Silent logging level selected</string>
     <string name="switching_to_android_auto">Switching to Android Auto…</string>
     <string name="switch_failed">Switch failed</string>
     <string name="requesting_usb_permission">Requesting USB Permission…</string>
@@ -397,10 +423,14 @@
 
     <string name="wifi_disabled_info">Info: Wi-Fi is disabled.</string>
     <string name="bt_not_enabled">Bluetooth is disabled</string>
+    <string name="bt_permission_denied">Bluetooth permission denied. Cannot scan for devices.</string>
 
     <!-- Vehicle Info Settings -->
     <string name="vehicle_info_settings">Vehicle information</string>
     <string name="vehicle_info_settings_description">Customize how your vehicle appears on your phone</string>
+    <string name="ui_scale">UI Scale</string>
+    <string name="ui_scale_home">Home screen</string>
+    <string name="ui_scale_settings">Settings screen</string>
     <string name="category_vehicle">Vehicle</string>
     <string name="category_head_unit">Head Unit</string>
     <string name="vehicle_display_name_label">Display name</string>
@@ -473,4 +503,6 @@
     <string name="media_action_pause">Pause</string>
     <string name="media_action_next">Next</string>
     <string name="error_usb_permission_failed">System error: Failed to request USB permission dialog.</string>
+    <string name="wifi_autostart_title">WiFi Auto-Start</string>
+    <string name="wifi_autostart_content">Connected to %s. Tap to start Android Auto.</string>
 </resources>

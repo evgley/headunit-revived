@@ -56,6 +56,11 @@ internal class AapControlMedia(
                 val micRequest = message.parse(Media.MicrophoneRequest.newBuilder()).build()
                 return micRequest(micRequest)
             }
+            Media.MsgType.MEDIA_MESSAGE_UPDATE_UI_CONFIG_REPLY_VALUE -> {
+                AppLog.i("RX: Update UI Config Reply received. Acknowledging UI Config change.")
+                aapTransport.onUpdateUiConfigReplyReceived?.invoke()
+                return 0
+            }
             Media.MsgType.MEDIA_MESSAGE_ACK_VALUE -> return 0
             else -> AppLog.e("Unsupported Media message type: ${message.type}")
         }
@@ -311,9 +316,13 @@ internal class AapControlService(
 
         // Best-effort: request system audio focus to duck other apps on the headunit.
         // The result is intentionally ignored for the protocol response above.
-        aapAudio.requestFocusChange(AudioConfigs.stream(channel), notification.request.number, AudioManager.OnAudioFocusChangeListener {
-            AppLog.i("System audio focus changed: $it ${systemFocusName[it]}")
-        })
+        if (settings.enableAudioSink) {
+            aapAudio.requestFocusChange(AudioConfigs.stream(channel, settings.separateAudioStreams), notification.request.number, AudioManager.OnAudioFocusChangeListener {
+                AppLog.i("System audio focus changed: $it ${systemFocusName[it]}")
+            })
+        } else {
+            AppLog.i("Audio Sink disabled - skipping system audio focus request for channel ${Channel.name(channel)}")
+        }
 
         return 0
     }

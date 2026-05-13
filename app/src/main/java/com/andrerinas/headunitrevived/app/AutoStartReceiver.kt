@@ -8,6 +8,8 @@ import com.andrerinas.headunitrevived.aap.AapService
 import com.andrerinas.headunitrevived.main.MainActivity
 import com.andrerinas.headunitrevived.utils.AppLog
 import com.andrerinas.headunitrevived.utils.Settings
+import android.os.UserManager
+import android.os.Build
 
 class AutoStartReceiver : BroadcastReceiver() {
 
@@ -17,6 +19,16 @@ class AutoStartReceiver : BroadcastReceiver() {
         val targetMac = Settings.getAutoStartBtMac(context)
 
         if (targetMac.isEmpty()) return
+        
+        val isLocked = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && 
+                      !(context.getSystemService(Context.USER_SERVICE) as UserManager).isUserUnlocked
+        
+        // [FIX] Don't trigger auto-start if we are already connected!
+        // This prevents activity restarts if BT reconnects during a session.
+        if (!isLocked && com.andrerinas.headunitrevived.App.provide(context).commManager.isConnected) {
+            AppLog.d("AutoStartReceiver: Already connected to Android Auto. Ignoring BT event.")
+            return
+        }
 
         if (action == BluetoothDevice.ACTION_ACL_CONNECTED) {
             val device = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {

@@ -41,6 +41,9 @@ captures/
 # Keystore files
 *.jks
 
+# Secrets configuration file
+secrets.properties
+
 src/main/obj
 src/main/libs/armeabi/gdb.setup
 src/main/libs/armeabi/gdbserver

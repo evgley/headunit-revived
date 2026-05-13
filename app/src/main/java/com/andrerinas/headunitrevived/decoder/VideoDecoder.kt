@@ -27,10 +27,56 @@ class VideoDecoder(private val settings: Settings) {
         /**
          * Checks if H.265 (HEVC) hardware decoding is supported on the current device.
          */
+        /**
+         * Checks if H.265 (HEVC) hardware decoding is supported and reliable on the current device.
+         * Used for AUTO codec selection.
+         */
+        fun isHevcReliable(): Boolean {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) return false
+
+            // 1. Chipset Reliability Check (from SystemOptimizer)
+            val hw = Build.HARDWARE.lowercase()
+            val soc = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                Build.SOC_MANUFACTURER.lowercase()
+            } else ""
+
+            val isReliable = hw.startsWith("qcom") || hw.startsWith("msm") || // Qualcomm
+                    hw.startsWith("exynos") || // Samsung
+                    hw.startsWith("gs") || hw.contains("google") || // Google Tensor
+                    soc.contains("qualcomm") || soc.contains("samsung") || soc.contains("google") ||
+                    // High-end MediaTek (Dimensity 700/800/900/1000/9000+ series)
+                    hw.startsWith("mt68") || hw.startsWith("mt69")
+
+            if (!isReliable) return false
+
+            return isHevcSupported()
+        }
+
+        /**
+         * Checks if ANY H.265 (HEVC) hardware decoding is present, regardless of reliability.
+         * Used for MANUAL codec selection (User override).
+         */
         fun isHevcSupported(): Boolean {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) return false
+
             val codecList = MediaCodecList(MediaCodecList.ALL_CODECS)
-            return codecList.codecInfos.any { !it.isEncoder && it.supportedTypes.any { t -> t.equals("video/hevc", true) } }
+            for (info in codecList.codecInfos) {
+                if (info.isEncoder) continue
+                for (type in info.supportedTypes) {
+                    if (type.equals("video/hevc", ignoreCase = true)) {
+                        val name = info.name.lowercase()
+                        // Filter out known software codecs
+                        val isSoftware = name.startsWith("omx.google.") ||
+                                name.startsWith("c2.android.") ||
+                                name.startsWith("omx.ffmpeg.") ||
+                                name.contains(".sw.") ||
+                                name.contains("software")
+
+                        if (!isSoftware) return true
+                    }
+                }
+            }
+            return false
         }
     }
 
@@ -48,6 +94,7 @@ class VideoDecoder(private val settings: Settings) {
     private var pps: ByteArray? = null
     private var codecConfigured = false
     private var currentCodecType = CodecType.H264
+    private var currentCodecName: String? = null
 
     // Reuse buffers for older API levels to minimize GC pressure
     private var inputBuffers: Array<ByteBuffer>? = null
@@ -98,6 +145,7 @@ class VideoDecoder(private val settings: Settings) {
                 stop("New surface")
             }
             mSurface = surface
+            lastFrameRenderedMs = 0L
         }
     }
 
@@ -211,10 +259,11 @@ class VideoDecoder(private val settings: Settings) {
                 } else continue
                 if (headerPos >= limit) return null
                 val b = buffer[headerPos].toInt()
-                val hevcType = (b and 0x7E) shr 1
-                if (hevcType in 32..34) return CodecType.H265
                 val avcType = b and 0x1F
                 if (avcType == 7 || avcType == 8) return CodecType.H264
+                
+                val hevcType = (b and 0x7E) shr 1
+                if (hevcType in 32..34 && isHevcSupported()) return CodecType.H265
             }
             // Only scan the first ~100 bytes for performance
             if (i - offset >= 96) break
@@ -310,6 +359,7 @@ class VideoDecoder(private val settings: Settings) {
             startTime = System.nanoTime()
             val bestCodec = findBestCodec(mimeType, !forceSoftware)
                 ?: throw IllegalStateException("No decoder available for $mimeType")
+            this.currentCodecName = bestCodec
 
             codec = MediaCodec.createByCodecName(bestCodec)
             codecBufferInfo = MediaCodec.BufferInfo()
@@ -322,14 +372,50 @@ class VideoDecoder(private val settings: Settings) {
                 if (combined.isNotEmpty()) {
                     format.setByteBuffer("csd-0", ByteBuffer.wrap(combined))
                 }
-                format.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, 8 * 1024 * 1024)
+                // [BUG_FIX] Dynamic buffer size based on resolution. 
+                // 8MB is too large for many older 1080p decoders (Allwinner/Rockchip),
+                // but we need it for 4K.
+                val maxInputSize = if (width * height > 1920 * 1080) {
+                    8 * 1024 * 1024
+                } else {
+                    2 * 1024 * 1024
+                }
+                format.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, maxInputSize)
             } else {
                 if (sps != null) format.setByteBuffer("csd-0", ByteBuffer.wrap(sps!!))
                 if (pps != null) format.setByteBuffer("csd-1", ByteBuffer.wrap(pps!!))
-                format.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, 2 * 1024 * 1024)
+                
+                // [BUG_FIX] Lower buffer for legacy devices (Android < 9) to prevent startup stalls
+                val maxInputSize = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+                    1 * 1024 * 1024 // 1MB for legacy
+                } else {
+                    2 * 1024 * 1024 // 2MB for modern
+                }
+                format.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, maxInputSize)
             }
 
             if (!mSurface!!.isValid) throw IllegalStateException("Surface not valid")
+
+            val isAllwinner = bestCodec.lowercase(Locale.ROOT).contains("allwinner")
+            if (isAllwinner) {
+                // [BUG_FIX] Allwinner decoders often fail on adaptive playback initialization,
+                // leading to a SIGABRT in CodecLooper when the surface reconfigures for padding (e.g. 1080->1088).
+                AppLog.i("Decoder: Applying Allwinner stability patches.")
+                format.setInteger("adaptive-playback", 0)
+                
+                if (mimeType == CodecType.H265.mimeType) {
+                    AppLog.w("CAUTION: Allwinner H.265 is known to be unstable. If the app crashes, please switch to H.264 in settings.")
+                    // Force macroblock alignment (multiple of 16) to prevent re-padding crash
+                    val alignedHeight = ((height + 15) / 16) * 16
+                    if (alignedHeight != height) {
+                        AppLog.i("Decoder: Aligning Allwinner H.265 height to $alignedHeight (was $height)")
+                        format.setInteger(MediaFormat.KEY_HEIGHT, alignedHeight)
+                    }
+                }
+                
+                // Explicitly set color format to surface to help ACodec
+                format.setInteger(MediaFormat.KEY_COLOR_FORMAT, android.media.MediaCodecInfo.CodecCapabilities.COLOR_FormatSurface)
+            }
 
             AppLog.i("Configuring decoder: $bestCodec for ${width}x${height}")
             codec?.configure(format, mSurface, null, 0)
@@ -352,6 +438,16 @@ class VideoDecoder(private val settings: Settings) {
             AppLog.e("Failed to start decoder", e)
             codec = null; running = false
         }
+    }
+
+    /**
+     * Logic to identify chipsets that require constant flagging
+     */
+    private fun shouldAlwaysFlagConfig(): Boolean {
+        val name = currentCodecName?.lowercase(Locale.ROOT) ?: return false
+        return name.contains(".rk.") ||       // Rockchip
+                name.contains("allwinner") ||
+                name.contains(".tcc.")      // Telechips
     }
 
     /**
@@ -414,7 +510,8 @@ class VideoDecoder(private val settings: Settings) {
             // Always set BUFFER_FLAG_CODEC_CONFIG for config data (VPS/SPS/PPS).
             // Some decoders (Rockchip/Allwinner) require this flag for every config packet
             // even after the stream has already started.
-            val flags = if (buffer.hasArray() && isCodecConfigData(buffer.array(), buffer.position(), buffer.remaining())) {
+            val isConfig = buffer.hasArray() && isCodecConfigData(buffer.array(), buffer.position(), buffer.remaining())
+            val flags = if (isConfig && (shouldAlwaysFlagConfig() || !codecConfigured)) {
                 MediaCodec.BUFFER_FLAG_CODEC_CONFIG
             } else 0
 

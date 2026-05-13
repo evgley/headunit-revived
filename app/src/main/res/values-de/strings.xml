@@ -120,6 +120,7 @@
     <string name="log_level_description">Filtert den Detailgrad beim Log-Export</string>
     <string name="start_log_capture">Log-Aufzeichnung starten</string>
     <string name="start_log_capture_description">Startet das Mitschreiben von System-Logs für Debugging</string>
+    <string name="start_log_capture_in_silent">Aufzeichnung kann nicht gestartet werden: Stilles Protokollierungslevel ausgewählt</string>
     <string name="stop_log_capture">Log-Aufzeichnung stoppen</string>
     <string name="stop_log_capture_description">Aufzeichnung läuft… Zum Stoppen tippen</string>
     <string name="export_logs">Logs exportieren</string>
@@ -147,6 +148,12 @@
     <string name="key_music">Musik</string>
     <string name="key_nav">Navigation</string>
     <string name="key_night">Nachtmodus umschalten</string>
+    <string name="key_enter">Eingabe</string>
+    <string name="key_home">Home</string>
+    <string name="key_app_switch">App-Wechsel / Verlauf</string>
+    <string name="key_button_a">Taste A (Auswählen)</string>
+    <string name="key_button_b">Taste B (Zurück)</string>
+
 
     <!-- Language Settings -->
     <string name="app_language">App-Sprache</string>
@@ -161,6 +168,16 @@
     <string name="usb_auto_connect_description">Verbindet sich automatisch mit einem bekannten USB-Gerät, sobald die App geöffnet wird.</string>
     <string name="auto_start_bt_label">Auto-Start bei Bluetooth</string>
     <string name="auto_start_bt_description">Startet Headunit Revived automatisch, wenn sich ein bestimmtes Bluetooth-Gerät verbindet.</string>
+    <string name="auto_start_wifi_label">Auto-Start bei WLAN</string>
+    <string name="auto_start_wifi_description">Öffnet Headunit Revived automatisch, wenn eine Verbindung zu einer bestimmten WLAN-SSID besteht.</string>
+    <string name="auto_start_wifi_ssid_label">WLAN-SSID</string>
+    <string name="auto_start_wifi_ssid_description">Nur verbinden, wenn mit dieser WLAN-SSID gekoppelt</string>
+    <string name="auto_start_wifi_warning">Legacy-Funktion: Dies funktioniert unter Android 8+ aufgrund von Hintergrundbeschränkungen möglicherweise nicht zuverlässig. Stellen Sie sicher, dass die App von der Akku-Optimierung ausgeschlossen ist.</string>
+    <string name="enter_wifi_ssid">WLAN-SSID eingeben</string>
+    <string name="wifi_ssid_not_set">Nicht festgelegt</string>
+
+    <string name="listen_for_usb_devices_label">USB System Anbindung</string>
+    <string name="listen_for_usb_devices_description">Zeigt den Systemdialog, wenn ein USB-Gerät angeschlossen wird.</string>
     <string name="auto_start_usb_label">Autostart bei USB</string>
     <string name="auto_start_usb_description">Die App automatisch öffnen und eine Verbindung versuchen, wenn ein USB-Gerät angeschlossen wird</string>
     <string name="auto_start_settings">Einstellungen für automatischen Start</string>
@@ -229,12 +246,16 @@
     <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Audio-Ausgabe</string>
     <string name="enable_audio_sink_description">Wenn deaktiviert, empfängt die Headunit keinen Ton. Der Ton wird über das Handy abgespielt.</string>
+    <string name="separate_audio_streams">Separate Audio-Streams</string>
+    <string name="separate_audio_streams_description">Trenne Audiokanäle für Musik, Anrufe und Benachrichtigungen statt eines einzelnen Multimedia-Streams (funktioniert auf einigen Geräten möglicherweise nicht richtig).</string>
     <string name="use_aac_audio">AAC-Audio verwenden</string>
     <string name="use_aac_audio_description">Verwendet den AAC-Codec für Audio, um Bandbreite zu sparen (Experimentell).</string>
     <string name="audio_volume_offset">Lautstärke-Offsets</string>
     <string name="media_volume_offset">Medien-Lautstärke</string>
     <string name="assistant_volume_offset">Assistenten-Lautstärke</string>
     <string name="navigation_volume_offset">Navigations-Lautstärke</string>
+    <string name="microphone_settings">Mikrofon-Einstellungen</string>
+    <string name="microphone_settings_description">Eingangsquelle und Audio-Verarbeitung konfigurieren.</string>
     <string name="mic_input_source">Mikrofon-Eingangsquelle</string>
     <string name="mic_input_source_description">Wählen Sie die Audioquelle für das Mikrofon.</string>
     <string-array name="mic_input_sources">
@@ -244,6 +265,12 @@
         <item>Sprachkommunikation (Echo- und Rauschunterdrückung)</item>
         <item>Bluetooth-Headset (SCO)</item>
     </string-array>
+    <string name="mic_echo_canceler">Echounterdrückung (AEC)</string>
+    <string name="mic_echo_canceler_description">Versucht, Echo aus dem Mikrofon zu entfernen. Deaktivieren bei Stille oder Verzerrung.</string>
+    <string name="mic_noise_suppressor">Rauschunterdrückung (NS)</string>
+    <string name="mic_noise_suppressor_description">Versucht, Hintergrundgeräusche zu reduzieren. Deaktivieren, wenn die Stimme dumpf klingt.</string>
+    <string name="mic_auto_gain_control">Automatische Pegelanpassung (AGC)</string>
+    <string name="mic_auto_gain_control_description">Passt die Mikrofonlautstärke automatisch an. Deaktivieren bei instabiler Lautstärke.</string>
 
     <!-- Info Settings -->
     <string name="category_info">Info</string>
@@ -293,6 +320,7 @@
     <string name="share">Teilen</string>
     <string name="close">Schließen</string>
     <string name="failed_export_logs">Fehler beim Log-Export</string>
+    <string name="failed_export_in_silent_logs">Protokolle können nicht exportiert werden: Stilles Protokollierungslevel ausgewählt</string>
     <string name="switching_to_android_auto">Wechsle zu Android Auto…</string>
     <string name="switch_failed">Wechsel fehlgeschlagen</string>
     <string name="requesting_usb_permission">Fordere USB-Berechtigung an…</string>
@@ -382,7 +410,7 @@
     <string name="kill_on_disconnect">App beim Trennen schließen</string>
     <string name="kill_on_disconnect_description">Die App automatisch schließen, wenn Android Auto getrennt wird</string>
     <string name="kill_on_disconnect_warning_title">Warnung</string>
-    <string name="kill_on_disconnect_warning">Die folgenden Wiederverbindungseinstellungen stehen im Konflikt mit dem Schließen der App bei Trennung:\n\n%1$s\n\nIhre anfänglichen Verbindungseinstellungen (automatische Verbindung, automatischer Start) funktionieren weiterhin beim Einschalten der Headunit. Nach der ersten Trennung wird die App jedoch sofort geschlossen, anstatt eine erneute Verbindung zu versuchen.\n\nHinweis: Einige Aftermarket-Headunits schalten sich nie vollständig aus — sie gehen stattdessen in den Ruhezustand, ähnlich wie ein Telefon, das den Bildschirm sperrt, aber nie wirklich ausschaltet. Mit dieser Option wird die App nach der ersten Trennung geschlossen und öffnet sich möglicherweise beim nächsten Zündungszyklus nicht automatisch wieder.\n\nMöchten Sie die oben aufgeführten Wiederverbindungseinstellungen deaktivieren?</string>
+    <string name="kill_on_disconnect_warning">Die folgenden Wiederverbindungseinstellungen stehen im Konflikt mit dem Schließen der App bei Trennung:\n\n%1$s\n\nIhre anfänglichen Verbindungseinstellungen (automatische Verbindung, automatischer Start) funktionieren weiterhin beim Einschalten der Headunit. Nach der ersten Trennung wird die App jedoch sofort geschlossen, anstatt eine erneute Verbindung zu versuchen.\n\nHinweis: Einige Aftermarket-Headunits schalten sich nie vollständig aus — sie gehen istattdessen in den Ruhezustand, ähnlich wie ein Telefon, das den Bildschirm sperrt, aber nie wirklich ausschaltet. Mit dieser Option wird die App nach der ersten Trennung geschlossen und öffnet sich möglicherweise beim nächsten Zündungszyklus nicht automatisch wieder.\n\nMöchten Sie die oben aufgeführten Wiederverbindungseinstellungen deaktivieren?</string>
     <string name="kill_on_disconnect_disable_and_enable">Deaktivieren und aktivieren</string>
     <string name="kill_on_disconnect_enable_anyway">Trotzdem aktivieren</string>
     <string name="kill_on_disconnect_conflicts_disabled">Konfliktierende Einstellungen wurden deaktiviert</string>
@@ -395,6 +423,9 @@
     <!-- Vehicle Info Settings -->
     <string name="vehicle_info_settings">Fahrzeuginformationen</string>
     <string name="vehicle_info_settings_description">Passen Sie an, wie Ihr Fahrzeug auf Ihrem Telefon angezeigt wird</string>
+    <string name="ui_scale">UI-Skalierung</string>
+    <string name="ui_scale_home">Startbildschirm</string>
+    <string name="ui_scale_settings">Einstellungsbildschirm</string>
     <string name="category_vehicle">Fahrzeug</string>
     <string name="category_head_unit">Autoradio</string>
     <string name="vehicle_display_name_label">Anzeigename</string>

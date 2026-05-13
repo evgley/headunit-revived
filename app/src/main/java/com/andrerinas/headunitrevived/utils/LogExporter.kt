@@ -18,7 +18,9 @@ object LogExporter {
         DEBUG("*:D", Log.DEBUG),
         INFO("*:I", Log.INFO),
         WARNING("*:W", Log.WARN),
-        ERROR("*:E", Log.ERROR)
+        ERROR("*:E", Log.ERROR),
+        /** Do not perform any background capture. */
+        SILENT("", Int.MAX_VALUE)
     }
 
     private const val MAX_LOG_FILES = 10
@@ -32,6 +34,10 @@ object LogExporter {
     private const val MAX_RESTARTS = 5
 
     val isCapturing: Boolean get() = captureProcess != null
+
+    /** Current capture verbosity while capturing, or null when no capture is active. */
+    val currentLevel: LogLevel?
+        get() = if (isCapturing) captureVerbosity else null
 
     /**
      * Deletes the oldest HUR_Log_* files until the count is below [MAX_LOG_FILES]
@@ -60,6 +66,14 @@ object LogExporter {
      * bypassing the small shared ring buffer.
      */
     fun startCapture(context: Context, verbosity: LogLevel) {
+        // If SILENT requested, ensure capture is stopped and don't start a new one.
+        if (verbosity == LogLevel.SILENT) {
+            stopCapture()
+            captureFile = null
+            captureVerbosity = verbosity
+            return
+        }
+
         stopCapture()
         val logDir = context.getExternalFilesDir(null) ?: return
         logDir.mkdirs()
@@ -121,6 +135,10 @@ object LogExporter {
      */
     fun saveLogToPublicFile(context: Context, verbosity: LogLevel): File? {
         val logDir = context.getExternalFilesDir(null) ?: return null
+        if (verbosity == LogLevel.SILENT) {
+            AppLog.w("LogExporter: export requested while SILENT; skipping export")
+            return null
+        }
         if (!logDir.exists()) logDir.mkdirs()
 
         val source = captureFile

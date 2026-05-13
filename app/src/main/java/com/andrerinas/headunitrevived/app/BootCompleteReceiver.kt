@@ -7,6 +7,8 @@ import androidx.core.content.ContextCompat
 import com.andrerinas.headunitrevived.aap.AapService
 import com.andrerinas.headunitrevived.utils.AppLog
 import com.andrerinas.headunitrevived.utils.Settings
+import android.os.UserManager
+import android.os.Build
 
 class BootCompleteReceiver : BroadcastReceiver() {
 
@@ -16,9 +18,18 @@ class BootCompleteReceiver : BroadcastReceiver() {
 
         AppLog.i("Boot auto-start: received action=$action")
 
+        val isLocked = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && 
+                      !(context.getSystemService(Context.USER_SERVICE) as UserManager).isUserUnlocked
+
+        if (isLocked) {
+            AppLog.w("BootCompleteReceiver: Device is locked. Cannot start AapService yet. Waiting for user unlock.")
+            return
+        }
+
         val bootEnabled = Settings.isAutoStartOnBootEnabled(context)
         val screenOnEnabled = Settings.isAutoStartOnScreenOnEnabled(context)
         val usbEnabled = Settings.isAutoStartOnUsbEnabled(context)
+        val wifiEnabled = Settings.isAutoStartOnWifiEnabled(context)
 
         if (bootEnabled) {
             AppLog.i("Boot auto-start: starting AapService with BOOT_START (trigger=$action)")
@@ -42,6 +53,11 @@ class BootCompleteReceiver : BroadcastReceiver() {
                 this.action = AapService.ACTION_CHECK_USB
             }
             ContextCompat.startForegroundService(context, serviceIntent)
+        } else if (wifiEnabled) {
+            // Start the service to listen for WiFi connectivity changes dynamically.
+            AppLog.i("Boot auto-start: WiFi auto-start enabled, starting AapService to listen for WiFi (trigger=$action)")
+            val serviceIntent = Intent(context, AapService::class.java)
+            ContextCompat.startForegroundService(context, serviceIntent)
         } else {
             AppLog.i("Boot auto-start: disabled, skipping")
         }
@@ -54,6 +70,7 @@ class BootCompleteReceiver : BroadcastReceiver() {
             // Standard Android boot
             Intent.ACTION_BOOT_COMPLETED,
             Intent.ACTION_LOCKED_BOOT_COMPLETED,
+            Intent.ACTION_USER_UNLOCKED,
             // Generic / OEM quick boot
             "android.intent.action.QUICKBOOT_POWERON",
             "com.htc.intent.action.QUICKBOOT_POWERON",

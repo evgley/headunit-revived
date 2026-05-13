@@ -116,6 +116,7 @@
     <string name="log_level_description">Filtrează nivelul logurilor la export</string>
     <string name="start_log_capture">Începe capturarea logurilor</string>
     <string name="start_log_capture_description">Începe înregistrarea completă a logurilor pentru depanare</string>
+    <string name="start_log_capture_in_silent">Nu se poate începe înregistrarea: nivelul jurnalului Silențios selectat</string>
     <string name="stop_log_capture">Oprește capturarea logurilor</string>
     <string name="stop_log_capture_description">Înregistrare în curs… apasă pentru a opri</string>
     <string name="export_logs">Exportă logurile</string>
@@ -143,6 +144,12 @@
     <string name="key_music">Muzică</string>
     <string name="key_nav">Navigație</string>
     <string name="key_night">Comută mod noapte</string>
+    <string name="key_enter">Enter</string>
+    <string name="key_home">Acasă</string>
+    <string name="key_app_switch">Aplicații recente</string>
+    <string name="key_button_a">Buton A (Selectare)</string>
+    <string name="key_button_b">Buton B (Înapoi)</string>
+
 
     <!-- Language Settings -->
     <string name="app_language">Limba aplicației</string>
@@ -157,6 +164,16 @@
     <string name="usb_auto_connect_description">Conectează automat un dispozitiv USB cunoscut când deschizi aplicația.</string>
     <string name="auto_start_bt_label">Pornire automată pe Bluetooth</string>
     <string name="auto_start_bt_description">Deschide automat Headunit Revived când se conectează un anumit dispozitiv Bluetooth.</string>
+    <string name="auto_start_wifi_label">Pornire automată pe WiFi</string>
+    <string name="auto_start_wifi_description">Deschide automat Headunit Revived când se conectează la un SSID WiFi specific.</string>
+    <string name="auto_start_wifi_ssid_label">SSID WiFi</string>
+    <string name="auto_start_wifi_ssid_description">Conectează doar dacă este asociat cu acest SSID WiFi</string>
+    <string name="auto_start_wifi_warning">Funcție legacy: S-ar putea să nu funcționeze fiabil pe Android 8+ din cauza restricțiilor de fundal. Asigură-te că aplicația este exclusă de la optimizarea bateriei.</string>
+    <string name="enter_wifi_ssid">Introdu SSID WiFi</string>
+    <string name="wifi_ssid_not_set">Nesetat</string>
+
+    <string name="listen_for_usb_devices_label">Ascultați dispozitive USB</string>
+    <string name="listen_for_usb_devices_description">Afișați solicitarea sistemului Android când este conectat un dispozitiv USB.</string>
     <string name="auto_start_usb_label">Pornire automată pe USB</string>
     <string name="auto_start_usb_description">Deschide aplicația automat și încearcă conectarea când un dispozitiv USB este conectat</string>
     <string name="auto_start_settings">Setări pornire automată</string>
@@ -226,6 +243,8 @@
 <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Receptor Audio (Sink)</string>
     <string name="enable_audio_sink_description">Dacă dezactivezi asta, playerul nu va primi semnal audio. Sunetul se va auzi din telefon.</string>
+    <string name="separate_audio_streams">Fluxuri audio separate</string>
+    <string name="separate_audio_streams_description">Se separă canalele audio pentru muzică, apeluri și notificări în locul unui singur flux multimedia (s-ar putea să nu funcționeze corect pe anumite dispozitive).</string>
     <string name="use_aac_audio">Folosește Audio AAC</string>
     <string name="use_aac_audio_description">Folosește codecul AAC pentru audio pentru a salva lățime de bandă (Experimental).</string>
     <string name="audio_volume_offset">Ajustare volum audio</string>
@@ -290,6 +309,7 @@
     <string name="share">Distribuie</string>
     <string name="close">Închide</string>
     <string name="failed_export_logs">Exportul logurilor a eșuat</string>
+    <string name="failed_export_in_silent_logs">Nu se pot exporta jurnalele: nivelul jurnalului Silențios selectat</string>
     <string name="switching_to_android_auto">Se trece la Android Auto…</string>
     <string name="switch_failed">Trecerea a eșuat</string>
     <string name="requesting_usb_permission">Se cere permisiunea USB…</string>
@@ -391,6 +411,9 @@
     <!-- Vehicle Info Settings -->
     <string name="vehicle_info_settings">Informații vehicul</string>
     <string name="vehicle_info_settings_description">Personalizați cum apare vehiculul dvs. pe telefon</string>
+    <string name="ui_scale">Scală UI</string>
+    <string name="ui_scale_home">Ecran principal</string>
+    <string name="ui_scale_settings">Ecranul de setări</string>
     <string name="category_vehicle">Vehicul</string>
     <string name="category_head_unit">Unitate principală</string>
     <string name="vehicle_display_name_label">Nume afișat</string>

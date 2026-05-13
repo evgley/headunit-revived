@@ -9,15 +9,19 @@ import com.andrerinas.headunitrevived.utils.AppLog
 import com.andrerinas.headunitrevived.main.BackgroundNotification
 import com.andrerinas.headunitrevived.ssl.SingleKeyKeyManager
 import com.andrerinas.headunitrevived.utils.Settings
+import com.andrerinas.headunitrevived.utils.HeadUnitScreenConfig
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import com.andrerinas.headunitrevived.decoder.AudioDecoder
 import com.andrerinas.headunitrevived.decoder.VideoDecoder
 import android.media.AudioManager
+import android.os.Build
+import android.os.SystemClock
 import com.andrerinas.headunitrevived.aap.AapMessage
 import com.andrerinas.headunitrevived.aap.protocol.messages.SensorEvent
 import com.andrerinas.headunitrevived.aap.protocol.proto.MediaPlayback
 import java.net.Socket
+import android.view.KeyEvent
 
 /**
  * Central connection and transport lifecycle manager.
@@ -107,6 +111,8 @@ class CommManager(
      *  failing child from cancelling the rest. */
     private val _scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
+    private val lastKeyEvents = mutableMapOf<Int, Long>()
+
     private val _connectionState = MutableStateFlow<ConnectionState>(ConnectionState.Disconnected())
 
     /** Callback for audio focus state changes (isPlaying). Set by AapService. */
@@ -119,6 +125,7 @@ class CommManager(
 
     /** @Volatile: written on IO thread, read on Main and IO threads. */
     @Volatile private var _transport: AapTransport? = null
+    var onUpdateUiConfigReplyReceived: (() -> Unit)? = null
     @Volatile private var _connection: AccessoryConnection? = null
 
     /**
@@ -168,6 +175,7 @@ class CommManager(
         if (_connectionState.value is ConnectionState.Connecting)
             return@withContext
 
+
         val usbManager = context.getSystemService(Context.USB_SERVICE) as UsbManager
         if (!usbManager.hasPermission(device)) {
             _connectionState.emit(ConnectionState.Error("USB permission not granted for device"))
@@ -207,6 +215,7 @@ class CommManager(
         // Another caller already started the connection — do nothing.
         if (_connectionState.value is ConnectionState.Connecting)
             return@withContext
+
 
         _disconnectJob?.join()
 
@@ -301,6 +310,7 @@ class CommManager(
                     )
                     _transport!!.onQuit = { isClean -> transportedQuited(isClean) }
                     _transport!!.onAudioFocusStateChanged = { isPlaying -> onAudioFocusStateChanged?.invoke(isPlaying) }
+                    _transport!!.onUpdateUiConfigReplyReceived = { onUpdateUiConfigReplyReceived?.invoke() }
                 }
                 if (_transport?.startHandshake(_connection!!) == true) {
                     _connectionState.emit(ConnectionState.HandshakeComplete)
@@ -366,12 +376,13 @@ class CommManager(
                 val stopIntent = android.content.Intent(context, com.andrerinas.headunitrevived.aap.AapService::class.java).apply {
                     action = com.andrerinas.headunitrevived.aap.AapService.ACTION_STOP_SERVICE
                 }
+                com.andrerinas.headunitrevived.aap.AapService.killProcessOnDestroy = true
                 context.stopService(stopIntent)
-                // Finish all tasks and exit
-                val app = context.applicationContext as Application
-                val activityManager = app.getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
-                activityManager.appTasks.forEach { it.finishAndRemoveTask() }
-                System.exit(0)
+                // Finish all tasks (API 21+)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
+                    activityManager.appTasks.forEach { it.finishAndRemoveTask() }
+                }
             }, 500)
         }
     }
@@ -380,7 +391,54 @@ class CommManager(
     // send() overloads — fire-and-forget; silently dropped if not TransportStarted
     // -----------------------------------------------------------------------------------------
 
-    /** Sends a key press or release event to the phone. */
+    private val keyStates = mutableMapOf<Int, Boolean>()
+
+    /** 
+     * Sends a key press or release event to the phone with remapping and de-duplication.
+     * This is the single entry point for all key events in the application.
+     */
+    fun sendKey(keyCode: Int, isPress: Boolean) {
+        if (_connectionState.value !is ConnectionState.TransportStarted) {
+            return
+        }
+
+        // 1. Remapping (Physical -> Logical)
+        var logicalCode = settings.keyCodes.entries.find { it.value == keyCode }?.key ?: keyCode
+        
+        // [FIX] BMW/Rotary Enter remapping: Most AA apps expect DPAD_CENTER (23) for selection,
+        // but physical rotary knobs often send ENTER (66). Remap 66 -> 23 to ensure selection works.
+        if (logicalCode == KeyEvent.KEYCODE_ENTER) {
+            logicalCode = KeyEvent.KEYCODE_DPAD_CENTER
+        }
+
+        // 2. State Tracking & De-duplication
+        val isCurrentlyDown = keyStates[logicalCode] ?: false
+        if (isPress == isCurrentlyDown) {
+            return
+        }
+
+        // 3. Time-based Debouncing
+        val now = SystemClock.elapsedRealtime()
+        if (isPress) {
+            val lastPressTime = lastKeyEvents[logicalCode] ?: 0L
+            if (now - lastPressTime < 300) {
+                AppLog.i("CommManager: Debouncing logical key $logicalCode (DOWN) - dropped duplicate trigger within ${now - lastPressTime}ms")
+                return
+            }
+            lastKeyEvents[logicalCode] = now
+        }
+
+        // Update state
+        keyStates[logicalCode] = isPress
+        
+        AppLog.i("CommManager: TX Key -> AA=$logicalCode (isPress=$isPress)")
+        _transport?.send(logicalCode, isPress)
+    }
+
+    /** 
+     * [Legacy] Internal transport send. Use sendKey() for physical button inputs.
+     * @deprecated Use sendKey(keyCode, isPress) for unified remapping and debouncing.
+     */
     fun send(keyCode: Int, isPress: Boolean) {
         if (_connectionState.value is ConnectionState.TransportStarted) {
             _transport?.send(keyCode, isPress)
@@ -401,6 +459,15 @@ class CommManager(
         }
     }
 
+    fun sendUpdateUiConfigRequest(left: Int, top: Int, right: Int, bottom: Int) {
+        val request = com.andrerinas.headunitrevived.aap.protocol.messages.UpdateUiConfigRequest(left, top, right, bottom)
+        AppLog.i("[UI_DEBUG_FIX] TX UpdateUiConfigRequest: L=$left T=$top R=$right B=$bottom")
+        send(request)
+        // HUR always sends VideoFocusNotification(PROJECTED, unsolicited=true) after
+        // updating the UI config. This triggers a keyframe from the phone.
+        send(com.andrerinas.headunitrevived.aap.protocol.messages.VideoFocusEvent(gain = true, unsolicited = true))
+    }
+
     // -----------------------------------------------------------------------------------------
     // Disconnect
     // -----------------------------------------------------------------------------------------
@@ -415,7 +482,10 @@ class CommManager(
     fun disconnect(sendByeBye: Boolean = true) {
         if (_connectionState.value is ConnectionState.Disconnected) return
 
+        HeadUnitScreenConfig.unlockResolution()
+
         _connectionState.value = ConnectionState.Disconnected(isUserExit = true)
+        _transport?.wasUserExit = true
         _disconnectJob = _scope.launch { doDisconnect(sendByeBye) }
         if (settings.killOnDisconnect) {
             android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
@@ -423,12 +493,13 @@ class CommManager(
                 val stopIntent = android.content.Intent(context, com.andrerinas.headunitrevived.aap.AapService::class.java).apply {
                     action = com.andrerinas.headunitrevived.aap.AapService.ACTION_STOP_SERVICE
                 }
+                com.andrerinas.headunitrevived.aap.AapService.killProcessOnDestroy = true
                 context.stopService(stopIntent)
-                // Finish all tasks and exit
-                val app = context.applicationContext as Application
-                val activityManager = app.getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
-                activityManager.appTasks.forEach { it.finishAndRemoveTask() }
-                System.exit(0)
+                // Finish all tasks (API 21+)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
+                    activityManager.appTasks.forEach { it.finishAndRemoveTask() }
+                }
             }, 500)
         }
     }
@@ -454,11 +525,18 @@ class CommManager(
         val connection = _connection
         _transport = null
         _connection = null
+        lastKeyEvents.clear()
+        keyStates.clear()
         try {
             // Only send ByeByeRequest when we are initiating the disconnect (e.g. user pressed
             // disconnect). When the transport self-quit (read error, soTimeout), the connection
             // is already dead — skip the send and the 150 ms sleep inside stop().
             if (sendByeBye) transport?.stop() else transport?.quit()
+            
+            // Explicitly stop and release decoders to prevent MediaCodec finalize() timeouts
+            videoDecoder.stop("CommManager: doDisconnect")
+            audioDecoder.stop()
+            
             connection?.disconnect()
         } catch (e: Exception) {
             AppLog.e("doDisconnect error: ${e.message}")

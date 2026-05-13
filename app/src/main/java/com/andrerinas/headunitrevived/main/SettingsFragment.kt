@@ -26,9 +26,13 @@ import com.andrerinas.headunitrevived.main.settings.SettingsAdapter
 import com.andrerinas.headunitrevived.utils.Settings
 import com.andrerinas.headunitrevived.utils.LocaleHelper
 import com.andrerinas.headunitrevived.BuildConfig
+import com.andrerinas.headunitrevived.utils.LogExporter
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import androidx.activity.result.contract.ActivityResultContracts
+import android.content.pm.PackageManager
+import com.andrerinas.headunitrevived.connection.NativeAaHandshakeManager
 
 class SettingsFragment : Fragment() {
     private lateinit var settings: Settings
@@ -38,7 +42,6 @@ class SettingsFragment : Fragment() {
     private var saveButton: MaterialButton? = null
 
     // Local state to hold changes before saving
-    private var pendingMicSampleRate: Int? = null
     private var pendingUseGps: Boolean? = null
     private var pendingShowNavigationNotifications: Boolean? = null
     private var pendingSyncMediaSessionAaMetadata: Boolean? = null
@@ -51,8 +54,8 @@ class SettingsFragment : Fragment() {
     private var pendingFpsLimit: Int? = null
     private var pendingBluetoothAddress: String? = null
     private var pendingEnableAudioSink: Boolean? = null
+    private var pendingSeparateAudioStreams: Boolean? = null
     private var pendingUseAacAudio: Boolean? = null
-    private var pendingMicInputSource: Int? = null
     private var pendingUseNativeSsl: Boolean? = null
     private var pendingEnableRotary: Boolean? = null
     private var pendingAudioLatencyMultiplier: Int? = null
@@ -80,6 +83,9 @@ class SettingsFragment : Fragment() {
     private var pendingInsetRight: Int? = null
     private var pendingInsetBottom: Int? = null
 
+    private var pendingUiScaleHomePercent: Int? = null
+    private var pendingUiScaleSettingsPercent: Int? = null
+
     private var pendingMediaVolumeOffset: Int? = null
     private var pendingAssistantVolumeOffset: Int? = null
     private var pendingNavigationVolumeOffset: Int? = null
@@ -87,6 +93,14 @@ class SettingsFragment : Fragment() {
     private var requiresRestart = false
     private var hasChanges = false
     private val SAVE_ITEM_ID = 1001
+
+    private val bluetoothPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+        if (isGranted) {
+            handleNativeAaSelection()
+        } else {
+            Toast.makeText(requireContext(), R.string.bt_permission_denied, Toast.LENGTH_LONG).show()
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.fragment_settings, container, false)
@@ -98,7 +112,6 @@ class SettingsFragment : Fragment() {
         settings = App.provide(requireContext()).settings
 
         // Initialize local state with current values
-        pendingMicSampleRate = settings.micSampleRate
         pendingUseGps = settings.useGpsForNavigation
         pendingShowNavigationNotifications = settings.showNavigationNotifications
         pendingSyncMediaSessionAaMetadata = settings.syncMediaSessionWithAaMetadata
@@ -111,8 +124,8 @@ class SettingsFragment : Fragment() {
         pendingFpsLimit = settings.fpsLimit
         pendingBluetoothAddress = settings.bluetoothAddress
         pendingEnableAudioSink = settings.enableAudioSink
+        pendingSeparateAudioStreams = settings.separateAudioStreams
         pendingUseAacAudio = settings.useAacAudio
-        pendingMicInputSource = settings.micInputSource
         pendingUseNativeSsl = settings.useNativeSsl
         pendingEnableRotary = settings.enableRotary
         pendingAudioLatencyMultiplier = settings.audioLatencyMultiplier
@@ -138,6 +151,9 @@ class SettingsFragment : Fragment() {
         pendingInsetTop = settings.insetTop
         pendingInsetRight = settings.insetRight
         pendingInsetBottom = settings.insetBottom
+        // UI Scale pending values (percent)
+        pendingUiScaleHomePercent = settings.uiScaleHomePercent
+        pendingUiScaleSettingsPercent = settings.uiScaleSettingsPercent
 
         pendingMediaVolumeOffset = settings.mediaVolumeOffset
         pendingAssistantVolumeOffset = settings.assistantVolumeOffset
@@ -226,7 +242,6 @@ class SettingsFragment : Fragment() {
     private fun saveSettings() {
         val languageChanged = pendingAppLanguage != settings.appLanguage
 
-        pendingMicSampleRate?.let { settings.micSampleRate = it }
         pendingUseGps?.let { settings.useGpsForNavigation = it }
         pendingShowNavigationNotifications?.let { settings.showNavigationNotifications = it }
         pendingSyncMediaSessionAaMetadata?.let { settings.syncMediaSessionWithAaMetadata = it }
@@ -239,8 +254,8 @@ class SettingsFragment : Fragment() {
         pendingFpsLimit?.let { settings.fpsLimit = it }
         pendingBluetoothAddress?.let { settings.bluetoothAddress = it }
         pendingEnableAudioSink?.let { settings.enableAudioSink = it }
+        pendingSeparateAudioStreams?.let { settings.separateAudioStreams = it }
         pendingUseAacAudio?.let { settings.useAacAudio = it }
-        pendingMicInputSource?.let { settings.micInputSource = it }
         pendingUseNativeSsl?.let { settings.useNativeSsl = it }
         pendingEnableRotary?.let { settings.enableRotary = it }
         pendingAudioLatencyMultiplier?.let { settings.audioLatencyMultiplier = it }
@@ -251,6 +266,7 @@ class SettingsFragment : Fragment() {
         pendingMediaVolumeOffset?.let { settings.mediaVolumeOffset = it }
         pendingAssistantVolumeOffset?.let { settings.assistantVolumeOffset = it }
         pendingNavigationVolumeOffset?.let { settings.navigationVolumeOffset = it }
+
 
         pendingAppLanguage?.let { settings.appLanguage = it }
 
@@ -263,6 +279,7 @@ class SettingsFragment : Fragment() {
         pendingFakeSpeed?.let { settings.fakeSpeed = it }
 
         val oldWifiMode = settings.wifiConnectionMode
+        val oldHelperStrategy = settings.helperConnectionStrategy
         pendingWifiConnectionMode?.let { settings.wifiConnectionMode = it }
         pendingHelperConnectionStrategy?.let { settings.helperConnectionStrategy = it }
         pendingWaitForWifi?.let { settings.waitForWifiBeforeWifiDirect = it }
@@ -275,7 +292,7 @@ class SettingsFragment : Fragment() {
 
         settings.commit()
 
-        if (oldWifiMode != settings.wifiConnectionMode) {
+        if (oldWifiMode != settings.wifiConnectionMode || oldHelperStrategy != settings.helperConnectionStrategy) {
             val intent = Intent(requireContext(), AapService::class.java).apply {
                 val mode = settings.wifiConnectionMode
                 action = if (mode == 1 || mode == 2 || mode == 3)
@@ -309,8 +326,7 @@ class SettingsFragment : Fragment() {
 
     private fun checkChanges() {
         // Check for any changes
-        val anyChange = pendingMicSampleRate != settings.micSampleRate ||
-                        pendingUseGps != settings.useGpsForNavigation ||
+        val anyChange = pendingUseGps != settings.useGpsForNavigation ||
                         pendingShowNavigationNotifications != settings.showNavigationNotifications ||
                         pendingSyncMediaSessionAaMetadata != settings.syncMediaSessionWithAaMetadata ||
                         pendingResolution != settings.resolutionId ||
@@ -322,8 +338,8 @@ class SettingsFragment : Fragment() {
                         pendingFpsLimit != settings.fpsLimit ||
                         pendingBluetoothAddress != settings.bluetoothAddress ||
                         pendingEnableAudioSink != settings.enableAudioSink ||
+                        pendingSeparateAudioStreams != settings.separateAudioStreams ||
                         pendingUseAacAudio != settings.useAacAudio ||
-                        pendingMicInputSource != settings.micInputSource ||
                         pendingUseNativeSsl != settings.useNativeSsl ||
                         pendingEnableRotary != settings.enableRotary ||
                         pendingAudioLatencyMultiplier != settings.audioLatencyMultiplier ||
@@ -358,6 +374,7 @@ class SettingsFragment : Fragment() {
                           pendingForceSoftware != settings.forceSoftwareDecoding ||
                           pendingEnableRotary != settings.enableRotary ||
                           pendingEnableAudioSink != settings.enableAudioSink ||
+                          pendingSeparateAudioStreams != settings.separateAudioStreams ||
                           pendingUseAacAudio != settings.useAacAudio ||
                           pendingAudioLatencyMultiplier != settings.audioLatencyMultiplier ||
                           pendingAudioQueueCapacity != settings.audioQueueCapacity ||
@@ -437,6 +454,16 @@ class SettingsFragment : Fragment() {
             }
         ))
 
+        // UI Scale (example dialog similar to Custom Insets) - appear after vehicle info
+        items.add(SettingItem.SettingEntry(
+            stableId = "uiScale",
+            nameResId = R.string.ui_scale,
+            value = "${getString(R.string.ui_scale_home)}: ${pendingUiScaleHomePercent ?: 100}% · ${getString(R.string.ui_scale_settings)}: ${pendingUiScaleSettingsPercent ?: 100}%",
+            onClick = { _ ->
+                showUiScaleDialog()
+            }
+        ))
+
         // --- Wireless Connection ---
         items.add(SettingItem.CategoryHeader("wirelessConnection", R.string.category_wireless))
 
@@ -473,31 +500,11 @@ class SettingsFragment : Fragment() {
                 }
 
                 if (newMode == 3) {
-                    // Compatibility check for Native AA
-                    if (com.andrerinas.headunitrevived.connection.NativeAaHandshakeManager.checkCompatibility()) {
-                        MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
-                            .setTitle(R.string.supported_nativeaa)
-                            .setMessage(R.string.supported_nativeaa_desc)
-                            .setPositiveButton(android.R.string.ok) { dialog, _ ->
-                                pendingWifiConnectionMode = 3
-                                checkChanges()
-                                updateSettingsList()
-                                dialog.dismiss()
-                            }
-                            .setNegativeButton(android.R.string.cancel, null)
-                            .show()
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && 
+                        ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                        bluetoothPermissionLauncher.launch(android.Manifest.permission.BLUETOOTH_CONNECT)
                     } else {
-                        MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
-                            .setTitle(R.string.not_supported_nativeaa)
-                            .setMessage(R.string.not_supported_nativeaa_desc)
-                            .setPositiveButton(android.R.string.ok) { dialog, _ ->
-                                pendingWifiConnectionMode = 3
-                                checkChanges()
-                                updateSettingsList()
-                                dialog.dismiss()
-                            }
-                            .setNegativeButton(android.R.string.cancel, null)
-                            .show()
+                        handleNativeAaSelection()
                     }
                 } else {
                     pendingWifiConnectionMode = newMode
@@ -815,7 +822,18 @@ class SettingsFragment : Fragment() {
                 MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
                     .setTitle(R.string.change_screen_orientation)
                     .setSingleChoiceItems(orientationOptions, currentIdx) { dialog, whiches ->
-                        pendingScreenOrientation = Settings.ScreenOrientation.fromInt(whiches)
+                        val newOrientation = Settings.ScreenOrientation.fromInt(whiches) ?: Settings.ScreenOrientation.SYSTEM
+                        pendingScreenOrientation = newOrientation
+                        
+                        // Apply immediately
+                        settings.screenOrientation = newOrientation
+                        settings.commit()
+                        
+                        requireActivity().requestedOrientation = newOrientation.androidOrientation
+                        requireContext().sendBroadcast(Intent(AapService.ACTION_ORIENTATION_CHANGED).apply {
+                            setPackage(requireContext().packageName)
+                        })
+                        
                         checkChanges()
                         dialog.dismiss()
                         updateSettingsList()
@@ -950,6 +968,18 @@ class SettingsFragment : Fragment() {
         ))
 
         items.add(SettingItem.ToggleSettingEntry(
+            stableId = "separateAudioStreams",
+            nameResId = R.string.separate_audio_streams,
+            descriptionResId = R.string.separate_audio_streams_description,
+            isChecked = pendingSeparateAudioStreams ?: true,
+            onCheckedChanged = { isChecked ->
+                pendingSeparateAudioStreams = isChecked
+                checkChanges()
+                updateSettingsList()
+            }
+        ))
+
+        items.add(SettingItem.ToggleSettingEntry(
             stableId = "useAacAudio",
             nameResId = R.string.use_aac_audio,
             descriptionResId = R.string.use_aac_audio_description,
@@ -974,44 +1004,11 @@ class SettingsFragment : Fragment() {
         ))
 
         items.add(SettingItem.SettingEntry(
-            stableId = "micSampleRate",
-            nameResId = R.string.mic_sample_rate,
-            value = "${pendingMicSampleRate!! / 1000}kHz",
+            stableId = "micSettings",
+            nameResId = R.string.microphone_settings,
+            value = getString(R.string.microphone_settings_description),
             onClick = { _ ->
-                val currentSampleRateIndex = Settings.MicSampleRates.indexOf(pendingMicSampleRate!!)
-                val sampleRateNames = Settings.MicSampleRates.map { "${it / 1000}kHz" }.toTypedArray()
-
-                MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
-                    .setTitle(R.string.mic_sample_rate)
-                    .setSingleChoiceItems(sampleRateNames, currentSampleRateIndex) { dialog, which ->
-                        val newValue = Settings.MicSampleRates.elementAt(which)
-                        pendingMicSampleRate = newValue
-                        checkChanges()
-                        dialog.dismiss()
-                        updateSettingsList()
-                    }
-                    .show()
-            }
-        ))
-
-        val micSources = resources.getStringArray(R.array.mic_input_sources)
-        val micSourceValues = intArrayOf(0, 1, 6, 7, 100) // DEFAULT, MIC, VOICE_RECOGNITION, VOICE_COMMUNICATION, BT_SCO
-        val currentSourceIndex = micSourceValues.indexOf(pendingMicInputSource ?: 0).coerceAtLeast(0)
-
-        items.add(SettingItem.SettingEntry(
-            stableId = "micInputSource",
-            nameResId = R.string.mic_input_source,
-            value = micSources[currentSourceIndex],
-            onClick = {
-                MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
-                    .setTitle(R.string.mic_input_source)
-                    .setSingleChoiceItems(micSources, currentSourceIndex) { dialog, which ->
-                        pendingMicInputSource = micSourceValues[which]
-                        checkChanges()
-                        updateSettingsList()
-                        dialog.dismiss()
-                    }
-                    .show()
+                findNavController().navigate(R.id.action_settingsFragment_to_micSettingsFragment)
             }
         ))
 
@@ -1079,7 +1076,7 @@ class SettingsFragment : Fragment() {
             }
         ))
 
-        val logLevels = com.andrerinas.headunitrevived.utils.LogExporter.LogLevel.entries
+        val logLevels = LogExporter.LogLevel.entries
         val logLevelNames = logLevels.map { it.name.lowercase().replaceFirstChar { c -> c.uppercase() } }.toTypedArray()
         items.add(SettingItem.SettingEntry(
             stableId = "logLevel",
@@ -1090,7 +1087,14 @@ class SettingsFragment : Fragment() {
                 MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
                     .setTitle(R.string.log_level)
                     .setSingleChoiceItems(logLevelNames, currentIndex) { dialog, which ->
-                        settings.exporterLogLevel = logLevels[which]
+                        val newLevel = logLevels[which]
+                        settings.exporterLogLevel = newLevel
+                        if (newLevel == LogExporter.LogLevel.SILENT) {
+                            settings.exporterCaptureEnabled = false
+                            if (LogExporter.isCapturing) {
+                                LogExporter.stopCapture()
+                            }
+                        }
                         dialog.dismiss()
                         updateSettingsList()
                     }
@@ -1100,14 +1104,26 @@ class SettingsFragment : Fragment() {
 
         items.add(SettingItem.SettingEntry(
             stableId = "captureLog",
-            nameResId = if (com.andrerinas.headunitrevived.utils.LogExporter.isCapturing) R.string.stop_log_capture else R.string.start_log_capture,
-            value = getString(if (com.andrerinas.headunitrevived.utils.LogExporter.isCapturing) R.string.stop_log_capture_description else R.string.start_log_capture_description),
+            nameResId = if (LogExporter.isCapturing) R.string.stop_log_capture else R.string.start_log_capture,
+            value = when {
+                settings.exporterLogLevel == LogExporter.LogLevel.SILENT -> getString(R.string.start_log_capture_description)
+                LogExporter.isCapturing -> getString(R.string.stop_log_capture_description)
+                else -> getString(R.string.start_log_capture_description)
+            },
             onClick = {
                 val context = requireContext()
-                if (com.andrerinas.headunitrevived.utils.LogExporter.isCapturing) {
-                    com.andrerinas.headunitrevived.utils.LogExporter.stopCapture()
+                val exporterLevel = settings.exporterLogLevel
+                if (exporterLevel == LogExporter.LogLevel.SILENT) {
+                    Toast.makeText(context, getString(R.string.start_log_capture_in_silent), Toast.LENGTH_LONG).show()
+                    return@SettingEntry
+                }
+
+                if (LogExporter.isCapturing) {
+                    LogExporter.stopCapture()
+                    settings.exporterCaptureEnabled = false
                 } else {
-                    com.andrerinas.headunitrevived.utils.LogExporter.startCapture(context, settings.exporterLogLevel)
+                    LogExporter.startCapture(context, exporterLevel)
+                    settings.exporterCaptureEnabled = true
                 }
                 updateSettingsList()
             }
@@ -1119,10 +1135,16 @@ class SettingsFragment : Fragment() {
             value = getString(R.string.export_logs_description),
             onClick = {
                 val context = requireContext()
-                if (com.andrerinas.headunitrevived.utils.LogExporter.isCapturing) {
-                    com.andrerinas.headunitrevived.utils.LogExporter.stopCapture()
+                val exporterLevel = settings.exporterLogLevel
+                if (exporterLevel == LogExporter.LogLevel.SILENT) {
+                    Toast.makeText(context, getString(R.string.failed_export_in_silent_logs), Toast.LENGTH_LONG).show()
+                    return@SettingEntry
                 }
-                val logFile = com.andrerinas.headunitrevived.utils.LogExporter.saveLogToPublicFile(context, settings.exporterLogLevel)
+
+                if (LogExporter.isCapturing) {
+                    LogExporter.stopCapture()
+                }
+                val logFile = LogExporter.saveLogToPublicFile(context, exporterLevel)
                 updateSettingsList()
 
                 if (logFile != null) {
@@ -1130,7 +1152,7 @@ class SettingsFragment : Fragment() {
                         .setTitle(R.string.logs_exported)
                         .setMessage(getString(R.string.log_saved_to, logFile.absolutePath))
                         .setPositiveButton(R.string.share) { _, _ ->
-                            com.andrerinas.headunitrevived.utils.LogExporter.shareLogFile(context, logFile)
+                            LogExporter.shareLogFile(context, logFile)
                         }
                         .setNegativeButton(R.string.close) { dialog, _ ->
                             dialog.dismiss()
@@ -1388,6 +1410,99 @@ class SettingsFragment : Fragment() {
             .show()
     }
 
+    private fun showUiScaleDialog() {
+        val context = requireContext()
+        val density = context.resources.displayMetrics.density
+
+        val container = android.widget.LinearLayout(context).apply {
+            orientation = android.widget.LinearLayout.VERTICAL
+            val pad = (16 * density).toInt()
+            setPadding(pad, pad, pad, pad)
+        }
+
+        fun makeRow(labelText: String, initialPercent: Int): Triple<android.widget.TextView, android.widget.SeekBar, android.widget.TextView> {
+            val label = android.widget.TextView(context).apply {
+                text = labelText
+                setPadding(0, (8 * density).toInt(), 0, (4 * density).toInt())
+            }
+            val seek = android.widget.SeekBar(context).apply {
+                // Map 100..150 step 10 -> progress 0..5
+                max = 5
+                progress = ((initialPercent - 100) / 10).coerceIn(0, 5)
+            }
+            val value = android.widget.TextView(context).apply {
+                text = "$initialPercent%"
+                setPadding(0, (4 * density).toInt(), 0, (12 * density).toInt())
+            }
+            // Update value when seek changes
+            seek.setOnSeekBarChangeListener(object : android.widget.SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(sb: android.widget.SeekBar?, progress: Int, fromUser: Boolean) {
+                    val pct = 100 + progress * 10
+                    value.text = "$pct%"
+                }
+                override fun onStartTrackingTouch(sb: android.widget.SeekBar?) {}
+                override fun onStopTrackingTouch(sb: android.widget.SeekBar?) {}
+            })
+
+            return Triple(label, seek, value)
+        }
+
+        val homeInitial = pendingUiScaleHomePercent ?: settings.uiScaleHomePercent
+        val settingsInitial = pendingUiScaleSettingsPercent ?: settings.uiScaleSettingsPercent
+
+        val (homeLabel, homeSeek, homeValue) = makeRow(getString(R.string.ui_scale_home), homeInitial)
+        val (settingsLabel, settingsSeek, settingsValue) = makeRow(getString(R.string.ui_scale_settings), settingsInitial)
+
+        container.addView(homeLabel, android.widget.LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT))
+        container.addView(homeSeek, android.widget.LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT))
+        container.addView(homeValue, android.widget.LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT))
+        container.addView(settingsLabel, android.widget.LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT))
+        container.addView(settingsSeek, android.widget.LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT))
+        container.addView(settingsValue, android.widget.LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT))
+
+        // Wrap content in a ScrollView to ensure content is scrollable on small screens or when large scale is used
+        val scroll = android.widget.ScrollView(context).apply {
+            isFillViewport = true
+            addView(container, android.widget.FrameLayout.LayoutParams(android.widget.FrameLayout.LayoutParams.MATCH_PARENT, android.widget.FrameLayout.LayoutParams.WRAP_CONTENT))
+        }
+
+        MaterialAlertDialogBuilder(context, R.style.DarkAlertDialog)
+            .setTitle(R.string.ui_scale)
+            .setView(scroll)
+            .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                val newHome = 100 + (homeSeek.progress * 10)
+                val newSettings = 100 + (settingsSeek.progress * 10)
+                val oldSettings = settings.uiScaleSettingsPercent
+                val oldHome = settings.uiScaleHomePercent
+
+                // Persist immediately (similar to Custom Insets behavior)
+                settings.uiScaleHomePercent = newHome
+                settings.uiScaleSettingsPercent = newSettings
+                settings.commit()
+
+                pendingUiScaleHomePercent = newHome
+                pendingUiScaleSettingsPercent = newSettings
+                checkChanges()
+                updateSettingsList()
+
+                dialog.dismiss()
+
+                // If Settings value changed, recreate activity as requested
+                if (newSettings != oldSettings) {
+                    requireActivity().recreate()
+                }
+                // If Home UI scale changed, request MainActivity to recreate
+                if (newHome != oldHome) {
+                    val intent = Intent(MainActivity.ACTION_RECREATE_MAIN).apply {
+                        setPackage(requireContext().packageName)
+                    }
+                    requireContext().sendBroadcast(intent)
+                }
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
     override fun onResume() {
         super.onResume()
         // Refresh settings list when returning from sub-screens (e.g. AutoConnectFragment, DarkModeFragment)
@@ -1607,6 +1722,34 @@ class SettingsFragment : Fragment() {
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
+    }
+
+    private fun handleNativeAaSelection() {
+        if (NativeAaHandshakeManager.checkCompatibility(requireContext())) {
+            MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+                .setTitle(R.string.supported_nativeaa)
+                .setMessage(R.string.supported_nativeaa_desc)
+                .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                    pendingWifiConnectionMode = 3
+                    checkChanges()
+                    updateSettingsList()
+                    dialog.dismiss()
+                }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
+        } else {
+            MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+                .setTitle(R.string.not_supported_nativeaa)
+                .setMessage(R.string.not_supported_nativeaa_desc)
+                .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                    pendingWifiConnectionMode = 3
+                    checkChanges()
+                    updateSettingsList()
+                    dialog.dismiss()
+                }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
+        }
     }
 
     companion object {
