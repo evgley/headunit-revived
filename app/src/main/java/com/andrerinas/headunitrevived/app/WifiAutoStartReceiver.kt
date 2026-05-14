@@ -18,6 +18,8 @@ import com.andrerinas.headunitrevived.main.MainActivity
 import com.andrerinas.headunitrevived.utils.AppLog
 import com.andrerinas.headunitrevived.utils.Settings
 import android.os.Build
+import com.andrerinas.headunitrevived.utils.LynkCoWiFi
+
 
 class WifiAutoStartReceiver : BroadcastReceiver() {
 
@@ -43,7 +45,7 @@ class WifiAutoStartReceiver : BroadcastReceiver() {
             val targetSsid = Settings.getAutoStartWifiSsid(context).removeSurrounding("\"")
             if (targetSsid.isEmpty()) return
 
-            val wifiManager = context.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+            val wifiManager = LynkCoWiFi.getWifiManager(context.applicationContext) as WifiManager
             val wifiInfo: WifiInfo? = wifiManager.connectionInfo
             
             val currentSsid = wifiInfo?.ssid?.removeSurrounding("\"")
