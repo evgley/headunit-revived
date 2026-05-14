@@ -489,4 +489,15 @@
     <string name="media_action_pause">Пауза</string>
     <string name="media_action_next">Следующий</string>
     <string name="error_usb_permission_failed">Системная ошибка: Не удалось запросить диалоговое окно разрешения USB.</string>
+    <string name="microphone_settings">Настройки микрофона</string>
+    <string name="microphone_settings_description">Настройка входа микрофона и обработки звука.</string>
+    <string name="mic_echo_canceler">Эхоподавление (AEC)</string>
+    <string name="mic_echo_canceler_description">Попытка удалить эхо из микрофона. Отключите, если слышите тишину или искажения.</string>
+    <string name="mic_noise_suppressor">Шумоподавление (NS)</string>
+    <string name="mic_noise_suppressor_description">Попытка уменьшить фоновый шум. Отключите, если ваш голос звучит приглушенно.</string>
+    <string name="mic_auto_gain_control">Автоматическая регулировка усиления (AGC)</string>
+    <string name="mic_auto_gain_control_description">Автоматически регулирует громкость микрофона. Отключите, если громкость нестабильна.</string>
+    <string name="bt_permission_denied">В разрешении Bluetooth отказано. Невозможно сканировать устройства.</string>
+    <string name="wifi_autostart_title">Автозапуск WiFi</string>
+    <string name="wifi_autostart_content">Подключено к %s. Нажмите, чтобы запустить Android Auto.</string>
 </resources>

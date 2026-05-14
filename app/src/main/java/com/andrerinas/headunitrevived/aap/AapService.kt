@@ -923,7 +923,7 @@ class AapService : Service(), UsbReceiver.Listener {
 
                         // Only handle ACTION_DOWN to prevent double triggers from standard Android behavior.
                         // Physical double triggers are handled by CommManager.sendKey deduplication.
-                        if (keyEvent.action == android.view.KeyEvent.ACTION_DOWN) {
+                        if (keyEvent.action == android.view.KeyEvent.ACTION_DOWN && keyEvent.repeatCount == 0) {
                             AppLog.i("MediaButtonEvent: Processing key ${keyEvent.keyCode}")
                             // Send a complete click sequence (press + release) immediately
                             commManager.sendKey(keyEvent.keyCode, true)
@@ -1379,11 +1379,10 @@ class AapService : Service(), UsbReceiver.Listener {
 
             // Mode 3: Native AA Wireless
             if (mode == 3) {
-                val wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as android.net.wifi.WifiManager
-                if (wifiManager.isWifiEnabled) {
-                    // Start WiFi Direct as a "quiet host" (P2P Group for phone to join)
-                    wifiDirectManager?.startNativeAaQuietHost()
-                }
+                // Start WiFi Direct as a "quiet host" (P2P Group for phone to join)
+                // We let WifiDirectManager handle the WiFi state (enabling if needed)
+                wifiDirectManager?.startNativeAaQuietHost()
+                
                 // Start the official Bluetooth handshake servers
                 nativeAaHandshakeManager?.start()
             }
@@ -1954,6 +1953,18 @@ class AapService : Service(), UsbReceiver.Listener {
         wirelessServer = WirelessServer().apply { start(registerNsd = shouldRegisterNsd) }
         if (shouldRegisterNsd) {
             startDiscovery()
+        }
+    }
+
+    /**
+     * Triggers a refresh of the WiFi Direct "quiet host" state.
+     * Called by NativeAaHandshakeManager if it's waiting for credentials that haven't arrived yet.
+     */
+    fun triggerWifiDirectRefresh() {
+        AppLog.i("AapService: WiFi Direct refresh requested.")
+        val mode = App.provide(this).settings.wifiConnectionMode
+        if (mode == 3) {
+            wifiDirectManager?.startNativeAaQuietHost()
         }
     }
 

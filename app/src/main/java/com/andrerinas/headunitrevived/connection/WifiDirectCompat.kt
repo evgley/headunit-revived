@@ -34,9 +34,7 @@ object WifiDirectCompat {
             try {
                 manager.requestDeviceInfo(channel) { device ->
                     device?.let {
-                        if (it.deviceAddress != "02:00:00:00:00:00" && it.deviceAddress != "00:00:00:00:00:00") {
-                            onDeviceAvailable(it.deviceAddress)
-                        }
+                        onDeviceAvailable(it.deviceAddress ?: "00:00:00:00:00:00")
                     }
                 }
             } catch (e: Exception) {

@@ -489,4 +489,15 @@
     <string name="sync_media_session_aa_metadata">Piesa curentă AA în sesiunea media</string>
     <string name="sync_media_session_aa_metadata_description">Afișează titlul piesei, artistul, durata și coperta albumului de pe telefon în sesiunea media a sistemului și în notificarea media</string>
     <string name="error_usb_permission_failed">Eroare de sistem: Nu s-a putut solicita caseta de dialog pentru permisiunea USB.</string>
+    <string name="microphone_settings">Setări microfon</string>
+    <string name="microphone_settings_description">Configurați intrarea microfonului și procesarea audio.</string>
+    <string name="mic_echo_canceler">Anularea ecoului (AEC)</string>
+    <string name="mic_echo_canceler_description">Încearcă să elimine ecoul din microfon. Dezactivați dacă întâmpinați tăcere sau distorsiuni.</string>
+    <string name="mic_noise_suppressor">Suprimarea zgomotului (NS)</string>
+    <string name="mic_noise_suppressor_description">Încearcă să reducă zgomotul de fundal. Dezactivați dacă vocea dvs. sună înfundat.</string>
+    <string name="mic_auto_gain_control">Control automat al amplificării (AGC)</string>
+    <string name="mic_auto_gain_control_description">Reglează automat volumul microfonului. Dezactivați dacă volumul este instabil.</string>
+    <string name="bt_permission_denied">Permisiunea Bluetooth a fost refuzată. Nu se pot scana dispozitive.</string>
+    <string name="wifi_autostart_title">Pornire automată WiFi</string>
+    <string name="wifi_autostart_content">Conectat la %s. Atingeți pentru a porni Android Auto.</string>
 </resources>

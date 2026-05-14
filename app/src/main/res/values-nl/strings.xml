@@ -488,4 +488,15 @@
     <string name="sync_media_session_aa_metadata">Huidig AA-nummer in mediasessie</string>
     <string name="sync_media_session_aa_metadata_description">Toon titel, artiest, duur en albumhoes van de telefoon in de mediasessie van het systeem en in de mediamelding</string>
     <string name="error_usb_permission_failed">Systeemfout: Aanvragen van USB-toestemmingsvenster mislukt.</string>
+    <string name="microphone_settings">Microfooninstellingen</string>
+    <string name="microphone_settings_description">Microfooningang en audioverwerking configureren.</string>
+    <string name="mic_echo_canceler">Echonderdrukking (AEC)</string>
+    <string name="mic_echo_canceler_description">Probeert echo van de microfoon te verwijderen. Schakel dit uit als u stilte of vervorming ervaart.</string>
+    <string name="mic_noise_suppressor">Ruisonderdrukking (NS)</string>
+    <string name="mic_noise_suppressor_description">Probeert achtergrondgeluid te verminderen. Schakel dit uit als uw stem gedempt klinkt.</string>
+    <string name="mic_auto_gain_control">Automatische versterkingsregeling (AGC)</string>
+    <string name="mic_auto_gain_control_description">Past automatisch het microfoonvolume aan. Schakel dit uit als het volume onstabiel is.</string>
+    <string name="bt_permission_denied">Bluetooth-toestemming geweigerd. Kan niet scannen naar apparaten.</string>
+    <string name="wifi_autostart_title">WiFi Auto-Start</string>
+    <string name="wifi_autostart_content">Verbonden met %s. Tik om Android Auto te starten.</string>
 </resources>

@@ -488,4 +488,15 @@
     <string name="sync_media_session_aa_metadata">Aktuální skladba AA v mediální relaci</string>
     <string name="sync_media_session_aa_metadata_description">Zobrazovat název skladby, interpreta, délku a obal alba z telefonu v systémové mediální relaci a mediálním oznámení</string>
     <string name="error_usb_permission_failed">Systémová chyba: Nepodařilo se vyžádat dialogové okno pro povolení USB.</string>
+    <string name="microphone_settings">Nastavení mikrofonu</string>
+    <string name="microphone_settings_description">Konfigurace vstupu mikrofonu a zpracování zvuku.</string>
+    <string name="mic_echo_canceler">Potlačení ozvěny (AEC)</string>
+    <string name="mic_echo_canceler_description">Pokusí se odstranit ozvěnu z mikrofonu. Vypněte, pokud zaznamenáte ticho nebo zkreslení.</string>
+    <string name="mic_noise_suppressor">Potlačení šumu (NS)</string>
+    <string name="mic_noise_suppressor_description">Pokusí se snížit hluk na pozadí. Vypněte, pokud váš hlas zní tlumeně.</string>
+    <string name="mic_auto_gain_control">Automatické řízení zesílení (AGC)</string>
+    <string name="mic_auto_gain_control_description">Automaticky upravuje hlasitost mikrofonu. Vypněte, pokud je hlasitost nestabilní.</string>
+    <string name="bt_permission_denied">Oprávnění Bluetooth bylo zamítnuto. Nelze skenovat zařízení.</string>
+    <string name="wifi_autostart_title">Automatické spuštění WiFi</string>
+    <string name="wifi_autostart_content">Připojeno k %s. Klepnutím spustíte Android Auto.</string>
 </resources>

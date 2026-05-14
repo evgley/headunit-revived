@@ -486,4 +486,15 @@
     <string name="media_action_pause">Duraklat</string>
     <string name="media_action_next">Sonraki</string>
     <string name="error_usb_permission_failed">Sistem hatası: USB izin iletişim kutusu istenemedi.</string>
+    <string name="microphone_settings">Mikrofon Ayarları</string>
+    <string name="microphone_settings_description">Mikrofon girişini ve ses işlemeyi yapılandırın.</string>
+    <string name="mic_echo_canceler">Yankı giderme (AEC)</string>
+    <string name="mic_echo_canceler_description">Mikrofondaki yankıyı gidermeye çalışır. Sessizlik veya bozulma yaşıyorsanız bunu devre dışı bırakın.</string>
+    <string name="mic_noise_suppressor">Gürültü bastırma (NS)</string>
+    <string name="mic_noise_suppressor_description">Arka plan gürültüsünü azaltmaya çalışır. Sesiniz boğuk geliyorsa bunu devre dışı bırakın.</string>
+    <string name="mic_auto_gain_control">Otomatik kazanç kontrolü (AGC)</string>
+    <string name="mic_auto_gain_control_description">Mikrofon ses seviyesini otomatik olarak ayarlar. Ses seviyesi dengesizse bunu devre dışı bırakın.</string>
+    <string name="bt_permission_denied">Bluetooth izni reddedildi. Cihazlar taranamıyor.</string>
+    <string name="wifi_autostart_title">WiFi Otomatik Başlatma</string>
+    <string name="wifi_autostart_content">%s ağına bağlandı. Android Auto\'yu başlatmak için dokunun.</string>
 </resources>

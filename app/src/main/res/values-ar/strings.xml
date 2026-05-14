@@ -488,4 +488,15 @@
     <string name="sync_media_session_aa_metadata">المسار الجاري من AA في جلسة الوسائط</string>
     <string name="sync_media_session_aa_metadata_description">عرض عنوان المسار والفنان والمدة وغلاف الألبوم من الهاتف في جلسة الوسائط بالنظام وإشعار الوسائط</string>
     <string name="error_usb_permission_failed">خطأ في النظام: فشل طلب مربع حوار إذن USB.</string>
+    <string name="microphone_settings">إعدادات الميكروفون</string>
+    <string name="microphone_settings_description">تكوين مدخل الميكروفون ومعالجة الصوت.</string>
+    <string name="mic_echo_canceler">إلغاء الصدى (AEC)</string>
+    <string name="mic_echo_canceler_description">يحاول إزالة الصدى من الميكروفون. قم بتعطيله إذا واجهت صمتاً أو تشويشاً.</string>
+    <string name="mic_noise_suppressor">إخماد الضوضاء (NS)</string>
+    <string name="mic_noise_suppressor_description">يحاول تقليل ضوضاء الخلفية. قم بتعطيله إذا كان صوتك يبدو مكتوماً.</string>
+    <string name="mic_auto_gain_control">التحكم التلقائي في الكسب (AGC)</string>
+    <string name="mic_auto_gain_control_description">يضبط مستوى صوت الميكروفون تلقائياً. قم بتعطيله إذا كان مستوى الصوت غير مستقر.</string>
+    <string name="bt_permission_denied">تم رفض إذن البلوتوث. لا يمكن مسح الأجهزة.</string>
+    <string name="wifi_autostart_title">بدء تشغيل WiFi تلقائياً</string>
+    <string name="wifi_autostart_content">متصل بـ %s. اضغط لبدء أندرويد أوتو.</string>
 </resources>

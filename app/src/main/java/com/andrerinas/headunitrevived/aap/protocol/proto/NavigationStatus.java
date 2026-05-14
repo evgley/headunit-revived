@@ -1879,9 +1879,9 @@ public final class NavigationStatus {
        */
       FERRY_TRAIN(17),
       /**
-       * <code>DESTINATION = 19;</code>
+       * <code>DESTINATION = 18;</code>
        */
-      DESTINATION(19),
+      DESTINATION(18),
       ;
 
       /**
@@ -1953,9 +1953,9 @@ public final class NavigationStatus {
        */
       public static final int FERRY_TRAIN_VALUE = 17;
       /**
-       * <code>DESTINATION = 19;</code>
+       * <code>DESTINATION = 18;</code>
        */
-      public static final int DESTINATION_VALUE = 19;
+      public static final int DESTINATION_VALUE = 18;
 
 
       public final int getNumber() {
@@ -1995,7 +1995,7 @@ public final class NavigationStatus {
           case 14: return STRAIGHT;
           case 16: return FERRY_BOAT;
           case 17: return FERRY_TRAIN;
-          case 19: return DESTINATION;
+          case 18: return DESTINATION;
           default: return null;
         }
       }
@@ -3038,23 +3038,23 @@ public final class NavigationStatus {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 distance_meters = 1;</code>
+     * <code>optional int32 distance_meters = 1;</code>
      * @return Whether the distanceMeters field is set.
      */
     boolean hasDistanceMeters();
     /**
-     * <code>required int32 distance_meters = 1;</code>
+     * <code>optional int32 distance_meters = 1;</code>
      * @return The distanceMeters.
      */
     int getDistanceMeters();
 
     /**
-     * <code>required int32 time_to_turn_seconds = 2;</code>
+     * <code>optional int32 time_to_turn_seconds = 2;</code>
      * @return Whether the timeToTurnSeconds field is set.
      */
     boolean hasTimeToTurnSeconds();
     /**
-     * <code>required int32 time_to_turn_seconds = 2;</code>
+     * <code>optional int32 time_to_turn_seconds = 2;</code>
      * @return The timeToTurnSeconds.
      */
     int getTimeToTurnSeconds();
@@ -3271,7 +3271,7 @@ public final class NavigationStatus {
     public static final int DISTANCE_METERS_FIELD_NUMBER = 1;
     private int distanceMeters_ = 0;
     /**
-     * <code>required int32 distance_meters = 1;</code>
+     * <code>optional int32 distance_meters = 1;</code>
      * @return Whether the distanceMeters field is set.
      */
     @java.lang.Override
@@ -3279,7 +3279,7 @@ public final class NavigationStatus {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>required int32 distance_meters = 1;</code>
+     * <code>optional int32 distance_meters = 1;</code>
      * @return The distanceMeters.
      */
     @java.lang.Override
@@ -3290,7 +3290,7 @@ public final class NavigationStatus {
     public static final int TIME_TO_TURN_SECONDS_FIELD_NUMBER = 2;
     private int timeToTurnSeconds_ = 0;
     /**
-     * <code>required int32 time_to_turn_seconds = 2;</code>
+     * <code>optional int32 time_to_turn_seconds = 2;</code>
      * @return Whether the timeToTurnSeconds field is set.
      */
     @java.lang.Override
@@ -3298,7 +3298,7 @@ public final class NavigationStatus {
       return ((bitField0_ & 0x00000002) != 0);
     }
     /**
-     * <code>required int32 time_to_turn_seconds = 2;</code>
+     * <code>optional int32 time_to_turn_seconds = 2;</code>
      * @return The timeToTurnSeconds.
      */
     @java.lang.Override
@@ -3350,14 +3350,6 @@ public final class NavigationStatus {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasDistanceMeters()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasTimeToTurnSeconds()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -3714,12 +3706,6 @@ public final class NavigationStatus {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasDistanceMeters()) {
-          return false;
-        }
-        if (!hasTimeToTurnSeconds()) {
-          return false;
-        }
         return true;
       }
 
@@ -3785,7 +3771,7 @@ public final class NavigationStatus {
 
       private int distanceMeters_ ;
       /**
-       * <code>required int32 distance_meters = 1;</code>
+       * <code>optional int32 distance_meters = 1;</code>
        * @return Whether the distanceMeters field is set.
        */
       @java.lang.Override
@@ -3793,7 +3779,7 @@ public final class NavigationStatus {
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
-       * <code>required int32 distance_meters = 1;</code>
+       * <code>optional int32 distance_meters = 1;</code>
        * @return The distanceMeters.
        */
       @java.lang.Override
@@ -3801,7 +3787,7 @@ public final class NavigationStatus {
         return distanceMeters_;
       }
       /**
-       * <code>required int32 distance_meters = 1;</code>
+       * <code>optional int32 distance_meters = 1;</code>
        * @param value The distanceMeters to set.
        * @return This builder for chaining.
        */
@@ -3813,7 +3799,7 @@ public final class NavigationStatus {
         return this;
       }
       /**
-       * <code>required int32 distance_meters = 1;</code>
+       * <code>optional int32 distance_meters = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearDistanceMeters() {
@@ -3825,7 +3811,7 @@ public final class NavigationStatus {
 
       private int timeToTurnSeconds_ ;
       /**
-       * <code>required int32 time_to_turn_seconds = 2;</code>
+       * <code>optional int32 time_to_turn_seconds = 2;</code>
        * @return Whether the timeToTurnSeconds field is set.
        */
       @java.lang.Override
@@ -3833,7 +3819,7 @@ public final class NavigationStatus {
         return ((bitField0_ & 0x00000002) != 0);
       }
       /**
-       * <code>required int32 time_to_turn_seconds = 2;</code>
+       * <code>optional int32 time_to_turn_seconds = 2;</code>
        * @return The timeToTurnSeconds.
        */
       @java.lang.Override
@@ -3841,7 +3827,7 @@ public final class NavigationStatus {
         return timeToTurnSeconds_;
       }
       /**
-       * <code>required int32 time_to_turn_seconds = 2;</code>
+       * <code>optional int32 time_to_turn_seconds = 2;</code>
        * @param value The timeToTurnSeconds to set.
        * @return This builder for chaining.
        */
@@ -3853,7 +3839,7 @@ public final class NavigationStatus {
         return this;
       }
       /**
-       * <code>required int32 time_to_turn_seconds = 2;</code>
+       * <code>optional int32 time_to_turn_seconds = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearTimeToTurnSeconds() {
@@ -14930,9 +14916,9 @@ public final class NavigationStatus {
       "ORK\020\t\022\t\n\005MERGE\020\n\022\024\n\020ROUNDABOUT_ENTER\020\013\022\023" +
       "\n\017ROUNDABOUT_EXIT\020\014\022\035\n\031ROUNDABOUT_ENTER_" +
       "AND_EXIT\020\r\022\014\n\010STRAIGHT\020\016\022\016\n\nFERRY_BOAT\020\020" +
-      "\022\017\n\013FERRY_TRAIN\020\021\022\017\n\013DESTINATION\020\023\"\354\002\n\025N" +
+      "\022\017\n\013FERRY_TRAIN\020\021\022\017\n\013DESTINATION\020\022\"\354\002\n\025N" +
       "extTurnDistanceEvent\022\027\n\017distance_meters\030" +
-      "\001 \002(\005\022\034\n\024time_to_turn_seconds\030\002 \002(\005\022\033\n\023d" +
+      "\001 \001(\005\022\034\n\024time_to_turn_seconds\030\002 \001(\005\022\033\n\023d" +
       "isplay_distance_e3\030\003 \001(\005\022u\n\025display_dist" +
       "ance_unit\030\004 \001(\0162V.com.andrerinas.headuni" +
       "trevived.aap.protocol.proto.NextTurnDist" +

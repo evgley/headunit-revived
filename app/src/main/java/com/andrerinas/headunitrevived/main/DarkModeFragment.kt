@@ -704,7 +704,7 @@ class DarkModeFragment : Fragment(), SensorEventListener {
         val hint = android.widget.TextView(context).apply {
             text = message
             textSize = 14f
-            setTextColor(context.resources.getColor(android.R.color.darker_gray, null))
+                setTextColor(ContextCompat.getColor(context, android.R.color.darker_gray))
         }
         layout.addView(hint)
 
@@ -746,7 +746,7 @@ class DarkModeFragment : Fragment(), SensorEventListener {
         val minText = android.widget.TextView(context).apply {
             text = minLabel
             textSize = 12f
-            setTextColor(context.resources.getColor(android.R.color.darker_gray, null))
+                setTextColor(ContextCompat.getColor(context, android.R.color.darker_gray))
             val lp = android.widget.LinearLayout.LayoutParams(0, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
             layoutParams = lp
         }
@@ -754,7 +754,7 @@ class DarkModeFragment : Fragment(), SensorEventListener {
             text = maxLabel
             textSize = 12f
             gravity = android.view.Gravity.END
-            setTextColor(context.resources.getColor(android.R.color.darker_gray, null))
+                setTextColor(ContextCompat.getColor(context, android.R.color.darker_gray))
             val lp = android.widget.LinearLayout.LayoutParams(0, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
             layoutParams = lp
         }
@@ -767,7 +767,7 @@ class DarkModeFragment : Fragment(), SensorEventListener {
                 text = currentReading
                 textSize = 16f
                 gravity = android.view.Gravity.CENTER
-                setTextColor(context.resources.getColor(android.R.color.darker_gray, null))
+                    setTextColor(ContextCompat.getColor(context, android.R.color.darker_gray))
                 val lp = android.widget.LinearLayout.LayoutParams(
                     android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
                     android.widget.LinearLayout.LayoutParams.WRAP_CONTENT
@@ -812,7 +812,7 @@ class DarkModeFragment : Fragment(), SensorEventListener {
         val hint = android.widget.TextView(context).apply {
             text = message
             textSize = 14f
-            setTextColor(context.resources.getColor(android.R.color.darker_gray, null))
+                setTextColor(ContextCompat.getColor(context, android.R.color.darker_gray))
         }
         layout.addView(hint)
 
@@ -837,14 +837,14 @@ class DarkModeFragment : Fragment(), SensorEventListener {
         val minText = android.widget.TextView(context).apply {
             text = "0 Lux"
             textSize = 12f
-            setTextColor(context.resources.getColor(android.R.color.darker_gray, null))
+                setTextColor(ContextCompat.getColor(context, android.R.color.darker_gray))
             layoutParams = android.widget.LinearLayout.LayoutParams(0, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
         }
         val maxText = android.widget.TextView(context).apply {
             text = "${currentMax} Lux"
             textSize = 12f
             gravity = android.view.Gravity.END
-            setTextColor(context.resources.getColor(android.R.color.darker_gray, null))
+                setTextColor(ContextCompat.getColor(context, android.R.color.darker_gray))
             layoutParams = android.widget.LinearLayout.LayoutParams(0, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
         }
 
@@ -889,7 +889,7 @@ class DarkModeFragment : Fragment(), SensorEventListener {
                 text = currentReading
                 textSize = 16f
                 gravity = android.view.Gravity.CENTER
-                setTextColor(context.resources.getColor(android.R.color.darker_gray, null))
+                    setTextColor(ContextCompat.getColor(context, android.R.color.darker_gray))
                 val lp = android.widget.LinearLayout.LayoutParams(
                     android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
                     android.widget.LinearLayout.LayoutParams.WRAP_CONTENT

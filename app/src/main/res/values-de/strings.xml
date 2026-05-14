@@ -501,4 +501,7 @@
     <string name="sync_media_session_aa_metadata">AA-Now-Playing in der Mediensitzung</string>
     <string name="sync_media_session_aa_metadata_description">Titel, Interpret, Dauer und Albumcover vom Telefon in der System-Mediensitzung und in der Medienbenachrichtigung anzeigen</string>
     <string name="error_usb_permission_failed">Systemfehler: Anforderung des USB-Berechtigungsdialogs fehlgeschlagen.</string>
+    <string name="bt_permission_denied">Bluetooth-Berechtigung verweigert. Suche nach Geräten nicht möglich.</string>
+    <string name="wifi_autostart_title">WiFi Auto-Start</string>
+    <string name="wifi_autostart_content">Verbunden mit %s. Tippen, um Android Auto zu starten.</string>
 </resources>

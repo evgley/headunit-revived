@@ -489,4 +489,15 @@
     <string name="sync_media_session_aa_metadata">Faixa atual do AA na sessão de mídia</string>
     <string name="sync_media_session_aa_metadata_description">Mostrar título, artista, duração e capa do álbum do telefone na sessão de mídia do sistema e na notificação de mídia</string>
     <string name="error_usb_permission_failed">Erro do sistema: Falha ao solicitar a caixa de diálogo de permissão USB.</string>
+    <string name="microphone_settings">Configurações do microfone</string>
+    <string name="microphone_settings_description">Configurar entrada de microfone e processamento de áudio.</string>
+    <string name="mic_echo_canceler">Cancelamento de eco (AEC)</string>
+    <string name="mic_echo_canceler_description">Tenta remover o eco do microfone. Desative se houver silêncio ou distorção.</string>
+    <string name="mic_noise_suppressor">Supressão de ruído (NS)</string>
+    <string name="mic_noise_suppressor_description">Tenta reduzir o ruído de fundo. Desative se a sua voz soar abafada.</string>
+    <string name="mic_auto_gain_control">Controle automático de ganho (AGC)</string>
+    <string name="mic_auto_gain_control_description">Ajusta automaticamente o volume do microfone. Desative se o volume estiver instável.</string>
+    <string name="bt_permission_denied">Permissão Bluetooth negada. Não é possível escanear dispositivos.</string>
+    <string name="wifi_autostart_title">Início automático de WiFi</string>
+    <string name="wifi_autostart_content">Conectado a %s. Toque para iniciar o Android Auto.</string>
 </resources>

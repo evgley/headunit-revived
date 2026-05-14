@@ -5,7 +5,6 @@ import android.os.Handler
 import android.os.Looper
 import com.andrerinas.headunitrevived.aap.protocol.Channel
 import com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus
-import com.andrerinas.headunitrevived.contract.NavigationUpdateIntent
 import com.andrerinas.headunitrevived.utils.AppLog
 import com.andrerinas.headunitrevived.utils.Settings
 
@@ -61,13 +60,13 @@ class AapNavigation(
                 try {
                     val detail = message.parse(NavigationStatus.NextTurnDetail.newBuilder()).buildPartial()
                     snapshot.nextTurnDetail = AapNavigationHelper.TimedMessage(detail, helper.nowElapsedRealtimeMs())
-val road = detail.road.takeIf { it.isNotBlank() }
-road?.let {
-    snapshot.currentStreet = AapNavigationHelper.TimedMessage(it, helper.nowElapsedRealtimeMs())
-}
+                    val road = detail.road.takeIf { it.isNotBlank() }
+                    road?.let {
+                        snapshot.currentStreet = AapNavigationHelper.TimedMessage(it, helper.nowElapsedRealtimeMs())
+                    }
                     AppLog.d(
                         "Nav: NextTurnDetail road=${detail.road} " +
-                            "hasNextTurn=${detail.hasNextTurn()} nextTurn=${detail.nextTurn}"
+                                "hasNextTurn=${detail.hasNextTurn()} nextTurn=${detail.nextTurn}"
                     )
                     scheduleDebouncedBroadcast(NAV_EVENT_TYPE_TURN)
                     if (settings.showNavigationNotifications) {
@@ -86,8 +85,8 @@ road?.let {
                     val distanceMeters = event.distanceMeters.takeIf { it >= 0 }
                     AppLog.d(
                         "Nav: NextTurnDistanceEvent hasDistance=${event.hasDistanceMeters()} " +
-                            "distance=${event.distanceMeters} hasTime=${event.hasTimeToTurnSeconds()} " +
-                            "time=${event.timeToTurnSeconds}"
+                                "distance=${event.distanceMeters} hasTime=${event.hasTimeToTurnSeconds()} " +
+                                "time=${event.timeToTurnSeconds}"
                     )
                     scheduleDebouncedBroadcast(NAV_EVENT_TYPE_TURN)
                     if (settings.showNavigationNotifications) {

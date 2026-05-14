@@ -489,4 +489,15 @@
     <string name="sync_media_session_aa_metadata">Поточний трек AA у медіасесії</string>
     <string name="sync_media_session_aa_metadata_description">Показувати з телефона назву треку, виконавця, тривалість і обкладинку в системній медіасесії та медіа-сповіщенні</string>
     <string name="error_usb_permission_failed">Системна помилка: Не вдалося запитати діалогове вікно дозволу USB.</string>
+    <string name="microphone_settings">Налаштування мікрофона</string>
+    <string name="microphone_settings_description">Налаштування входу мікрофона та обробки звуку.</string>
+    <string name="mic_echo_canceler">Ехоподавлення (AEC)</string>
+    <string name="mic_echo_canceler_description">Спроба видалити ехо з мікрофона. Вимкніть, якщо чуєте тишу або спотворення.</string>
+    <string name="mic_noise_suppressor">Шумоподавлення (NS)</string>
+    <string name="mic_noise_suppressor_description">Спроба зменшити фоновий шум. Вимкніть, якщо ваш голос звучить приглушено.</string>
+    <string name="mic_auto_gain_control">Автоматичне регулювання посилення (AGC)</string>
+    <string name="mic_auto_gain_control_description">Автоматично регулює гучність мікрофона. Вимкніть, якщо гучність нестабільна.</string>
+    <string name="bt_permission_denied">У дозволі Bluetooth відмовлено. Неможливо сканувати пристрої.</string>
+    <string name="wifi_autostart_title">Автозапуск WiFi</string>
+    <string name="wifi_autostart_content">Підключено до %s. Натисніть, щоб запустити Android Auto.</string>
 </resources>

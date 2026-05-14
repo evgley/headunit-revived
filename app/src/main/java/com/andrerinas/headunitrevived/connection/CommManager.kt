@@ -403,36 +403,62 @@ class CommManager(
         }
 
         // 1. Remapping (Physical -> Logical)
+        // Check if the physical keyCode is mapped to a logical action in settings.
+        // If not mapped, we use the original keyCode as the logical code.
         var logicalCode = settings.keyCodes.entries.find { it.value == keyCode }?.key ?: keyCode
         
+        // 2. Proprietary Key Filtering
+        // If the key is proprietary (internal ID > 1000) and NOT mapped, we drop it.
+        // These keys are intended to be learned/mapped in the Keymap settings.
+        // Sending them directly to AA would result in KEYCODE_UNKNOWN.
+        if (keyCode >= 1000 && logicalCode == keyCode) {
+            AppLog.v("CommManager: Ignoring unmapped proprietary key $keyCode")
+            return
+        }
+
         // [FIX] BMW/Rotary Enter remapping: Most AA apps expect DPAD_CENTER (23) for selection,
         // but physical rotary knobs often send ENTER (66). Remap 66 -> 23 to ensure selection works.
         if (logicalCode == KeyEvent.KEYCODE_ENTER) {
             logicalCode = KeyEvent.KEYCODE_DPAD_CENTER
         }
 
-        // 2. State Tracking & De-duplication
+        // 3. State Tracking & De-duplication
+        // Prevent sending the same state twice (e.g. two consecutive DOWNs)
         val isCurrentlyDown = keyStates[logicalCode] ?: false
         if (isPress == isCurrentlyDown) {
             return
         }
+        keyStates[logicalCode] = isPress
 
-        // 3. Time-based Debouncing
+        // 4. Time-based Debouncing
         val now = SystemClock.elapsedRealtime()
         if (isPress) {
             val lastPressTime = lastKeyEvents[logicalCode] ?: 0L
-            if (now - lastPressTime < 300) {
+            
+            // Media keys often trigger multiple redundant intents on China headunits.
+            // Use a longer debounce (600ms) for media actions, 300ms for others.
+            val debounceMs = if (isMediaKey(logicalCode)) 600L else 300L
+            
+            if (now - lastPressTime < debounceMs) {
                 AppLog.i("CommManager: Debouncing logical key $logicalCode (DOWN) - dropped duplicate trigger within ${now - lastPressTime}ms")
                 return
             }
             lastKeyEvents[logicalCode] = now
         }
-
-        // Update state
-        keyStates[logicalCode] = isPress
         
         AppLog.i("CommManager: TX Key -> AA=$logicalCode (isPress=$isPress)")
         _transport?.send(logicalCode, isPress)
+    }
+
+    private fun isMediaKey(code: Int): Boolean {
+        return code == KeyEvent.KEYCODE_MEDIA_NEXT || 
+               code == KeyEvent.KEYCODE_MEDIA_PREVIOUS ||
+               code == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE ||
+               code == KeyEvent.KEYCODE_MEDIA_PLAY ||
+               code == KeyEvent.KEYCODE_MEDIA_PAUSE ||
+               code == KeyEvent.KEYCODE_MEDIA_STOP ||
+               code == KeyEvent.KEYCODE_MEDIA_FAST_FORWARD ||
+               code == KeyEvent.KEYCODE_MEDIA_REWIND
     }
 
     /** 
