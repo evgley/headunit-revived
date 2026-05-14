@@ -81,6 +81,15 @@ class ProjectionActivityRequest: Intent(action) {
  *
  * Other apps: registerReceiver(receiver, IntentFilter(NavigationUpdateIntent.action), RECEIVER_EXPORTED)
  * No special permission required.
+ *
+ * @param nextEventType **Deprecated (legacy):** wire values for AA `NextTurnDetail.NextEvent` (see [EXTRA_NEXT_EVENT_TYPE]).
+ *   Mapped from instrument-cluster `NavigationManeuver` when the old message is absent; scheduled for removal — migrate
+ *   consumers to instrument-cluster maneuver types.
+ * @param turnSide **Deprecated (legacy):** wire values for AA `NextTurnDetail.Side` 1/2/3 (see [EXTRA_TURN_SIDE]).
+ *   Scheduled for removal together with [nextEventType].
+ * @param totalDistanceMeters Remaining distance to destination along the route (meters), [EXTRA_TOTAL_DISTANCE_METERS], or null.
+ * @param totalTimeSeconds Remaining time to destination (seconds), [EXTRA_TOTAL_TIME_SECONDS], or null.
+ * @param estimatedArrival ETA string from the nav app (`estimated_time_at_arrival`), [EXTRA_ESTIMATED_ARRIVAL], or null.
  */
 class NavigationUpdateIntent(
     distanceMeters: Int?,
@@ -90,7 +99,10 @@ class NavigationUpdateIntent(
     actionText: String,
     turnSide: Int? = null,
     turnNumber: Int? = null,
-    turnAngle: Int? = null
+    turnAngle: Int? = null,
+    totalDistanceMeters: Int? = null,
+    totalTimeSeconds: Long? = null,
+    estimatedArrival: String? = null
 ) : Intent(action) {
     init {
         putExtra(EXTRA_DISTANCE_METERS, distanceMeters?.takeIf { it >= 0 } ?: -1)
@@ -101,6 +113,9 @@ class NavigationUpdateIntent(
         putExtra(EXTRA_TURN_SIDE, turnSide?.coerceIn(1, 3) ?: TURN_SIDE_UNSPECIFIED)
         putExtra(EXTRA_TURN_NUMBER, turnNumber?.takeIf { it >= 0 } ?: -1)
         putExtra(EXTRA_TURN_ANGLE, turnAngle?.takeIf { it >= 0 } ?: -1)
+        putExtra(EXTRA_TOTAL_DISTANCE_METERS, totalDistanceMeters?.takeIf { it >= 0 } ?: -1)
+        putExtra(EXTRA_TOTAL_TIME_SECONDS, totalTimeSeconds?.takeIf { it >= 0 } ?: -1L)
+        putExtra(EXTRA_ESTIMATED_ARRIVAL, estimatedArrival?.ifBlank { null } ?: "")
     }
 
     companion object {
@@ -115,15 +130,18 @@ class NavigationUpdateIntent(
         /** Road/street name (e.g. current street or turn target). */
         const val EXTRA_ROAD = "road"
 
-        /** Maneuver type: see Android Auto navigation proto NextTurnDetail.NextEvent (0=UNKNOWN, 1=DEPART, …). */
+        /**
+         * Legacy extra: NextTurnDetail.NextEvent wire values (0…19).
+         * Scheduled for removal together with [NavigationUpdateIntent] `nextEventType` parameter; migrate to instrument-cluster maneuver types.
+         */
         const val EXTRA_NEXT_EVENT_TYPE = "next_event_type"
 
         /** Human-readable action string (e.g. "Turn", "Exit ramp") in the app's locale. */
         const val EXTRA_ACTION_TEXT = "action_text"
 
         /**
-         * Turn side from AA NextTurnDetail.Side:
-         * 1 = LEFT, 2 = RIGHT, 3 = UNSPECIFIED.
+         * Legacy extra: NextTurnDetail.Side (1=LEFT, 2=RIGHT, 3=UNSPECIFIED).
+         * Scheduled for removal together with [NavigationUpdateIntent] `turnSide` parameter.
          */
         const val EXTRA_TURN_SIDE = "turn_side"
         const val TURN_SIDE_LEFT = 1
@@ -135,5 +153,21 @@ class NavigationUpdateIntent(
 
         /** Turn angle in degrees if provided, otherwise -1. */
         const val EXTRA_TURN_ANGLE = "turn_angle"
+
+        /**
+         * Remaining distance to destination along the route (meters), from instrument-cluster
+         * `NavigationDestinationDistance`, or -1 if not set.
+         */
+        const val EXTRA_TOTAL_DISTANCE_METERS = "total_distance_meters"
+
+        /**
+         * Remaining time to destination along the route (seconds), `time_to_arrival_seconds`, or -1 if not set.
+         */
+        const val EXTRA_TOTAL_TIME_SECONDS = "total_time_seconds"
+
+        /**
+         * Estimated time at arrival as provided by the nav app (`estimated_time_at_arrival` string), or empty.
+         */
+        const val EXTRA_ESTIMATED_ARRIVAL = "estimated_arrival"
     }
 }
