@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.andrerinas.headunitrevived.R
-import com.google.android.material.slider.Slider
 
 // Sealed class to represent different types of items in the settings list
 sealed class SettingItem {
@@ -200,21 +199,32 @@ class SettingsAdapter : ListAdapter<SettingItem, RecyclerView.ViewHolder>(Settin
     class SliderSettingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val settingName: TextView = itemView.findViewById(R.id.settingName)
         private val settingValue: TextView = itemView.findViewById(R.id.settingValue)
-        private val settingSlider: Slider = itemView.findViewById(R.id.settingSlider)
+        private val settingSlider: android.widget.SeekBar = itemView.findViewById(R.id.settingSlider)
 
         fun bind(setting: SettingItem.SliderSettingEntry) {
             settingName.setText(setting.nameResId)
             settingValue.text = setting.value
-            settingSlider.clearOnChangeListeners()
-            settingSlider.valueFrom = setting.valueFrom
-            settingSlider.valueTo = setting.valueTo
-            settingSlider.stepSize = setting.stepSize
-            settingSlider.value = setting.sliderValue
-            settingSlider.addOnChangeListener { _, value, fromUser ->
-                if (fromUser) {
-                    setting.onValueChanged(value)
+            
+            // SeekBar works with integers 0 to max. 
+            // We map the float range [valueFrom, valueTo] to [0, 1000] for precision if needed,
+            // but for desaturation 0-100 is enough.
+            val range = setting.valueTo - setting.valueFrom
+            val steps = if (range > 0) 100 else 1 
+            
+            settingSlider.max = steps
+            val progress = (((setting.sliderValue - setting.valueFrom) / range) * steps).toInt()
+            settingSlider.progress = progress
+            
+            settingSlider.setOnSeekBarChangeListener(object : android.widget.SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(seekBar: android.widget.SeekBar?, progress: Int, fromUser: Boolean) {
+                    if (fromUser) {
+                        val newValue = setting.valueFrom + (progress.toFloat() / steps) * range
+                        setting.onValueChanged(newValue)
+                    }
                 }
-            }
+                override fun onStartTrackingTouch(seekBar: android.widget.SeekBar?) {}
+                override fun onStopTrackingTouch(seekBar: android.widget.SeekBar?) {}
+            })
         }
     }
 

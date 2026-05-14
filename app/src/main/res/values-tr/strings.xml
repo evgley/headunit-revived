@@ -149,6 +149,12 @@
     <string name="key_music">Müzik</string>
     <string name="key_nav">Navigasyon</string>
     <string name="key_night">Gece Moduna Geç</string>
+    <string name="key_enter">Enter</string>
+    <string name="key_home">Ana Ekran</string>
+    <string name="key_app_switch">Son Uygulamalar</string>
+    <string name="key_button_a">A Butonu (Seç)</string>
+    <string name="key_button_b">B Butonu (Geri)</string>
+
 
     <string name="app_language">Uygulama Dili</string>
     <string name="system_default">Sistem Varsayılanı</string>
@@ -161,6 +167,14 @@
     <string name="usb_auto_connect_description">Uygulama açıldığında bilinen bir USB cihazına otomatik olarak bağlan.</string>
     <string name="auto_start_bt_label">Bluetooth ile otomatik başlat</string>
     <string name="auto_start_bt_description">Belirli bir Bluetooth cihazı bağlandığında Headunit Revived\'ı otomatik olarak aç.</string>
+    <string name="auto_start_wifi_label">WiFi ile otomatik başlat</string>
+    <string name="auto_start_wifi_description">Belirli bir WiFi SSID\'sine bağlandığında Headunit Revived\'ı otomatik olarak aç.</string>
+    <string name="auto_start_wifi_ssid_label">WiFi SSID</string>
+    <string name="auto_start_wifi_ssid_description">Sadece bu WiFi SSID\'sine bağlandığında bağlan</string>
+    <string name="auto_start_wifi_warning">Eski özellik: Arka plan kısıtlamaları nedeniyle Android 8+ sürümlerinde güvenilir şekilde çalışmayabilir. Uygulamanın pil optimizasyonundan muaf tutulduğundan emin olun.</string>
+    <string name="enter_wifi_ssid">WiFi SSID girin</string>
+    <string name="wifi_ssid_not_set">Ayarlanmadı</string>
+
     <string name="listen_for_usb_devices_label">USB Cihazlarını Dinle</string>
     <string name="listen_for_usb_devices_description">Bir USB cihazı takıldığında Android sistem istemini göster.</string>
     <string name="auto_start_usb_label">USB ile otomatik başlat</string>
@@ -397,6 +411,9 @@
 
     <string name="vehicle_info_settings">Araç bilgileri</string>
     <string name="vehicle_info_settings_description">Aracınızın telefonunuzda nasıl görüneceğini özelleştirin</string>
+    <string name="ui_scale">UI Ölçeği</string>
+    <string name="ui_scale_home">Ana ekran</string>
+    <string name="ui_scale_settings">Ayarlar ekranı</string>
     <string name="category_vehicle">Araç</string>
     <string name="category_head_unit">Multimedya Sistemi</string>
     <string name="vehicle_display_name_label">Görünen ad</string>
@@ -469,4 +486,15 @@
     <string name="media_action_pause">Duraklat</string>
     <string name="media_action_next">Sonraki</string>
     <string name="error_usb_permission_failed">Sistem hatası: USB izin iletişim kutusu istenemedi.</string>
+    <string name="microphone_settings">Mikrofon Ayarları</string>
+    <string name="microphone_settings_description">Mikrofon girişini ve ses işlemeyi yapılandırın.</string>
+    <string name="mic_echo_canceler">Yankı giderme (AEC)</string>
+    <string name="mic_echo_canceler_description">Mikrofondaki yankıyı gidermeye çalışır. Sessizlik veya bozulma yaşıyorsanız bunu devre dışı bırakın.</string>
+    <string name="mic_noise_suppressor">Gürültü bastırma (NS)</string>
+    <string name="mic_noise_suppressor_description">Arka plan gürültüsünü azaltmaya çalışır. Sesiniz boğuk geliyorsa bunu devre dışı bırakın.</string>
+    <string name="mic_auto_gain_control">Otomatik kazanç kontrolü (AGC)</string>
+    <string name="mic_auto_gain_control_description">Mikrofon ses seviyesini otomatik olarak ayarlar. Ses seviyesi dengesizse bunu devre dışı bırakın.</string>
+    <string name="bt_permission_denied">Bluetooth izni reddedildi. Cihazlar taranamıyor.</string>
+    <string name="wifi_autostart_title">WiFi Otomatik Başlatma</string>
+    <string name="wifi_autostart_content">%s ağına bağlandı. Android Auto\'yu başlatmak için dokunun.</string>
 </resources>

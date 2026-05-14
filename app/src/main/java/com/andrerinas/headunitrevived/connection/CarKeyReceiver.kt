@@ -39,7 +39,7 @@ class CarKeyReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent?) {
         val action = intent?.action ?: return
-        AppLog.d("CarKeyReceiver: Received action: $action")
+        AppLog.i("CarKeyReceiver: Handling intent action: $action")
 
         // Broadcast for KeymapFragment debugger (raw intent data)
         context.sendBroadcast(Intent("com.andrerinas.headunitrevived.DEBUG_KEY").apply {
@@ -113,7 +113,7 @@ class CarKeyReceiver : BroadcastReceiver() {
                 if (isDown) KeyEvent.ACTION_DOWN else KeyEvent.ACTION_UP, keyCode
             ))
         })
-        if (commManager.isConnected) commManager.send(keyCode, isDown)
+        commManager.sendKey(keyCode, isDown)
     }
 
     /** Full click (DOWN + UP) — broadcasts both events for learning AND sends to AA. */

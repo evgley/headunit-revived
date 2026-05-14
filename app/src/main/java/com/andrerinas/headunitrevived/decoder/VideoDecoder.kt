@@ -372,7 +372,15 @@ class VideoDecoder(private val settings: Settings) {
                 if (combined.isNotEmpty()) {
                     format.setByteBuffer("csd-0", ByteBuffer.wrap(combined))
                 }
-                format.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, 8 * 1024 * 1024)
+                // [BUG_FIX] Dynamic buffer size based on resolution. 
+                // 8MB is too large for many older 1080p decoders (Allwinner/Rockchip),
+                // but we need it for 4K.
+                val maxInputSize = if (width * height > 1920 * 1080) {
+                    8 * 1024 * 1024
+                } else {
+                    2 * 1024 * 1024
+                }
+                format.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, maxInputSize)
             } else {
                 if (sps != null) format.setByteBuffer("csd-0", ByteBuffer.wrap(sps!!))
                 if (pps != null) format.setByteBuffer("csd-1", ByteBuffer.wrap(pps!!))
@@ -387,6 +395,27 @@ class VideoDecoder(private val settings: Settings) {
             }
 
             if (!mSurface!!.isValid) throw IllegalStateException("Surface not valid")
+
+            val isAllwinner = bestCodec.lowercase(Locale.ROOT).contains("allwinner")
+            if (isAllwinner) {
+                // [BUG_FIX] Allwinner decoders often fail on adaptive playback initialization,
+                // leading to a SIGABRT in CodecLooper when the surface reconfigures for padding (e.g. 1080->1088).
+                AppLog.i("Decoder: Applying Allwinner stability patches.")
+                format.setInteger("adaptive-playback", 0)
+                
+                if (mimeType == CodecType.H265.mimeType) {
+                    AppLog.w("CAUTION: Allwinner H.265 is known to be unstable. If the app crashes, please switch to H.264 in settings.")
+                    // Force macroblock alignment (multiple of 16) to prevent re-padding crash
+                    val alignedHeight = ((height + 15) / 16) * 16
+                    if (alignedHeight != height) {
+                        AppLog.i("Decoder: Aligning Allwinner H.265 height to $alignedHeight (was $height)")
+                        format.setInteger(MediaFormat.KEY_HEIGHT, alignedHeight)
+                    }
+                }
+                
+                // Explicitly set color format to surface to help ACodec
+                format.setInteger(MediaFormat.KEY_COLOR_FORMAT, android.media.MediaCodecInfo.CodecCapabilities.COLOR_FormatSurface)
+            }
 
             AppLog.i("Configuring decoder: $bestCodec for ${width}x${height}")
             codec?.configure(format, mSurface, null, 0)

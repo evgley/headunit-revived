@@ -61,17 +61,30 @@ adb shell am start -a android.intent.action.VIEW -d "headunit://connect?ip=192.1
 - Add Permission Checker
 - Settings-Reset Button
 
-### v2.2.2
-- Microphone sounds not great
-- USB issues
-- Steering wheel buttons
-
 ## Known Issues
 - **Google Maps in Portrait Mode:** Touch interactions (searching, scrolling) within Google Maps may not work as expected when using Portrait Mode on some devices. **Fix:** Try reducing the **Pixel density (DPI)** setting to **below 200** (e.g., 190) in the app settings. This often restores full functionality.
 - **Wireless Connection Drops:** If the connection drops frequently, disable **"WiFi Assistant"** or **"Switch between networks"** in your phone's WiFi settings to prevent it from killing the connection due to "no internet." Check battery saving options.
 - **Self-mode on Android 10 (Q) and below:** Google has disabled the automatic wireless projection startup for Android 10 and below in Android Auto versions 16.4 and higher. While Self-mode still work on newer Android versions, it is currently impossible to trigger projection on Android 10 with recent Google app updates.
 
 ## Changelog
+### v.2.3.0
+- Added some new buttons for keymap
+- Fixed 3 Fatal errors
+- Fixed video decoder settings for allwinner devices
+- Added new navigation intents
+- Included PR #456
+- Added new "Autostart on WiFi" Setting #324
+- Fixed empty bssid on native AA. Should now work on more devices
+- Fixed a new fatal with media sessions
+- Readded fullscreen overlays system icons #351
+- Remap Enter (66) to Dpad Center (23) for Rotary Knob #459
+- Debounce multiple key events if key event is the same in 100ms #465
+- Moved Mic settings to own fragment and added 3 new options for the new mic enhancement from version 2.2.2, which defaults to off for better compatibility
+- Merged PR #481 - Apply MediaTek 60fps and audio optimizations, thanks to @mrkontrast-coder
+- Some rewrite of the AudioTrackWrapper, to enhance stability and minimize stutters
+- Merged PR #490 - Add UI scale settings, thanks to @Anton11111
+- Merged PR #502 - Navigation Broadcast Updates. Thanks to @Bastel2020
+
 ### v.2.2.2
 - Fixed: Exit on disconnect now stops the carmode too
 - Fixed: Exit intent not closing the app

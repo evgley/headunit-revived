@@ -1,4 +1,4 @@
-﻿<resources>
+<resources>
     <string name="app_name">Headunit Revived</string>
     <string name="menu">Меню</string>
     <string name="settings">Настройки</string>
@@ -132,6 +132,12 @@
     <string name="key_music">Музыка</string>
     <string name="key_nav">Навигация</string>
     <string name="key_night">Переключить ночной режим</string>
+    <string name="key_enter">Ввод (Enter)</string>
+    <string name="key_home">Домой (Home)</string>
+    <string name="key_app_switch">Недавние приложения</string>
+    <string name="key_button_a">Кнопка A (Выбрать)</string>
+    <string name="key_button_b">Кнопка B (Назад)</string>
+
 
     <!-- Language Settings -->
     <string name="app_language">Язык приложения</string>
@@ -146,6 +152,14 @@
     <string name="usb_auto_connect_description">Автоматически подключаться к известному USB-устройству при запуске приложения.</string>
     <string name="auto_start_bt_label">Автозапуск при Bluetooth</string>
     <string name="auto_start_bt_description">Автоматически открывать Headunit Revived при подключении определенного Bluetooth-устройства.</string>
+    <string name="auto_start_wifi_label">Автозапуск при WiFi</string>
+    <string name="auto_start_wifi_description">Автоматически открывать Headunit Revived при подключении к определенной WiFi-сети (SSID).</string>
+    <string name="auto_start_wifi_ssid_label">SSID WiFi</string>
+    <string name="auto_start_wifi_ssid_description">Подключаться только при сопряжении with этой WiFi-сетью (SSID)</string>
+    <string name="auto_start_wifi_warning">Устаревшая функция: может работать нестабильно на Android 8+ из-за фоновых ограничений. Убедитесь, что приложение исключено из оптимизации батареи.</string>
+    <string name="enter_wifi_ssid">Введите SSID WiFi</string>
+    <string name="wifi_ssid_not_set">Не задано</string>
+
     <string name="listen_for_usb_devices_label">Реагировать на USB-устройства</string>
     <string name="listen_for_usb_devices_description">Показывать системное окно Android при подключении USB-устройства.</string>
     <string name="auto_start_usb_label">Автозапуск при USB</string>
@@ -400,6 +414,9 @@
     <!-- Vehicle Info Settings -->
     <string name="vehicle_info_settings">Информация о транспортном средстве</string>
     <string name="vehicle_info_settings_description">Настройте, как ваш автомобиль отображается на телефоне</string>
+    <string name="ui_scale">Масштаб интерфейса</string>
+    <string name="ui_scale_home">Главный экран</string>
+    <string name="ui_scale_settings">Экран настроек</string>
     <string name="category_vehicle">Транспортное средство</string>
     <string name="category_head_unit">Головное устройство</string>
     <string name="vehicle_display_name_label">Отображаемое имя</string>
@@ -472,4 +489,15 @@
     <string name="media_action_pause">Пауза</string>
     <string name="media_action_next">Следующий</string>
     <string name="error_usb_permission_failed">Системная ошибка: Не удалось запросить диалоговое окно разрешения USB.</string>
+    <string name="microphone_settings">Настройки микрофона</string>
+    <string name="microphone_settings_description">Настройка входа микрофона и обработки звука.</string>
+    <string name="mic_echo_canceler">Эхоподавление (AEC)</string>
+    <string name="mic_echo_canceler_description">Попытка удалить эхо из микрофона. Отключите, если слышите тишину или искажения.</string>
+    <string name="mic_noise_suppressor">Шумоподавление (NS)</string>
+    <string name="mic_noise_suppressor_description">Попытка уменьшить фоновый шум. Отключите, если ваш голос звучит приглушенно.</string>
+    <string name="mic_auto_gain_control">Автоматическая регулировка усиления (AGC)</string>
+    <string name="mic_auto_gain_control_description">Автоматически регулирует громкость микрофона. Отключите, если громкость нестабильна.</string>
+    <string name="bt_permission_denied">В разрешении Bluetooth отказано. Невозможно сканировать устройства.</string>
+    <string name="wifi_autostart_title">Автозапуск WiFi</string>
+    <string name="wifi_autostart_content">Подключено к %s. Нажмите, чтобы запустить Android Auto.</string>
 </resources>

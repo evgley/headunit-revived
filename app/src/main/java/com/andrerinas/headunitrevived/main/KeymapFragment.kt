@@ -57,7 +57,12 @@ class KeymapFragment : Fragment(), MainActivity.KeyListener {
         KeymapItem(R.string.key_endcall, KeyEvent.KEYCODE_ENDCALL),
         KeymapItem(R.string.key_music, KeyEvent.KEYCODE_MUSIC),
         KeymapItem(R.string.key_nav, KeyEvent.KEYCODE_GUIDE),
-        KeymapItem(R.string.key_night, KeyEvent.KEYCODE_N)
+        KeymapItem(R.string.key_night, KeyEvent.KEYCODE_N),
+        KeymapItem(R.string.key_enter, KeyEvent.KEYCODE_ENTER),
+        KeymapItem(R.string.key_home, KeyEvent.KEYCODE_HOME),
+        KeymapItem(R.string.key_app_switch, KeyEvent.KEYCODE_APP_SWITCH),
+        KeymapItem(R.string.key_button_a, KeyEvent.KEYCODE_BUTTON_A),
+        KeymapItem(R.string.key_button_b, KeyEvent.KEYCODE_BUTTON_B)
     )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

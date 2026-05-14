@@ -1,4 +1,4 @@
-﻿<resources>
+<resources>
     <string name="app_name">Headunit Revived</string>
     <string name="menu">Menu</string>
     <string name="settings">Nastavení</string>
@@ -132,6 +132,12 @@
     <string name="key_music">Hudba</string>
     <string name="key_nav">Navigace</string>
     <string name="key_night">Přepnout noční režim</string>
+    <string name="key_enter">Enter</string>
+    <string name="key_home">Domů</string>
+    <string name="key_app_switch">Nedávné aplikace</string>
+    <string name="key_button_a">Tlačítko A (Vybrat)</string>
+    <string name="key_button_b">Tlačítko B (Zpět)</string>
+
 
     <!-- Language Settings -->
     <string name="app_language">Jazyk aplikace</string>
@@ -146,6 +152,14 @@
     <string name="usb_auto_connect_description">Automatically connect to a known USB device when the application is opened.</string>
     <string name="auto_start_bt_label">Automaticky spustit při Bluetooth</string>
     <string name="auto_start_bt_description">Automaticky otevřít Headunit Revived při připojení konkrétního Bluetooth zařízení.</string>
+    <string name="auto_start_wifi_label">Automatické spuštění přes Wi-Fi</string>
+    <string name="auto_start_wifi_description">Automaticky otevřít Headunit Revived při připojení k určité Wi-Fi síti (SSID).</string>
+    <string name="auto_start_wifi_ssid_label">SSID Wi-Fi</string>
+    <string name="auto_start_wifi_ssid_description">Připojovat se pouze při spojení s touto Wi-Fi sítí (SSID)</string>
+    <string name="auto_start_wifi_warning">Zastaralá funkce: na Androidu 8+ může kvůli omezením na pozadí fungovat nespolehlivě. Ujistěte se, že aplikace je vyloučena z optimalizace baterie.</string>
+    <string name="enter_wifi_ssid">Zadejte SSID Wi-Fi</string>
+    <string name="wifi_ssid_not_set">Nenastaveno</string>
+
     <string name="listen_for_usb_devices_label">Naslouchat zařízením USB</string>
     <string name="listen_for_usb_devices_description">Zobrazit systémovou výzvu Androidu po připojení zařízení USB.</string>
     <string name="auto_start_usb_label">Automatické spuštění přes USB</string>
@@ -399,6 +413,9 @@
     <!-- Vehicle Info Settings -->
     <string name="vehicle_info_settings">Informace o vozidle</string>
     <string name="vehicle_info_settings_description">Přizpůsobte, jak se vaše vozidlo zobrazuje na telefonu</string>
+    <string name="ui_scale">Měřítko rozhraní</string>
+    <string name="ui_scale_home">Hlavní obrazovka</string>
+    <string name="ui_scale_settings">Obrazovka nastavení</string>
     <string name="category_vehicle">Vozidlo</string>
     <string name="category_head_unit">Autorádio</string>
     <string name="vehicle_display_name_label">Zobrazovaný název</string>
@@ -471,4 +488,15 @@
     <string name="sync_media_session_aa_metadata">Aktuální skladba AA v mediální relaci</string>
     <string name="sync_media_session_aa_metadata_description">Zobrazovat název skladby, interpreta, délku a obal alba z telefonu v systémové mediální relaci a mediálním oznámení</string>
     <string name="error_usb_permission_failed">Systémová chyba: Nepodařilo se vyžádat dialogové okno pro povolení USB.</string>
+    <string name="microphone_settings">Nastavení mikrofonu</string>
+    <string name="microphone_settings_description">Konfigurace vstupu mikrofonu a zpracování zvuku.</string>
+    <string name="mic_echo_canceler">Potlačení ozvěny (AEC)</string>
+    <string name="mic_echo_canceler_description">Pokusí se odstranit ozvěnu z mikrofonu. Vypněte, pokud zaznamenáte ticho nebo zkreslení.</string>
+    <string name="mic_noise_suppressor">Potlačení šumu (NS)</string>
+    <string name="mic_noise_suppressor_description">Pokusí se snížit hluk na pozadí. Vypněte, pokud váš hlas zní tlumeně.</string>
+    <string name="mic_auto_gain_control">Automatické řízení zesílení (AGC)</string>
+    <string name="mic_auto_gain_control_description">Automaticky upravuje hlasitost mikrofonu. Vypněte, pokud je hlasitost nestabilní.</string>
+    <string name="bt_permission_denied">Oprávnění Bluetooth bylo zamítnuto. Nelze skenovat zařízení.</string>
+    <string name="wifi_autostart_title">Automatické spuštění WiFi</string>
+    <string name="wifi_autostart_content">Připojeno k %s. Klepnutím spustíte Android Auto.</string>
 </resources>

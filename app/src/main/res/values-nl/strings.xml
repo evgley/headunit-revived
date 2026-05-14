@@ -1,4 +1,4 @@
-﻿<resources>
+<resources>
     <string name="app_name">Headunit Revived</string>
     <string name="menu">Menu</string>
     <string name="settings">Instellingen</string>
@@ -131,6 +131,12 @@
     <string name="key_music">Muziek</string>
     <string name="key_nav">Navigatie</string>
     <string name="key_night">Schakel Nachtmodus</string>
+    <string name="key_enter">Enter</string>
+    <string name="key_home">Home</string>
+    <string name="key_app_switch">Recente apps</string>
+    <string name="key_button_a">Knop A (Selecteren)</string>
+    <string name="key_button_b">Knop B (Terug)</string>
+
 
     <!-- Language Settings -->
     <string name="app_language">App-taal</string>
@@ -145,6 +151,14 @@
     <string name="usb_auto_connect_description">Automatisch verbinden met een bekend USB-apparaat wanneer de applicatie wordt geopend.</string>
     <string name="auto_start_bt_label">Automatisch starten bij Bluetooth</string>
     <string name="auto_start_bt_description">Start Headunit Revived automatisch wanneer een specifiek Bluetooth-apparaat verbinding maakt.</string>
+    <string name="auto_start_wifi_label">Automatisch starten bij WiFi</string>
+    <string name="auto_start_wifi_description">Opent Headunit Revived automatisch bij verbinding met een specifieke WiFi-SSID.</string>
+    <string name="auto_start_wifi_ssid_label">WiFi-SSID</string>
+    <string name="auto_start_wifi_ssid_description">Alleen verbinden bij verbinding met deze WiFi-SSID</string>
+    <string name="auto_start_wifi_warning">Legacy-functie: Dit werkt mogelijk niet betrouwbaar op Android 8+ vanwege achtergrondbeperkingen. Zorg ervoor dat de app is uitgesloten van batterijoptimalisatie.</string>
+    <string name="enter_wifi_ssid">WiFi-SSID invoeren</string>
+    <string name="wifi_ssid_not_set">Niet ingesteld</string>
+
     <string name="listen_for_usb_devices_label">Luister naar USB-apparaten</string>
     <string name="listen_for_usb_devices_description">Toon de Android-systeemprompt wanneer een USB-apparaat wordt aangesloten.</string>
     <string name="auto_start_usb_label">Automatisch starten via USB</string>
@@ -396,6 +410,9 @@
     <!-- Vehicle Info Settings -->
     <string name="vehicle_info_settings">Voertuiginformatie</string>
     <string name="vehicle_info_settings_description">Pas aan hoe uw voertuig op uw telefoon wordt weergegeven</string>
+    <string name="ui_scale">UI-schaal</string>
+    <string name="ui_scale_home">Startscherm</string>
+    <string name="ui_scale_settings">Instellingen scherm</string>
     <string name="category_vehicle">Voertuig</string>
     <string name="category_head_unit">Headunit</string>
     <string name="vehicle_display_name_label">Weergavenaam</string>
@@ -471,4 +488,15 @@
     <string name="sync_media_session_aa_metadata">Huidig AA-nummer in mediasessie</string>
     <string name="sync_media_session_aa_metadata_description">Toon titel, artiest, duur en albumhoes van de telefoon in de mediasessie van het systeem en in de mediamelding</string>
     <string name="error_usb_permission_failed">Systeemfout: Aanvragen van USB-toestemmingsvenster mislukt.</string>
+    <string name="microphone_settings">Microfooninstellingen</string>
+    <string name="microphone_settings_description">Microfooningang en audioverwerking configureren.</string>
+    <string name="mic_echo_canceler">Echonderdrukking (AEC)</string>
+    <string name="mic_echo_canceler_description">Probeert echo van de microfoon te verwijderen. Schakel dit uit als u stilte of vervorming ervaart.</string>
+    <string name="mic_noise_suppressor">Ruisonderdrukking (NS)</string>
+    <string name="mic_noise_suppressor_description">Probeert achtergrondgeluid te verminderen. Schakel dit uit als uw stem gedempt klinkt.</string>
+    <string name="mic_auto_gain_control">Automatische versterkingsregeling (AGC)</string>
+    <string name="mic_auto_gain_control_description">Past automatisch het microfoonvolume aan. Schakel dit uit als het volume onstabiel is.</string>
+    <string name="bt_permission_denied">Bluetooth-toestemming geweigerd. Kan niet scannen naar apparaten.</string>
+    <string name="wifi_autostart_title">WiFi Auto-Start</string>
+    <string name="wifi_autostart_content">Verbonden met %s. Tik om Android Auto te starten.</string>
 </resources>

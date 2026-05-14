@@ -1,4 +1,4 @@
-﻿<resources>
+<resources>
     <string name="app_name">Headunit Revived</string>
     <string name="menu">Menü</string>
     <string name="settings">Beállítások</string>
@@ -131,6 +131,12 @@
     <string name="key_music">Zene</string>
     <string name="key_nav">Navigáció</string>
     <string name="key_night">Éjszakai mód kapcsolása</string>
+    <string name="key_enter">Enter</string>
+    <string name="key_home">Kezdőlap</string>
+    <string name="key_app_switch">Legutóbbi alkalmazások</string>
+    <string name="key_button_a">A gomb (Kiválasztás)</string>
+    <string name="key_button_b">B gomb (Vissza)</string>
+
 
     <!-- Language Settings -->
     <string name="app_language">Alkalmazás nyelve</string>
@@ -145,6 +151,14 @@
     <string name="usb_auto_connect_description">Az alkalmazás megnyitásakor automatikus csatlakozás egy ismert USB-eszközhöz.</string>
     <string name="auto_start_bt_label">Bluetooth automatikus indítás</string>
     <string name="auto_start_bt_description">A Headunit Revived automatikus megnyitása, amikor egy adott Bluetooth-eszköz csatlakozik.</string>
+    <string name="auto_start_wifi_label">WiFi automatikus indítás</string>
+    <string name="auto_start_wifi_description">A Headunit Revived automatikus megnyitása egy adott WiFi SSID-hez való csatlakozáskor.</string>
+    <string name="auto_start_wifi_ssid_label">WiFi SSID</string>
+    <string name="auto_start_wifi_ssid_description">Csak akkor csatlakozzon, ha ehhez a WiFi SSID-hez kapcsolódik</string>
+    <string name="auto_start_wifi_warning">Régi funkció: a háttérbeli korlátozások miatt Android 8+ rendszeren nem biztos, hogy megbízhatóan működik. Győződjön meg róla, hogy az alkalmazás ki van véve az akkumulátor-optimalizálás alól.</string>
+    <string name="enter_wifi_ssid">Adja meg a WiFi SSID-t</string>
+    <string name="wifi_ssid_not_set">Nen beállítva</string>
+
     <string name="listen_for_usb_devices_label">USB-eszközök figyelése</string>
     <string name="listen_for_usb_devices_description">Android rendszerüzenet megjelenítése, ha USB-eszköz van csatlakoztatva.</string>
     <string name="auto_start_usb_label">Automatikus indítás USB-n</string>
@@ -398,6 +412,9 @@
     <!-- Vehicle Info Settings -->
     <string name="vehicle_info_settings">Járműinformáció</string>
     <string name="vehicle_info_settings_description">Testreszabhatja, hogyan jelenik meg járműve a telefonján</string>
+    <string name="ui_scale">UI méretezés</string>
+    <string name="ui_scale_home">Kezdőképernyő</string>
+    <string name="ui_scale_settings">Beállítások képernyő</string>
     <string name="category_vehicle">Jármű</string>
     <string name="category_head_unit">Fejegység</string>
     <string name="vehicle_display_name_label">Megjelenítési név</string>
@@ -470,4 +487,15 @@
     <string name="sync_media_session_aa_metadata">AA aktuális szám a médialejátszási munkamenetben</string>
     <string name="sync_media_session_aa_metadata_description">A telefonról származó számcímet, előadót, időtartamot és borítót jelenítse meg a rendszer médialejátszási munkamenetében és médiás értesítésben</string>
     <string name="error_usb_permission_failed">Rendszerhiba: Nem sikerült lekérni az USB engedélykérő ablakot.</string>
+    <string name="microphone_settings">Mikrofon beállítások</string>
+    <string name="microphone_settings_description">A mikrofonbemenet és a hangfeldolgozás konfigurálása.</string>
+    <string name="mic_echo_canceler">Visszhangkioltás (AEC)</string>
+    <string name="mic_echo_canceler_description">Megpróbálja eltávolítani a visszhangot a mikrofonból. Kapcsolja ki, ha csendet vagy torzítást tapasztal.</string>
+    <string name="mic_noise_suppressor">Zajcsökkentés (NS)</string>
+    <string name="mic_noise_suppressor_description">Megpróbálja csökkenteni a háttérzajt. Kapcsolja ki, ha a hangja tompának tűnik.</string>
+    <string name="mic_auto_gain_control">Automatikus erősítésszabályozás (AGC)</string>
+    <string name="mic_auto_gain_control_description">Automatikusan szabályozza a mikrofon hangerejét. Kapcsolja ki, ha a hangerő instabil.</string>
+    <string name="bt_permission_denied">Bluetooth engedély megtagadva. Nem lehet eszközöket keresni.</string>
+    <string name="wifi_autostart_title">WiFi automatikus indítás</string>
+    <string name="wifi_autostart_content">Csatlakozva a következőhöz: %s. Koppintson az Android Auto indításához.</string>
 </resources>

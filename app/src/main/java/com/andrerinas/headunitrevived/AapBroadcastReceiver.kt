@@ -13,6 +13,8 @@ import com.andrerinas.headunitrevived.contract.KeyIntent
 import com.andrerinas.headunitrevived.contract.LocationUpdateIntent
 import com.andrerinas.headunitrevived.contract.MediaKeyIntent
 import com.andrerinas.headunitrevived.contract.ProjectionActivityRequest
+import android.os.UserManager
+import android.os.Build
 
 class AapBroadcastReceiver : BroadcastReceiver() {
 
@@ -27,6 +29,11 @@ class AapBroadcastReceiver : BroadcastReceiver() {
     }
 
     override fun onReceive(context: Context, intent: Intent) {
+        val isLocked = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && 
+                      !(context.getSystemService(Context.USER_SERVICE) as UserManager).isUserUnlocked
+        
+        if (isLocked) return
+
         val component = App.provide(context)
         if (intent.action == LocationUpdateIntent.action) {
             val location = LocationUpdateIntent.extractLocation(intent)
@@ -51,7 +58,7 @@ class AapBroadcastReceiver : BroadcastReceiver() {
                 intent.getParcelableExtra(KeyIntent.extraEvent)
             }
             event?.let {
-                component.commManager.send(it.keyCode, it.action == KeyEvent.ACTION_DOWN)
+                component.commManager.sendKey(it.keyCode, it.action == KeyEvent.ACTION_DOWN)
             }
         } else if (intent.action == ProjectionActivityRequest.action){
             if (component.commManager.connectionState.value is CommManager.ConnectionState.TransportStarted) {

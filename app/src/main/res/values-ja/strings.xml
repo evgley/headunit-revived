@@ -1,4 +1,4 @@
-﻿<resources>
+<resources>
     <string name="app_name">Headunit Revived</string>
     <string name="menu">メニュー</string>
     <string name="settings">設定</string>
@@ -148,6 +148,12 @@
     <string name="key_music">音楽</string>
     <string name="key_nav">ナビゲーション</string>
     <string name="key_night">ナイトモードの切り替え</string>
+    <string name="key_enter">エンター</string>
+    <string name="key_home">ホーム</string>
+    <string name="key_app_switch">履歴</string>
+    <string name="key_button_a">Aボタン (選択)</string>
+    <string name="key_button_b">Bボタン (戻る)</string>
+
 
     <!-- Language Settings -->
     <string name="app_language">アプリ言語</string>
@@ -162,6 +168,14 @@
     <string name="usb_auto_connect_description">アプリケーションが開始された時に既知のUSBデバイスに接続されると自動的に接続します。</string>
     <string name="auto_start_bt_label">Bluetooth自動開始</string>
     <string name="auto_start_bt_description">特定のBluetoothデバイスが接続されたときに、Headunit Revivedを自動的に起動します。</string>
+    <string name="auto_start_wifi_label">Wi-Fi自動起動</string>
+    <string name="auto_start_wifi_description">特定のWi-Fi SSIDに接続されたときにHeadunit Revivedを自動的に起動します。</string>
+    <string name="auto_start_wifi_ssid_label">Wi-Fi SSID</string>
+    <string name="auto_start_wifi_ssid_description">このWi-Fi SSIDに接続されている場合のみ接続を試みます</string>
+    <string name="auto_start_wifi_warning">レガシー機能：バックグラウンド制限のため、Android 8以降では動作が不安定になる場合があります。アプリをバッテリー最適化から除外してください。</string>
+    <string name="enter_wifi_ssid">Wi-Fi SSIDを入力してください</string>
+    <string name="wifi_ssid_not_set">未設定</string>
+
     <string name="listen_for_usb_devices_label">USBデバイスへの反応</string>
     <string name="listen_for_usb_devices_description">USBデバイスが接続されたときにAndroidのシステムプロンプトを表示します。</string>
     <string name="auto_start_usb_label">USBから自動起動</string>
@@ -405,6 +419,9 @@
     <!-- Vehicle Info Settings -->
     <string name="vehicle_info_settings">車両情報</string>
     <string name="vehicle_info_settings_description">お使いのスマートフォン上で、車両情報の表示方法をカスタマイズできます。</string>
+    <string name="ui_scale">UI スケール</string>
+    <string name="ui_scale_home">ホーム画面</string>
+    <string name="ui_scale_settings">設定画面</string>
     <string name="category_vehicle">車両</string>
     <string name="category_head_unit">車載機</string>
     <string name="vehicle_display_name_label">表示ネーム</string>
@@ -479,4 +496,15 @@
     <string name="sync_media_session_aa_metadata">メディアセッションにAAの再生中トラックを表示</string>
     <string name="sync_media_session_aa_metadata_description">スマートフォンの曲名、アーティスト、再生時間、アルバムアートをシステムのメディアセッションとメディア通知に表示します</string>
     <string name="error_usb_permission_failed">システムエラー: USBパーミッションダイアログの要求に失敗しました。</string>
+    <string name="microphone_settings">マイク設定</string>
+    <string name="microphone_settings_description">マイク入力とオーディオ処理の設定を行います。</string>
+    <string name="mic_echo_canceler">エコーキャンセラー (AEC)</string>
+    <string name="mic_echo_canceler_description">マイクからのエコーを除去します。無音になったり音が歪んだりする場合は無効にしてください。</string>
+    <string name="mic_noise_suppressor">ノイズサプレッサー (NS)</string>
+    <string name="mic_noise_suppressor_description">背景のノイズを低減します。声がこもって聞こえる場合は無効にしてください。</string>
+    <string name="mic_auto_gain_control">自動ゲイン制御 (AGC)</string>
+    <string name="mic_auto_gain_control_description">マイクの音量を自動的に調整します。音量が不安定な場合は無効にしてください。</string>
+    <string name="bt_permission_denied">Bluetooth権限が拒否されました。デバイスのスキャンができません。</string>
+    <string name="wifi_autostart_title">WiFi自動起動</string>
+    <string name="wifi_autostart_content">%s に接続されました。タップしてAndroid Autoを開始します。</string>
 </resources>

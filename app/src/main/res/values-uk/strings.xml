@@ -1,4 +1,4 @@
-﻿<resources>
+<resources>
     <string name="app_name">Headunit Revived</string>
     <string name="menu">Меню</string>
     <string name="settings">Налаштування</string>
@@ -132,6 +132,12 @@
     <string name="key_music">Музика</string>
     <string name="key_nav">Навігація</string>
     <string name="key_night">Перемкнути нічний режим</string>
+    <string name="key_enter">Ввід (Enter)</string>
+    <string name="key_home">Додому (Home)</string>
+    <string name="key_app_switch">Недавні додатки</string>
+    <string name="key_button_a">Кнопка A (Вибрати)</string>
+    <string name="key_button_b">Кнопка B (Назад)</string>
+
 
     <!-- Language Settings -->
     <string name="app_language">Мова застосунку</string>
@@ -146,6 +152,14 @@
     <string name="usb_auto_connect_description">Автоматично підключатися до відомого USB-пристрою при запуску програми.</string>
     <string name="auto_start_bt_label">Автозапуск при Bluetooth</string>
     <string name="auto_start_bt_description">Автоматично відкривати Headunit Revived при підключенні певного пристрою Bluetooth.</string>
+    <string name="auto_start_wifi_label">Автозапуск через Wi-Fi</string>
+    <string name="auto_start_wifi_description">Автоматично відкривати Headunit Revived при підключенні до певної мережі Wi-Fi (SSID).</string>
+    <string name="auto_start_wifi_ssid_label">SSID Wi-Fi</string>
+    <string name="auto_start_wifi_ssid_description">Підключатися лише при з\'єднанні з цією мережею Wi-Fi (SSID)</string>
+    <string name="auto_start_wifi_warning">Застаріла функція: може працювати нестабільно на Android 8+ через фонові обмеження. Переконайтеся, що додаток виключено з оптимізації батареї.</string>
+    <string name="enter_wifi_ssid">Введіть SSID Wi-Fi</string>
+    <string name="wifi_ssid_not_set">Не задано</string>
+
     <string name="listen_for_usb_devices_label">Реагувати на USB-пристрої</string>
     <string name="listen_for_usb_devices_description">Показувати системне вікно Android під час підключення USB-пристрою.</string>
     <string name="auto_start_usb_label">Автозапуск через USB</string>
@@ -397,6 +411,9 @@
     <!-- Vehicle Info Settings -->
     <string name="vehicle_info_settings">Інформація про транспортний засіб</string>
     <string name="vehicle_info_settings_description">Налаштуйте, як ваш автомобіль відображається на телефоні</string>
+    <string name="ui_scale">Масштаб інтерфейсу</string>
+    <string name="ui_scale_home">Головний екран</string>
+    <string name="ui_scale_settings">Екран налаштувань</string>
     <string name="category_vehicle">Транспортний засіб</string>
     <string name="category_head_unit">Головний пристрій</string>
     <string name="vehicle_display_name_label">Відображуване ім\'я</string>
@@ -472,4 +489,15 @@
     <string name="sync_media_session_aa_metadata">Поточний трек AA у медіасесії</string>
     <string name="sync_media_session_aa_metadata_description">Показувати з телефона назву треку, виконавця, тривалість і обкладинку в системній медіасесії та медіа-сповіщенні</string>
     <string name="error_usb_permission_failed">Системна помилка: Не вдалося запитати діалогове вікно дозволу USB.</string>
+    <string name="microphone_settings">Налаштування мікрофона</string>
+    <string name="microphone_settings_description">Налаштування входу мікрофона та обробки звуку.</string>
+    <string name="mic_echo_canceler">Ехоподавлення (AEC)</string>
+    <string name="mic_echo_canceler_description">Спроба видалити ехо з мікрофона. Вимкніть, якщо чуєте тишу або спотворення.</string>
+    <string name="mic_noise_suppressor">Шумоподавлення (NS)</string>
+    <string name="mic_noise_suppressor_description">Спроба зменшити фоновий шум. Вимкніть, якщо ваш голос звучить приглушено.</string>
+    <string name="mic_auto_gain_control">Автоматичне регулювання посилення (AGC)</string>
+    <string name="mic_auto_gain_control_description">Автоматично регулює гучність мікрофона. Вимкніть, якщо гучність нестабільна.</string>
+    <string name="bt_permission_denied">У дозволі Bluetooth відмовлено. Неможливо сканувати пристрої.</string>
+    <string name="wifi_autostart_title">Автозапуск WiFi</string>
+    <string name="wifi_autostart_content">Підключено до %s. Натисніть, щоб запустити Android Auto.</string>
 </resources>

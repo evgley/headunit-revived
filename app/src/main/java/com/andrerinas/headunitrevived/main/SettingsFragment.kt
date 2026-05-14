@@ -30,6 +30,9 @@ import com.andrerinas.headunitrevived.utils.LogExporter
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import androidx.activity.result.contract.ActivityResultContracts
+import android.content.pm.PackageManager
+import com.andrerinas.headunitrevived.connection.NativeAaHandshakeManager
 
 class SettingsFragment : Fragment() {
     private lateinit var settings: Settings
@@ -39,7 +42,6 @@ class SettingsFragment : Fragment() {
     private var saveButton: MaterialButton? = null
 
     // Local state to hold changes before saving
-    private var pendingMicSampleRate: Int? = null
     private var pendingUseGps: Boolean? = null
     private var pendingShowNavigationNotifications: Boolean? = null
     private var pendingSyncMediaSessionAaMetadata: Boolean? = null
@@ -54,7 +56,6 @@ class SettingsFragment : Fragment() {
     private var pendingEnableAudioSink: Boolean? = null
     private var pendingSeparateAudioStreams: Boolean? = null
     private var pendingUseAacAudio: Boolean? = null
-    private var pendingMicInputSource: Int? = null
     private var pendingUseNativeSsl: Boolean? = null
     private var pendingEnableRotary: Boolean? = null
     private var pendingAudioLatencyMultiplier: Int? = null
@@ -82,6 +83,9 @@ class SettingsFragment : Fragment() {
     private var pendingInsetRight: Int? = null
     private var pendingInsetBottom: Int? = null
 
+    private var pendingUiScaleHomePercent: Int? = null
+    private var pendingUiScaleSettingsPercent: Int? = null
+
     private var pendingMediaVolumeOffset: Int? = null
     private var pendingAssistantVolumeOffset: Int? = null
     private var pendingNavigationVolumeOffset: Int? = null
@@ -89,6 +93,14 @@ class SettingsFragment : Fragment() {
     private var requiresRestart = false
     private var hasChanges = false
     private val SAVE_ITEM_ID = 1001
+
+    private val bluetoothPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+        if (isGranted) {
+            handleNativeAaSelection()
+        } else {
+            Toast.makeText(requireContext(), R.string.bt_permission_denied, Toast.LENGTH_LONG).show()
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.fragment_settings, container, false)
@@ -100,7 +112,6 @@ class SettingsFragment : Fragment() {
         settings = App.provide(requireContext()).settings
 
         // Initialize local state with current values
-        pendingMicSampleRate = settings.micSampleRate
         pendingUseGps = settings.useGpsForNavigation
         pendingShowNavigationNotifications = settings.showNavigationNotifications
         pendingSyncMediaSessionAaMetadata = settings.syncMediaSessionWithAaMetadata
@@ -115,7 +126,6 @@ class SettingsFragment : Fragment() {
         pendingEnableAudioSink = settings.enableAudioSink
         pendingSeparateAudioStreams = settings.separateAudioStreams
         pendingUseAacAudio = settings.useAacAudio
-        pendingMicInputSource = settings.micInputSource
         pendingUseNativeSsl = settings.useNativeSsl
         pendingEnableRotary = settings.enableRotary
         pendingAudioLatencyMultiplier = settings.audioLatencyMultiplier
@@ -141,6 +151,9 @@ class SettingsFragment : Fragment() {
         pendingInsetTop = settings.insetTop
         pendingInsetRight = settings.insetRight
         pendingInsetBottom = settings.insetBottom
+        // UI Scale pending values (percent)
+        pendingUiScaleHomePercent = settings.uiScaleHomePercent
+        pendingUiScaleSettingsPercent = settings.uiScaleSettingsPercent
 
         pendingMediaVolumeOffset = settings.mediaVolumeOffset
         pendingAssistantVolumeOffset = settings.assistantVolumeOffset
@@ -229,7 +242,6 @@ class SettingsFragment : Fragment() {
     private fun saveSettings() {
         val languageChanged = pendingAppLanguage != settings.appLanguage
 
-        pendingMicSampleRate?.let { settings.micSampleRate = it }
         pendingUseGps?.let { settings.useGpsForNavigation = it }
         pendingShowNavigationNotifications?.let { settings.showNavigationNotifications = it }
         pendingSyncMediaSessionAaMetadata?.let { settings.syncMediaSessionWithAaMetadata = it }
@@ -244,7 +256,6 @@ class SettingsFragment : Fragment() {
         pendingEnableAudioSink?.let { settings.enableAudioSink = it }
         pendingSeparateAudioStreams?.let { settings.separateAudioStreams = it }
         pendingUseAacAudio?.let { settings.useAacAudio = it }
-        pendingMicInputSource?.let { settings.micInputSource = it }
         pendingUseNativeSsl?.let { settings.useNativeSsl = it }
         pendingEnableRotary?.let { settings.enableRotary = it }
         pendingAudioLatencyMultiplier?.let { settings.audioLatencyMultiplier = it }
@@ -255,6 +266,7 @@ class SettingsFragment : Fragment() {
         pendingMediaVolumeOffset?.let { settings.mediaVolumeOffset = it }
         pendingAssistantVolumeOffset?.let { settings.assistantVolumeOffset = it }
         pendingNavigationVolumeOffset?.let { settings.navigationVolumeOffset = it }
+
 
         pendingAppLanguage?.let { settings.appLanguage = it }
 
@@ -314,8 +326,7 @@ class SettingsFragment : Fragment() {
 
     private fun checkChanges() {
         // Check for any changes
-        val anyChange = pendingMicSampleRate != settings.micSampleRate ||
-                        pendingUseGps != settings.useGpsForNavigation ||
+        val anyChange = pendingUseGps != settings.useGpsForNavigation ||
                         pendingShowNavigationNotifications != settings.showNavigationNotifications ||
                         pendingSyncMediaSessionAaMetadata != settings.syncMediaSessionWithAaMetadata ||
                         pendingResolution != settings.resolutionId ||
@@ -329,7 +340,6 @@ class SettingsFragment : Fragment() {
                         pendingEnableAudioSink != settings.enableAudioSink ||
                         pendingSeparateAudioStreams != settings.separateAudioStreams ||
                         pendingUseAacAudio != settings.useAacAudio ||
-                        pendingMicInputSource != settings.micInputSource ||
                         pendingUseNativeSsl != settings.useNativeSsl ||
                         pendingEnableRotary != settings.enableRotary ||
                         pendingAudioLatencyMultiplier != settings.audioLatencyMultiplier ||
@@ -444,6 +454,16 @@ class SettingsFragment : Fragment() {
             }
         ))
 
+        // UI Scale (example dialog similar to Custom Insets) - appear after vehicle info
+        items.add(SettingItem.SettingEntry(
+            stableId = "uiScale",
+            nameResId = R.string.ui_scale,
+            value = "${getString(R.string.ui_scale_home)}: ${pendingUiScaleHomePercent ?: 100}% · ${getString(R.string.ui_scale_settings)}: ${pendingUiScaleSettingsPercent ?: 100}%",
+            onClick = { _ ->
+                showUiScaleDialog()
+            }
+        ))
+
         // --- Wireless Connection ---
         items.add(SettingItem.CategoryHeader("wirelessConnection", R.string.category_wireless))
 
@@ -480,31 +500,11 @@ class SettingsFragment : Fragment() {
                 }
 
                 if (newMode == 3) {
-                    // Compatibility check for Native AA
-                    if (com.andrerinas.headunitrevived.connection.NativeAaHandshakeManager.checkCompatibility()) {
-                        MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
-                            .setTitle(R.string.supported_nativeaa)
-                            .setMessage(R.string.supported_nativeaa_desc)
-                            .setPositiveButton(android.R.string.ok) { dialog, _ ->
-                                pendingWifiConnectionMode = 3
-                                checkChanges()
-                                updateSettingsList()
-                                dialog.dismiss()
-                            }
-                            .setNegativeButton(android.R.string.cancel, null)
-                            .show()
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && 
+                        ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                        bluetoothPermissionLauncher.launch(android.Manifest.permission.BLUETOOTH_CONNECT)
                     } else {
-                        MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
-                            .setTitle(R.string.not_supported_nativeaa)
-                            .setMessage(R.string.not_supported_nativeaa_desc)
-                            .setPositiveButton(android.R.string.ok) { dialog, _ ->
-                                pendingWifiConnectionMode = 3
-                                checkChanges()
-                                updateSettingsList()
-                                dialog.dismiss()
-                            }
-                            .setNegativeButton(android.R.string.cancel, null)
-                            .show()
+                        handleNativeAaSelection()
                     }
                 } else {
                     pendingWifiConnectionMode = newMode
@@ -1004,44 +1004,11 @@ class SettingsFragment : Fragment() {
         ))
 
         items.add(SettingItem.SettingEntry(
-            stableId = "micSampleRate",
-            nameResId = R.string.mic_sample_rate,
-            value = "${pendingMicSampleRate!! / 1000}kHz",
+            stableId = "micSettings",
+            nameResId = R.string.microphone_settings,
+            value = getString(R.string.microphone_settings_description),
             onClick = { _ ->
-                val currentSampleRateIndex = Settings.MicSampleRates.indexOf(pendingMicSampleRate!!)
-                val sampleRateNames = Settings.MicSampleRates.map { "${it / 1000}kHz" }.toTypedArray()
-
-                MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
-                    .setTitle(R.string.mic_sample_rate)
-                    .setSingleChoiceItems(sampleRateNames, currentSampleRateIndex) { dialog, which ->
-                        val newValue = Settings.MicSampleRates.elementAt(which)
-                        pendingMicSampleRate = newValue
-                        checkChanges()
-                        dialog.dismiss()
-                        updateSettingsList()
-                    }
-                    .show()
-            }
-        ))
-
-        val micSources = resources.getStringArray(R.array.mic_input_sources)
-        val micSourceValues = intArrayOf(0, 1, 6, 7, 100) // DEFAULT, MIC, VOICE_RECOGNITION, VOICE_COMMUNICATION, BT_SCO
-        val currentSourceIndex = micSourceValues.indexOf(pendingMicInputSource ?: 0).coerceAtLeast(0)
-
-        items.add(SettingItem.SettingEntry(
-            stableId = "micInputSource",
-            nameResId = R.string.mic_input_source,
-            value = micSources[currentSourceIndex],
-            onClick = {
-                MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
-                    .setTitle(R.string.mic_input_source)
-                    .setSingleChoiceItems(micSources, currentSourceIndex) { dialog, which ->
-                        pendingMicInputSource = micSourceValues[which]
-                        checkChanges()
-                        updateSettingsList()
-                        dialog.dismiss()
-                    }
-                    .show()
+                findNavController().navigate(R.id.action_settingsFragment_to_micSettingsFragment)
             }
         ))
 
@@ -1443,6 +1410,99 @@ class SettingsFragment : Fragment() {
             .show()
     }
 
+    private fun showUiScaleDialog() {
+        val context = requireContext()
+        val density = context.resources.displayMetrics.density
+
+        val container = android.widget.LinearLayout(context).apply {
+            orientation = android.widget.LinearLayout.VERTICAL
+            val pad = (16 * density).toInt()
+            setPadding(pad, pad, pad, pad)
+        }
+
+        fun makeRow(labelText: String, initialPercent: Int): Triple<android.widget.TextView, android.widget.SeekBar, android.widget.TextView> {
+            val label = android.widget.TextView(context).apply {
+                text = labelText
+                setPadding(0, (8 * density).toInt(), 0, (4 * density).toInt())
+            }
+            val seek = android.widget.SeekBar(context).apply {
+                // Map 100..150 step 10 -> progress 0..5
+                max = 5
+                progress = ((initialPercent - 100) / 10).coerceIn(0, 5)
+            }
+            val value = android.widget.TextView(context).apply {
+                text = "$initialPercent%"
+                setPadding(0, (4 * density).toInt(), 0, (12 * density).toInt())
+            }
+            // Update value when seek changes
+            seek.setOnSeekBarChangeListener(object : android.widget.SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(sb: android.widget.SeekBar?, progress: Int, fromUser: Boolean) {
+                    val pct = 100 + progress * 10
+                    value.text = "$pct%"
+                }
+                override fun onStartTrackingTouch(sb: android.widget.SeekBar?) {}
+                override fun onStopTrackingTouch(sb: android.widget.SeekBar?) {}
+            })
+
+            return Triple(label, seek, value)
+        }
+
+        val homeInitial = pendingUiScaleHomePercent ?: settings.uiScaleHomePercent
+        val settingsInitial = pendingUiScaleSettingsPercent ?: settings.uiScaleSettingsPercent
+
+        val (homeLabel, homeSeek, homeValue) = makeRow(getString(R.string.ui_scale_home), homeInitial)
+        val (settingsLabel, settingsSeek, settingsValue) = makeRow(getString(R.string.ui_scale_settings), settingsInitial)
+
+        container.addView(homeLabel, android.widget.LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT))
+        container.addView(homeSeek, android.widget.LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT))
+        container.addView(homeValue, android.widget.LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT))
+        container.addView(settingsLabel, android.widget.LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT))
+        container.addView(settingsSeek, android.widget.LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT))
+        container.addView(settingsValue, android.widget.LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT))
+
+        // Wrap content in a ScrollView to ensure content is scrollable on small screens or when large scale is used
+        val scroll = android.widget.ScrollView(context).apply {
+            isFillViewport = true
+            addView(container, android.widget.FrameLayout.LayoutParams(android.widget.FrameLayout.LayoutParams.MATCH_PARENT, android.widget.FrameLayout.LayoutParams.WRAP_CONTENT))
+        }
+
+        MaterialAlertDialogBuilder(context, R.style.DarkAlertDialog)
+            .setTitle(R.string.ui_scale)
+            .setView(scroll)
+            .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                val newHome = 100 + (homeSeek.progress * 10)
+                val newSettings = 100 + (settingsSeek.progress * 10)
+                val oldSettings = settings.uiScaleSettingsPercent
+                val oldHome = settings.uiScaleHomePercent
+
+                // Persist immediately (similar to Custom Insets behavior)
+                settings.uiScaleHomePercent = newHome
+                settings.uiScaleSettingsPercent = newSettings
+                settings.commit()
+
+                pendingUiScaleHomePercent = newHome
+                pendingUiScaleSettingsPercent = newSettings
+                checkChanges()
+                updateSettingsList()
+
+                dialog.dismiss()
+
+                // If Settings value changed, recreate activity as requested
+                if (newSettings != oldSettings) {
+                    requireActivity().recreate()
+                }
+                // If Home UI scale changed, request MainActivity to recreate
+                if (newHome != oldHome) {
+                    val intent = Intent(MainActivity.ACTION_RECREATE_MAIN).apply {
+                        setPackage(requireContext().packageName)
+                    }
+                    requireContext().sendBroadcast(intent)
+                }
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
+    }
+
     override fun onResume() {
         super.onResume()
         // Refresh settings list when returning from sub-screens (e.g. AutoConnectFragment, DarkModeFragment)
@@ -1662,6 +1722,34 @@ class SettingsFragment : Fragment() {
             }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
+    }
+
+    private fun handleNativeAaSelection() {
+        if (NativeAaHandshakeManager.checkCompatibility(requireContext())) {
+            MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+                .setTitle(R.string.supported_nativeaa)
+                .setMessage(R.string.supported_nativeaa_desc)
+                .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                    pendingWifiConnectionMode = 3
+                    checkChanges()
+                    updateSettingsList()
+                    dialog.dismiss()
+                }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
+        } else {
+            MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+                .setTitle(R.string.not_supported_nativeaa)
+                .setMessage(R.string.not_supported_nativeaa_desc)
+                .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                    pendingWifiConnectionMode = 3
+                    checkChanges()
+                    updateSettingsList()
+                    dialog.dismiss()
+                }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
+        }
     }
 
     companion object {
