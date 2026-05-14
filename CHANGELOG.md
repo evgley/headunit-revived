@@ -1,5 +1,5 @@
 # Changelog
-### v.2.3.0-beta
+### v.2.3.0
 - Added some new buttons for keymap
 - Fixed 3 Fatal errors
 - Fixed video decoder settings for allwinner devices
@@ -15,6 +15,7 @@
 - Merged PR #481 - Apply MediaTek 60fps and audio optimizations, thanks to @mrkontrast-coder
 - Some rewrite of the AudioTrackWrapper, to enhance stability and minimize stutters
 - Merged PR #490 - Add UI scale settings, thanks to @Anton111111
+- Merged PR #502 - Navigation Broadcast Updates. Thanks to @Bastel2020
 
 ### v.2.2.2
 - Fixed: Exit on disconnect now stops the carmode too
