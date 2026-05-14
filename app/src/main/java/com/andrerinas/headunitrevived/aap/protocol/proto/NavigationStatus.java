@@ -21,6 +21,18 @@ public final class NavigationStatus {
   public enum MsgType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
+     * <code>INSTRUMENT_CLUSTER_START = 32769;</code>
+     */
+    INSTRUMENT_CLUSTER_START(32769),
+    /**
+     * <code>INSTRUMENT_CLUSTER_STOP = 32770;</code>
+     */
+    INSTRUMENT_CLUSTER_STOP(32770),
+    /**
+     * <code>INSTRUMENT_CLUSTER_NAVIGATION_STATUS = 32771;</code>
+     */
+    INSTRUMENT_CLUSTER_NAVIGATION_STATUS(32771),
+    /**
      * <code>NEXTTURNDETAILS = 32772;</code>
      */
     NEXTTURNDETAILS(32772),
@@ -29,15 +41,27 @@ public final class NavigationStatus {
      */
     NEXTTURNDISTANCEANDTIME(32773),
     /**
-     * <code>NAVIGATION_STATE = 32774;</code>
+     * <code>INSTRUMENT_CLUSTER_NAVIGATION_STATE = 32774;</code>
      */
-    NAVIGATION_STATE(32774),
+    INSTRUMENT_CLUSTER_NAVIGATION_STATE(32774),
     /**
-     * <code>NAVIGATION_CURRENT_POSITION = 32775;</code>
+     * <code>INSTRUMENT_CLUSTER_NAVIGATION_CURRENT_POSITION = 32775;</code>
      */
-    NAVIGATION_CURRENT_POSITION(32775),
+    INSTRUMENT_CLUSTER_NAVIGATION_CURRENT_POSITION(32775),
     ;
 
+    /**
+     * <code>INSTRUMENT_CLUSTER_START = 32769;</code>
+     */
+    public static final int INSTRUMENT_CLUSTER_START_VALUE = 32769;
+    /**
+     * <code>INSTRUMENT_CLUSTER_STOP = 32770;</code>
+     */
+    public static final int INSTRUMENT_CLUSTER_STOP_VALUE = 32770;
+    /**
+     * <code>INSTRUMENT_CLUSTER_NAVIGATION_STATUS = 32771;</code>
+     */
+    public static final int INSTRUMENT_CLUSTER_NAVIGATION_STATUS_VALUE = 32771;
     /**
      * <code>NEXTTURNDETAILS = 32772;</code>
      */
@@ -47,13 +71,13 @@ public final class NavigationStatus {
      */
     public static final int NEXTTURNDISTANCEANDTIME_VALUE = 32773;
     /**
-     * <code>NAVIGATION_STATE = 32774;</code>
+     * <code>INSTRUMENT_CLUSTER_NAVIGATION_STATE = 32774;</code>
      */
-    public static final int NAVIGATION_STATE_VALUE = 32774;
+    public static final int INSTRUMENT_CLUSTER_NAVIGATION_STATE_VALUE = 32774;
     /**
-     * <code>NAVIGATION_CURRENT_POSITION = 32775;</code>
+     * <code>INSTRUMENT_CLUSTER_NAVIGATION_CURRENT_POSITION = 32775;</code>
      */
-    public static final int NAVIGATION_CURRENT_POSITION_VALUE = 32775;
+    public static final int INSTRUMENT_CLUSTER_NAVIGATION_CURRENT_POSITION_VALUE = 32775;
 
 
     public final int getNumber() {
@@ -76,10 +100,13 @@ public final class NavigationStatus {
      */
     public static MsgType forNumber(int value) {
       switch (value) {
+        case 32769: return INSTRUMENT_CLUSTER_START;
+        case 32770: return INSTRUMENT_CLUSTER_STOP;
+        case 32771: return INSTRUMENT_CLUSTER_NAVIGATION_STATUS;
         case 32772: return NEXTTURNDETAILS;
         case 32773: return NEXTTURNDISTANCEANDTIME;
-        case 32774: return NAVIGATION_STATE;
-        case 32775: return NAVIGATION_CURRENT_POSITION;
+        case 32774: return INSTRUMENT_CLUSTER_NAVIGATION_STATE;
+        case 32775: return INSTRUMENT_CLUSTER_NAVIGATION_CURRENT_POSITION;
         default: return null;
       }
     }
@@ -129,6 +156,1435 @@ public final class NavigationStatus {
     // @@protoc_insertion_point(enum_scope:com.andrerinas.headunitrevived.aap.protocol.proto.MsgType)
   }
 
+  public interface NavigationStatusStartOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatusStart)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatusStart}
+   */
+  public static final class NavigationStatusStart extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatusStart)
+      NavigationStatusStartOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use NavigationStatusStart.newBuilder() to construct.
+    private NavigationStatusStart(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NavigationStatusStart() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NavigationStatusStart();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStart_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStart_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart)) {
+        return super.equals(obj);
+      }
+      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart) obj;
+
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatusStart}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatusStart)
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStartOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStart_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStart_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart.Builder.class);
+      }
+
+      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStart_descriptor;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart getDefaultInstanceForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart build() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart buildPartial() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart) {
+          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart other) {
+        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatusStart)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatusStart)
+    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart();
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationStatusStart>
+        PARSER = new com.google.protobuf.AbstractParser<NavigationStatusStart>() {
+      @java.lang.Override
+      public NavigationStatusStart parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<NavigationStatusStart> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NavigationStatusStart> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStart getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface NavigationStatusStopOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatusStop)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatusStop}
+   */
+  public static final class NavigationStatusStop extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatusStop)
+      NavigationStatusStopOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use NavigationStatusStop.newBuilder() to construct.
+    private NavigationStatusStop(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NavigationStatusStop() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NavigationStatusStop();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStop_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStop_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop)) {
+        return super.equals(obj);
+      }
+      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop) obj;
+
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatusStop}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatusStop)
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStopOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStop_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStop_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop.Builder.class);
+      }
+
+      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStop_descriptor;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop getDefaultInstanceForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop build() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop buildPartial() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop) {
+          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop other) {
+        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatusStop)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatusStop)
+    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop();
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationStatusStop>
+        PARSER = new com.google.protobuf.AbstractParser<NavigationStatusStop>() {
+      @java.lang.Override
+      public NavigationStatusStop parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<NavigationStatusStop> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NavigationStatusStop> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStatusStop getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface NavigationClusterStatusOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationClusterStatus)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationClusterStatus.NavigationStatusEnum status = 1;</code>
+     * @return Whether the status field is set.
+     */
+    boolean hasStatus();
+    /**
+     * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationClusterStatus.NavigationStatusEnum status = 1;</code>
+     * @return The status.
+     */
+    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.NavigationStatusEnum getStatus();
+  }
+  /**
+   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationClusterStatus}
+   */
+  public static final class NavigationClusterStatus extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationClusterStatus)
+      NavigationClusterStatusOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use NavigationClusterStatus.newBuilder() to construct.
+    private NavigationClusterStatus(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NavigationClusterStatus() {
+      status_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NavigationClusterStatus();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationClusterStatus_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationClusterStatus_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.Builder.class);
+    }
+
+    /**
+     * Protobuf enum {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationClusterStatus.NavigationStatusEnum}
+     */
+    public enum NavigationStatusEnum
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>UNAVAILABLE = 0;</code>
+       */
+      UNAVAILABLE(0),
+      /**
+       * <code>ACTIVE = 1;</code>
+       */
+      ACTIVE(1),
+      /**
+       * <code>INACTIVE = 2;</code>
+       */
+      INACTIVE(2),
+      /**
+       * <code>REROUTING = 3;</code>
+       */
+      REROUTING(3),
+      ;
+
+      /**
+       * <code>UNAVAILABLE = 0;</code>
+       */
+      public static final int UNAVAILABLE_VALUE = 0;
+      /**
+       * <code>ACTIVE = 1;</code>
+       */
+      public static final int ACTIVE_VALUE = 1;
+      /**
+       * <code>INACTIVE = 2;</code>
+       */
+      public static final int INACTIVE_VALUE = 2;
+      /**
+       * <code>REROUTING = 3;</code>
+       */
+      public static final int REROUTING_VALUE = 3;
+
+
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static NavigationStatusEnum valueOf(int value) {
+        return forNumber(value);
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static NavigationStatusEnum forNumber(int value) {
+        switch (value) {
+          case 0: return UNAVAILABLE;
+          case 1: return ACTIVE;
+          case 2: return INACTIVE;
+          case 3: return REROUTING;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<NavigationStatusEnum>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          NavigationStatusEnum> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<NavigationStatusEnum>() {
+              public NavigationStatusEnum findValueByNumber(int number) {
+                return NavigationStatusEnum.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final NavigationStatusEnum[] VALUES = values();
+
+      public static NavigationStatusEnum valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private NavigationStatusEnum(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationClusterStatus.NavigationStatusEnum)
+    }
+
+    private int bitField0_;
+    public static final int STATUS_FIELD_NUMBER = 1;
+    private int status_ = 0;
+    /**
+     * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationClusterStatus.NavigationStatusEnum status = 1;</code>
+     * @return Whether the status field is set.
+     */
+    @java.lang.Override public boolean hasStatus() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationClusterStatus.NavigationStatusEnum status = 1;</code>
+     * @return The status.
+     */
+    @java.lang.Override public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.NavigationStatusEnum getStatus() {
+      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.NavigationStatusEnum result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.NavigationStatusEnum.forNumber(status_);
+      return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.NavigationStatusEnum.UNAVAILABLE : result;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasStatus()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeEnum(1, status_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, status_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus)) {
+        return super.equals(obj);
+      }
+      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus) obj;
+
+      if (hasStatus() != other.hasStatus()) return false;
+      if (hasStatus()) {
+        if (status_ != other.status_) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasStatus()) {
+        hash = (37 * hash) + STATUS_FIELD_NUMBER;
+        hash = (53 * hash) + status_;
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationClusterStatus}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationClusterStatus)
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatusOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationClusterStatus_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationClusterStatus_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.Builder.class);
+      }
+
+      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        status_ = 0;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationClusterStatus_descriptor;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus getDefaultInstanceForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus build() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus buildPartial() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.status_ = status_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus) {
+          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus other) {
+        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.getDefaultInstance()) return this;
+        if (other.hasStatus()) {
+          setStatus(other.getStatus());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasStatus()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                int tmpRaw = input.readEnum();
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.NavigationStatusEnum tmpValue =
+                    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.NavigationStatusEnum.forNumber(tmpRaw);
+                if (tmpValue == null) {
+                  mergeUnknownVarintField(1, tmpRaw);
+                } else {
+                  status_ = tmpRaw;
+                  bitField0_ |= 0x00000001;
+                }
+                break;
+              } // case 8
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int status_ = 0;
+      /**
+       * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationClusterStatus.NavigationStatusEnum status = 1;</code>
+       * @return Whether the status field is set.
+       */
+      @java.lang.Override public boolean hasStatus() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationClusterStatus.NavigationStatusEnum status = 1;</code>
+       * @return The status.
+       */
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.NavigationStatusEnum getStatus() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.NavigationStatusEnum result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.NavigationStatusEnum.forNumber(status_);
+        return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.NavigationStatusEnum.UNAVAILABLE : result;
+      }
+      /**
+       * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationClusterStatus.NavigationStatusEnum status = 1;</code>
+       * @param value The status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatus(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus.NavigationStatusEnum value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        status_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationClusterStatus.NavigationStatusEnum status = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStatus() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        status_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationClusterStatus)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationClusterStatus)
+    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus();
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationClusterStatus>
+        PARSER = new com.google.protobuf.AbstractParser<NavigationClusterStatus>() {
+      @java.lang.Override
+      public NavigationClusterStatus parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<NavigationClusterStatus> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NavigationClusterStatus> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationClusterStatus getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface NextTurnDetailOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail)
       com.google.protobuf.MessageOrBuilder {
@@ -151,59 +1607,59 @@ public final class NavigationStatus {
         getRoadBytes();
 
     /**
-     * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.Side side = 2;</code>
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.Side side = 2;</code>
      * @return Whether the side field is set.
      */
     boolean hasSide();
     /**
-     * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.Side side = 2;</code>
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.Side side = 2;</code>
      * @return The side.
      */
     com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.Side getSide();
 
     /**
-     * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.NextEvent nextturn = 3;</code>
-     * @return Whether the nextturn field is set.
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.NextEvent next_turn = 3;</code>
+     * @return Whether the nextTurn field is set.
      */
-    boolean hasNextturn();
+    boolean hasNextTurn();
     /**
-     * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.NextEvent nextturn = 3;</code>
-     * @return The nextturn.
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.NextEvent next_turn = 3;</code>
+     * @return The nextTurn.
      */
-    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent getNextturn();
+    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent getNextTurn();
 
     /**
-     * <code>optional bytes turngraph = 4;</code>
-     * @return Whether the turngraph field is set.
+     * <code>optional bytes image = 4;</code>
+     * @return Whether the image field is set.
      */
-    boolean hasTurngraph();
+    boolean hasImage();
     /**
-     * <code>optional bytes turngraph = 4;</code>
-     * @return The turngraph.
+     * <code>optional bytes image = 4;</code>
+     * @return The image.
      */
-    com.google.protobuf.ByteString getTurngraph();
+    com.google.protobuf.ByteString getImage();
 
     /**
-     * <code>optional uint32 turnnumber = 5;</code>
-     * @return Whether the turnnumber field is set.
+     * <code>optional int32 turn_number = 5;</code>
+     * @return Whether the turnNumber field is set.
      */
-    boolean hasTurnnumber();
+    boolean hasTurnNumber();
     /**
-     * <code>optional uint32 turnnumber = 5;</code>
-     * @return The turnnumber.
+     * <code>optional int32 turn_number = 5;</code>
+     * @return The turnNumber.
      */
-    int getTurnnumber();
+    int getTurnNumber();
 
     /**
-     * <code>optional uint32 turnangle = 6;</code>
-     * @return Whether the turnangle field is set.
+     * <code>optional int32 turn_angle = 6;</code>
+     * @return Whether the turnAngle field is set.
      */
-    boolean hasTurnangle();
+    boolean hasTurnAngle();
     /**
-     * <code>optional uint32 turnangle = 6;</code>
-     * @return The turnangle.
+     * <code>optional int32 turn_angle = 6;</code>
+     * @return The turnAngle.
      */
-    int getTurnangle();
+    int getTurnAngle();
   }
   /**
    * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail}
@@ -220,8 +1676,8 @@ public final class NavigationStatus {
     private NextTurnDetail() {
       road_ = "";
       side_ = 1;
-      nextturn_ = 0;
-      turngraph_ = com.google.protobuf.ByteString.EMPTY;
+      nextTurn_ = 0;
+      image_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
@@ -379,21 +1835,21 @@ public final class NavigationStatus {
        */
       SHARP_TURN(5),
       /**
-       * <code>UTURN = 6;</code>
+       * <code>U_TURN = 6;</code>
        */
-      UTURN(6),
+      U_TURN(6),
       /**
-       * <code>ONRAMP = 7;</code>
+       * <code>ON_RAMP = 7;</code>
        */
-      ONRAMP(7),
+      ON_RAMP(7),
       /**
        * <code>OFFRAMP = 8;</code>
        */
       OFFRAMP(8),
       /**
-       * <code>FORM = 9;</code>
+       * <code>FORK = 9;</code>
        */
-      FORM(9),
+      FORK(9),
       /**
        * <code>MERGE = 10;</code>
        */
@@ -453,21 +1909,21 @@ public final class NavigationStatus {
        */
       public static final int SHARP_TURN_VALUE = 5;
       /**
-       * <code>UTURN = 6;</code>
+       * <code>U_TURN = 6;</code>
        */
-      public static final int UTURN_VALUE = 6;
+      public static final int U_TURN_VALUE = 6;
       /**
-       * <code>ONRAMP = 7;</code>
+       * <code>ON_RAMP = 7;</code>
        */
-      public static final int ONRAMP_VALUE = 7;
+      public static final int ON_RAMP_VALUE = 7;
       /**
        * <code>OFFRAMP = 8;</code>
        */
       public static final int OFFRAMP_VALUE = 8;
       /**
-       * <code>FORM = 9;</code>
+       * <code>FORK = 9;</code>
        */
-      public static final int FORM_VALUE = 9;
+      public static final int FORK_VALUE = 9;
       /**
        * <code>MERGE = 10;</code>
        */
@@ -528,10 +1984,10 @@ public final class NavigationStatus {
           case 3: return SLIGHT_TURN;
           case 4: return TURN;
           case 5: return SHARP_TURN;
-          case 6: return UTURN;
-          case 7: return ONRAMP;
+          case 6: return U_TURN;
+          case 7: return ON_RAMP;
           case 8: return OFFRAMP;
-          case 9: return FORM;
+          case 9: return FORK;
           case 10: return MERGE;
           case 11: return ROUNDABOUT_ENTER;
           case 12: return ROUNDABOUT_EXIT;
@@ -642,14 +2098,14 @@ public final class NavigationStatus {
     public static final int SIDE_FIELD_NUMBER = 2;
     private int side_ = 1;
     /**
-     * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.Side side = 2;</code>
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.Side side = 2;</code>
      * @return Whether the side field is set.
      */
     @java.lang.Override public boolean hasSide() {
       return ((bitField0_ & 0x00000002) != 0);
     }
     /**
-     * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.Side side = 2;</code>
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.Side side = 2;</code>
      * @return The side.
      */
     @java.lang.Override public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.Side getSide() {
@@ -657,79 +2113,79 @@ public final class NavigationStatus {
       return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.Side.LEFT : result;
     }
 
-    public static final int NEXTTURN_FIELD_NUMBER = 3;
-    private int nextturn_ = 0;
+    public static final int NEXT_TURN_FIELD_NUMBER = 3;
+    private int nextTurn_ = 0;
     /**
-     * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.NextEvent nextturn = 3;</code>
-     * @return Whether the nextturn field is set.
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.NextEvent next_turn = 3;</code>
+     * @return Whether the nextTurn field is set.
      */
-    @java.lang.Override public boolean hasNextturn() {
+    @java.lang.Override public boolean hasNextTurn() {
       return ((bitField0_ & 0x00000004) != 0);
     }
     /**
-     * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.NextEvent nextturn = 3;</code>
-     * @return The nextturn.
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.NextEvent next_turn = 3;</code>
+     * @return The nextTurn.
      */
-    @java.lang.Override public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent getNextturn() {
-      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent.forNumber(nextturn_);
+    @java.lang.Override public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent getNextTurn() {
+      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent.forNumber(nextTurn_);
       return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent.UNKNOWN : result;
     }
 
-    public static final int TURNGRAPH_FIELD_NUMBER = 4;
-    private com.google.protobuf.ByteString turngraph_ = com.google.protobuf.ByteString.EMPTY;
+    public static final int IMAGE_FIELD_NUMBER = 4;
+    private com.google.protobuf.ByteString image_ = com.google.protobuf.ByteString.EMPTY;
     /**
-     * <code>optional bytes turngraph = 4;</code>
-     * @return Whether the turngraph field is set.
+     * <code>optional bytes image = 4;</code>
+     * @return Whether the image field is set.
      */
     @java.lang.Override
-    public boolean hasTurngraph() {
+    public boolean hasImage() {
       return ((bitField0_ & 0x00000008) != 0);
     }
     /**
-     * <code>optional bytes turngraph = 4;</code>
-     * @return The turngraph.
+     * <code>optional bytes image = 4;</code>
+     * @return The image.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getTurngraph() {
-      return turngraph_;
+    public com.google.protobuf.ByteString getImage() {
+      return image_;
     }
 
-    public static final int TURNNUMBER_FIELD_NUMBER = 5;
-    private int turnnumber_ = 0;
+    public static final int TURN_NUMBER_FIELD_NUMBER = 5;
+    private int turnNumber_ = 0;
     /**
-     * <code>optional uint32 turnnumber = 5;</code>
-     * @return Whether the turnnumber field is set.
+     * <code>optional int32 turn_number = 5;</code>
+     * @return Whether the turnNumber field is set.
      */
     @java.lang.Override
-    public boolean hasTurnnumber() {
+    public boolean hasTurnNumber() {
       return ((bitField0_ & 0x00000010) != 0);
     }
     /**
-     * <code>optional uint32 turnnumber = 5;</code>
-     * @return The turnnumber.
+     * <code>optional int32 turn_number = 5;</code>
+     * @return The turnNumber.
      */
     @java.lang.Override
-    public int getTurnnumber() {
-      return turnnumber_;
+    public int getTurnNumber() {
+      return turnNumber_;
     }
 
-    public static final int TURNANGLE_FIELD_NUMBER = 6;
-    private int turnangle_ = 0;
+    public static final int TURN_ANGLE_FIELD_NUMBER = 6;
+    private int turnAngle_ = 0;
     /**
-     * <code>optional uint32 turnangle = 6;</code>
-     * @return Whether the turnangle field is set.
+     * <code>optional int32 turn_angle = 6;</code>
+     * @return Whether the turnAngle field is set.
      */
     @java.lang.Override
-    public boolean hasTurnangle() {
+    public boolean hasTurnAngle() {
       return ((bitField0_ & 0x00000020) != 0);
     }
     /**
-     * <code>optional uint32 turnangle = 6;</code>
-     * @return The turnangle.
+     * <code>optional int32 turn_angle = 6;</code>
+     * @return The turnAngle.
      */
     @java.lang.Override
-    public int getTurnangle() {
-      return turnangle_;
+    public int getTurnAngle() {
+      return turnAngle_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -740,14 +2196,6 @@ public final class NavigationStatus {
       if (isInitialized == 0) return false;
 
       if (!hasRoad()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasSide()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasNextturn()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -765,16 +2213,16 @@ public final class NavigationStatus {
         output.writeEnum(2, side_);
       }
       if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeEnum(3, nextturn_);
+        output.writeEnum(3, nextTurn_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
-        output.writeBytes(4, turngraph_);
+        output.writeBytes(4, image_);
       }
       if (((bitField0_ & 0x00000010) != 0)) {
-        output.writeUInt32(5, turnnumber_);
+        output.writeInt32(5, turnNumber_);
       }
       if (((bitField0_ & 0x00000020) != 0)) {
-        output.writeUInt32(6, turnangle_);
+        output.writeInt32(6, turnAngle_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -794,19 +2242,19 @@ public final class NavigationStatus {
       }
       if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(3, nextturn_);
+          .computeEnumSize(3, nextTurn_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, turngraph_);
+          .computeBytesSize(4, image_);
       }
       if (((bitField0_ & 0x00000010) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(5, turnnumber_);
+          .computeInt32Size(5, turnNumber_);
       }
       if (((bitField0_ & 0x00000020) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(6, turnangle_);
+          .computeInt32Size(6, turnAngle_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -832,24 +2280,24 @@ public final class NavigationStatus {
       if (hasSide()) {
         if (side_ != other.side_) return false;
       }
-      if (hasNextturn() != other.hasNextturn()) return false;
-      if (hasNextturn()) {
-        if (nextturn_ != other.nextturn_) return false;
+      if (hasNextTurn() != other.hasNextTurn()) return false;
+      if (hasNextTurn()) {
+        if (nextTurn_ != other.nextTurn_) return false;
       }
-      if (hasTurngraph() != other.hasTurngraph()) return false;
-      if (hasTurngraph()) {
-        if (!getTurngraph()
-            .equals(other.getTurngraph())) return false;
+      if (hasImage() != other.hasImage()) return false;
+      if (hasImage()) {
+        if (!getImage()
+            .equals(other.getImage())) return false;
       }
-      if (hasTurnnumber() != other.hasTurnnumber()) return false;
-      if (hasTurnnumber()) {
-        if (getTurnnumber()
-            != other.getTurnnumber()) return false;
+      if (hasTurnNumber() != other.hasTurnNumber()) return false;
+      if (hasTurnNumber()) {
+        if (getTurnNumber()
+            != other.getTurnNumber()) return false;
       }
-      if (hasTurnangle() != other.hasTurnangle()) return false;
-      if (hasTurnangle()) {
-        if (getTurnangle()
-            != other.getTurnangle()) return false;
+      if (hasTurnAngle() != other.hasTurnAngle()) return false;
+      if (hasTurnAngle()) {
+        if (getTurnAngle()
+            != other.getTurnAngle()) return false;
       }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
@@ -870,21 +2318,21 @@ public final class NavigationStatus {
         hash = (37 * hash) + SIDE_FIELD_NUMBER;
         hash = (53 * hash) + side_;
       }
-      if (hasNextturn()) {
-        hash = (37 * hash) + NEXTTURN_FIELD_NUMBER;
-        hash = (53 * hash) + nextturn_;
+      if (hasNextTurn()) {
+        hash = (37 * hash) + NEXT_TURN_FIELD_NUMBER;
+        hash = (53 * hash) + nextTurn_;
       }
-      if (hasTurngraph()) {
-        hash = (37 * hash) + TURNGRAPH_FIELD_NUMBER;
-        hash = (53 * hash) + getTurngraph().hashCode();
+      if (hasImage()) {
+        hash = (37 * hash) + IMAGE_FIELD_NUMBER;
+        hash = (53 * hash) + getImage().hashCode();
       }
-      if (hasTurnnumber()) {
-        hash = (37 * hash) + TURNNUMBER_FIELD_NUMBER;
-        hash = (53 * hash) + getTurnnumber();
+      if (hasTurnNumber()) {
+        hash = (37 * hash) + TURN_NUMBER_FIELD_NUMBER;
+        hash = (53 * hash) + getTurnNumber();
       }
-      if (hasTurnangle()) {
-        hash = (37 * hash) + TURNANGLE_FIELD_NUMBER;
-        hash = (53 * hash) + getTurnangle();
+      if (hasTurnAngle()) {
+        hash = (37 * hash) + TURN_ANGLE_FIELD_NUMBER;
+        hash = (53 * hash) + getTurnAngle();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -1019,10 +2467,10 @@ public final class NavigationStatus {
         bitField0_ = 0;
         road_ = "";
         side_ = 1;
-        nextturn_ = 0;
-        turngraph_ = com.google.protobuf.ByteString.EMPTY;
-        turnnumber_ = 0;
-        turnangle_ = 0;
+        nextTurn_ = 0;
+        image_ = com.google.protobuf.ByteString.EMPTY;
+        turnNumber_ = 0;
+        turnAngle_ = 0;
         return this;
       }
 
@@ -1066,19 +2514,19 @@ public final class NavigationStatus {
           to_bitField0_ |= 0x00000002;
         }
         if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.nextturn_ = nextturn_;
+          result.nextTurn_ = nextTurn_;
           to_bitField0_ |= 0x00000004;
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.turngraph_ = turngraph_;
+          result.image_ = image_;
           to_bitField0_ |= 0x00000008;
         }
         if (((from_bitField0_ & 0x00000010) != 0)) {
-          result.turnnumber_ = turnnumber_;
+          result.turnNumber_ = turnNumber_;
           to_bitField0_ |= 0x00000010;
         }
         if (((from_bitField0_ & 0x00000020) != 0)) {
-          result.turnangle_ = turnangle_;
+          result.turnAngle_ = turnAngle_;
           to_bitField0_ |= 0x00000020;
         }
         result.bitField0_ |= to_bitField0_;
@@ -1136,17 +2584,17 @@ public final class NavigationStatus {
         if (other.hasSide()) {
           setSide(other.getSide());
         }
-        if (other.hasNextturn()) {
-          setNextturn(other.getNextturn());
+        if (other.hasNextTurn()) {
+          setNextTurn(other.getNextTurn());
         }
-        if (other.hasTurngraph()) {
-          setTurngraph(other.getTurngraph());
+        if (other.hasImage()) {
+          setImage(other.getImage());
         }
-        if (other.hasTurnnumber()) {
-          setTurnnumber(other.getTurnnumber());
+        if (other.hasTurnNumber()) {
+          setTurnNumber(other.getTurnNumber());
         }
-        if (other.hasTurnangle()) {
-          setTurnangle(other.getTurnangle());
+        if (other.hasTurnAngle()) {
+          setTurnAngle(other.getTurnAngle());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -1156,12 +2604,6 @@ public final class NavigationStatus {
       @java.lang.Override
       public final boolean isInitialized() {
         if (!hasRoad()) {
-          return false;
-        }
-        if (!hasSide()) {
-          return false;
-        }
-        if (!hasNextturn()) {
           return false;
         }
         return true;
@@ -1207,23 +2649,23 @@ public final class NavigationStatus {
                 if (tmpValue == null) {
                   mergeUnknownVarintField(3, tmpRaw);
                 } else {
-                  nextturn_ = tmpRaw;
+                  nextTurn_ = tmpRaw;
                   bitField0_ |= 0x00000004;
                 }
                 break;
               } // case 24
               case 34: {
-                turngraph_ = input.readBytes();
+                image_ = input.readBytes();
                 bitField0_ |= 0x00000008;
                 break;
               } // case 34
               case 40: {
-                turnnumber_ = input.readUInt32();
+                turnNumber_ = input.readInt32();
                 bitField0_ |= 0x00000010;
                 break;
               } // case 40
               case 48: {
-                turnangle_ = input.readUInt32();
+                turnAngle_ = input.readInt32();
                 bitField0_ |= 0x00000020;
                 break;
               } // case 48
@@ -1326,14 +2768,14 @@ public final class NavigationStatus {
 
       private int side_ = 1;
       /**
-       * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.Side side = 2;</code>
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.Side side = 2;</code>
        * @return Whether the side field is set.
        */
       @java.lang.Override public boolean hasSide() {
         return ((bitField0_ & 0x00000002) != 0);
       }
       /**
-       * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.Side side = 2;</code>
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.Side side = 2;</code>
        * @return The side.
        */
       @java.lang.Override
@@ -1342,7 +2784,7 @@ public final class NavigationStatus {
         return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.Side.LEFT : result;
       }
       /**
-       * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.Side side = 2;</code>
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.Side side = 2;</code>
        * @param value The side to set.
        * @return This builder for chaining.
        */
@@ -1356,7 +2798,7 @@ public final class NavigationStatus {
         return this;
       }
       /**
-       * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.Side side = 2;</code>
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.Side side = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearSide() {
@@ -1366,164 +2808,164 @@ public final class NavigationStatus {
         return this;
       }
 
-      private int nextturn_ = 0;
+      private int nextTurn_ = 0;
       /**
-       * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.NextEvent nextturn = 3;</code>
-       * @return Whether the nextturn field is set.
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.NextEvent next_turn = 3;</code>
+       * @return Whether the nextTurn field is set.
        */
-      @java.lang.Override public boolean hasNextturn() {
+      @java.lang.Override public boolean hasNextTurn() {
         return ((bitField0_ & 0x00000004) != 0);
       }
       /**
-       * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.NextEvent nextturn = 3;</code>
-       * @return The nextturn.
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.NextEvent next_turn = 3;</code>
+       * @return The nextTurn.
        */
       @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent getNextturn() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent.forNumber(nextturn_);
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent getNextTurn() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent.forNumber(nextTurn_);
         return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent.UNKNOWN : result;
       }
       /**
-       * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.NextEvent nextturn = 3;</code>
-       * @param value The nextturn to set.
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.NextEvent next_turn = 3;</code>
+       * @param value The nextTurn to set.
        * @return This builder for chaining.
        */
-      public Builder setNextturn(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent value) {
+      public Builder setNextTurn(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDetail.NextEvent value) {
         if (value == null) {
           throw new NullPointerException();
         }
         bitField0_ |= 0x00000004;
-        nextturn_ = value.getNumber();
+        nextTurn_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
-       * <code>required .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.NextEvent nextturn = 3;</code>
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDetail.NextEvent next_turn = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearNextturn() {
+      public Builder clearNextTurn() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        nextturn_ = 0;
+        nextTurn_ = 0;
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.ByteString turngraph_ = com.google.protobuf.ByteString.EMPTY;
+      private com.google.protobuf.ByteString image_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>optional bytes turngraph = 4;</code>
-       * @return Whether the turngraph field is set.
+       * <code>optional bytes image = 4;</code>
+       * @return Whether the image field is set.
        */
       @java.lang.Override
-      public boolean hasTurngraph() {
+      public boolean hasImage() {
         return ((bitField0_ & 0x00000008) != 0);
       }
       /**
-       * <code>optional bytes turngraph = 4;</code>
-       * @return The turngraph.
+       * <code>optional bytes image = 4;</code>
+       * @return The image.
        */
       @java.lang.Override
-      public com.google.protobuf.ByteString getTurngraph() {
-        return turngraph_;
+      public com.google.protobuf.ByteString getImage() {
+        return image_;
       }
       /**
-       * <code>optional bytes turngraph = 4;</code>
-       * @param value The turngraph to set.
+       * <code>optional bytes image = 4;</code>
+       * @param value The image to set.
        * @return This builder for chaining.
        */
-      public Builder setTurngraph(com.google.protobuf.ByteString value) {
+      public Builder setImage(com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
-        turngraph_ = value;
+        image_ = value;
         bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
       /**
-       * <code>optional bytes turngraph = 4;</code>
+       * <code>optional bytes image = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearTurngraph() {
+      public Builder clearImage() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        turngraph_ = getDefaultInstance().getTurngraph();
+        image_ = getDefaultInstance().getImage();
         onChanged();
         return this;
       }
 
-      private int turnnumber_ ;
+      private int turnNumber_ ;
       /**
-       * <code>optional uint32 turnnumber = 5;</code>
-       * @return Whether the turnnumber field is set.
+       * <code>optional int32 turn_number = 5;</code>
+       * @return Whether the turnNumber field is set.
        */
       @java.lang.Override
-      public boolean hasTurnnumber() {
+      public boolean hasTurnNumber() {
         return ((bitField0_ & 0x00000010) != 0);
       }
       /**
-       * <code>optional uint32 turnnumber = 5;</code>
-       * @return The turnnumber.
+       * <code>optional int32 turn_number = 5;</code>
+       * @return The turnNumber.
        */
       @java.lang.Override
-      public int getTurnnumber() {
-        return turnnumber_;
+      public int getTurnNumber() {
+        return turnNumber_;
       }
       /**
-       * <code>optional uint32 turnnumber = 5;</code>
-       * @param value The turnnumber to set.
+       * <code>optional int32 turn_number = 5;</code>
+       * @param value The turnNumber to set.
        * @return This builder for chaining.
        */
-      public Builder setTurnnumber(int value) {
+      public Builder setTurnNumber(int value) {
 
-        turnnumber_ = value;
+        turnNumber_ = value;
         bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint32 turnnumber = 5;</code>
+       * <code>optional int32 turn_number = 5;</code>
        * @return This builder for chaining.
        */
-      public Builder clearTurnnumber() {
+      public Builder clearTurnNumber() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        turnnumber_ = 0;
+        turnNumber_ = 0;
         onChanged();
         return this;
       }
 
-      private int turnangle_ ;
+      private int turnAngle_ ;
       /**
-       * <code>optional uint32 turnangle = 6;</code>
-       * @return Whether the turnangle field is set.
+       * <code>optional int32 turn_angle = 6;</code>
+       * @return Whether the turnAngle field is set.
        */
       @java.lang.Override
-      public boolean hasTurnangle() {
+      public boolean hasTurnAngle() {
         return ((bitField0_ & 0x00000020) != 0);
       }
       /**
-       * <code>optional uint32 turnangle = 6;</code>
-       * @return The turnangle.
+       * <code>optional int32 turn_angle = 6;</code>
+       * @return The turnAngle.
        */
       @java.lang.Override
-      public int getTurnangle() {
-        return turnangle_;
+      public int getTurnAngle() {
+        return turnAngle_;
       }
       /**
-       * <code>optional uint32 turnangle = 6;</code>
-       * @param value The turnangle to set.
+       * <code>optional int32 turn_angle = 6;</code>
+       * @param value The turnAngle to set.
        * @return This builder for chaining.
        */
-      public Builder setTurnangle(int value) {
+      public Builder setTurnAngle(int value) {
 
-        turnangle_ = value;
+        turnAngle_ = value;
         bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint32 turnangle = 6;</code>
+       * <code>optional int32 turn_angle = 6;</code>
        * @return This builder for chaining.
        */
-      public Builder clearTurnangle() {
+      public Builder clearTurnAngle() {
         bitField0_ = (bitField0_ & ~0x00000020);
-        turnangle_ = 0;
+        turnAngle_ = 0;
         onChanged();
         return this;
       }
@@ -1596,26 +3038,48 @@ public final class NavigationStatus {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional uint32 distance = 1;</code>
-     * @return Whether the distance field is set.
+     * <code>optional int32 distance_meters = 1;</code>
+     * @return Whether the distanceMeters field is set.
      */
-    boolean hasDistance();
+    boolean hasDistanceMeters();
     /**
-     * <code>optional uint32 distance = 1;</code>
-     * @return The distance.
+     * <code>optional int32 distance_meters = 1;</code>
+     * @return The distanceMeters.
      */
-    int getDistance();
+    int getDistanceMeters();
 
     /**
-     * <code>optional uint32 time = 2;</code>
-     * @return Whether the time field is set.
+     * <code>optional int32 time_to_turn_seconds = 2;</code>
+     * @return Whether the timeToTurnSeconds field is set.
      */
-    boolean hasTime();
+    boolean hasTimeToTurnSeconds();
     /**
-     * <code>optional uint32 time = 2;</code>
-     * @return The time.
+     * <code>optional int32 time_to_turn_seconds = 2;</code>
+     * @return The timeToTurnSeconds.
      */
-    int getTime();
+    int getTimeToTurnSeconds();
+
+    /**
+     * <code>optional int32 display_distance_e3 = 3;</code>
+     * @return Whether the displayDistanceE3 field is set.
+     */
+    boolean hasDisplayDistanceE3();
+    /**
+     * <code>optional int32 display_distance_e3 = 3;</code>
+     * @return The displayDistanceE3.
+     */
+    int getDisplayDistanceE3();
+
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDistanceEvent.DistanceUnits display_distance_unit = 4;</code>
+     * @return Whether the displayDistanceUnit field is set.
+     */
+    boolean hasDisplayDistanceUnit();
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDistanceEvent.DistanceUnits display_distance_unit = 4;</code>
+     * @return The displayDistanceUnit.
+     */
+    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent.DistanceUnits getDisplayDistanceUnit();
   }
   /**
    * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDistanceEvent}
@@ -1630,6 +3094,7 @@ public final class NavigationStatus {
       super(builder);
     }
     private NextTurnDistanceEvent() {
+      displayDistanceUnit_ = 0;
     }
 
     @java.lang.Override
@@ -1652,43 +3117,230 @@ public final class NavigationStatus {
               com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int DISTANCE_FIELD_NUMBER = 1;
-    private int distance_ = 0;
     /**
-     * <code>optional uint32 distance = 1;</code>
-     * @return Whether the distance field is set.
+     * Protobuf enum {@code com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDistanceEvent.DistanceUnits}
+     */
+    public enum DistanceUnits
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>UNKNOWN_DISTANCE_UNIT = 0;</code>
+       */
+      UNKNOWN_DISTANCE_UNIT(0),
+      /**
+       * <code>METERS = 1;</code>
+       */
+      METERS(1),
+      /**
+       * <code>KILOMETERS = 2;</code>
+       */
+      KILOMETERS(2),
+      /**
+       * <code>KILOMETERS_P1 = 3;</code>
+       */
+      KILOMETERS_P1(3),
+      /**
+       * <code>MILES = 4;</code>
+       */
+      MILES(4),
+      /**
+       * <code>MILES_P1 = 5;</code>
+       */
+      MILES_P1(5),
+      /**
+       * <code>FEET = 6;</code>
+       */
+      FEET(6),
+      /**
+       * <code>YARDS = 7;</code>
+       */
+      YARDS(7),
+      ;
+
+      /**
+       * <code>UNKNOWN_DISTANCE_UNIT = 0;</code>
+       */
+      public static final int UNKNOWN_DISTANCE_UNIT_VALUE = 0;
+      /**
+       * <code>METERS = 1;</code>
+       */
+      public static final int METERS_VALUE = 1;
+      /**
+       * <code>KILOMETERS = 2;</code>
+       */
+      public static final int KILOMETERS_VALUE = 2;
+      /**
+       * <code>KILOMETERS_P1 = 3;</code>
+       */
+      public static final int KILOMETERS_P1_VALUE = 3;
+      /**
+       * <code>MILES = 4;</code>
+       */
+      public static final int MILES_VALUE = 4;
+      /**
+       * <code>MILES_P1 = 5;</code>
+       */
+      public static final int MILES_P1_VALUE = 5;
+      /**
+       * <code>FEET = 6;</code>
+       */
+      public static final int FEET_VALUE = 6;
+      /**
+       * <code>YARDS = 7;</code>
+       */
+      public static final int YARDS_VALUE = 7;
+
+
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static DistanceUnits valueOf(int value) {
+        return forNumber(value);
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static DistanceUnits forNumber(int value) {
+        switch (value) {
+          case 0: return UNKNOWN_DISTANCE_UNIT;
+          case 1: return METERS;
+          case 2: return KILOMETERS;
+          case 3: return KILOMETERS_P1;
+          case 4: return MILES;
+          case 5: return MILES_P1;
+          case 6: return FEET;
+          case 7: return YARDS;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<DistanceUnits>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          DistanceUnits> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<DistanceUnits>() {
+              public DistanceUnits findValueByNumber(int number) {
+                return DistanceUnits.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final DistanceUnits[] VALUES = values();
+
+      public static DistanceUnits valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private DistanceUnits(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDistanceEvent.DistanceUnits)
+    }
+
+    private int bitField0_;
+    public static final int DISTANCE_METERS_FIELD_NUMBER = 1;
+    private int distanceMeters_ = 0;
+    /**
+     * <code>optional int32 distance_meters = 1;</code>
+     * @return Whether the distanceMeters field is set.
      */
     @java.lang.Override
-    public boolean hasDistance() {
+    public boolean hasDistanceMeters() {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>optional uint32 distance = 1;</code>
-     * @return The distance.
+     * <code>optional int32 distance_meters = 1;</code>
+     * @return The distanceMeters.
      */
     @java.lang.Override
-    public int getDistance() {
-      return distance_;
+    public int getDistanceMeters() {
+      return distanceMeters_;
     }
 
-    public static final int TIME_FIELD_NUMBER = 2;
-    private int time_ = 0;
+    public static final int TIME_TO_TURN_SECONDS_FIELD_NUMBER = 2;
+    private int timeToTurnSeconds_ = 0;
     /**
-     * <code>optional uint32 time = 2;</code>
-     * @return Whether the time field is set.
+     * <code>optional int32 time_to_turn_seconds = 2;</code>
+     * @return Whether the timeToTurnSeconds field is set.
      */
     @java.lang.Override
-    public boolean hasTime() {
+    public boolean hasTimeToTurnSeconds() {
       return ((bitField0_ & 0x00000002) != 0);
     }
     /**
-     * <code>optional uint32 time = 2;</code>
-     * @return The time.
+     * <code>optional int32 time_to_turn_seconds = 2;</code>
+     * @return The timeToTurnSeconds.
      */
     @java.lang.Override
-    public int getTime() {
-      return time_;
+    public int getTimeToTurnSeconds() {
+      return timeToTurnSeconds_;
+    }
+
+    public static final int DISPLAY_DISTANCE_E3_FIELD_NUMBER = 3;
+    private int displayDistanceE3_ = 0;
+    /**
+     * <code>optional int32 display_distance_e3 = 3;</code>
+     * @return Whether the displayDistanceE3 field is set.
+     */
+    @java.lang.Override
+    public boolean hasDisplayDistanceE3() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional int32 display_distance_e3 = 3;</code>
+     * @return The displayDistanceE3.
+     */
+    @java.lang.Override
+    public int getDisplayDistanceE3() {
+      return displayDistanceE3_;
+    }
+
+    public static final int DISPLAY_DISTANCE_UNIT_FIELD_NUMBER = 4;
+    private int displayDistanceUnit_ = 0;
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDistanceEvent.DistanceUnits display_distance_unit = 4;</code>
+     * @return Whether the displayDistanceUnit field is set.
+     */
+    @java.lang.Override public boolean hasDisplayDistanceUnit() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDistanceEvent.DistanceUnits display_distance_unit = 4;</code>
+     * @return The displayDistanceUnit.
+     */
+    @java.lang.Override public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent.DistanceUnits getDisplayDistanceUnit() {
+      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent.DistanceUnits result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent.DistanceUnits.forNumber(displayDistanceUnit_);
+      return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent.DistanceUnits.UNKNOWN_DISTANCE_UNIT : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1706,10 +3358,16 @@ public final class NavigationStatus {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeUInt32(1, distance_);
+        output.writeInt32(1, distanceMeters_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeUInt32(2, time_);
+        output.writeInt32(2, timeToTurnSeconds_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeInt32(3, displayDistanceE3_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeEnum(4, displayDistanceUnit_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1722,11 +3380,19 @@ public final class NavigationStatus {
       size = 0;
       if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, distance_);
+          .computeInt32Size(1, distanceMeters_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, time_);
+          .computeInt32Size(2, timeToTurnSeconds_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, displayDistanceE3_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(4, displayDistanceUnit_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -1743,15 +3409,24 @@ public final class NavigationStatus {
       }
       com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent) obj;
 
-      if (hasDistance() != other.hasDistance()) return false;
-      if (hasDistance()) {
-        if (getDistance()
-            != other.getDistance()) return false;
+      if (hasDistanceMeters() != other.hasDistanceMeters()) return false;
+      if (hasDistanceMeters()) {
+        if (getDistanceMeters()
+            != other.getDistanceMeters()) return false;
       }
-      if (hasTime() != other.hasTime()) return false;
-      if (hasTime()) {
-        if (getTime()
-            != other.getTime()) return false;
+      if (hasTimeToTurnSeconds() != other.hasTimeToTurnSeconds()) return false;
+      if (hasTimeToTurnSeconds()) {
+        if (getTimeToTurnSeconds()
+            != other.getTimeToTurnSeconds()) return false;
+      }
+      if (hasDisplayDistanceE3() != other.hasDisplayDistanceE3()) return false;
+      if (hasDisplayDistanceE3()) {
+        if (getDisplayDistanceE3()
+            != other.getDisplayDistanceE3()) return false;
+      }
+      if (hasDisplayDistanceUnit() != other.hasDisplayDistanceUnit()) return false;
+      if (hasDisplayDistanceUnit()) {
+        if (displayDistanceUnit_ != other.displayDistanceUnit_) return false;
       }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
@@ -1764,13 +3439,21 @@ public final class NavigationStatus {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasDistance()) {
-        hash = (37 * hash) + DISTANCE_FIELD_NUMBER;
-        hash = (53 * hash) + getDistance();
+      if (hasDistanceMeters()) {
+        hash = (37 * hash) + DISTANCE_METERS_FIELD_NUMBER;
+        hash = (53 * hash) + getDistanceMeters();
       }
-      if (hasTime()) {
-        hash = (37 * hash) + TIME_FIELD_NUMBER;
-        hash = (53 * hash) + getTime();
+      if (hasTimeToTurnSeconds()) {
+        hash = (37 * hash) + TIME_TO_TURN_SECONDS_FIELD_NUMBER;
+        hash = (53 * hash) + getTimeToTurnSeconds();
+      }
+      if (hasDisplayDistanceE3()) {
+        hash = (37 * hash) + DISPLAY_DISTANCE_E3_FIELD_NUMBER;
+        hash = (53 * hash) + getDisplayDistanceE3();
+      }
+      if (hasDisplayDistanceUnit()) {
+        hash = (37 * hash) + DISPLAY_DISTANCE_UNIT_FIELD_NUMBER;
+        hash = (53 * hash) + displayDistanceUnit_;
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -1903,8 +3586,10 @@ public final class NavigationStatus {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        distance_ = 0;
-        time_ = 0;
+        distanceMeters_ = 0;
+        timeToTurnSeconds_ = 0;
+        displayDistanceE3_ = 0;
+        displayDistanceUnit_ = 0;
         return this;
       }
 
@@ -1940,12 +3625,20 @@ public final class NavigationStatus {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.distance_ = distance_;
+          result.distanceMeters_ = distanceMeters_;
           to_bitField0_ |= 0x00000001;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.time_ = time_;
+          result.timeToTurnSeconds_ = timeToTurnSeconds_;
           to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.displayDistanceE3_ = displayDistanceE3_;
+          to_bitField0_ |= 0x00000004;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.displayDistanceUnit_ = displayDistanceUnit_;
+          to_bitField0_ |= 0x00000008;
         }
         result.bitField0_ |= to_bitField0_;
       }
@@ -1994,11 +3687,17 @@ public final class NavigationStatus {
 
       public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent other) {
         if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent.getDefaultInstance()) return this;
-        if (other.hasDistance()) {
-          setDistance(other.getDistance());
+        if (other.hasDistanceMeters()) {
+          setDistanceMeters(other.getDistanceMeters());
         }
-        if (other.hasTime()) {
-          setTime(other.getTime());
+        if (other.hasTimeToTurnSeconds()) {
+          setTimeToTurnSeconds(other.getTimeToTurnSeconds());
+        }
+        if (other.hasDisplayDistanceE3()) {
+          setDisplayDistanceE3(other.getDisplayDistanceE3());
+        }
+        if (other.hasDisplayDistanceUnit()) {
+          setDisplayDistanceUnit(other.getDisplayDistanceUnit());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -2027,15 +3726,32 @@ public final class NavigationStatus {
                 done = true;
                 break;
               case 8: {
-                distance_ = input.readUInt32();
+                distanceMeters_ = input.readInt32();
                 bitField0_ |= 0x00000001;
                 break;
               } // case 8
               case 16: {
-                time_ = input.readUInt32();
+                timeToTurnSeconds_ = input.readInt32();
                 bitField0_ |= 0x00000002;
                 break;
               } // case 16
+              case 24: {
+                displayDistanceE3_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 32: {
+                int tmpRaw = input.readEnum();
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent.DistanceUnits tmpValue =
+                    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent.DistanceUnits.forNumber(tmpRaw);
+                if (tmpValue == null) {
+                  mergeUnknownVarintField(4, tmpRaw);
+                } else {
+                  displayDistanceUnit_ = tmpRaw;
+                  bitField0_ |= 0x00000008;
+                }
+                break;
+              } // case 32
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -2053,82 +3769,164 @@ public final class NavigationStatus {
       }
       private int bitField0_;
 
-      private int distance_ ;
+      private int distanceMeters_ ;
       /**
-       * <code>optional uint32 distance = 1;</code>
-       * @return Whether the distance field is set.
+       * <code>optional int32 distance_meters = 1;</code>
+       * @return Whether the distanceMeters field is set.
        */
       @java.lang.Override
-      public boolean hasDistance() {
+      public boolean hasDistanceMeters() {
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
-       * <code>optional uint32 distance = 1;</code>
-       * @return The distance.
+       * <code>optional int32 distance_meters = 1;</code>
+       * @return The distanceMeters.
        */
       @java.lang.Override
-      public int getDistance() {
-        return distance_;
+      public int getDistanceMeters() {
+        return distanceMeters_;
       }
       /**
-       * <code>optional uint32 distance = 1;</code>
-       * @param value The distance to set.
+       * <code>optional int32 distance_meters = 1;</code>
+       * @param value The distanceMeters to set.
        * @return This builder for chaining.
        */
-      public Builder setDistance(int value) {
+      public Builder setDistanceMeters(int value) {
 
-        distance_ = value;
+        distanceMeters_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint32 distance = 1;</code>
+       * <code>optional int32 distance_meters = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearDistance() {
+      public Builder clearDistanceMeters() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        distance_ = 0;
+        distanceMeters_ = 0;
         onChanged();
         return this;
       }
 
-      private int time_ ;
+      private int timeToTurnSeconds_ ;
       /**
-       * <code>optional uint32 time = 2;</code>
-       * @return Whether the time field is set.
+       * <code>optional int32 time_to_turn_seconds = 2;</code>
+       * @return Whether the timeToTurnSeconds field is set.
        */
       @java.lang.Override
-      public boolean hasTime() {
+      public boolean hasTimeToTurnSeconds() {
         return ((bitField0_ & 0x00000002) != 0);
       }
       /**
-       * <code>optional uint32 time = 2;</code>
-       * @return The time.
+       * <code>optional int32 time_to_turn_seconds = 2;</code>
+       * @return The timeToTurnSeconds.
        */
       @java.lang.Override
-      public int getTime() {
-        return time_;
+      public int getTimeToTurnSeconds() {
+        return timeToTurnSeconds_;
       }
       /**
-       * <code>optional uint32 time = 2;</code>
-       * @param value The time to set.
+       * <code>optional int32 time_to_turn_seconds = 2;</code>
+       * @param value The timeToTurnSeconds to set.
        * @return This builder for chaining.
        */
-      public Builder setTime(int value) {
+      public Builder setTimeToTurnSeconds(int value) {
 
-        time_ = value;
+        timeToTurnSeconds_ = value;
         bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint32 time = 2;</code>
+       * <code>optional int32 time_to_turn_seconds = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearTime() {
+      public Builder clearTimeToTurnSeconds() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        time_ = 0;
+        timeToTurnSeconds_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int displayDistanceE3_ ;
+      /**
+       * <code>optional int32 display_distance_e3 = 3;</code>
+       * @return Whether the displayDistanceE3 field is set.
+       */
+      @java.lang.Override
+      public boolean hasDisplayDistanceE3() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>optional int32 display_distance_e3 = 3;</code>
+       * @return The displayDistanceE3.
+       */
+      @java.lang.Override
+      public int getDisplayDistanceE3() {
+        return displayDistanceE3_;
+      }
+      /**
+       * <code>optional int32 display_distance_e3 = 3;</code>
+       * @param value The displayDistanceE3 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDisplayDistanceE3(int value) {
+
+        displayDistanceE3_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 display_distance_e3 = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDisplayDistanceE3() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        displayDistanceE3_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int displayDistanceUnit_ = 0;
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDistanceEvent.DistanceUnits display_distance_unit = 4;</code>
+       * @return Whether the displayDistanceUnit field is set.
+       */
+      @java.lang.Override public boolean hasDisplayDistanceUnit() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDistanceEvent.DistanceUnits display_distance_unit = 4;</code>
+       * @return The displayDistanceUnit.
+       */
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent.DistanceUnits getDisplayDistanceUnit() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent.DistanceUnits result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent.DistanceUnits.forNumber(displayDistanceUnit_);
+        return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent.DistanceUnits.UNKNOWN_DISTANCE_UNIT : result;
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDistanceEvent.DistanceUnits display_distance_unit = 4;</code>
+       * @param value The displayDistanceUnit to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDisplayDistanceUnit(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NextTurnDistanceEvent.DistanceUnits value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000008;
+        displayDistanceUnit_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NextTurnDistanceEvent.DistanceUnits display_distance_unit = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDisplayDistanceUnit() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        displayDistanceUnit_ = 0;
         onChanged();
         return this;
       }
@@ -2196,2092 +3994,175 @@ public final class NavigationStatus {
 
   }
 
-  public interface NavigationRoadOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationRoad)
+  public interface NavigationStateOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationState)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string name = 1;</code>
-     * @return Whether the name field is set.
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
      */
-    boolean hasName();
+    java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep> 
+        getStepsList();
     /**
-     * <code>optional string name = 1;</code>
-     * @return The name.
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
      */
-    java.lang.String getName();
+    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep getSteps(int index);
     /**
-     * <code>optional string name = 1;</code>
-     * @return The bytes for name.
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
      */
-    com.google.protobuf.ByteString
-        getNameBytes();
-  }
-  /**
-   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationRoad}
-   */
-  public static final class NavigationRoad extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationRoad)
-      NavigationRoadOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use NavigationRoad.newBuilder() to construct.
-    private NavigationRoad(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private NavigationRoad() {
-      name_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new NavigationRoad();
-    }
-
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int NAME_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object name_ = "";
+    int getStepsCount();
     /**
-     * <code>optional string name = 1;</code>
-     * @return Whether the name field is set.
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
      */
-    @java.lang.Override
-    public boolean hasName() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
+    java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder> 
+        getStepsOrBuilderList();
     /**
-     * <code>optional string name = 1;</code>
-     * @return The name.
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
      */
-    @java.lang.Override
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          name_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string name = 1;</code>
-     * @return The bytes for name.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad)) {
-        return super.equals(obj);
-      }
-      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad) obj;
-
-      if (hasName() != other.hasName()) return false;
-      if (hasName()) {
-        if (!getName()
-            .equals(other.getName())) return false;
-      }
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasName()) {
-        hash = (37 * hash) + NAME_FIELD_NUMBER;
-        hash = (53 * hash) + getName().hashCode();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationRoad}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationRoad)
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoadOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad.Builder.class);
-      }
-
-      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        name_ = "";
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_descriptor;
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad getDefaultInstanceForType() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad build() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad buildPartial() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad result) {
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.name_ = name_;
-          to_bitField0_ |= 0x00000001;
-        }
-        result.bitField0_ |= to_bitField0_;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad) {
-          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad other) {
-        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad.getDefaultInstance()) return this;
-        if (other.hasName()) {
-          name_ = other.name_;
-          bitField0_ |= 0x00000001;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                name_ = input.readBytes();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 10
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
-
-      private java.lang.Object name_ = "";
-      /**
-       * <code>optional string name = 1;</code>
-       * @return Whether the name field is set.
-       */
-      public boolean hasName() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>optional string name = 1;</code>
-       * @return The name.
-       */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            name_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string name = 1;</code>
-       * @return The bytes for name.
-       */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          name_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string name = 1;</code>
-       * @param value The name to set.
-       * @return This builder for chaining.
-       */
-      public Builder setName(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        name_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string name = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearName() {
-        name_ = getDefaultInstance().getName();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string name = 1;</code>
-       * @param value The bytes for name to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        name_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationRoad)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationRoad)
-    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad();
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationRoad>
-        PARSER = new com.google.protobuf.AbstractParser<NavigationRoad>() {
-      @java.lang.Override
-      public NavigationRoad parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<NavigationRoad> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<NavigationRoad> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface NavigationCueOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationCue)
-      com.google.protobuf.MessageOrBuilder {
+    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder getStepsOrBuilder(
+        int index);
 
     /**
-     * <code>repeated string alternate_text = 1;</code>
-     * @return A list containing the alternateText.
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
      */
-    java.util.List<java.lang.String>
-        getAlternateTextList();
+    java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination> 
+        getDestinationsList();
     /**
-     * <code>repeated string alternate_text = 1;</code>
-     * @return The count of alternateText.
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
      */
-    int getAlternateTextCount();
+    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination getDestinations(int index);
     /**
-     * <code>repeated string alternate_text = 1;</code>
-     * @param index The index of the element to return.
-     * @return The alternateText at the given index.
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
      */
-    java.lang.String getAlternateText(int index);
+    int getDestinationsCount();
     /**
-     * <code>repeated string alternate_text = 1;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the alternateText at the given index.
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
      */
-    com.google.protobuf.ByteString
-        getAlternateTextBytes(int index);
-  }
-  /**
-   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationCue}
-   */
-  public static final class NavigationCue extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationCue)
-      NavigationCueOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use NavigationCue.newBuilder() to construct.
-    private NavigationCue(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private NavigationCue() {
-      alternateText_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new NavigationCue();
-    }
-
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue.Builder.class);
-    }
-
-    public static final int ALTERNATE_TEXT_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private com.google.protobuf.LazyStringArrayList alternateText_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder> 
+        getDestinationsOrBuilderList();
     /**
-     * <code>repeated string alternate_text = 1;</code>
-     * @return A list containing the alternateText.
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
      */
-    public com.google.protobuf.ProtocolStringList
-        getAlternateTextList() {
-      return alternateText_;
-    }
-    /**
-     * <code>repeated string alternate_text = 1;</code>
-     * @return The count of alternateText.
-     */
-    public int getAlternateTextCount() {
-      return alternateText_.size();
-    }
-    /**
-     * <code>repeated string alternate_text = 1;</code>
-     * @param index The index of the element to return.
-     * @return The alternateText at the given index.
-     */
-    public java.lang.String getAlternateText(int index) {
-      return alternateText_.get(index);
-    }
-    /**
-     * <code>repeated string alternate_text = 1;</code>
-     * @param index The index of the value to return.
-     * @return The bytes of the alternateText at the given index.
-     */
-    public com.google.protobuf.ByteString
-        getAlternateTextBytes(int index) {
-      return alternateText_.getByteString(index);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      for (int i = 0; i < alternateText_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, alternateText_.getRaw(i));
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      {
-        int dataSize = 0;
-        for (int i = 0; i < alternateText_.size(); i++) {
-          dataSize += computeStringSizeNoTag(alternateText_.getRaw(i));
-        }
-        size += dataSize;
-        size += 1 * getAlternateTextList().size();
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue)) {
-        return super.equals(obj);
-      }
-      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue) obj;
-
-      if (!getAlternateTextList()
-          .equals(other.getAlternateTextList())) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (getAlternateTextCount() > 0) {
-        hash = (37 * hash) + ALTERNATE_TEXT_FIELD_NUMBER;
-        hash = (53 * hash) + getAlternateTextList().hashCode();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationCue}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationCue)
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCueOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue.Builder.class);
-      }
-
-      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        alternateText_ =
-            com.google.protobuf.LazyStringArrayList.emptyList();
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_descriptor;
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue getDefaultInstanceForType() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue build() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue buildPartial() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue result) {
-        int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          alternateText_.makeImmutable();
-          result.alternateText_ = alternateText_;
-        }
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue) {
-          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue other) {
-        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue.getDefaultInstance()) return this;
-        if (!other.alternateText_.isEmpty()) {
-          if (alternateText_.isEmpty()) {
-            alternateText_ = other.alternateText_;
-            bitField0_ |= 0x00000001;
-          } else {
-            ensureAlternateTextIsMutable();
-            alternateText_.addAll(other.alternateText_);
-          }
-          onChanged();
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                ensureAlternateTextIsMutable();
-                alternateText_.add(bs);
-                break;
-              } // case 10
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
-
-      private com.google.protobuf.LazyStringArrayList alternateText_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
-      private void ensureAlternateTextIsMutable() {
-        if (!alternateText_.isModifiable()) {
-          alternateText_ = new com.google.protobuf.LazyStringArrayList(alternateText_);
-        }
-        bitField0_ |= 0x00000001;
-      }
-      /**
-       * <code>repeated string alternate_text = 1;</code>
-       * @return A list containing the alternateText.
-       */
-      public com.google.protobuf.ProtocolStringList
-          getAlternateTextList() {
-        alternateText_.makeImmutable();
-        return alternateText_;
-      }
-      /**
-       * <code>repeated string alternate_text = 1;</code>
-       * @return The count of alternateText.
-       */
-      public int getAlternateTextCount() {
-        return alternateText_.size();
-      }
-      /**
-       * <code>repeated string alternate_text = 1;</code>
-       * @param index The index of the element to return.
-       * @return The alternateText at the given index.
-       */
-      public java.lang.String getAlternateText(int index) {
-        return alternateText_.get(index);
-      }
-      /**
-       * <code>repeated string alternate_text = 1;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the alternateText at the given index.
-       */
-      public com.google.protobuf.ByteString
-          getAlternateTextBytes(int index) {
-        return alternateText_.getByteString(index);
-      }
-      /**
-       * <code>repeated string alternate_text = 1;</code>
-       * @param index The index to set the value at.
-       * @param value The alternateText to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAlternateText(
-          int index, java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureAlternateTextIsMutable();
-        alternateText_.set(index, value);
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string alternate_text = 1;</code>
-       * @param value The alternateText to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAlternateText(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureAlternateTextIsMutable();
-        alternateText_.add(value);
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string alternate_text = 1;</code>
-       * @param values The alternateText to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAllAlternateText(
-          java.lang.Iterable<java.lang.String> values) {
-        ensureAlternateTextIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, alternateText_);
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string alternate_text = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAlternateText() {
-        alternateText_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string alternate_text = 1;</code>
-       * @param value The bytes of the alternateText to add.
-       * @return This builder for chaining.
-       */
-      public Builder addAlternateTextBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        ensureAlternateTextIsMutable();
-        alternateText_.add(value);
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationCue)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationCue)
-    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue();
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationCue>
-        PARSER = new com.google.protobuf.AbstractParser<NavigationCue>() {
-      @java.lang.Override
-      public NavigationCue parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<NavigationCue> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<NavigationCue> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface LaneDirectionOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection.Shape shape = 1;</code>
-     * @return Whether the shape field is set.
-     */
-    boolean hasShape();
-    /**
-     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection.Shape shape = 1;</code>
-     * @return The shape.
-     */
-    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Shape getShape();
-
-    /**
-     * <code>optional bool is_highlighted = 2;</code>
-     * @return Whether the isHighlighted field is set.
-     */
-    boolean hasIsHighlighted();
-    /**
-     * <code>optional bool is_highlighted = 2;</code>
-     * @return The isHighlighted.
-     */
-    boolean getIsHighlighted();
-  }
-  /**
-   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection}
-   */
-  public static final class LaneDirection extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection)
-      LaneDirectionOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use LaneDirection.newBuilder() to construct.
-    private LaneDirection(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private LaneDirection() {
-      shape_ = 0;
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new LaneDirection();
-    }
-
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_LaneDirection_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_LaneDirection_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Builder.class);
-    }
-
-    /**
-     * Protobuf enum {@code com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection.Shape}
-     */
-    public enum Shape
-        implements com.google.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>UNKNOWN = 0;</code>
-       */
-      UNKNOWN(0),
-      /**
-       * <code>STRAIGHT = 1;</code>
-       */
-      STRAIGHT(1),
-      /**
-       * <code>SLIGHT_LEFT = 2;</code>
-       */
-      SLIGHT_LEFT(2),
-      /**
-       * <code>SLIGHT_RIGHT = 3;</code>
-       */
-      SLIGHT_RIGHT(3),
-      /**
-       * <code>NORMAL_LEFT = 4;</code>
-       */
-      NORMAL_LEFT(4),
-      /**
-       * <code>NORMAL_RIGHT = 5;</code>
-       */
-      NORMAL_RIGHT(5),
-      /**
-       * <code>SHARP_LEFT = 6;</code>
-       */
-      SHARP_LEFT(6),
-      /**
-       * <code>SHARP_RIGHT = 7;</code>
-       */
-      SHARP_RIGHT(7),
-      /**
-       * <code>U_TURN_LEFT = 8;</code>
-       */
-      U_TURN_LEFT(8),
-      /**
-       * <code>U_TURN_RIGHT = 9;</code>
-       */
-      U_TURN_RIGHT(9),
-      ;
-
-      /**
-       * <code>UNKNOWN = 0;</code>
-       */
-      public static final int UNKNOWN_VALUE = 0;
-      /**
-       * <code>STRAIGHT = 1;</code>
-       */
-      public static final int STRAIGHT_VALUE = 1;
-      /**
-       * <code>SLIGHT_LEFT = 2;</code>
-       */
-      public static final int SLIGHT_LEFT_VALUE = 2;
-      /**
-       * <code>SLIGHT_RIGHT = 3;</code>
-       */
-      public static final int SLIGHT_RIGHT_VALUE = 3;
-      /**
-       * <code>NORMAL_LEFT = 4;</code>
-       */
-      public static final int NORMAL_LEFT_VALUE = 4;
-      /**
-       * <code>NORMAL_RIGHT = 5;</code>
-       */
-      public static final int NORMAL_RIGHT_VALUE = 5;
-      /**
-       * <code>SHARP_LEFT = 6;</code>
-       */
-      public static final int SHARP_LEFT_VALUE = 6;
-      /**
-       * <code>SHARP_RIGHT = 7;</code>
-       */
-      public static final int SHARP_RIGHT_VALUE = 7;
-      /**
-       * <code>U_TURN_LEFT = 8;</code>
-       */
-      public static final int U_TURN_LEFT_VALUE = 8;
-      /**
-       * <code>U_TURN_RIGHT = 9;</code>
-       */
-      public static final int U_TURN_RIGHT_VALUE = 9;
-
-
-      public final int getNumber() {
-        return value;
-      }
-
-      /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static Shape valueOf(int value) {
-        return forNumber(value);
-      }
-
-      /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
-       */
-      public static Shape forNumber(int value) {
-        switch (value) {
-          case 0: return UNKNOWN;
-          case 1: return STRAIGHT;
-          case 2: return SLIGHT_LEFT;
-          case 3: return SLIGHT_RIGHT;
-          case 4: return NORMAL_LEFT;
-          case 5: return NORMAL_RIGHT;
-          case 6: return SHARP_LEFT;
-          case 7: return SHARP_RIGHT;
-          case 8: return U_TURN_LEFT;
-          case 9: return U_TURN_RIGHT;
-          default: return null;
-        }
-      }
-
-      public static com.google.protobuf.Internal.EnumLiteMap<Shape>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          Shape> internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<Shape>() {
-              public Shape findValueByNumber(int number) {
-                return Shape.forNumber(number);
-              }
-            };
-
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        return getDescriptor().getValues().get(ordinal());
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.getDescriptor().getEnumTypes().get(0);
-      }
-
-      private static final Shape[] VALUES = values();
-
-      public static Shape valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        return VALUES[desc.getIndex()];
-      }
-
-      private final int value;
-
-      private Shape(int value) {
-        this.value = value;
-      }
-
-      // @@protoc_insertion_point(enum_scope:com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection.Shape)
-    }
-
-    private int bitField0_;
-    public static final int SHAPE_FIELD_NUMBER = 1;
-    private int shape_ = 0;
-    /**
-     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection.Shape shape = 1;</code>
-     * @return Whether the shape field is set.
-     */
-    @java.lang.Override public boolean hasShape() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection.Shape shape = 1;</code>
-     * @return The shape.
-     */
-    @java.lang.Override public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Shape getShape() {
-      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Shape result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Shape.forNumber(shape_);
-      return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Shape.UNKNOWN : result;
-    }
-
-    public static final int IS_HIGHLIGHTED_FIELD_NUMBER = 2;
-    private boolean isHighlighted_ = false;
-    /**
-     * <code>optional bool is_highlighted = 2;</code>
-     * @return Whether the isHighlighted field is set.
-     */
-    @java.lang.Override
-    public boolean hasIsHighlighted() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>optional bool is_highlighted = 2;</code>
-     * @return The isHighlighted.
-     */
-    @java.lang.Override
-    public boolean getIsHighlighted() {
-      return isHighlighted_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeEnum(1, shape_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeBool(2, isHighlighted_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, shape_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, isHighlighted_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection)) {
-        return super.equals(obj);
-      }
-      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection) obj;
-
-      if (hasShape() != other.hasShape()) return false;
-      if (hasShape()) {
-        if (shape_ != other.shape_) return false;
-      }
-      if (hasIsHighlighted() != other.hasIsHighlighted()) return false;
-      if (hasIsHighlighted()) {
-        if (getIsHighlighted()
-            != other.getIsHighlighted()) return false;
-      }
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasShape()) {
-        hash = (37 * hash) + SHAPE_FIELD_NUMBER;
-        hash = (53 * hash) + shape_;
-      }
-      if (hasIsHighlighted()) {
-        hash = (37 * hash) + IS_HIGHLIGHTED_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-            getIsHighlighted());
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection)
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirectionOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_LaneDirection_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_LaneDirection_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Builder.class);
-      }
-
-      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        shape_ = 0;
-        isHighlighted_ = false;
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_LaneDirection_descriptor;
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection getDefaultInstanceForType() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection build() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection buildPartial() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection result) {
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.shape_ = shape_;
-          to_bitField0_ |= 0x00000001;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.isHighlighted_ = isHighlighted_;
-          to_bitField0_ |= 0x00000002;
-        }
-        result.bitField0_ |= to_bitField0_;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection) {
-          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection other) {
-        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.getDefaultInstance()) return this;
-        if (other.hasShape()) {
-          setShape(other.getShape());
-        }
-        if (other.hasIsHighlighted()) {
-          setIsHighlighted(other.getIsHighlighted());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 8: {
-                int tmpRaw = input.readEnum();
-                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Shape tmpValue =
-                    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Shape.forNumber(tmpRaw);
-                if (tmpValue == null) {
-                  mergeUnknownVarintField(1, tmpRaw);
-                } else {
-                  shape_ = tmpRaw;
-                  bitField0_ |= 0x00000001;
-                }
-                break;
-              } // case 8
-              case 16: {
-                isHighlighted_ = input.readBool();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 16
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
-
-      private int shape_ = 0;
-      /**
-       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection.Shape shape = 1;</code>
-       * @return Whether the shape field is set.
-       */
-      @java.lang.Override public boolean hasShape() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection.Shape shape = 1;</code>
-       * @return The shape.
-       */
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Shape getShape() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Shape result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Shape.forNumber(shape_);
-        return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Shape.UNKNOWN : result;
-      }
-      /**
-       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection.Shape shape = 1;</code>
-       * @param value The shape to set.
-       * @return This builder for chaining.
-       */
-      public Builder setShape(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Shape value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        bitField0_ |= 0x00000001;
-        shape_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection.Shape shape = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearShape() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        shape_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private boolean isHighlighted_ ;
-      /**
-       * <code>optional bool is_highlighted = 2;</code>
-       * @return Whether the isHighlighted field is set.
-       */
-      @java.lang.Override
-      public boolean hasIsHighlighted() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>optional bool is_highlighted = 2;</code>
-       * @return The isHighlighted.
-       */
-      @java.lang.Override
-      public boolean getIsHighlighted() {
-        return isHighlighted_;
-      }
-      /**
-       * <code>optional bool is_highlighted = 2;</code>
-       * @param value The isHighlighted to set.
-       * @return This builder for chaining.
-       */
-      public Builder setIsHighlighted(boolean value) {
-
-        isHighlighted_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional bool is_highlighted = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearIsHighlighted() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        isHighlighted_ = false;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection)
-    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection();
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<LaneDirection>
-        PARSER = new com.google.protobuf.AbstractParser<LaneDirection>() {
-      @java.lang.Override
-      public LaneDirection parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<LaneDirection> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<LaneDirection> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface NavigationLaneOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
-     */
-    java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection> 
-        getLaneDirectionsList();
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
-     */
-    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection getLaneDirections(int index);
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
-     */
-    int getLaneDirectionsCount();
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
-     */
-    java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirectionOrBuilder> 
-        getLaneDirectionsOrBuilderList();
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
-     */
-    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirectionOrBuilder getLaneDirectionsOrBuilder(
+    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder getDestinationsOrBuilder(
         int index);
   }
   /**
-   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane}
+   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationState}
    */
-  public static final class NavigationLane extends
+  public static final class NavigationState extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane)
-      NavigationLaneOrBuilder {
+      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationState)
+      NavigationStateOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use NavigationLane.newBuilder() to construct.
-    private NavigationLane(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use NavigationState.newBuilder() to construct.
+    private NavigationState(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private NavigationLane() {
-      laneDirections_ = java.util.Collections.emptyList();
+    private NavigationState() {
+      steps_ = java.util.Collections.emptyList();
+      destinations_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new NavigationLane();
+      return new NavigationState();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_descriptor;
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationState_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_fieldAccessorTable
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationState_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.Builder.class);
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState.Builder.class);
     }
 
-    public static final int LANE_DIRECTIONS_FIELD_NUMBER = 1;
+    public static final int STEPS_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
-    private java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection> laneDirections_;
+    private java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep> steps_;
     /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
      */
     @java.lang.Override
-    public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection> getLaneDirectionsList() {
-      return laneDirections_;
+    public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep> getStepsList() {
+      return steps_;
     }
     /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirectionOrBuilder> 
-        getLaneDirectionsOrBuilderList() {
-      return laneDirections_;
+    public java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder> 
+        getStepsOrBuilderList() {
+      return steps_;
     }
     /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
      */
     @java.lang.Override
-    public int getLaneDirectionsCount() {
-      return laneDirections_.size();
+    public int getStepsCount() {
+      return steps_.size();
     }
     /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
      */
     @java.lang.Override
-    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection getLaneDirections(int index) {
-      return laneDirections_.get(index);
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep getSteps(int index) {
+      return steps_.get(index);
     }
     /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
      */
     @java.lang.Override
-    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirectionOrBuilder getLaneDirectionsOrBuilder(
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder getStepsOrBuilder(
         int index) {
-      return laneDirections_.get(index);
+      return steps_.get(index);
+    }
+
+    public static final int DESTINATIONS_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination> destinations_;
+    /**
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination> getDestinationsList() {
+      return destinations_;
+    }
+    /**
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder> 
+        getDestinationsOrBuilderList() {
+      return destinations_;
+    }
+    /**
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+     */
+    @java.lang.Override
+    public int getDestinationsCount() {
+      return destinations_.size();
+    }
+    /**
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+     */
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination getDestinations(int index) {
+      return destinations_.get(index);
+    }
+    /**
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+     */
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder getDestinationsOrBuilder(
+        int index) {
+      return destinations_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4298,8 +4179,11 @@ public final class NavigationStatus {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (int i = 0; i < laneDirections_.size(); i++) {
-        output.writeMessage(1, laneDirections_.get(i));
+      for (int i = 0; i < steps_.size(); i++) {
+        output.writeMessage(1, steps_.get(i));
+      }
+      for (int i = 0; i < destinations_.size(); i++) {
+        output.writeMessage(2, destinations_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -4310,9 +4194,13 @@ public final class NavigationStatus {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < laneDirections_.size(); i++) {
+      for (int i = 0; i < steps_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, laneDirections_.get(i));
+          .computeMessageSize(1, steps_.get(i));
+      }
+      for (int i = 0; i < destinations_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, destinations_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -4324,13 +4212,15 @@ public final class NavigationStatus {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane)) {
+      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState)) {
         return super.equals(obj);
       }
-      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane) obj;
+      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState) obj;
 
-      if (!getLaneDirectionsList()
-          .equals(other.getLaneDirectionsList())) return false;
+      if (!getStepsList()
+          .equals(other.getStepsList())) return false;
+      if (!getDestinationsList()
+          .equals(other.getDestinationsList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -4342,53 +4232,57 @@ public final class NavigationStatus {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (getLaneDirectionsCount() > 0) {
-        hash = (37 * hash) + LANE_DIRECTIONS_FIELD_NUMBER;
-        hash = (53 * hash) + getLaneDirectionsList().hashCode();
+      if (getStepsCount() > 0) {
+        hash = (37 * hash) + STEPS_FIELD_NUMBER;
+        hash = (53 * hash) + getStepsList().hashCode();
+      }
+      if (getDestinationsCount() > 0) {
+        hash = (37 * hash) + DESTINATIONS_FIELD_NUMBER;
+        hash = (53 * hash) + getDestinationsList().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(byte[] data)
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(java.io.InputStream input)
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4396,26 +4290,26 @@ public final class NavigationStatus {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseDelimitedFrom(java.io.InputStream input)
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseDelimitedFrom(
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4428,7 +4322,7 @@ public final class NavigationStatus {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane prototype) {
+    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -4444,26 +4338,26 @@ public final class NavigationStatus {
       return builder;
     }
     /**
-     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane}
+     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationState}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane)
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLaneOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationState)
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStateOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_descriptor;
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationState_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_fieldAccessorTable
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationState_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.Builder.class);
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState.Builder.class);
       }
 
-      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.newBuilder()
+      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState.newBuilder()
       private Builder() {
 
       }
@@ -4477,30 +4371,37 @@ public final class NavigationStatus {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        if (laneDirectionsBuilder_ == null) {
-          laneDirections_ = java.util.Collections.emptyList();
+        if (stepsBuilder_ == null) {
+          steps_ = java.util.Collections.emptyList();
         } else {
-          laneDirections_ = null;
-          laneDirectionsBuilder_.clear();
+          steps_ = null;
+          stepsBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
+        if (destinationsBuilder_ == null) {
+          destinations_ = java.util.Collections.emptyList();
+        } else {
+          destinations_ = null;
+          destinationsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_descriptor;
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationState_descriptor;
       }
 
       @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane getDefaultInstanceForType() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.getDefaultInstance();
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState getDefaultInstanceForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane build() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane result = buildPartial();
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState build() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -4508,27 +4409,36 @@ public final class NavigationStatus {
       }
 
       @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane buildPartial() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane(this);
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState buildPartial() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState(this);
         buildPartialRepeatedFields(result);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartialRepeatedFields(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane result) {
-        if (laneDirectionsBuilder_ == null) {
+      private void buildPartialRepeatedFields(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState result) {
+        if (stepsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
-            laneDirections_ = java.util.Collections.unmodifiableList(laneDirections_);
+            steps_ = java.util.Collections.unmodifiableList(steps_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.laneDirections_ = laneDirections_;
+          result.steps_ = steps_;
         } else {
-          result.laneDirections_ = laneDirectionsBuilder_.build();
+          result.steps_ = stepsBuilder_.build();
+        }
+        if (destinationsBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0)) {
+            destinations_ = java.util.Collections.unmodifiableList(destinations_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.destinations_ = destinations_;
+        } else {
+          result.destinations_ = destinationsBuilder_.build();
         }
       }
 
-      private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane result) {
+      private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState result) {
         int from_bitField0_ = bitField0_;
       }
 
@@ -4566,39 +4476,65 @@ public final class NavigationStatus {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane) {
-          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane)other);
+        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState) {
+          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane other) {
-        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.getDefaultInstance()) return this;
-        if (laneDirectionsBuilder_ == null) {
-          if (!other.laneDirections_.isEmpty()) {
-            if (laneDirections_.isEmpty()) {
-              laneDirections_ = other.laneDirections_;
+      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState other) {
+        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState.getDefaultInstance()) return this;
+        if (stepsBuilder_ == null) {
+          if (!other.steps_.isEmpty()) {
+            if (steps_.isEmpty()) {
+              steps_ = other.steps_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureLaneDirectionsIsMutable();
-              laneDirections_.addAll(other.laneDirections_);
+              ensureStepsIsMutable();
+              steps_.addAll(other.steps_);
             }
             onChanged();
           }
         } else {
-          if (!other.laneDirections_.isEmpty()) {
-            if (laneDirectionsBuilder_.isEmpty()) {
-              laneDirectionsBuilder_.dispose();
-              laneDirectionsBuilder_ = null;
-              laneDirections_ = other.laneDirections_;
+          if (!other.steps_.isEmpty()) {
+            if (stepsBuilder_.isEmpty()) {
+              stepsBuilder_.dispose();
+              stepsBuilder_ = null;
+              steps_ = other.steps_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              laneDirectionsBuilder_ = 
+              stepsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getLaneDirectionsFieldBuilder() : null;
+                   getStepsFieldBuilder() : null;
             } else {
-              laneDirectionsBuilder_.addAllMessages(other.laneDirections_);
+              stepsBuilder_.addAllMessages(other.steps_);
+            }
+          }
+        }
+        if (destinationsBuilder_ == null) {
+          if (!other.destinations_.isEmpty()) {
+            if (destinations_.isEmpty()) {
+              destinations_ = other.destinations_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureDestinationsIsMutable();
+              destinations_.addAll(other.destinations_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.destinations_.isEmpty()) {
+            if (destinationsBuilder_.isEmpty()) {
+              destinationsBuilder_.dispose();
+              destinationsBuilder_ = null;
+              destinations_ = other.destinations_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              destinationsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getDestinationsFieldBuilder() : null;
+            } else {
+              destinationsBuilder_.addAllMessages(other.destinations_);
             }
           }
         }
@@ -4629,18 +4565,31 @@ public final class NavigationStatus {
                 done = true;
                 break;
               case 10: {
-                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection m =
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep m =
                     input.readMessage(
-                        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.PARSER,
+                        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.PARSER,
                         extensionRegistry);
-                if (laneDirectionsBuilder_ == null) {
-                  ensureLaneDirectionsIsMutable();
-                  laneDirections_.add(m);
+                if (stepsBuilder_ == null) {
+                  ensureStepsIsMutable();
+                  steps_.add(m);
                 } else {
-                  laneDirectionsBuilder_.addMessage(m);
+                  stepsBuilder_.addMessage(m);
                 }
                 break;
               } // case 10
+              case 18: {
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination m =
+                    input.readMessage(
+                        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.PARSER,
+                        extensionRegistry);
+                if (destinationsBuilder_ == null) {
+                  ensureDestinationsIsMutable();
+                  destinations_.add(m);
+                } else {
+                  destinationsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 18
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -4658,1421 +4607,484 @@ public final class NavigationStatus {
       }
       private int bitField0_;
 
-      private java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection> laneDirections_ =
+      private java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep> steps_ =
         java.util.Collections.emptyList();
-      private void ensureLaneDirectionsIsMutable() {
+      private void ensureStepsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          laneDirections_ = new java.util.ArrayList<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection>(laneDirections_);
+          steps_ = new java.util.ArrayList<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep>(steps_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirectionOrBuilder> laneDirectionsBuilder_;
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder> stepsBuilder_;
 
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection> getLaneDirectionsList() {
-        if (laneDirectionsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(laneDirections_);
+      public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep> getStepsList() {
+        if (stepsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(steps_);
         } else {
-          return laneDirectionsBuilder_.getMessageList();
+          return stepsBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public int getLaneDirectionsCount() {
-        if (laneDirectionsBuilder_ == null) {
-          return laneDirections_.size();
+      public int getStepsCount() {
+        if (stepsBuilder_ == null) {
+          return steps_.size();
         } else {
-          return laneDirectionsBuilder_.getCount();
+          return stepsBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection getLaneDirections(int index) {
-        if (laneDirectionsBuilder_ == null) {
-          return laneDirections_.get(index);
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep getSteps(int index) {
+        if (stepsBuilder_ == null) {
+          return steps_.get(index);
         } else {
-          return laneDirectionsBuilder_.getMessage(index);
+          return stepsBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public Builder setLaneDirections(
-          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection value) {
-        if (laneDirectionsBuilder_ == null) {
+      public Builder setSteps(
+          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep value) {
+        if (stepsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLaneDirectionsIsMutable();
-          laneDirections_.set(index, value);
+          ensureStepsIsMutable();
+          steps_.set(index, value);
           onChanged();
         } else {
-          laneDirectionsBuilder_.setMessage(index, value);
+          stepsBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public Builder setLaneDirections(
-          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Builder builderForValue) {
-        if (laneDirectionsBuilder_ == null) {
-          ensureLaneDirectionsIsMutable();
-          laneDirections_.set(index, builderForValue.build());
+      public Builder setSteps(
+          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder builderForValue) {
+        if (stepsBuilder_ == null) {
+          ensureStepsIsMutable();
+          steps_.set(index, builderForValue.build());
           onChanged();
         } else {
-          laneDirectionsBuilder_.setMessage(index, builderForValue.build());
+          stepsBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public Builder addLaneDirections(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection value) {
-        if (laneDirectionsBuilder_ == null) {
+      public Builder addSteps(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep value) {
+        if (stepsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLaneDirectionsIsMutable();
-          laneDirections_.add(value);
+          ensureStepsIsMutable();
+          steps_.add(value);
           onChanged();
         } else {
-          laneDirectionsBuilder_.addMessage(value);
+          stepsBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public Builder addLaneDirections(
-          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection value) {
-        if (laneDirectionsBuilder_ == null) {
+      public Builder addSteps(
+          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep value) {
+        if (stepsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLaneDirectionsIsMutable();
-          laneDirections_.add(index, value);
+          ensureStepsIsMutable();
+          steps_.add(index, value);
           onChanged();
         } else {
-          laneDirectionsBuilder_.addMessage(index, value);
+          stepsBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public Builder addLaneDirections(
-          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Builder builderForValue) {
-        if (laneDirectionsBuilder_ == null) {
-          ensureLaneDirectionsIsMutable();
-          laneDirections_.add(builderForValue.build());
+      public Builder addSteps(
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder builderForValue) {
+        if (stepsBuilder_ == null) {
+          ensureStepsIsMutable();
+          steps_.add(builderForValue.build());
           onChanged();
         } else {
-          laneDirectionsBuilder_.addMessage(builderForValue.build());
+          stepsBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public Builder addLaneDirections(
-          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Builder builderForValue) {
-        if (laneDirectionsBuilder_ == null) {
-          ensureLaneDirectionsIsMutable();
-          laneDirections_.add(index, builderForValue.build());
+      public Builder addSteps(
+          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder builderForValue) {
+        if (stepsBuilder_ == null) {
+          ensureStepsIsMutable();
+          steps_.add(index, builderForValue.build());
           onChanged();
         } else {
-          laneDirectionsBuilder_.addMessage(index, builderForValue.build());
+          stepsBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public Builder addAllLaneDirections(
-          java.lang.Iterable<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection> values) {
-        if (laneDirectionsBuilder_ == null) {
-          ensureLaneDirectionsIsMutable();
+      public Builder addAllSteps(
+          java.lang.Iterable<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep> values) {
+        if (stepsBuilder_ == null) {
+          ensureStepsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, laneDirections_);
+              values, steps_);
           onChanged();
         } else {
-          laneDirectionsBuilder_.addAllMessages(values);
+          stepsBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public Builder clearLaneDirections() {
-        if (laneDirectionsBuilder_ == null) {
-          laneDirections_ = java.util.Collections.emptyList();
+      public Builder clearSteps() {
+        if (stepsBuilder_ == null) {
+          steps_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          laneDirectionsBuilder_.clear();
+          stepsBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public Builder removeLaneDirections(int index) {
-        if (laneDirectionsBuilder_ == null) {
-          ensureLaneDirectionsIsMutable();
-          laneDirections_.remove(index);
+      public Builder removeSteps(int index) {
+        if (stepsBuilder_ == null) {
+          ensureStepsIsMutable();
+          steps_.remove(index);
           onChanged();
         } else {
-          laneDirectionsBuilder_.remove(index);
+          stepsBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Builder getLaneDirectionsBuilder(
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder getStepsBuilder(
           int index) {
-        return getLaneDirectionsFieldBuilder().getBuilder(index);
+        return getStepsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirectionOrBuilder getLaneDirectionsOrBuilder(
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder getStepsOrBuilder(
           int index) {
-        if (laneDirectionsBuilder_ == null) {
-          return laneDirections_.get(index);  } else {
-          return laneDirectionsBuilder_.getMessageOrBuilder(index);
+        if (stepsBuilder_ == null) {
+          return steps_.get(index);  } else {
+          return stepsBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirectionOrBuilder> 
-           getLaneDirectionsOrBuilderList() {
-        if (laneDirectionsBuilder_ != null) {
-          return laneDirectionsBuilder_.getMessageOrBuilderList();
+      public java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder> 
+           getStepsOrBuilderList() {
+        if (stepsBuilder_ != null) {
+          return stepsBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(laneDirections_);
+          return java.util.Collections.unmodifiableList(steps_);
         }
       }
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Builder addLaneDirectionsBuilder() {
-        return getLaneDirectionsFieldBuilder().addBuilder(
-            com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.getDefaultInstance());
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder addStepsBuilder() {
+        return getStepsFieldBuilder().addBuilder(
+            com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Builder addLaneDirectionsBuilder(
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder addStepsBuilder(
           int index) {
-        return getLaneDirectionsFieldBuilder().addBuilder(
-            index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.getDefaultInstance());
+        return getStepsFieldBuilder().addBuilder(
+            index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.LaneDirection lane_directions = 1;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
        */
-      public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Builder> 
-           getLaneDirectionsBuilderList() {
-        return getLaneDirectionsFieldBuilder().getBuilderList();
+      public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder> 
+           getStepsBuilderList() {
+        return getStepsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirectionOrBuilder> 
-          getLaneDirectionsFieldBuilder() {
-        if (laneDirectionsBuilder_ == null) {
-          laneDirectionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirection.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.LaneDirectionOrBuilder>(
-                  laneDirections_,
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder> 
+          getStepsFieldBuilder() {
+        if (stepsBuilder_ == null) {
+          stepsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder>(
+                  steps_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
-          laneDirections_ = null;
+          steps_ = null;
         }
-        return laneDirectionsBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
+        return stepsBuilder_;
       }
 
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
+      private java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination> destinations_ =
+        java.util.Collections.emptyList();
+      private void ensureDestinationsIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          destinations_ = new java.util.ArrayList<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination>(destinations_);
+          bitField0_ |= 0x00000002;
+         }
       }
 
-
-      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane)
-    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane();
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationLane>
-        PARSER = new com.google.protobuf.AbstractParser<NavigationLane>() {
-      @java.lang.Override
-      public NavigationLane parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<NavigationLane> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<NavigationLane> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface NavigationManeuverOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType type = 1;</code>
-     * @return Whether the type field is set.
-     */
-    boolean hasType();
-    /**
-     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType type = 1;</code>
-     * @return The type.
-     */
-    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType getType();
-
-    /**
-     * <code>optional int32 roundabout_exit_number = 2;</code>
-     * @return Whether the roundaboutExitNumber field is set.
-     */
-    boolean hasRoundaboutExitNumber();
-    /**
-     * <code>optional int32 roundabout_exit_number = 2;</code>
-     * @return The roundaboutExitNumber.
-     */
-    int getRoundaboutExitNumber();
-
-    /**
-     * <code>optional int32 roundabout_exit_angle = 3;</code>
-     * @return Whether the roundaboutExitAngle field is set.
-     */
-    boolean hasRoundaboutExitAngle();
-    /**
-     * <code>optional int32 roundabout_exit_angle = 3;</code>
-     * @return The roundaboutExitAngle.
-     */
-    int getRoundaboutExitAngle();
-  }
-  /**
-   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver}
-   */
-  public static final class NavigationManeuver extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver)
-      NavigationManeuverOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use NavigationManeuver.newBuilder() to construct.
-    private NavigationManeuver(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private NavigationManeuver() {
-      type_ = 0;
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new NavigationManeuver();
-    }
-
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.Builder.class);
-    }
-
-    /**
-     * Protobuf enum {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType}
-     */
-    public enum NavigationType
-        implements com.google.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>UNKNOWN = 0;</code>
-       */
-      UNKNOWN(0),
-      /**
-       * <code>DEPART = 1;</code>
-       */
-      DEPART(1),
-      /**
-       * <code>NAME_CHANGE = 2;</code>
-       */
-      NAME_CHANGE(2),
-      /**
-       * <code>KEEP_LEFT = 3;</code>
-       */
-      KEEP_LEFT(3),
-      /**
-       * <code>KEEP_RIGHT = 4;</code>
-       */
-      KEEP_RIGHT(4),
-      /**
-       * <code>TURN_SLIGHT_LEFT = 5;</code>
-       */
-      TURN_SLIGHT_LEFT(5),
-      /**
-       * <code>TURN_SLIGHT_RIGHT = 6;</code>
-       */
-      TURN_SLIGHT_RIGHT(6),
-      /**
-       * <code>TURN_NORMAL_LEFT = 7;</code>
-       */
-      TURN_NORMAL_LEFT(7),
-      /**
-       * <code>TURN_NORMAL_RIGHT = 8;</code>
-       */
-      TURN_NORMAL_RIGHT(8),
-      /**
-       * <code>TURN_SHARP_LEFT = 9;</code>
-       */
-      TURN_SHARP_LEFT(9),
-      /**
-       * <code>TURN_SHARP_RIGHT = 10;</code>
-       */
-      TURN_SHARP_RIGHT(10),
-      /**
-       * <code>U_TURN_LEFT = 11;</code>
-       */
-      U_TURN_LEFT(11),
-      /**
-       * <code>U_TURN_RIGHT = 12;</code>
-       */
-      U_TURN_RIGHT(12),
-      /**
-       * <code>ON_RAMP_SLIGHT_LEFT = 13;</code>
-       */
-      ON_RAMP_SLIGHT_LEFT(13),
-      /**
-       * <code>ON_RAMP_SLIGHT_RIGHT = 14;</code>
-       */
-      ON_RAMP_SLIGHT_RIGHT(14),
-      /**
-       * <code>ON_RAMP_NORMAL_LEFT = 15;</code>
-       */
-      ON_RAMP_NORMAL_LEFT(15),
-      /**
-       * <code>ON_RAMP_NORMAL_RIGHT = 16;</code>
-       */
-      ON_RAMP_NORMAL_RIGHT(16),
-      /**
-       * <code>ON_RAMP_SHARP_LEFT = 17;</code>
-       */
-      ON_RAMP_SHARP_LEFT(17),
-      /**
-       * <code>ON_RAMP_SHARP_RIGHT = 18;</code>
-       */
-      ON_RAMP_SHARP_RIGHT(18),
-      /**
-       * <code>ON_RAMP_U_TURN_LEFT = 19;</code>
-       */
-      ON_RAMP_U_TURN_LEFT(19),
-      /**
-       * <code>ON_RAMP_U_TURN_RIGHT = 20;</code>
-       */
-      ON_RAMP_U_TURN_RIGHT(20),
-      /**
-       * <code>OFF_RAMP_SLIGHT_LEFT = 21;</code>
-       */
-      OFF_RAMP_SLIGHT_LEFT(21),
-      /**
-       * <code>OFF_RAMP_SLIGHT_RIGHT = 22;</code>
-       */
-      OFF_RAMP_SLIGHT_RIGHT(22),
-      /**
-       * <code>OFF_RAMP_NORMAL_LEFT = 23;</code>
-       */
-      OFF_RAMP_NORMAL_LEFT(23),
-      /**
-       * <code>OFF_RAMP_NORMAL_RIGHT = 24;</code>
-       */
-      OFF_RAMP_NORMAL_RIGHT(24),
-      /**
-       * <code>FORK_LEFT = 25;</code>
-       */
-      FORK_LEFT(25),
-      /**
-       * <code>FORK_RIGHT = 26;</code>
-       */
-      FORK_RIGHT(26),
-      /**
-       * <code>MERGE_LEFT = 27;</code>
-       */
-      MERGE_LEFT(27),
-      /**
-       * <code>MERGE_RIGHT = 28;</code>
-       */
-      MERGE_RIGHT(28),
-      /**
-       * <code>MERGE_SIDE_UNSPECIFIED = 29;</code>
-       */
-      MERGE_SIDE_UNSPECIFIED(29),
-      /**
-       * <code>ROUNDABOUT_ENTER = 30;</code>
-       */
-      ROUNDABOUT_ENTER(30),
-      /**
-       * <code>ROUNDABOUT_EXIT = 31;</code>
-       */
-      ROUNDABOUT_EXIT(31),
-      /**
-       * <code>ROUNDABOUT_ENTER_AND_EXIT_CW = 32;</code>
-       */
-      ROUNDABOUT_ENTER_AND_EXIT_CW(32),
-      /**
-       * <code>ROUNDABOUT_ENTER_AND_EXIT_CW_WITH_ANGLE = 33;</code>
-       */
-      ROUNDABOUT_ENTER_AND_EXIT_CW_WITH_ANGLE(33),
-      /**
-       * <code>ROUNDABOUT_ENTER_AND_EXIT_CCW = 34;</code>
-       */
-      ROUNDABOUT_ENTER_AND_EXIT_CCW(34),
-      /**
-       * <code>ROUNDABOUT_ENTER_AND_EXIT_CCW_WITH_ANGLE = 35;</code>
-       */
-      ROUNDABOUT_ENTER_AND_EXIT_CCW_WITH_ANGLE(35),
-      /**
-       * <code>STRAIGHT = 36;</code>
-       */
-      STRAIGHT(36),
-      /**
-       * <code>FERRY_BOAT = 37;</code>
-       */
-      FERRY_BOAT(37),
-      /**
-       * <code>FERRY_TRAIN = 38;</code>
-       */
-      FERRY_TRAIN(38),
-      /**
-       * <code>DESTINATION = 39;</code>
-       */
-      DESTINATION(39),
-      /**
-       * <code>DESTINATION_STRAIGHT = 40;</code>
-       */
-      DESTINATION_STRAIGHT(40),
-      /**
-       * <code>DESTINATION_LEFT = 41;</code>
-       */
-      DESTINATION_LEFT(41),
-      /**
-       * <code>DESTINATION_RIGHT = 42;</code>
-       */
-      DESTINATION_RIGHT(42),
-      ;
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder> destinationsBuilder_;
 
       /**
-       * <code>UNKNOWN = 0;</code>
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
        */
-      public static final int UNKNOWN_VALUE = 0;
-      /**
-       * <code>DEPART = 1;</code>
-       */
-      public static final int DEPART_VALUE = 1;
-      /**
-       * <code>NAME_CHANGE = 2;</code>
-       */
-      public static final int NAME_CHANGE_VALUE = 2;
-      /**
-       * <code>KEEP_LEFT = 3;</code>
-       */
-      public static final int KEEP_LEFT_VALUE = 3;
-      /**
-       * <code>KEEP_RIGHT = 4;</code>
-       */
-      public static final int KEEP_RIGHT_VALUE = 4;
-      /**
-       * <code>TURN_SLIGHT_LEFT = 5;</code>
-       */
-      public static final int TURN_SLIGHT_LEFT_VALUE = 5;
-      /**
-       * <code>TURN_SLIGHT_RIGHT = 6;</code>
-       */
-      public static final int TURN_SLIGHT_RIGHT_VALUE = 6;
-      /**
-       * <code>TURN_NORMAL_LEFT = 7;</code>
-       */
-      public static final int TURN_NORMAL_LEFT_VALUE = 7;
-      /**
-       * <code>TURN_NORMAL_RIGHT = 8;</code>
-       */
-      public static final int TURN_NORMAL_RIGHT_VALUE = 8;
-      /**
-       * <code>TURN_SHARP_LEFT = 9;</code>
-       */
-      public static final int TURN_SHARP_LEFT_VALUE = 9;
-      /**
-       * <code>TURN_SHARP_RIGHT = 10;</code>
-       */
-      public static final int TURN_SHARP_RIGHT_VALUE = 10;
-      /**
-       * <code>U_TURN_LEFT = 11;</code>
-       */
-      public static final int U_TURN_LEFT_VALUE = 11;
-      /**
-       * <code>U_TURN_RIGHT = 12;</code>
-       */
-      public static final int U_TURN_RIGHT_VALUE = 12;
-      /**
-       * <code>ON_RAMP_SLIGHT_LEFT = 13;</code>
-       */
-      public static final int ON_RAMP_SLIGHT_LEFT_VALUE = 13;
-      /**
-       * <code>ON_RAMP_SLIGHT_RIGHT = 14;</code>
-       */
-      public static final int ON_RAMP_SLIGHT_RIGHT_VALUE = 14;
-      /**
-       * <code>ON_RAMP_NORMAL_LEFT = 15;</code>
-       */
-      public static final int ON_RAMP_NORMAL_LEFT_VALUE = 15;
-      /**
-       * <code>ON_RAMP_NORMAL_RIGHT = 16;</code>
-       */
-      public static final int ON_RAMP_NORMAL_RIGHT_VALUE = 16;
-      /**
-       * <code>ON_RAMP_SHARP_LEFT = 17;</code>
-       */
-      public static final int ON_RAMP_SHARP_LEFT_VALUE = 17;
-      /**
-       * <code>ON_RAMP_SHARP_RIGHT = 18;</code>
-       */
-      public static final int ON_RAMP_SHARP_RIGHT_VALUE = 18;
-      /**
-       * <code>ON_RAMP_U_TURN_LEFT = 19;</code>
-       */
-      public static final int ON_RAMP_U_TURN_LEFT_VALUE = 19;
-      /**
-       * <code>ON_RAMP_U_TURN_RIGHT = 20;</code>
-       */
-      public static final int ON_RAMP_U_TURN_RIGHT_VALUE = 20;
-      /**
-       * <code>OFF_RAMP_SLIGHT_LEFT = 21;</code>
-       */
-      public static final int OFF_RAMP_SLIGHT_LEFT_VALUE = 21;
-      /**
-       * <code>OFF_RAMP_SLIGHT_RIGHT = 22;</code>
-       */
-      public static final int OFF_RAMP_SLIGHT_RIGHT_VALUE = 22;
-      /**
-       * <code>OFF_RAMP_NORMAL_LEFT = 23;</code>
-       */
-      public static final int OFF_RAMP_NORMAL_LEFT_VALUE = 23;
-      /**
-       * <code>OFF_RAMP_NORMAL_RIGHT = 24;</code>
-       */
-      public static final int OFF_RAMP_NORMAL_RIGHT_VALUE = 24;
-      /**
-       * <code>FORK_LEFT = 25;</code>
-       */
-      public static final int FORK_LEFT_VALUE = 25;
-      /**
-       * <code>FORK_RIGHT = 26;</code>
-       */
-      public static final int FORK_RIGHT_VALUE = 26;
-      /**
-       * <code>MERGE_LEFT = 27;</code>
-       */
-      public static final int MERGE_LEFT_VALUE = 27;
-      /**
-       * <code>MERGE_RIGHT = 28;</code>
-       */
-      public static final int MERGE_RIGHT_VALUE = 28;
-      /**
-       * <code>MERGE_SIDE_UNSPECIFIED = 29;</code>
-       */
-      public static final int MERGE_SIDE_UNSPECIFIED_VALUE = 29;
-      /**
-       * <code>ROUNDABOUT_ENTER = 30;</code>
-       */
-      public static final int ROUNDABOUT_ENTER_VALUE = 30;
-      /**
-       * <code>ROUNDABOUT_EXIT = 31;</code>
-       */
-      public static final int ROUNDABOUT_EXIT_VALUE = 31;
-      /**
-       * <code>ROUNDABOUT_ENTER_AND_EXIT_CW = 32;</code>
-       */
-      public static final int ROUNDABOUT_ENTER_AND_EXIT_CW_VALUE = 32;
-      /**
-       * <code>ROUNDABOUT_ENTER_AND_EXIT_CW_WITH_ANGLE = 33;</code>
-       */
-      public static final int ROUNDABOUT_ENTER_AND_EXIT_CW_WITH_ANGLE_VALUE = 33;
-      /**
-       * <code>ROUNDABOUT_ENTER_AND_EXIT_CCW = 34;</code>
-       */
-      public static final int ROUNDABOUT_ENTER_AND_EXIT_CCW_VALUE = 34;
-      /**
-       * <code>ROUNDABOUT_ENTER_AND_EXIT_CCW_WITH_ANGLE = 35;</code>
-       */
-      public static final int ROUNDABOUT_ENTER_AND_EXIT_CCW_WITH_ANGLE_VALUE = 35;
-      /**
-       * <code>STRAIGHT = 36;</code>
-       */
-      public static final int STRAIGHT_VALUE = 36;
-      /**
-       * <code>FERRY_BOAT = 37;</code>
-       */
-      public static final int FERRY_BOAT_VALUE = 37;
-      /**
-       * <code>FERRY_TRAIN = 38;</code>
-       */
-      public static final int FERRY_TRAIN_VALUE = 38;
-      /**
-       * <code>DESTINATION = 39;</code>
-       */
-      public static final int DESTINATION_VALUE = 39;
-      /**
-       * <code>DESTINATION_STRAIGHT = 40;</code>
-       */
-      public static final int DESTINATION_STRAIGHT_VALUE = 40;
-      /**
-       * <code>DESTINATION_LEFT = 41;</code>
-       */
-      public static final int DESTINATION_LEFT_VALUE = 41;
-      /**
-       * <code>DESTINATION_RIGHT = 42;</code>
-       */
-      public static final int DESTINATION_RIGHT_VALUE = 42;
-
-
-      public final int getNumber() {
-        return value;
-      }
-
-      /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static NavigationType valueOf(int value) {
-        return forNumber(value);
-      }
-
-      /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
-       */
-      public static NavigationType forNumber(int value) {
-        switch (value) {
-          case 0: return UNKNOWN;
-          case 1: return DEPART;
-          case 2: return NAME_CHANGE;
-          case 3: return KEEP_LEFT;
-          case 4: return KEEP_RIGHT;
-          case 5: return TURN_SLIGHT_LEFT;
-          case 6: return TURN_SLIGHT_RIGHT;
-          case 7: return TURN_NORMAL_LEFT;
-          case 8: return TURN_NORMAL_RIGHT;
-          case 9: return TURN_SHARP_LEFT;
-          case 10: return TURN_SHARP_RIGHT;
-          case 11: return U_TURN_LEFT;
-          case 12: return U_TURN_RIGHT;
-          case 13: return ON_RAMP_SLIGHT_LEFT;
-          case 14: return ON_RAMP_SLIGHT_RIGHT;
-          case 15: return ON_RAMP_NORMAL_LEFT;
-          case 16: return ON_RAMP_NORMAL_RIGHT;
-          case 17: return ON_RAMP_SHARP_LEFT;
-          case 18: return ON_RAMP_SHARP_RIGHT;
-          case 19: return ON_RAMP_U_TURN_LEFT;
-          case 20: return ON_RAMP_U_TURN_RIGHT;
-          case 21: return OFF_RAMP_SLIGHT_LEFT;
-          case 22: return OFF_RAMP_SLIGHT_RIGHT;
-          case 23: return OFF_RAMP_NORMAL_LEFT;
-          case 24: return OFF_RAMP_NORMAL_RIGHT;
-          case 25: return FORK_LEFT;
-          case 26: return FORK_RIGHT;
-          case 27: return MERGE_LEFT;
-          case 28: return MERGE_RIGHT;
-          case 29: return MERGE_SIDE_UNSPECIFIED;
-          case 30: return ROUNDABOUT_ENTER;
-          case 31: return ROUNDABOUT_EXIT;
-          case 32: return ROUNDABOUT_ENTER_AND_EXIT_CW;
-          case 33: return ROUNDABOUT_ENTER_AND_EXIT_CW_WITH_ANGLE;
-          case 34: return ROUNDABOUT_ENTER_AND_EXIT_CCW;
-          case 35: return ROUNDABOUT_ENTER_AND_EXIT_CCW_WITH_ANGLE;
-          case 36: return STRAIGHT;
-          case 37: return FERRY_BOAT;
-          case 38: return FERRY_TRAIN;
-          case 39: return DESTINATION;
-          case 40: return DESTINATION_STRAIGHT;
-          case 41: return DESTINATION_LEFT;
-          case 42: return DESTINATION_RIGHT;
-          default: return null;
-        }
-      }
-
-      public static com.google.protobuf.Internal.EnumLiteMap<NavigationType>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          NavigationType> internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<NavigationType>() {
-              public NavigationType findValueByNumber(int number) {
-                return NavigationType.forNumber(number);
-              }
-            };
-
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        return getDescriptor().getValues().get(ordinal());
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.getDescriptor().getEnumTypes().get(0);
-      }
-
-      private static final NavigationType[] VALUES = values();
-
-      public static NavigationType valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        return VALUES[desc.getIndex()];
-      }
-
-      private final int value;
-
-      private NavigationType(int value) {
-        this.value = value;
-      }
-
-      // @@protoc_insertion_point(enum_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType)
-    }
-
-    private int bitField0_;
-    public static final int TYPE_FIELD_NUMBER = 1;
-    private int type_ = 0;
-    /**
-     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType type = 1;</code>
-     * @return Whether the type field is set.
-     */
-    @java.lang.Override public boolean hasType() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType type = 1;</code>
-     * @return The type.
-     */
-    @java.lang.Override public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType getType() {
-      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType.forNumber(type_);
-      return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType.UNKNOWN : result;
-    }
-
-    public static final int ROUNDABOUT_EXIT_NUMBER_FIELD_NUMBER = 2;
-    private int roundaboutExitNumber_ = 0;
-    /**
-     * <code>optional int32 roundabout_exit_number = 2;</code>
-     * @return Whether the roundaboutExitNumber field is set.
-     */
-    @java.lang.Override
-    public boolean hasRoundaboutExitNumber() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>optional int32 roundabout_exit_number = 2;</code>
-     * @return The roundaboutExitNumber.
-     */
-    @java.lang.Override
-    public int getRoundaboutExitNumber() {
-      return roundaboutExitNumber_;
-    }
-
-    public static final int ROUNDABOUT_EXIT_ANGLE_FIELD_NUMBER = 3;
-    private int roundaboutExitAngle_ = 0;
-    /**
-     * <code>optional int32 roundabout_exit_angle = 3;</code>
-     * @return Whether the roundaboutExitAngle field is set.
-     */
-    @java.lang.Override
-    public boolean hasRoundaboutExitAngle() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-    /**
-     * <code>optional int32 roundabout_exit_angle = 3;</code>
-     * @return The roundaboutExitAngle.
-     */
-    @java.lang.Override
-    public int getRoundaboutExitAngle() {
-      return roundaboutExitAngle_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeEnum(1, type_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeInt32(2, roundaboutExitNumber_);
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeInt32(3, roundaboutExitAngle_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, type_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, roundaboutExitNumber_);
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, roundaboutExitAngle_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver)) {
-        return super.equals(obj);
-      }
-      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver) obj;
-
-      if (hasType() != other.hasType()) return false;
-      if (hasType()) {
-        if (type_ != other.type_) return false;
-      }
-      if (hasRoundaboutExitNumber() != other.hasRoundaboutExitNumber()) return false;
-      if (hasRoundaboutExitNumber()) {
-        if (getRoundaboutExitNumber()
-            != other.getRoundaboutExitNumber()) return false;
-      }
-      if (hasRoundaboutExitAngle() != other.hasRoundaboutExitAngle()) return false;
-      if (hasRoundaboutExitAngle()) {
-        if (getRoundaboutExitAngle()
-            != other.getRoundaboutExitAngle()) return false;
-      }
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasType()) {
-        hash = (37 * hash) + TYPE_FIELD_NUMBER;
-        hash = (53 * hash) + type_;
-      }
-      if (hasRoundaboutExitNumber()) {
-        hash = (37 * hash) + ROUNDABOUT_EXIT_NUMBER_FIELD_NUMBER;
-        hash = (53 * hash) + getRoundaboutExitNumber();
-      }
-      if (hasRoundaboutExitAngle()) {
-        hash = (37 * hash) + ROUNDABOUT_EXIT_ANGLE_FIELD_NUMBER;
-        hash = (53 * hash) + getRoundaboutExitAngle();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver)
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuverOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.Builder.class);
-      }
-
-      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        type_ = 0;
-        roundaboutExitNumber_ = 0;
-        roundaboutExitAngle_ = 0;
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_descriptor;
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver getDefaultInstanceForType() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver build() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver buildPartial() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver result) {
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.type_ = type_;
-          to_bitField0_ |= 0x00000001;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.roundaboutExitNumber_ = roundaboutExitNumber_;
-          to_bitField0_ |= 0x00000002;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.roundaboutExitAngle_ = roundaboutExitAngle_;
-          to_bitField0_ |= 0x00000004;
-        }
-        result.bitField0_ |= to_bitField0_;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver) {
-          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver)other);
+      public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination> getDestinationsList() {
+        if (destinationsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(destinations_);
         } else {
-          super.mergeFrom(other);
-          return this;
+          return destinationsBuilder_.getMessageList();
         }
       }
-
-      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver other) {
-        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.getDefaultInstance()) return this;
-        if (other.hasType()) {
-          setType(other.getType());
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+       */
+      public int getDestinationsCount() {
+        if (destinationsBuilder_ == null) {
+          return destinations_.size();
+        } else {
+          return destinationsBuilder_.getCount();
         }
-        if (other.hasRoundaboutExitNumber()) {
-          setRoundaboutExitNumber(other.getRoundaboutExitNumber());
-        }
-        if (other.hasRoundaboutExitAngle()) {
-          setRoundaboutExitAngle(other.getRoundaboutExitAngle());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
       }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+       */
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination getDestinations(int index) {
+        if (destinationsBuilder_ == null) {
+          return destinations_.get(index);
+        } else {
+          return destinationsBuilder_.getMessage(index);
         }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 8: {
-                int tmpRaw = input.readEnum();
-                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType tmpValue =
-                    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType.forNumber(tmpRaw);
-                if (tmpValue == null) {
-                  mergeUnknownVarintField(1, tmpRaw);
-                } else {
-                  type_ = tmpRaw;
-                  bitField0_ |= 0x00000001;
-                }
-                break;
-              } // case 8
-              case 16: {
-                roundaboutExitNumber_ = input.readInt32();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 16
-              case 24: {
-                roundaboutExitAngle_ = input.readInt32();
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 24
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+       */
+      public Builder setDestinations(
+          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination value) {
+        if (destinationsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDestinationsIsMutable();
+          destinations_.set(index, value);
           onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
-
-      private int type_ = 0;
-      /**
-       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType type = 1;</code>
-       * @return Whether the type field is set.
-       */
-      @java.lang.Override public boolean hasType() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType type = 1;</code>
-       * @return The type.
-       */
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType getType() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType.forNumber(type_);
-        return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType.UNKNOWN : result;
-      }
-      /**
-       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType type = 1;</code>
-       * @param value The type to set.
-       * @return This builder for chaining.
-       */
-      public Builder setType(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType value) {
-        if (value == null) {
-          throw new NullPointerException();
+        } else {
+          destinationsBuilder_.setMessage(index, value);
         }
-        bitField0_ |= 0x00000001;
-        type_ = value.getNumber();
-        onChanged();
         return this;
       }
       /**
-       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType type = 1;</code>
-       * @return This builder for chaining.
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
        */
-      public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int roundaboutExitNumber_ ;
-      /**
-       * <code>optional int32 roundabout_exit_number = 2;</code>
-       * @return Whether the roundaboutExitNumber field is set.
-       */
-      @java.lang.Override
-      public boolean hasRoundaboutExitNumber() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>optional int32 roundabout_exit_number = 2;</code>
-       * @return The roundaboutExitNumber.
-       */
-      @java.lang.Override
-      public int getRoundaboutExitNumber() {
-        return roundaboutExitNumber_;
-      }
-      /**
-       * <code>optional int32 roundabout_exit_number = 2;</code>
-       * @param value The roundaboutExitNumber to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRoundaboutExitNumber(int value) {
-
-        roundaboutExitNumber_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
+      public Builder setDestinations(
+          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder builderForValue) {
+        if (destinationsBuilder_ == null) {
+          ensureDestinationsIsMutable();
+          destinations_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          destinationsBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
       }
       /**
-       * <code>optional int32 roundabout_exit_number = 2;</code>
-       * @return This builder for chaining.
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
        */
-      public Builder clearRoundaboutExitNumber() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        roundaboutExitNumber_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int roundaboutExitAngle_ ;
-      /**
-       * <code>optional int32 roundabout_exit_angle = 3;</code>
-       * @return Whether the roundaboutExitAngle field is set.
-       */
-      @java.lang.Override
-      public boolean hasRoundaboutExitAngle() {
-        return ((bitField0_ & 0x00000004) != 0);
-      }
-      /**
-       * <code>optional int32 roundabout_exit_angle = 3;</code>
-       * @return The roundaboutExitAngle.
-       */
-      @java.lang.Override
-      public int getRoundaboutExitAngle() {
-        return roundaboutExitAngle_;
-      }
-      /**
-       * <code>optional int32 roundabout_exit_angle = 3;</code>
-       * @param value The roundaboutExitAngle to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRoundaboutExitAngle(int value) {
-
-        roundaboutExitAngle_ = value;
-        bitField0_ |= 0x00000004;
-        onChanged();
+      public Builder addDestinations(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination value) {
+        if (destinationsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDestinationsIsMutable();
+          destinations_.add(value);
+          onChanged();
+        } else {
+          destinationsBuilder_.addMessage(value);
+        }
         return this;
       }
       /**
-       * <code>optional int32 roundabout_exit_angle = 3;</code>
-       * @return This builder for chaining.
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
        */
-      public Builder clearRoundaboutExitAngle() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        roundaboutExitAngle_ = 0;
-        onChanged();
+      public Builder addDestinations(
+          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination value) {
+        if (destinationsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDestinationsIsMutable();
+          destinations_.add(index, value);
+          onChanged();
+        } else {
+          destinationsBuilder_.addMessage(index, value);
+        }
         return this;
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+       */
+      public Builder addDestinations(
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder builderForValue) {
+        if (destinationsBuilder_ == null) {
+          ensureDestinationsIsMutable();
+          destinations_.add(builderForValue.build());
+          onChanged();
+        } else {
+          destinationsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+       */
+      public Builder addDestinations(
+          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder builderForValue) {
+        if (destinationsBuilder_ == null) {
+          ensureDestinationsIsMutable();
+          destinations_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          destinationsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+       */
+      public Builder addAllDestinations(
+          java.lang.Iterable<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination> values) {
+        if (destinationsBuilder_ == null) {
+          ensureDestinationsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, destinations_);
+          onChanged();
+        } else {
+          destinationsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+       */
+      public Builder clearDestinations() {
+        if (destinationsBuilder_ == null) {
+          destinations_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          destinationsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+       */
+      public Builder removeDestinations(int index) {
+        if (destinationsBuilder_ == null) {
+          ensureDestinationsIsMutable();
+          destinations_.remove(index);
+          onChanged();
+        } else {
+          destinationsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+       */
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder getDestinationsBuilder(
+          int index) {
+        return getDestinationsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+       */
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder getDestinationsOrBuilder(
+          int index) {
+        if (destinationsBuilder_ == null) {
+          return destinations_.get(index);  } else {
+          return destinationsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+       */
+      public java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder> 
+           getDestinationsOrBuilderList() {
+        if (destinationsBuilder_ != null) {
+          return destinationsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(destinations_);
+        }
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+       */
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder addDestinationsBuilder() {
+        return getDestinationsFieldBuilder().addBuilder(
+            com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+       */
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder addDestinationsBuilder(
+          int index) {
+        return getDestinationsFieldBuilder().addBuilder(
+            index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
+       */
+      public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder> 
+           getDestinationsBuilderList() {
+        return getDestinationsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder> 
+          getDestinationsFieldBuilder() {
+        if (destinationsBuilder_ == null) {
+          destinationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder>(
+                  destinations_,
+                  ((bitField0_ & 0x00000002) != 0),
+                  getParentForChildren(),
+                  isClean());
+          destinations_ = null;
+        }
+        return destinationsBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -6087,23 +5099,23 @@ public final class NavigationStatus {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver)
+      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationState)
     }
 
-    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver)
-    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationState)
+    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver();
+      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState();
     }
 
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver getDefaultInstance() {
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationManeuver>
-        PARSER = new com.google.protobuf.AbstractParser<NavigationManeuver>() {
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationState>
+        PARSER = new com.google.protobuf.AbstractParser<NavigationState>() {
       @java.lang.Override
-      public NavigationManeuver parsePartialFrom(
+      public NavigationState parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6122,17 +5134,17 @@ public final class NavigationStatus {
       }
     };
 
-    public static com.google.protobuf.Parser<NavigationManeuver> parser() {
+    public static com.google.protobuf.Parser<NavigationState> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<NavigationManeuver> getParserForType() {
+    public com.google.protobuf.Parser<NavigationState> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver getDefaultInstanceForType() {
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -7529,6 +6541,3364 @@ public final class NavigationStatus {
 
   }
 
+  public interface NavigationManeuverOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType type = 1;</code>
+     * @return Whether the type field is set.
+     */
+    boolean hasType();
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType type = 1;</code>
+     * @return The type.
+     */
+    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType getType();
+
+    /**
+     * <code>optional int32 roundabout_exit_number = 2;</code>
+     * @return Whether the roundaboutExitNumber field is set.
+     */
+    boolean hasRoundaboutExitNumber();
+    /**
+     * <code>optional int32 roundabout_exit_number = 2;</code>
+     * @return The roundaboutExitNumber.
+     */
+    int getRoundaboutExitNumber();
+
+    /**
+     * <code>optional int32 roundabout_exit_angle = 3;</code>
+     * @return Whether the roundaboutExitAngle field is set.
+     */
+    boolean hasRoundaboutExitAngle();
+    /**
+     * <code>optional int32 roundabout_exit_angle = 3;</code>
+     * @return The roundaboutExitAngle.
+     */
+    int getRoundaboutExitAngle();
+  }
+  /**
+   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver}
+   */
+  public static final class NavigationManeuver extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver)
+      NavigationManeuverOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use NavigationManeuver.newBuilder() to construct.
+    private NavigationManeuver(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NavigationManeuver() {
+      type_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NavigationManeuver();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.Builder.class);
+    }
+
+    /**
+     * Protobuf enum {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType}
+     */
+    public enum NavigationType
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>UNKNOWN = 0;</code>
+       */
+      UNKNOWN(0),
+      /**
+       * <code>DEPART = 1;</code>
+       */
+      DEPART(1),
+      /**
+       * <code>NAME_CHANGE = 2;</code>
+       */
+      NAME_CHANGE(2),
+      /**
+       * <code>KEEP_LEFT = 3;</code>
+       */
+      KEEP_LEFT(3),
+      /**
+       * <code>KEEP_RIGHT = 4;</code>
+       */
+      KEEP_RIGHT(4),
+      /**
+       * <code>TURN_SLIGHT_LEFT = 5;</code>
+       */
+      TURN_SLIGHT_LEFT(5),
+      /**
+       * <code>TURN_SLIGHT_RIGHT = 6;</code>
+       */
+      TURN_SLIGHT_RIGHT(6),
+      /**
+       * <code>TURN_NORMAL_LEFT = 7;</code>
+       */
+      TURN_NORMAL_LEFT(7),
+      /**
+       * <code>TURN_NORMAL_RIGHT = 8;</code>
+       */
+      TURN_NORMAL_RIGHT(8),
+      /**
+       * <code>TURN_SHARP_LEFT = 9;</code>
+       */
+      TURN_SHARP_LEFT(9),
+      /**
+       * <code>TURN_SHARP_RIGHT = 10;</code>
+       */
+      TURN_SHARP_RIGHT(10),
+      /**
+       * <code>U_TURN_LEFT = 11;</code>
+       */
+      U_TURN_LEFT(11),
+      /**
+       * <code>U_TURN_RIGHT = 12;</code>
+       */
+      U_TURN_RIGHT(12),
+      /**
+       * <code>ON_RAMP_SLIGHT_LEFT = 13;</code>
+       */
+      ON_RAMP_SLIGHT_LEFT(13),
+      /**
+       * <code>ON_RAMP_SLIGHT_RIGHT = 14;</code>
+       */
+      ON_RAMP_SLIGHT_RIGHT(14),
+      /**
+       * <code>ON_RAMP_NORMAL_LEFT = 15;</code>
+       */
+      ON_RAMP_NORMAL_LEFT(15),
+      /**
+       * <code>ON_RAMP_NORMAL_RIGHT = 16;</code>
+       */
+      ON_RAMP_NORMAL_RIGHT(16),
+      /**
+       * <code>ON_RAMP_SHARP_LEFT = 17;</code>
+       */
+      ON_RAMP_SHARP_LEFT(17),
+      /**
+       * <code>ON_RAMP_SHARP_RIGHT = 18;</code>
+       */
+      ON_RAMP_SHARP_RIGHT(18),
+      /**
+       * <code>ON_RAMP_U_TURN_LEFT = 19;</code>
+       */
+      ON_RAMP_U_TURN_LEFT(19),
+      /**
+       * <code>ON_RAMP_U_TURN_RIGHT = 20;</code>
+       */
+      ON_RAMP_U_TURN_RIGHT(20),
+      /**
+       * <code>OFF_RAMP_SLIGHT_LEFT = 21;</code>
+       */
+      OFF_RAMP_SLIGHT_LEFT(21),
+      /**
+       * <code>OFF_RAMP_SLIGHT_RIGHT = 22;</code>
+       */
+      OFF_RAMP_SLIGHT_RIGHT(22),
+      /**
+       * <code>OFF_RAMP_NORMAL_LEFT = 23;</code>
+       */
+      OFF_RAMP_NORMAL_LEFT(23),
+      /**
+       * <code>OFF_RAMP_NORMAL_RIGHT = 24;</code>
+       */
+      OFF_RAMP_NORMAL_RIGHT(24),
+      /**
+       * <code>FORK_LEFT = 25;</code>
+       */
+      FORK_LEFT(25),
+      /**
+       * <code>FORK_RIGHT = 26;</code>
+       */
+      FORK_RIGHT(26),
+      /**
+       * <code>MERGE_LEFT = 27;</code>
+       */
+      MERGE_LEFT(27),
+      /**
+       * <code>MERGE_RIGHT = 28;</code>
+       */
+      MERGE_RIGHT(28),
+      /**
+       * <code>MERGE_SIDE_UNSPECIFIED = 29;</code>
+       */
+      MERGE_SIDE_UNSPECIFIED(29),
+      /**
+       * <code>ROUNDABOUT_ENTER = 30;</code>
+       */
+      ROUNDABOUT_ENTER(30),
+      /**
+       * <code>ROUNDABOUT_EXIT = 31;</code>
+       */
+      ROUNDABOUT_EXIT(31),
+      /**
+       * <code>ROUNDABOUT_ENTER_AND_EXIT_CW = 32;</code>
+       */
+      ROUNDABOUT_ENTER_AND_EXIT_CW(32),
+      /**
+       * <code>ROUNDABOUT_ENTER_AND_EXIT_CW_WITH_ANGLE = 33;</code>
+       */
+      ROUNDABOUT_ENTER_AND_EXIT_CW_WITH_ANGLE(33),
+      /**
+       * <code>ROUNDABOUT_ENTER_AND_EXIT_CCW = 34;</code>
+       */
+      ROUNDABOUT_ENTER_AND_EXIT_CCW(34),
+      /**
+       * <code>ROUNDABOUT_ENTER_AND_EXIT_CCW_WITH_ANGLE = 35;</code>
+       */
+      ROUNDABOUT_ENTER_AND_EXIT_CCW_WITH_ANGLE(35),
+      /**
+       * <code>STRAIGHT = 36;</code>
+       */
+      STRAIGHT(36),
+      /**
+       * <code>FERRY_BOAT = 37;</code>
+       */
+      FERRY_BOAT(37),
+      /**
+       * <code>FERRY_TRAIN = 38;</code>
+       */
+      FERRY_TRAIN(38),
+      /**
+       * <code>DESTINATION = 39;</code>
+       */
+      DESTINATION(39),
+      /**
+       * <code>DESTINATION_STRAIGHT = 40;</code>
+       */
+      DESTINATION_STRAIGHT(40),
+      /**
+       * <code>DESTINATION_LEFT = 41;</code>
+       */
+      DESTINATION_LEFT(41),
+      /**
+       * <code>DESTINATION_RIGHT = 42;</code>
+       */
+      DESTINATION_RIGHT(42),
+      ;
+
+      /**
+       * <code>UNKNOWN = 0;</code>
+       */
+      public static final int UNKNOWN_VALUE = 0;
+      /**
+       * <code>DEPART = 1;</code>
+       */
+      public static final int DEPART_VALUE = 1;
+      /**
+       * <code>NAME_CHANGE = 2;</code>
+       */
+      public static final int NAME_CHANGE_VALUE = 2;
+      /**
+       * <code>KEEP_LEFT = 3;</code>
+       */
+      public static final int KEEP_LEFT_VALUE = 3;
+      /**
+       * <code>KEEP_RIGHT = 4;</code>
+       */
+      public static final int KEEP_RIGHT_VALUE = 4;
+      /**
+       * <code>TURN_SLIGHT_LEFT = 5;</code>
+       */
+      public static final int TURN_SLIGHT_LEFT_VALUE = 5;
+      /**
+       * <code>TURN_SLIGHT_RIGHT = 6;</code>
+       */
+      public static final int TURN_SLIGHT_RIGHT_VALUE = 6;
+      /**
+       * <code>TURN_NORMAL_LEFT = 7;</code>
+       */
+      public static final int TURN_NORMAL_LEFT_VALUE = 7;
+      /**
+       * <code>TURN_NORMAL_RIGHT = 8;</code>
+       */
+      public static final int TURN_NORMAL_RIGHT_VALUE = 8;
+      /**
+       * <code>TURN_SHARP_LEFT = 9;</code>
+       */
+      public static final int TURN_SHARP_LEFT_VALUE = 9;
+      /**
+       * <code>TURN_SHARP_RIGHT = 10;</code>
+       */
+      public static final int TURN_SHARP_RIGHT_VALUE = 10;
+      /**
+       * <code>U_TURN_LEFT = 11;</code>
+       */
+      public static final int U_TURN_LEFT_VALUE = 11;
+      /**
+       * <code>U_TURN_RIGHT = 12;</code>
+       */
+      public static final int U_TURN_RIGHT_VALUE = 12;
+      /**
+       * <code>ON_RAMP_SLIGHT_LEFT = 13;</code>
+       */
+      public static final int ON_RAMP_SLIGHT_LEFT_VALUE = 13;
+      /**
+       * <code>ON_RAMP_SLIGHT_RIGHT = 14;</code>
+       */
+      public static final int ON_RAMP_SLIGHT_RIGHT_VALUE = 14;
+      /**
+       * <code>ON_RAMP_NORMAL_LEFT = 15;</code>
+       */
+      public static final int ON_RAMP_NORMAL_LEFT_VALUE = 15;
+      /**
+       * <code>ON_RAMP_NORMAL_RIGHT = 16;</code>
+       */
+      public static final int ON_RAMP_NORMAL_RIGHT_VALUE = 16;
+      /**
+       * <code>ON_RAMP_SHARP_LEFT = 17;</code>
+       */
+      public static final int ON_RAMP_SHARP_LEFT_VALUE = 17;
+      /**
+       * <code>ON_RAMP_SHARP_RIGHT = 18;</code>
+       */
+      public static final int ON_RAMP_SHARP_RIGHT_VALUE = 18;
+      /**
+       * <code>ON_RAMP_U_TURN_LEFT = 19;</code>
+       */
+      public static final int ON_RAMP_U_TURN_LEFT_VALUE = 19;
+      /**
+       * <code>ON_RAMP_U_TURN_RIGHT = 20;</code>
+       */
+      public static final int ON_RAMP_U_TURN_RIGHT_VALUE = 20;
+      /**
+       * <code>OFF_RAMP_SLIGHT_LEFT = 21;</code>
+       */
+      public static final int OFF_RAMP_SLIGHT_LEFT_VALUE = 21;
+      /**
+       * <code>OFF_RAMP_SLIGHT_RIGHT = 22;</code>
+       */
+      public static final int OFF_RAMP_SLIGHT_RIGHT_VALUE = 22;
+      /**
+       * <code>OFF_RAMP_NORMAL_LEFT = 23;</code>
+       */
+      public static final int OFF_RAMP_NORMAL_LEFT_VALUE = 23;
+      /**
+       * <code>OFF_RAMP_NORMAL_RIGHT = 24;</code>
+       */
+      public static final int OFF_RAMP_NORMAL_RIGHT_VALUE = 24;
+      /**
+       * <code>FORK_LEFT = 25;</code>
+       */
+      public static final int FORK_LEFT_VALUE = 25;
+      /**
+       * <code>FORK_RIGHT = 26;</code>
+       */
+      public static final int FORK_RIGHT_VALUE = 26;
+      /**
+       * <code>MERGE_LEFT = 27;</code>
+       */
+      public static final int MERGE_LEFT_VALUE = 27;
+      /**
+       * <code>MERGE_RIGHT = 28;</code>
+       */
+      public static final int MERGE_RIGHT_VALUE = 28;
+      /**
+       * <code>MERGE_SIDE_UNSPECIFIED = 29;</code>
+       */
+      public static final int MERGE_SIDE_UNSPECIFIED_VALUE = 29;
+      /**
+       * <code>ROUNDABOUT_ENTER = 30;</code>
+       */
+      public static final int ROUNDABOUT_ENTER_VALUE = 30;
+      /**
+       * <code>ROUNDABOUT_EXIT = 31;</code>
+       */
+      public static final int ROUNDABOUT_EXIT_VALUE = 31;
+      /**
+       * <code>ROUNDABOUT_ENTER_AND_EXIT_CW = 32;</code>
+       */
+      public static final int ROUNDABOUT_ENTER_AND_EXIT_CW_VALUE = 32;
+      /**
+       * <code>ROUNDABOUT_ENTER_AND_EXIT_CW_WITH_ANGLE = 33;</code>
+       */
+      public static final int ROUNDABOUT_ENTER_AND_EXIT_CW_WITH_ANGLE_VALUE = 33;
+      /**
+       * <code>ROUNDABOUT_ENTER_AND_EXIT_CCW = 34;</code>
+       */
+      public static final int ROUNDABOUT_ENTER_AND_EXIT_CCW_VALUE = 34;
+      /**
+       * <code>ROUNDABOUT_ENTER_AND_EXIT_CCW_WITH_ANGLE = 35;</code>
+       */
+      public static final int ROUNDABOUT_ENTER_AND_EXIT_CCW_WITH_ANGLE_VALUE = 35;
+      /**
+       * <code>STRAIGHT = 36;</code>
+       */
+      public static final int STRAIGHT_VALUE = 36;
+      /**
+       * <code>FERRY_BOAT = 37;</code>
+       */
+      public static final int FERRY_BOAT_VALUE = 37;
+      /**
+       * <code>FERRY_TRAIN = 38;</code>
+       */
+      public static final int FERRY_TRAIN_VALUE = 38;
+      /**
+       * <code>DESTINATION = 39;</code>
+       */
+      public static final int DESTINATION_VALUE = 39;
+      /**
+       * <code>DESTINATION_STRAIGHT = 40;</code>
+       */
+      public static final int DESTINATION_STRAIGHT_VALUE = 40;
+      /**
+       * <code>DESTINATION_LEFT = 41;</code>
+       */
+      public static final int DESTINATION_LEFT_VALUE = 41;
+      /**
+       * <code>DESTINATION_RIGHT = 42;</code>
+       */
+      public static final int DESTINATION_RIGHT_VALUE = 42;
+
+
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static NavigationType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static NavigationType forNumber(int value) {
+        switch (value) {
+          case 0: return UNKNOWN;
+          case 1: return DEPART;
+          case 2: return NAME_CHANGE;
+          case 3: return KEEP_LEFT;
+          case 4: return KEEP_RIGHT;
+          case 5: return TURN_SLIGHT_LEFT;
+          case 6: return TURN_SLIGHT_RIGHT;
+          case 7: return TURN_NORMAL_LEFT;
+          case 8: return TURN_NORMAL_RIGHT;
+          case 9: return TURN_SHARP_LEFT;
+          case 10: return TURN_SHARP_RIGHT;
+          case 11: return U_TURN_LEFT;
+          case 12: return U_TURN_RIGHT;
+          case 13: return ON_RAMP_SLIGHT_LEFT;
+          case 14: return ON_RAMP_SLIGHT_RIGHT;
+          case 15: return ON_RAMP_NORMAL_LEFT;
+          case 16: return ON_RAMP_NORMAL_RIGHT;
+          case 17: return ON_RAMP_SHARP_LEFT;
+          case 18: return ON_RAMP_SHARP_RIGHT;
+          case 19: return ON_RAMP_U_TURN_LEFT;
+          case 20: return ON_RAMP_U_TURN_RIGHT;
+          case 21: return OFF_RAMP_SLIGHT_LEFT;
+          case 22: return OFF_RAMP_SLIGHT_RIGHT;
+          case 23: return OFF_RAMP_NORMAL_LEFT;
+          case 24: return OFF_RAMP_NORMAL_RIGHT;
+          case 25: return FORK_LEFT;
+          case 26: return FORK_RIGHT;
+          case 27: return MERGE_LEFT;
+          case 28: return MERGE_RIGHT;
+          case 29: return MERGE_SIDE_UNSPECIFIED;
+          case 30: return ROUNDABOUT_ENTER;
+          case 31: return ROUNDABOUT_EXIT;
+          case 32: return ROUNDABOUT_ENTER_AND_EXIT_CW;
+          case 33: return ROUNDABOUT_ENTER_AND_EXIT_CW_WITH_ANGLE;
+          case 34: return ROUNDABOUT_ENTER_AND_EXIT_CCW;
+          case 35: return ROUNDABOUT_ENTER_AND_EXIT_CCW_WITH_ANGLE;
+          case 36: return STRAIGHT;
+          case 37: return FERRY_BOAT;
+          case 38: return FERRY_TRAIN;
+          case 39: return DESTINATION;
+          case 40: return DESTINATION_STRAIGHT;
+          case 41: return DESTINATION_LEFT;
+          case 42: return DESTINATION_RIGHT;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<NavigationType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          NavigationType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<NavigationType>() {
+              public NavigationType findValueByNumber(int number) {
+                return NavigationType.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final NavigationType[] VALUES = values();
+
+      public static NavigationType valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private NavigationType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType)
+    }
+
+    private int bitField0_;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_ = 0;
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType type = 1;</code>
+     * @return Whether the type field is set.
+     */
+    @java.lang.Override public boolean hasType() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType type = 1;</code>
+     * @return The type.
+     */
+    @java.lang.Override public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType getType() {
+      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType.forNumber(type_);
+      return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType.UNKNOWN : result;
+    }
+
+    public static final int ROUNDABOUT_EXIT_NUMBER_FIELD_NUMBER = 2;
+    private int roundaboutExitNumber_ = 0;
+    /**
+     * <code>optional int32 roundabout_exit_number = 2;</code>
+     * @return Whether the roundaboutExitNumber field is set.
+     */
+    @java.lang.Override
+    public boolean hasRoundaboutExitNumber() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional int32 roundabout_exit_number = 2;</code>
+     * @return The roundaboutExitNumber.
+     */
+    @java.lang.Override
+    public int getRoundaboutExitNumber() {
+      return roundaboutExitNumber_;
+    }
+
+    public static final int ROUNDABOUT_EXIT_ANGLE_FIELD_NUMBER = 3;
+    private int roundaboutExitAngle_ = 0;
+    /**
+     * <code>optional int32 roundabout_exit_angle = 3;</code>
+     * @return Whether the roundaboutExitAngle field is set.
+     */
+    @java.lang.Override
+    public boolean hasRoundaboutExitAngle() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional int32 roundabout_exit_angle = 3;</code>
+     * @return The roundaboutExitAngle.
+     */
+    @java.lang.Override
+    public int getRoundaboutExitAngle() {
+      return roundaboutExitAngle_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeEnum(1, type_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeInt32(2, roundaboutExitNumber_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeInt32(3, roundaboutExitAngle_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, type_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, roundaboutExitNumber_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, roundaboutExitAngle_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver)) {
+        return super.equals(obj);
+      }
+      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver) obj;
+
+      if (hasType() != other.hasType()) return false;
+      if (hasType()) {
+        if (type_ != other.type_) return false;
+      }
+      if (hasRoundaboutExitNumber() != other.hasRoundaboutExitNumber()) return false;
+      if (hasRoundaboutExitNumber()) {
+        if (getRoundaboutExitNumber()
+            != other.getRoundaboutExitNumber()) return false;
+      }
+      if (hasRoundaboutExitAngle() != other.hasRoundaboutExitAngle()) return false;
+      if (hasRoundaboutExitAngle()) {
+        if (getRoundaboutExitAngle()
+            != other.getRoundaboutExitAngle()) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasType()) {
+        hash = (37 * hash) + TYPE_FIELD_NUMBER;
+        hash = (53 * hash) + type_;
+      }
+      if (hasRoundaboutExitNumber()) {
+        hash = (37 * hash) + ROUNDABOUT_EXIT_NUMBER_FIELD_NUMBER;
+        hash = (53 * hash) + getRoundaboutExitNumber();
+      }
+      if (hasRoundaboutExitAngle()) {
+        hash = (37 * hash) + ROUNDABOUT_EXIT_ANGLE_FIELD_NUMBER;
+        hash = (53 * hash) + getRoundaboutExitAngle();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver)
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuverOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.Builder.class);
+      }
+
+      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        type_ = 0;
+        roundaboutExitNumber_ = 0;
+        roundaboutExitAngle_ = 0;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_descriptor;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver getDefaultInstanceForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver build() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver buildPartial() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.type_ = type_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.roundaboutExitNumber_ = roundaboutExitNumber_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.roundaboutExitAngle_ = roundaboutExitAngle_;
+          to_bitField0_ |= 0x00000004;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver) {
+          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver other) {
+        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasRoundaboutExitNumber()) {
+          setRoundaboutExitNumber(other.getRoundaboutExitNumber());
+        }
+        if (other.hasRoundaboutExitAngle()) {
+          setRoundaboutExitAngle(other.getRoundaboutExitAngle());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                int tmpRaw = input.readEnum();
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType tmpValue =
+                    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType.forNumber(tmpRaw);
+                if (tmpValue == null) {
+                  mergeUnknownVarintField(1, tmpRaw);
+                } else {
+                  type_ = tmpRaw;
+                  bitField0_ |= 0x00000001;
+                }
+                break;
+              } // case 8
+              case 16: {
+                roundaboutExitNumber_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                roundaboutExitAngle_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int type_ = 0;
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType type = 1;</code>
+       * @return Whether the type field is set.
+       */
+      @java.lang.Override public boolean hasType() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType type = 1;</code>
+       * @return The type.
+       */
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType getType() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType.forNumber(type_);
+        return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType.UNKNOWN : result;
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType type = 1;</code>
+       * @param value The type to set.
+       * @return This builder for chaining.
+       */
+      public Builder setType(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver.NavigationType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        type_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver.NavigationType type = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int roundaboutExitNumber_ ;
+      /**
+       * <code>optional int32 roundabout_exit_number = 2;</code>
+       * @return Whether the roundaboutExitNumber field is set.
+       */
+      @java.lang.Override
+      public boolean hasRoundaboutExitNumber() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>optional int32 roundabout_exit_number = 2;</code>
+       * @return The roundaboutExitNumber.
+       */
+      @java.lang.Override
+      public int getRoundaboutExitNumber() {
+        return roundaboutExitNumber_;
+      }
+      /**
+       * <code>optional int32 roundabout_exit_number = 2;</code>
+       * @param value The roundaboutExitNumber to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRoundaboutExitNumber(int value) {
+
+        roundaboutExitNumber_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 roundabout_exit_number = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRoundaboutExitNumber() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        roundaboutExitNumber_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int roundaboutExitAngle_ ;
+      /**
+       * <code>optional int32 roundabout_exit_angle = 3;</code>
+       * @return Whether the roundaboutExitAngle field is set.
+       */
+      @java.lang.Override
+      public boolean hasRoundaboutExitAngle() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>optional int32 roundabout_exit_angle = 3;</code>
+       * @return The roundaboutExitAngle.
+       */
+      @java.lang.Override
+      public int getRoundaboutExitAngle() {
+        return roundaboutExitAngle_;
+      }
+      /**
+       * <code>optional int32 roundabout_exit_angle = 3;</code>
+       * @param value The roundaboutExitAngle to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRoundaboutExitAngle(int value) {
+
+        roundaboutExitAngle_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 roundabout_exit_angle = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRoundaboutExitAngle() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        roundaboutExitAngle_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationManeuver)
+    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver();
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationManeuver>
+        PARSER = new com.google.protobuf.AbstractParser<NavigationManeuver>() {
+      @java.lang.Override
+      public NavigationManeuver parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<NavigationManeuver> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NavigationManeuver> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationManeuver getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface NavigationCueOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationCue)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated string alternate_text = 1;</code>
+     * @return A list containing the alternateText.
+     */
+    java.util.List<java.lang.String>
+        getAlternateTextList();
+    /**
+     * <code>repeated string alternate_text = 1;</code>
+     * @return The count of alternateText.
+     */
+    int getAlternateTextCount();
+    /**
+     * <code>repeated string alternate_text = 1;</code>
+     * @param index The index of the element to return.
+     * @return The alternateText at the given index.
+     */
+    java.lang.String getAlternateText(int index);
+    /**
+     * <code>repeated string alternate_text = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the alternateText at the given index.
+     */
+    com.google.protobuf.ByteString
+        getAlternateTextBytes(int index);
+  }
+  /**
+   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationCue}
+   */
+  public static final class NavigationCue extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationCue)
+      NavigationCueOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use NavigationCue.newBuilder() to construct.
+    private NavigationCue(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NavigationCue() {
+      alternateText_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NavigationCue();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue.Builder.class);
+    }
+
+    public static final int ALTERNATE_TEXT_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList alternateText_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <code>repeated string alternate_text = 1;</code>
+     * @return A list containing the alternateText.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getAlternateTextList() {
+      return alternateText_;
+    }
+    /**
+     * <code>repeated string alternate_text = 1;</code>
+     * @return The count of alternateText.
+     */
+    public int getAlternateTextCount() {
+      return alternateText_.size();
+    }
+    /**
+     * <code>repeated string alternate_text = 1;</code>
+     * @param index The index of the element to return.
+     * @return The alternateText at the given index.
+     */
+    public java.lang.String getAlternateText(int index) {
+      return alternateText_.get(index);
+    }
+    /**
+     * <code>repeated string alternate_text = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the alternateText at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getAlternateTextBytes(int index) {
+      return alternateText_.getByteString(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < alternateText_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, alternateText_.getRaw(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < alternateText_.size(); i++) {
+          dataSize += computeStringSizeNoTag(alternateText_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getAlternateTextList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue)) {
+        return super.equals(obj);
+      }
+      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue) obj;
+
+      if (!getAlternateTextList()
+          .equals(other.getAlternateTextList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getAlternateTextCount() > 0) {
+        hash = (37 * hash) + ALTERNATE_TEXT_FIELD_NUMBER;
+        hash = (53 * hash) + getAlternateTextList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationCue}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationCue)
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCueOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue.Builder.class);
+      }
+
+      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        alternateText_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_descriptor;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue getDefaultInstanceForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue build() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue buildPartial() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          alternateText_.makeImmutable();
+          result.alternateText_ = alternateText_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue) {
+          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue other) {
+        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue.getDefaultInstance()) return this;
+        if (!other.alternateText_.isEmpty()) {
+          if (alternateText_.isEmpty()) {
+            alternateText_ = other.alternateText_;
+            bitField0_ |= 0x00000001;
+          } else {
+            ensureAlternateTextIsMutable();
+            alternateText_.addAll(other.alternateText_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                com.google.protobuf.ByteString bs = input.readBytes();
+                ensureAlternateTextIsMutable();
+                alternateText_.add(bs);
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.LazyStringArrayList alternateText_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureAlternateTextIsMutable() {
+        if (!alternateText_.isModifiable()) {
+          alternateText_ = new com.google.protobuf.LazyStringArrayList(alternateText_);
+        }
+        bitField0_ |= 0x00000001;
+      }
+      /**
+       * <code>repeated string alternate_text = 1;</code>
+       * @return A list containing the alternateText.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getAlternateTextList() {
+        alternateText_.makeImmutable();
+        return alternateText_;
+      }
+      /**
+       * <code>repeated string alternate_text = 1;</code>
+       * @return The count of alternateText.
+       */
+      public int getAlternateTextCount() {
+        return alternateText_.size();
+      }
+      /**
+       * <code>repeated string alternate_text = 1;</code>
+       * @param index The index of the element to return.
+       * @return The alternateText at the given index.
+       */
+      public java.lang.String getAlternateText(int index) {
+        return alternateText_.get(index);
+      }
+      /**
+       * <code>repeated string alternate_text = 1;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the alternateText at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getAlternateTextBytes(int index) {
+        return alternateText_.getByteString(index);
+      }
+      /**
+       * <code>repeated string alternate_text = 1;</code>
+       * @param index The index to set the value at.
+       * @param value The alternateText to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAlternateText(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureAlternateTextIsMutable();
+        alternateText_.set(index, value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string alternate_text = 1;</code>
+       * @param value The alternateText to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAlternateText(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureAlternateTextIsMutable();
+        alternateText_.add(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string alternate_text = 1;</code>
+       * @param values The alternateText to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllAlternateText(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureAlternateTextIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, alternateText_);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string alternate_text = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAlternateText() {
+        alternateText_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string alternate_text = 1;</code>
+       * @param value The bytes of the alternateText to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAlternateTextBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureAlternateTextIsMutable();
+        alternateText_.add(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationCue)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationCue)
+    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue();
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationCue>
+        PARSER = new com.google.protobuf.AbstractParser<NavigationCue>() {
+      @java.lang.Override
+      public NavigationCue parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<NavigationCue> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NavigationCue> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationCue getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface NavigationLaneOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+     */
+    java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection> 
+        getLaneDirectionsList();
+    /**
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+     */
+    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection getLaneDirections(int index);
+    /**
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+     */
+    int getLaneDirectionsCount();
+    /**
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+     */
+    java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirectionOrBuilder> 
+        getLaneDirectionsOrBuilderList();
+    /**
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+     */
+    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirectionOrBuilder getLaneDirectionsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane}
+   */
+  public static final class NavigationLane extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane)
+      NavigationLaneOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use NavigationLane.newBuilder() to construct.
+    private NavigationLane(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NavigationLane() {
+      laneDirections_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NavigationLane();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.Builder.class);
+    }
+
+    public interface LaneDirectionOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection.Shape shape = 1;</code>
+       * @return Whether the shape field is set.
+       */
+      boolean hasShape();
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection.Shape shape = 1;</code>
+       * @return The shape.
+       */
+      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Shape getShape();
+
+      /**
+       * <code>optional bool is_highlighted = 2;</code>
+       * @return Whether the isHighlighted field is set.
+       */
+      boolean hasIsHighlighted();
+      /**
+       * <code>optional bool is_highlighted = 2;</code>
+       * @return The isHighlighted.
+       */
+      boolean getIsHighlighted();
+    }
+    /**
+     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection}
+     */
+    public static final class LaneDirection extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection)
+        LaneDirectionOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use LaneDirection.newBuilder() to construct.
+      private LaneDirection(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private LaneDirection() {
+        shape_ = 0;
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new LaneDirection();
+      }
+
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_LaneDirection_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_LaneDirection_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Builder.class);
+      }
+
+      /**
+       * Protobuf enum {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection.Shape}
+       */
+      public enum Shape
+          implements com.google.protobuf.ProtocolMessageEnum {
+        /**
+         * <code>UNKNOWN = 0;</code>
+         */
+        UNKNOWN(0),
+        /**
+         * <code>STRAIGHT = 1;</code>
+         */
+        STRAIGHT(1),
+        /**
+         * <code>SLIGHT_LEFT = 2;</code>
+         */
+        SLIGHT_LEFT(2),
+        /**
+         * <code>SLIGHT_RIGHT = 3;</code>
+         */
+        SLIGHT_RIGHT(3),
+        /**
+         * <code>NORMAL_LEFT = 4;</code>
+         */
+        NORMAL_LEFT(4),
+        /**
+         * <code>NORMAL_RIGHT = 5;</code>
+         */
+        NORMAL_RIGHT(5),
+        /**
+         * <code>SHARP_LEFT = 6;</code>
+         */
+        SHARP_LEFT(6),
+        /**
+         * <code>SHARP_RIGHT = 7;</code>
+         */
+        SHARP_RIGHT(7),
+        /**
+         * <code>U_TURN_LEFT = 8;</code>
+         */
+        U_TURN_LEFT(8),
+        /**
+         * <code>U_TURN_RIGHT = 9;</code>
+         */
+        U_TURN_RIGHT(9),
+        ;
+
+        /**
+         * <code>UNKNOWN = 0;</code>
+         */
+        public static final int UNKNOWN_VALUE = 0;
+        /**
+         * <code>STRAIGHT = 1;</code>
+         */
+        public static final int STRAIGHT_VALUE = 1;
+        /**
+         * <code>SLIGHT_LEFT = 2;</code>
+         */
+        public static final int SLIGHT_LEFT_VALUE = 2;
+        /**
+         * <code>SLIGHT_RIGHT = 3;</code>
+         */
+        public static final int SLIGHT_RIGHT_VALUE = 3;
+        /**
+         * <code>NORMAL_LEFT = 4;</code>
+         */
+        public static final int NORMAL_LEFT_VALUE = 4;
+        /**
+         * <code>NORMAL_RIGHT = 5;</code>
+         */
+        public static final int NORMAL_RIGHT_VALUE = 5;
+        /**
+         * <code>SHARP_LEFT = 6;</code>
+         */
+        public static final int SHARP_LEFT_VALUE = 6;
+        /**
+         * <code>SHARP_RIGHT = 7;</code>
+         */
+        public static final int SHARP_RIGHT_VALUE = 7;
+        /**
+         * <code>U_TURN_LEFT = 8;</code>
+         */
+        public static final int U_TURN_LEFT_VALUE = 8;
+        /**
+         * <code>U_TURN_RIGHT = 9;</code>
+         */
+        public static final int U_TURN_RIGHT_VALUE = 9;
+
+
+        public final int getNumber() {
+          return value;
+        }
+
+        /**
+         * @param value The numeric wire value of the corresponding enum entry.
+         * @return The enum associated with the given numeric wire value.
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static Shape valueOf(int value) {
+          return forNumber(value);
+        }
+
+        /**
+         * @param value The numeric wire value of the corresponding enum entry.
+         * @return The enum associated with the given numeric wire value.
+         */
+        public static Shape forNumber(int value) {
+          switch (value) {
+            case 0: return UNKNOWN;
+            case 1: return STRAIGHT;
+            case 2: return SLIGHT_LEFT;
+            case 3: return SLIGHT_RIGHT;
+            case 4: return NORMAL_LEFT;
+            case 5: return NORMAL_RIGHT;
+            case 6: return SHARP_LEFT;
+            case 7: return SHARP_RIGHT;
+            case 8: return U_TURN_LEFT;
+            case 9: return U_TURN_RIGHT;
+            default: return null;
+          }
+        }
+
+        public static com.google.protobuf.Internal.EnumLiteMap<Shape>
+            internalGetValueMap() {
+          return internalValueMap;
+        }
+        private static final com.google.protobuf.Internal.EnumLiteMap<
+            Shape> internalValueMap =
+              new com.google.protobuf.Internal.EnumLiteMap<Shape>() {
+                public Shape findValueByNumber(int number) {
+                  return Shape.forNumber(number);
+                }
+              };
+
+        public final com.google.protobuf.Descriptors.EnumValueDescriptor
+            getValueDescriptor() {
+          return getDescriptor().getValues().get(ordinal());
+        }
+        public final com.google.protobuf.Descriptors.EnumDescriptor
+            getDescriptorForType() {
+          return getDescriptor();
+        }
+        public static final com.google.protobuf.Descriptors.EnumDescriptor
+            getDescriptor() {
+          return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.getDescriptor().getEnumTypes().get(0);
+        }
+
+        private static final Shape[] VALUES = values();
+
+        public static Shape valueOf(
+            com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+          if (desc.getType() != getDescriptor()) {
+            throw new java.lang.IllegalArgumentException(
+              "EnumValueDescriptor is not for this type.");
+          }
+          return VALUES[desc.getIndex()];
+        }
+
+        private final int value;
+
+        private Shape(int value) {
+          this.value = value;
+        }
+
+        // @@protoc_insertion_point(enum_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection.Shape)
+      }
+
+      private int bitField0_;
+      public static final int SHAPE_FIELD_NUMBER = 1;
+      private int shape_ = 0;
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection.Shape shape = 1;</code>
+       * @return Whether the shape field is set.
+       */
+      @java.lang.Override public boolean hasShape() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection.Shape shape = 1;</code>
+       * @return The shape.
+       */
+      @java.lang.Override public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Shape getShape() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Shape result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Shape.forNumber(shape_);
+        return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Shape.UNKNOWN : result;
+      }
+
+      public static final int IS_HIGHLIGHTED_FIELD_NUMBER = 2;
+      private boolean isHighlighted_ = false;
+      /**
+       * <code>optional bool is_highlighted = 2;</code>
+       * @return Whether the isHighlighted field is set.
+       */
+      @java.lang.Override
+      public boolean hasIsHighlighted() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>optional bool is_highlighted = 2;</code>
+       * @return The isHighlighted.
+       */
+      @java.lang.Override
+      public boolean getIsHighlighted() {
+        return isHighlighted_;
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          output.writeEnum(1, shape_);
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          output.writeBool(2, isHighlighted_);
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeEnumSize(1, shape_);
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(2, isHighlighted_);
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection)) {
+          return super.equals(obj);
+        }
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection) obj;
+
+        if (hasShape() != other.hasShape()) return false;
+        if (hasShape()) {
+          if (shape_ != other.shape_) return false;
+        }
+        if (hasIsHighlighted() != other.hasIsHighlighted()) return false;
+        if (hasIsHighlighted()) {
+          if (getIsHighlighted()
+              != other.getIsHighlighted()) return false;
+        }
+        if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        if (hasShape()) {
+          hash = (37 * hash) + SHAPE_FIELD_NUMBER;
+          hash = (53 * hash) + shape_;
+        }
+        if (hasIsHighlighted()) {
+          hash = (37 * hash) + IS_HIGHLIGHTED_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+              getIsHighlighted());
+        }
+        hash = (29 * hash) + getUnknownFields().hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+
+      public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection)
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirectionOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_LaneDirection_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_LaneDirection_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Builder.class);
+        }
+
+        // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.newBuilder()
+        private Builder() {
+
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          bitField0_ = 0;
+          shape_ = 0;
+          isHighlighted_ = false;
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_LaneDirection_descriptor;
+        }
+
+        @java.lang.Override
+        public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection getDefaultInstanceForType() {
+          return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection build() {
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection buildPartial() {
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection(this);
+          if (bitField0_ != 0) { buildPartial0(result); }
+          onBuilt();
+          return result;
+        }
+
+        private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection result) {
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) != 0)) {
+            result.shape_ = shape_;
+            to_bitField0_ |= 0x00000001;
+          }
+          if (((from_bitField0_ & 0x00000002) != 0)) {
+            result.isHighlighted_ = isHighlighted_;
+            to_bitField0_ |= 0x00000002;
+          }
+          result.bitField0_ |= to_bitField0_;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection) {
+            return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection other) {
+          if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.getDefaultInstance()) return this;
+          if (other.hasShape()) {
+            setShape(other.getShape());
+          }
+          if (other.hasIsHighlighted()) {
+            setIsHighlighted(other.getIsHighlighted());
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          if (extensionRegistry == null) {
+            throw new java.lang.NullPointerException();
+          }
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                case 8: {
+                  int tmpRaw = input.readEnum();
+                  com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Shape tmpValue =
+                      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Shape.forNumber(tmpRaw);
+                  if (tmpValue == null) {
+                    mergeUnknownVarintField(1, tmpRaw);
+                  } else {
+                    shape_ = tmpRaw;
+                    bitField0_ |= 0x00000001;
+                  }
+                  break;
+                } // case 8
+                case 16: {
+                  isHighlighted_ = input.readBool();
+                  bitField0_ |= 0x00000002;
+                  break;
+                } // case 16
+                default: {
+                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                    done = true; // was an endgroup tag
+                  }
+                  break;
+                } // default:
+              } // switch (tag)
+            } // while (!done)
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.unwrapIOException();
+          } finally {
+            onChanged();
+          } // finally
+          return this;
+        }
+        private int bitField0_;
+
+        private int shape_ = 0;
+        /**
+         * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection.Shape shape = 1;</code>
+         * @return Whether the shape field is set.
+         */
+        @java.lang.Override public boolean hasShape() {
+          return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection.Shape shape = 1;</code>
+         * @return The shape.
+         */
+        @java.lang.Override
+        public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Shape getShape() {
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Shape result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Shape.forNumber(shape_);
+          return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Shape.UNKNOWN : result;
+        }
+        /**
+         * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection.Shape shape = 1;</code>
+         * @param value The shape to set.
+         * @return This builder for chaining.
+         */
+        public Builder setShape(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Shape value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          bitField0_ |= 0x00000001;
+          shape_ = value.getNumber();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection.Shape shape = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearShape() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          shape_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private boolean isHighlighted_ ;
+        /**
+         * <code>optional bool is_highlighted = 2;</code>
+         * @return Whether the isHighlighted field is set.
+         */
+        @java.lang.Override
+        public boolean hasIsHighlighted() {
+          return ((bitField0_ & 0x00000002) != 0);
+        }
+        /**
+         * <code>optional bool is_highlighted = 2;</code>
+         * @return The isHighlighted.
+         */
+        @java.lang.Override
+        public boolean getIsHighlighted() {
+          return isHighlighted_;
+        }
+        /**
+         * <code>optional bool is_highlighted = 2;</code>
+         * @param value The isHighlighted to set.
+         * @return This builder for chaining.
+         */
+        public Builder setIsHighlighted(boolean value) {
+
+          isHighlighted_ = value;
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional bool is_highlighted = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearIsHighlighted() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          isHighlighted_ = false;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection)
+      }
+
+      // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection)
+      private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection();
+      }
+
+      public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      @java.lang.Deprecated public static final com.google.protobuf.Parser<LaneDirection>
+          PARSER = new com.google.protobuf.AbstractParser<LaneDirection>() {
+        @java.lang.Override
+        public LaneDirection parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
+
+      public static com.google.protobuf.Parser<LaneDirection> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<LaneDirection> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public static final int LANE_DIRECTIONS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection> laneDirections_;
+    /**
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection> getLaneDirectionsList() {
+      return laneDirections_;
+    }
+    /**
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirectionOrBuilder> 
+        getLaneDirectionsOrBuilderList() {
+      return laneDirections_;
+    }
+    /**
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+     */
+    @java.lang.Override
+    public int getLaneDirectionsCount() {
+      return laneDirections_.size();
+    }
+    /**
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+     */
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection getLaneDirections(int index) {
+      return laneDirections_.get(index);
+    }
+    /**
+     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+     */
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirectionOrBuilder getLaneDirectionsOrBuilder(
+        int index) {
+      return laneDirections_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < laneDirections_.size(); i++) {
+        output.writeMessage(1, laneDirections_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < laneDirections_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, laneDirections_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane)) {
+        return super.equals(obj);
+      }
+      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane) obj;
+
+      if (!getLaneDirectionsList()
+          .equals(other.getLaneDirectionsList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getLaneDirectionsCount() > 0) {
+        hash = (37 * hash) + LANE_DIRECTIONS_FIELD_NUMBER;
+        hash = (53 * hash) + getLaneDirectionsList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane)
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLaneOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.Builder.class);
+      }
+
+      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        if (laneDirectionsBuilder_ == null) {
+          laneDirections_ = java.util.Collections.emptyList();
+        } else {
+          laneDirections_ = null;
+          laneDirectionsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_descriptor;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane getDefaultInstanceForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane build() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane buildPartial() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane result) {
+        if (laneDirectionsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            laneDirections_ = java.util.Collections.unmodifiableList(laneDirections_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.laneDirections_ = laneDirections_;
+        } else {
+          result.laneDirections_ = laneDirectionsBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane result) {
+        int from_bitField0_ = bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane) {
+          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane other) {
+        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.getDefaultInstance()) return this;
+        if (laneDirectionsBuilder_ == null) {
+          if (!other.laneDirections_.isEmpty()) {
+            if (laneDirections_.isEmpty()) {
+              laneDirections_ = other.laneDirections_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureLaneDirectionsIsMutable();
+              laneDirections_.addAll(other.laneDirections_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.laneDirections_.isEmpty()) {
+            if (laneDirectionsBuilder_.isEmpty()) {
+              laneDirectionsBuilder_.dispose();
+              laneDirectionsBuilder_ = null;
+              laneDirections_ = other.laneDirections_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              laneDirectionsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getLaneDirectionsFieldBuilder() : null;
+            } else {
+              laneDirectionsBuilder_.addAllMessages(other.laneDirections_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection m =
+                    input.readMessage(
+                        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.PARSER,
+                        extensionRegistry);
+                if (laneDirectionsBuilder_ == null) {
+                  ensureLaneDirectionsIsMutable();
+                  laneDirections_.add(m);
+                } else {
+                  laneDirectionsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection> laneDirections_ =
+        java.util.Collections.emptyList();
+      private void ensureLaneDirectionsIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          laneDirections_ = new java.util.ArrayList<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection>(laneDirections_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirectionOrBuilder> laneDirectionsBuilder_;
+
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection> getLaneDirectionsList() {
+        if (laneDirectionsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(laneDirections_);
+        } else {
+          return laneDirectionsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public int getLaneDirectionsCount() {
+        if (laneDirectionsBuilder_ == null) {
+          return laneDirections_.size();
+        } else {
+          return laneDirectionsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection getLaneDirections(int index) {
+        if (laneDirectionsBuilder_ == null) {
+          return laneDirections_.get(index);
+        } else {
+          return laneDirectionsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public Builder setLaneDirections(
+          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection value) {
+        if (laneDirectionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLaneDirectionsIsMutable();
+          laneDirections_.set(index, value);
+          onChanged();
+        } else {
+          laneDirectionsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public Builder setLaneDirections(
+          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Builder builderForValue) {
+        if (laneDirectionsBuilder_ == null) {
+          ensureLaneDirectionsIsMutable();
+          laneDirections_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          laneDirectionsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public Builder addLaneDirections(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection value) {
+        if (laneDirectionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLaneDirectionsIsMutable();
+          laneDirections_.add(value);
+          onChanged();
+        } else {
+          laneDirectionsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public Builder addLaneDirections(
+          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection value) {
+        if (laneDirectionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLaneDirectionsIsMutable();
+          laneDirections_.add(index, value);
+          onChanged();
+        } else {
+          laneDirectionsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public Builder addLaneDirections(
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Builder builderForValue) {
+        if (laneDirectionsBuilder_ == null) {
+          ensureLaneDirectionsIsMutable();
+          laneDirections_.add(builderForValue.build());
+          onChanged();
+        } else {
+          laneDirectionsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public Builder addLaneDirections(
+          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Builder builderForValue) {
+        if (laneDirectionsBuilder_ == null) {
+          ensureLaneDirectionsIsMutable();
+          laneDirections_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          laneDirectionsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public Builder addAllLaneDirections(
+          java.lang.Iterable<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection> values) {
+        if (laneDirectionsBuilder_ == null) {
+          ensureLaneDirectionsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, laneDirections_);
+          onChanged();
+        } else {
+          laneDirectionsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public Builder clearLaneDirections() {
+        if (laneDirectionsBuilder_ == null) {
+          laneDirections_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          laneDirectionsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public Builder removeLaneDirections(int index) {
+        if (laneDirectionsBuilder_ == null) {
+          ensureLaneDirectionsIsMutable();
+          laneDirections_.remove(index);
+          onChanged();
+        } else {
+          laneDirectionsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Builder getLaneDirectionsBuilder(
+          int index) {
+        return getLaneDirectionsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirectionOrBuilder getLaneDirectionsOrBuilder(
+          int index) {
+        if (laneDirectionsBuilder_ == null) {
+          return laneDirections_.get(index);  } else {
+          return laneDirectionsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirectionOrBuilder> 
+           getLaneDirectionsOrBuilderList() {
+        if (laneDirectionsBuilder_ != null) {
+          return laneDirectionsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(laneDirections_);
+        }
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Builder addLaneDirectionsBuilder() {
+        return getLaneDirectionsFieldBuilder().addBuilder(
+            com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Builder addLaneDirectionsBuilder(
+          int index) {
+        return getLaneDirectionsFieldBuilder().addBuilder(
+            index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane.LaneDirection lane_directions = 1;</code>
+       */
+      public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Builder> 
+           getLaneDirectionsBuilderList() {
+        return getLaneDirectionsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirectionOrBuilder> 
+          getLaneDirectionsFieldBuilder() {
+        if (laneDirectionsBuilder_ == null) {
+          laneDirectionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirection.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane.LaneDirectionOrBuilder>(
+                  laneDirections_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          laneDirections_ = null;
+        }
+        return laneDirectionsBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationLane)
+    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane();
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationLane>
+        PARSER = new com.google.protobuf.AbstractParser<NavigationLane>() {
+      @java.lang.Override
+      public NavigationLane parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<NavigationLane> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NavigationLane> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationLane getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface NavigationDestinationOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination)
       com.google.protobuf.MessageOrBuilder {
@@ -8108,2808 +10478,6 @@ public final class NavigationStatus {
 
     @java.lang.Override
     public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface NavigationStateOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationState)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-     */
-    java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep> 
-        getStepsList();
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-     */
-    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep getSteps(int index);
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-     */
-    int getStepsCount();
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-     */
-    java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder> 
-        getStepsOrBuilderList();
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-     */
-    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder getStepsOrBuilder(
-        int index);
-
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-     */
-    java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination> 
-        getDestinationsList();
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-     */
-    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination getDestinations(int index);
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-     */
-    int getDestinationsCount();
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-     */
-    java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder> 
-        getDestinationsOrBuilderList();
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-     */
-    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder getDestinationsOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationState}
-   */
-  public static final class NavigationState extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationState)
-      NavigationStateOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use NavigationState.newBuilder() to construct.
-    private NavigationState(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private NavigationState() {
-      steps_ = java.util.Collections.emptyList();
-      destinations_ = java.util.Collections.emptyList();
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new NavigationState();
-    }
-
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationState_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationState_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState.Builder.class);
-    }
-
-    public static final int STEPS_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep> steps_;
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-     */
-    @java.lang.Override
-    public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep> getStepsList() {
-      return steps_;
-    }
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-     */
-    @java.lang.Override
-    public java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder> 
-        getStepsOrBuilderList() {
-      return steps_;
-    }
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-     */
-    @java.lang.Override
-    public int getStepsCount() {
-      return steps_.size();
-    }
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-     */
-    @java.lang.Override
-    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep getSteps(int index) {
-      return steps_.get(index);
-    }
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-     */
-    @java.lang.Override
-    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder getStepsOrBuilder(
-        int index) {
-      return steps_.get(index);
-    }
-
-    public static final int DESTINATIONS_FIELD_NUMBER = 2;
-    @SuppressWarnings("serial")
-    private java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination> destinations_;
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-     */
-    @java.lang.Override
-    public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination> getDestinationsList() {
-      return destinations_;
-    }
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-     */
-    @java.lang.Override
-    public java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder> 
-        getDestinationsOrBuilderList() {
-      return destinations_;
-    }
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-     */
-    @java.lang.Override
-    public int getDestinationsCount() {
-      return destinations_.size();
-    }
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-     */
-    @java.lang.Override
-    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination getDestinations(int index) {
-      return destinations_.get(index);
-    }
-    /**
-     * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-     */
-    @java.lang.Override
-    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder getDestinationsOrBuilder(
-        int index) {
-      return destinations_.get(index);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      for (int i = 0; i < steps_.size(); i++) {
-        output.writeMessage(1, steps_.get(i));
-      }
-      for (int i = 0; i < destinations_.size(); i++) {
-        output.writeMessage(2, destinations_.get(i));
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      for (int i = 0; i < steps_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, steps_.get(i));
-      }
-      for (int i = 0; i < destinations_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, destinations_.get(i));
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState)) {
-        return super.equals(obj);
-      }
-      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState) obj;
-
-      if (!getStepsList()
-          .equals(other.getStepsList())) return false;
-      if (!getDestinationsList()
-          .equals(other.getDestinationsList())) return false;
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (getStepsCount() > 0) {
-        hash = (37 * hash) + STEPS_FIELD_NUMBER;
-        hash = (53 * hash) + getStepsList().hashCode();
-      }
-      if (getDestinationsCount() > 0) {
-        hash = (37 * hash) + DESTINATIONS_FIELD_NUMBER;
-        hash = (53 * hash) + getDestinationsList().hashCode();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationState}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationState)
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStateOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationState_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationState_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState.Builder.class);
-      }
-
-      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        if (stepsBuilder_ == null) {
-          steps_ = java.util.Collections.emptyList();
-        } else {
-          steps_ = null;
-          stepsBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (destinationsBuilder_ == null) {
-          destinations_ = java.util.Collections.emptyList();
-        } else {
-          destinations_ = null;
-          destinationsBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationState_descriptor;
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState getDefaultInstanceForType() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState build() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState buildPartial() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState(this);
-        buildPartialRepeatedFields(result);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartialRepeatedFields(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState result) {
-        if (stepsBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0)) {
-            steps_ = java.util.Collections.unmodifiableList(steps_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.steps_ = steps_;
-        } else {
-          result.steps_ = stepsBuilder_.build();
-        }
-        if (destinationsBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0)) {
-            destinations_ = java.util.Collections.unmodifiableList(destinations_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.destinations_ = destinations_;
-        } else {
-          result.destinations_ = destinationsBuilder_.build();
-        }
-      }
-
-      private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState result) {
-        int from_bitField0_ = bitField0_;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState) {
-          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState other) {
-        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState.getDefaultInstance()) return this;
-        if (stepsBuilder_ == null) {
-          if (!other.steps_.isEmpty()) {
-            if (steps_.isEmpty()) {
-              steps_ = other.steps_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureStepsIsMutable();
-              steps_.addAll(other.steps_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.steps_.isEmpty()) {
-            if (stepsBuilder_.isEmpty()) {
-              stepsBuilder_.dispose();
-              stepsBuilder_ = null;
-              steps_ = other.steps_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              stepsBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getStepsFieldBuilder() : null;
-            } else {
-              stepsBuilder_.addAllMessages(other.steps_);
-            }
-          }
-        }
-        if (destinationsBuilder_ == null) {
-          if (!other.destinations_.isEmpty()) {
-            if (destinations_.isEmpty()) {
-              destinations_ = other.destinations_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureDestinationsIsMutable();
-              destinations_.addAll(other.destinations_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.destinations_.isEmpty()) {
-            if (destinationsBuilder_.isEmpty()) {
-              destinationsBuilder_.dispose();
-              destinationsBuilder_ = null;
-              destinations_ = other.destinations_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              destinationsBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getDestinationsFieldBuilder() : null;
-            } else {
-              destinationsBuilder_.addAllMessages(other.destinations_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep m =
-                    input.readMessage(
-                        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.PARSER,
-                        extensionRegistry);
-                if (stepsBuilder_ == null) {
-                  ensureStepsIsMutable();
-                  steps_.add(m);
-                } else {
-                  stepsBuilder_.addMessage(m);
-                }
-                break;
-              } // case 10
-              case 18: {
-                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination m =
-                    input.readMessage(
-                        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.PARSER,
-                        extensionRegistry);
-                if (destinationsBuilder_ == null) {
-                  ensureDestinationsIsMutable();
-                  destinations_.add(m);
-                } else {
-                  destinationsBuilder_.addMessage(m);
-                }
-                break;
-              } // case 18
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
-
-      private java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep> steps_ =
-        java.util.Collections.emptyList();
-      private void ensureStepsIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          steps_ = new java.util.ArrayList<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep>(steps_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder> stepsBuilder_;
-
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep> getStepsList() {
-        if (stepsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(steps_);
-        } else {
-          return stepsBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public int getStepsCount() {
-        if (stepsBuilder_ == null) {
-          return steps_.size();
-        } else {
-          return stepsBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep getSteps(int index) {
-        if (stepsBuilder_ == null) {
-          return steps_.get(index);
-        } else {
-          return stepsBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public Builder setSteps(
-          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep value) {
-        if (stepsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStepsIsMutable();
-          steps_.set(index, value);
-          onChanged();
-        } else {
-          stepsBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public Builder setSteps(
-          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder builderForValue) {
-        if (stepsBuilder_ == null) {
-          ensureStepsIsMutable();
-          steps_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          stepsBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public Builder addSteps(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep value) {
-        if (stepsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStepsIsMutable();
-          steps_.add(value);
-          onChanged();
-        } else {
-          stepsBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public Builder addSteps(
-          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep value) {
-        if (stepsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStepsIsMutable();
-          steps_.add(index, value);
-          onChanged();
-        } else {
-          stepsBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public Builder addSteps(
-          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder builderForValue) {
-        if (stepsBuilder_ == null) {
-          ensureStepsIsMutable();
-          steps_.add(builderForValue.build());
-          onChanged();
-        } else {
-          stepsBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public Builder addSteps(
-          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder builderForValue) {
-        if (stepsBuilder_ == null) {
-          ensureStepsIsMutable();
-          steps_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          stepsBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public Builder addAllSteps(
-          java.lang.Iterable<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep> values) {
-        if (stepsBuilder_ == null) {
-          ensureStepsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, steps_);
-          onChanged();
-        } else {
-          stepsBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public Builder clearSteps() {
-        if (stepsBuilder_ == null) {
-          steps_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          stepsBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public Builder removeSteps(int index) {
-        if (stepsBuilder_ == null) {
-          ensureStepsIsMutable();
-          steps_.remove(index);
-          onChanged();
-        } else {
-          stepsBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder getStepsBuilder(
-          int index) {
-        return getStepsFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder getStepsOrBuilder(
-          int index) {
-        if (stepsBuilder_ == null) {
-          return steps_.get(index);  } else {
-          return stepsBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder> 
-           getStepsOrBuilderList() {
-        if (stepsBuilder_ != null) {
-          return stepsBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(steps_);
-        }
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder addStepsBuilder() {
-        return getStepsFieldBuilder().addBuilder(
-            com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder addStepsBuilder(
-          int index) {
-        return getStepsFieldBuilder().addBuilder(
-            index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStep steps = 1;</code>
-       */
-      public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder> 
-           getStepsBuilderList() {
-        return getStepsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder> 
-          getStepsFieldBuilder() {
-        if (stepsBuilder_ == null) {
-          stepsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStep.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepOrBuilder>(
-                  steps_,
-                  ((bitField0_ & 0x00000001) != 0),
-                  getParentForChildren(),
-                  isClean());
-          steps_ = null;
-        }
-        return stepsBuilder_;
-      }
-
-      private java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination> destinations_ =
-        java.util.Collections.emptyList();
-      private void ensureDestinationsIsMutable() {
-        if (!((bitField0_ & 0x00000002) != 0)) {
-          destinations_ = new java.util.ArrayList<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination>(destinations_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder> destinationsBuilder_;
-
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination> getDestinationsList() {
-        if (destinationsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(destinations_);
-        } else {
-          return destinationsBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public int getDestinationsCount() {
-        if (destinationsBuilder_ == null) {
-          return destinations_.size();
-        } else {
-          return destinationsBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination getDestinations(int index) {
-        if (destinationsBuilder_ == null) {
-          return destinations_.get(index);
-        } else {
-          return destinationsBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public Builder setDestinations(
-          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination value) {
-        if (destinationsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureDestinationsIsMutable();
-          destinations_.set(index, value);
-          onChanged();
-        } else {
-          destinationsBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public Builder setDestinations(
-          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder builderForValue) {
-        if (destinationsBuilder_ == null) {
-          ensureDestinationsIsMutable();
-          destinations_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          destinationsBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public Builder addDestinations(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination value) {
-        if (destinationsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureDestinationsIsMutable();
-          destinations_.add(value);
-          onChanged();
-        } else {
-          destinationsBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public Builder addDestinations(
-          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination value) {
-        if (destinationsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureDestinationsIsMutable();
-          destinations_.add(index, value);
-          onChanged();
-        } else {
-          destinationsBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public Builder addDestinations(
-          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder builderForValue) {
-        if (destinationsBuilder_ == null) {
-          ensureDestinationsIsMutable();
-          destinations_.add(builderForValue.build());
-          onChanged();
-        } else {
-          destinationsBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public Builder addDestinations(
-          int index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder builderForValue) {
-        if (destinationsBuilder_ == null) {
-          ensureDestinationsIsMutable();
-          destinations_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          destinationsBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public Builder addAllDestinations(
-          java.lang.Iterable<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination> values) {
-        if (destinationsBuilder_ == null) {
-          ensureDestinationsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, destinations_);
-          onChanged();
-        } else {
-          destinationsBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public Builder clearDestinations() {
-        if (destinationsBuilder_ == null) {
-          destinations_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-        } else {
-          destinationsBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public Builder removeDestinations(int index) {
-        if (destinationsBuilder_ == null) {
-          ensureDestinationsIsMutable();
-          destinations_.remove(index);
-          onChanged();
-        } else {
-          destinationsBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder getDestinationsBuilder(
-          int index) {
-        return getDestinationsFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder getDestinationsOrBuilder(
-          int index) {
-        if (destinationsBuilder_ == null) {
-          return destinations_.get(index);  } else {
-          return destinationsBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public java.util.List<? extends com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder> 
-           getDestinationsOrBuilderList() {
-        if (destinationsBuilder_ != null) {
-          return destinationsBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(destinations_);
-        }
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder addDestinationsBuilder() {
-        return getDestinationsFieldBuilder().addBuilder(
-            com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder addDestinationsBuilder(
-          int index) {
-        return getDestinationsFieldBuilder().addBuilder(
-            index, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestination destinations = 2;</code>
-       */
-      public java.util.List<com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder> 
-           getDestinationsBuilderList() {
-        return getDestinationsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder> 
-          getDestinationsFieldBuilder() {
-        if (destinationsBuilder_ == null) {
-          destinationsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestination.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationOrBuilder>(
-                  destinations_,
-                  ((bitField0_ & 0x00000002) != 0),
-                  getParentForChildren(),
-                  isClean());
-          destinations_ = null;
-        }
-        return destinationsBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationState)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationState)
-    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState();
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationState>
-        PARSER = new com.google.protobuf.AbstractParser<NavigationState>() {
-      @java.lang.Override
-      public NavigationState parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<NavigationState> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<NavigationState> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationState getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface NavigationStepDistanceOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStepDistance)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>optional double distance_m = 1;</code>
-     * @return Whether the distanceM field is set.
-     */
-    boolean hasDistanceM();
-    /**
-     * <code>optional double distance_m = 1;</code>
-     * @return The distanceM.
-     */
-    double getDistanceM();
-
-    /**
-     * <code>optional string distance_text = 2;</code>
-     * @return Whether the distanceText field is set.
-     */
-    boolean hasDistanceText();
-    /**
-     * <code>optional string distance_text = 2;</code>
-     * @return The distanceText.
-     */
-    java.lang.String getDistanceText();
-    /**
-     * <code>optional string distance_text = 2;</code>
-     * @return The bytes for distanceText.
-     */
-    com.google.protobuf.ByteString
-        getDistanceTextBytes();
-  }
-  /**
-   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStepDistance}
-   */
-  public static final class NavigationStepDistance extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStepDistance)
-      NavigationStepDistanceOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use NavigationStepDistance.newBuilder() to construct.
-    private NavigationStepDistance(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private NavigationStepDistance() {
-      distanceText_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new NavigationStepDistance();
-    }
-
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStepDistance_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStepDistance_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int DISTANCE_M_FIELD_NUMBER = 1;
-    private double distanceM_ = 0D;
-    /**
-     * <code>optional double distance_m = 1;</code>
-     * @return Whether the distanceM field is set.
-     */
-    @java.lang.Override
-    public boolean hasDistanceM() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional double distance_m = 1;</code>
-     * @return The distanceM.
-     */
-    @java.lang.Override
-    public double getDistanceM() {
-      return distanceM_;
-    }
-
-    public static final int DISTANCE_TEXT_FIELD_NUMBER = 2;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object distanceText_ = "";
-    /**
-     * <code>optional string distance_text = 2;</code>
-     * @return Whether the distanceText field is set.
-     */
-    @java.lang.Override
-    public boolean hasDistanceText() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>optional string distance_text = 2;</code>
-     * @return The distanceText.
-     */
-    @java.lang.Override
-    public java.lang.String getDistanceText() {
-      java.lang.Object ref = distanceText_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          distanceText_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string distance_text = 2;</code>
-     * @return The bytes for distanceText.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getDistanceTextBytes() {
-      java.lang.Object ref = distanceText_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        distanceText_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeDouble(1, distanceM_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, distanceText_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(1, distanceM_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, distanceText_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance)) {
-        return super.equals(obj);
-      }
-      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance) obj;
-
-      if (hasDistanceM() != other.hasDistanceM()) return false;
-      if (hasDistanceM()) {
-        if (java.lang.Double.doubleToLongBits(getDistanceM())
-            != java.lang.Double.doubleToLongBits(
-                other.getDistanceM())) return false;
-      }
-      if (hasDistanceText() != other.hasDistanceText()) return false;
-      if (hasDistanceText()) {
-        if (!getDistanceText()
-            .equals(other.getDistanceText())) return false;
-      }
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasDistanceM()) {
-        hash = (37 * hash) + DISTANCE_M_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            java.lang.Double.doubleToLongBits(getDistanceM()));
-      }
-      if (hasDistanceText()) {
-        hash = (37 * hash) + DISTANCE_TEXT_FIELD_NUMBER;
-        hash = (53 * hash) + getDistanceText().hashCode();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStepDistance}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStepDistance)
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistanceOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStepDistance_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStepDistance_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance.Builder.class);
-      }
-
-      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        distanceM_ = 0D;
-        distanceText_ = "";
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStepDistance_descriptor;
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance getDefaultInstanceForType() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance build() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance buildPartial() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance result) {
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.distanceM_ = distanceM_;
-          to_bitField0_ |= 0x00000001;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.distanceText_ = distanceText_;
-          to_bitField0_ |= 0x00000002;
-        }
-        result.bitField0_ |= to_bitField0_;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance) {
-          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance other) {
-        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance.getDefaultInstance()) return this;
-        if (other.hasDistanceM()) {
-          setDistanceM(other.getDistanceM());
-        }
-        if (other.hasDistanceText()) {
-          distanceText_ = other.distanceText_;
-          bitField0_ |= 0x00000002;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 9: {
-                distanceM_ = input.readDouble();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 9
-              case 18: {
-                distanceText_ = input.readBytes();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 18
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
-
-      private double distanceM_ ;
-      /**
-       * <code>optional double distance_m = 1;</code>
-       * @return Whether the distanceM field is set.
-       */
-      @java.lang.Override
-      public boolean hasDistanceM() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>optional double distance_m = 1;</code>
-       * @return The distanceM.
-       */
-      @java.lang.Override
-      public double getDistanceM() {
-        return distanceM_;
-      }
-      /**
-       * <code>optional double distance_m = 1;</code>
-       * @param value The distanceM to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDistanceM(double value) {
-
-        distanceM_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional double distance_m = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearDistanceM() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        distanceM_ = 0D;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object distanceText_ = "";
-      /**
-       * <code>optional string distance_text = 2;</code>
-       * @return Whether the distanceText field is set.
-       */
-      public boolean hasDistanceText() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>optional string distance_text = 2;</code>
-       * @return The distanceText.
-       */
-      public java.lang.String getDistanceText() {
-        java.lang.Object ref = distanceText_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            distanceText_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string distance_text = 2;</code>
-       * @return The bytes for distanceText.
-       */
-      public com.google.protobuf.ByteString
-          getDistanceTextBytes() {
-        java.lang.Object ref = distanceText_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          distanceText_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string distance_text = 2;</code>
-       * @param value The distanceText to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDistanceText(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        distanceText_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string distance_text = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearDistanceText() {
-        distanceText_ = getDefaultInstance().getDistanceText();
-        bitField0_ = (bitField0_ & ~0x00000002);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string distance_text = 2;</code>
-       * @param value The bytes for distanceText to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDistanceTextBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        distanceText_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStepDistance)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStepDistance)
-    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance();
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationStepDistance>
-        PARSER = new com.google.protobuf.AbstractParser<NavigationStepDistance>() {
-      @java.lang.Override
-      public NavigationStepDistance parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<NavigationStepDistance> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<NavigationStepDistance> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface NavigationDestinationDistanceOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestinationDistance)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>optional double distance_m = 1;</code>
-     * @return Whether the distanceM field is set.
-     */
-    boolean hasDistanceM();
-    /**
-     * <code>optional double distance_m = 1;</code>
-     * @return The distanceM.
-     */
-    double getDistanceM();
-
-    /**
-     * <code>optional string distance_text = 2;</code>
-     * @return Whether the distanceText field is set.
-     */
-    boolean hasDistanceText();
-    /**
-     * <code>optional string distance_text = 2;</code>
-     * @return The distanceText.
-     */
-    java.lang.String getDistanceText();
-    /**
-     * <code>optional string distance_text = 2;</code>
-     * @return The bytes for distanceText.
-     */
-    com.google.protobuf.ByteString
-        getDistanceTextBytes();
-
-    /**
-     * <code>optional string arrival_time_text = 3;</code>
-     * @return Whether the arrivalTimeText field is set.
-     */
-    boolean hasArrivalTimeText();
-    /**
-     * <code>optional string arrival_time_text = 3;</code>
-     * @return The arrivalTimeText.
-     */
-    java.lang.String getArrivalTimeText();
-    /**
-     * <code>optional string arrival_time_text = 3;</code>
-     * @return The bytes for arrivalTimeText.
-     */
-    com.google.protobuf.ByteString
-        getArrivalTimeTextBytes();
-
-    /**
-     * <code>optional int32 time_to_arrival_s = 4;</code>
-     * @return Whether the timeToArrivalS field is set.
-     */
-    boolean hasTimeToArrivalS();
-    /**
-     * <code>optional int32 time_to_arrival_s = 4;</code>
-     * @return The timeToArrivalS.
-     */
-    int getTimeToArrivalS();
-  }
-  /**
-   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestinationDistance}
-   */
-  public static final class NavigationDestinationDistance extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestinationDistance)
-      NavigationDestinationDistanceOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use NavigationDestinationDistance.newBuilder() to construct.
-    private NavigationDestinationDistance(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private NavigationDestinationDistance() {
-      distanceText_ = "";
-      arrivalTimeText_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new NavigationDestinationDistance();
-    }
-
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestinationDistance_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestinationDistance_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int DISTANCE_M_FIELD_NUMBER = 1;
-    private double distanceM_ = 0D;
-    /**
-     * <code>optional double distance_m = 1;</code>
-     * @return Whether the distanceM field is set.
-     */
-    @java.lang.Override
-    public boolean hasDistanceM() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional double distance_m = 1;</code>
-     * @return The distanceM.
-     */
-    @java.lang.Override
-    public double getDistanceM() {
-      return distanceM_;
-    }
-
-    public static final int DISTANCE_TEXT_FIELD_NUMBER = 2;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object distanceText_ = "";
-    /**
-     * <code>optional string distance_text = 2;</code>
-     * @return Whether the distanceText field is set.
-     */
-    @java.lang.Override
-    public boolean hasDistanceText() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>optional string distance_text = 2;</code>
-     * @return The distanceText.
-     */
-    @java.lang.Override
-    public java.lang.String getDistanceText() {
-      java.lang.Object ref = distanceText_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          distanceText_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string distance_text = 2;</code>
-     * @return The bytes for distanceText.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getDistanceTextBytes() {
-      java.lang.Object ref = distanceText_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        distanceText_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int ARRIVAL_TIME_TEXT_FIELD_NUMBER = 3;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object arrivalTimeText_ = "";
-    /**
-     * <code>optional string arrival_time_text = 3;</code>
-     * @return Whether the arrivalTimeText field is set.
-     */
-    @java.lang.Override
-    public boolean hasArrivalTimeText() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-    /**
-     * <code>optional string arrival_time_text = 3;</code>
-     * @return The arrivalTimeText.
-     */
-    @java.lang.Override
-    public java.lang.String getArrivalTimeText() {
-      java.lang.Object ref = arrivalTimeText_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          arrivalTimeText_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string arrival_time_text = 3;</code>
-     * @return The bytes for arrivalTimeText.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getArrivalTimeTextBytes() {
-      java.lang.Object ref = arrivalTimeText_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        arrivalTimeText_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int TIME_TO_ARRIVAL_S_FIELD_NUMBER = 4;
-    private int timeToArrivalS_ = 0;
-    /**
-     * <code>optional int32 time_to_arrival_s = 4;</code>
-     * @return Whether the timeToArrivalS field is set.
-     */
-    @java.lang.Override
-    public boolean hasTimeToArrivalS() {
-      return ((bitField0_ & 0x00000008) != 0);
-    }
-    /**
-     * <code>optional int32 time_to_arrival_s = 4;</code>
-     * @return The timeToArrivalS.
-     */
-    @java.lang.Override
-    public int getTimeToArrivalS() {
-      return timeToArrivalS_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeDouble(1, distanceM_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, distanceText_);
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, arrivalTimeText_);
-      }
-      if (((bitField0_ & 0x00000008) != 0)) {
-        output.writeInt32(4, timeToArrivalS_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(1, distanceM_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, distanceText_);
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, arrivalTimeText_);
-      }
-      if (((bitField0_ & 0x00000008) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, timeToArrivalS_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance)) {
-        return super.equals(obj);
-      }
-      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance) obj;
-
-      if (hasDistanceM() != other.hasDistanceM()) return false;
-      if (hasDistanceM()) {
-        if (java.lang.Double.doubleToLongBits(getDistanceM())
-            != java.lang.Double.doubleToLongBits(
-                other.getDistanceM())) return false;
-      }
-      if (hasDistanceText() != other.hasDistanceText()) return false;
-      if (hasDistanceText()) {
-        if (!getDistanceText()
-            .equals(other.getDistanceText())) return false;
-      }
-      if (hasArrivalTimeText() != other.hasArrivalTimeText()) return false;
-      if (hasArrivalTimeText()) {
-        if (!getArrivalTimeText()
-            .equals(other.getArrivalTimeText())) return false;
-      }
-      if (hasTimeToArrivalS() != other.hasTimeToArrivalS()) return false;
-      if (hasTimeToArrivalS()) {
-        if (getTimeToArrivalS()
-            != other.getTimeToArrivalS()) return false;
-      }
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasDistanceM()) {
-        hash = (37 * hash) + DISTANCE_M_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            java.lang.Double.doubleToLongBits(getDistanceM()));
-      }
-      if (hasDistanceText()) {
-        hash = (37 * hash) + DISTANCE_TEXT_FIELD_NUMBER;
-        hash = (53 * hash) + getDistanceText().hashCode();
-      }
-      if (hasArrivalTimeText()) {
-        hash = (37 * hash) + ARRIVAL_TIME_TEXT_FIELD_NUMBER;
-        hash = (53 * hash) + getArrivalTimeText().hashCode();
-      }
-      if (hasTimeToArrivalS()) {
-        hash = (37 * hash) + TIME_TO_ARRIVAL_S_FIELD_NUMBER;
-        hash = (53 * hash) + getTimeToArrivalS();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestinationDistance}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestinationDistance)
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistanceOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestinationDistance_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestinationDistance_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance.Builder.class);
-      }
-
-      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        distanceM_ = 0D;
-        distanceText_ = "";
-        arrivalTimeText_ = "";
-        timeToArrivalS_ = 0;
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestinationDistance_descriptor;
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance getDefaultInstanceForType() {
-        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance build() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance buildPartial() {
-        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance result) {
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.distanceM_ = distanceM_;
-          to_bitField0_ |= 0x00000001;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.distanceText_ = distanceText_;
-          to_bitField0_ |= 0x00000002;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.arrivalTimeText_ = arrivalTimeText_;
-          to_bitField0_ |= 0x00000004;
-        }
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.timeToArrivalS_ = timeToArrivalS_;
-          to_bitField0_ |= 0x00000008;
-        }
-        result.bitField0_ |= to_bitField0_;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance) {
-          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance other) {
-        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance.getDefaultInstance()) return this;
-        if (other.hasDistanceM()) {
-          setDistanceM(other.getDistanceM());
-        }
-        if (other.hasDistanceText()) {
-          distanceText_ = other.distanceText_;
-          bitField0_ |= 0x00000002;
-          onChanged();
-        }
-        if (other.hasArrivalTimeText()) {
-          arrivalTimeText_ = other.arrivalTimeText_;
-          bitField0_ |= 0x00000004;
-          onChanged();
-        }
-        if (other.hasTimeToArrivalS()) {
-          setTimeToArrivalS(other.getTimeToArrivalS());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 9: {
-                distanceM_ = input.readDouble();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 9
-              case 18: {
-                distanceText_ = input.readBytes();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 18
-              case 26: {
-                arrivalTimeText_ = input.readBytes();
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 26
-              case 32: {
-                timeToArrivalS_ = input.readInt32();
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 32
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
-
-      private double distanceM_ ;
-      /**
-       * <code>optional double distance_m = 1;</code>
-       * @return Whether the distanceM field is set.
-       */
-      @java.lang.Override
-      public boolean hasDistanceM() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>optional double distance_m = 1;</code>
-       * @return The distanceM.
-       */
-      @java.lang.Override
-      public double getDistanceM() {
-        return distanceM_;
-      }
-      /**
-       * <code>optional double distance_m = 1;</code>
-       * @param value The distanceM to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDistanceM(double value) {
-
-        distanceM_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional double distance_m = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearDistanceM() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        distanceM_ = 0D;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object distanceText_ = "";
-      /**
-       * <code>optional string distance_text = 2;</code>
-       * @return Whether the distanceText field is set.
-       */
-      public boolean hasDistanceText() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>optional string distance_text = 2;</code>
-       * @return The distanceText.
-       */
-      public java.lang.String getDistanceText() {
-        java.lang.Object ref = distanceText_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            distanceText_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string distance_text = 2;</code>
-       * @return The bytes for distanceText.
-       */
-      public com.google.protobuf.ByteString
-          getDistanceTextBytes() {
-        java.lang.Object ref = distanceText_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          distanceText_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string distance_text = 2;</code>
-       * @param value The distanceText to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDistanceText(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        distanceText_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string distance_text = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearDistanceText() {
-        distanceText_ = getDefaultInstance().getDistanceText();
-        bitField0_ = (bitField0_ & ~0x00000002);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string distance_text = 2;</code>
-       * @param value The bytes for distanceText to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDistanceTextBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        distanceText_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object arrivalTimeText_ = "";
-      /**
-       * <code>optional string arrival_time_text = 3;</code>
-       * @return Whether the arrivalTimeText field is set.
-       */
-      public boolean hasArrivalTimeText() {
-        return ((bitField0_ & 0x00000004) != 0);
-      }
-      /**
-       * <code>optional string arrival_time_text = 3;</code>
-       * @return The arrivalTimeText.
-       */
-      public java.lang.String getArrivalTimeText() {
-        java.lang.Object ref = arrivalTimeText_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            arrivalTimeText_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string arrival_time_text = 3;</code>
-       * @return The bytes for arrivalTimeText.
-       */
-      public com.google.protobuf.ByteString
-          getArrivalTimeTextBytes() {
-        java.lang.Object ref = arrivalTimeText_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          arrivalTimeText_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string arrival_time_text = 3;</code>
-       * @param value The arrivalTimeText to set.
-       * @return This builder for chaining.
-       */
-      public Builder setArrivalTimeText(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        arrivalTimeText_ = value;
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string arrival_time_text = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearArrivalTimeText() {
-        arrivalTimeText_ = getDefaultInstance().getArrivalTimeText();
-        bitField0_ = (bitField0_ & ~0x00000004);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string arrival_time_text = 3;</code>
-       * @param value The bytes for arrivalTimeText to set.
-       * @return This builder for chaining.
-       */
-      public Builder setArrivalTimeTextBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        arrivalTimeText_ = value;
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return this;
-      }
-
-      private int timeToArrivalS_ ;
-      /**
-       * <code>optional int32 time_to_arrival_s = 4;</code>
-       * @return Whether the timeToArrivalS field is set.
-       */
-      @java.lang.Override
-      public boolean hasTimeToArrivalS() {
-        return ((bitField0_ & 0x00000008) != 0);
-      }
-      /**
-       * <code>optional int32 time_to_arrival_s = 4;</code>
-       * @return The timeToArrivalS.
-       */
-      @java.lang.Override
-      public int getTimeToArrivalS() {
-        return timeToArrivalS_;
-      }
-      /**
-       * <code>optional int32 time_to_arrival_s = 4;</code>
-       * @param value The timeToArrivalS to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTimeToArrivalS(int value) {
-
-        timeToArrivalS_ = value;
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 time_to_arrival_s = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTimeToArrivalS() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        timeToArrivalS_ = 0;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestinationDistance)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestinationDistance)
-    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance();
-    }
-
-    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationDestinationDistance>
-        PARSER = new com.google.protobuf.AbstractParser<NavigationDestinationDistance>() {
-      @java.lang.Override
-      public NavigationDestinationDistance parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<NavigationDestinationDistance> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<NavigationDestinationDistance> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -12106,6 +11674,3146 @@ public final class NavigationStatus {
 
   }
 
+  public interface NavigationStepDistanceOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStepDistance)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+     * @return Whether the distance field is set.
+     */
+    boolean hasDistance();
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+     * @return The distance.
+     */
+    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance getDistance();
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+     */
+    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistanceOrBuilder getDistanceOrBuilder();
+
+    /**
+     * <code>optional int64 time_to_step_seconds = 2;</code>
+     * @return Whether the timeToStepSeconds field is set.
+     */
+    boolean hasTimeToStepSeconds();
+    /**
+     * <code>optional int64 time_to_step_seconds = 2;</code>
+     * @return The timeToStepSeconds.
+     */
+    long getTimeToStepSeconds();
+  }
+  /**
+   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStepDistance}
+   */
+  public static final class NavigationStepDistance extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStepDistance)
+      NavigationStepDistanceOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use NavigationStepDistance.newBuilder() to construct.
+    private NavigationStepDistance(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NavigationStepDistance() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NavigationStepDistance();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStepDistance_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStepDistance_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int DISTANCE_FIELD_NUMBER = 1;
+    private com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance distance_;
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+     * @return Whether the distance field is set.
+     */
+    @java.lang.Override
+    public boolean hasDistance() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+     * @return The distance.
+     */
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance getDistance() {
+      return distance_ == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.getDefaultInstance() : distance_;
+    }
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+     */
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistanceOrBuilder getDistanceOrBuilder() {
+      return distance_ == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.getDefaultInstance() : distance_;
+    }
+
+    public static final int TIME_TO_STEP_SECONDS_FIELD_NUMBER = 2;
+    private long timeToStepSeconds_ = 0L;
+    /**
+     * <code>optional int64 time_to_step_seconds = 2;</code>
+     * @return Whether the timeToStepSeconds field is set.
+     */
+    @java.lang.Override
+    public boolean hasTimeToStepSeconds() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional int64 time_to_step_seconds = 2;</code>
+     * @return The timeToStepSeconds.
+     */
+    @java.lang.Override
+    public long getTimeToStepSeconds() {
+      return timeToStepSeconds_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(1, getDistance());
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeInt64(2, timeToStepSeconds_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getDistance());
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, timeToStepSeconds_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance)) {
+        return super.equals(obj);
+      }
+      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance) obj;
+
+      if (hasDistance() != other.hasDistance()) return false;
+      if (hasDistance()) {
+        if (!getDistance()
+            .equals(other.getDistance())) return false;
+      }
+      if (hasTimeToStepSeconds() != other.hasTimeToStepSeconds()) return false;
+      if (hasTimeToStepSeconds()) {
+        if (getTimeToStepSeconds()
+            != other.getTimeToStepSeconds()) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasDistance()) {
+        hash = (37 * hash) + DISTANCE_FIELD_NUMBER;
+        hash = (53 * hash) + getDistance().hashCode();
+      }
+      if (hasTimeToStepSeconds()) {
+        hash = (37 * hash) + TIME_TO_STEP_SECONDS_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getTimeToStepSeconds());
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStepDistance}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStepDistance)
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistanceOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStepDistance_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStepDistance_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance.Builder.class);
+      }
+
+      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getDistanceFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        distance_ = null;
+        if (distanceBuilder_ != null) {
+          distanceBuilder_.dispose();
+          distanceBuilder_ = null;
+        }
+        timeToStepSeconds_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStepDistance_descriptor;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance getDefaultInstanceForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance build() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance buildPartial() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.distance_ = distanceBuilder_ == null
+              ? distance_
+              : distanceBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.timeToStepSeconds_ = timeToStepSeconds_;
+          to_bitField0_ |= 0x00000002;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance) {
+          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance other) {
+        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance.getDefaultInstance()) return this;
+        if (other.hasDistance()) {
+          mergeDistance(other.getDistance());
+        }
+        if (other.hasTimeToStepSeconds()) {
+          setTimeToStepSeconds(other.getTimeToStepSeconds());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getDistanceFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                timeToStepSeconds_ = input.readInt64();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance distance_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistanceOrBuilder> distanceBuilder_;
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       * @return Whether the distance field is set.
+       */
+      public boolean hasDistance() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       * @return The distance.
+       */
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance getDistance() {
+        if (distanceBuilder_ == null) {
+          return distance_ == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.getDefaultInstance() : distance_;
+        } else {
+          return distanceBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       */
+      public Builder setDistance(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance value) {
+        if (distanceBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          distance_ = value;
+        } else {
+          distanceBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       */
+      public Builder setDistance(
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.Builder builderForValue) {
+        if (distanceBuilder_ == null) {
+          distance_ = builderForValue.build();
+        } else {
+          distanceBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       */
+      public Builder mergeDistance(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance value) {
+        if (distanceBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0) &&
+            distance_ != null &&
+            distance_ != com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.getDefaultInstance()) {
+            getDistanceBuilder().mergeFrom(value);
+          } else {
+            distance_ = value;
+          }
+        } else {
+          distanceBuilder_.mergeFrom(value);
+        }
+        if (distance_ != null) {
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       */
+      public Builder clearDistance() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        distance_ = null;
+        if (distanceBuilder_ != null) {
+          distanceBuilder_.dispose();
+          distanceBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       */
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.Builder getDistanceBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getDistanceFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       */
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistanceOrBuilder getDistanceOrBuilder() {
+        if (distanceBuilder_ != null) {
+          return distanceBuilder_.getMessageOrBuilder();
+        } else {
+          return distance_ == null ?
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.getDefaultInstance() : distance_;
+        }
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistanceOrBuilder> 
+          getDistanceFieldBuilder() {
+        if (distanceBuilder_ == null) {
+          distanceBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistanceOrBuilder>(
+                  getDistance(),
+                  getParentForChildren(),
+                  isClean());
+          distance_ = null;
+        }
+        return distanceBuilder_;
+      }
+
+      private long timeToStepSeconds_ ;
+      /**
+       * <code>optional int64 time_to_step_seconds = 2;</code>
+       * @return Whether the timeToStepSeconds field is set.
+       */
+      @java.lang.Override
+      public boolean hasTimeToStepSeconds() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>optional int64 time_to_step_seconds = 2;</code>
+       * @return The timeToStepSeconds.
+       */
+      @java.lang.Override
+      public long getTimeToStepSeconds() {
+        return timeToStepSeconds_;
+      }
+      /**
+       * <code>optional int64 time_to_step_seconds = 2;</code>
+       * @param value The timeToStepSeconds to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimeToStepSeconds(long value) {
+
+        timeToStepSeconds_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 time_to_step_seconds = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimeToStepSeconds() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        timeToStepSeconds_ = 0L;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStepDistance)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStepDistance)
+    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance();
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationStepDistance>
+        PARSER = new com.google.protobuf.AbstractParser<NavigationStepDistance>() {
+      @java.lang.Override
+      public NavigationStepDistance parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<NavigationStepDistance> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NavigationStepDistance> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationStepDistance getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface NavigationDestinationDistanceOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestinationDistance)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+     * @return Whether the distance field is set.
+     */
+    boolean hasDistance();
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+     * @return The distance.
+     */
+    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance getDistance();
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+     */
+    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistanceOrBuilder getDistanceOrBuilder();
+
+    /**
+     * <code>optional string estimated_time_at_arrival = 2;</code>
+     * @return Whether the estimatedTimeAtArrival field is set.
+     */
+    boolean hasEstimatedTimeAtArrival();
+    /**
+     * <code>optional string estimated_time_at_arrival = 2;</code>
+     * @return The estimatedTimeAtArrival.
+     */
+    java.lang.String getEstimatedTimeAtArrival();
+    /**
+     * <code>optional string estimated_time_at_arrival = 2;</code>
+     * @return The bytes for estimatedTimeAtArrival.
+     */
+    com.google.protobuf.ByteString
+        getEstimatedTimeAtArrivalBytes();
+
+    /**
+     * <code>optional int64 time_to_arrival_seconds = 3;</code>
+     * @return Whether the timeToArrivalSeconds field is set.
+     */
+    boolean hasTimeToArrivalSeconds();
+    /**
+     * <code>optional int64 time_to_arrival_seconds = 3;</code>
+     * @return The timeToArrivalSeconds.
+     */
+    long getTimeToArrivalSeconds();
+  }
+  /**
+   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestinationDistance}
+   */
+  public static final class NavigationDestinationDistance extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestinationDistance)
+      NavigationDestinationDistanceOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use NavigationDestinationDistance.newBuilder() to construct.
+    private NavigationDestinationDistance(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NavigationDestinationDistance() {
+      estimatedTimeAtArrival_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NavigationDestinationDistance();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestinationDistance_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestinationDistance_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int DISTANCE_FIELD_NUMBER = 1;
+    private com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance distance_;
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+     * @return Whether the distance field is set.
+     */
+    @java.lang.Override
+    public boolean hasDistance() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+     * @return The distance.
+     */
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance getDistance() {
+      return distance_ == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.getDefaultInstance() : distance_;
+    }
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+     */
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistanceOrBuilder getDistanceOrBuilder() {
+      return distance_ == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.getDefaultInstance() : distance_;
+    }
+
+    public static final int ESTIMATED_TIME_AT_ARRIVAL_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object estimatedTimeAtArrival_ = "";
+    /**
+     * <code>optional string estimated_time_at_arrival = 2;</code>
+     * @return Whether the estimatedTimeAtArrival field is set.
+     */
+    @java.lang.Override
+    public boolean hasEstimatedTimeAtArrival() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional string estimated_time_at_arrival = 2;</code>
+     * @return The estimatedTimeAtArrival.
+     */
+    @java.lang.Override
+    public java.lang.String getEstimatedTimeAtArrival() {
+      java.lang.Object ref = estimatedTimeAtArrival_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          estimatedTimeAtArrival_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string estimated_time_at_arrival = 2;</code>
+     * @return The bytes for estimatedTimeAtArrival.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getEstimatedTimeAtArrivalBytes() {
+      java.lang.Object ref = estimatedTimeAtArrival_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        estimatedTimeAtArrival_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIME_TO_ARRIVAL_SECONDS_FIELD_NUMBER = 3;
+    private long timeToArrivalSeconds_ = 0L;
+    /**
+     * <code>optional int64 time_to_arrival_seconds = 3;</code>
+     * @return Whether the timeToArrivalSeconds field is set.
+     */
+    @java.lang.Override
+    public boolean hasTimeToArrivalSeconds() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional int64 time_to_arrival_seconds = 3;</code>
+     * @return The timeToArrivalSeconds.
+     */
+    @java.lang.Override
+    public long getTimeToArrivalSeconds() {
+      return timeToArrivalSeconds_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(1, getDistance());
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, estimatedTimeAtArrival_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeInt64(3, timeToArrivalSeconds_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getDistance());
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, estimatedTimeAtArrival_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, timeToArrivalSeconds_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance)) {
+        return super.equals(obj);
+      }
+      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance) obj;
+
+      if (hasDistance() != other.hasDistance()) return false;
+      if (hasDistance()) {
+        if (!getDistance()
+            .equals(other.getDistance())) return false;
+      }
+      if (hasEstimatedTimeAtArrival() != other.hasEstimatedTimeAtArrival()) return false;
+      if (hasEstimatedTimeAtArrival()) {
+        if (!getEstimatedTimeAtArrival()
+            .equals(other.getEstimatedTimeAtArrival())) return false;
+      }
+      if (hasTimeToArrivalSeconds() != other.hasTimeToArrivalSeconds()) return false;
+      if (hasTimeToArrivalSeconds()) {
+        if (getTimeToArrivalSeconds()
+            != other.getTimeToArrivalSeconds()) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasDistance()) {
+        hash = (37 * hash) + DISTANCE_FIELD_NUMBER;
+        hash = (53 * hash) + getDistance().hashCode();
+      }
+      if (hasEstimatedTimeAtArrival()) {
+        hash = (37 * hash) + ESTIMATED_TIME_AT_ARRIVAL_FIELD_NUMBER;
+        hash = (53 * hash) + getEstimatedTimeAtArrival().hashCode();
+      }
+      if (hasTimeToArrivalSeconds()) {
+        hash = (37 * hash) + TIME_TO_ARRIVAL_SECONDS_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getTimeToArrivalSeconds());
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestinationDistance}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestinationDistance)
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistanceOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestinationDistance_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestinationDistance_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance.Builder.class);
+      }
+
+      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getDistanceFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        distance_ = null;
+        if (distanceBuilder_ != null) {
+          distanceBuilder_.dispose();
+          distanceBuilder_ = null;
+        }
+        estimatedTimeAtArrival_ = "";
+        timeToArrivalSeconds_ = 0L;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestinationDistance_descriptor;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance getDefaultInstanceForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance build() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance buildPartial() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.distance_ = distanceBuilder_ == null
+              ? distance_
+              : distanceBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.estimatedTimeAtArrival_ = estimatedTimeAtArrival_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.timeToArrivalSeconds_ = timeToArrivalSeconds_;
+          to_bitField0_ |= 0x00000004;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance) {
+          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance other) {
+        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance.getDefaultInstance()) return this;
+        if (other.hasDistance()) {
+          mergeDistance(other.getDistance());
+        }
+        if (other.hasEstimatedTimeAtArrival()) {
+          estimatedTimeAtArrival_ = other.estimatedTimeAtArrival_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (other.hasTimeToArrivalSeconds()) {
+          setTimeToArrivalSeconds(other.getTimeToArrivalSeconds());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getDistanceFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                estimatedTimeAtArrival_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 24: {
+                timeToArrivalSeconds_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance distance_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistanceOrBuilder> distanceBuilder_;
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       * @return Whether the distance field is set.
+       */
+      public boolean hasDistance() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       * @return The distance.
+       */
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance getDistance() {
+        if (distanceBuilder_ == null) {
+          return distance_ == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.getDefaultInstance() : distance_;
+        } else {
+          return distanceBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       */
+      public Builder setDistance(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance value) {
+        if (distanceBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          distance_ = value;
+        } else {
+          distanceBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       */
+      public Builder setDistance(
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.Builder builderForValue) {
+        if (distanceBuilder_ == null) {
+          distance_ = builderForValue.build();
+        } else {
+          distanceBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       */
+      public Builder mergeDistance(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance value) {
+        if (distanceBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0) &&
+            distance_ != null &&
+            distance_ != com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.getDefaultInstance()) {
+            getDistanceBuilder().mergeFrom(value);
+          } else {
+            distance_ = value;
+          }
+        } else {
+          distanceBuilder_.mergeFrom(value);
+        }
+        if (distance_ != null) {
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       */
+      public Builder clearDistance() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        distance_ = null;
+        if (distanceBuilder_ != null) {
+          distanceBuilder_.dispose();
+          distanceBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       */
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.Builder getDistanceBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getDistanceFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       */
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistanceOrBuilder getDistanceOrBuilder() {
+        if (distanceBuilder_ != null) {
+          return distanceBuilder_.getMessageOrBuilder();
+        } else {
+          return distance_ == null ?
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.getDefaultInstance() : distance_;
+        }
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance distance = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistanceOrBuilder> 
+          getDistanceFieldBuilder() {
+        if (distanceBuilder_ == null) {
+          distanceBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.Builder, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistanceOrBuilder>(
+                  getDistance(),
+                  getParentForChildren(),
+                  isClean());
+          distance_ = null;
+        }
+        return distanceBuilder_;
+      }
+
+      private java.lang.Object estimatedTimeAtArrival_ = "";
+      /**
+       * <code>optional string estimated_time_at_arrival = 2;</code>
+       * @return Whether the estimatedTimeAtArrival field is set.
+       */
+      public boolean hasEstimatedTimeAtArrival() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>optional string estimated_time_at_arrival = 2;</code>
+       * @return The estimatedTimeAtArrival.
+       */
+      public java.lang.String getEstimatedTimeAtArrival() {
+        java.lang.Object ref = estimatedTimeAtArrival_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            estimatedTimeAtArrival_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string estimated_time_at_arrival = 2;</code>
+       * @return The bytes for estimatedTimeAtArrival.
+       */
+      public com.google.protobuf.ByteString
+          getEstimatedTimeAtArrivalBytes() {
+        java.lang.Object ref = estimatedTimeAtArrival_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          estimatedTimeAtArrival_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string estimated_time_at_arrival = 2;</code>
+       * @param value The estimatedTimeAtArrival to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEstimatedTimeAtArrival(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        estimatedTimeAtArrival_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string estimated_time_at_arrival = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEstimatedTimeAtArrival() {
+        estimatedTimeAtArrival_ = getDefaultInstance().getEstimatedTimeAtArrival();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string estimated_time_at_arrival = 2;</code>
+       * @param value The bytes for estimatedTimeAtArrival to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEstimatedTimeAtArrivalBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        estimatedTimeAtArrival_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private long timeToArrivalSeconds_ ;
+      /**
+       * <code>optional int64 time_to_arrival_seconds = 3;</code>
+       * @return Whether the timeToArrivalSeconds field is set.
+       */
+      @java.lang.Override
+      public boolean hasTimeToArrivalSeconds() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>optional int64 time_to_arrival_seconds = 3;</code>
+       * @return The timeToArrivalSeconds.
+       */
+      @java.lang.Override
+      public long getTimeToArrivalSeconds() {
+        return timeToArrivalSeconds_;
+      }
+      /**
+       * <code>optional int64 time_to_arrival_seconds = 3;</code>
+       * @param value The timeToArrivalSeconds to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimeToArrivalSeconds(long value) {
+
+        timeToArrivalSeconds_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 time_to_arrival_seconds = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimeToArrivalSeconds() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        timeToArrivalSeconds_ = 0L;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestinationDistance)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDestinationDistance)
+    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance();
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationDestinationDistance>
+        PARSER = new com.google.protobuf.AbstractParser<NavigationDestinationDistance>() {
+      @java.lang.Override
+      public NavigationDestinationDistance parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<NavigationDestinationDistance> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NavigationDestinationDistance> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDestinationDistance getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface NavigationRoadOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationRoad)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string name = 1;</code>
+     * @return Whether the name field is set.
+     */
+    boolean hasName();
+    /**
+     * <code>optional string name = 1;</code>
+     * @return The name.
+     */
+    java.lang.String getName();
+    /**
+     * <code>optional string name = 1;</code>
+     * @return The bytes for name.
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+  }
+  /**
+   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationRoad}
+   */
+  public static final class NavigationRoad extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationRoad)
+      NavigationRoadOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use NavigationRoad.newBuilder() to construct.
+    private NavigationRoad(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NavigationRoad() {
+      name_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NavigationRoad();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int NAME_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object name_ = "";
+    /**
+     * <code>optional string name = 1;</code>
+     * @return Whether the name field is set.
+     */
+    @java.lang.Override
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional string name = 1;</code>
+     * @return The name.
+     */
+    @java.lang.Override
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string name = 1;</code>
+     * @return The bytes for name.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad)) {
+        return super.equals(obj);
+      }
+      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad) obj;
+
+      if (hasName() != other.hasName()) return false;
+      if (hasName()) {
+        if (!getName()
+            .equals(other.getName())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasName()) {
+        hash = (37 * hash) + NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getName().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationRoad}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationRoad)
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoadOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad.Builder.class);
+      }
+
+      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        name_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_descriptor;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad getDefaultInstanceForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad build() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad buildPartial() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.name_ = name_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad) {
+          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad other) {
+        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad.getDefaultInstance()) return this;
+        if (other.hasName()) {
+          name_ = other.name_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                name_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 1;</code>
+       * @return Whether the name field is set.
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       * @return The name.
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            name_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       * @return The bytes for name.
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        name_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearName() {
+        name_ = getDefaultInstance().getName();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 1;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        name_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationRoad)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationRoad)
+    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad();
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationRoad>
+        PARSER = new com.google.protobuf.AbstractParser<NavigationRoad>() {
+      @java.lang.Override
+      public NavigationRoad parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<NavigationRoad> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NavigationRoad> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationRoad getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface NavigationDistanceOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional int32 meters = 1;</code>
+     * @return Whether the meters field is set.
+     */
+    boolean hasMeters();
+    /**
+     * <code>optional int32 meters = 1;</code>
+     * @return The meters.
+     */
+    int getMeters();
+
+    /**
+     * <code>optional string display_value = 2;</code>
+     * @return Whether the displayValue field is set.
+     */
+    boolean hasDisplayValue();
+    /**
+     * <code>optional string display_value = 2;</code>
+     * @return The displayValue.
+     */
+    java.lang.String getDisplayValue();
+    /**
+     * <code>optional string display_value = 2;</code>
+     * @return The bytes for displayValue.
+     */
+    com.google.protobuf.ByteString
+        getDisplayValueBytes();
+
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance.DistanceUnits display_units = 3;</code>
+     * @return Whether the displayUnits field is set.
+     */
+    boolean hasDisplayUnits();
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance.DistanceUnits display_units = 3;</code>
+     * @return The displayUnits.
+     */
+    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.DistanceUnits getDisplayUnits();
+  }
+  /**
+   * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance}
+   */
+  public static final class NavigationDistance extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance)
+      NavigationDistanceOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use NavigationDistance.newBuilder() to construct.
+    private NavigationDistance(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NavigationDistance() {
+      displayValue_ = "";
+      displayUnits_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NavigationDistance();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDistance_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDistance_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.Builder.class);
+    }
+
+    /**
+     * Protobuf enum {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance.DistanceUnits}
+     */
+    public enum DistanceUnits
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>UNKNOWN_DISTANCE_UNIT = 0;</code>
+       */
+      UNKNOWN_DISTANCE_UNIT(0),
+      /**
+       * <code>METERS = 1;</code>
+       */
+      METERS(1),
+      /**
+       * <code>KILOMETERS = 2;</code>
+       */
+      KILOMETERS(2),
+      /**
+       * <code>KILOMETERS_P1 = 3;</code>
+       */
+      KILOMETERS_P1(3),
+      /**
+       * <code>MILES = 4;</code>
+       */
+      MILES(4),
+      /**
+       * <code>MILES_P1 = 5;</code>
+       */
+      MILES_P1(5),
+      /**
+       * <code>FEET = 6;</code>
+       */
+      FEET(6),
+      /**
+       * <code>YARDS = 7;</code>
+       */
+      YARDS(7),
+      ;
+
+      /**
+       * <code>UNKNOWN_DISTANCE_UNIT = 0;</code>
+       */
+      public static final int UNKNOWN_DISTANCE_UNIT_VALUE = 0;
+      /**
+       * <code>METERS = 1;</code>
+       */
+      public static final int METERS_VALUE = 1;
+      /**
+       * <code>KILOMETERS = 2;</code>
+       */
+      public static final int KILOMETERS_VALUE = 2;
+      /**
+       * <code>KILOMETERS_P1 = 3;</code>
+       */
+      public static final int KILOMETERS_P1_VALUE = 3;
+      /**
+       * <code>MILES = 4;</code>
+       */
+      public static final int MILES_VALUE = 4;
+      /**
+       * <code>MILES_P1 = 5;</code>
+       */
+      public static final int MILES_P1_VALUE = 5;
+      /**
+       * <code>FEET = 6;</code>
+       */
+      public static final int FEET_VALUE = 6;
+      /**
+       * <code>YARDS = 7;</code>
+       */
+      public static final int YARDS_VALUE = 7;
+
+
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static DistanceUnits valueOf(int value) {
+        return forNumber(value);
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static DistanceUnits forNumber(int value) {
+        switch (value) {
+          case 0: return UNKNOWN_DISTANCE_UNIT;
+          case 1: return METERS;
+          case 2: return KILOMETERS;
+          case 3: return KILOMETERS_P1;
+          case 4: return MILES;
+          case 5: return MILES_P1;
+          case 6: return FEET;
+          case 7: return YARDS;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<DistanceUnits>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          DistanceUnits> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<DistanceUnits>() {
+              public DistanceUnits findValueByNumber(int number) {
+                return DistanceUnits.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final DistanceUnits[] VALUES = values();
+
+      public static DistanceUnits valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private DistanceUnits(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance.DistanceUnits)
+    }
+
+    private int bitField0_;
+    public static final int METERS_FIELD_NUMBER = 1;
+    private int meters_ = 0;
+    /**
+     * <code>optional int32 meters = 1;</code>
+     * @return Whether the meters field is set.
+     */
+    @java.lang.Override
+    public boolean hasMeters() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional int32 meters = 1;</code>
+     * @return The meters.
+     */
+    @java.lang.Override
+    public int getMeters() {
+      return meters_;
+    }
+
+    public static final int DISPLAY_VALUE_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object displayValue_ = "";
+    /**
+     * <code>optional string display_value = 2;</code>
+     * @return Whether the displayValue field is set.
+     */
+    @java.lang.Override
+    public boolean hasDisplayValue() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional string display_value = 2;</code>
+     * @return The displayValue.
+     */
+    @java.lang.Override
+    public java.lang.String getDisplayValue() {
+      java.lang.Object ref = displayValue_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          displayValue_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string display_value = 2;</code>
+     * @return The bytes for displayValue.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDisplayValueBytes() {
+      java.lang.Object ref = displayValue_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        displayValue_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DISPLAY_UNITS_FIELD_NUMBER = 3;
+    private int displayUnits_ = 0;
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance.DistanceUnits display_units = 3;</code>
+     * @return Whether the displayUnits field is set.
+     */
+    @java.lang.Override public boolean hasDisplayUnits() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance.DistanceUnits display_units = 3;</code>
+     * @return The displayUnits.
+     */
+    @java.lang.Override public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.DistanceUnits getDisplayUnits() {
+      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.DistanceUnits result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.DistanceUnits.forNumber(displayUnits_);
+      return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.DistanceUnits.UNKNOWN_DISTANCE_UNIT : result;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeInt32(1, meters_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, displayValue_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeEnum(3, displayUnits_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, meters_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, displayValue_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, displayUnits_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance)) {
+        return super.equals(obj);
+      }
+      com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance other = (com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance) obj;
+
+      if (hasMeters() != other.hasMeters()) return false;
+      if (hasMeters()) {
+        if (getMeters()
+            != other.getMeters()) return false;
+      }
+      if (hasDisplayValue() != other.hasDisplayValue()) return false;
+      if (hasDisplayValue()) {
+        if (!getDisplayValue()
+            .equals(other.getDisplayValue())) return false;
+      }
+      if (hasDisplayUnits() != other.hasDisplayUnits()) return false;
+      if (hasDisplayUnits()) {
+        if (displayUnits_ != other.displayUnits_) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasMeters()) {
+        hash = (37 * hash) + METERS_FIELD_NUMBER;
+        hash = (53 * hash) + getMeters();
+      }
+      if (hasDisplayValue()) {
+        hash = (37 * hash) + DISPLAY_VALUE_FIELD_NUMBER;
+        hash = (53 * hash) + getDisplayValue().hashCode();
+      }
+      if (hasDisplayUnits()) {
+        hash = (37 * hash) + DISPLAY_UNITS_FIELD_NUMBER;
+        hash = (53 * hash) + displayUnits_;
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance)
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistanceOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDistance_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDistance_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.class, com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.Builder.class);
+      }
+
+      // Construct using com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        meters_ = 0;
+        displayValue_ = "";
+        displayUnits_ = 0;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDistance_descriptor;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance getDefaultInstanceForType() {
+        return com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance build() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance buildPartial() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance result = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.meters_ = meters_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.displayValue_ = displayValue_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.displayUnits_ = displayUnits_;
+          to_bitField0_ |= 0x00000004;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance) {
+          return mergeFrom((com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance other) {
+        if (other == com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.getDefaultInstance()) return this;
+        if (other.hasMeters()) {
+          setMeters(other.getMeters());
+        }
+        if (other.hasDisplayValue()) {
+          displayValue_ = other.displayValue_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (other.hasDisplayUnits()) {
+          setDisplayUnits(other.getDisplayUnits());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                meters_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                displayValue_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 24: {
+                int tmpRaw = input.readEnum();
+                com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.DistanceUnits tmpValue =
+                    com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.DistanceUnits.forNumber(tmpRaw);
+                if (tmpValue == null) {
+                  mergeUnknownVarintField(3, tmpRaw);
+                } else {
+                  displayUnits_ = tmpRaw;
+                  bitField0_ |= 0x00000004;
+                }
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int meters_ ;
+      /**
+       * <code>optional int32 meters = 1;</code>
+       * @return Whether the meters field is set.
+       */
+      @java.lang.Override
+      public boolean hasMeters() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional int32 meters = 1;</code>
+       * @return The meters.
+       */
+      @java.lang.Override
+      public int getMeters() {
+        return meters_;
+      }
+      /**
+       * <code>optional int32 meters = 1;</code>
+       * @param value The meters to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMeters(int value) {
+
+        meters_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 meters = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMeters() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        meters_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object displayValue_ = "";
+      /**
+       * <code>optional string display_value = 2;</code>
+       * @return Whether the displayValue field is set.
+       */
+      public boolean hasDisplayValue() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>optional string display_value = 2;</code>
+       * @return The displayValue.
+       */
+      public java.lang.String getDisplayValue() {
+        java.lang.Object ref = displayValue_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            displayValue_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string display_value = 2;</code>
+       * @return The bytes for displayValue.
+       */
+      public com.google.protobuf.ByteString
+          getDisplayValueBytes() {
+        java.lang.Object ref = displayValue_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          displayValue_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string display_value = 2;</code>
+       * @param value The displayValue to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDisplayValue(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        displayValue_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string display_value = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDisplayValue() {
+        displayValue_ = getDefaultInstance().getDisplayValue();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string display_value = 2;</code>
+       * @param value The bytes for displayValue to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDisplayValueBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        displayValue_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private int displayUnits_ = 0;
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance.DistanceUnits display_units = 3;</code>
+       * @return Whether the displayUnits field is set.
+       */
+      @java.lang.Override public boolean hasDisplayUnits() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance.DistanceUnits display_units = 3;</code>
+       * @return The displayUnits.
+       */
+      @java.lang.Override
+      public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.DistanceUnits getDisplayUnits() {
+        com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.DistanceUnits result = com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.DistanceUnits.forNumber(displayUnits_);
+        return result == null ? com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.DistanceUnits.UNKNOWN_DISTANCE_UNIT : result;
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance.DistanceUnits display_units = 3;</code>
+       * @param value The displayUnits to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDisplayUnits(com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance.DistanceUnits value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000004;
+        displayUnits_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance.DistanceUnits display_units = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDisplayUnits() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        displayUnits_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.andrerinas.headunitrevived.aap.protocol.proto.NavigationDistance)
+    private static final com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance();
+    }
+
+    public static com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<NavigationDistance>
+        PARSER = new com.google.protobuf.AbstractParser<NavigationDistance>() {
+      @java.lang.Override
+      public NavigationDistance parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<NavigationDistance> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NavigationDistance> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus.NavigationDistance getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStart_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStart_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStop_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStop_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationClusterStatus_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationClusterStatus_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NextTurnDetail_descriptor;
   private static final 
@@ -12117,45 +14825,45 @@ public final class NavigationStatus {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NextTurnDistanceEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_descriptor;
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationState_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_LaneDirection_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_LaneDirection_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_fieldAccessorTable;
+      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationState_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStep_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStep_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_LaneDirection_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_LaneDirection_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestination_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestination_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationState_descriptor;
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCurrentPosition_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationState_fieldAccessorTable;
+      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCurrentPosition_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStepDistance_descriptor;
   private static final 
@@ -12167,10 +14875,15 @@ public final class NavigationStatus {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestinationDistance_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCurrentPosition_descriptor;
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCurrentPosition_fieldAccessorTable;
+      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDistance_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDistance_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -12181,180 +14894,234 @@ public final class NavigationStatus {
   static {
     java.lang.String[] descriptorData = {
       "\n\020navigation.proto\0221com.andrerinas.headu" +
-      "nitrevived.aap.protocol.proto\"\341\004\n\016NextTu" +
-      "rnDetail\022\014\n\004road\030\001 \002(\t\022T\n\004side\030\002 \002(\0162F.c" +
+      "nitrevived.aap.protocol.proto\"\027\n\025Navigat" +
+      "ionStatusStart\"\026\n\024NavigationStatusStop\"\334" +
+      "\001\n\027NavigationClusterStatus\022o\n\006status\030\001 \002" +
+      "(\0162_.com.andrerinas.headunitrevived.aap." +
+      "protocol.proto.NavigationClusterStatus.N" +
+      "avigationStatusEnum\"P\n\024NavigationStatusE" +
+      "num\022\017\n\013UNAVAILABLE\020\000\022\n\n\006ACTIVE\020\001\022\014\n\010INAC" +
+      "TIVE\020\002\022\r\n\tREROUTING\020\003\"\342\004\n\016NextTurnDetail" +
+      "\022\014\n\004road\030\001 \002(\t\022T\n\004side\030\002 \001(\0162F.com.andre" +
+      "rinas.headunitrevived.aap.protocol.proto" +
+      ".NextTurnDetail.Side\022^\n\tnext_turn\030\003 \001(\0162" +
+      "K.com.andrerinas.headunitrevived.aap.pro" +
+      "tocol.proto.NextTurnDetail.NextEvent\022\r\n\005" +
+      "image\030\004 \001(\014\022\023\n\013turn_number\030\005 \001(\005\022\022\n\nturn" +
+      "_angle\030\006 \001(\005\",\n\004Side\022\010\n\004LEFT\020\001\022\t\n\005RIGHT\020" +
+      "\002\022\017\n\013UNSPECIFIED\020\003\"\245\002\n\tNextEvent\022\013\n\007UNKN" +
+      "OWN\020\000\022\n\n\006DEPART\020\001\022\017\n\013NAME_CHANGE\020\002\022\017\n\013SL" +
+      "IGHT_TURN\020\003\022\010\n\004TURN\020\004\022\016\n\nSHARP_TURN\020\005\022\n\n" +
+      "\006U_TURN\020\006\022\013\n\007ON_RAMP\020\007\022\013\n\007OFFRAMP\020\010\022\010\n\004F" +
+      "ORK\020\t\022\t\n\005MERGE\020\n\022\024\n\020ROUNDABOUT_ENTER\020\013\022\023" +
+      "\n\017ROUNDABOUT_EXIT\020\014\022\035\n\031ROUNDABOUT_ENTER_" +
+      "AND_EXIT\020\r\022\014\n\010STRAIGHT\020\016\022\016\n\nFERRY_BOAT\020\020" +
+      "\022\017\n\013FERRY_TRAIN\020\021\022\017\n\013DESTINATION\020\022\"\354\002\n\025N" +
+      "extTurnDistanceEvent\022\027\n\017distance_meters\030" +
+      "\001 \001(\005\022\034\n\024time_to_turn_seconds\030\002 \001(\005\022\033\n\023d" +
+      "isplay_distance_e3\030\003 \001(\005\022u\n\025display_dist" +
+      "ance_unit\030\004 \001(\0162V.com.andrerinas.headuni" +
+      "trevived.aap.protocol.proto.NextTurnDist" +
+      "anceEvent.DistanceUnits\"\207\001\n\rDistanceUnit" +
+      "s\022\031\n\025UNKNOWN_DISTANCE_UNIT\020\000\022\n\n\006METERS\020\001" +
+      "\022\016\n\nKILOMETERS\020\002\022\021\n\rKILOMETERS_P1\020\003\022\t\n\005M" +
+      "ILES\020\004\022\014\n\010MILES_P1\020\005\022\010\n\004FEET\020\006\022\t\n\005YARDS\020" +
+      "\007\"\303\001\n\017NavigationState\022P\n\005steps\030\001 \003(\0132A.c" +
       "om.andrerinas.headunitrevived.aap.protoc" +
-      "ol.proto.NextTurnDetail.Side\022]\n\010nextturn" +
-      "\030\003 \002(\0162K.com.andrerinas.headunitrevived." +
-      "aap.protocol.proto.NextTurnDetail.NextEv" +
-      "ent\022\021\n\tturngraph\030\004 \001(\014\022\022\n\nturnnumber\030\005 \001" +
-      "(\r\022\021\n\tturnangle\030\006 \001(\r\",\n\004Side\022\010\n\004LEFT\020\001\022" +
-      "\t\n\005RIGHT\020\002\022\017\n\013UNSPECIFIED\020\003\"\243\002\n\tNextEven" +
-      "t\022\013\n\007UNKNOWN\020\000\022\n\n\006DEPART\020\001\022\017\n\013NAME_CHANG" +
-      "E\020\002\022\017\n\013SLIGHT_TURN\020\003\022\010\n\004TURN\020\004\022\016\n\nSHARP_" +
-      "TURN\020\005\022\t\n\005UTURN\020\006\022\n\n\006ONRAMP\020\007\022\013\n\007OFFRAMP" +
-      "\020\010\022\010\n\004FORM\020\t\022\t\n\005MERGE\020\n\022\024\n\020ROUNDABOUT_EN" +
-      "TER\020\013\022\023\n\017ROUNDABOUT_EXIT\020\014\022\035\n\031ROUNDABOUT" +
-      "_ENTER_AND_EXIT\020\r\022\014\n\010STRAIGHT\020\016\022\016\n\nFERRY" +
-      "_BOAT\020\020\022\017\n\013FERRY_TRAIN\020\021\022\017\n\013DESTINATION\020" +
-      "\022\"7\n\025NextTurnDistanceEvent\022\020\n\010distance\030\001" +
-      " \001(\r\022\014\n\004time\030\002 \001(\r\"\036\n\016NavigationRoad\022\014\n\004" +
-      "name\030\001 \001(\t\"\'\n\rNavigationCue\022\026\n\016alternate" +
-      "_text\030\001 \003(\t\"\255\002\n\rLaneDirection\022U\n\005shape\030\001" +
-      " \001(\0162F.com.andrerinas.headunitrevived.aa" +
-      "p.protocol.proto.LaneDirection.Shape\022\026\n\016" +
-      "is_highlighted\030\002 \001(\010\"\254\001\n\005Shape\022\013\n\007UNKNOW" +
-      "N\020\000\022\014\n\010STRAIGHT\020\001\022\017\n\013SLIGHT_LEFT\020\002\022\020\n\014SL" +
-      "IGHT_RIGHT\020\003\022\017\n\013NORMAL_LEFT\020\004\022\020\n\014NORMAL_" +
-      "RIGHT\020\005\022\016\n\nSHARP_LEFT\020\006\022\017\n\013SHARP_RIGHT\020\007" +
-      "\022\017\n\013U_TURN_LEFT\020\010\022\020\n\014U_TURN_RIGHT\020\t\"k\n\016N" +
-      "avigationLane\022Y\n\017lane_directions\030\001 \003(\0132@" +
-      ".com.andrerinas.headunitrevived.aap.prot" +
-      "ocol.proto.LaneDirection\"\235\t\n\022NavigationM" +
-      "aneuver\022b\n\004type\030\001 \001(\0162T.com.andrerinas.h" +
-      "eadunitrevived.aap.protocol.proto.Naviga" +
-      "tionManeuver.NavigationType\022\036\n\026roundabou" +
-      "t_exit_number\030\002 \001(\005\022\035\n\025roundabout_exit_a" +
-      "ngle\030\003 \001(\005\"\343\007\n\016NavigationType\022\013\n\007UNKNOWN" +
-      "\020\000\022\n\n\006DEPART\020\001\022\017\n\013NAME_CHANGE\020\002\022\r\n\tKEEP_" +
-      "LEFT\020\003\022\016\n\nKEEP_RIGHT\020\004\022\024\n\020TURN_SLIGHT_LE" +
-      "FT\020\005\022\025\n\021TURN_SLIGHT_RIGHT\020\006\022\024\n\020TURN_NORM" +
-      "AL_LEFT\020\007\022\025\n\021TURN_NORMAL_RIGHT\020\010\022\023\n\017TURN" +
-      "_SHARP_LEFT\020\t\022\024\n\020TURN_SHARP_RIGHT\020\n\022\017\n\013U" +
-      "_TURN_LEFT\020\013\022\020\n\014U_TURN_RIGHT\020\014\022\027\n\023ON_RAM" +
-      "P_SLIGHT_LEFT\020\r\022\030\n\024ON_RAMP_SLIGHT_RIGHT\020" +
-      "\016\022\027\n\023ON_RAMP_NORMAL_LEFT\020\017\022\030\n\024ON_RAMP_NO" +
-      "RMAL_RIGHT\020\020\022\026\n\022ON_RAMP_SHARP_LEFT\020\021\022\027\n\023" +
-      "ON_RAMP_SHARP_RIGHT\020\022\022\027\n\023ON_RAMP_U_TURN_" +
-      "LEFT\020\023\022\030\n\024ON_RAMP_U_TURN_RIGHT\020\024\022\030\n\024OFF_" +
-      "RAMP_SLIGHT_LEFT\020\025\022\031\n\025OFF_RAMP_SLIGHT_RI" +
-      "GHT\020\026\022\030\n\024OFF_RAMP_NORMAL_LEFT\020\027\022\031\n\025OFF_R" +
-      "AMP_NORMAL_RIGHT\020\030\022\r\n\tFORK_LEFT\020\031\022\016\n\nFOR" +
-      "K_RIGHT\020\032\022\016\n\nMERGE_LEFT\020\033\022\017\n\013MERGE_RIGHT" +
-      "\020\034\022\032\n\026MERGE_SIDE_UNSPECIFIED\020\035\022\024\n\020ROUNDA" +
-      "BOUT_ENTER\020\036\022\023\n\017ROUNDABOUT_EXIT\020\037\022 \n\034ROU" +
-      "NDABOUT_ENTER_AND_EXIT_CW\020 \022+\n\'ROUNDABOU" +
-      "T_ENTER_AND_EXIT_CW_WITH_ANGLE\020!\022!\n\035ROUN" +
-      "DABOUT_ENTER_AND_EXIT_CCW\020\"\022,\n(ROUNDABOU" +
-      "T_ENTER_AND_EXIT_CCW_WITH_ANGLE\020#\022\014\n\010STR" +
-      "AIGHT\020$\022\016\n\nFERRY_BOAT\020%\022\017\n\013FERRY_TRAIN\020&" +
-      "\022\017\n\013DESTINATION\020\'\022\030\n\024DESTINATION_STRAIGH" +
-      "T\020(\022\024\n\020DESTINATION_LEFT\020)\022\025\n\021DESTINATION" +
-      "_RIGHT\020*\"\333\002\n\016NavigationStep\022W\n\010maneuver\030" +
-      "\001 \001(\0132E.com.andrerinas.headunitrevived.a" +
-      "ap.protocol.proto.NavigationManeuver\022O\n\004" +
-      "road\030\002 \001(\0132A.com.andrerinas.headunitrevi" +
-      "ved.aap.protocol.proto.NavigationRoad\022P\n" +
-      "\005lanes\030\003 \003(\0132A.com.andrerinas.headunitre" +
-      "vived.aap.protocol.proto.NavigationLane\022" +
-      "M\n\003cue\030\004 \001(\0132@.com.andrerinas.headunitre" +
-      "vived.aap.protocol.proto.NavigationCue\"(" +
-      "\n\025NavigationDestination\022\017\n\007address\030\001 \001(\t" +
-      "\"\303\001\n\017NavigationState\022P\n\005steps\030\001 \003(\0132A.co" +
+      "ol.proto.NavigationStep\022^\n\014destinations\030" +
+      "\002 \003(\0132H.com.andrerinas.headunitrevived.a" +
+      "ap.protocol.proto.NavigationDestination\"" +
+      "\333\002\n\016NavigationStep\022W\n\010maneuver\030\001 \001(\0132E.c" +
+      "om.andrerinas.headunitrevived.aap.protoc" +
+      "ol.proto.NavigationManeuver\022O\n\004road\030\002 \001(" +
+      "\0132A.com.andrerinas.headunitrevived.aap.p" +
+      "rotocol.proto.NavigationRoad\022P\n\005lanes\030\003 " +
+      "\003(\0132A.com.andrerinas.headunitrevived.aap" +
+      ".protocol.proto.NavigationLane\022M\n\003cue\030\004 " +
+      "\001(\0132@.com.andrerinas.headunitrevived.aap" +
+      ".protocol.proto.NavigationCue\"\235\t\n\022Naviga" +
+      "tionManeuver\022b\n\004type\030\001 \001(\0162T.com.andreri" +
+      "nas.headunitrevived.aap.protocol.proto.N" +
+      "avigationManeuver.NavigationType\022\036\n\026roun" +
+      "dabout_exit_number\030\002 \001(\005\022\035\n\025roundabout_e" +
+      "xit_angle\030\003 \001(\005\"\343\007\n\016NavigationType\022\013\n\007UN" +
+      "KNOWN\020\000\022\n\n\006DEPART\020\001\022\017\n\013NAME_CHANGE\020\002\022\r\n\t" +
+      "KEEP_LEFT\020\003\022\016\n\nKEEP_RIGHT\020\004\022\024\n\020TURN_SLIG" +
+      "HT_LEFT\020\005\022\025\n\021TURN_SLIGHT_RIGHT\020\006\022\024\n\020TURN" +
+      "_NORMAL_LEFT\020\007\022\025\n\021TURN_NORMAL_RIGHT\020\010\022\023\n" +
+      "\017TURN_SHARP_LEFT\020\t\022\024\n\020TURN_SHARP_RIGHT\020\n" +
+      "\022\017\n\013U_TURN_LEFT\020\013\022\020\n\014U_TURN_RIGHT\020\014\022\027\n\023O" +
+      "N_RAMP_SLIGHT_LEFT\020\r\022\030\n\024ON_RAMP_SLIGHT_R" +
+      "IGHT\020\016\022\027\n\023ON_RAMP_NORMAL_LEFT\020\017\022\030\n\024ON_RA" +
+      "MP_NORMAL_RIGHT\020\020\022\026\n\022ON_RAMP_SHARP_LEFT\020" +
+      "\021\022\027\n\023ON_RAMP_SHARP_RIGHT\020\022\022\027\n\023ON_RAMP_U_" +
+      "TURN_LEFT\020\023\022\030\n\024ON_RAMP_U_TURN_RIGHT\020\024\022\030\n" +
+      "\024OFF_RAMP_SLIGHT_LEFT\020\025\022\031\n\025OFF_RAMP_SLIG" +
+      "HT_RIGHT\020\026\022\030\n\024OFF_RAMP_NORMAL_LEFT\020\027\022\031\n\025" +
+      "OFF_RAMP_NORMAL_RIGHT\020\030\022\r\n\tFORK_LEFT\020\031\022\016" +
+      "\n\nFORK_RIGHT\020\032\022\016\n\nMERGE_LEFT\020\033\022\017\n\013MERGE_" +
+      "RIGHT\020\034\022\032\n\026MERGE_SIDE_UNSPECIFIED\020\035\022\024\n\020R" +
+      "OUNDABOUT_ENTER\020\036\022\023\n\017ROUNDABOUT_EXIT\020\037\022 " +
+      "\n\034ROUNDABOUT_ENTER_AND_EXIT_CW\020 \022+\n\'ROUN" +
+      "DABOUT_ENTER_AND_EXIT_CW_WITH_ANGLE\020!\022!\n" +
+      "\035ROUNDABOUT_ENTER_AND_EXIT_CCW\020\"\022,\n(ROUN" +
+      "DABOUT_ENTER_AND_EXIT_CCW_WITH_ANGLE\020#\022\014" +
+      "\n\010STRAIGHT\020$\022\016\n\nFERRY_BOAT\020%\022\017\n\013FERRY_TR" +
+      "AIN\020&\022\017\n\013DESTINATION\020\'\022\030\n\024DESTINATION_ST" +
+      "RAIGHT\020(\022\024\n\020DESTINATION_LEFT\020)\022\025\n\021DESTIN" +
+      "ATION_RIGHT\020*\"\'\n\rNavigationCue\022\026\n\016altern" +
+      "ate_text\030\001 \003(\t\"\271\003\n\016NavigationLane\022h\n\017lan" +
+      "e_directions\030\001 \003(\0132O.com.andrerinas.head" +
+      "unitrevived.aap.protocol.proto.Navigatio" +
+      "nLane.LaneDirection\032\274\002\n\rLaneDirection\022d\n" +
+      "\005shape\030\001 \001(\0162U.com.andrerinas.headunitre" +
+      "vived.aap.protocol.proto.NavigationLane." +
+      "LaneDirection.Shape\022\026\n\016is_highlighted\030\002 " +
+      "\001(\010\"\254\001\n\005Shape\022\013\n\007UNKNOWN\020\000\022\014\n\010STRAIGHT\020\001" +
+      "\022\017\n\013SLIGHT_LEFT\020\002\022\020\n\014SLIGHT_RIGHT\020\003\022\017\n\013N" +
+      "ORMAL_LEFT\020\004\022\020\n\014NORMAL_RIGHT\020\005\022\016\n\nSHARP_" +
+      "LEFT\020\006\022\017\n\013SHARP_RIGHT\020\007\022\017\n\013U_TURN_LEFT\020\010" +
+      "\022\020\n\014U_TURN_RIGHT\020\t\"(\n\025NavigationDestinat" +
+      "ion\022\017\n\007address\030\001 \001(\t\"\307\002\n\031NavigationCurre" +
+      "ntPosition\022`\n\rstep_distance\030\001 \001(\0132I.com." +
+      "andrerinas.headunitrevived.aap.protocol." +
+      "proto.NavigationStepDistance\022o\n\025destinat" +
+      "ion_distances\030\002 \003(\0132P.com.andrerinas.hea" +
+      "dunitrevived.aap.protocol.proto.Navigati" +
+      "onDestinationDistance\022W\n\014current_road\030\003 " +
+      "\001(\0132A.com.andrerinas.headunitrevived.aap" +
+      ".protocol.proto.NavigationRoad\"\217\001\n\026Navig" +
+      "ationStepDistance\022W\n\010distance\030\001 \001(\0132E.co" +
       "m.andrerinas.headunitrevived.aap.protoco" +
-      "l.proto.NavigationStep\022^\n\014destinations\030\002" +
-      " \003(\0132H.com.andrerinas.headunitrevived.aa" +
-      "p.protocol.proto.NavigationDestination\"C" +
-      "\n\026NavigationStepDistance\022\022\n\ndistance_m\030\001" +
-      " \001(\001\022\025\n\rdistance_text\030\002 \001(\t\"\200\001\n\035Navigati" +
-      "onDestinationDistance\022\022\n\ndistance_m\030\001 \001(" +
-      "\001\022\025\n\rdistance_text\030\002 \001(\t\022\031\n\021arrival_time" +
-      "_text\030\003 \001(\t\022\031\n\021time_to_arrival_s\030\004 \001(\005\"\307" +
-      "\002\n\031NavigationCurrentPosition\022`\n\rstep_dis" +
-      "tance\030\001 \001(\0132I.com.andrerinas.headunitrev" +
-      "ived.aap.protocol.proto.NavigationStepDi" +
-      "stance\022o\n\025destination_distances\030\002 \003(\0132P." +
-      "com.andrerinas.headunitrevived.aap.proto" +
-      "col.proto.NavigationDestinationDistance\022" +
-      "W\n\014current_road\030\003 \001(\0132A.com.andrerinas.h" +
-      "eadunitrevived.aap.protocol.proto.Naviga" +
-      "tionRoad*z\n\007MsgType\022\025\n\017NEXTTURNDETAILS\020\204" +
-      "\200\002\022\035\n\027NEXTTURNDISTANCEANDTIME\020\205\200\002\022\026\n\020NAV" +
-      "IGATION_STATE\020\206\200\002\022!\n\033NAVIGATION_CURRENT_" +
-      "POSITION\020\207\200\002B\022B\020NavigationStatus"
+      "l.proto.NavigationDistance\022\034\n\024time_to_st" +
+      "ep_seconds\030\002 \001(\003\"\274\001\n\035NavigationDestinati" +
+      "onDistance\022W\n\010distance\030\001 \001(\0132E.com.andre" +
+      "rinas.headunitrevived.aap.protocol.proto" +
+      ".NavigationDistance\022!\n\031estimated_time_at" +
+      "_arrival\030\002 \001(\t\022\037\n\027time_to_arrival_second" +
+      "s\030\003 \001(\003\"\036\n\016NavigationRoad\022\014\n\004name\030\001 \001(\t\"" +
+      "\261\002\n\022NavigationDistance\022\016\n\006meters\030\001 \001(\005\022\025" +
+      "\n\rdisplay_value\030\002 \001(\t\022j\n\rdisplay_units\030\003" +
+      " \001(\0162S.com.andrerinas.headunitrevived.aa" +
+      "p.protocol.proto.NavigationDistance.Dist" +
+      "anceUnits\"\207\001\n\rDistanceUnits\022\031\n\025UNKNOWN_D" +
+      "ISTANCE_UNIT\020\000\022\n\n\006METERS\020\001\022\016\n\nKILOMETERS" +
+      "\020\002\022\021\n\rKILOMETERS_P1\020\003\022\t\n\005MILES\020\004\022\014\n\010MILE" +
+      "S_P1\020\005\022\010\n\004FEET\020\006\022\t\n\005YARDS\020\007*\213\002\n\007MsgType\022" +
+      "\036\n\030INSTRUMENT_CLUSTER_START\020\201\200\002\022\035\n\027INSTR" +
+      "UMENT_CLUSTER_STOP\020\202\200\002\022*\n$INSTRUMENT_CLU" +
+      "STER_NAVIGATION_STATUS\020\203\200\002\022\025\n\017NEXTTURNDE" +
+      "TAILS\020\204\200\002\022\035\n\027NEXTTURNDISTANCEANDTIME\020\205\200\002" +
+      "\022)\n#INSTRUMENT_CLUSTER_NAVIGATION_STATE\020" +
+      "\206\200\002\0224\n.INSTRUMENT_CLUSTER_NAVIGATION_CUR" +
+      "RENT_POSITION\020\207\200\002B\022B\020NavigationStatus"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NextTurnDetail_descriptor =
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStart_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStart_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStart_descriptor,
+        new java.lang.String[] { });
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStop_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStop_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStatusStop_descriptor,
+        new java.lang.String[] { });
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationClusterStatus_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationClusterStatus_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationClusterStatus_descriptor,
+        new java.lang.String[] { "Status", });
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NextTurnDetail_descriptor =
+      getDescriptor().getMessageTypes().get(3);
     internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NextTurnDetail_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NextTurnDetail_descriptor,
-        new java.lang.String[] { "Road", "Side", "Nextturn", "Turngraph", "Turnnumber", "Turnangle", });
+        new java.lang.String[] { "Road", "Side", "NextTurn", "Image", "TurnNumber", "TurnAngle", });
     internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NextTurnDistanceEvent_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NextTurnDistanceEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NextTurnDistanceEvent_descriptor,
-        new java.lang.String[] { "Distance", "Time", });
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_descriptor,
-        new java.lang.String[] { "Name", });
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_descriptor,
-        new java.lang.String[] { "AlternateText", });
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_LaneDirection_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_LaneDirection_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_LaneDirection_descriptor,
-        new java.lang.String[] { "Shape", "IsHighlighted", });
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_descriptor,
-        new java.lang.String[] { "LaneDirections", });
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_descriptor,
-        new java.lang.String[] { "Type", "RoundaboutExitNumber", "RoundaboutExitAngle", });
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStep_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStep_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStep_descriptor,
-        new java.lang.String[] { "Maneuver", "Road", "Lanes", "Cue", });
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestination_descriptor =
-      getDescriptor().getMessageTypes().get(8);
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestination_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestination_descriptor,
-        new java.lang.String[] { "Address", });
+        new java.lang.String[] { "DistanceMeters", "TimeToTurnSeconds", "DisplayDistanceE3", "DisplayDistanceUnit", });
     internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationState_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationState_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationState_descriptor,
         new java.lang.String[] { "Steps", "Destinations", });
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStepDistance_descriptor =
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStep_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStep_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStep_descriptor,
+        new java.lang.String[] { "Maneuver", "Road", "Lanes", "Cue", });
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationManeuver_descriptor,
+        new java.lang.String[] { "Type", "RoundaboutExitNumber", "RoundaboutExitAngle", });
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCue_descriptor,
+        new java.lang.String[] { "AlternateText", });
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_descriptor,
+        new java.lang.String[] { "LaneDirections", });
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_LaneDirection_descriptor =
+      internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_descriptor.getNestedTypes().get(0);
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_LaneDirection_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationLane_LaneDirection_descriptor,
+        new java.lang.String[] { "Shape", "IsHighlighted", });
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestination_descriptor =
       getDescriptor().getMessageTypes().get(10);
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStepDistance_fieldAccessorTable = new
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestination_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStepDistance_descriptor,
-        new java.lang.String[] { "DistanceM", "DistanceText", });
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestinationDistance_descriptor =
-      getDescriptor().getMessageTypes().get(11);
-    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestinationDistance_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestinationDistance_descriptor,
-        new java.lang.String[] { "DistanceM", "DistanceText", "ArrivalTimeText", "TimeToArrivalS", });
+        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestination_descriptor,
+        new java.lang.String[] { "Address", });
     internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCurrentPosition_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCurrentPosition_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationCurrentPosition_descriptor,
         new java.lang.String[] { "StepDistance", "DestinationDistances", "CurrentRoad", });
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStepDistance_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStepDistance_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationStepDistance_descriptor,
+        new java.lang.String[] { "Distance", "TimeToStepSeconds", });
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestinationDistance_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestinationDistance_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDestinationDistance_descriptor,
+        new java.lang.String[] { "Distance", "EstimatedTimeAtArrival", "TimeToArrivalSeconds", });
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationRoad_descriptor,
+        new java.lang.String[] { "Name", });
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDistance_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDistance_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_andrerinas_headunitrevived_aap_protocol_proto_NavigationDistance_descriptor,
+        new java.lang.String[] { "Meters", "DisplayValue", "DisplayUnits", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

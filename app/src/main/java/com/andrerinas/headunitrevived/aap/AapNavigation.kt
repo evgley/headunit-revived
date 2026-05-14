@@ -1,12 +1,8 @@
 package com.andrerinas.headunitrevived.aap
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
-import android.os.Build
-import androidx.core.app.NotificationCompat
-import com.andrerinas.headunitrevived.R
+import android.os.Handler
+import android.os.Looper
 import com.andrerinas.headunitrevived.aap.protocol.Channel
 import com.andrerinas.headunitrevived.aap.protocol.proto.NavigationStatus
 import com.andrerinas.headunitrevived.contract.NavigationUpdateIntent
@@ -21,11 +17,16 @@ class AapNavigation(
     private val context: Context,
     private val settings: Settings
 ) {
-    private var lastTurnDetail: NavigationStatus.NextTurnDetail? = null
-    private var currentStreet: String = ""
+    private val helper = AapNavigationHelper(context)
+    private val snapshot = AapNavigationHelper.NavigationSnapshot()
+    private val debounceHandler = Handler(Looper.getMainLooper())
+    private var isBroadcastScheduled = false
+    private var pendingNavEventType = NAV_EVENT_TYPE_TURN
 
-    private var lastNavState: NavigationStatus.NavigationState? = null
-    private var lastCurrentPosition: NavigationStatus.NavigationCurrentPosition? = null
+    private val debouncedBroadcastEmitter = Runnable {
+        isBroadcastScheduled = false
+        helper.sendFullNavigationBroadcast(snapshot, pendingNavEventType)
+    }
 
     private var lastKnownDistance: Int? = null
     private var lastKnownTime: Int? = null
@@ -34,6 +35,31 @@ class AapNavigation(
         if (message.channel != Channel.ID_NAV) return false
 
         return when (message.type) {
+            NavigationStatus.MsgType.INSTRUMENT_CLUSTER_START_VALUE -> {
+                AppLog.d("Nav: Instrument cluster start")
+                clearAccumulatedData()
+                scheduleDebouncedBroadcast(NAV_EVENT_TYPE_START)
+                true
+            }
+            NavigationStatus.MsgType.INSTRUMENT_CLUSTER_STOP_VALUE -> {
+                AppLog.d("Nav: Instrument cluster stop")
+                clearAccumulatedData()
+                scheduleDebouncedBroadcast(NAV_EVENT_TYPE_STOP)
+                helper.cancelNotification()
+                true
+            }
+            NavigationStatus.MsgType.INSTRUMENT_CLUSTER_NAVIGATION_STATUS_VALUE -> {
+                try {
+                    val status = message.parse(NavigationStatus.NavigationClusterStatus.newBuilder()).build()
+                    AppLog.d("Nav: Navigation status=${status.status}")
+                    updateClusterStatus(status)
+                    scheduleDebouncedBroadcast(NAV_EVENT_TYPE_STATUS)
+                    true
+                } catch (e: Exception) {
+                    AppLog.e("Nav: failed to parse NavigationClusterStatus", e)
+                    true
+                }
+            }
             NavigationStatus.MsgType.NEXTTURNDETAILS_VALUE -> {
                 try {
                     val detail = message.parse(NavigationStatus.NextTurnDetail.newBuilder()).build()
@@ -41,10 +67,22 @@ class AapNavigation(
                     currentStreet = detail.road.takeIf { it.isNotBlank() } ?: ""
                     AppLog.d("Nav: NextTurnDetail road=${detail.road} nextturn=${detail.nextturn}")
                     sendNavigationBroadcast(distanceMeters = lastKnownDistance, timeSeconds = lastKnownTime, detail = detail)
+                    val detail = message.parse(NavigationStatus.NextTurnDetail.newBuilder()).buildPartial()
+                    snapshot.nextTurnDetail = AapNavigationHelper.TimedMessage(detail, helper.nowElapsedRealtimeMs())
+val road = detail.road.takeIf { it.isNotBlank() }
+road?.let {
+    snapshot.currentStreet = AapNavigationHelper.TimedMessage(it, helper.nowElapsedRealtimeMs())
+}
+                    AppLog.d(
+                        "Nav: NextTurnDetail road=${detail.road} " +
+                            "hasNextTurn=${detail.hasNextTurn()} nextTurn=${detail.nextTurn}"
+                    )
+                    scheduleDebouncedBroadcast(NAV_EVENT_TYPE_TURN)
                     if (settings.showNavigationNotifications) {
                         val actionText = nextEventToAction(detail.nextturn)
                         val street = currentStreet.ifBlank { detail.road.takeIf { r -> r.isNotBlank() } ?: "" }.ifBlank { "—" }
                         showNotification(distanceMeters = lastKnownDistance, action = actionText, street = street)
+                        helper.showNotificationForSnapshot(snapshot, distanceMeters = null)
                     }
                     true
                 } catch (e: Exception) {
@@ -57,17 +95,27 @@ class AapNavigation(
                     val event = message.parse(NavigationStatus.NextTurnDistanceEvent.newBuilder()).build()
                     val distanceMeters = if (event.hasDistance()) event.distance else null
                     val timeSeconds = if (event.hasTime()) event.time else null
-                    
+
                     if (distanceMeters != null) lastKnownDistance = distanceMeters
                     if (timeSeconds != null) lastKnownTime = timeSeconds
-                    
+
                     AppLog.i("Nav: NextTurnDistanceEvent distance=$distanceMeters (uint32) time=$timeSeconds")
-                    
+
                     val detail = lastTurnDetail
                     val actionText = detail?.let { nextEventToAction(it.nextturn) } ?: context.getString(R.string.nav_action_unknown)
                     val street = currentStreet.ifBlank { detail?.road?.takeIf { r -> r.isNotBlank() } ?: "" }.ifBlank { "—" }
                     sendNavigationBroadcast(distanceMeters = lastKnownDistance, timeSeconds = lastKnownTime, detail = detail)
+                    val event = message.parse(NavigationStatus.NextTurnDistanceEvent.newBuilder()).buildPartial()
+                    snapshot.nextTurnDistance = AapNavigationHelper.TimedMessage(event, helper.nowElapsedRealtimeMs())
+                    val distanceMeters = event.distanceMeters.takeIf { it >= 0 }
+                    AppLog.d(
+                        "Nav: NextTurnDistanceEvent hasDistance=${event.hasDistanceMeters()} " +
+                            "distance=${event.distanceMeters} hasTime=${event.hasTimeToTurnSeconds()} " +
+                            "time=${event.timeToTurnSeconds}"
+                    )
+                    scheduleDebouncedBroadcast(NAV_EVENT_TYPE_TURN)
                     if (settings.showNavigationNotifications) {
+                        helper.showNotificationForSnapshot(snapshot, distanceMeters = distanceMeters)
                         showNotification(
                             distanceMeters = lastKnownDistance,
                             action = actionText,
@@ -80,11 +128,19 @@ class AapNavigation(
                     true
                 }
             }
-            NavigationStatus.MsgType.NAVIGATION_STATE_VALUE -> {
+            NavigationStatus.MsgType.INSTRUMENT_CLUSTER_NAVIGATION_STATE_VALUE -> {
                 try {
                     val state = message.parse(NavigationStatus.NavigationState.newBuilder()).build()
+                    snapshot.navigationState = AapNavigationHelper.TimedMessage(state, helper.nowElapsedRealtimeMs())
+                    val firstStepRoad = state.stepsList.firstOrNull()
+                        ?.takeIf { it.hasRoad() && it.road.hasName() }
+                        ?.road
+                        ?.name
+                        ?.takeIf { it.isNotBlank() }
+                    if (!firstStepRoad.isNullOrBlank()) {
+                        snapshot.currentStreet = AapNavigationHelper.TimedMessage(firstStepRoad, helper.nowElapsedRealtimeMs())
                     lastNavState = state
-                    
+
                     if (state.stepsList.isEmpty() && state.destinationsList.isEmpty()) {
                         AppLog.i("Nav: Navigation stopped, clearing cache")
                         lastKnownDistance = null
@@ -95,25 +151,31 @@ class AapNavigation(
                     if (firstStep != null) {
                         currentStreet = firstStep.road?.name ?: ""
                         AppLog.d("Nav: NavigationState road=${currentStreet} type=${firstStep.maneuver?.type}")
-                        
+
                         // Trigger initial broadcast for the new step
                         processNewProtocolUpdate()
                     }
+                    scheduleDebouncedBroadcast(NAV_EVENT_TYPE_STATE)
                     true
                 } catch (e: Exception) {
                     AppLog.e("Nav: failed to parse NavigationState", e)
                     true
                 }
             }
-            NavigationStatus.MsgType.NAVIGATION_CURRENT_POSITION_VALUE -> {
+            NavigationStatus.MsgType.INSTRUMENT_CLUSTER_NAVIGATION_CURRENT_POSITION_VALUE -> {
                 try {
-                    val pos = message.parse(NavigationStatus.NavigationCurrentPosition.newBuilder()).build()
-                    lastCurrentPosition = pos
-                    if (pos.hasCurrentRoad() && pos.currentRoad.name.isNotBlank()) {
-                        currentStreet = pos.currentRoad.name
+                    val position = message.parse(NavigationStatus.NavigationCurrentPosition.newBuilder()).build()
+                    snapshot.currentPosition = AapNavigationHelper.TimedMessage(position, helper.nowElapsedRealtimeMs())
+                    val road = position
+                        .takeIf { it.hasCurrentRoad() && it.currentRoad.hasName() }
+                        ?.currentRoad
+                        ?.name
+                        ?.takeIf { it.isNotBlank() }
+                        ?: snapshot.currentStreet?.payload
+                    if (!road.isNullOrBlank()) {
+                        snapshot.currentStreet = AapNavigationHelper.TimedMessage(road, helper.nowElapsedRealtimeMs())
                     }
-                    
-                    processNewProtocolUpdate()
+                    scheduleDebouncedBroadcast(NAV_EVENT_TYPE_CURRENT_POSITION)
                     true
                 } catch (e: Exception) {
                     AppLog.e("Nav: failed to parse NavigationCurrentPosition", e)
@@ -127,33 +189,40 @@ class AapNavigation(
         }
     }
 
+    private fun clearAccumulatedData() {
+        snapshot.clusterStatus = null
+        snapshot.nextTurnDetail = null
+        snapshot.nextTurnDistance = null
+        snapshot.navigationState = null
+        snapshot.currentPosition = null
+        snapshot.currentStreet = null
     private fun processNewProtocolUpdate() {
         val state = lastNavState ?: return
         val pos = lastCurrentPosition
         val firstStep = state.stepsList.firstOrNull() ?: return
         val maneuver = firstStep.maneuver
-        
+
         // Try step distance first, then fall back to destination distance if available
         val rawDist = if (pos?.hasStepDistance() == true) {
-            pos.stepDistance.distanceM 
+            pos.stepDistance.distanceM
         } else {
             pos?.destinationDistancesList?.firstOrNull()?.takeIf { it.hasDistanceM() }?.distanceM
         }
-        
+
         val distanceMeters = rawDist?.let { Math.round(it).toInt() }
         val timeSeconds = pos?.destinationDistancesList?.firstOrNull()?.let {
             if (it.hasTimeToArrivalS()) it.timeToArrivalS else null
         }
-        
+
         if (distanceMeters != null) lastKnownDistance = distanceMeters
         if (timeSeconds != null) lastKnownTime = timeSeconds
-        
+
         AppLog.i("Nav: ProtocolUpdate distanceMeters=$distanceMeters (raw=$rawDist) timeSeconds=$timeSeconds (hasStepDist=${pos?.hasStepDistance()})")
-        
+
         val road = firstStep.road?.name ?: currentStreet
         val nextEvent = mapNavigationTypeToNextEvent(maneuver?.type ?: NavigationStatus.NavigationManeuver.NavigationType.UNKNOWN)
         val turnSide = mapNavigationTypeToSide(maneuver?.type ?: NavigationStatus.NavigationManeuver.NavigationType.UNKNOWN)
-        
+
         val turnNumber = maneuver?.roundaboutExitNumber
         val turnAngle = maneuver?.roundaboutExitAngle
 
@@ -174,207 +243,44 @@ class AapNavigation(
         }
     }
 
-    private fun sendNavigationBroadcast(
-        distanceMeters: Int?,
-        timeSeconds: Int?,
-        detail: NavigationStatus.NextTurnDetail?
+    private fun clearAccumulatedDataPreservingStatus(
+        status: AapNavigationHelper.TimedMessage<NavigationStatus.NavigationClusterStatus>
     ) {
-        val road = (detail?.road?.takeIf { it.isNotBlank() } ?: currentStreet).ifBlank { "—" }
-        val nextEventType = detail?.nextturn ?: NavigationStatus.NextTurnDetail.NextEvent.UNKNOWN
-        val turnSide = detail?.side?.number
-        val turnNumber = detail?.takeIf { it.hasTurnnumber() }?.turnnumber?.toInt()
-        val turnAngle = detail?.takeIf { it.hasTurnangle() }?.turnangle?.toInt()
-        
-        sendNavigationBroadcast(
-            distanceMeters = distanceMeters,
-            timeSeconds = timeSeconds,
-            road = road,
-            nextEventType = nextEventType,
-            turnSide = turnSide,
-            turnNumber = turnNumber,
-            turnAngle = turnAngle
-        )
+        clearAccumulatedData()
+        snapshot.clusterStatus = status
     }
 
-    private fun sendNavigationBroadcast(
-        distanceMeters: Int?,
-        timeSeconds: Int?,
-        road: String,
-        nextEventType: NavigationStatus.NextTurnDetail.NextEvent,
-        turnSide: Int?,
-        turnNumber: Int?,
-        turnAngle: Int?
-    ) {
-        val actionText = nextEventToAction(nextEventType)
-        val intent = NavigationUpdateIntent(
-            distanceMeters = distanceMeters,
-            timeSeconds = timeSeconds,
-            road = road,
-            nextEventType = nextEventType.number,
-            actionText = actionText,
-            turnSide = turnSide,
-            turnNumber = turnNumber,
-            turnAngle = turnAngle
-        )
-        context.applicationContext.sendBroadcast(intent)
-    }
-
-    private fun mapNavigationTypeToNextEvent(type: NavigationStatus.NavigationManeuver.NavigationType): NavigationStatus.NextTurnDetail.NextEvent {
-        return when (type) {
-            NavigationStatus.NavigationManeuver.NavigationType.DEPART -> NavigationStatus.NextTurnDetail.NextEvent.DEPART
-            NavigationStatus.NavigationManeuver.NavigationType.NAME_CHANGE -> NavigationStatus.NextTurnDetail.NextEvent.NAME_CHANGE
-            NavigationStatus.NavigationManeuver.NavigationType.KEEP_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.KEEP_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.TURN_SLIGHT_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.TURN_SLIGHT_RIGHT -> NavigationStatus.NextTurnDetail.NextEvent.SLIGHT_TURN
-            NavigationStatus.NavigationManeuver.NavigationType.TURN_NORMAL_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.TURN_NORMAL_RIGHT -> NavigationStatus.NextTurnDetail.NextEvent.TURN
-            NavigationStatus.NavigationManeuver.NavigationType.TURN_SHARP_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.TURN_SHARP_RIGHT -> NavigationStatus.NextTurnDetail.NextEvent.SHARP_TURN
-            NavigationStatus.NavigationManeuver.NavigationType.U_TURN_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.U_TURN_RIGHT -> NavigationStatus.NextTurnDetail.NextEvent.UTURN
-            NavigationStatus.NavigationManeuver.NavigationType.ON_RAMP_SLIGHT_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.ON_RAMP_SLIGHT_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.ON_RAMP_NORMAL_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.ON_RAMP_NORMAL_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.ON_RAMP_SHARP_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.ON_RAMP_SHARP_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.ON_RAMP_U_TURN_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.ON_RAMP_U_TURN_RIGHT -> NavigationStatus.NextTurnDetail.NextEvent.ONRAMP
-            NavigationStatus.NavigationManeuver.NavigationType.OFF_RAMP_SLIGHT_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.OFF_RAMP_SLIGHT_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.OFF_RAMP_NORMAL_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.OFF_RAMP_NORMAL_RIGHT -> NavigationStatus.NextTurnDetail.NextEvent.OFFRAMP
-            NavigationStatus.NavigationManeuver.NavigationType.FORK_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.FORK_RIGHT -> NavigationStatus.NextTurnDetail.NextEvent.FORM
-            NavigationStatus.NavigationManeuver.NavigationType.MERGE_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.MERGE_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.MERGE_SIDE_UNSPECIFIED -> NavigationStatus.NextTurnDetail.NextEvent.MERGE
-            NavigationStatus.NavigationManeuver.NavigationType.ROUNDABOUT_ENTER -> NavigationStatus.NextTurnDetail.NextEvent.ROUNDABOUT_ENTER
-            NavigationStatus.NavigationManeuver.NavigationType.ROUNDABOUT_EXIT -> NavigationStatus.NextTurnDetail.NextEvent.ROUNDABOUT_EXIT
-            NavigationStatus.NavigationManeuver.NavigationType.ROUNDABOUT_ENTER_AND_EXIT_CW,
-            NavigationStatus.NavigationManeuver.NavigationType.ROUNDABOUT_ENTER_AND_EXIT_CW_WITH_ANGLE,
-            NavigationStatus.NavigationManeuver.NavigationType.ROUNDABOUT_ENTER_AND_EXIT_CCW,
-            NavigationStatus.NavigationManeuver.NavigationType.ROUNDABOUT_ENTER_AND_EXIT_CCW_WITH_ANGLE -> NavigationStatus.NextTurnDetail.NextEvent.ROUNDABOUT_ENTER_AND_EXIT
-            NavigationStatus.NavigationManeuver.NavigationType.STRAIGHT -> NavigationStatus.NextTurnDetail.NextEvent.STRAIGHT
-            NavigationStatus.NavigationManeuver.NavigationType.FERRY_BOAT -> NavigationStatus.NextTurnDetail.NextEvent.FERRY_BOAT
-            NavigationStatus.NavigationManeuver.NavigationType.FERRY_TRAIN -> NavigationStatus.NextTurnDetail.NextEvent.FERRY_TRAIN
-            NavigationStatus.NavigationManeuver.NavigationType.DESTINATION,
-            NavigationStatus.NavigationManeuver.NavigationType.DESTINATION_STRAIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.DESTINATION_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.DESTINATION_RIGHT -> NavigationStatus.NextTurnDetail.NextEvent.DESTINATION
-            else -> NavigationStatus.NextTurnDetail.NextEvent.UNKNOWN
-        }
-    }
-
-    private fun mapNavigationTypeToSide(type: NavigationStatus.NavigationManeuver.NavigationType): Int {
-        return when (type) {
-            NavigationStatus.NavigationManeuver.NavigationType.KEEP_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.TURN_SLIGHT_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.TURN_NORMAL_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.TURN_SHARP_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.U_TURN_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.ON_RAMP_SLIGHT_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.ON_RAMP_NORMAL_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.ON_RAMP_SHARP_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.ON_RAMP_U_TURN_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.OFF_RAMP_SLIGHT_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.OFF_RAMP_NORMAL_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.FORK_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.MERGE_LEFT,
-            NavigationStatus.NavigationManeuver.NavigationType.ROUNDABOUT_ENTER_AND_EXIT_CCW,
-            NavigationStatus.NavigationManeuver.NavigationType.ROUNDABOUT_ENTER_AND_EXIT_CCW_WITH_ANGLE,
-            NavigationStatus.NavigationManeuver.NavigationType.DESTINATION_LEFT -> NavigationStatus.NextTurnDetail.Side.LEFT_VALUE
-
-            NavigationStatus.NavigationManeuver.NavigationType.KEEP_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.TURN_SLIGHT_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.TURN_NORMAL_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.TURN_SHARP_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.U_TURN_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.ON_RAMP_SLIGHT_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.ON_RAMP_NORMAL_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.ON_RAMP_SHARP_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.ON_RAMP_U_TURN_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.OFF_RAMP_SLIGHT_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.OFF_RAMP_NORMAL_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.FORK_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.MERGE_RIGHT,
-            NavigationStatus.NavigationManeuver.NavigationType.ROUNDABOUT_ENTER_AND_EXIT_CW,
-            NavigationStatus.NavigationManeuver.NavigationType.ROUNDABOUT_ENTER_AND_EXIT_CW_WITH_ANGLE,
-            NavigationStatus.NavigationManeuver.NavigationType.DESTINATION_RIGHT -> NavigationStatus.NextTurnDetail.Side.RIGHT_VALUE
-
-            else -> NavigationStatus.NextTurnDetail.Side.UNSPECIFIED_VALUE
-        }
-    }
-
-    private fun showNotification(distanceMeters: Int?, action: String, street: String) {
-        val appContext = context.applicationContext
-        val title = if (distanceMeters != null && distanceMeters >= 0) {
-            context.getString(R.string.nav_notification_title_format, distanceMeters, action)
+    private fun updateClusterStatus(status: NavigationStatus.NavigationClusterStatus) {
+        val now = helper.nowElapsedRealtimeMs()
+        val newStatus = AapNavigationHelper.TimedMessage(status, now)
+        val previous = snapshot.clusterStatus?.payload?.status
+        val changed = previous != null && previous != status.status
+        if (changed) {
+            clearAccumulatedDataPreservingStatus(newStatus)
+            helper.cancelNotification()
         } else {
-            action
+            snapshot.clusterStatus = newStatus
         }
-        val pendingIntentFlags = PendingIntent.FLAG_UPDATE_CURRENT or
-            (if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) PendingIntent.FLAG_IMMUTABLE else 0)
-        val notification = NotificationCompat.Builder(appContext, NAV_CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_stat_aa)
-            .setContentTitle(title)
-            .setContentText(context.getString(R.string.nav_notification_street_format, street))
-            .setPriority(NotificationCompat.PRIORITY_LOW)
-            .setAutoCancel(true)
-            .setContentIntent(
-                PendingIntent.getActivity(
-                    appContext,
-                    0,
-                    AapProjectionActivity.intent(appContext),
-                    pendingIntentFlags
-                )
-            )
-            .build()
-        (appContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager)
-            .notify(NAV_NOTIFICATION_ID, notification)
     }
 
-    private fun nextEventToAction(nextEvent: NavigationStatus.NextTurnDetail.NextEvent): String {
-        return when (nextEvent) {
-            NavigationStatus.NextTurnDetail.NextEvent.UNKNOWN -> context.getString(R.string.nav_action_unknown)
-            NavigationStatus.NextTurnDetail.NextEvent.DEPART -> context.getString(R.string.nav_action_depart)
-            NavigationStatus.NextTurnDetail.NextEvent.NAME_CHANGE -> context.getString(R.string.nav_action_name_change)
-            NavigationStatus.NextTurnDetail.NextEvent.SLIGHT_TURN -> context.getString(R.string.nav_action_slight_turn)
-            NavigationStatus.NextTurnDetail.NextEvent.TURN -> context.getString(R.string.nav_action_turn)
-            NavigationStatus.NextTurnDetail.NextEvent.SHARP_TURN -> context.getString(R.string.nav_action_sharp_turn)
-            NavigationStatus.NextTurnDetail.NextEvent.UTURN -> context.getString(R.string.nav_action_uturn)
-            NavigationStatus.NextTurnDetail.NextEvent.ONRAMP -> context.getString(R.string.nav_action_on_ramp)
-            NavigationStatus.NextTurnDetail.NextEvent.OFFRAMP -> context.getString(R.string.nav_action_off_ramp)
-            NavigationStatus.NextTurnDetail.NextEvent.FORM -> context.getString(R.string.nav_action_merge)
-            NavigationStatus.NextTurnDetail.NextEvent.MERGE -> context.getString(R.string.nav_action_merge)
-            NavigationStatus.NextTurnDetail.NextEvent.ROUNDABOUT_ENTER -> context.getString(R.string.nav_action_roundabout_enter)
-            NavigationStatus.NextTurnDetail.NextEvent.ROUNDABOUT_EXIT -> context.getString(R.string.nav_action_roundabout_exit)
-            NavigationStatus.NextTurnDetail.NextEvent.ROUNDABOUT_ENTER_AND_EXIT -> context.getString(R.string.nav_action_roundabout)
-            NavigationStatus.NextTurnDetail.NextEvent.STRAIGHT -> context.getString(R.string.nav_action_straight)
-            NavigationStatus.NextTurnDetail.NextEvent.FERRY_BOAT -> context.getString(R.string.nav_action_ferry)
-            NavigationStatus.NextTurnDetail.NextEvent.FERRY_TRAIN -> context.getString(R.string.nav_action_ferry_train)
-            NavigationStatus.NextTurnDetail.NextEvent.DESTINATION -> context.getString(R.string.nav_action_destination)
-        }
+    private fun scheduleDebouncedBroadcast(navEventType: Int) {
+        pendingNavEventType = navEventType
+        if (isBroadcastScheduled) return
+        isBroadcastScheduled = true
+        debounceHandler.postDelayed(debouncedBroadcastEmitter, BROADCAST_DEBOUNCE_MS)
     }
 
     companion object {
-        const val NAV_CHANNEL_ID = "headunit_navigation"
-        private const val NAV_NOTIFICATION_ID = 2
+        private const val BROADCAST_DEBOUNCE_MS = 1000L
+        private const val NAV_EVENT_TYPE_TURN = 0
+        private const val NAV_EVENT_TYPE_START = 1
+        private const val NAV_EVENT_TYPE_STOP = 2
+        private const val NAV_EVENT_TYPE_STATUS = 3
+        private const val NAV_EVENT_TYPE_STATE = 4
+        private const val NAV_EVENT_TYPE_CURRENT_POSITION = 5
 
         fun createNotificationChannel(context: Context) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                val channel = NotificationChannel(
-                    NAV_CHANNEL_ID,
-                    context.getString(R.string.nav_notification_channel_name),
-                    NotificationManager.IMPORTANCE_LOW
-                ).apply {
-                    description = context.getString(R.string.nav_notification_channel_description)
-                    setShowBadge(false)
-                }
-                (context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager)
-                    .createNotificationChannel(channel)
-            }
+            AapNavigationHelper.createNotificationChannel(context)
         }
     }
 }
