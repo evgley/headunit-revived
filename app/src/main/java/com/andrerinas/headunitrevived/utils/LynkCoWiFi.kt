@@ -51,6 +51,7 @@ object LynkCoWiFi {
             Log.e(TAG, "Unexpected error while setting mIsIpcpService: ${e.message}")
         }
 
+        wifiManager.isWifiEnabled = true;
         // Сохраняем в кеш
         cachedWifiManager = wifiManager
         return wifiManager
