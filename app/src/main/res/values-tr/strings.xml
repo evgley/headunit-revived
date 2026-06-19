@@ -119,15 +119,17 @@
     <string name="debug_mode_description">Daha fazla günlük kaydı (Log) tut</string>
     <string name="log_level">Günlük Seviyesi</string>
     <string name="log_level_description">Dışa aktarırken günlük seviyesini filtrele</string>
+    <string name="log_source">Günlük kaynağı</string>
+    <string name="log_source_logcat">Logcat</string>
+    <string name="log_source_applog_file">Doğrudan dosyaya</string>
     <string name="start_log_capture">Günlük Kaydını Başlat</string>
     <string name="start_log_capture_description">Hata ayıklama için tam günlükleri kaydetmeye başla</string>
+    <string name="start_log_capture_in_applog_file">Log mesajları yalnızca yakalama etkin olduğunda bir dosyaya yazılır</string>
     <string name="start_log_capture_in_silent">Kayıt başlatılamıyor: Sessiz günlükleme seviyesi seçildi</string>
     <string name="stop_log_capture">Günlük Kaydını Durdur</string>
     <string name="stop_log_capture_description">Kayıt yapılıyor… durdurmak için dokunun</string>
     <string name="export_logs">Günlükleri Dışa Aktar</string>
     <string name="export_logs_description">Hata ayıklama için günlükleri kaydet</string>
-    <string name="use_native_ssl">Yerel SSL Kullan</string>
-    <string name="use_native_ssl_description">Yerel OpenSSL kütüphanesini kullan (eski cihazlarda daha hızlıdır). Yeniden başlatma gerektirir.</string>
     <string name="not_set">Ayarlanmadı</string>
     <string name="keymap_description">Multimedya sisteminiz için tuş atamalarını değiştirin</string>
 
@@ -191,7 +193,7 @@
     <string name="bt_permission_denied_title">Bluetooth İzni Gerekli</string>
     <string name="bt_permission_denied_message">Eşleşmiş cihazları seçmek için Bluetooth izni gereklidir. Lütfen uygulama ayarlarından izin verin.</string>
     <string name="overlay_permission_title">Arka Planda Başlatma İzni</string>
-    <string name="overlay_permission_description">Bluetooth bağlandığında Headunit Revived\'ın otomatik olarak açılmasına izin vermek için lütfen bir sonraki ekranda "Diğer uygulamaların üzerinde görüntüleme" iznini etkinleştirin.</string>
+    <string name="overlay_permission_description">Bluetooth bağlandığında Headunit Revived\'ın otomatik olarak açılmasına izin vermek için lütfen bir sonraki ekranda \"Diğer uygulamaların üzerinde görüntüleme\" iznini etkinleştirin.</string>
     <string name="open_settings">Ayarlar</string>
     <string name="right_hand_drive">Sağdan direksiyon</string>
     <string name="right_hand_drive_description">Arayüzü sağdan direksiyonlu sürüş için konumlandırın</string>
@@ -438,9 +440,9 @@
     <string name="auto_enable_hotspot">Erişim Noktasını Otomatik Etkinleştir</string>
     <string name="auto_enable_hotspot_description">Bu cihazda otomatik olarak bir Wi-Fi erişim noktası başlatır. (Her cihazda çalışmayabilir)</string>
     <string name="hotspot_warning_title">Deneysel Özellik</string>
-    <string name="hotspot_warning_message">Bu özellik yansıma (reflection) kullanır ve tüm cihazlarda çalışmayabilir. Ayrıca "Sistem ayarlarını değiştir" izninin manuel olarak verilmesini gerektirebilir.</string>
+    <string name="hotspot_warning_message">Bu özellik yansıma (reflection) kullanır ve tüm cihazlarda çalışmayabilir. Ayrıca \"Sistem ayarlarını değiştir\" izninin manuel olarak verilmesini gerektirebilir.</string>
     <string name="hotspot_permission_title">İzin Gerekli</string>
-    <string name="hotspot_permission_message">Erişim noktası özelliği "Sistem ayarlarını değiştir" iznini gerektirir. Lütfen bir sonraki ekranda bu izni etkinleştirin.</string>
+    <string name="hotspot_permission_message">Erişim noktası özelliği \"Sistem ayarlarını değiştir\" iznini gerektirir. Lütfen bir sonraki ekranda bu izni etkinleştirin.</string>
 
     <string name="supported_nativeaa">Gelişmiş Kablosuz Desteği</string>
     <string name="supported_nativeaa_desc">Harika haber! Cihazınız, daha sorunsuz bir Android Auto deneyimi sağlayan \"Native Wireless\" (Yerel Kablosuz) modunu destekliyor. \n\nBunu etkinleştirmek için Bluetooth önbelleğinizi yenilememiz gerekiyor. Lütfen: \n1. Telefonunuzdaki mevcut eşleşmeyi kaldırın \n2. Bluetooth\'u yeniden başlatmak için Tamam\'a tıklayın \n3. Telefonunuzu tekrar eşleştirin \n\nŞimdi Native AA moduna geçmek ister misiniz?</string>
@@ -494,7 +496,83 @@
     <string name="mic_noise_suppressor_description">Arka plan gürültüsünü azaltmaya çalışır. Sesiniz boğuk geliyorsa bunu devre dışı bırakın.</string>
     <string name="mic_auto_gain_control">Otomatik kazanç kontrolü (AGC)</string>
     <string name="mic_auto_gain_control_description">Mikrofon ses seviyesini otomatik olarak ayarlar. Ses seviyesi dengesizse bunu devre dışı bırakın.</string>
+    <string name="mic_feature_unsupported">Bu özellik cihazınızda desteklenmiyor.</string>
     <string name="bt_permission_denied">Bluetooth izni reddedildi. Cihazlar taranamıyor.</string>
     <string name="wifi_autostart_title">WiFi Otomatik Başlatma</string>
     <string name="wifi_autostart_content">%s ağına bağlandı. Android Auto\'yu başlatmak için dokunun.</string>
+
+    <!-- New strings merged from 2.3.1 -->
+    <string name="use_native_ssl">Yerel SSL Kullan</string>
+    <string name="use_native_ssl_description">Yerel OpenSSL kütüphanesini kullan (eski cihazlarda daha hızlıdır). Yeniden başlatma gerektirir.</string>
+    <string name="bt_devices_selected">cihaz seçildi</string>
+    <string name="static_audio_focus">Statik Ses Odağı</string>
+    <string name="static_audio_focus_description">Telefonun ses odağının her zaman korunduğuna inanmasını sağlayarak genel ana ünitelerde ses yönlendirme kayıplarını önler. Ayrıca navigasyon sesli komutları sırasında yazılımsal ses kısma (ducking) işlemi gerçekleştirir.</string>
+    <string name="bluetooth_adapter_label">Bluetooth Adaptörü</string>
+    <string name="bluetooth_adapter_description">Bağlantı kurulumu (handshake) için kullanılacak Bluetooth adaptörünü/denetleyicisini seçin. Çift Bluetooth sistemleri için kullanışlıdır.</string>
+    <string name="select_bt_adapter">Bluetooth Adaptörünü Seçin</string>
+    <!-- QR Code Generator -->
+    <string name="share_hotspot_qr_title">Wireless Helper\'ı Yapılandır</string>
+    <string name="share_hotspot_qr_desc">Telefon otomatik bağlantısı için QR Kodunu göster</string>
+    <string name="hotspot_qr_description">Wireless Helper Yapılandırma QR Kodu</string>
+    <string name="scan_with_wireless_helper">Bu QR Kodunu telefonunuzdaki Wireless Helper\'da bulunan QR Tarayıcıyı kullanarak tarayın.</string>
+    <string name="share_hotspot_qr_error">Etkin Wi-Fi erişim noktası kimlik bilgileri alınamadı. Lütfen erişim noktanızın açık olduğundan ve Konumun etkinleştirildiğinden emin olun.</string>
+
+    <!-- Brightness, quick settings, key back, backup, wireless helper QR -->
+    <string name="current_brightness_reading">Geçerli parlaklık: %d / 255</string>
+    <string name="exit_dialog_settings">Hızlı Ayarlar</string>
+    <string name="key_back">Geri</string>
+    <string name="category_backup">Yedekleme</string>
+    <string name="export_settings">Ayarları dışa aktar</string>
+    <string name="export_settings_description">Ayarların yedeğini bir JSON dosyası olarak kaydet</string>
+    <string name="export_settings_app_folder">Uygulama yedek klasörüne kaydet</string>
+    <string name="export_settings_downloads">İndirilenlere kaydet</string>
+    <string name="export_settings_choose_location">Kayıt konumunu seç</string>
+    <string name="settings_exported">Ayarlar dışa aktarıldı</string>
+    <string name="settings_export_failed">Ayarlar dışa aktarılamadı: %1$s</string>
+    <string name="settings_backup_saved_to">Ayar yedeği şuraya kaydedildi:\n%1$s</string>
+    <string name="share_settings_backup">Ayar yedeğini paylaş</string>
+    <string name="import_settings">Ayarları içe aktar</string>
+    <string name="import_settings_description">Bir Headunit Revived yedeğinden ayarları geri yükle</string>
+    <string name="import_settings_app_folder">Uygulama yedek klasöründen içe aktar</string>
+    <string name="import_settings_downloads">İndirilenlerden içe aktar</string>
+    <string name="import_settings_choose_file">Yedek dosyasını seç</string>
+    <string name="import_settings_discard_pending">Yedek içe aktarmak kaydedilmemiş değişiklikleri silecek. Devam edilsin mi?</string>
+    <string name="settings_imported">Ayarlar içe aktarıldı: %1$d uygulandı, %2$d atlandı</string>
+    <string name="settings_import_failed">Ayarlar içe aktarılamadı: %1$s</string>
+    <string name="no_settings_backups_title">Yedek bulunamadı</string>
+    <string name="no_settings_backups_message">Uygulama yedek klasöründe Headunit Revived yedeği bulunamadı. Önce bir yedek dışa aktarın, ardından buradan içe aktarın.</string>
+    <string name="no_settings_backups_downloads_message">İndirilenlerde Headunit Revived yedeği bulunamadı. Önce İndirilenlere bir yedek dışa aktarın, ardından buradan içe aktarın.</string>
+    <string name="no_file_picker_title">Dosya seçici mevcut değil</string>
+    <string name="no_file_picker_message">Bu cihazda uyumlu bir dosya seçici yok. Bunun yerine İndirilenleri veya uygulama yedek klasörünü kullanabilirsiniz.</string>
+    <string name="storage_permission_denied_backup">Depolama izni reddedildi. İndirilenler kullanılamadı.</string>
+    <string name="reset_settings">Varsayılanlara Sıfırla</string>
+    <string name="reset_settings_description">Tüm yapılandırmayı, önbelleğe alınmış verileri ve otomatik bağlantı tercihlerini temizler. Fabrika ayarlarını uygulamak için uygulama yeniden başlayacak.</string>
+    <string name="reset_settings_confirm">Tüm ayarları varsayılan değerlere sıfırlamak istediğinizden emin misiniz? Bu, uygulamayı yeniden başlatacak.</string>
+    <string name="reset_settings_confirm_message">Tüm ayarlar varsayılan değerlere sıfırlanacak. Yedekler ve uygulama dosyaları silinmeyecek. Devam edilsin mi?</string>
+    <string name="reset_settings_discard_pending">Ayarları sıfırlamak kaydedilmemiş değişiklikleri silecek. Devam edilsin mi?</string>
+    <string name="settings_reset">Ayarlar varsayılanlara sıfırlandı</string>
+    <string name="settings_reset_failed">Ayarlar sıfırlanamadı: %1$s</string>
+    <string name="hotspot_ssid_hint">Erişim noktası SSID</string>
+    <string name="hotspot_pass_hint">Erişim noktası parolası</string>
+
+    <!-- Loading screen -->
+    <string name="loading_screen">Yükleme ekranı</string>
+    <string name="loading_screen_dialog_title">Özel yükleme ekranı</string>
+    <string name="loading_screen_default">Varsayılan</string>
+    <string name="loading_screen_custom">Özel</string>
+    <string name="loading_screen_select_file">Dosya seç</string>
+    <string name="loading_screen_remove">Kaldır</string>
+    <string name="loading_screen_no_media">Özel medya seçilmedi</string>
+    <string name="loading_screen_tap_preview">Tam ekran önizleme için dokun</string>
+    <string name="loading_screen_tap_fullscreen_hint">Tam ekran görmek için önizlemeye dokun</string>
+    <string name="loading_screen_tap_to_close">Kapatmak için herhangi bir yere dokun</string>
+    <string name="loading_screen_show_text">\"Android Auto başlatılıyor\" metnini göster</string>
+    <string name="loading_screen_keep_aspect_ratio">En boy oranını koru</string>
+    <string name="loading_screen_loop_video">Kısa animasyonları döngüye al</string>
+    <string name="loading_screen_recommendation">Önerilen çözünürlük: %1$dx%2$d</string>
+    <string name="loading_screen_recommended_aspect_ratio">Önerilen en boy oranı: %1$d:%2$d</string>
+    <string name="loading_screen_supported_formats">Desteklenen: Görseller (PNG, JPG, BMP, WEBP, GIF) \u2022 Videolar (MP4, MKV, WEBM, 3GP) \u2022 Maks: 10 MB</string>
+    <string name="loading_screen_file_error">Seçili dosya yüklenemedi</string>
+    <string name="loading_screen_file_too_large">Dosya çok büyük (maks 10 MB)</string>
+    <string name="loading_screen_unsupported_format">Desteklenmeyen biçim. Bir görsel veya video dosyası kullanın</string>
 </resources>

@@ -109,8 +109,8 @@
     <string name="debug_mode_description">Включить расширенное логирование</string>
     <string name="export_logs">Выгрузка логов</string>
     <string name="export_logs_description">Сохранить логи для отладки</string>
-    <string name="use_native_ssl">Использовать Native SSL</string>
-    <string name="use_native_ssl_description">Использовать нативную библиотеку OpenSSL (быстрее на старых устройствах). Требуется перезапуск.</string>
+
+
     <string name="not_set">Не назначено</string>
     <string name="keymap_description">Изменить привязку клавиш для вашего ГУ</string>
 
@@ -176,7 +176,7 @@
     <string name="bt_permission_denied_title">Требуется разрешение Bluetooth</string>
     <string name="bt_permission_denied_message">Разрешение Bluetooth необходимо для выбора сопряжённых устройств. Предоставьте его в настройках приложения.</string>
     <string name="overlay_permission_title">Разрешение на запуск в фоне</string>
-    <string name="overlay_permission_description">Чтобы Headunit Revived мог автоматически открываться при подключении Bluetooth, включите разрешение "Показывать поверх других приложений" на следующем экране.</string>
+    <string name="overlay_permission_description">Чтобы Headunit Revived мог автоматически открываться при подключении Bluetooth, включите разрешение \"Показывать поверх других приложений\" на следующем экране.</string>
     <string name="open_settings">Настройки</string>
     <string name="wireless_connection_settings">Беспроводное соединение</string>
     <string name="right_hand_drive">Праворульный автомобиль</string>
@@ -225,10 +225,10 @@
     <string name="pref_stretch_screen_summary">Игнорирует соотношение сторон для заполнения всего дисплея (убирает черные полосы)</string>
 
     <!-- Audio Settings -->
-        <string name="forced_scale">Принудительное масштабирование (Legacy Fix)</string>
+    <string name="forced_scale">Принудительное масштабирование (Legacy Fix)</string>
     <string name="forced_scale_description">Исправляет проблемы с масштабированием на некоторых старых устройствах, использующих SurfaceView. Используйте только если изображение выглядит искаженным или смещенным.</string>
 
-<string name="category_audio">Аудио</string>
+    <string name="category_audio">Аудио</string>
     <string name="enable_audio_sink">Включить вывод звука</string>
     <string name="enable_audio_sink_description">Если выключить этот параметр, то ГУ не будет выводить звук. Звук будет воспроизводиться на телефоне.</string>
     <string name="separate_audio_streams">Раздельные аудиопотоки</string>
@@ -350,8 +350,12 @@
     <string name="fullscreen_status_only">Скрыть только строку состояния</string>
     <string name="log_level">Уровень логирования</string>
     <string name="log_level_description">Фильтр уровня логирования при экспорте.</string>
+    <string name="log_source">Источник логов</string>
+    <string name="log_source_logcat">Logcat</string>
+    <string name="log_source_applog_file">Направить в файл</string>
     <string name="start_log_capture">Начать запись лога</string>
     <string name="start_log_capture_description">Начинает запись системных логов в файл.</string>
+    <string name="start_log_capture_in_applog_file">Сообщения записываются в файл только во время активной записи</string>
     <string name="start_log_capture_in_silent">Невозможно начать запись: выбран Silent уровень логирования</string>
     <string name="stop_log_capture">Остановить запись лога</string>
     <string name="stop_log_capture_description">Идет запись… нажмите, чтобы остановить.</string>
@@ -452,6 +456,26 @@
     <string name="wait_for_wifi_description">При запуске ждать подключения WiFi перед запуском WiFi Direct. Полезно, если вашему головному устройству требуется несколько секунд для подключения к WiFi после включения.</string>
     <string name="wait_for_wifi_timeout">Тайм-аут ожидания WiFi</string>
     <string name="wireless_24ghz_warning">Примечание: Беспроводной Android Auto на устройствах 2,4 ГГц может приводить к задержкам, рывкам и разрывам соединения. Если вы столкнулись с проблемами, проверьте работу через USB, чтобы подтвердить ограничение сети.</string>
+    <!-- Custom loading screen -->
+    <string name="loading_screen">Экран загрузки</string>
+    <string name="loading_screen_default">По умолчанию</string>
+    <string name="loading_screen_custom">Пользовательский</string>
+    <string name="loading_screen_dialog_title">Пользовательский экран загрузки</string>
+    <string name="loading_screen_select_file">Выбрать файл</string>
+    <string name="loading_screen_remove">Удалить</string>
+    <string name="loading_screen_recommendation">Рекомендуемое разрешение: %1$dx%2$d</string>
+    <string name="loading_screen_supported_formats">Поддерживаемые: Изображения (PNG, JPG, BMP, WEBP, GIF) \u2022 Видео (MP4, MKV, WEBM, 3GP) \u2022 Макс: 10 МБ</string>
+    <string name="loading_screen_no_media">Пользовательский контент не выбран</string>
+    <string name="loading_screen_file_too_large">Файл слишком большой (макс. 10 МБ)</string>
+    <string name="loading_screen_unsupported_format">Неподдерживаемый формат. Используйте файл изображения или видео</string>
+    <string name="loading_screen_file_error">Не удалось загрузить выбранный файл</string>
+    <string name="loading_screen_show_text">Показывать текст \"Запуск Android Auto\"</string>
+    <string name="loading_screen_tap_preview">Нажмите для предпросмотра</string>
+    <string name="loading_screen_tap_to_close">Нажмите в любом месте, чтобы закрыть</string>
+    <string name="loading_screen_keep_aspect_ratio">Сохранять соотношение сторон</string>
+    <string name="loading_screen_recommended_aspect_ratio">Рекомендуемое соотношение сторон: %1$d:%2$d</string>
+    <string name="loading_screen_tap_fullscreen_hint">Нажмите на превью, чтобы увидеть в полный экран</string>
+    <string name="loading_screen_loop_video">Повторять короткие анимации</string>
     <string name="supported_nativeaa">Расширенная беспроводная поддержка</string>
     <string name="supported_nativeaa_desc">Отличные новости! Ваше устройство поддерживает режим «Native Wireless», который обеспечивает более плавную работу Android Auto. \n\nЧтобы включить его, нам нужно обновить кеш Bluetooth. Пожалуйста: \n1. Удалите существующее сопряжение на телефоне \n2. Нажмите ОК, чтобы перезапустить Bluetooth \n3. Снова выполните сопряжение с телефоном \n\nХотите переключиться на режим Native AA сейчас?</string>
     <string name="fake_speed_title">Отключить блокировку видео (Fake Speed)</string>
@@ -497,7 +521,62 @@
     <string name="mic_noise_suppressor_description">Попытка уменьшить фоновый шум. Отключите, если ваш голос звучит приглушенно.</string>
     <string name="mic_auto_gain_control">Автоматическая регулировка усиления (AGC)</string>
     <string name="mic_auto_gain_control_description">Автоматически регулирует громкость микрофона. Отключите, если громкость нестабильна.</string>
+    <string name="mic_feature_unsupported">Эта функция не поддерживается на вашем устройстве.</string>
     <string name="bt_permission_denied">В разрешении Bluetooth отказано. Невозможно сканировать устройства.</string>
     <string name="wifi_autostart_title">Автозапуск WiFi</string>
     <string name="wifi_autostart_content">Подключено к %s. Нажмите, чтобы запустить Android Auto.</string>
+
+    <!-- New strings merged from 2.3.1 -->
+    <string name="use_native_ssl">Использовать Native SSL</string>
+    <string name="use_native_ssl_description">Использовать нативную библиотеку OpenSSL (быстрее на старых устройствах). Требуется перезапуск.</string>
+    <string name="bt_devices_selected">устройств выбрано</string>
+    <string name="static_audio_focus">Статический аудиофокус</string>
+    <string name="static_audio_focus_description">Принудительно заставляет телефон считать, что аудиофокус удерживается постоянно, предотвращая потерю маршрутизации звука на универсальных магнитолах. Также выполняет программное приглушение звука (ducking) во время голосовых подсказок навигатора.</string>
+    <string name="bluetooth_adapter_label">Bluetooth-адаптер</string>
+    <string name="bluetooth_adapter_description">Выберите Bluetooth-адаптер/контроллер для сопряжения. Полезно для систем с двойным Bluetooth.</string>
+    <string name="select_bt_adapter">Выбор Bluetooth-адаптера</string>
+    <!-- QR Code Generator -->
+    <string name="share_hotspot_qr_title">Настроить Wireless Helper</string>
+    <string name="share_hotspot_qr_desc">Показать QR-код для автоматического подключения телефона</string>
+    <string name="hotspot_qr_description">QR-код конфигурации Wireless Helper</string>
+    <string name="scan_with_wireless_helper">Отсканируйте этот QR-код с помощью сканера в приложении Wireless Helper на вашем телефоне.</string>
+    <string name="share_hotspot_qr_error">Не удалось получить данные активной точки доступа Wi-Fi. Убедитесь, что точка доступа включена и геолокация разрешена.</string>
+
+    <!-- Brightness, quick settings, key back, backup, wireless helper QR -->
+    <string name="current_brightness_reading">Текущая яркость: %d / 255</string>
+    <string name="exit_dialog_settings">Быстрые настройки</string>
+    <string name="key_back">Назад</string>
+    <string name="category_backup">Резервная копия</string>
+    <string name="export_settings">Экспорт настроек</string>
+    <string name="export_settings_description">Сохранить резервную копию настроек как файл JSON</string>
+    <string name="export_settings_app_folder">Сохранить в папку резервных копий приложения</string>
+    <string name="export_settings_downloads">Сохранить в Загрузки</string>
+    <string name="export_settings_choose_location">Выберите место сохранения</string>
+    <string name="settings_exported">Настройки экспортированы</string>
+    <string name="settings_export_failed">Не удалось экспортировать настройки: %1$s</string>
+    <string name="settings_backup_saved_to">Резервная копия настроек сохранена в:\n%1$s</string>
+    <string name="share_settings_backup">Поделиться резервной копией</string>
+    <string name="import_settings">Импорт настроек</string>
+    <string name="import_settings_description">Восстановить настройки из резервной копии Headunit Revived</string>
+    <string name="import_settings_app_folder">Импорт из папки резервных копий приложения</string>
+    <string name="import_settings_downloads">Импорт из Загрузок</string>
+    <string name="import_settings_choose_file">Выбрать файл резервной копии</string>
+    <string name="import_settings_discard_pending">Импорт резервной копии отменит несохранённые изменения. Продолжить?</string>
+    <string name="settings_imported">Настройки импортированы: %1$d применено, %2$d пропущено</string>
+    <string name="settings_import_failed">Не удалось импортировать настройки: %1$s</string>
+    <string name="no_settings_backups_title">Резервные копии не найдены</string>
+    <string name="no_settings_backups_message">В папке резервных копий приложения не найдено резервных копий Headunit Revived. Сначала экспортируйте резервную копию, затем импортируйте её отсюда.</string>
+    <string name="no_settings_backups_downloads_message">В Загрузках не найдено резервных копий Headunit Revived. Сначала экспортируйте копию в Загрузки, затем импортируйте её отсюда.</string>
+    <string name="no_file_picker_title">Выбор файлов недоступен</string>
+    <string name="no_file_picker_message">На этом устройстве нет совместимого выбора файлов. Вы можете использовать Загрузки или папку резервных копий приложения.</string>
+    <string name="storage_permission_denied_backup">В доступе к хранилищу отказано. Не удалось использовать Загрузки.</string>
+    <string name="reset_settings">Сбросить до значений по умолчанию</string>
+    <string name="reset_settings_description">Очищает все настройки, кэшированные данные и параметры автоподключения. Приложение перезапустится, чтобы применить заводские значения.</string>
+    <string name="reset_settings_confirm">Вы уверены, что хотите сбросить все настройки до значений по умолчанию? Приложение будет перезапущено.</string>
+    <string name="reset_settings_confirm_message">Все настройки будут сброшены до значений по умолчанию. Резервные копии и файлы приложения не будут удалены. Продолжить?</string>
+    <string name="reset_settings_discard_pending">Сброс настроек отменит несохранённые изменения. Продолжить?</string>
+    <string name="settings_reset">Настройки сброшены до значений по умолчанию</string>
+    <string name="settings_reset_failed">Не удалось сбросить настройки: %1$s</string>
+    <string name="hotspot_ssid_hint">SSID точки доступа</string>
+    <string name="hotspot_pass_hint">Пароль точки доступа</string>
 </resources>

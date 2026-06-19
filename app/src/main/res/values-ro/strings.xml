@@ -114,15 +114,19 @@
     <string name="debug_mode_description">Activează loguri detaliate</string>
     <string name="log_level">Nivel logare</string>
     <string name="log_level_description">Filtrează nivelul logurilor la export</string>
+    <string name="log_source">Sursă de jurnalizare</string>
+    <string name="log_source_logcat">Logcat</string>
+    <string name="log_source_applog_file">Direct în fișier</string>
     <string name="start_log_capture">Începe capturarea logurilor</string>
     <string name="start_log_capture_description">Începe înregistrarea completă a logurilor pentru depanare</string>
+    <string name="start_log_capture_in_applog_file">Mesajele Log sunt scrise într-un fișier doar cât timp captura este activă</string>
     <string name="start_log_capture_in_silent">Nu se poate începe înregistrarea: nivelul jurnalului Silențios selectat</string>
     <string name="stop_log_capture">Oprește capturarea logurilor</string>
     <string name="stop_log_capture_description">Înregistrare în curs… apasă pentru a opri</string>
     <string name="export_logs">Exportă logurile</string>
     <string name="export_logs_description">Salvează logurile pentru depanare</string>
-    <string name="use_native_ssl">Folosește SSL Nativ</string>
-    <string name="use_native_ssl_description">Folosește librăria nativă OpenSSL (mai rapidă pe dispozitive vechi). Necesită repornire.</string>
+
+
     <string name="not_set">Nesetat</string>
     <string name="keymap_description">Schimbă asocierile de taste pentru Headunit</string>
 
@@ -188,7 +192,7 @@
     <string name="bt_permission_denied_title">Permisiune Bluetooth necesară</string>
     <string name="bt_permission_denied_message">E nevoie de permisiunea Bluetooth pentru a selecta dispozitivele asociate. Te rog să o acorzi din setările aplicației.</string>
     <string name="overlay_permission_title">Permisiune pornire în fundal</string>
-    <string name="overlay_permission_description">Pentru a lăsa Headunit Revived să se deschidă automat la conectarea Bluetooth-ului, activează permisiunea "Afișare peste alte aplicații" în ecranul următor.</string>
+    <string name="overlay_permission_description">Pentru a lăsa Headunit Revived să se deschidă automat la conectarea Bluetooth-ului, activează permisiunea \"Afișare peste alte aplicații\" în ecranul următor.</string>
     <string name="open_settings">Setări</string>
     <string name="wireless_connection_settings">Conexiune wireless</string>
     <string name="right_hand_drive">Volan pe dreapta</string>
@@ -237,10 +241,10 @@
     <string name="pref_stretch_screen_summary">Ignoră raportul de aspect pentru a umple întregul afișaj (elimină barele negre)</string>
 
     <!-- Audio Settings -->
-        <string name="forced_scale">Scalare forțată (Fix legacy)</string>
+    <string name="forced_scale">Scalare forțată (Fix legacy)</string>
     <string name="forced_scale_description">Corectează problemele de scalare pe unele dispozitive mai vechi care folosesc SurfaceView. Utilizați numai dacă imaginea pare distorsionată sau deplasată.</string>
 
-<string name="category_audio">Audio</string>
+    <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Receptor Audio (Sink)</string>
     <string name="enable_audio_sink_description">Dacă dezactivezi asta, playerul nu va primi semnal audio. Sunetul se va auzi din telefon.</string>
     <string name="separate_audio_streams">Fluxuri audio separate</string>
@@ -358,7 +362,7 @@
 
     <!-- Navigation notifications -->
     <string name="show_navigation_notifications">Notificări de navigare</string>
-    <string name="show_navigation_notifications_description">Afișează „Peste X metri Y" și strada curentă în notificări (pentru depanare)</string>
+    <string name="show_navigation_notifications_description">Afișează „Peste X metri Y\" și strada curentă în notificări (pentru depanare)</string>
     <string name="nav_notification_channel_name">Navigare</string>
     <string name="nav_notification_channel_description">Instrucțiuni pas cu pas de la Android Auto</string>
     <string name="nav_notification_title_format">Peste %1$d m — %2$s</string>
@@ -489,6 +493,27 @@
     <string name="sync_media_session_aa_metadata">Piesa curentă AA în sesiunea media</string>
     <string name="sync_media_session_aa_metadata_description">Afișează titlul piesei, artistul, durata și coperta albumului de pe telefon în sesiunea media a sistemului și în notificarea media</string>
     <string name="error_usb_permission_failed">Eroare de sistem: Nu s-a putut solicita caseta de dialog pentru permisiunea USB.</string>
+
+    <!-- Custom loading screen -->
+    <string name="loading_screen">Ecran de încărcare</string>
+    <string name="loading_screen_default">Implicit</string>
+    <string name="loading_screen_custom">Personalizat</string>
+    <string name="loading_screen_dialog_title">Ecran de încărcare personalizat</string>
+    <string name="loading_screen_select_file">Selectează fișier</string>
+    <string name="loading_screen_remove">Elimină</string>
+    <string name="loading_screen_recommendation">Rezoluție recomandată: %1$dx%2$d</string>
+    <string name="loading_screen_supported_formats">Suportate: Imagini (PNG, JPG, BMP, WEBP, GIF) \u2022 Video (MP4, MKV, WEBM, 3GP) \u2022 Max: 10 MB</string>
+    <string name="loading_screen_no_media">Niciun conținut personalizat selectat</string>
+    <string name="loading_screen_file_too_large">Fișierul este prea mare (max 10 MB)</string>
+    <string name="loading_screen_unsupported_format">Format neacceptat. Utilizați un fișier imagine sau video</string>
+    <string name="loading_screen_file_error">Nu s-a putut încărca fișierul selectat</string>
+    <string name="loading_screen_show_text">Afișează textul \"Android Auto pornește\"</string>
+    <string name="loading_screen_tap_preview">Atingeți pentru previzualizare</string>
+    <string name="loading_screen_tap_to_close">Atingeți oriunde pentru a închide</string>
+    <string name="loading_screen_keep_aspect_ratio">Păstrează raportul de aspect</string>
+    <string name="loading_screen_recommended_aspect_ratio">Raport de aspect recomandat: %1$d:%2$d</string>
+    <string name="loading_screen_tap_fullscreen_hint">Atingeți previzualizarea pentru a o vedea pe tot ecranul</string>
+    <string name="loading_screen_loop_video">Repetă animațiile scurte în buclă</string>
     <string name="microphone_settings">Setări microfon</string>
     <string name="microphone_settings_description">Configurați intrarea microfonului și procesarea audio.</string>
     <string name="mic_echo_canceler">Anularea ecoului (AEC)</string>
@@ -497,7 +522,62 @@
     <string name="mic_noise_suppressor_description">Încearcă să reducă zgomotul de fundal. Dezactivați dacă vocea dvs. sună înfundat.</string>
     <string name="mic_auto_gain_control">Control automat al amplificării (AGC)</string>
     <string name="mic_auto_gain_control_description">Reglează automat volumul microfonului. Dezactivați dacă volumul este instabil.</string>
+    <string name="mic_feature_unsupported">Această funcție nu este acceptată pe dispozitivul dvs.</string>
     <string name="bt_permission_denied">Permisiunea Bluetooth a fost refuzată. Nu se pot scana dispozitive.</string>
     <string name="wifi_autostart_title">Pornire automată WiFi</string>
     <string name="wifi_autostart_content">Conectat la %s. Atingeți pentru a porni Android Auto.</string>
+
+    <!-- New strings merged from 2.3.1 -->
+    <string name="use_native_ssl">Folosește SSL Nativ</string>
+    <string name="use_native_ssl_description">Folosește librăria nativă OpenSSL (mai rapidă pe dispozitive vechi). Necesită repornire.</string>
+    <string name="bt_devices_selected">dispozitive selectate</string>
+    <string name="static_audio_focus">Focus audio static</string>
+    <string name="static_audio_focus_description">Forțează telefonul să creadă că focusul audio este menținut mereu, prevenind pierderile de rutare audio pe unitățile auto generice. De asemenea, efectuează atenuarea volumului prin software (ducking) în timpul instrucțiunilor vocale de navigare.</string>
+    <string name="bluetooth_adapter_label">Adaptor Bluetooth</string>
+    <string name="bluetooth_adapter_description">Selectați adaptorul/controlerul Bluetooth de utilizat pentru handshake. Util pentru sistemele cu Bluetooth dual.</string>
+    <string name="select_bt_adapter">Selectați adaptorul Bluetooth</string>
+    <!-- QR Code Generator -->
+    <string name="share_hotspot_qr_title">Configurare Wireless Helper</string>
+    <string name="share_hotspot_qr_desc">Afișează codul QR pentru conectarea automată a telefonului</string>
+    <string name="hotspot_qr_description">Cod QR de configurare Wireless Helper</string>
+    <string name="scan_with_wireless_helper">Scanează acest cod QR folosind scanerul QR din Wireless Helper pe telefonul tău.</string>
+    <string name="share_hotspot_qr_error">Nu s-au putut prelua acreditările hotspot-ului Wi-Fi activ. Asigură-te că hotspot-ul este pornit și locația este activată.</string>
+
+    <!-- Brightness, quick settings, key back, backup, wireless helper QR -->
+    <string name="current_brightness_reading">Luminozitate curentă: %d / 255</string>
+    <string name="exit_dialog_settings">Setări rapide</string>
+    <string name="key_back">Înapoi</string>
+    <string name="category_backup">Copie de rezervă</string>
+    <string name="export_settings">Exportă setările</string>
+    <string name="export_settings_description">Salvează o copie de rezervă a setărilor ca fișier JSON</string>
+    <string name="export_settings_app_folder">Salvează în folderul de copii al aplicației</string>
+    <string name="export_settings_downloads">Salvează în Descărcări</string>
+    <string name="export_settings_choose_location">Alege locația de salvare</string>
+    <string name="settings_exported">Setări exportate</string>
+    <string name="settings_export_failed">Exportul setărilor a eșuat: %1$s</string>
+    <string name="settings_backup_saved_to">Copia de rezervă a setărilor salvată în:\n%1$s</string>
+    <string name="share_settings_backup">Partajează copia de rezervă</string>
+    <string name="import_settings">Importă setările</string>
+    <string name="import_settings_description">Restaurează setările dintr-o copie de rezervă Headunit Revived</string>
+    <string name="import_settings_app_folder">Importă din folderul de copii al aplicației</string>
+    <string name="import_settings_downloads">Importă din Descărcări</string>
+    <string name="import_settings_choose_file">Alege fișierul copiei de rezervă</string>
+    <string name="import_settings_discard_pending">Importul unei copii de rezervă va anula modificările nesalvate. Continuați?</string>
+    <string name="settings_imported">Setări importate: %1$d aplicate, %2$d omise</string>
+    <string name="settings_import_failed">Importul setărilor a eșuat: %1$s</string>
+    <string name="no_settings_backups_title">Nicio copie de rezervă găsită</string>
+    <string name="no_settings_backups_message">Nu s-au găsit copii de rezervă Headunit Revived în folderul aplicației. Exportați mai întâi o copie, apoi importați-o de aici.</string>
+    <string name="no_settings_backups_downloads_message">Nu s-au găsit copii de rezervă Headunit Revived în Descărcări. Exportați mai întâi o copie în Descărcări, apoi importați-o de aici.</string>
+    <string name="no_file_picker_title">Niciun selector de fișiere disponibil</string>
+    <string name="no_file_picker_message">Acest dispozitiv nu are un selector de fișiere compatibil. Puteți utiliza Descărcări sau folderul copiei de rezervă al aplicației.</string>
+    <string name="storage_permission_denied_backup">Permisiunea de stocare a fost refuzată. Descărcările nu au putut fi utilizate.</string>
+    <string name="reset_settings">Restabilește valorile implicite</string>
+    <string name="reset_settings_description">Șterge toate configurațiile, datele din cache și preferințele de conectare automată. Aplicația va reporni pentru a aplica setările din fabrică.</string>
+    <string name="reset_settings_confirm">Sigur doriți să resetați toate setările la valorile implicite? Aplicația va reporni.</string>
+    <string name="reset_settings_confirm_message">Toate setările vor fi resetate la valorile implicite. Copiile de rezervă și fișierele aplicației nu vor fi șterse. Continuați?</string>
+    <string name="reset_settings_discard_pending">Resetarea setărilor va anula modificările nesalvate. Continuați?</string>
+    <string name="settings_reset">Setări resetate la valorile implicite</string>
+    <string name="settings_reset_failed">Resetarea setărilor a eșuat: %1$s</string>
+    <string name="hotspot_ssid_hint">SSID hotspot</string>
+    <string name="hotspot_pass_hint">Parola hotspot</string>
 </resources>

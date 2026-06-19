@@ -18,7 +18,6 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.enableEdgeToEdge
 import androidx.core.content.ContextCompat
 import androidx.core.content.IntentCompat
 import androidx.lifecycle.Lifecycle
@@ -44,9 +43,19 @@ import com.andrerinas.headunitrevived.utils.Settings
 import com.andrerinas.headunitrevived.view.OverlayTouchView
 import com.andrerinas.headunitrevived.utils.HeadUnitScreenConfig
 import com.andrerinas.headunitrevived.utils.SystemUI
+import com.andrerinas.headunitrevived.aap.AapService
 import android.content.IntentFilter
 import com.andrerinas.headunitrevived.view.ProjectionViewScaler
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
+import android.widget.ImageView
+import android.widget.VideoView
+import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.andrerinas.headunitrevived.main.QuickSettingsFragment
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import java.io.File
+import kotlin.math.abs
 
 class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, VideoDimensionsListener {
 
@@ -55,19 +64,33 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
     private lateinit var projectionView: IProjectionView
     private val videoDecoder: VideoDecoder by lazy { App.provide(this).videoDecoder }
     private val settings: Settings by lazy { Settings(this) }
+    private val cachedKeyCodes: Map<Int, Int> by lazy { settings.keyCodes }
     private var isSurfaceSet = false
     private var overlayState = OverlayState.STARTING
     private val watchdogHandler = android.os.Handler(android.os.Looper.getMainLooper())
 
+    /**
+     * Ken Burns scale animation applied to a static image loading screen.
+     * Stored in a field so it can be cancelled when the loading overlay is
+     * torn down or the activity is destroyed — otherwise the infinite-repeat
+     * animator keeps consuming frame callbacks even when the view is gone.
+     */
+    private var kenBurnsAnimator: ObjectAnimator? = null
+
     private var initialX = 0f
     private var initialY = 0f
     private var isPotentialGesture = false
+
+    // Activity-local override for fullscreen mode. If non-null, setFullscreen() will use this
+    // instead of persisting to Settings. This keeps toggles local to the Activity lifecycle.
+    private var activityFullscreenOverride: Settings.FullscreenMode? = null
     private var fpsTextView: TextView? = null
-    
+
     private var isOrientationReceiverRegistered = false
     private var isNightModeReceiverRegistered = false
     private var isFinishReceiverRegistered = false
     private var isKeyEventReceiverRegistered = false
+    private var isSettingsReceiverRegistered = false
 
     private val videoWatchdogRunnable = object : Runnable {
         override fun run() {
@@ -76,8 +99,7 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
                 // If the decoder already rendered something, hide the overlay immediately
                 if (videoDecoder.lastFrameRenderedMs > 0) {
                     AppLog.i("Watchdog: Decoder is already rendering frames. Hiding overlay.")
-                    loadingOverlay.visibility = View.GONE
-                    overlayState = OverlayState.HIDDEN
+                    hideLoadingOverlay(loadingOverlay)
                     return
                 }
 
@@ -106,6 +128,13 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
                 hideReconnectingOverlay()
             }
             watchdogHandler.postDelayed(this, 2000)
+        }
+    }
+    private val exitRunnable = Runnable {
+        if (commManager.connectionState.value is CommManager.ConnectionState.Disconnected) {
+            AppLog.i("AapProjectionActivity: Reconnect timed out (20s). Finishing activity.")
+            hideReconnectingOverlay()
+            finish()
         }
     }
     private val watchdogRunnable = Runnable {
@@ -140,6 +169,50 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
              } else {
                  AppLog.e("Watchdog: SurfaceView NOT valid.")
              }
+        }
+    }
+
+    private val settingsReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            val needsViewRecreate = intent.getBooleanExtra(QuickSettingsFragment.EXTRA_NEEDS_VIEW_RECREATE, false)
+            val needsAudioRestart = intent.getBooleanExtra(QuickSettingsFragment.EXTRA_NEEDS_AUDIO_RESTART, false)
+            val sensorRefresh = intent.getBooleanExtra(QuickSettingsFragment.EXTRA_SENSOR_REFRESH, false)
+
+            if (needsViewRecreate) {
+                recreateProjectionView()
+            }
+            if (sensorRefresh) {
+                sendBroadcast(Intent(AapService.ACTION_REFRESH_SENSORS).apply {
+                    setPackage(packageName)
+                })
+            }
+            if (needsAudioRestart) {
+                sendBroadcast(Intent(AapService.ACTION_RESTART_AUDIO).apply {
+                    setPackage(packageName)
+                })
+            }
+
+            updateDesaturation(com.andrerinas.headunitrevived.utils.NightMode(settings, false).current)
+
+            if (settings.showFpsCounter && fpsTextView == null) {
+                setupFpsCounter()
+            } else if (!settings.showFpsCounter && fpsTextView != null) {
+                fpsTextView?.visibility = View.GONE
+            } else if (settings.showFpsCounter && fpsTextView != null) {
+                fpsTextView?.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun recreateProjectionView() {
+        runOnUiThread {
+            AppLog.i("Recreating projection view due to settings change...")
+            val container = findViewById<FrameLayout>(R.id.container)
+            if (::projectionView.isInitialized) {
+                container.removeView(projectionView as View)
+            }
+            isSurfaceSet = false
+            setupProjectionView()
         }
     }
 
@@ -187,40 +260,14 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
         applyOrientationSettings()
+        super.onCreate(savedInstanceState)
 
 
         setContentView(R.layout.activity_headunit)
 
         if (settings.showFpsCounter) {
-            val container = findViewById<FrameLayout>(R.id.container)
-            fpsTextView = TextView(this).apply {
-                setTextColor(Color.YELLOW)
-                textSize = 12f
-                setTypeface(null, Typeface.BOLD)
-                setBackgroundColor(Color.parseColor("#80000000"))
-                setPadding(10, 5, 10, 5)
-                text = "FPS: --"
-                // Lift it above everything
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    elevation = 100f
-                    translationZ = 100f
-                }
-            }
-            val params = FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.WRAP_CONTENT,
-                FrameLayout.LayoutParams.WRAP_CONTENT
-            ).apply {
-                gravity = Gravity.TOP or Gravity.START
-                setMargins(20, 20, 0, 0)
-            }
-            container.addView(fpsTextView, params)
-
-            videoDecoder.onFpsChanged = { fps ->
-                runOnUiThread { fpsTextView?.text = "FPS: $fps" }
-            }
+            setupFpsCounter()
         }
 
         videoDecoder.dimensionsListener = this
@@ -237,7 +284,7 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
                 commManager.connectionState.collect { state ->
                     val first = isFirstEmission
                     isFirstEmission = false
-                    
+
                     if (first && state is CommManager.ConnectionState.Disconnected) {
                         AppLog.i("AapProjectionActivity: Ignoring initial Disconnected state from StateFlow replay.")
                         return@collect
@@ -256,20 +303,33 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
                                 hideReconnectingOverlay()
                                 finish()
                             } else {
-                                // For unexpected disconnects (especially Wireless), wait a tiny bit to see if service restarts it
-                                watchdogHandler.postDelayed({
-                                    if (commManager.connectionState.value is CommManager.ConnectionState.Disconnected) {
-                                        AppLog.i("AapProjectionActivity: Finishing after delay due to Disconnected state.")
+                                // For unexpected disconnects (especially Wireless), show the reconnecting overlay immediately
+                                // and wait up to 20 seconds (or 8 seconds for USB) to see if the connection recovers.
+                                val timeoutMs = if (settings.lastConnectionType == Settings.CONNECTION_TYPE_USB) 8000L else 20000L
+                                AppLog.i("AapProjectionActivity: Unexpected disconnect. Showing reconnecting overlay and waiting up to ${timeoutMs / 1000}s for recovery.")
+                                showReconnectingOverlay()
+
+                                // Re-initialize the first frame listener to hide the reconnecting overlay when video starts flowing
+                                videoDecoder.onFirstFrameListener = {
+                                    runOnUiThread {
                                         hideReconnectingOverlay()
-                                        finish()
                                     }
-                                }, 2000)
+                                }
+
+                                watchdogHandler.removeCallbacks(exitRunnable)
+                                watchdogHandler.postDelayed(exitRunnable, timeoutMs)
                             }
                         }
                         is CommManager.ConnectionState.HandshakeComplete -> {
+                            watchdogHandler.removeCallbacks(exitRunnable)
+
+                            // Restart the video watchdog so it can request keyframes for the new session
+                            watchdogHandler.removeCallbacks(videoWatchdogRunnable)
+                            watchdogHandler.postDelayed(videoWatchdogRunnable, 1000)
+
                             // Lock the resolution so that orientation changes don't cause re-negotiation
                             HeadUnitScreenConfig.lockResolution()
-                            
+
                             // Handshake done. If the surface is already ready (e.g. reconnect
                             // while the activity is in the foreground), start reading immediately.
                             // If not, onSurfaceChanged() will call startReading() when the surface
@@ -278,53 +338,22 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
                                 commManager.startReading()
                             }
                         }
+                        is CommManager.ConnectionState.TransportStarted -> {
+                            watchdogHandler.removeCallbacks(exitRunnable)
+                        }
                         else -> {}
                     }
                 }
             }
         }
-        
+
         ContextCompat.registerReceiver(this, finishReceiver, android.content.IntentFilter("com.andrerinas.headunitrevived.ACTION_FINISH_ACTIVITIES"), ContextCompat.RECEIVER_NOT_EXPORTED)
         isFinishReceiverRegistered = true
 
         AppLog.i("HeadUnit for Android Auto (tm) - Copyright 2011-2015 Michael A. Reid., since 2025 André Rinas All Rights Reserved...")
 
-        val container = findViewById<android.widget.FrameLayout>(R.id.container)
-        val displayMetrics = resources.displayMetrics
-
-        if (settings.viewMode == Settings.ViewMode.TEXTURE) {
-            AppLog.i("Using TextureView")
-            val textureView = TextureProjectionView(this)
-            textureView.layoutParams = FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.MATCH_PARENT
-            )
-            projectionView = textureView
-            container.setBackgroundColor(android.graphics.Color.BLACK)
-        } else if (settings.viewMode == Settings.ViewMode.GLES) {
-            AppLog.i("Using GlProjectionView")
-            val glView = com.andrerinas.headunitrevived.view.GlProjectionView(this)
-            glView.layoutParams = FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.MATCH_PARENT
-            )
-            projectionView = glView
-            container.setBackgroundColor(Color.BLACK)
-        } else {
-            AppLog.i("Using SurfaceView")
-            projectionView = ProjectionView(this)
-            (projectionView as View).layoutParams = FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.MATCH_PARENT
-            )
-        }
-        // Use the same screen conf for both views for negotiation
-        HeadUnitScreenConfig.init(this, displayMetrics, settings)
-
-        val view = projectionView as View
-        container.addView(view)
-
-        projectionView.addCallback(this)
+        val container = findViewById<FrameLayout>(R.id.container)
+        setupProjectionView()
 
         val overlayView = OverlayTouchView(this)
         overlayView.layoutParams = FrameLayout.LayoutParams(
@@ -347,7 +376,7 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         setFullscreen() // Call setFullscreen here as well
 
         val loadingOverlay = findViewById<View>(R.id.loading_overlay)
-        
+
         // [FIX] If we are already connected and frames are flowing (e.g. activity recreation),
         // hide the overlay immediately to prevent the "Android Auto is starting" flicker.
         if (commManager.isConnected && videoDecoder.lastFrameRenderedMs > 0) {
@@ -358,14 +387,16 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         // Ensure loading overlay is on top of everything
         loadingOverlay?.bringToFront()
 
+        // Set up custom loading screen if configured
+        setupCustomLoadingScreen()
+
         findViewById<Button>(R.id.disconnect_button)?.setOnClickListener {
             commManager.disconnect()
         }
 
         videoDecoder.onFirstFrameListener = {
             runOnUiThread {
-                loadingOverlay?.visibility = View.GONE
-                overlayState = OverlayState.HIDDEN
+                hideLoadingOverlay(loadingOverlay)
 
                 // Show one-time gesture hint
                 if (!settings.gestureHintShown) {
@@ -384,9 +415,13 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         isForeground = false
         AppLog.i("AapProjectionActivity: onPause")
         super.onPause()
+        // Clear any activity-local fullscreen override when leaving the Activity so
+        // the stored settings remain authoritative on next resume.
+        activityFullscreenOverride = null
         watchdogHandler.removeCallbacks(watchdogRunnable)
         watchdogHandler.removeCallbacks(videoWatchdogRunnable)
         watchdogHandler.removeCallbacks(reconnectingWatchdog)
+        watchdogHandler.removeCallbacks(exitRunnable)
         if (isOrientationReceiverRegistered) {
             unregisterReceiver(orientationReceiver)
             isOrientationReceiverRegistered = false
@@ -398,6 +433,10 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         if (isKeyEventReceiverRegistered) {
             unregisterReceiver(keyEventReceiver)
             isKeyEventReceiverRegistered = false
+        }
+        if (isSettingsReceiverRegistered) {
+            LocalBroadcastManager.getInstance(this).unregisterReceiver(settingsReceiver)
+            isSettingsReceiverRegistered = false
         }
     }
 
@@ -423,6 +462,11 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         // Register night mode receiver for AA monochrome filter
         ContextCompat.registerReceiver(this, nightModeReceiver, IntentFilter(AapService.ACTION_NIGHT_MODE_CHANGED), ContextCompat.RECEIVER_NOT_EXPORTED)
         isNightModeReceiverRegistered = true
+
+        if (!isSettingsReceiverRegistered) {
+            LocalBroadcastManager.getInstance(this).registerReceiver(settingsReceiver, IntentFilter(QuickSettingsFragment.ACTION_SETTINGS_CHANGED))
+            isSettingsReceiverRegistered = true
+        }
 
         // Request current night mode state for initial desaturation
         sendBroadcast(Intent(AapService.ACTION_REQUEST_NIGHT_MODE_UPDATE).apply {
@@ -450,6 +494,15 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         AppLog.i("Showing reconnecting overlay")
         overlayState = OverlayState.RECONNECTING
         val overlay = findViewById<View>(R.id.loading_overlay) ?: return
+
+        // Ensure default content is shown, custom media is hidden
+        findViewById<View>(R.id.loading_default_content)?.visibility = View.VISIBLE
+        findViewById<View>(R.id.loading_custom_image)?.visibility = View.GONE
+        findViewById<View>(R.id.loading_custom_text_overlay)?.visibility = View.GONE
+        stopCustomLoadingMedia()
+        findViewById<View>(R.id.loading_custom_video)?.visibility = View.GONE
+        overlay.setBackgroundColor(Color.parseColor("#CC000000"))
+
         val title = findViewById<TextView>(R.id.overlay_text)
         val detail = findViewById<TextView>(R.id.overlay_detail)
         val button = findViewById<Button>(R.id.disconnect_button)
@@ -469,16 +522,186 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         overlay.visibility = View.GONE
         detail?.visibility = View.GONE
         button?.visibility = View.GONE
+        stopCustomLoadingMedia()
+    }
+
+    private fun setupCustomLoadingScreen() {
+        // Apply any context-specific status text handed over by MainActivity
+        // (e.g. "Connecting to Pixel 8…") to BOTH the default-content text and
+        // the custom-media text overlay. Done before the early-return paths so
+        // the override applies whether or not custom media is configured. Read
+        // once and cleared so the value can't leak into a later connection.
+        val handover = pendingStatusText
+        pendingStatusText = null
+        if (handover != null) {
+            findViewById<TextView>(R.id.overlay_text)?.text = handover
+            findViewById<TextView>(R.id.loading_custom_text)?.text = handover
+        }
+
+        val mediaPath = settings.loadingScreenMediaPath
+        val mediaType = settings.loadingScreenMediaType
+        if (mediaPath.isEmpty() || mediaType.isEmpty()) return
+
+        val file = File(mediaPath)
+        if (!file.exists()) {
+            settings.loadingScreenMediaPath = ""
+            settings.loadingScreenMediaType = ""
+            return
+        }
+
+        val defaultContent = findViewById<View>(R.id.loading_default_content)
+        val customTextOverlay = findViewById<View>(R.id.loading_custom_text_overlay)
+        val customImage = findViewById<ImageView>(R.id.loading_custom_image)
+        val customVideo = findViewById<VideoView>(R.id.loading_custom_video)
+        val overlay = findViewById<View>(R.id.loading_overlay)
+
+        // Always hide the default content when custom media is active
+        defaultContent?.visibility = View.GONE
+        overlay?.setBackgroundColor(Color.BLACK)
+
+        // Show the dedicated custom text overlay if the user wants status text
+        if (settings.loadingScreenShowText) {
+            customTextOverlay?.visibility = View.VISIBLE
+        }
+
+        val keepRatio = settings.loadingScreenKeepAspectRatio
+        customImage?.scaleType = if (keepRatio) ImageView.ScaleType.FIT_CENTER else ImageView.ScaleType.FIT_XY
+
+        try {
+            when (mediaType) {
+                "image" -> {
+                    customImage?.visibility = View.VISIBLE
+                    customImage?.let { Glide.with(this).load(file).into(it) }
+                    if (keepRatio) {
+                        customImage?.let { imageView ->
+                            kenBurnsAnimator?.cancel()
+                            val scaleAnim = ObjectAnimator.ofPropertyValuesHolder(
+                                imageView,
+                                PropertyValuesHolder.ofFloat("scaleX", 1.0f, 1.05f),
+                                PropertyValuesHolder.ofFloat("scaleY", 1.0f, 1.05f)
+                            )
+                            scaleAnim.duration = 8000
+                            scaleAnim.repeatMode = ObjectAnimator.REVERSE
+                            scaleAnim.repeatCount = ObjectAnimator.INFINITE
+                            scaleAnim.start()
+                            kenBurnsAnimator = scaleAnim
+                        }
+                    }
+                }
+                "gif" -> {
+                    customImage?.visibility = View.VISIBLE
+                    customImage?.let { Glide.with(this).asGif().load(file).into(it) }
+                }
+                "video" -> {
+                    customVideo?.visibility = View.VISIBLE
+                    customVideo?.setVideoPath(file.absolutePath)
+                    customVideo?.setOnPreparedListener { mp ->
+                        mp.isLooping = settings.loadingScreenLoopVideo
+                        mp.setVolume(0f, 0f)
+
+                        if (keepRatio) {
+                            // Resize VideoView to match video's actual aspect ratio (like YouTube)
+                            try {
+                                val vw = mp.videoWidth
+                                val vh = mp.videoHeight
+                                if (vw > 0 && vh > 0) {
+                                    val cw = overlay?.width ?: return@setOnPreparedListener
+                                    val ch = overlay?.height ?: return@setOnPreparedListener
+                                    val videoRatio = vw.toFloat() / vh
+                                    val containerRatio = cw.toFloat() / ch
+                                    val lp = customVideo.layoutParams as FrameLayout.LayoutParams
+                                    if (videoRatio > containerRatio) {
+                                        // Wider video → fit to width, bars top/bottom
+                                        lp.width = cw
+                                        lp.height = (cw / videoRatio).toInt()
+                                    } else {
+                                        // Taller video → fit to height, bars left/right
+                                        lp.height = ch
+                                        lp.width = (ch * videoRatio).toInt()
+                                    }
+                                    lp.gravity = android.view.Gravity.CENTER
+                                    customVideo.layoutParams = lp
+                                }
+                            } catch (e: Exception) {
+                                AppLog.w("Could not resize video: ${e.message}")
+                            }
+                        }
+                    }
+                    customVideo?.setOnErrorListener { _, _, _ ->
+                        AppLog.e("Error playing custom loading video")
+                        fallbackToDefaultOverlay()
+                        true
+                    }
+                    customVideo?.start()
+                }
+                else -> return
+            }
+        } catch (e: Exception) {
+            AppLog.e("Failed to load custom loading screen: ${e.message}")
+            fallbackToDefaultOverlay()
+        }
+    }
+
+    private fun hideLoadingOverlay(loadingOverlay: View?) {
+        overlayState = OverlayState.HIDDEN
+
+        // CRITICAL: Stop custom video FIRST — VideoView/SurfaceView has its own
+        // rendering layer that ignores parent alpha animations and can stay visible
+        // even when the parent is animated to alpha=0
+        stopCustomLoadingMedia()
+        findViewById<View>(R.id.loading_custom_video)?.visibility = View.GONE
+        findViewById<View>(R.id.loading_custom_image)?.visibility = View.GONE
+        findViewById<View>(R.id.loading_custom_text_overlay)?.visibility = View.GONE
+
+        // Now hide the overlay — if no custom video, do a smooth fade
+        val hasCustomVideo = settings.loadingScreenMediaType == "video"
+        if (hasCustomVideo) {
+            // Direct hide — animation won't work with SurfaceView
+            loadingOverlay?.visibility = View.GONE
+        } else {
+            // Smooth fade for images/GIFs
+            loadingOverlay?.animate()
+                ?.alpha(0f)
+                ?.setDuration(300)
+                ?.withEndAction {
+                    loadingOverlay?.visibility = View.GONE
+                    loadingOverlay?.alpha = 1f
+                }?.start()
+                ?: run { loadingOverlay?.visibility = View.GONE }
+        }
+    }
+
+    private fun fallbackToDefaultOverlay() {
+        findViewById<View>(R.id.loading_custom_image)?.visibility = View.GONE
+        stopCustomLoadingMedia()
+        findViewById<View>(R.id.loading_custom_video)?.visibility = View.GONE
+        findViewById<View>(R.id.loading_custom_text_overlay)?.visibility = View.GONE
+        findViewById<View>(R.id.loading_default_content)?.visibility = View.VISIBLE
+        findViewById<View>(R.id.loading_overlay)?.setBackgroundColor(Color.parseColor("#CC000000"))
+    }
+
+    private fun stopCustomLoadingMedia() {
+        kenBurnsAnimator?.cancel()
+        kenBurnsAnimator = null
+        findViewById<VideoView>(R.id.loading_custom_video)?.let {
+            try {
+                if (it.isPlaying) it.stopPlayback()
+                it.suspend()
+            } catch (_: Exception) {}
+        }
     }
 
     private fun setFullscreen() {
         val container = findViewById<View>(R.id.container)
-        
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && settings.fullscreenMode != Settings.FullscreenMode.NONE) {
+
+        // Use activity-local override if present, otherwise use stored settings
+        val mode = activityFullscreenOverride ?: settings.fullscreenMode
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && mode != Settings.FullscreenMode.NONE) {
             window.addFlags(android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN)
         }
 
-        SystemUI.apply(window, container, settings.fullscreenMode) {
+        SystemUI.apply(window, container, mode) {
             if (::projectionView.isInitialized) {
                 ProjectionViewScaler.updateScale(projectionView as View, videoDecoder.videoWidth, videoDecoder.videoHeight)
             }
@@ -486,16 +709,17 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
 
         // Workaround for API < 19 (Jelly Bean) where Sticky Immersive Mode doesn't exist.
         // If bars appear (e.g. on touch), hide them again after a delay.
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && settings.fullscreenMode != Settings.FullscreenMode.NONE) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT && mode != Settings.FullscreenMode.NONE) {
             window.decorView.setOnSystemUiVisibilityChangeListener { visibility ->
                 if ((visibility and View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
                     // Bars are visible. Hide them again.
                     android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
-                        SystemUI.apply(window, container, settings.fullscreenMode) {
-            if (::projectionView.isInitialized) {
-                ProjectionViewScaler.updateScale(projectionView as View, videoDecoder.videoWidth, videoDecoder.videoHeight)
-            }
-        }
+                        val effectiveMode = activityFullscreenOverride ?: settings.fullscreenMode
+                        SystemUI.apply(window, container, effectiveMode) {
+                            if (::projectionView.isInitialized) {
+                                ProjectionViewScaler.updateScale(projectionView as View, videoDecoder.videoWidth, videoDecoder.videoHeight)
+                            }
+                        }
                     }, 2000)
                 }
             }
@@ -507,12 +731,13 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
     private fun showExitDialog() {
         val options = mutableListOf<ExitOption>()
         options.add(ExitOption(R.string.exit_dialog_stop, R.drawable.ic_stop, Color.RED))
-        
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             options.add(ExitOption(R.string.exit_dialog_pip, R.drawable.ic_pip, Color.LTGRAY))
         }
-        
+
         options.add(ExitOption(R.string.exit_dialog_background, R.drawable.ic_home, Color.LTGRAY))
+        options.add(ExitOption(R.string.exit_dialog_settings, R.drawable.ic_settings_quick, Color.LTGRAY))
 
         val adapter = object : android.widget.BaseAdapter() {
             override fun getCount(): Int = options.size
@@ -523,11 +748,11 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
                 val option = options[position]
                 val iconView = view.findViewById<android.widget.ImageView>(R.id.icon)
                 val textView = view.findViewById<android.widget.TextView>(R.id.text)
-                
+
                 textView.setText(option.titleResId)
                 iconView.setImageResource(option.iconResId)
                 iconView.setColorFilter(option.iconColor)
-                
+
                 return view
             }
         }
@@ -547,10 +772,19 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
                     R.string.exit_dialog_background -> {
                         moveToBackground()
                     }
+                    R.string.exit_dialog_settings -> {
+                        showQuickSettings()
+                    }
                 }
             }
             .setNegativeButton(R.string.cancel, null)
             .show()
+    }
+
+    private fun showQuickSettings() {
+        // We will implement QuickSettingsFragment as a DialogFragment for easy overlay
+        val quickSettings = com.andrerinas.headunitrevived.main.QuickSettingsFragment()
+        quickSettings.show(supportFragmentManager, "quick_settings")
     }
 
     private fun enterPiP() {
@@ -559,7 +793,7 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
                 var width = videoDecoder.videoWidth.coerceAtLeast(1).toFloat()
                 var height = videoDecoder.videoHeight.coerceAtLeast(1).toFloat()
                 val ratio = width / height
-                
+
                 // Android supports PiP aspect ratios between 1/2.39 (0.418) and 2.39.
                 // If we exceed this (e.g. on ultrawide headunits), PiP entry will fail.
                 if (ratio > 2.39f) {
@@ -604,6 +838,7 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         if (isInPictureInPictureMode) {
             // Hide UI elements during PiP (like FPS counter, loading overlay)
             findViewById<View>(R.id.loading_overlay)?.visibility = View.GONE
+            stopCustomLoadingMedia()
             fpsTextView?.visibility = View.GONE
         } else {
             // Restore UI if needed
@@ -614,7 +849,7 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
 
     override fun onUserLeaveHint() {
         // Optional: Auto-enter PiP if user presses home
-        
+
         // For now, we only enter via dialog as requested.
         super.onUserLeaveHint()
     }
@@ -622,33 +857,46 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
     private val commManager get() = App.provide(this).commManager
 
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
-        // 1. 2-finger swipe detection from the left edge (to open exit menu)
+        // 1. 2-finger swipe detection from the left or right edge (to open exit menu or toggle fullscreen)
         if (ev.pointerCount == 2) {
             when (ev.actionMasked) {
                 MotionEvent.ACTION_POINTER_DOWN -> {
                     initialX = ev.getX(0)
                     initialY = ev.getY(0)
-                    isPotentialGesture = initialX < 100
+                    isPotentialGesture = initialX < 100 || initialX > HeadUnitScreenConfig.getUsableWidth() - 100
                 }
                 MotionEvent.ACTION_MOVE -> {
                     if (isPotentialGesture) {
                         val deltaX = ev.getX(0) - initialX
-                        val deltaY = Math.abs(ev.getY(0) - initialY)
+                        val deltaY = abs(ev.getY(0) - initialY)
                         if (deltaX > 200 && deltaY < 100) {
                             isPotentialGesture = false
                             showExitDialog()
+                            return true // Consume
+                        }
+
+                        if (deltaX < -200 && deltaY < 100) {
+                            isPotentialGesture = false
+                            val currentEffective = activityFullscreenOverride ?: settings.fullscreenMode
+                            if (currentEffective != Settings.FullscreenMode.NONE) {
+                                activityFullscreenOverride = Settings.FullscreenMode.NONE
+                                setFullscreen()
+                            } else {
+                                activityFullscreenOverride = null
+                                setFullscreen()
+                            }
                             return true // Consume
                         }
                     }
                 }
             }
         }
-        
+
         // 2. Legacy Touch handling for older devices (API < 19)
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             sendTouchEvent(ev)
         }
-        
+
         return super.dispatchTouchEvent(ev)
     }
 
@@ -660,7 +908,7 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
     override fun onSurfaceChanged(surface: android.view.Surface, width: Int, height: Int) {
         AppLog.i("[UI_DEBUG] [AapProjectionActivity] onSurfaceChanged. Actual surface dimensions: width=$width, height=$height")
         isSurfaceSet = true
-        
+
         videoDecoder.setSurface(surface)
 
         // --- Surface Mismatch Detection ---
@@ -757,7 +1005,7 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         }
 
         val view = projectionView as View
-        // Use the container's "Anchor" dimensions (full touch surface) as the reference, 
+        // Use the container's "Anchor" dimensions (full touch surface) as the reference,
         // not the potentially resized projectionView's dimensions.
         val viewW = HeadUnitScreenConfig.getUsableWidth().toFloat()
         val viewH = HeadUnitScreenConfig.getUsableHeight().toFloat()
@@ -770,11 +1018,11 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
         val uiW = videoW - marginW
         val uiH = videoH - marginH
 
-        // Logic check: When forcedScale is active, the visual behavior of 'stretchToFill' 
+        // Logic check: When forcedScale is active, the visual behavior of 'stretchToFill'
         // is inverted (True = Aspect Ratio Centered, False = Stretched to Screen).
         // We adjust the touch mapping to match this visual reality.
         val isStretch = if (HeadUnitScreenConfig.forcedScale) {
-            !settings.stretchToFill 
+            !settings.stretchToFill
         } else {
             settings.stretchToFill
         }
@@ -784,7 +1032,7 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
             val pointerId = event.getPointerId(pointerIndex)
             val px = event.getX(pointerIndex)
             val py = event.getY(pointerIndex)
-            
+
             var videoX = 0f
             var videoY = 0f
 
@@ -831,10 +1079,18 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
             return super.dispatchKeyEvent(event)
         }
 
-        // 1. Let the system handle volume and back keys
-        if (event.keyCode == KeyEvent.KEYCODE_BACK || 
-            event.keyCode == KeyEvent.KEYCODE_VOLUME_UP || 
-            event.keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || 
+        // 1. Let the system handle volume keys and unmapped back keys.
+        // If Back was explicitly learned in Keymap and transport is running,
+        // route it through CommManager so it can be remapped and sent to Android Auto.
+        if (commManager.connectionState.value is CommManager.ConnectionState.TransportStarted &&
+            ProjectionKeyPolicy.shouldRouteBackKeyToProjection(cachedKeyCodes, event.keyCode)) {
+            commManager.sendKey(event.keyCode, action == KeyEvent.ACTION_DOWN)
+            return true
+        }
+
+        if (event.keyCode == KeyEvent.KEYCODE_BACK ||
+            event.keyCode == KeyEvent.KEYCODE_VOLUME_UP ||
+            event.keyCode == KeyEvent.KEYCODE_VOLUME_DOWN ||
             event.keyCode == KeyEvent.KEYCODE_VOLUME_MUTE) {
             return super.dispatchKeyEvent(event)
         }
@@ -873,6 +1129,12 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
             unregisterReceiver(keyEventReceiver)
             isKeyEventReceiverRegistered = false
         }
+        // Defensive cleanup: if the activity is destroyed while the loading
+        // overlay is still up (early connection failure, system kill,
+        // configuration change before first frame), the VideoView's surface
+        // and the Ken Burns animator outlive the view hierarchy briefly.
+        // stopCustomLoadingMedia releases both.
+        stopCustomLoadingMedia()
         AppLog.i("AapProjectionActivity.onDestroy called. isFinishing=$isFinishing")
         App.isPiPActive = false
         videoDecoder.dimensionsListener = null
@@ -881,6 +1143,15 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
     companion object {
         const val EXTRA_FOCUS = "focus"
         @Volatile var isForeground = false
+
+        /**
+         * Optional one-shot override for the loading-screen status text. Set by
+         * MainActivity when it begins an auto-connect with a context-specific
+         * label (e.g. "Connecting to Pixel 8…" from the Nearby selector). Read
+         * and cleared by [setupCustomLoadingScreen] on the next launch so the
+         * value can't leak into a subsequent connection attempt.
+         */
+        @Volatile var pendingStatusText: String? = null
 
         fun intent(context: Context): Intent {
             val aapIntent = Intent(context, AapProjectionActivity::class.java)
@@ -902,6 +1173,74 @@ class AapProjectionActivity : SurfaceActivity(), IProjectionView.Callbacks, Vide
             }
         } else {
             requestedOrientation = screenOrientation.androidOrientation
+        }
+    }
+
+    private fun setupProjectionView() {
+        val container = findViewById<FrameLayout>(R.id.container)
+        val displayMetrics = resources.displayMetrics
+
+        if (settings.viewMode == Settings.ViewMode.TEXTURE) {
+            AppLog.i("Using TextureView")
+            val textureView = TextureProjectionView(this)
+            textureView.layoutParams = FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT
+            )
+            projectionView = textureView
+            container.setBackgroundColor(Color.BLACK)
+        } else if (settings.viewMode == Settings.ViewMode.GLES) {
+            AppLog.i("Using GlProjectionView")
+            val glView = com.andrerinas.headunitrevived.view.GlProjectionView(this)
+            glView.layoutParams = FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT
+            )
+            projectionView = glView
+            container.setBackgroundColor(Color.BLACK)
+        } else {
+            AppLog.i("Using SurfaceView")
+            projectionView = ProjectionView(this)
+            (projectionView as View).layoutParams = FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT
+            )
+        }
+        // Use the same screen conf for both views for negotiation
+        HeadUnitScreenConfig.init(this, displayMetrics, settings)
+
+        val view = projectionView as View
+        container.addView(view)
+
+        projectionView.addCallback(this)
+    }
+
+    private fun setupFpsCounter() {
+        val container = findViewById<FrameLayout>(R.id.container)
+        fpsTextView = TextView(this).apply {
+            setTextColor(Color.YELLOW)
+            textSize = 12f
+            setTypeface(null, Typeface.BOLD)
+            setBackgroundColor(Color.parseColor("#80000000"))
+            setPadding(10, 5, 10, 5)
+            text = "FPS: --"
+            // Lift it above everything
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                elevation = 100f
+                translationZ = 100f
+            }
+        }
+        val params = FrameLayout.LayoutParams(
+            FrameLayout.LayoutParams.WRAP_CONTENT,
+            FrameLayout.LayoutParams.WRAP_CONTENT
+        ).apply {
+            gravity = Gravity.TOP or Gravity.START
+            setMargins(20, 20, 0, 0)
+        }
+        container.addView(fpsTextView, params)
+
+        videoDecoder.onFpsChanged = { fps ->
+            runOnUiThread { fpsTextView?.text = "FPS: $fps" }
         }
     }
 }

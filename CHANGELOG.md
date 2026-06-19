@@ -1,4 +1,38 @@
 # Changelog
+### v.3.0.0
+- Added: Custom loading screen (image/GIF/video), thanks to @andrecuellar
+- Added: Settings-Reset Button, if you mess up something in the settings, you can now reset them to default
+- Removed: Old deprecated ssl library written in C-Code for better maintenance, stability and smaller file sizes
+- Added: Direct Logging to file without logcat, thanks to @Anton111111
+- try to fix connection lost on carrier lost again
+- keep usb disconnection for 8s alive, for maybe restarts of usb dongles
+- Implement car headlight signal mode (ILL+) for night theme management, thanks to @minhtuanact
+- Added settings export and import functionality with backup options, thanks to @JanRi3D
+- Added whitelist to usb connection for not interrupting with iPhones and other usb devices
+- Added QR Code for easy connection with wireless helper
+- Fixed: BT auto-connect dragging phone into wireless flow during USB session, thanks to @andrecuellar
+- Persist Auto-Optimize wizard settings synchronously, thanks to @andrecuellar
+- Added ability to swipe with two fingers from the right side to switch fullscreen mode and Normal (all bars) mode, thanks to @Anton111111
+- Improved: usb button auto connect, thanks to @bezprobeloff
+- Catched an fatal error listed in the play console
+- Fixed: Audio Stutter on some devices since 2.1.1
+- Fixed: USB device list duplicates and Android Auto projection launch on Android 10+, thanks to @jeancarloscc
+- Enhanced: Google Nearby. It was buggy with 2 FPS video
+- Fixed: Navigation Button mapping now working
+
+### v.2.3.1
+- Fixed a connection lost on for example borders
+- Binding socket to wifi network if available to prevent connection drops on carrier lost
+- Added Static Audio Focus Toggle to prevent audio focus loss on some devices
+- Fixing samsung routines and modes
+- Fixing wrong orientation on start if holding the phone wrong. Now uses the orientation from settings
+- Fixing usb errors with AAwireless Dongles
+- Added Audio Mixer to mix different audio tracks, thanks to @jeffdapaz for the idea
+- Added Autostart on BT for multiple devices
+- Fixed Microphone input source was wrong mapped
+- Added Vietnamese translation 🇻🇳 thanks to @minhtuanact
+- Merged PR #549 - implement back key routing and add keymap for back key, thanks to @JanRi3D
+
 ### v.2.3.0
 - Added some new buttons for keymap
 - Fixed 3 Fatal errors

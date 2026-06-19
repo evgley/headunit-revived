@@ -108,8 +108,8 @@
     <string name="debug_mode_description">Naplózás ki- és bekapcsolása.</string>
     <string name="export_logs">Naplók exportálása</string>
     <string name="export_logs_description">Naplók mentése hibakereséshez.</string>
-    <string name="use_native_ssl">Natív SSL használata</string>
-    <string name="use_native_ssl_description">Natív OpenSSL könyvtár használata (régebbi eszközökön gyorsabb).</string>
+
+
     <string name="not_set">Nincs beállítva</string>
     <string name="keymap_description">A fejegység gombkiosztásának módosítása.</string>
 
@@ -224,10 +224,10 @@
     <string name="pref_stretch_screen_summary">Figyelmen kívül hagyja a képarányt a teljes kijelző kitöltéséhez (eltávolítja a fekete sávokat)</string>
 
     <!-- Audio Settings -->
-        <string name="forced_scale">Kényszerített méretezés (Legacy javítás)</string>
+    <string name="forced_scale">Kényszerített méretezés (Legacy javítás)</string>
     <string name="forced_scale_description">Javítja a méretezési problémákat egyes régebbi, SurfaceView-t használó eszközökön. Csak akkor használja, ha a kép torz vagy eltolt.</string>
 
-<string name="category_audio">Hang</string>
+    <string name="category_audio">Hang</string>
     <string name="enable_audio_sink">Hang fogadása</string>
     <string name="enable_audio_sink_description">Ha nincs engedélyezve, a fejegység nem kap hangot. A hang a telefonon fog szólni.</string>
     <string name="separate_audio_streams">Különálló hangfolyamok</string>
@@ -351,15 +351,19 @@
     <string name="fullscreen_status_only">Csak az állapotsor elrejtése</string>
     <string name="log_level">Naplózási szint</string>
     <string name="log_level_description">A hibaelhárításhoz szükséges részletesség beállítása.</string>
+    <string name="log_source">Naplóforrás</string>
+    <string name="log_source_logcat">Logcat</string>
+    <string name="log_source_applog_file">Közvetlenül fájlba</string>
     <string name="start_log_capture">Naplózás indítása</string>
     <string name="start_log_capture_description">Rögzíti a rendszernaplókat egy helyi fájlba a hibaelhárításhoz.</string>
+    <string name="start_log_capture_in_applog_file">Az Log üzenetek csak aktív rögzítés közben íródnak fájlba</string>
     <string name="start_log_capture_in_silent">Nem lehet elindítani a rögzítést: Csendes naplózási szint kiválasztva</string>
     <string name="stop_log_capture">Naplózás leállítása</string>
     <string name="stop_log_capture_description">Leállítja a naplózást és menti a fájlt.</string>
 
     <!-- Navigation notifications -->
     <string name="show_navigation_notifications">Navigációs értesítések</string>
-    <string name="show_navigation_notifications_description">„X méter múlva Y" és az aktuális utca megjelenítése az értesítésekben (hibakereséshez)</string>
+    <string name="show_navigation_notifications_description">„X méter múlva Y\" és az aktuális utca megjelenítése az értesítésekben (hibakereséshez)</string>
     <string name="nav_notification_channel_name">Navigáció</string>
     <string name="nav_notification_channel_description">Részletes navigációs utasítások az Android Auto-tól</string>
     <string name="nav_notification_title_format">%1$d m múlva — %2$s</string>
@@ -487,6 +491,27 @@
     <string name="sync_media_session_aa_metadata">AA aktuális szám a médialejátszási munkamenetben</string>
     <string name="sync_media_session_aa_metadata_description">A telefonról származó számcímet, előadót, időtartamot és borítót jelenítse meg a rendszer médialejátszási munkamenetében és médiás értesítésben</string>
     <string name="error_usb_permission_failed">Rendszerhiba: Nem sikerült lekérni az USB engedélykérő ablakot.</string>
+
+    <!-- Custom loading screen -->
+    <string name="loading_screen">Betöltő képernyő</string>
+    <string name="loading_screen_default">Alapértelmezett</string>
+    <string name="loading_screen_custom">Egyéni</string>
+    <string name="loading_screen_dialog_title">Egyéni betöltő képernyő</string>
+    <string name="loading_screen_select_file">Fájl kiválasztása</string>
+    <string name="loading_screen_remove">Eltávolítás</string>
+    <string name="loading_screen_recommendation">Ajánlott felbontás: %1$dx%2$d</string>
+    <string name="loading_screen_supported_formats">Támogatott: Képek (PNG, JPG, BMP, WEBP, GIF) \u2022 Videók (MP4, MKV, WEBM, 3GP) \u2022 Max: 10 MB</string>
+    <string name="loading_screen_no_media">Nincs egyéni tartalom kiválasztva</string>
+    <string name="loading_screen_file_too_large">A fájl túl nagy (max 10 MB)</string>
+    <string name="loading_screen_unsupported_format">Nem támogatott formátum. Használjon kép- vagy videófájlt</string>
+    <string name="loading_screen_file_error">A kiválasztott fájl nem tölthető be</string>
+    <string name="loading_screen_show_text">\"Az Android Auto indul\" szöveg megjelenítése</string>
+    <string name="loading_screen_tap_preview">Érintse meg az előnézethez</string>
+    <string name="loading_screen_tap_to_close">Érintse meg bárhol a bezáráshoz</string>
+    <string name="loading_screen_keep_aspect_ratio">Képarány megőrzése</string>
+    <string name="loading_screen_recommended_aspect_ratio">Ajánlott képarány: %1$d:%2$d</string>
+    <string name="loading_screen_tap_fullscreen_hint">Érintse meg az előnézetet a teljes képernyős megjelenítéshez</string>
+    <string name="loading_screen_loop_video">Rövid animációk ismétlése</string>
     <string name="microphone_settings">Mikrofon beállítások</string>
     <string name="microphone_settings_description">A mikrofonbemenet és a hangfeldolgozás konfigurálása.</string>
     <string name="mic_echo_canceler">Visszhangkioltás (AEC)</string>
@@ -495,7 +520,62 @@
     <string name="mic_noise_suppressor_description">Megpróbálja csökkenteni a háttérzajt. Kapcsolja ki, ha a hangja tompának tűnik.</string>
     <string name="mic_auto_gain_control">Automatikus erősítésszabályozás (AGC)</string>
     <string name="mic_auto_gain_control_description">Automatikusan szabályozza a mikrofon hangerejét. Kapcsolja ki, ha a hangerő instabil.</string>
+    <string name="mic_feature_unsupported">Ez a funkció nem támogatott az eszközén.</string>
     <string name="bt_permission_denied">Bluetooth engedély megtagadva. Nem lehet eszközöket keresni.</string>
     <string name="wifi_autostart_title">WiFi automatikus indítás</string>
     <string name="wifi_autostart_content">Csatlakozva a következőhöz: %s. Koppintson az Android Auto indításához.</string>
+
+    <!-- New strings merged from 2.3.1 -->
+    <string name="use_native_ssl">Natív SSL használata</string>
+    <string name="use_native_ssl_description">Natív OpenSSL könyvtár használata (régebbi eszközökön gyorsabb).</string>
+    <string name="bt_devices_selected">kiválasztott eszköz</string>
+    <string name="static_audio_focus">Statikus audió fókusz</string>
+    <string name="static_audio_focus_description">Arra kényszeríti a telefont, hogy azt higgye, az audió fókusz mindig aktív, megakadályozva az audió útvonalválasztási hibákat az univerzális fejegységeken. Szoftveres hangerő-csökkentést (ducking) is végez a navigációs hangutasítások alatt.</string>
+    <string name="bluetooth_adapter_label">Bluetooth adapter</string>
+    <string name="bluetooth_adapter_description">Válassza ki a kézfogáshoz használandó Bluetooth adaptert/vezérlőt. Kettős Bluetooth-rendszerek esetén hasznos.</string>
+    <string name="select_bt_adapter">Bluetooth adapter kiválasztása</string>
+
+    <!-- Brightness, quick settings, key back, backup, wireless helper QR -->
+    <string name="current_brightness_reading">Aktuális fényerő: %d / 255</string>
+    <string name="exit_dialog_settings">Gyors beállítások</string>
+    <string name="key_back">Vissza</string>
+    <string name="category_backup">Biztonsági mentés</string>
+    <string name="export_settings">Beállítások exportálása</string>
+    <string name="export_settings_description">Mentse a beállítások biztonsági mentését JSON fájlként</string>
+    <string name="export_settings_app_folder">Mentés az alkalmazás mentési mappájába</string>
+    <string name="export_settings_downloads">Mentés a Letöltésekbe</string>
+    <string name="export_settings_choose_location">Mentési hely kiválasztása</string>
+    <string name="settings_exported">Beállítások exportálva</string>
+    <string name="settings_export_failed">A beállítások exportálása sikertelen: %1$s</string>
+    <string name="settings_backup_saved_to">Biztonsági mentés ide mentve:\n%1$s</string>
+    <string name="share_settings_backup">Biztonsági mentés megosztása</string>
+    <string name="import_settings">Beállítások importálása</string>
+    <string name="import_settings_description">Beállítások visszaállítása egy Headunit Revived mentésből</string>
+    <string name="import_settings_app_folder">Importálás az alkalmazás mentési mappájából</string>
+    <string name="import_settings_downloads">Importálás a Letöltésekből</string>
+    <string name="import_settings_choose_file">Mentési fájl kiválasztása</string>
+    <string name="import_settings_discard_pending">Egy mentés importálása eldobja a nem mentett változtatásokat. Folytatja?</string>
+    <string name="settings_imported">Beállítások importálva: %1$d alkalmazva, %2$d kihagyva</string>
+    <string name="settings_import_failed">A beállítások importálása sikertelen: %1$s</string>
+    <string name="no_settings_backups_title">Nem található mentés</string>
+    <string name="no_settings_backups_message">Az alkalmazás mentési mappájában nem található Headunit Revived mentés. Először exportáljon egy mentést, majd importálja innen.</string>
+    <string name="no_settings_backups_downloads_message">A Letöltések mappában nem található Headunit Revived mentés. Először exportáljon egy mentést a Letöltésekbe, majd importálja innen.</string>
+    <string name="no_file_picker_title">Nem érhető el fájlválasztó</string>
+    <string name="no_file_picker_message">Ezen az eszközön nincs kompatibilis fájlválasztó. Helyette használhatja a Letöltések mappát vagy az alkalmazás mentési mappáját.</string>
+    <string name="storage_permission_denied_backup">Tárhely engedély megtagadva. A Letöltések nem használható.</string>
+    <string name="reset_settings">Alapértékek visszaállítása</string>
+    <string name="reset_settings_description">Törli az összes beállítást, gyorsítótárazott adatot és automatikus csatlakozási beállítást. Az alkalmazás újraindul a gyári beállítások alkalmazásához.</string>
+    <string name="reset_settings_confirm">Biztosan visszaállítja az összes beállítást az alapértékekre? Ezzel újraindul az alkalmazás.</string>
+    <string name="reset_settings_confirm_message">Ezzel minden beállítás visszaáll az alapértékekre. A mentések és alkalmazás fájlok nem törlődnek. Folytatja?</string>
+    <string name="reset_settings_discard_pending">A beállítások visszaállítása eldobja a nem mentett változtatásokat. Folytatja?</string>
+    <string name="settings_reset">Beállítások visszaállítva</string>
+    <string name="settings_reset_failed">A beállítások visszaállítása sikertelen: %1$s</string>
+    <string name="hotspot_ssid_hint">Hotspot SSID</string>
+    <string name="hotspot_pass_hint">Hotspot jelszó</string>
+    <!-- QR Code Generator -->
+    <string name="share_hotspot_qr_title">Wireless Helper konfigurálása</string>
+    <string name="share_hotspot_qr_desc">QR-kód megjelenítése a telefon automatikus csatlakozásához</string>
+    <string name="hotspot_qr_description">Wireless Helper konfigurációs QR-kód</string>
+    <string name="scan_with_wireless_helper">Szkenneld be ezt a QR-kódot a telefonodon lévő Wireless Helper QR-szkennerével.</string>
+    <string name="share_hotspot_qr_error">Nem sikerült lekérni az aktív Wi-Fi hotspot adatait. Győződj meg róla, hogy a hotspot be van kapcsolva, és a helyszolgáltatás engedélyezett.</string>
 </resources>

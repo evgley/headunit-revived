@@ -118,7 +118,8 @@ class SetupWizard(private val context: Context, private val onFinished: () -> Un
         settings.dpiPixelDensity = result.recommendedDpi
         settings.screenOrientation = result.suggestedOrientation
         settings.hasCompletedSetupWizard = true
-        
+        settings.commit()
+
         onFinished()
     }
 }

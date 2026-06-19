@@ -1,6 +1,7 @@
 package com.andrerinas.headunitrevived.decoder
 
 import android.media.MediaCodec
+import android.media.MediaCodecInfo
 import android.media.MediaCodecList
 import android.media.MediaFormat
 import android.os.Build
@@ -107,6 +108,13 @@ class VideoDecoder(private val settings: Settings) {
     @Volatile var onFirstFrameListener: (() -> Unit)? = null
     @Volatile var lastFrameRenderedMs: Long = 0L
 
+    @Volatile private var decoderNeedsRestart = false
+    @Volatile private var decoderRestartReason: String? = null
+    @Volatile private var pendingKeyframeRequest = false
+
+    // Callback for transport layer integration
+    var onDecoderError: (() -> Unit)? = null
+
     val videoWidth: Int get() = mWidth
     val videoHeight: Int get() = mHeight
 
@@ -178,10 +186,22 @@ class VideoDecoder(private val settings: Settings) {
             legacyFrameBuffer = null
             codecBufferInfo = null
             codecConfigured = false
+            if (!reason.startsWith("restart")) {
+                vps = null
+                sps = null
+                pps = null
+                mWidth = 0
+                mHeight = 0
+            }
             // Keep VPS/SPS/PPS cached so we can re-inject them on restart
             lastFrameRenderedMs = 0L
             AppLog.i("Decoder stopped: $reason")
         }
+    }
+
+    private fun scheduleRestart(reason: String) {
+        decoderRestartReason = reason
+        decoderNeedsRestart = true
     }
 
     /**
@@ -189,6 +209,15 @@ class VideoDecoder(private val settings: Settings) {
      */
     fun decode(buffer: ByteArray, offset: Int, size: Int, forceSoftware: Boolean, codecName: String) {
         synchronized(this) {
+            // Check if a restart was requested by output thread
+            if (decoderNeedsRestart) {
+                AppLog.w("Decoder restart requested: $decoderRestartReason")
+                stop("restart: $decoderRestartReason")
+                decoderNeedsRestart = false
+                decoderRestartReason = null
+                onDecoderError?.invoke()
+            }
+
             // Buffer management for backward compatibility
             // Modern devices (API 21+) use the original buffer with offset/size to avoid GC pressure.
             val frameData: ByteArray
@@ -204,7 +233,8 @@ class VideoDecoder(private val settings: Settings) {
                 frameData = buffer
                 frameOffset = offset
             }
-            
+
+
             // Initialization phase: detect codec and configuration (SPS/PPS)
             if (codec == null) {
                 val detectedType = detectCodecType(frameData, frameOffset, size)
@@ -234,6 +264,12 @@ class VideoDecoder(private val settings: Settings) {
             }
 
             if (codec == null) return
+
+            if (pendingKeyframeRequest) {
+                pendingKeyframeRequest = false
+                AppLog.i("Decoder restarted and ready. Invoking error callback to request keyframe.")
+                onDecoderError?.invoke()
+            }
 
             // Feed frame data into MediaCodec input buffers
             val buf = ByteBuffer.wrap(frameData, frameOffset, size)
@@ -540,6 +576,9 @@ class VideoDecoder(private val settings: Settings) {
      */
     private fun outputThreadLoop() {
         AppLog.i("Output thread started")
+        var consecutiveErrors = 0
+        var lastOutputMs = 0L
+
         while (running) {
             val currentCodec = codec
             val bufferInfo = codecBufferInfo
@@ -553,9 +592,12 @@ class VideoDecoder(private val settings: Settings) {
                 if (outputIndex >= 0) {
                     currentCodec.releaseOutputBuffer(outputIndex, true)
                     lastFrameRenderedMs = SystemClock.elapsedRealtime()
+                    lastOutputMs = lastFrameRenderedMs
+                    consecutiveErrors = 0
                     onFirstFrameListener?.let { it(); onFirstFrameListener = null }
 
                     frameCount++
+
                     val now = System.currentTimeMillis()
                     val elapsed = now - lastFpsLogTime
                     if (elapsed >= 1000) {
@@ -569,9 +611,26 @@ class VideoDecoder(private val settings: Settings) {
                 } else if (outputIndex == MediaCodec.INFO_OUTPUT_FORMAT_CHANGED) {
                     handleOutputFormatChange(currentCodec.outputFormat)
                 }
+
+                // Stall detection: if we rendered at least one frame but haven't
+                // produced output in 3 seconds, the decoder is likely dead-but-active.
+                if (lastOutputMs > 0) {
+                    val stallGap = SystemClock.elapsedRealtime() - lastOutputMs
+                    if (stallGap > 3000L) {
+                        AppLog.w("Decoder stall detected (no output for ${stallGap}ms). Forcing restart.")
+                        scheduleRestart("sync_stall")
+                        break
+                    }
+                }
             } catch (e: Exception) {
                 if (running) {
-                    AppLog.w("Codec exception in output thread: ${e.message}")
+                    consecutiveErrors++
+                    AppLog.w("Codec exception in output thread (attempt $consecutiveErrors): ${e.message}")
+                    if (consecutiveErrors >= 3) {
+                        AppLog.e("Too many consecutive exceptions in output thread. Forcing restart.")
+                        scheduleRestart("sync_consecutive_errors")
+                        break
+                    }
                     try { Thread.sleep(50) } catch (ignore: Exception) {}
                 }
             }
@@ -592,14 +651,20 @@ class VideoDecoder(private val settings: Settings) {
         }
 
         val infos = codecInfos.filter { !it.isEncoder && it.supportedTypes.any { t -> t.equals(mimeType, true) } }
-        val hw = infos.find { isHardwareAccelerated(it.name) }
-        val sw = infos.find { !isHardwareAccelerated(it.name) }
-        return if (preferHardware && hw != null) hw.name else sw?.name ?: hw?.name
+        val hw = infos.find { isHardwareAccelerated(it) }
+        val sw = infos.find { !isHardwareAccelerated(it) }
+        val selected = if (preferHardware && hw != null) hw.name else sw?.name ?: hw?.name
+        AppLog.i("findBestCodec: hw=${hw?.name}, sw=${sw?.name}, preferHardware=$preferHardware, selected=$selected")
+        return selected
     }
 
-    private fun isHardwareAccelerated(name: String): Boolean {
-        val lower = name.lowercase(Locale.ROOT)
-        return !(lower.startsWith("omx.google.") || lower.startsWith("c2.android.") || lower.contains(".sw.") || lower.contains("software"))
+    private fun isHardwareAccelerated(info: MediaCodecInfo): Boolean {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            return info.isHardwareAccelerated
+        }
+        val lower = info.name.lowercase(Locale.ROOT)
+        return !(lower.startsWith("omx.google.") || lower.startsWith("c2.android.") ||
+                lower.startsWith("omx.ffmpeg.") || lower.contains(".sw.") || lower.contains("software"))
     }
 }
 

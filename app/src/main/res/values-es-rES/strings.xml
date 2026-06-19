@@ -10,7 +10,7 @@
     <string name="ignored">Ignorado</string>
     <string name="exit">Salir</string>
     <string name="video">Android Auto</string>
-    <string name="self_mode">Modo propio</string>
+    <string name="self_mode">Modo autónomo</string>
     <string name="to_android_auto">A Android Auto</string>
     <string name="title">Headunit Revived</string>
     <string name="remove">Eliminar</string>
@@ -109,8 +109,8 @@
     <string name="debug_mode_description">Activar más registros</string>
     <string name="export_logs">Exportar registros</string>
     <string name="export_logs_description">Guardar registros para depuración</string>
-    <string name="use_native_ssl">Usar SSL nativo</string>
-    <string name="use_native_ssl_description">Usar biblioteca OpenSSL nativa (más rápido). Requiere reinicio.</string>
+
+
     <string name="not_set">No establecido</string>
     <string name="keymap_description">Cambiar asignación de teclas</string>
 
@@ -146,8 +146,8 @@
 
     <!-- Categories for SettingsFragment -->
     <string name="category_general">General</string>
-    <string name="auto_start_self_mode">Autoinicio modo propio</string>
-    <string name="auto_start_self_mode_description">Inicia el modo propio automáticamente al abrir la app.</string>
+    <string name="auto_start_self_mode">Autoinicio modo autónomo</string>
+    <string name="auto_start_self_mode_description">Inicia el modo autónomo automáticamente al abrir la app.</string>
     <string name="usb_auto_connect">Conexión automática USB</string>
     <string name="usb_auto_connect_description">Se conecta automáticamente a un dispositivo USB conocido tan pronto como se abre la aplicación.</string>
     <string name="auto_start_bt_label">Autoinicio por Bluetooth</string>
@@ -176,7 +176,7 @@
     <string name="bt_permission_denied_title">Permiso de Bluetooth requerido</string>
     <string name="bt_permission_denied_message">Se necesita el permiso de Bluetooth para seleccionar dispositivos emparejados. Concédalo en los ajustes de la app.</string>
     <string name="overlay_permission_title">Permiso de inicio en segundo plano</string>
-    <string name="overlay_permission_description">Para permitir que Headunit Revived se abra automáticamente, active "Mostrar sobre otras aplicaciones".</string>
+    <string name="overlay_permission_description">Para permitir que Headunit Revived se abra automáticamente, active \"Mostrar sobre otras aplicaciones\".</string>
     <string name="open_settings">Ajustes</string>
     <string name="wireless_connection_settings">Conexión inalámbrica</string>
     <string name="right_hand_drive">Conducción por la derecha</string>
@@ -225,10 +225,10 @@
     <string name="pref_stretch_screen_summary">Ignora la relación de aspecto para rellenar toda la pantalla (elimina las barras negras)</string>
 
     <!-- Audio Settings -->
-        <string name="forced_scale">Escalado forzado (Corrección heredada)</string>
+    <string name="forced_scale">Escalado forzado (Corrección heredada)</string>
     <string name="forced_scale_description">Corrige problemas de escalado en algunos dispositivos antiguos que usan SurfaceView. Usar solo si la imagen se ve distorsionada o desplazada.</string>
 
-<string name="category_audio">Audio</string>
+    <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Salida de audio</string>
     <string name="enable_audio_sink_description">Si se desactiva, el audio sonará en el móvil.</string>
     <string name="separate_audio_streams">Separar flujos de audio</string>
@@ -306,7 +306,7 @@
     <string name="success">Éxito</string>
     <string name="failed">Fallo</string>
     <string name="failed_start_android_auto">Error al iniciar Android Auto</string>
-    <string name="failed_self_mode_android10">Es probable que Google bloquee el modo propio en Android 10 (AA 16.4+). Consulte el README.</string>
+    <string name="failed_self_mode_android10">Es probable que Google bloquee el modo autónomo en Android 10 (AA 16.4+). Consulta el README.</string>
     <string name="android_auto_starting">Iniciando Android Auto…</string>
     <string name="connection_interrupted">Conexión perdida</string>
     <string name="connection_interrupted_detail">Reintentando…</string>
@@ -315,7 +315,7 @@
     <string name="notification_projection_active">Android Auto proyectado</string>
     <string name="shortcut_connect_title">Conectar</string>
     <string name="shortcut_connect_desc">Conectar al último dispositivo</string>
-    <string name="shortcut_selfmode_title">Modo Propio</string>
+    <string name="shortcut_selfmode_title">Modo Autónomo</string>
     <string name="shortcut_selfmode_desc">Iniciar Android Auto en este dispositivo</string>
     <string name="shortcut_disconnect_title">Desconectar</string>
     <string name="shortcut_disconnect_desc">Finalizar sesión actual</string>
@@ -352,15 +352,19 @@
     <string name="fullscreen_status_only">Ocultar solo barra de estado</string>
     <string name="log_level">Nivel de log</string>
     <string name="log_level_description">Elija el nivel de detalle de los mensajes de log para depuración.</string>
+    <string name="log_source">Fuente de registro</string>
+    <string name="log_source_logcat">Logcat</string>
+    <string name="log_source_applog_file">Directo a archivo</string>
     <string name="start_log_capture">Iniciar captura de log</string>
     <string name="start_log_capture_description">Comienza a registrar los logs del sistema en un archivo.</string>
+    <string name="start_log_capture_in_applog_file">Los mensajes de Log se escriben en un archivo solo mientras la captura está activa</string>
     <string name="start_log_capture_in_silent">No se puede iniciar la grabación: nivel de registro silencioso seleccionado</string>
     <string name="stop_log_capture">Detener captura de log</string>
     <string name="stop_log_capture_description">Detiene la grabación y guarda el archivo de log.</string>
 
     <!-- Navigation notifications -->
     <string name="show_navigation_notifications">Notificaciones de navegación</string>
-    <string name="show_navigation_notifications_description">Mostrar "En X metros Y" y la calle actual en notificaciones (para depuración)</string>
+    <string name="show_navigation_notifications_description">Mostrar \"En X metros Y\" y la calle actual en notificaciones (para depuración)</string>
     <string name="nav_notification_channel_name">Navegación</string>
     <string name="nav_notification_channel_description">Indicaciones paso a paso de Android Auto</string>
     <string name="nav_notification_title_format">En %1$d m — %2$s</string>
@@ -486,8 +490,29 @@
     <string name="media_action_next">Siguiente</string>
     <string name="media_session_aa_status_placeholder">Conectado</string>
     <string name="sync_media_session_aa_metadata">Pista actual de AA en la sesión multimedia</string>
-    <string name="sync_media_session_aa_metadata_description">Mostrar título, artista, duración y carátula del teléfono en la sesión multimedia del sistema y en la notificación multimedia</string>
+    <string name="sync_media_session_aa_metadata_description">Mostrar título, artista, duración y carátula del móvil en la sesión multimedia del sistema y en la notificación multimedia</string>
     <string name="error_usb_permission_failed">Error del sistema: Fallo al solicitar el cuadro de diálogo de permiso USB.</string>
+
+    <!-- Custom loading screen -->
+    <string name="loading_screen">Pantalla de carga</string>
+    <string name="loading_screen_default">Predeterminada</string>
+    <string name="loading_screen_custom">Personalizada</string>
+    <string name="loading_screen_dialog_title">Pantalla de carga personalizada</string>
+    <string name="loading_screen_select_file">Seleccionar archivo</string>
+    <string name="loading_screen_remove">Eliminar</string>
+    <string name="loading_screen_recommendation">Resolución recomendada: %1$dx%2$d</string>
+    <string name="loading_screen_supported_formats">Soportados: Imágenes (PNG, JPG, BMP, WEBP, GIF) \u2022 Vídeos (MP4, MKV, WEBM, 3GP) \u2022 Máx: 10 MB</string>
+    <string name="loading_screen_no_media">Sin contenido personalizado</string>
+    <string name="loading_screen_file_too_large">El archivo es demasiado grande (máx 10 MB)</string>
+    <string name="loading_screen_unsupported_format">Formato no compatible. Use un archivo de imagen o vídeo</string>
+    <string name="loading_screen_file_error">No se pudo cargar el archivo seleccionado</string>
+    <string name="loading_screen_show_text">Mostrar texto \"Android Auto está iniciando\"</string>
+    <string name="loading_screen_tap_preview">Toca para vista previa</string>
+    <string name="loading_screen_tap_to_close">Toca en cualquier lugar para cerrar</string>
+    <string name="loading_screen_keep_aspect_ratio">Mantener relación de aspecto</string>
+    <string name="loading_screen_recommended_aspect_ratio">Relación de aspecto recomendada: %1$d:%2$d</string>
+    <string name="loading_screen_tap_fullscreen_hint">Toca la vista previa para verla en pantalla completa</string>
+    <string name="loading_screen_loop_video">Repetir animaciones cortas en bucle</string>
     <string name="microphone_settings">Ajustes del micrófono</string>
     <string name="microphone_settings_description">Configura la entrada del micrófono y el procesamiento de audio.</string>
     <string name="mic_echo_canceler">Cancelación de eco (AEC)</string>
@@ -496,7 +521,70 @@
     <string name="mic_noise_suppressor_description">Intenta reducir el ruido de fondo. Desactívalo si tu voz suena apagada.</string>
     <string name="mic_auto_gain_control">Control automático de ganancia (AGC)</string>
     <string name="mic_auto_gain_control_description">Ajusta automáticamente el volumen del micrófono. Desactívalo si el volumen es inestable.</string>
+    <string name="mic_feature_unsupported">Esta función no es compatible con tu dispositivo.</string>
     <string name="bt_permission_denied">Permiso de Bluetooth denegado. No se pueden escanear dispositivos.</string>
     <string name="wifi_autostart_title">Inicio automático de WiFi</string>
     <string name="wifi_autostart_content">Conectado a %s. Pulsa para iniciar Android Auto.</string>
+
+    <!-- New strings merged from 2.3.1 -->
+    <string name="use_native_ssl">Usar SSL nativo</string>
+    <string name="use_native_ssl_description">Usar biblioteca OpenSSL nativa (más rápido). Requiere reinicio.</string>
+    <string name="bt_devices_selected">dispositivos seleccionados</string>
+    <string name="static_audio_focus">Enfoque de audio estático</string>
+    <string name="static_audio_focus_description">Fuerza al móvil a creer que el enfoque de audio se mantiene siempre, evitando pérdidas de enrutamiento de audio en unidades principales genéricas. También realiza atenuación de volumen por software durante las indicaciones de voz de navegación.</string>
+    <string name="bluetooth_adapter_label">Adaptador Bluetooth</string>
+    <string name="bluetooth_adapter_description">Seleccione el adaptador/controlador Bluetooth que se utilizará para el protocolo de enlace. Útil para sistemas con doble Bluetooth.</string>
+    <string name="select_bt_adapter">Seleccionar adaptador Bluetooth</string>
+    <!-- QR Code Generator -->
+    <string name="share_hotspot_qr_title">Configurar Wireless Helper</string>
+    <string name="share_hotspot_qr_desc">Mostrar código QR para la conexión automática del teléfono</string>
+    <string name="hotspot_qr_description">Código QR de configuración de Wireless Helper</string>
+    <string name="scan_with_wireless_helper">Escanea este código QR usando el escáner QR en Wireless Helper en tu teléfono.</string>
+    <string name="share_hotspot_qr_error">No se pudieron obtener las credenciales de punto de acceso Wi-Fi activo. Asegúrate de que el punto de acceso esté activado y la ubicación habilitada.</string>
+
+    <!-- Brightness reading (night mode) -->
+    <string name="current_brightness_reading">Brillo actual: %d / 255</string>
+
+    <!-- Quick settings exit dialog -->
+    <string name="exit_dialog_settings">Ajustes rápidos</string>
+
+    <!-- Settings backup, export, import and reset -->
+    <string name="category_backup">Copia de seguridad</string>
+    <string name="export_settings">Exportar ajustes</string>
+    <string name="export_settings_description">Guardar una copia de seguridad como archivo JSON</string>
+    <string name="export_settings_choose_location">Elegir ubicación para guardar</string>
+    <string name="export_settings_downloads">Guardar en Descargas</string>
+    <string name="export_settings_app_folder">Guardar en la carpeta de copias de la app</string>
+    <string name="import_settings">Importar ajustes</string>
+    <string name="import_settings_description">Restaurar ajustes desde una copia de seguridad de Headunit Revived</string>
+    <string name="import_settings_choose_file">Elegir archivo de copia</string>
+    <string name="import_settings_downloads">Importar desde Descargas</string>
+    <string name="import_settings_app_folder">Importar desde la carpeta de copias de la app</string>
+    <string name="import_settings_discard_pending">Importar una copia de seguridad descartará los cambios sin guardar. ¿Continuar?</string>
+    <string name="settings_exported">Ajustes exportados</string>
+    <string name="settings_imported">Ajustes importados: %1$d aplicados, %2$d omitidos</string>
+    <string name="settings_export_failed">Error al exportar los ajustes: %1$s</string>
+    <string name="settings_import_failed">Error al importar los ajustes: %1$s</string>
+    <string name="settings_backup_saved_to">Copia de seguridad guardada en:\n%1$s</string>
+    <string name="share_settings_backup">Compartir copia de seguridad</string>
+    <string name="reset_settings">Restablecer valores predeterminados</string>
+    <string name="reset_settings_description">Borra todos los ajustes, la caché y las preferencias de autoconexión. La aplicación se reiniciará para aplicar los valores de fábrica.</string>
+    <string name="reset_settings_confirm">¿Seguro que quieres restablecer todos los ajustes a sus valores predeterminados? La aplicación se reiniciará.</string>
+    <string name="reset_settings_confirm_message">Esto restablecerá todos los ajustes a sus valores predeterminados. Las copias de seguridad y los archivos de la app no se eliminarán. ¿Continuar?</string>
+    <string name="reset_settings_discard_pending">Restablecer los ajustes descartará los cambios sin guardar. ¿Continuar?</string>
+    <string name="settings_reset">Ajustes restablecidos a valores predeterminados</string>
+    <string name="settings_reset_failed">Error al restablecer los ajustes: %1$s</string>
+    <string name="storage_permission_denied_backup">Permiso de almacenamiento denegado. No se ha podido usar Descargas.</string>
+    <string name="no_file_picker_title">No hay selector de archivos disponible</string>
+    <string name="no_file_picker_message">Este dispositivo no tiene un selector de archivos compatible. Puedes usar Descargas o la carpeta de copias de la app en su lugar.</string>
+    <string name="no_settings_backups_title">No se han encontrado copias de seguridad</string>
+    <string name="no_settings_backups_message">No se han encontrado copias de Headunit Revived en la carpeta de copias de la app. Exporta primero una copia a esa carpeta y luego impórtala desde aquí.</string>
+    <string name="no_settings_backups_downloads_message">No se han encontrado copias de Headunit Revived en Descargas. Exporta primero una copia a Descargas y luego impórtala desde aquí.</string>
+
+    <!-- Keymap: back key label -->
+    <string name="key_back">Atrás</string>
+
+    <!-- Wireless Helper hotspot QR -->
+    <string name="hotspot_ssid_hint">SSID del punto de acceso</string>
+    <string name="hotspot_pass_hint">Contraseña del punto de acceso</string>
 </resources>

@@ -108,8 +108,8 @@
     <string name="debug_mode_description">切換更多日誌記錄</string>
     <string name="export_logs">匯出日誌</string>
     <string name="export_logs_description">儲存日誌以進行除錯</string>
-    <string name="use_native_ssl">使用原生 SSL</string>
-    <string name="use_native_ssl_description">使用原生 OpenSSL 函式庫 (在舊裝置上速度更快)。 需要重啟。</string>
+
+
     <string name="not_set">尚未設定</string>
     <string name="keymap_description">變更您的主機按鍵綁定</string>
 
@@ -224,10 +224,10 @@
     <string name="pref_stretch_screen_summary">忽略長寬比以填滿整個顯示器（移除黑邊）</string>
 
     <!-- Audio Settings -->
-        <string name="forced_scale">強制縮放 (舊版修正)</string>
+    <string name="forced_scale">強制縮放 (舊版修正)</string>
     <string name="forced_scale_description">修正某些使用 SurfaceView 的舊裝置上的縮放問題。僅在影像看起來扭曲 or 位移時使用。</string>
 
-<string name="category_audio">音訊</string>
+    <string name="category_audio">音訊</string>
     <string name="enable_audio_sink">啟用音訊接收器</string>
     <string name="enable_audio_sink_description">如果已停用，主機將不會作為音訊接收器。 音訊將從手機播放。</string>
     <string name="separate_audio_streams">分離音訊串流</string>
@@ -349,8 +349,12 @@
     <string name="fullscreen_status_only">僅隱藏狀態列</string>
     <string name="log_level">日誌級別</string>
     <string name="log_level_description">選擇日誌輸出的詳細程度以進行偵錯。</string>
+    <string name="log_source">日誌來源</string>
+    <string name="log_source_logcat">Logcat</string>
+    <string name="log_source_applog_file">直接寫入檔案</string>
     <string name="start_log_capture">開始擷取日誌</string>
     <string name="start_log_capture_description">開始將系統日誌記錄到檔案中。</string>
+    <string name="start_log_capture_in_applog_file">Log 訊息僅在擷取啟用時寫入檔案</string>
     <string name="start_log_capture_in_silent">無法開始記錄：已選擇靜音日誌級別</string>
     <string name="stop_log_capture">停止擷取日誌</string>
     <string name="stop_log_capture_description">停止記錄並儲存日誌檔案。</string>
@@ -488,6 +492,27 @@
     <string name="sync_media_session_aa_metadata">在媒體工作階段顯示 AA 目前播放</string>
     <string name="sync_media_session_aa_metadata_description">在系統媒體工作階段與媒體通知中顯示來自手機的歌曲名稱、演出者、時長與專輯封面</string>
     <string name="error_usb_permission_failed">系統錯誤：無法要求 USB 權限對話框。</string>
+
+    <!-- Custom loading screen -->
+    <string name="loading_screen">載入畫面</string>
+    <string name="loading_screen_default">預設</string>
+    <string name="loading_screen_custom">自訂</string>
+    <string name="loading_screen_dialog_title">自訂載入畫面</string>
+    <string name="loading_screen_select_file">選擇檔案</string>
+    <string name="loading_screen_remove">移除</string>
+    <string name="loading_screen_recommendation">建議解析度：%1$dx%2$d</string>
+    <string name="loading_screen_supported_formats">支援格式：圖片（PNG、JPG、BMP、WEBP、GIF）\u2022 影片（MP4、MKV、WEBM、3GP）\u2022 最大：10 MB</string>
+    <string name="loading_screen_no_media">未選擇自訂媒體</string>
+    <string name="loading_screen_file_too_large">檔案太大（最大 10 MB）</string>
+    <string name="loading_screen_unsupported_format">不支援的格式。請使用圖片或影片檔案</string>
+    <string name="loading_screen_file_error">無法載入所選檔案</string>
+    <string name="loading_screen_show_text">顯示「Android Auto 啟動中」文字</string>
+    <string name="loading_screen_tap_preview">點擊全螢幕預覽</string>
+    <string name="loading_screen_tap_to_close">點擊任意位置關閉</string>
+    <string name="loading_screen_keep_aspect_ratio">保持長寬比</string>
+    <string name="loading_screen_recommended_aspect_ratio">建議長寬比：%1$d:%2$d</string>
+    <string name="loading_screen_tap_fullscreen_hint">點擊預覽以全螢幕顯示</string>
+    <string name="loading_screen_loop_video">循環播放短動畫</string>
     <string name="microphone_settings">麥克風設定</string>
     <string name="microphone_settings_description">設定麥克風輸入和音訊處理。</string>
     <string name="mic_echo_canceler">回音消除 (AEC)</string>
@@ -496,7 +521,62 @@
     <string name="mic_noise_suppressor_description">嘗試降低背景雜音。若您的聲音聽起來很沉悶，請停用此功能。</string>
     <string name="mic_auto_gain_control">自動增益控制 (AGC)</string>
     <string name="mic_auto_gain_control_description">自動調整麥克風音量。若音量不穩定，請停用此功能。</string>
+    <string name="mic_feature_unsupported">此功能在您的裝置上不受支援。</string>
     <string name="bt_permission_denied">藍牙權限遭拒，無法掃描裝置。</string>
     <string name="wifi_autostart_title">WiFi 自動啟動</string>
     <string name="wifi_autostart_content">已連接至 %s。點擊以啟動 Android Auto。</string>
+
+    <!-- New strings merged from 2.3.1 -->
+    <string name="use_native_ssl">使用原生 SSL</string>
+    <string name="use_native_ssl_description">使用原生 OpenSSL 函式庫 (在舊裝置上速度更快)。 需要重啟。</string>
+    <string name="bt_devices_selected">個已選擇的裝置</string>
+    <string name="static_audio_focus">靜態音訊焦點</string>
+    <string name="static_audio_focus_description">強制讓手機認為音訊焦點一直被保留，以防止通用車機上的音訊路由丟失。在導航語音提示期間也會執行軟體音量衰減（Ducking）。</string>
+    <string name="bluetooth_adapter_label">藍牙適配器</string>
+    <string name="bluetooth_adapter_description">選擇用於交握的藍牙適配器/控制器。適用於雙藍牙系統。</string>
+    <string name="select_bt_adapter">選擇藍牙適配器</string>
+    <!-- QR Code Generator -->
+    <string name="share_hotspot_qr_title">設定 Wireless Helper</string>
+    <string name="share_hotspot_qr_desc">顯示用於手機自動連線的 QR Code</string>
+    <string name="hotspot_qr_description">Wireless Helper 設定 QR Code</string>
+    <string name="scan_with_wireless_helper">請使用您手機上 Wireless Helper 的 QR 碼掃描器掃描此 QR Code。</string>
+    <string name="share_hotspot_qr_error">無法取得作用中的 Wi-Fi 熱點憑證。請確保您的熱點已開啟且已啟用定位服務。</string>
+
+    <!-- Brightness, quick settings, key back, backup, wireless helper QR -->
+    <string name="current_brightness_reading">當前亮度：%d / 255</string>
+    <string name="exit_dialog_settings">快速設定</string>
+    <string name="key_back">返回</string>
+    <string name="category_backup">備份</string>
+    <string name="export_settings">匯出設定</string>
+    <string name="export_settings_description">將設定備份儲存為 JSON 檔案</string>
+    <string name="export_settings_app_folder">儲存至應用程式備份資料夾</string>
+    <string name="export_settings_downloads">儲存至下載</string>
+    <string name="export_settings_choose_location">選擇儲存位置</string>
+    <string name="settings_exported">已匯出設定</string>
+    <string name="settings_export_failed">設定匯出失敗：%1$s</string>
+    <string name="settings_backup_saved_to">設定備份已儲存至：\n%1$s</string>
+    <string name="share_settings_backup">分享設定備份</string>
+    <string name="import_settings">匯入設定</string>
+    <string name="import_settings_description">從 Headunit Revived 備份還原設定</string>
+    <string name="import_settings_app_folder">從應用程式備份資料夾匯入</string>
+    <string name="import_settings_downloads">從下載匯入</string>
+    <string name="import_settings_choose_file">選擇備份檔案</string>
+    <string name="import_settings_discard_pending">匯入備份將會放棄未儲存的設定變更。要繼續嗎？</string>
+    <string name="settings_imported">已匯入設定：套用 %1$d 項、略過 %2$d 項</string>
+    <string name="settings_import_failed">設定匯入失敗：%1$s</string>
+    <string name="no_settings_backups_title">找不到備份</string>
+    <string name="no_settings_backups_message">在應用程式備份資料夾中找不到 Headunit Revived 備份。請先匯出一個備份，然後從這裡匯入。</string>
+    <string name="no_settings_backups_downloads_message">在下載中找不到 Headunit Revived 備份。請先將備份匯出到下載，然後從這裡匯入。</string>
+    <string name="no_file_picker_title">沒有可用的檔案選擇器</string>
+    <string name="no_file_picker_message">此裝置沒有相容的檔案選擇器。您可以改用下載或應用程式備份資料夾。</string>
+    <string name="storage_permission_denied_backup">儲存權限被拒絕。無法使用下載資料夾。</string>
+    <string name="reset_settings">重設為預設值</string>
+    <string name="reset_settings_description">清除所有設定、快取資料及自動連線偏好設定。應用程式將重新啟動以套用出廠預設值。</string>
+    <string name="reset_settings_confirm">您確定要將所有設定重設為預設值嗎？這將重新啟動應用程式。</string>
+    <string name="reset_settings_confirm_message">所有設定都會重設為預設值。備份和應用程式檔案不會被刪除。要繼續嗎？</string>
+    <string name="reset_settings_discard_pending">重設設定將會放棄未儲存的變更。要繼續嗎？</string>
+    <string name="settings_reset">設定已重設為預設值</string>
+    <string name="settings_reset_failed">設定重設失敗：%1$s</string>
+    <string name="hotspot_ssid_hint">熱點 SSID</string>
+    <string name="hotspot_pass_hint">熱點密碼</string>
 </resources>

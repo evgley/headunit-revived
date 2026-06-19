@@ -109,8 +109,8 @@
     <string name="debug_mode_description">Ativa mais registros de log</string>
     <string name="export_logs">Exportar logs</string>
     <string name="export_logs_description">Salvar logs para depuração</string>
-    <string name="use_native_ssl">Usar SSL nativo</string>
-    <string name="use_native_ssl_description">Usa a biblioteca nativa do OpenSSL (mais rápido em dispositivos antigos). Requer reinício.</string>
+
+
     <string name="not_set">Não definido</string>
     <string name="keymap_description">Altere os atalhos de teclas da sua central multimídia</string>
 
@@ -176,7 +176,7 @@
     <string name="bt_permission_denied_title">Permissão de Bluetooth necessária</string>
     <string name="bt_permission_denied_message">A permissão de Bluetooth é necessária para selecionar dispositivos pareados. Conceda-a nas configurações do app.</string>
     <string name="overlay_permission_title">Permissão de início em segundo plano</string>
-    <string name="overlay_permission_description">Para permitir que o Headunit Revived abra automaticamente quando o Bluetooth conectar, ative a permissão "Sobrepor a outros apps" na próxima tela.</string>
+    <string name="overlay_permission_description">Para permitir que o Headunit Revived abra automaticamente quando o Bluetooth conectar, ative a permissão \"Sobrepor a outros apps\" na próxima tela.</string>
     <string name="open_settings">Configurações</string>
     <string name="wireless_connection_settings">Conexão sem fio</string>
     <string name="right_hand_drive">Direção à direita</string>
@@ -225,10 +225,10 @@
     <string name="pref_stretch_screen_summary">Ignora a proporção original para preencher todo o visor (remove as barras pretas)</string>
 
     <!-- Audio Settings -->
-        <string name="forced_scale">Escala forçada (Modo de compatibilidade)</string>
+    <string name="forced_scale">Escala forçada (Modo de compatibilidade)</string>
     <string name="forced_scale_description">Corrige problemas de escala em alguns dispositivos antigos que usam SurfaceView. Use apenas se a imagem parecer distorcida ou deslocada.</string>
 
-<string name="category_audio">Áudio</string>
+    <string name="category_audio">Áudio</string>
     <string name="enable_audio_sink">Ativar receptor de áudio</string>
     <string name="enable_audio_sink_description">Se desativado, a central não atuará como receptor de áudio. O áudio tocará no celular.</string>
     <string name="separate_audio_streams">Separar fluxos de áudio</string>
@@ -350,15 +350,19 @@
     <string name="fullscreen_status_only">Ocultar apenas a barra de status</string>
     <string name="log_level">Nível de Log</string>
     <string name="log_level_description">Escolha o nível de detalhe da saída de log para depuração.</string>
+    <string name="log_source">Fonte de logs</string>
+    <string name="log_source_logcat">Logcat</string>
+    <string name="log_source_applog_file">Direto para arquivo</string>
     <string name="start_log_capture">Iniciar captura de log</string>
     <string name="start_log_capture_description">Começa a registrar os logs do sistema em um arquivo.</string>
+    <string name="start_log_capture_in_applog_file">As mensagens do Log são gravadas em um arquivo somente enquanto a captura estiver ativa</string>
     <string name="start_log_capture_in_silent">Não é possível iniciar a gravação: nível de registro Silencioso selecionado</string>
     <string name="stop_log_capture">Parar captura de log</string>
     <string name="stop_log_capture_description">Interrompe a gravação e salva o arquivo de log.</string>
 
     <!-- Navigation notifications -->
     <string name="show_navigation_notifications">Notificações de navegação</string>
-    <string name="show_navigation_notifications_description">Mostrar "Em X metros Y" e a rua atual nas notificações (para depuração)</string>
+    <string name="show_navigation_notifications_description">Mostrar \"Em X metros Y\" e a rua atual nas notificações (para depuração)</string>
     <string name="nav_notification_channel_name">Navegação</string>
     <string name="nav_notification_channel_description">Indicações passo a passo do Android Auto</string>
     <string name="nav_notification_title_format">Em %1$d m — %2$s</string>
@@ -489,6 +493,27 @@
     <string name="sync_media_session_aa_metadata">Faixa atual do AA na sessão de mídia</string>
     <string name="sync_media_session_aa_metadata_description">Mostrar título, artista, duração e capa do álbum do telefone na sessão de mídia do sistema e na notificação de mídia</string>
     <string name="error_usb_permission_failed">Erro do sistema: Falha ao solicitar a caixa de diálogo de permissão USB.</string>
+
+    <!-- Custom loading screen -->
+    <string name="loading_screen">Tela de carregamento</string>
+    <string name="loading_screen_default">Padrão</string>
+    <string name="loading_screen_custom">Personalizada</string>
+    <string name="loading_screen_dialog_title">Tela de carregamento personalizada</string>
+    <string name="loading_screen_select_file">Selecionar arquivo</string>
+    <string name="loading_screen_remove">Remover</string>
+    <string name="loading_screen_recommendation">Resolução recomendada: %1$dx%2$d</string>
+    <string name="loading_screen_supported_formats">Suportados: Imagens (PNG, JPG, BMP, WEBP, GIF) \u2022 Vídeos (MP4, MKV, WEBM, 3GP) \u2022 Máx: 10 MB</string>
+    <string name="loading_screen_no_media">Nenhuma mídia personalizada selecionada</string>
+    <string name="loading_screen_file_too_large">O arquivo é muito grande (máx 10 MB)</string>
+    <string name="loading_screen_unsupported_format">Formato não suportado. Use um arquivo de imagem ou vídeo</string>
+    <string name="loading_screen_file_error">Não foi possível carregar o arquivo selecionado</string>
+    <string name="loading_screen_show_text">Mostrar texto \"Android Auto está iniciando\"</string>
+    <string name="loading_screen_tap_preview">Toque para pré-visualizar</string>
+    <string name="loading_screen_tap_to_close">Toque em qualquer lugar para fechar</string>
+    <string name="loading_screen_keep_aspect_ratio">Manter proporção</string>
+    <string name="loading_screen_recommended_aspect_ratio">Proporção recomendada: %1$d:%2$d</string>
+    <string name="loading_screen_tap_fullscreen_hint">Toque na pré-visualização para vê-la em tela cheia</string>
+    <string name="loading_screen_loop_video">Repetir animações curtas em loop</string>
     <string name="microphone_settings">Configurações do microfone</string>
     <string name="microphone_settings_description">Configurar entrada de microfone e processamento de áudio.</string>
     <string name="mic_echo_canceler">Cancelamento de eco (AEC)</string>
@@ -497,7 +522,62 @@
     <string name="mic_noise_suppressor_description">Tenta reduzir o ruído de fundo. Desative se a sua voz soar abafada.</string>
     <string name="mic_auto_gain_control">Controle automático de ganho (AGC)</string>
     <string name="mic_auto_gain_control_description">Ajusta automaticamente o volume do microfone. Desative se o volume estiver instável.</string>
+    <string name="mic_feature_unsupported">Este recurso não é compatível com seu dispositivo.</string>
     <string name="bt_permission_denied">Permissão Bluetooth negada. Não é possível escanear dispositivos.</string>
     <string name="wifi_autostart_title">Início automático de WiFi</string>
     <string name="wifi_autostart_content">Conectado a %s. Toque para iniciar o Android Auto.</string>
+
+    <!-- New strings merged from 2.3.1 -->
+    <string name="use_native_ssl">Usar SSL nativo</string>
+    <string name="use_native_ssl_description">Usa a biblioteca nativa do OpenSSL (mais rápido em dispositivos antigos). Requer reinício.</string>
+    <string name="bt_devices_selected">dispositivos selecionados</string>
+    <string name="static_audio_focus">Foco de áudio estático</string>
+    <string name="static_audio_focus_description">Força o telefone a acreditar que o foco de áudio está sempre ativo, evitando perdas de roteamento de áudio em centrais multimídia genéricas. Também realiza atenuação de volume (ducking) por software durante as instruções de voz de navegação.</string>
+    <string name="bluetooth_adapter_label">Adaptador Bluetooth</string>
+    <string name="bluetooth_adapter_description">Selecione o adaptador/controlador Bluetooth a ser usado para a conexão. Útil para sistemas com Bluetooth duplo.</string>
+    <string name="select_bt_adapter">Selecionar adaptador Bluetooth</string>
+    <!-- QR Code Generator -->
+    <string name="share_hotspot_qr_title">Configurar Wireless Helper</string>
+    <string name="share_hotspot_qr_desc">Mostrar código QR para conexão automática do telefone</string>
+    <string name="hotspot_qr_description">Código QR de configuração do Wireless Helper</string>
+    <string name="scan_with_wireless_helper">Escaneie este código QR usando o scanner QR no Wireless Helper no seu telefone.</string>
+    <string name="share_hotspot_qr_error">Não foi possível recuperar as credenciais do ponto de acesso Wi-Fi ativo. Certifique-se de que o ponto de acesso está ativado e a localização habilitada.</string>
+
+    <!-- Brightness, quick settings, key back, backup, wireless helper QR -->
+    <string name="current_brightness_reading">Brilho atual: %d / 255</string>
+    <string name="exit_dialog_settings">Configurações rápidas</string>
+    <string name="key_back">Voltar</string>
+    <string name="category_backup">Backup</string>
+    <string name="export_settings">Exportar configurações</string>
+    <string name="export_settings_description">Salvar um backup das configurações como arquivo JSON</string>
+    <string name="export_settings_app_folder">Salvar na pasta de backup do app</string>
+    <string name="export_settings_downloads">Salvar em Downloads</string>
+    <string name="export_settings_choose_location">Escolher local para salvar</string>
+    <string name="settings_exported">Configurações exportadas</string>
+    <string name="settings_export_failed">Falha ao exportar configurações: %1$s</string>
+    <string name="settings_backup_saved_to">Backup das configurações salvo em:\n%1$s</string>
+    <string name="share_settings_backup">Compartilhar backup</string>
+    <string name="import_settings">Importar configurações</string>
+    <string name="import_settings_description">Restaurar configurações a partir de um backup do Headunit Revived</string>
+    <string name="import_settings_app_folder">Importar da pasta de backup do app</string>
+    <string name="import_settings_downloads">Importar de Downloads</string>
+    <string name="import_settings_choose_file">Escolher arquivo de backup</string>
+    <string name="import_settings_discard_pending">Importar um backup descartará suas alterações não salvas. Continuar?</string>
+    <string name="settings_imported">Configurações importadas: %1$d aplicadas, %2$d ignoradas</string>
+    <string name="settings_import_failed">Falha ao importar configurações: %1$s</string>
+    <string name="no_settings_backups_title">Nenhum backup encontrado</string>
+    <string name="no_settings_backups_message">Nenhum backup do Headunit Revived foi encontrado na pasta de backup do app. Exporte um backup primeiro e depois importe-o daqui.</string>
+    <string name="no_settings_backups_downloads_message">Nenhum backup do Headunit Revived foi encontrado em Downloads. Exporte um backup para Downloads primeiro e depois importe-o daqui.</string>
+    <string name="no_file_picker_title">Nenhum seletor de arquivos disponível</string>
+    <string name="no_file_picker_message">Este dispositivo não tem um seletor de arquivos compatível. Você pode usar Downloads ou a pasta de backup do app.</string>
+    <string name="storage_permission_denied_backup">Permissão de armazenamento negada. Não foi possível usar Downloads.</string>
+    <string name="reset_settings">Restaurar padrões</string>
+    <string name="reset_settings_description">Limpa toda a configuração, dados em cache e preferências de conexão automática. O app será reiniciado para aplicar os valores padrão.</string>
+    <string name="reset_settings_confirm">Tem certeza de que deseja redefinir todas as configurações para os valores padrão? Isso reiniciará o app.</string>
+    <string name="reset_settings_confirm_message">Isso redefinirá todas as configurações para os valores padrão. Backups e arquivos do app não serão excluídos. Continuar?</string>
+    <string name="reset_settings_discard_pending">Redefinir as configurações descartará suas alterações não salvas. Continuar?</string>
+    <string name="settings_reset">Configurações redefinidas para os padrões</string>
+    <string name="settings_reset_failed">Falha ao redefinir configurações: %1$s</string>
+    <string name="hotspot_ssid_hint">SSID do hotspot</string>
+    <string name="hotspot_pass_hint">Senha do hotspot</string>
 </resources>

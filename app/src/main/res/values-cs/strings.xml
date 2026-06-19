@@ -109,8 +109,8 @@
     <string name="debug_mode_description">Povolit podrobnější protokolování (logging)</string>
     <string name="export_logs">Exportovat protokoly</string>
     <string name="export_logs_description">Uložit protokoly pro účely ladění</string>
-    <string name="use_native_ssl">Použít nativní SSL</string>
-    <string name="use_native_ssl_description">Použít nativní knihovnu OpenSSL (rychlejší na starších zařízeních). Vyžaduje restart.</string>
+
+
     <string name="not_set">Nenastaveno</string>
     <string name="keymap_description">Změnit přiřazení kláves pro vaši jednotku</string>
 
@@ -176,7 +176,7 @@
     <string name="bt_permission_denied_title">Vyžadováno oprávnění Bluetooth</string>
     <string name="bt_permission_denied_message">Pro výběr spárovaných zařízení je vyžadováno oprávnění Bluetooth. Povolte ho prosím v nastavení aplikace.</string>
     <string name="overlay_permission_title">Oprávnění pro spuštění na pozadí</string>
-    <string name="overlay_permission_description">Pro automatické otevření Headunit Revived při připojení Bluetooth povolte prosím oprávnění "Zobrazit přes ostatní aplikace" na další obrazovce.</string>
+    <string name="overlay_permission_description">Pro automatické otevření Headunit Revived při připojení Bluetooth povolte prosím oprávnění \"Zobrazit přes ostatní aplikace\" na další obrazovce.</string>
     <string name="open_settings">Nastavení</string>
     <string name="wireless_connection_settings">Bezdrátové připojení</string>
     <string name="right_hand_drive">Pravostranné řízení</string>
@@ -225,10 +225,10 @@
     <string name="pref_stretch_screen_summary">Ignoruje poměr stran a vyplní celý displej (odstraní černé pruhy)</string>
 
     <!-- Audio Settings -->
-        <string name="forced_scale">Vynucené měřítko (Legacy oprava)</string>
+    <string name="forced_scale">Vynucené měřítko (Legacy oprava)</string>
     <string name="forced_scale_description">Opravuje problémy s měřítkem u některých starších zařízení používajících SurfaceView. Používejte pouze v případě, že obraz vypadá zkresleně nebo posunutě.</string>
 
-<string name="category_audio">Audio</string>
+    <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Povolit audio výstup (Sink)</string>
     <string name="enable_audio_sink_description">Pokud je zakázáno, hlavní jednotka nebude přijímat zvuk. Zvuk se bude přehrávat z telefonu.</string>
     <string name="separate_audio_streams">Oddělit zvukové streamy</string>
@@ -352,15 +352,19 @@
     <string name="fullscreen_status_only">Skrýt pouze stavovou lištu</string>
     <string name="log_level">Úroveň protokolování</string>
     <string name="log_level_description">Vyberte úroveň podrobnosti výstupu protokolu pro ladění.</string>
+    <string name="log_source">Zdroj logů</string>
+    <string name="log_source_logcat">Logcat</string>
+    <string name="log_source_applog_file">Přímo do souboru</string>
     <string name="start_log_capture">Spustit záznam protokolu</string>
     <string name="start_log_capture_description">Spustí nahrávání systémových protokolů do souboru.</string>
+    <string name="start_log_capture_in_applog_file">Zprávy Log se zapisují do souboru pouze během aktivního záznamu</string>
     <string name="start_log_capture_in_silent">Nelze zahájit záznam: vybrána úroveň tichého protokolování</string>
     <string name="stop_log_capture">Zastavit záznam protokolu</string>
     <string name="stop_log_capture_description">Zastaví nahrávání a uloží soubor protokolu.</string>
 
     <!-- Navigation notifications -->
     <string name="show_navigation_notifications">Oznámení navigace</string>
-    <string name="show_navigation_notifications_description">Zobrazit „Za X metrů Y" a aktuální ulici v oznámeních (pro ladění)</string>
+    <string name="show_navigation_notifications_description">Zobrazit „Za X metrů Y\" a aktuální ulici v oznámeních (pro ladění)</string>
     <string name="nav_notification_channel_name">Navigace</string>
     <string name="nav_notification_channel_description">Podrobné navigační pokyny z Android Auto</string>
     <string name="nav_notification_title_format">Za %1$d m — %2$s</string>
@@ -449,7 +453,7 @@
     <string name="wait_for_wifi_timeout">Časový limit čekání na WiFi</string>
     <string name="wireless_24ghz_warning">Poznámka: Bezdrátové Android Auto na 2,4GHz zařízeních může vést k lagům, sekání a odpojování. Pokud máte problémy, otestujte připojení přes USB, abyste potvrdili, zda se jedná o omezení sítě.</string>
     <string name="supported_nativeaa">Vylepšená bezdrátová podpora</string>
-    <string name="supported_nativeaa_desc">Skvělá zpráva! Vaše zařízení podporuje režim „Native Wireless“, který poskytuje plynulejší zážitek z Android Auto. \n\nPro aktivaci potřebujeme obnovit vaši Bluetooth mezipaměť. Prosím: \n1. Odstraňte stávající spárování v telefonu \n2. Klikněte na OK pro restart Bluetooth \n3. Znovu spárujte telefon \n\nChcete nyní přepnout do režimu Native AA?"</string>
+    <string name="supported_nativeaa_desc">Skvělá zpráva! Vaše zařízení podporuje režim „Native Wireless“, který poskytuje plynulejší zážitek z Android Auto. \n\nPro aktivaci potřebujeme obnovit vaši Bluetooth mezipaměť. Prosím: \n1. Odstraňte stávající spárování v telefonu \n2. Klikněte na OK pro restart Bluetooth \n3. Znovu spárujte telefon \n\nChcete nyní přepnout do režimu Native AA?\"</string>
     <string name="fake_speed_title">Zakázat blokování videa (Fake Speed)</string>
     <string name="fake_speed_description">Hlásí telefonu konstantní nízkou rychlost (0,5 m/s), aby se zabránilo blokování video obsahu během jízdy. Používejte opatrně.</string>
     <string name="wireless_mode_helper">Wireless Helper</string>
@@ -488,6 +492,27 @@
     <string name="sync_media_session_aa_metadata">Aktuální skladba AA v mediální relaci</string>
     <string name="sync_media_session_aa_metadata_description">Zobrazovat název skladby, interpreta, délku a obal alba z telefonu v systémové mediální relaci a mediálním oznámení</string>
     <string name="error_usb_permission_failed">Systémová chyba: Nepodařilo se vyžádat dialogové okno pro povolení USB.</string>
+
+    <!-- Custom loading screen -->
+    <string name="loading_screen">Načítací obrazovka</string>
+    <string name="loading_screen_default">Výchozí</string>
+    <string name="loading_screen_custom">Vlastní</string>
+    <string name="loading_screen_dialog_title">Vlastní načítací obrazovka</string>
+    <string name="loading_screen_select_file">Vybrat soubor</string>
+    <string name="loading_screen_remove">Odebrat</string>
+    <string name="loading_screen_recommendation">Doporučené rozlišení: %1$dx%2$d</string>
+    <string name="loading_screen_supported_formats">Podporované: Obrázky (PNG, JPG, BMP, WEBP, GIF) \u2022 Videa (MP4, MKV, WEBM, 3GP) \u2022 Max: 10 MB</string>
+    <string name="loading_screen_no_media">Není vybrán vlastní obsah</string>
+    <string name="loading_screen_file_too_large">Soubor je příliš velký (max 10 MB)</string>
+    <string name="loading_screen_unsupported_format">Nepodporovaný formát. Použijte soubor obrázku nebo videa</string>
+    <string name="loading_screen_file_error">Nepodařilo se načíst vybraný soubor</string>
+    <string name="loading_screen_show_text">Zobrazit text \"Android Auto se spouští\"</string>
+    <string name="loading_screen_tap_preview">Klepněte pro náhled</string>
+    <string name="loading_screen_tap_to_close">Klepněte kamkoli pro zavření</string>
+    <string name="loading_screen_keep_aspect_ratio">Zachovat poměr stran</string>
+    <string name="loading_screen_recommended_aspect_ratio">Doporučený poměr stran: %1$d:%2$d</string>
+    <string name="loading_screen_tap_fullscreen_hint">Klepněte na náhled pro zobrazení na celou obrazovku</string>
+    <string name="loading_screen_loop_video">Opakovat krátké animace</string>
     <string name="microphone_settings">Nastavení mikrofonu</string>
     <string name="microphone_settings_description">Konfigurace vstupu mikrofonu a zpracování zvuku.</string>
     <string name="mic_echo_canceler">Potlačení ozvěny (AEC)</string>
@@ -496,7 +521,62 @@
     <string name="mic_noise_suppressor_description">Pokusí se snížit hluk na pozadí. Vypněte, pokud váš hlas zní tlumeně.</string>
     <string name="mic_auto_gain_control">Automatické řízení zesílení (AGC)</string>
     <string name="mic_auto_gain_control_description">Automaticky upravuje hlasitost mikrofonu. Vypněte, pokud je hlasitost nestabilní.</string>
+    <string name="mic_feature_unsupported">Tato funkce není na vašem zařízení podporována.</string>
     <string name="bt_permission_denied">Oprávnění Bluetooth bylo zamítnuto. Nelze skenovat zařízení.</string>
     <string name="wifi_autostart_title">Automatické spuštění WiFi</string>
     <string name="wifi_autostart_content">Připojeno k %s. Klepnutím spustíte Android Auto.</string>
+
+    <!-- New strings merged from 2.3.1 -->
+    <string name="use_native_ssl">Použít nativní SSL</string>
+    <string name="use_native_ssl_description">Použít nativní knihovnu OpenSSL (rychlejší na starších zařízeních). Vyžaduje restart.</string>
+    <string name="bt_devices_selected">vybraných zařízení</string>
+    <string name="static_audio_focus">Statické zaměření zvuku</string>
+    <string name="static_audio_focus_description">Vynutí, aby si telefon myslel, že má neustále zaměřený zvuk, což zabraňuje ztrátě směrování zvuku na běžných hlavních jednotkách. Také provádí softwarové ztlumení (ducking) během navigačních hlasových pokynů.</string>
+    <string name="bluetooth_adapter_label">Adaptér Bluetooth</string>
+    <string name="bluetooth_adapter_description">Vyberte adaptér/ovladač Bluetooth, který se má použít pro handshake. Užitečné pro systémy s duálním Bluetooth.</string>
+    <string name="select_bt_adapter">Vybrat adaptér Bluetooth</string>
+    <!-- QR Code Generator -->
+    <string name="share_hotspot_qr_title">Nakonfigurovat Wireless Helper</string>
+    <string name="share_hotspot_qr_desc">Zobrazit QR kód pro automatické připojení telefonu</string>
+    <string name="hotspot_qr_description">Konfigurační QR kód Wireless Helper</string>
+    <string name="scan_with_wireless_helper">Naskenujte tento QR kód pomocí QR skeneru v aplikaci Wireless Helper na vašem telefonu.</string>
+    <string name="share_hotspot_qr_error">Nepodařilo se načíst přihlašovací údaje k aktivnímu hotspotu Wi-Fi. Ujistěte se, že je hotspot zapnutý a jsou povoleny služby určování polohy.</string>
+
+    <!-- Brightness, quick settings, key back, backup, wireless helper QR -->
+    <string name="current_brightness_reading">Aktuální jas: %d / 255</string>
+    <string name="exit_dialog_settings">Rychlé nastavení</string>
+    <string name="key_back">Zpět</string>
+    <string name="category_backup">Záloha</string>
+    <string name="export_settings">Exportovat nastavení</string>
+    <string name="export_settings_description">Uložit zálohu nastavení jako soubor JSON</string>
+    <string name="export_settings_app_folder">Uložit do složky záloh aplikace</string>
+    <string name="export_settings_downloads">Uložit do Stažených souborů</string>
+    <string name="export_settings_choose_location">Vyberte umístění uložení</string>
+    <string name="settings_exported">Nastavení exportováno</string>
+    <string name="settings_export_failed">Export nastavení selhal: %1$s</string>
+    <string name="settings_backup_saved_to">Záloha nastavení uložena do:\n%1$s</string>
+    <string name="share_settings_backup">Sdílet zálohu nastavení</string>
+    <string name="import_settings">Importovat nastavení</string>
+    <string name="import_settings_description">Obnovit nastavení ze zálohy Headunit Revived</string>
+    <string name="import_settings_app_folder">Importovat ze složky záloh aplikace</string>
+    <string name="import_settings_downloads">Importovat ze Stažených souborů</string>
+    <string name="import_settings_choose_file">Vyberte soubor zálohy</string>
+    <string name="import_settings_discard_pending">Import zálohy zahodí neuložené změny nastavení. Pokračovat?</string>
+    <string name="settings_imported">Nastavení importováno: %1$d použito, %2$d přeskočeno</string>
+    <string name="settings_import_failed">Import nastavení selhal: %1$s</string>
+    <string name="no_settings_backups_title">Žádné zálohy nenalezeny</string>
+    <string name="no_settings_backups_message">Ve složce záloh aplikace nebyly nalezeny žádné zálohy Headunit Revived. Nejprve exportujte zálohu a poté ji odtud importujte.</string>
+    <string name="no_settings_backups_downloads_message">Ve Stažených souborech nebyly nalezeny žádné zálohy Headunit Revived. Nejprve exportujte zálohu do Stažených souborů a poté ji odtud importujte.</string>
+    <string name="no_file_picker_title">Není k dispozici výběr souborů</string>
+    <string name="no_file_picker_message">Toto zařízení nemá kompatibilní výběr souborů. Místo toho můžete použít Stažené soubory nebo složku záloh aplikace.</string>
+    <string name="storage_permission_denied_backup">Oprávnění k úložišti zamítnuto. Stažené soubory nebylo možné použít.</string>
+    <string name="reset_settings">Obnovit výchozí nastavení</string>
+    <string name="reset_settings_description">Vymaže veškeré nastavení, dočasná data a předvolby automatického připojení. Aplikace se restartuje, aby se použily výchozí hodnoty.</string>
+    <string name="reset_settings_confirm">Opravdu chcete obnovit všechna nastavení na výchozí hodnoty? Tím se aplikace restartuje.</string>
+    <string name="reset_settings_confirm_message">Tím se obnoví všechna nastavení na výchozí hodnoty. Zálohy a soubory aplikace nebudou smazány. Pokračovat?</string>
+    <string name="reset_settings_discard_pending">Obnovení nastavení zahodí neuložené změny. Pokračovat?</string>
+    <string name="settings_reset">Nastavení obnoveno na výchozí</string>
+    <string name="settings_reset_failed">Obnovení nastavení selhalo: %1$s</string>
+    <string name="hotspot_ssid_hint">SSID hotspotu</string>
+    <string name="hotspot_pass_hint">Heslo hotspotu</string>
 </resources>

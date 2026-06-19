@@ -1,47 +1,71 @@
 package com.andrerinas.headunitrevived.main
 
 import android.Manifest
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
+import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.Toast
+import android.widget.VideoView
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.andrerinas.headunitrevived.App
 import com.andrerinas.headunitrevived.R
 import com.andrerinas.headunitrevived.aap.AapProjectionActivity
 import com.andrerinas.headunitrevived.aap.AapService
 import com.andrerinas.headunitrevived.app.BaseActivity
-import androidx.lifecycle.lifecycleScope
+import com.andrerinas.headunitrevived.connection.CommManager
 import com.andrerinas.headunitrevived.utils.AppLog
 import android.content.res.Configuration
 import com.andrerinas.headunitrevived.utils.Settings
 import android.os.SystemClock
 import com.andrerinas.headunitrevived.utils.SetupWizard
 import com.andrerinas.headunitrevived.utils.SystemUI
+import com.bumptech.glide.Glide
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.io.File
 
 class MainActivity : BaseActivity() {
 
     private var lastBackPressTime: Long = 0
     var keyListener: KeyListener? = null
-    
+
     private var isOrientationReceiverRegistered = false
     private var isFinishReceiverRegistered = false
     private var isRecreateReceiverRegistered = false
 
     private val viewModel: MainViewModel by viewModels()
+
+    private var autoConnectWatchdog: Job? = null
+    private var autoConnectKenBurnsAnim: ObjectAnimator? = null
+
+    /**
+     * Visual mode for an in-progress auto-connect attempt. PILL is a small,
+     * non-blocking status indicator at the top of the home screen used for
+     * fully automatic background attempts so the home buttons stay tappable.
+     * OVERLAY is the full-screen custom loading screen used for connections
+     * the user explicitly triggered with a button.
+     */
+    enum class ConnectionUiMode { PILL, OVERLAY }
 
     private val finishReceiver = object : android.content.BroadcastReceiver() {
         override fun onReceive(context: android.content.Context, intent: Intent) {
@@ -93,6 +117,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        requestedOrientation = Settings(this).screenOrientation.androidOrientation
         super.onCreate(savedInstanceState)
 
         logLaunchSource()
@@ -145,6 +170,14 @@ class MainActivity : BaseActivity() {
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
+                // While the full-screen overlay is up, treat Back as cancel so the
+                // user isn't trapped if a manual connection attempt hangs. Pill
+                // mode is non-blocking, so Back falls through to its normal
+                // navigation behavior there.
+                if (autoConnectInProgress && autoConnectMode == ConnectionUiMode.OVERLAY) {
+                    cancelAutoConnect()
+                    return
+                }
                 if (navController.navigateUp()) {
                     return
                 } else if (System.currentTimeMillis() - lastBackPressTime < 2000) {
@@ -177,6 +210,415 @@ class MainActivity : BaseActivity() {
             ContextCompat.RECEIVER_NOT_EXPORTED
         )
         isFinishReceiverRegistered = true
+
+        // USB auto-attach is the one auto-connect path that pre-launches MainActivity
+        // before any state transition occurs. HomeFragment-driven auto-connects will
+        // call beginAutoConnect() directly from their entry points.
+        if (savedInstanceState == null &&
+            intent?.getStringExtra(EXTRA_LAUNCH_SOURCE) == "USB auto-start") {
+            beginAutoConnect("USB auto-start", ConnectionUiMode.PILL)
+        }
+
+        // Wire cancel affordances. Pill click and overlay cancel button both
+        // route through the same cancellation path.
+        findViewById<View>(R.id.auto_connect_pill)?.setOnClickListener {
+            cancelAutoConnect()
+        }
+        findViewById<View>(R.id.auto_connect_loading_cancel)?.setOnClickListener {
+            cancelAutoConnect()
+        }
+
+        observeConnectionStateForOverlay()
+    }
+
+    /**
+     * Mark that an automatic connection attempt has started and surface a status
+     * indicator over the home screen. Called from HomeFragment auto-connect paths
+     * and from MainActivity itself when launched via USB auto-attach.
+     *
+     * @param reason Diagnostic label written to the log.
+     * @param mode PILL for non-blocking background attempts (home buttons stay
+     *        usable), OVERLAY for user-initiated attempts (full-screen custom
+     *        loading screen with cancel button).
+     * @param customStatusText Optional override for the status text. If provided
+     *        and the user has the show-text option enabled, this string is shown
+     *        instead of the generic "Android Auto is starting…". Used by the
+     *        Nearby selector to surface the picked device name.
+     */
+    @JvmOverloads
+    fun beginAutoConnect(reason: String, mode: ConnectionUiMode, customStatusText: String? = null) {
+        if (autoConnectInProgress) return
+        val commManager = App.provide(this).commManager
+        // If we are already past the connection phase, no indicator is needed.
+        if (commManager.isConnected) return
+        AppLog.i("Auto-connect: begin ($reason, mode=$mode)")
+        autoConnectInProgress = true
+        autoConnectMode = mode
+        // Seed hasAdvancedToActiveState from the current connection state. If
+        // something else (e.g. AapService responding to a USB attach) already
+        // moved the state into Connecting before we got here, the StateFlow
+        // will not re-emit it, so the observer would never flip the flag to
+        // true on its own. Without this seed, a subsequent failure transition
+        // to Disconnected would be misread as the initial Disconnected on
+        // launch and ignored until the 30 s watchdog kicks in.
+        val currentState = commManager.connectionState.value
+        hasAdvancedToActiveState = currentState is CommManager.ConnectionState.Connecting ||
+                currentState is CommManager.ConnectionState.Connected ||
+                currentState is CommManager.ConnectionState.StartingTransport
+        autoConnectStatusText = customStatusText
+        // Hand the status text off to AapProjectionActivity so its own loading
+        // screen continues to show the same context-specific label after the
+        // handshake completes and AAP takes over the UI. AAP reads and clears
+        // this on its first launch; we always overwrite it here (even with
+        // null) so a stale value from a prior attempt can't leak across.
+        AapProjectionActivity.pendingStatusText = customStatusText
+        showAutoConnectUi()
+    }
+
+    /**
+     * Dispatches to the pill or overlay show-method based on [autoConnectMode].
+     */
+    private fun showAutoConnectUi() {
+        when (autoConnectMode) {
+            ConnectionUiMode.PILL -> showAutoConnectPill()
+            ConnectionUiMode.OVERLAY -> showAutoConnectOverlay()
+        }
+    }
+
+    /**
+     * Cancels an in-progress auto-connect attempt, regardless of whether it
+     * has reached the Connecting state yet. Safe to call even if no attempt is
+     * pending. Invoked by pill tap, overlay cancel button, and back-press when
+     * the overlay is up.
+     */
+    private fun cancelAutoConnect() {
+        if (!autoConnectInProgress) return
+        AppLog.i("Auto-connect: cancelled by user")
+        // disconnect() handles all states including the Connecting state where
+        // ACTION_DISCONNECT in AapService used to be a no-op. Setting state to
+        // Disconnected here also feeds the observer, but we end the UI
+        // immediately rather than waiting for the round-trip.
+        App.provide(this).commManager.disconnect()
+        endAutoConnect(success = false)
+    }
+
+    /**
+     * Subscribes to [CommManager.connectionState] to drive the auto-connect overlay.
+     *
+     * Show: when the overlay is requested via [beginAutoConnect] and the connection
+     * advances out of the initial Disconnected state.
+     *
+     * Hide: on terminal states (HandshakeComplete/TransportStarted = success — AAP
+     * projection activity will take over with its own overlay; Error/Disconnected =
+     * failure — drop back to HomeFragment so the user can intervene).
+     */
+    private fun observeConnectionStateForOverlay() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                App.provide(this@MainActivity).commManager.connectionState.collect { state ->
+                    when (state) {
+                        is CommManager.ConnectionState.Connecting,
+                        is CommManager.ConnectionState.Connected,
+                        is CommManager.ConnectionState.StartingTransport -> {
+                            hasAdvancedToActiveState = true
+                            // The pill/overlay should already be visible (set when auto-connect
+                            // was requested); ensure it is in case the request raced with
+                            // setContentView or the activity was recreated mid-attempt.
+                            if (autoConnectInProgress) {
+                                showAutoConnectUi()
+                            }
+                        }
+                        is CommManager.ConnectionState.HandshakeComplete,
+                        is CommManager.ConnectionState.TransportStarted -> {
+                            // AapProjectionActivity is launching (HandshakeComplete) or
+                            // has launched (TransportStarted). Hide our overlay so we
+                            // don't keep video/animation resources alive while AAP
+                            // covers us.
+                            if (autoConnectInProgress) {
+                                AppLog.i("Auto-connect overlay: handshake complete, handing off to projection")
+                                endAutoConnect(success = true)
+                            }
+                        }
+                        is CommManager.ConnectionState.Error -> {
+                            if (autoConnectInProgress) {
+                                AppLog.w("Auto-connect overlay: connection error: ${state.message}")
+                                endAutoConnect(success = false)
+                            }
+                        }
+                        is CommManager.ConnectionState.Disconnected -> {
+                            // Initial Disconnected on app launch is normal; only treat
+                            // as failure if we previously advanced to an active state.
+                            if (autoConnectInProgress && hasAdvancedToActiveState) {
+                                AppLog.w("Auto-connect overlay: disconnected mid-attempt")
+                                endAutoConnect(success = false)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun endAutoConnect(success: Boolean) {
+        autoConnectWatchdog?.cancel()
+        autoConnectWatchdog = null
+        autoConnectInProgress = false
+        hasAdvancedToActiveState = false
+        autoConnectStatusText = null
+        if (!success) {
+            // Failure path: AAP is not going to launch, so clear the handover
+            // value so it can't appear on a later, unrelated connection. On
+            // success we leave it alone, AAP either already consumed it in
+            // onCreate or is about to.
+            AapProjectionActivity.pendingStatusText = null
+        }
+        // Pill cleanup is cheap and safe to run regardless of mode.
+        hideAutoConnectPill()
+        if (success) {
+            // On success the projection activity will cover our overlay almost
+            // immediately. Hiding without an animation avoids the fade competing
+            // with the activity transition.
+            findViewById<View>(R.id.auto_connect_loading_overlay)?.visibility = View.GONE
+            stopAutoConnectVideo()
+            autoConnectKenBurnsAnim?.cancel()
+            autoConnectKenBurnsAnim = null
+        } else {
+            hideAutoConnectOverlay()
+        }
+    }
+
+    private fun showAutoConnectPill() {
+        // Watchdog backstop applies to pill mode too so the indicator can't
+        // get stuck if the connection attempt never produces an event.
+        if (autoConnectWatchdog?.isActive != true) {
+            startAutoConnectWatchdog()
+        }
+
+        val pill = findViewById<View>(R.id.auto_connect_pill) ?: return
+        val pillText = findViewById<android.widget.TextView>(R.id.auto_connect_pill_text)
+        pillText?.text = autoConnectStatusText ?: getString(R.string.android_auto_starting)
+        if (pill.visibility == View.VISIBLE) return
+
+        pill.visibility = View.VISIBLE
+        pill.bringToFront()
+        // Suppress the launch splash if it is still up so the pill is visible
+        // immediately on auto-connect from a cold start.
+        findViewById<View>(R.id.splash_overlay)?.visibility = View.GONE
+    }
+
+    private fun hideAutoConnectPill() {
+        val pill = findViewById<View>(R.id.auto_connect_pill) ?: return
+        if (pill.visibility != View.VISIBLE) return
+        pill.visibility = View.GONE
+    }
+
+    private fun startAutoConnectWatchdog() {
+        autoConnectWatchdog?.cancel()
+        autoConnectWatchdog = lifecycleScope.launch {
+            delay(AUTO_CONNECT_WATCHDOG_MS)
+            if (autoConnectInProgress) {
+                AppLog.w("Auto-connect overlay: watchdog timeout, hiding")
+                endAutoConnect(success = false)
+            }
+        }
+    }
+
+    private fun showAutoConnectOverlay() {
+        // Watchdog is owned by this activity's lifecycleScope, so it must be
+        // (re)started here to survive configuration changes that recreate the
+        // activity while autoConnectInProgress remains true.
+        if (autoConnectWatchdog?.isActive != true) {
+            startAutoConnectWatchdog()
+        }
+
+        val overlay = findViewById<View>(R.id.auto_connect_loading_overlay) ?: return
+        if (overlay.visibility == View.VISIBLE) return
+
+        overlay.alpha = 1f
+        overlay.visibility = View.VISIBLE
+        overlay.bringToFront()
+        // Once the auto-connect overlay is up there is no point keeping the
+        // launch splash around — they would just stack the same dark background.
+        findViewById<View>(R.id.splash_overlay)?.visibility = View.GONE
+
+        setupAutoConnectMedia()
+    }
+
+    private fun setupAutoConnectMedia() {
+        val settings = App.provide(this).settings
+        val mediaPath = settings.loadingScreenMediaPath
+        val mediaType = settings.loadingScreenMediaType
+
+        val defaultContent = findViewById<View>(R.id.auto_connect_loading_default_content)
+        val customTextOverlay = findViewById<View>(R.id.auto_connect_loading_custom_text_overlay)
+        val customImage = findViewById<ImageView>(R.id.auto_connect_loading_custom_image)
+        val customVideo = findViewById<VideoView>(R.id.auto_connect_loading_custom_video)
+        val overlay = findViewById<View>(R.id.auto_connect_loading_overlay)
+
+        // Apply the optional custom status text (e.g. "Connecting to Pixel 8…").
+        // Falls back to the default "Android Auto is starting…" when no override
+        // is set. Both the default and custom-media text overlays share the same
+        // string so the wording stays consistent regardless of media presence.
+        val statusText = autoConnectStatusText ?: getString(R.string.android_auto_starting)
+        findViewById<android.widget.TextView>(R.id.auto_connect_loading_default_text)?.text = statusText
+        findViewById<android.widget.TextView>(R.id.auto_connect_loading_custom_text)?.text = statusText
+
+        if (mediaPath.isEmpty() || mediaType.isEmpty()) {
+            // No custom media — show default text + spinner over the dark backdrop.
+            defaultContent?.visibility = View.VISIBLE
+            customTextOverlay?.visibility = View.GONE
+            customImage?.visibility = View.GONE
+            customVideo?.visibility = View.GONE
+            overlay?.setBackgroundColor(Color.parseColor("#CC000000"))
+            return
+        }
+
+        val file = File(mediaPath)
+        if (!file.exists()) {
+            // Stored path is stale — reset and fall back to default.
+            settings.loadingScreenMediaPath = ""
+            settings.loadingScreenMediaType = ""
+            defaultContent?.visibility = View.VISIBLE
+            customTextOverlay?.visibility = View.GONE
+            customImage?.visibility = View.GONE
+            customVideo?.visibility = View.GONE
+            overlay?.setBackgroundColor(Color.parseColor("#CC000000"))
+            return
+        }
+
+        defaultContent?.visibility = View.GONE
+        overlay?.setBackgroundColor(Color.BLACK)
+
+        if (settings.loadingScreenShowText) {
+            customTextOverlay?.visibility = View.VISIBLE
+        } else {
+            customTextOverlay?.visibility = View.GONE
+        }
+
+        val keepRatio = settings.loadingScreenKeepAspectRatio
+        customImage?.scaleType = if (keepRatio) ImageView.ScaleType.FIT_CENTER else ImageView.ScaleType.FIT_XY
+
+        try {
+            when (mediaType) {
+                "image" -> {
+                    customVideo?.visibility = View.GONE
+                    customImage?.visibility = View.VISIBLE
+                    if (customImage != null) {
+                        Glide.with(this).load(file).into(customImage)
+                        if (keepRatio) {
+                            autoConnectKenBurnsAnim?.cancel()
+                            val scaleAnim = ObjectAnimator.ofPropertyValuesHolder(
+                                customImage,
+                                PropertyValuesHolder.ofFloat("scaleX", 1.0f, 1.05f),
+                                PropertyValuesHolder.ofFloat("scaleY", 1.0f, 1.05f)
+                            )
+                            scaleAnim.duration = 8000
+                            scaleAnim.repeatMode = ObjectAnimator.REVERSE
+                            scaleAnim.repeatCount = ObjectAnimator.INFINITE
+                            scaleAnim.start()
+                            autoConnectKenBurnsAnim = scaleAnim
+                        }
+                    }
+                }
+                "gif" -> {
+                    customVideo?.visibility = View.GONE
+                    customImage?.visibility = View.VISIBLE
+                    if (customImage != null) {
+                        Glide.with(this).asGif().load(file).into(customImage)
+                    }
+                }
+                "video" -> {
+                    customImage?.visibility = View.GONE
+                    customVideo?.visibility = View.VISIBLE
+                    customVideo?.setVideoPath(file.absolutePath)
+                    customVideo?.setOnPreparedListener { mp ->
+                        mp.isLooping = settings.loadingScreenLoopVideo
+                        mp.setVolume(0f, 0f)
+
+                        if (keepRatio) {
+                            try {
+                                val vw = mp.videoWidth
+                                val vh = mp.videoHeight
+                                if (vw > 0 && vh > 0 && overlay != null) {
+                                    val cw = overlay.width
+                                    val ch = overlay.height
+                                    if (cw > 0 && ch > 0) {
+                                        val videoRatio = vw.toFloat() / vh
+                                        val containerRatio = cw.toFloat() / ch
+                                        val lp = customVideo.layoutParams as FrameLayout.LayoutParams
+                                        if (videoRatio > containerRatio) {
+                                            lp.width = cw
+                                            lp.height = (cw / videoRatio).toInt()
+                                        } else {
+                                            lp.height = ch
+                                            lp.width = (ch * videoRatio).toInt()
+                                        }
+                                        lp.gravity = android.view.Gravity.CENTER
+                                        customVideo.layoutParams = lp
+                                    }
+                                }
+                            } catch (e: Exception) {
+                                AppLog.w("Auto-connect overlay: could not resize video: ${e.message}")
+                            }
+                        }
+                    }
+                    customVideo?.setOnErrorListener { _, _, _ ->
+                        AppLog.e("Auto-connect overlay: error playing custom video")
+                        // Fall back to default text on video error.
+                        findViewById<View>(R.id.auto_connect_loading_custom_video)?.visibility = View.GONE
+                        customTextOverlay?.visibility = View.GONE
+                        defaultContent?.visibility = View.VISIBLE
+                        overlay?.setBackgroundColor(Color.parseColor("#CC000000"))
+                        true
+                    }
+                    customVideo?.start()
+                }
+            }
+        } catch (e: Exception) {
+            AppLog.e("Auto-connect overlay: failed to load media: ${e.message}")
+            customImage?.visibility = View.GONE
+            customVideo?.visibility = View.GONE
+            customTextOverlay?.visibility = View.GONE
+            defaultContent?.visibility = View.VISIBLE
+            overlay?.setBackgroundColor(Color.parseColor("#CC000000"))
+        }
+    }
+
+    private fun hideAutoConnectOverlay() {
+        val overlay = findViewById<View>(R.id.auto_connect_loading_overlay) ?: return
+        if (overlay.visibility != View.VISIBLE) return
+
+        // Stop video FIRST — VideoView's SurfaceView ignores parent alpha animations
+        // and would otherwise stay visible during the fade-out.
+        stopAutoConnectVideo()
+        autoConnectKenBurnsAnim?.cancel()
+        autoConnectKenBurnsAnim = null
+        findViewById<View>(R.id.auto_connect_loading_custom_video)?.visibility = View.GONE
+        findViewById<View>(R.id.auto_connect_loading_custom_image)?.visibility = View.GONE
+        findViewById<View>(R.id.auto_connect_loading_custom_text_overlay)?.visibility = View.GONE
+
+        val hasCustomVideo = App.provide(this).settings.loadingScreenMediaType == "video"
+        if (hasCustomVideo) {
+            overlay.visibility = View.GONE
+        } else {
+            overlay.animate()
+                .alpha(0f)
+                .setDuration(300)
+                .withEndAction {
+                    overlay.visibility = View.GONE
+                    overlay.alpha = 1f
+                }
+                .start()
+        }
+    }
+
+    private fun stopAutoConnectVideo() {
+        findViewById<VideoView>(R.id.auto_connect_loading_custom_video)?.let {
+            try {
+                if (it.isPlaying) it.stopPlayback()
+                it.suspend()
+            } catch (_: Exception) {}
+        }
 
         // Register recreate receiver so SettingsFragment can request MainActivity recreate
         ContextCompat.registerReceiver(
@@ -226,6 +668,21 @@ class MainActivity : BaseActivity() {
 
     override fun onStop() {
         super.onStop()
+        // Free media resources whenever the activity is backgrounded. Covers user
+        // pressing Home, AapProjectionActivity coming to front (success), and
+        // navigating to SettingsActivity. The connection itself keeps running in
+        // AapService; this only tears down the visual indicator. The watchdog is
+        // intentionally NOT cancelled here so the flag is still cleared if every
+        // remaining state transition happens while the activity is stopped.
+        if (findViewById<View>(R.id.auto_connect_loading_overlay)?.visibility == View.VISIBLE) {
+            stopAutoConnectVideo()
+            autoConnectKenBurnsAnim?.cancel()
+            autoConnectKenBurnsAnim = null
+            findViewById<View>(R.id.auto_connect_loading_overlay)?.visibility = View.GONE
+        }
+        // Pill has no media resources but should also be hidden so it doesn't
+        // briefly flash on resume before the observer re-applies the UI.
+        findViewById<View>(R.id.auto_connect_pill)?.visibility = View.GONE
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -258,8 +715,6 @@ class MainActivity : BaseActivity() {
 
     private fun handleLaunchIntent(intent: Intent?) {
         if (intent == null) return
-
-        AppLog.i("MainActivity: Processing launch intent: ${intent.action}, data: ${intent.data}")
 
         val intentData = intent.data
         val intentAction = intent.action
@@ -438,6 +893,48 @@ class MainActivity : BaseActivity() {
     companion object {
         private const val permissionRequestCode = 97
         const val EXTRA_LAUNCH_SOURCE = "launch_source"
+
+        /**
+         * Hard upper bound for how long the auto-connect overlay may stay visible
+         * without the connection state advancing through the success path. Covers
+         * USB open hangs and silent AOA-mode-switch failures, which today produce
+         * no event for the observer to react to.
+         */
+        private const val AUTO_CONNECT_WATCHDOG_MS = 30_000L
+
+        /**
+         * `true` while the loading indicator should be (or is) covering the home
+         * screen during an automatic connection attempt. Set by entry points
+         * that initiate an auto-connect; cleared by [endAutoConnect].
+         */
+        @Volatile var autoConnectInProgress: Boolean = false
+
+        /**
+         * Visual mode for the in-progress attempt. Kept on the companion so a
+         * recreated activity (e.g. after rotation) can re-apply the same UI
+         * mode the original [beginAutoConnect] caller asked for.
+         */
+        @Volatile var autoConnectMode: ConnectionUiMode = ConnectionUiMode.OVERLAY
+
+        /**
+         * Optional override for the status text (e.g. "Connecting to Pixel 8…"
+         * from the Nearby selector). When `null`, the default
+         * `R.string.android_auto_starting` is used. Kept on the companion so
+         * the customized text isn't lost if the activity is recreated mid
+         * attempt.
+         */
+        @Volatile var autoConnectStatusText: String? = null
+
+        /**
+         * Tracks whether the connection attempt has reached an active state
+         * (Connecting/Connected/StartingTransport). Used by the connection
+         * observer to distinguish a genuine mid-attempt Disconnect (failure)
+         * from the initial Disconnected state on app launch (expected). Kept
+         * on the companion so a recreated activity does not lose this signal
+         * and mistakenly treat a real failure as the initial state.
+         */
+        @Volatile var hasAdvancedToActiveState: Boolean = false
+
         const val ACTION_RECREATE_MAIN = "com.andrerinas.headunitrevived.ACTION_RECREATE_MAIN"
     }
 }

@@ -56,17 +56,48 @@ adb shell am start -a android.intent.action.VIEW -d "headunit://connect?ip=192.1
 ## Planned
 ### v3.0.0
 - Theme-Options for Colors and Images, Car-Logos
-- Change settings in Projection, maybe call it "Quick-Settings"
-- Remove Native-SSL Libraries to reduce filesize
 - Add Permission Checker
-- Settings-Reset Button
 
 ## Known Issues
 - **Google Maps in Portrait Mode:** Touch interactions (searching, scrolling) within Google Maps may not work as expected when using Portrait Mode on some devices. **Fix:** Try reducing the **Pixel density (DPI)** setting to **below 200** (e.g., 190) in the app settings. This often restores full functionality.
 - **Wireless Connection Drops:** If the connection drops frequently, disable **"WiFi Assistant"** or **"Switch between networks"** in your phone's WiFi settings to prevent it from killing the connection due to "no internet." Check battery saving options.
-- **Self-mode on Android 10 (Q) and below:** Google has disabled the automatic wireless projection startup for Android 10 and below in Android Auto versions 16.4 and higher. While Self-mode still work on newer Android versions, it is currently impossible to trigger projection on Android 10 with recent Google app updates.
+- **Self-mode on Android 10 (Q) and below:** Google has disabled the automatic wireless projection startup for Android 10 and below in Android Auto versions 16.4 and higher. While Self-mode still works on newer Android versions, it is normally impossible to trigger projection on Android 10 and below directly with recent Google app updates. **Workaround:** You can still use Self-mode on these devices by starting the built-in Android Auto Headunit Server and connecting via Wi-Fi mode (loopback). See the [Troubleshooting Guide](https://github.com/andreknieriem/headunit-revived/wiki/Troubleshooting#self-mode-on-android-10-q-and-below) for step-by-step instructions.
 
 ## Changelog
+### v.3.0.0
+- Added: Custom loading screen (image/GIF/video), thanks to @andrecuellar
+- Added: Settings-Reset Button, if you mess up something in the settings, you can now reset them to default
+- Removed: Old deprecated ssl library written in C-Code for better maintenance, stability and smaller file sizes
+- Added: Direct Logging to file without logcat, thanks to @Anton111111
+- try to fix connection lost on carrier lost again
+- keep usb disconnection for 8s alive, for maybe restarts of usb dongles
+- Implement car headlight signal mode (ILL+) for night theme management, thanks to @minhtuanact
+- Added settings export and import functionality with backup options, thanks to @JanRi3D
+- Added whitelist to usb connection for not interrupting with iPhones and other usb devices
+- Added QR Code for easy connection with wireless helper
+- Fixed: BT auto-connect dragging phone into wireless flow during USB session, thanks to @andrecuellar
+- Persist Auto-Optimize wizard settings synchronously, thanks to @andrecuellar
+- Added ability to swipe with two fingers from the right side to switch fullscreen mode and Normal (all bars) mode, thanks to @Anton111111
+- Improved: usb button auto connect, thanks to @bezprobeloff
+- Catched an fatal error listed in the play console
+- Fixed: Audio Stutter on some devices since 2.1.1
+- Fixed: USB device list duplicates and Android Auto projection launch on Android 10+, thanks to @jeancarloscc
+- Enhanced: Google Nearby. It was buggy with 2 FPS video
+- Fixed: Navigation Button mapping now working
+
+### v.2.3.1
+- Fixed a connection lost on for example borders
+- Binding socket to wifi network if available to prevent connection drops on carrier lost
+- Added Static Audio Focus Toggle to prevent audio focus loss on some devices
+- Fixing samsung routines and modes
+- Fixing wrong orientation on start if holding the phone wrong. Now uses the orientation from settings
+- Try to fix usb errors with AAwireless Dongles
+- Added Audio Mixer to mix different audio tracks, thanks to @jeffdapaz for the idea
+- Added Autostart on BT for multiple devices
+- Fixed Microphone input source was wrong mapped
+- Added Vietnamese translation 🇻🇳 thanks to @minhtuanact
+- Merged PR #549 - implement back key routing and add keymap for back key, thanks to @JanRi3D
+
 ### v.2.3.0
 - Added some new buttons for keymap
 - Fixed 3 Fatal errors
@@ -420,8 +451,8 @@ After that you need to set the env variables depending on your OS:
 MAC:
 open ~/.zshrc or ~/.bashrc
 
-`sudo nano ~/.zshrc or sudo nano ~/.bashrc`   
-`export HEADUNIT_KEYSTORE_PASSWORD="YOUR_KEYSTORE_PASSWORD"  
+`sudo nano ~/.zshrc or sudo nano ~/.bashrc`
+`export HEADUNIT_KEYSTORE_PASSWORD="YOUR_KEYSTORE_PASSWORD"
 export HEADUNIT_KEY_PASSWORD="YOUR_KEY_PASSWORD"`
 
 ## Original Headunit

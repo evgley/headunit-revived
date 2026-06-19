@@ -17,13 +17,18 @@ internal class AapReadSingleMessage(connection: AccessoryConnection, ssl: AapSsl
             // No timeout limit (0 = infinite) because this waits for the
             // NEXT message — the phone can be idle for minutes and that's normal.
             // TCP keepAlive will detect a truly dead connection.
-            val headerSize = connection.recvBlocking(recvHeader.buf, recvHeader.buf.size, 0, true) 
+            val isSocket = connection is com.andrerinas.headunitrevived.connection.SocketAccessoryConnection
+            val timeout = if (isSocket) 15000 else 0
+            val headerSize = connection.recvBlocking(recvHeader.buf, recvHeader.buf.size, timeout, true) 
             if (headerSize != AapMessageIncoming.EncryptedHeader.SIZE) {
                 if (headerSize == -1) {
                     AppLog.i("AapRead: Connection closed (EOF). Disconnecting.")
                     return -1
                 } else if (headerSize == 0) {
-                    // Timeout (shouldn't happen with timeout=0, but safety fallback)
+                    if (isSocket) {
+                        AppLog.w("AapRead: WiFi read timeout (15s) - connection lost.")
+                        return -1
+                    }
                     return 0
                 } else {
                     AppLog.e("AapRead: Partial header read. Expected ${AapMessageIncoming.EncryptedHeader.SIZE}, got $headerSize. Skipping.")

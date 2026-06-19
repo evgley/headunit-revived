@@ -118,15 +118,19 @@
     <string name="debug_mode_description">ログのエクスポート</string>
     <string name="log_level">ログレベル</string>
     <string name="log_level_description">エクスポート時にログレベルをフィルタリングする</string>
+    <string name="log_source">ログソース</string>
+    <string name="log_source_logcat">Logcat</string>
+    <string name="log_source_applog_file">ファイルへ直接</string>
     <string name="start_log_capture">ログ取得を開始する</string>
     <string name="start_log_capture_description">デバッグのためにログの記録を開始します</string>
+    <string name="start_log_capture_in_applog_file">Log のメッセージはキャプチャ中のみファイルに書き込まれます</string>
     <string name="start_log_capture_in_silent">記録を開始できません: サイレントログレベルが選択されています</string>
     <string name="stop_log_capture">ログ取得を停止</string>
     <string name="stop_log_capture_description">録画中です...タップして停止</string>
     <string name="export_logs">ログをエクスポート</string>
     <string name="export_logs_description">デバッグのためにログを保存する</string>
-    <string name="use_native_ssl">Native SSLを利用する</string>
-    <string name="use_native_ssl_description">native OpenSSL libraryを利用する(古いデバイスではより高速です）。 再起動が必要です。</string>
+
+
     <string name="not_set">未設定</string>
     <string name="keymap_description">Headunitのキーバインドを変更する</string>
 
@@ -496,6 +500,27 @@
     <string name="sync_media_session_aa_metadata">メディアセッションにAAの再生中トラックを表示</string>
     <string name="sync_media_session_aa_metadata_description">スマートフォンの曲名、アーティスト、再生時間、アルバムアートをシステムのメディアセッションとメディア通知に表示します</string>
     <string name="error_usb_permission_failed">システムエラー: USBパーミッションダイアログの要求に失敗しました。</string>
+
+    <!-- Custom loading screen -->
+    <string name="loading_screen">読み込み画面</string>
+    <string name="loading_screen_default">デフォルト</string>
+    <string name="loading_screen_custom">カスタム</string>
+    <string name="loading_screen_dialog_title">カスタム読み込み画面</string>
+    <string name="loading_screen_select_file">ファイルを選択</string>
+    <string name="loading_screen_remove">削除</string>
+    <string name="loading_screen_recommendation">推奨解像度：%1$dx%2$d</string>
+    <string name="loading_screen_supported_formats">対応形式：画像（PNG、JPG、BMP、WEBP、GIF）\u2022 動画（MP4、MKV、WEBM、3GP）\u2022 最大：10 MB</string>
+    <string name="loading_screen_no_media">カスタムメディアが選択されていません</string>
+    <string name="loading_screen_file_too_large">ファイルが大きすぎます（最大 10 MB）</string>
+    <string name="loading_screen_unsupported_format">非対応の形式です。画像または動画ファイルを使用してください</string>
+    <string name="loading_screen_file_error">選択したファイルを読み込めませんでした</string>
+    <string name="loading_screen_show_text">「Android Autoは起動中です」テキストを表示</string>
+    <string name="loading_screen_tap_preview">タップでプレビュー</string>
+    <string name="loading_screen_tap_to_close">どこでもタップして閉じる</string>
+    <string name="loading_screen_keep_aspect_ratio">アスペクト比を維持</string>
+    <string name="loading_screen_recommended_aspect_ratio">推奨アスペクト比：%1$d:%2$d</string>
+    <string name="loading_screen_tap_fullscreen_hint">プレビューをタップしてフルスクリーンで表示</string>
+    <string name="loading_screen_loop_video">短いアニメーションをループ再生</string>
     <string name="microphone_settings">マイク設定</string>
     <string name="microphone_settings_description">マイク入力とオーディオ処理の設定を行います。</string>
     <string name="mic_echo_canceler">エコーキャンセラー (AEC)</string>
@@ -504,7 +529,62 @@
     <string name="mic_noise_suppressor_description">背景のノイズを低減します。声がこもって聞こえる場合は無効にしてください。</string>
     <string name="mic_auto_gain_control">自動ゲイン制御 (AGC)</string>
     <string name="mic_auto_gain_control_description">マイクの音量を自動的に調整します。音量が不安定な場合は無効にしてください。</string>
+    <string name="mic_feature_unsupported">この機能はお使いのデバイスでサポートされていません。</string>
     <string name="bt_permission_denied">Bluetooth権限が拒否されました。デバイスのスキャンができません。</string>
     <string name="wifi_autostart_title">WiFi自動起動</string>
     <string name="wifi_autostart_content">%s に接続されました。タップしてAndroid Autoを開始します。</string>
+
+    <!-- New strings merged from 2.3.1 -->
+    <string name="use_native_ssl">Native SSLを利用する</string>
+    <string name="use_native_ssl_description">native OpenSSL libraryを利用する(古いデバイスではより高速です）。 再起動が必要です。</string>
+    <string name="bt_devices_selected">個のデバイスを選択中</string>
+    <string name="static_audio_focus">静的オーディオフォーカス</string>
+    <string name="static_audio_focus_description">オーディオフォーカスが常に保持されているとスマートフォンに認識させ、一般的なヘッドユニットでのオーディオルーティングの切断を防ぎます。ナビゲーションの音声案内中には、ソフトウェアによる音量减衰（ダッキング）も実行します。</string>
+    <string name="bluetooth_adapter_label">Bluetooth アダプター</string>
+    <string name="bluetooth_adapter_description">ハンドシェイクに使用する Bluetooth アダプター/コントローラーを選択します。デュアル Bluetooth システムで役立ちます。</string>
+    <string name="select_bt_adapter">Bluetooth アダプターの選択</string>
+    <!-- QR Code Generator -->
+    <string name="share_hotspot_qr_title">Wireless Helper の設定</string>
+    <string name="share_hotspot_qr_desc">携帯電話自動接続用のQRコードを表示</string>
+    <string name="hotspot_qr_description">Wireless Helper 設定用QRコード</string>
+    <string name="scan_with_wireless_helper">スマートフォンの Wireless Helper にあるQRスキャナーを使用して、このQRコードをスキャンしてください。</string>
+    <string name="share_hotspot_qr_error">アクティブなWi-Fiホットスポットの認証情報を取得できませんでした。ホットスポットがオンになっており、位置情報が有効になっていることを確認してください。</string>
+
+    <!-- Brightness, quick settings, key back, backup, wireless helper QR -->
+    <string name="current_brightness_reading">現在の明るさ: %d / 255</string>
+    <string name="exit_dialog_settings">クイック設定</string>
+    <string name="key_back">戻る</string>
+    <string name="category_backup">バックアップ</string>
+    <string name="export_settings">設定をエクスポート</string>
+    <string name="export_settings_description">設定のバックアップを JSON ファイルとして保存</string>
+    <string name="export_settings_app_folder">アプリのバックアップフォルダに保存</string>
+    <string name="export_settings_downloads">ダウンロードに保存</string>
+    <string name="export_settings_choose_location">保存場所を選択</string>
+    <string name="settings_exported">設定をエクスポートしました</string>
+    <string name="settings_export_failed">設定のエクスポートに失敗しました: %1$s</string>
+    <string name="settings_backup_saved_to">設定のバックアップを保存しました:\n%1$s</string>
+    <string name="share_settings_backup">設定のバックアップを共有</string>
+    <string name="import_settings">設定をインポート</string>
+    <string name="import_settings_description">Headunit Revived のバックアップから設定を復元</string>
+    <string name="import_settings_app_folder">アプリのバックアップフォルダからインポート</string>
+    <string name="import_settings_downloads">ダウンロードからインポート</string>
+    <string name="import_settings_choose_file">バックアップファイルを選択</string>
+    <string name="import_settings_discard_pending">バックアップをインポートすると、未保存の変更が破棄されます。続行しますか?</string>
+    <string name="settings_imported">設定をインポートしました: %1$d 件適用、%2$d 件スキップ</string>
+    <string name="settings_import_failed">設定のインポートに失敗しました: %1$s</string>
+    <string name="no_settings_backups_title">バックアップが見つかりません</string>
+    <string name="no_settings_backups_message">アプリのバックアップフォルダに Headunit Revived のバックアップが見つかりません。先にバックアップをエクスポートしてからインポートしてください。</string>
+    <string name="no_settings_backups_downloads_message">ダウンロードに Headunit Revived のバックアップが見つかりません。先にバックアップをダウンロードへエクスポートしてからインポートしてください。</string>
+    <string name="no_file_picker_title">利用可能なファイルピッカーがありません</string>
+    <string name="no_file_picker_message">このデバイスには対応するファイルピッカーがありません。代わりにダウンロードまたはアプリのバックアップフォルダをご利用ください。</string>
+    <string name="storage_permission_denied_backup">ストレージへのアクセスが拒否されました。ダウンロードを使用できませんでした。</string>
+    <string name="reset_settings">デフォルトに戻す</string>
+    <string name="reset_settings_description">すべての設定、キャッシュデータ、自動接続設定をクリアします。工場出荷時の設定を適用するためにアプリが再起動します。</string>
+    <string name="reset_settings_confirm">すべての設定をデフォルト値にリセットしてもよろしいですか? アプリが再起動します。</string>
+    <string name="reset_settings_confirm_message">すべての設定がデフォルト値にリセットされます。バックアップとアプリファイルは削除されません。続行しますか?</string>
+    <string name="reset_settings_discard_pending">設定をリセットすると、未保存の変更が破棄されます。続行しますか?</string>
+    <string name="settings_reset">設定をデフォルトにリセットしました</string>
+    <string name="settings_reset_failed">設定のリセットに失敗しました: %1$s</string>
+    <string name="hotspot_ssid_hint">ホットスポット SSID</string>
+    <string name="hotspot_pass_hint">ホットスポットのパスワード</string>
 </resources>

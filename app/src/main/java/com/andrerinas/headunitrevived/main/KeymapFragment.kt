@@ -42,6 +42,7 @@ class KeymapFragment : Fragment(), MainActivity.KeyListener {
     private val keyList = listOf(
         KeymapItem(R.string.key_soft_left, KeyEvent.KEYCODE_SOFT_LEFT),
         KeymapItem(R.string.key_soft_right, KeyEvent.KEYCODE_SOFT_RIGHT),
+        KeymapItem(R.string.key_back, KeyEvent.KEYCODE_BACK),
         KeymapItem(R.string.key_dpad_up, KeyEvent.KEYCODE_DPAD_UP),
         KeymapItem(R.string.key_dpad_down, KeyEvent.KEYCODE_DPAD_DOWN),
         KeymapItem(R.string.key_dpad_left, KeyEvent.KEYCODE_DPAD_LEFT),
@@ -56,7 +57,7 @@ class KeymapFragment : Fragment(), MainActivity.KeyListener {
         KeymapItem(R.string.key_call, KeyEvent.KEYCODE_CALL),
         KeymapItem(R.string.key_endcall, KeyEvent.KEYCODE_ENDCALL),
         KeymapItem(R.string.key_music, KeyEvent.KEYCODE_MUSIC),
-        KeymapItem(R.string.key_nav, KeyEvent.KEYCODE_GUIDE),
+        KeymapItem(R.string.key_nav, 65538),
         KeymapItem(R.string.key_night, KeyEvent.KEYCODE_N),
         KeymapItem(R.string.key_enter, KeyEvent.KEYCODE_ENTER),
         KeymapItem(R.string.key_home, KeyEvent.KEYCODE_HOME),

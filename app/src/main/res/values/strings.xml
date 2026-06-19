@@ -29,6 +29,7 @@
     <string name="threshold_light_hint">Dark mode activates when ambient light drops below this level</string>
     <string name="threshold_brightness_hint">Dark mode activates when screen brightness is below this value. Android reports brightness as 0–255, but the actual range may vary by device. You may need to experiment to find the right threshold for your device.</string>
     <string name="current_light_reading">Current light: %d Lux</string>
+    <string name="current_brightness_reading">Current brightness: %d / 255</string>
     <string name="enable_fine_lux_control">Fine control (0–100 Lux)</string>
     <string name="night_mode_start">Night Mode Start Time</string>
     <string name="night_mode_end">Night Mode End Time</string>
@@ -66,6 +67,9 @@
     <string name="bluetooth_address_s">Bluetooth address</string>
     <string name="enter_bluetooth_mac">Enter bluetooth MAC</string>
     <string name="reset">Reset</string>
+    <string name="reset_settings">Reset to Defaults</string>
+    <string name="reset_settings_confirm">Are you sure you want to reset all settings to their default values? This will restart the app.</string>
+    <string name="reset_settings_description">Clears all configuration, cached data and auto-connect preferences. The app will restart to apply the factory defaults.</string>
     <string name="gps_for_navigation">Gps for navigation</string>
     <string name="gps_for_navigation_description">Use Gps for navigation</string>
     <string name="enabled">Enabled</string>
@@ -118,15 +122,19 @@
     <string name="debug_mode_description">Toggle more Logging</string>
     <string name="log_level">Log Level</string>
     <string name="log_level_description">Filter log level when exporting</string>
+    <string name="log_source">Log Source</string>
+    <string name="log_source_logcat">Logcat</string>
+    <string name="log_source_applog_file">Direct to file</string>
     <string name="start_log_capture">Start Capturing Logs</string>
     <string name="start_log_capture_description">Begin recording full logs for debugging</string>
+    <string name="start_log_capture_in_applog_file">Log messages are written to a file only while capture is active</string>
     <string name="start_log_capture_in_silent">Unable to start recording: Silent logging level selected</string>
     <string name="stop_log_capture">Stop Capturing Logs</string>
     <string name="stop_log_capture_description">Recording in progress… tap to stop</string>
     <string name="export_logs">Export Logs</string>
     <string name="export_logs_description">Save logs for debugging</string>
-    <string name="use_native_ssl">Use Native SSL</string>
-    <string name="use_native_ssl_description">Use native OpenSSL library (faster on older devices). Requires restart.</string>
+
+
     <string name="not_set">Not Set</string>
     <string name="keymap_description">Change the Key-Bindings for your Headunit</string>
 
@@ -245,6 +253,8 @@
     <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Audio Sink</string>
     <string name="enable_audio_sink_description">If disabled, the headunit will not receive audio. Sound will play from the phone.</string>
+    <string name="static_audio_focus">Static Audio Focus</string>
+    <string name="static_audio_focus_description">Force the phone to believe audio focus is always held, preventing audio routing losses on generic headunits. Also performs software ducking during navigation voice prompts.</string>
     <string name="separate_audio_streams">Separate Audio Streams</string>
     <string name="separate_audio_streams_description">Separate audio channels for music, calls, and notifications instead of a single multimedia stream (may not work correctly on some devices).</string>
     <string name="use_aac_audio">Use AAC Audio</string>
@@ -270,6 +280,7 @@
     <string name="mic_noise_suppressor_description">Attempts to reduce background noise. Disable if your voice sounds muffled.</string>
     <string name="mic_auto_gain_control">Automatic gain control (AGC)</string>
     <string name="mic_auto_gain_control_description">Automatically adjusts microphone volume. Disable if the volume is unstable.</string>
+    <string name="mic_feature_unsupported">This feature is not supported on your device.</string>
 
     <!-- Info Settings -->
     <string name="category_info">Info</string>
@@ -314,6 +325,34 @@
     <string name="discard">Discard</string>
     <string name="stopping_service">Stopping service to apply changes…</string>
     <string name="settings_saved">Settings saved</string>
+    <string name="category_backup">Backup</string>
+    <string name="export_settings">Export settings</string>
+    <string name="export_settings_description">Save a settings backup as a JSON file</string>
+    <string name="export_settings_choose_location">Choose save location</string>
+    <string name="export_settings_downloads">Save to Downloads</string>
+    <string name="export_settings_app_folder">Save to app backup folder</string>
+    <string name="import_settings">Import settings</string>
+    <string name="import_settings_description">Restore settings from a Headunit Revived backup</string>
+    <string name="import_settings_choose_file">Choose backup file</string>
+    <string name="import_settings_downloads">Import from Downloads</string>
+    <string name="import_settings_app_folder">Import from app backup folder</string>
+    <string name="settings_exported">Settings exported</string>
+    <string name="settings_backup_saved_to">Settings backup saved to:\n%1$s</string>
+    <string name="settings_export_failed">Settings export failed: %1$s</string>
+    <string name="settings_import_failed">Settings import failed: %1$s</string>
+    <string name="settings_imported">Settings imported: %1$d applied, %2$d skipped</string>
+    <string name="import_settings_discard_pending">Importing a backup will discard your unsaved settings changes. Continue?</string>
+    <string name="reset_settings_confirm_message">This will reset all settings to their default values. Backups and app files will not be deleted. Continue?</string>
+    <string name="reset_settings_discard_pending">Resetting settings will discard your unsaved settings changes. Continue?</string>
+    <string name="settings_reset">Settings reset to defaults</string>
+    <string name="settings_reset_failed">Settings reset failed: %1$s</string>
+    <string name="storage_permission_denied_backup">Storage permission denied. Downloads could not be used.</string>
+    <string name="no_file_picker_title">No file picker available</string>
+    <string name="no_file_picker_message">This device does not have a compatible file picker. You can use Downloads or the app backup folder instead.</string>
+    <string name="no_settings_backups_title">No backups found</string>
+    <string name="no_settings_backups_message">No Headunit Revived backups were found in the app backup folder. Export a backup to the app backup folder first, then import it from here.</string>
+    <string name="no_settings_backups_downloads_message">No Headunit Revived backups were found in Downloads. Export a backup to Downloads first, then import it from here.</string>
+    <string name="share_settings_backup">Share settings backup</string>
     <string name="logs_exported">Logs Exported</string>
     <string name="log_saved_to">Log saved to:\n%s</string>
     <string name="share">Share</string>
@@ -494,10 +533,32 @@
     <string name="exit_dialog_stop">Stop Connection</string>
     <string name="exit_dialog_pip">Picture-in-Picture</string>
     <string name="exit_dialog_background">Move to Background</string>
+    <string name="exit_dialog_settings">Quick Settings</string>
     <string name="gesture_hint">Tip: Swipe from the left edge with 2 fingers to open the exit menu.</string>
     <string name="audio_latency_multiplier">Audio Latency Multiplier</string>
     <string name="audio_latency_multiplier_description">Adjust audio buffer size (Lower = Less Lag, Higher = Less Stutter)</string>
     <string name="audio_queue_capacity">Audio Queue Capacity (Backpressure)</string>
+
+    <!-- Custom loading screen -->
+    <string name="loading_screen">Loading screen</string>
+    <string name="loading_screen_default">Default</string>
+    <string name="loading_screen_custom">Custom</string>
+    <string name="loading_screen_dialog_title">Custom loading screen</string>
+    <string name="loading_screen_select_file">Select file</string>
+    <string name="loading_screen_remove">Remove</string>
+    <string name="loading_screen_recommendation">Recommended resolution: %1$dx%2$d</string>
+    <string name="loading_screen_supported_formats">Supported: Images (PNG, JPG, BMP, WEBP, GIF) \u2022 Videos (MP4, MKV, WEBM, 3GP) \u2022 Max: 10 MB</string>
+    <string name="loading_screen_no_media">No custom media selected</string>
+    <string name="loading_screen_file_too_large">File is too large (max 10 MB)</string>
+    <string name="loading_screen_unsupported_format">Unsupported format. Use an image or video file</string>
+    <string name="loading_screen_file_error">Could not load the selected file</string>
+    <string name="loading_screen_show_text">Show \"Android Auto is starting\" text</string>
+    <string name="loading_screen_tap_preview">Tap to preview fullscreen</string>
+    <string name="loading_screen_tap_to_close">Tap anywhere to close</string>
+    <string name="loading_screen_keep_aspect_ratio">Keep aspect ratio</string>
+    <string name="loading_screen_recommended_aspect_ratio">Recommended aspect ratio: %1$d:%2$d</string>
+    <string name="loading_screen_tap_fullscreen_hint">Tap the preview to see it fullscreen</string>
+    <string name="loading_screen_loop_video">Loop short animations</string>
     <string name="media_action_previous">Previous</string>
     <string name="media_action_play">Play</string>
     <string name="media_action_pause">Pause</string>
@@ -505,4 +566,21 @@
     <string name="error_usb_permission_failed">System error: Failed to request USB permission dialog.</string>
     <string name="wifi_autostart_title">WiFi Auto-Start</string>
     <string name="wifi_autostart_content">Connected to %s. Tap to start Android Auto.</string>
+
+    <!-- New strings merged from 2.3.1 -->
+    <string name="use_native_ssl">Use Native SSL</string>
+    <string name="use_native_ssl_description">Use native OpenSSL library (faster on older devices). Requires restart.</string>
+    <string name="key_back">Back</string>
+    <string name="bt_devices_selected">devices selected</string>
+    <string name="bluetooth_adapter_label">Bluetooth Adapter</string>
+    <string name="bluetooth_adapter_description">Select the Bluetooth adapter/controller to use for the handshake. Useful for dual Bluetooth systems.</string>
+    <string name="select_bt_adapter">Select Bluetooth Adapter</string>
+    <!-- QR Code Generator -->
+    <string name="share_hotspot_qr_title">Configure Wireless Helper</string>
+    <string name="share_hotspot_qr_desc">Show QR Code for phone auto-connection</string>
+    <string name="hotspot_ssid_hint">Hotspot SSID</string>
+    <string name="hotspot_pass_hint">Hotspot Password</string>
+    <string name="hotspot_qr_description">Wireless Helper Configuration QR Code</string>
+    <string name="scan_with_wireless_helper">Scan this QR Code using the QR Scanner in Wireless Helper on your phone.</string>
+    <string name="share_hotspot_qr_error">Could not retrieve active Wi-Fi hotspot credentials. Please ensure your hotspot is turned on and Location is enabled.</string>
 </resources>

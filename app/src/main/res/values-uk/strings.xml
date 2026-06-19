@@ -109,8 +109,8 @@
     <string name="debug_mode_description">Увімкнути розширене логування</string>
     <string name="export_logs">Експортувати журнал подій</string>
     <string name="export_logs_description">Зберегти журнал подій для налагодження</string>
-    <string name="use_native_ssl">Використовувати системний SSL</string>
-    <string name="use_native_ssl_description">Використовувати системний OpenSSL (швидше на старіших пристроях). Потрібне перезавантаження.</string>
+
+
     <string name="not_set">Не задано</string>
     <string name="keymap_description">Змінити призначення клавіш для вашого пристрою</string>
 
@@ -176,7 +176,7 @@
     <string name="bt_permission_denied_title">Потрібен дозвіл Bluetooth</string>
     <string name="bt_permission_denied_message">Дозвіл Bluetooth необхідний для вибору сполучених пристроїв. Надайте його в налаштуваннях застосунку.</string>
     <string name="overlay_permission_title">Дозвіл на запуск у фоні</string>
-    <string name="overlay_permission_description">Щоб Headunit Revived міг автоматично відкриватися при підключенні Bluetooth, увімкніть дозвіл "Показувати поверх інших програм" на наступному екрані.</string>
+    <string name="overlay_permission_description">Щоб Headunit Revived міг автоматично відкриватися при підключенні Bluetooth, увімкніть дозвіл \"Показувати поверх інших програм\" на наступному екрані.</string>
     <string name="open_settings">Налаштування</string>
     <string name="wireless_connection_settings">Бездротове з\'єднання</string>
     <string name="right_hand_drive">Правостороннє керування</string>
@@ -225,10 +225,10 @@
     <string name="pref_stretch_screen_summary">Ігнорує співвідношення сторін для заповнення всього дисплея (прибирає чорні смуги)</string>
 
     <!-- Audio Settings -->
-        <string name="forced_scale">Примусове масштабування (Legacy Fix)</string>
+    <string name="forced_scale">Примусове масштабування (Legacy Fix)</string>
     <string name="forced_scale_description">Виправляє проблеми з масштабуванням на деяких старих пристроях, що використовують SurfaceView. Використовуйте лише якщо зображення виглядає спотвореним або зміщеним.</string>
 
-<string name="category_audio">Звук</string>
+    <string name="category_audio">Звук</string>
     <string name="enable_audio_sink">Увімкнути аудіоприймач</string>
     <string name="enable_audio_sink_description">Якщо вимкнено, головний пристрій не працюватиме як аудіоприймач. Звук відтворюватиметься з телефону.</string>
     <string name="separate_audio_streams">Роздільні аудіопотоки</string>
@@ -350,8 +350,12 @@
     <string name="fullscreen_status_only">Приховати лише рядок стану</string>
     <string name="log_level">Рівень логування</string>
     <string name="log_level_description">Виберіть рівень деталізації виводу логів для налагодження.</string>
+    <string name="log_source">Джерело логів</string>
+    <string name="log_source_logcat">Logcat</string>
+    <string name="log_source_applog_file">Безпосередньо у файл</string>
     <string name="start_log_capture">Почати запис лога</string>
     <string name="start_log_capture_description">Починає запис системних логів у файл.</string>
+    <string name="start_log_capture_in_applog_file">Повідомлення Log записуються у файл лише під час активного запису</string>
     <string name="start_log_capture_in_silent">Не вдалося розпочати запис: вибрано рівень логування Silent</string>
     <string name="stop_log_capture">Зупинити запис лога</string>
     <string name="stop_log_capture_description">Зупиняє запис і зберігає файл лога.</string>
@@ -489,6 +493,27 @@
     <string name="sync_media_session_aa_metadata">Поточний трек AA у медіасесії</string>
     <string name="sync_media_session_aa_metadata_description">Показувати з телефона назву треку, виконавця, тривалість і обкладинку в системній медіасесії та медіа-сповіщенні</string>
     <string name="error_usb_permission_failed">Системна помилка: Не вдалося запитати діалогове вікно дозволу USB.</string>
+
+    <!-- Custom loading screen -->
+    <string name="loading_screen">Екран завантаження</string>
+    <string name="loading_screen_default">За замовчуванням</string>
+    <string name="loading_screen_custom">Користувацький</string>
+    <string name="loading_screen_dialog_title">Користувацький екран завантаження</string>
+    <string name="loading_screen_select_file">Вибрати файл</string>
+    <string name="loading_screen_remove">Видалити</string>
+    <string name="loading_screen_recommendation">Рекомендована роздільна здатність: %1$dx%2$d</string>
+    <string name="loading_screen_supported_formats">Підтримувані: Зображення (PNG, JPG, BMP, WEBP, GIF) \u2022 Відео (MP4, MKV, WEBM, 3GP) \u2022 Макс: 10 МБ</string>
+    <string name="loading_screen_no_media">Користувацький контент не вибрано</string>
+    <string name="loading_screen_file_too_large">Файл завеликий (макс. 10 МБ)</string>
+    <string name="loading_screen_unsupported_format">Формат не підтримується. Використовуйте файл зображення або відео</string>
+    <string name="loading_screen_file_error">Не вдалося завантажити вибраний файл</string>
+    <string name="loading_screen_show_text">Показувати текст \"Запуск Android Auto\"</string>
+    <string name="loading_screen_tap_preview">Натисніть для попереднього перегляду</string>
+    <string name="loading_screen_tap_to_close">Натисніть будь-де, щоб закрити</string>
+    <string name="loading_screen_keep_aspect_ratio">Зберігати співвідношення сторін</string>
+    <string name="loading_screen_recommended_aspect_ratio">Рекомендоване співвідношення сторін: %1$d:%2$d</string>
+    <string name="loading_screen_tap_fullscreen_hint">Натисніть на попередній перегляд для повноекранного режиму</string>
+    <string name="loading_screen_loop_video">Повторювати короткі анімації</string>
     <string name="microphone_settings">Налаштування мікрофона</string>
     <string name="microphone_settings_description">Налаштування входу мікрофона та обробки звуку.</string>
     <string name="mic_echo_canceler">Ехоподавлення (AEC)</string>
@@ -497,7 +522,62 @@
     <string name="mic_noise_suppressor_description">Спроба зменшити фоновий шум. Вимкніть, якщо ваш голос звучить приглушено.</string>
     <string name="mic_auto_gain_control">Автоматичне регулювання посилення (AGC)</string>
     <string name="mic_auto_gain_control_description">Автоматично регулює гучність мікрофона. Вимкніть, якщо гучність нестабільна.</string>
+    <string name="mic_feature_unsupported">Ця функція не підтримується на вашому пристрої.</string>
     <string name="bt_permission_denied">У дозволі Bluetooth відмовлено. Неможливо сканувати пристрої.</string>
     <string name="wifi_autostart_title">Автозапуск WiFi</string>
     <string name="wifi_autostart_content">Підключено до %s. Натисніть, щоб запустити Android Auto.</string>
+
+    <!-- New strings merged from 2.3.1 -->
+    <string name="use_native_ssl">Використовувати системний SSL</string>
+    <string name="use_native_ssl_description">Використовувати системний OpenSSL (швидше на старіших пристроях). Потрібне перезавантаження.</string>
+    <string name="bt_devices_selected">пристроїв вибрано</string>
+    <string name="static_audio_focus">Статичний аудіофокус</string>
+    <string name="static_audio_focus_description">Примусово змушує телефон вважати, що аудіофокус утримується постійно, запобігаючи втраті маршрутизації звуку на універсальних магнітолах. Також виконує програмне приглушення звука (ducking) під час голосових підказок навігатора.</string>
+    <string name="bluetooth_adapter_label">Bluetooth-адаптер</string>
+    <string name="bluetooth_adapter_description">Виберіть Bluetooth-адаптер/контролер для встановлення зв\'язку. Корисно для систем із подвійним Bluetooth.</string>
+    <string name="select_bt_adapter">Вибрати Bluetooth-адаптер</string>
+    <!-- QR Code Generator -->
+    <string name="share_hotspot_qr_title">Налаштувати Wireless Helper</string>
+    <string name="share_hotspot_qr_desc">Показати QR-код для автоматичного підключення телефону</string>
+    <string name="hotspot_qr_description">QR-код конфігурації Wireless Helper</string>
+    <string name="scan_with_wireless_helper">Відскануйте цей QR-код за допомогою сканера в додатку Wireless Helper на вашому телефоні.</string>
+    <string name="share_hotspot_qr_error">Не вдалося отримати облікові дані активної точки доступу Wi-Fi. Переконайтеся, що точку доступу увімкнено, а геолокацію активовано.</string>
+
+    <!-- Brightness, quick settings, key back, backup, wireless helper QR -->
+    <string name="current_brightness_reading">Поточна яскравість: %d / 255</string>
+    <string name="exit_dialog_settings">Швидкі налаштування</string>
+    <string name="key_back">Назад</string>
+    <string name="category_backup">Резервна копія</string>
+    <string name="export_settings">Експортувати налаштування</string>
+    <string name="export_settings_description">Зберегти резервну копію налаштувань як файл JSON</string>
+    <string name="export_settings_app_folder">Зберегти у папку резервних копій застосунку</string>
+    <string name="export_settings_downloads">Зберегти у Завантаження</string>
+    <string name="export_settings_choose_location">Виберіть місце збереження</string>
+    <string name="settings_exported">Налаштування експортовано</string>
+    <string name="settings_export_failed">Не вдалося експортувати налаштування: %1$s</string>
+    <string name="settings_backup_saved_to">Резервну копію налаштувань збережено у:\n%1$s</string>
+    <string name="share_settings_backup">Поділитися резервною копією</string>
+    <string name="import_settings">Імпортувати налаштування</string>
+    <string name="import_settings_description">Відновити налаштування з резервної копії Headunit Revived</string>
+    <string name="import_settings_app_folder">Імпортувати з папки резервних копій застосунку</string>
+    <string name="import_settings_downloads">Імпортувати із Завантажень</string>
+    <string name="import_settings_choose_file">Виберіть файл резервної копії</string>
+    <string name="import_settings_discard_pending">Імпорт резервної копії скасує незбережені зміни. Продовжити?</string>
+    <string name="settings_imported">Налаштування імпортовано: %1$d застосовано, %2$d пропущено</string>
+    <string name="settings_import_failed">Не вдалося імпортувати налаштування: %1$s</string>
+    <string name="no_settings_backups_title">Резервні копії не знайдено</string>
+    <string name="no_settings_backups_message">У папці резервних копій застосунку не знайдено резервних копій Headunit Revived. Спочатку експортуйте копію, потім імпортуйте її звідси.</string>
+    <string name="no_settings_backups_downloads_message">У Завантаженнях не знайдено резервних копій Headunit Revived. Спочатку експортуйте копію в Завантаження, потім імпортуйте її звідси.</string>
+    <string name="no_file_picker_title">Вибір файлів недоступний</string>
+    <string name="no_file_picker_message">На цьому пристрої немає сумісного засобу вибору файлів. Натомість можна скористатися Завантаженнями або папкою резервних копій застосунку.</string>
+    <string name="storage_permission_denied_backup">У доступі до сховища відмовлено. Не вдалося використати Завантаження.</string>
+    <string name="reset_settings">Скинути до типових</string>
+    <string name="reset_settings_description">Очищає всю конфігурацію, кешовані дані та налаштування автопідключення. Застосунок перезапуститься, щоб застосувати заводські значення.</string>
+    <string name="reset_settings_confirm">Ви впевнені, що хочете скинути всі налаштування до типових значень? Це перезапустить застосунок.</string>
+    <string name="reset_settings_confirm_message">Усі налаштування будуть скинуті до типових значень. Резервні копії та файли застосунку не будуть видалені. Продовжити?</string>
+    <string name="reset_settings_discard_pending">Скидання налаштувань скасує незбережені зміни. Продовжити?</string>
+    <string name="settings_reset">Налаштування скинуто до типових</string>
+    <string name="settings_reset_failed">Не вдалося скинути налаштування: %1$s</string>
+    <string name="hotspot_ssid_hint">SSID точки доступу</string>
+    <string name="hotspot_pass_hint">Пароль точки доступу</string>
 </resources>

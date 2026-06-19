@@ -26,22 +26,46 @@ import com.andrerinas.headunitrevived.utils.Settings
 
 class UsbAttachedActivity : Activity() {
 
+    enum class DeviceSource { FROM_INTENT, FROM_FALLBACK, AMBIGUOUS }
+
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(LocaleHelper.wrapContext(newBase))
     }
 
     private fun resolveUsbDevice(intent: Intent?): UsbDevice? {
-        DeviceIntent(intent).device?.let { return it }
-
         val usbManager = getSystemService(Context.USB_SERVICE) as UsbManager
-        val devices = usbManager.deviceList.values.toList()
-        return if (devices.size == 1) {
-            val device = devices[0]
-            AppLog.i("No USB device in intent extras, falling back to single device from deviceList: ${UsbDeviceCompat(device).uniqueName}")
-            device
-        } else {
-            AppLog.e("No USB device in intent extras and ${devices.size} devices in deviceList, cannot determine target")
-            null
+        val androidDevices = usbManager.deviceList.values.filter { UsbDeviceCompat.isAndroidDevice(it) }
+        return resolveDevice(intent, androidDevices)
+    }
+
+    companion object {
+        /**
+         * Determines which USB device to act on given the intent extras and the current
+         * USB device list. Extracted for testability — the caller must pass both pieces
+         * so tests can verify the logic without an Android Context.
+         */
+        @JvmStatic
+        internal fun resolveDevice(intent: Intent?, androidDevices: Collection<UsbDevice>): UsbDevice? {
+            DeviceIntent(intent).device?.let { return it }
+            return when (androidDevices.size) {
+                1 -> {
+                    val device = androidDevices.first()
+                    AppLog.i("No USB device in intent extras, falling back to single device: ${UsbDeviceCompat(device).uniqueName}")
+                    device
+                }
+                else -> {
+                    AppLog.e("No USB device in intent extras and ${androidDevices.size} Android devices present, cannot determine target")
+                    null
+                }
+            }
+        }
+
+        /** Pure decision logic extracted for unit testing. */
+        @JvmStatic
+        internal fun pickDeviceSource(intentHasDevice: Boolean, fallbackCount: Int): DeviceSource = when {
+            intentHasDevice -> DeviceSource.FROM_INTENT
+            fallbackCount == 1 -> DeviceSource.FROM_FALLBACK
+            else -> DeviceSource.AMBIGUOUS
         }
     }
 
@@ -51,7 +75,10 @@ class UsbAttachedActivity : Activity() {
         AppLog.i("USB Intent: $intent")
 
         val device = resolveUsbDevice(intent)
-        if (device == null) {
+        if (device == null || !UsbDeviceCompat.isAndroidDevice(device)) {
+            if (device != null) {
+                AppLog.i("Ignoring non-Android USB device in onCreate (VID: ${device.vendorId}): ${device.deviceName}")
+            }
             finish()
             return
         }
@@ -105,7 +132,11 @@ class UsbAttachedActivity : Activity() {
             }
         }
 
-        if (settings != null && !autoStartOnUsb && !settings.isConnectingDevice(deviceCompat)) {
+        // Google VID (0x18D1) devices are almost certainly Android Auto phones or AA dongles
+        // (e.g. AAWireless). Always attempt the AOA switch for these — skipping them would
+        // break dongle users who haven't explicitly configured allowlists.
+        val isGoogleDevice = device.vendorId == 0x18D1
+        if (!isGoogleDevice && settings != null && !autoStartOnUsb && !settings.isConnectingDevice(deviceCompat)) {
             AppLog.i("Skipping device ${deviceCompat.uniqueName} (not allowed and USB auto-start disabled)")
             finish()
             return
@@ -139,8 +170,11 @@ class UsbAttachedActivity : Activity() {
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
 
-        val device = resolveUsbDevice(getIntent())
-        if (device == null) {
+        val device = resolveUsbDevice(intent)
+        if (device == null || !UsbDeviceCompat.isAndroidDevice(device)) {
+            if (device != null) {
+                AppLog.i("Ignoring non-Android USB device in onNewIntent (VID: ${device.vendorId}): ${device.deviceName}")
+            }
             finish()
             return
         }

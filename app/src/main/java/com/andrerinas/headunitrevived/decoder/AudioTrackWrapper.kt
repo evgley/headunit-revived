@@ -11,6 +11,7 @@ import android.os.Handler
 import android.os.HandlerThread
 import android.os.Process
 import com.andrerinas.headunitrevived.utils.AppLog
+import java.util.concurrent.Executors
 import java.util.concurrent.LinkedBlockingQueue
 import java.util.concurrent.TimeUnit
 
@@ -22,13 +23,17 @@ class AudioTrackWrapper(
     private val isAac: Boolean = false,
     gain: Float,
     private val audioLatencyMultiplier: Int = 8,
-    private val audioQueueCapacity: Int = 0
+    private val audioQueueCapacity: Int = 0,
+    private val mixer: AudioMixer? = null,
+    private val channelId: Int = -1
 ) : Thread() {
 
-    private val audioTrack: AudioTrack
+    private val audioTrack: AudioTrack?
     private var decoder: MediaCodec? = null
     private var codecHandlerThread: HandlerThread? = null
     private val freeInputBuffers = LinkedBlockingQueue<Int>()
+    private val writeExecutor = Executors.newSingleThreadExecutor()
+    private val writeSemaphore = java.util.concurrent.Semaphore(3)
 
     // Limit queue capacity to provide backpressure to the network thread if audio playback is slow
     private val dataQueue = if (audioQueueCapacity > 0)
@@ -40,48 +45,64 @@ class AudioTrackWrapper(
     private var isRunning = true
 
     @Volatile
-    private var stopRequested = false
-
     private var currentGain: Float = gain
+
+    fun setVolume(gain: Float) {
+        currentGain = gain
+        val track = audioTrack
+        if (track != null) {
+            try {
+                val hwGain = gain.coerceAtMost(1.0f)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    track.setVolume(hwGain)
+                } else {
+                    @Suppress("DEPRECATION")
+                    track.setStereoVolume(hwGain, hwGain)
+                }
+            } catch (e: Exception) {
+                AppLog.e("Failed to set volume on AudioTrack", e)
+            }
+        } else {
+            mixer?.setChannelGain(channelId, gain)
+        }
+    }
+
+    private fun applyGain(buffer: ByteArray) {
+        if (currentGain <= 1.0f) return
+        for (i in 0 until buffer.size - 1 step 2) {
+            val low = buffer[i].toInt() and 0xFF
+            val high = buffer[i + 1].toInt() // High byte handles sign
+            val sample = (high shl 8) or low
+            val modifiedSample = (sample * currentGain).toInt().coerceIn(-32768, 32767)
+            buffer[i] = (modifiedSample and 0xFF).toByte()
+            buffer[i + 1] = (modifiedSample shr 8).toByte()
+        }
+    }
 
     // Track frames written for better draining
     private var framesWritten: Long = 0
     private val bytesPerFrame: Int = channelCount * (if (bitDepth == 16) 2 else 1)
 
-    // FIX 1: Single dedicated write thread for all AudioTrack writes.
-    // Both PCM and decoded AAC are funnelled here, preventing concurrent writes
-    // and keeping write order deterministic.
-    private val pcmQueue = LinkedBlockingQueue<ByteArray>()
-    private lateinit var writeThread: Thread
-
     init {
         this.name = "AudioPlaybackThread"
-        audioTrack = createAudioTrack(stream, sampleRateInHz, bitDepth, channelCount, audioLatencyMultiplier)
-        audioTrack.play()
+        audioTrack = if (mixer == null) {
+            createAudioTrack(stream, sampleRateInHz, bitDepth, channelCount, audioLatencyMultiplier)
+        } else {
+            null
+        }
+
+        if (mixer != null) {
+            mixer.registerChannel(channelId, sampleRateInHz, channelCount)
+            mixer.setChannelGain(channelId, gain)
+        } else {
+            setVolume(gain)
+            audioTrack?.play()
+        }
 
         if (isAac) {
             initDecoder(sampleRateInHz, channelCount)
         }
 
-        // Initialised here so audioTrack is guaranteed to exist before the lambda captures it
-        writeThread = Thread({
-            Process.setThreadPriority(Process.THREAD_PRIORITY_URGENT_AUDIO)
-            while (isRunning || pcmQueue.isNotEmpty()) {
-                try {
-                    val chunk = pcmQueue.poll(50, TimeUnit.MILLISECONDS) ?: continue
-                    val result = audioTrack.write(chunk, 0, chunk.size)
-                    if (result > 0) {
-                        framesWritten += result / bytesPerFrame
-                    }
-                } catch (e: InterruptedException) {
-                    if (!isRunning && pcmQueue.isEmpty()) break
-                } catch (e: Exception) {
-                    AppLog.e("Error in audio write thread", e)
-                }
-            }
-        }, "AudioWriteThread")
-
-        writeThread.start()
         this.start()
     }
 
@@ -102,7 +123,14 @@ class AudioTrackWrapper(
             decoder = MediaCodec.createDecoderByType(mime)
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                codecHandlerThread = HandlerThread("AacCodecThread").also { it.start() }
+                // Use a HandlerThread for the codec callback but set its priority to AUDIO
+                // to prevent it from being starved by the video decoder.
+                codecHandlerThread = object : HandlerThread("AacCodecThread") {
+                    override fun onLooperPrepared() {
+                        Process.setThreadPriority(Process.THREAD_PRIORITY_AUDIO)
+                    }
+                }
+                codecHandlerThread!!.start()
 
                 val callback = object : MediaCodec.Callback() {
                     override fun onInputBufferAvailable(codec: MediaCodec, index: Int) {
@@ -115,6 +143,7 @@ class AudioTrackWrapper(
                         info: MediaCodec.BufferInfo
                     ) {
                         try {
+                            if (!isRunning) return
                             val outputBuffer = codec.getOutputBuffer(index)
                             if (outputBuffer != null && info.size > 0) {
                                 val chunk = ByteArray(info.size)
@@ -122,13 +151,24 @@ class AudioTrackWrapper(
                                 outputBuffer.get(chunk)
                                 outputBuffer.clear()
 
-                                // FIX 2: Route decoded AAC into the same write thread as PCM.
-                                // This eliminates concurrent AudioTrack writes entirely.
-                                pcmQueue.offer(chunk)
+                                writeSemaphore.acquire()
+                                // Write to AudioTrack or Mixer using executor
+                                writeExecutor.submit {
+                                    try {
+                                        writeToTrack(chunk)
+                                    } catch (e: Exception) {
+                                        AppLog.e("Error writing decoded AAC to AudioTrack", e)
+                                    } finally {
+                                        writeSemaphore.release()
+                                    }
+                                }
                             }
                             codec.releaseOutputBuffer(index, false)
                         } catch (e: Exception) {
                             AppLog.e("Error processing AAC output", e)
+                            if (e is InterruptedException) {
+                                Thread.currentThread().interrupt()
+                            }
                         }
                     }
 
@@ -157,38 +197,47 @@ class AudioTrackWrapper(
         }
     }
 
+    private fun writeToTrack(buffer: ByteArray) {
+        if (mixer != null) {
+            mixer.feed(channelId, buffer, 0, buffer.size)
+            framesWritten += buffer.size / bytesPerFrame
+        } else {
+            applyGain(buffer)
+            val result = audioTrack?.write(buffer, 0, buffer.size) ?: 0
+            if (result > 0) {
+                framesWritten += result / bytesPerFrame
+            }
+        }
+    }
+
     override fun run() {
-        // FIX 3: This thread only decodes / dispatches to pcmQueue.
-        // Actual AudioTrack writes happen in writeThread (URGENT_AUDIO priority).
-        // PCM writes are very fast (just queue enqueue), so no need for URGENT_AUDIO here.
+        Process.setThreadPriority(Process.THREAD_PRIORITY_URGENT_AUDIO)
+
+        // Drain the queue even after isRunning is set to false
         while (isRunning || dataQueue.isNotEmpty()) {
             try {
-                // FIX 4: Reduced poll timeout from 100ms to 20ms.
-                // 100ms is a visible audio gap; 20ms keeps the thread responsive
-                // without burning CPU on a tight spin-loop.
-                val buffer = dataQueue.poll(20, TimeUnit.MILLISECONDS) ?: continue
-
-                if (isAac && decoder != null) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        queueInput(buffer)
+                // Use poll to avoid blocking indefinitely if isRunning becomes false
+                val buffer = dataQueue.poll(200, TimeUnit.MILLISECONDS)
+                if (buffer != null) {
+                    if (isAac && decoder != null) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            queueInput(buffer)
+                        } else {
+                            decodeSync(buffer)
+                        }
                     } else {
-                        decodeSync(buffer)
+                        // PCM path - direct write in this high-priority thread
+                        writeToTrack(buffer)
                     }
-                } else {
-                    // PCM: enqueue directly into the write thread
-                    pcmQueue.offer(buffer)
                 }
             } catch (e: InterruptedException) {
-                if (!isRunning && dataQueue.isEmpty()) break
+                dataQueue.clear()
+                break
             } catch (e: Exception) {
                 AppLog.e("Error in AudioTrackWrapper run loop", e)
                 isRunning = false
             }
         }
-
-        // Signal the write thread to finish draining, then clean up
-        isRunning = false
-        writeThread.join(3000)
         cleanup()
         AppLog.i("AudioTrackWrapper thread finished.")
     }
@@ -197,7 +246,7 @@ class AudioTrackWrapper(
     private fun decodeSync(inputData: ByteArray) {
         try {
             val dec = this.decoder ?: return
-            val inputIndex = dec.dequeueInputBuffer(200_000)
+            val inputIndex = dec.dequeueInputBuffer(200000)
             if (inputIndex >= 0) {
                 val inputBuffer = dec.inputBuffers[inputIndex]
                 inputBuffer.clear()
@@ -212,7 +261,7 @@ class AudioTrackWrapper(
                 val chunk = ByteArray(info.size)
                 outputBuffer.position(info.offset)
                 outputBuffer.get(chunk)
-                pcmQueue.offer(chunk)
+                writeToTrack(chunk)
                 dec.releaseOutputBuffer(outputIndex, false)
                 outputIndex = dec.dequeueOutputBuffer(info, 0)
             }
@@ -221,12 +270,12 @@ class AudioTrackWrapper(
         }
     }
 
+    @Throws(InterruptedException::class)
     private fun queueInput(inputData: ByteArray) {
         try {
-            // FIX 5: Reduced timeout from 100ms to 20ms.
-            // A 100ms stall here directly causes audible gaps since this runs
-            // on the same thread that feeds PCM data to the AudioTrack.
-            val inputIndex = freeInputBuffers.poll(20, TimeUnit.MILLISECONDS)
+            // Wait for input buffer (with timeout to avoid deadlock if codec dies)
+            // Restore to 200ms to prevent dropping frames under load
+            val inputIndex = freeInputBuffers.poll(200, TimeUnit.MILLISECONDS)
 
             if (inputIndex != null && inputIndex >= 0) {
                 val inputBuffer = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -240,8 +289,10 @@ class AudioTrackWrapper(
                 inputBuffer?.put(inputData)
                 decoder?.queueInputBuffer(inputIndex, 0, inputData.size, 0, 0)
             } else {
-                AppLog.w("AAC Input Buffer timeout - dropping frame")
+                AppLog.w("AAC Input Buffer timeout (200ms) - dropping frame")
             }
+        } catch (e: InterruptedException) {
+            throw e
         } catch (e: Exception) {
             AppLog.e("Error queuing AAC input", e)
         }
@@ -251,14 +302,7 @@ class AudioTrackWrapper(
         val sampleRateIndex = getFrequencyIndex(sampleRate)
         val audioObjectType = 2 // AAC-LC
 
-        // FIX 6: Corrected AudioSpecificConfig bit layout.
         // Correct packing: [AOT:5][FreqIdx:4][ChanCfg:4][...padding:3]
-        // Previous code used shl 3 for channelCount which left it in the wrong bit position.
-        // The full 13-bit field must be left-aligned within the 2-byte (16-bit) buffer:
-        //   bits 15-11 = AOT (5 bits)
-        //   bits 10-7  = FrequencyIndex (4 bits)
-        //   bits 6-3   = ChannelConfig (4 bits)
-        //   bits 2-0   = 0 (padding / implicit extensionSamplingFrequencyIndex flag = 0)
         val config = ((audioObjectType and 0x1F) shl 11) or
                      ((sampleRateIndex and 0x0F) shl 7) or
                      ((channelCount and 0x0F) shl 3)
@@ -344,16 +388,18 @@ class AudioTrackWrapper(
                 AppLog.w("Audio queue is full, dropping audio frame to prevent stalling")
             }
         } catch (e: InterruptedException) {
-            AppLog.w("Interrupted while offering audio data to queue")
+            AppLog.w("Interrupted while putting audio data to queue")
         }
+    }
+
+    fun setGain(gain: Float) {
+        AppLog.d("AudioTrackWrapper: updating gain to $gain")
+        setVolume(gain)
     }
 
     fun stopPlayback() {
         isRunning = false
-        // FIX 7: Don't interrupt() here. The run() loop checks isRunning and drains
-        // dataQueue naturally. interrupt() caused poll() to throw InterruptedException
-        // immediately, cutting off the drain before the queue was empty.
-        // writeThread.join() in run() ensures all PCM is flushed before cleanup().
+        this.interrupt()
     }
 
     private fun cleanup() {
@@ -366,10 +412,27 @@ class AudioTrackWrapper(
             AppLog.e("Error releasing audio decoder", e)
         }
 
-        // 2. Gracefully stop the AudioTrack – stop() plays remaining buffer data
-        if (audioTrack.playState == AudioTrack.PLAYSTATE_PLAYING) {
+        // 2. Wait for AAC writes that were already submitted to the executor
+        writeExecutor.shutdown()
+        try {
+            if (!writeExecutor.awaitTermination(1, TimeUnit.SECONDS)) {
+                AppLog.w("Audio write executor did not terminate in time")
+                writeExecutor.shutdownNow()
+            }
+        } catch (e: InterruptedException) {
+            AppLog.w("Audio write executor interrupted during shutdown")
+            writeExecutor.shutdownNow()
+        }
+
+        if (mixer != null) {
+            mixer.unregisterChannel(channelId)
+        }
+
+        // 3. Gracefully stop the AudioTrack – stop() plays remaining buffer data
+        val track = audioTrack
+        if (track != null && track.playState == AudioTrack.PLAYSTATE_PLAYING) {
             try {
-                audioTrack.stop()
+                track.stop()
 
                 // Wait for the AudioTrack hardware buffer to drain.
                 // Especially important on older devices (KitKat etc.).
@@ -377,7 +440,7 @@ class AudioTrackWrapper(
                 var stagnantCount = 0
                 val startTime = System.currentTimeMillis()
                 while (System.currentTimeMillis() - startTime < 2500) {
-                    val pos = audioTrack.playbackHeadPosition
+                    val pos = track.playbackHeadPosition
                     if (framesWritten > 0 && pos >= framesWritten) break
                     if (pos == lastPos && pos > 0) {
                         stagnantCount++
@@ -393,14 +456,14 @@ class AudioTrackWrapper(
             }
         }
 
-        // 3. Release the AudioTrack
+        // 4. Release the AudioTrack
         try {
-            audioTrack.release()
+            audioTrack?.release()
         } catch (e: Exception) {
             AppLog.e("Error releasing audio track", e)
         }
 
-        // 4. Clean up the codec handler thread
+        // 5. Clean up the codec handler thread
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
                 codecHandlerThread?.quitSafely()

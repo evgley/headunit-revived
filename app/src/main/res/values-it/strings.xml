@@ -118,15 +118,19 @@
     <string name="debug_mode_description">Attiva più log</string>
     <string name="log_level">Livello Log</string>
     <string name="log_level_description">Filtra livello log durante l\'esportazione</string>
+    <string name="log_source">Origine dei log</string>
+    <string name="log_source_logcat">Logcat</string>
+    <string name="log_source_applog_file">Direttamente su file</string>
     <string name="start_log_capture">Avvia acquisizione log</string>
     <string name="start_log_capture_description">Inizia a registrare i log completi per il debug</string>
+    <string name="start_log_capture_in_applog_file">I messaggi Log vengono scritti su file solo durante la cattura attiva</string>
     <string name="start_log_capture_in_silent">Impossibile avviare la registrazione: livello di registrazione silenzioso selezionato</string>
     <string name="stop_log_capture">Ferma acquisizione log</string>
     <string name="stop_log_capture_description">Registrazione in corso… tocca per fermare</string>
     <string name="export_logs">Esporta Log</string>
     <string name="export_logs_description">Salva i log per il debug</string>
-    <string name="use_native_ssl">Usa SSL Nativo</string>
-    <string name="use_native_ssl_description">Usa la libreria nativa OpenSSL (più veloce sui dispositivi più vecchi). Richiede il riavvio.</string>
+
+
     <string name="not_set">Non impostato</string>
     <string name="keymap_description">Cambia le associazioni dei tasti per la tua Headunit</string>
 
@@ -192,7 +196,7 @@
     <string name="bt_permission_denied_title">Permesso Bluetooth richiesto</string>
     <string name="bt_permission_denied_message">Il permesso Bluetooth è necessario per selezionare i dispositivi associati. Per favore, concedilo nelle impostazioni dell\'app.</string>
     <string name="overlay_permission_title">Permesso avvio in background</string>
-    <string name="overlay_permission_description">Per consentire a Headunit Revived di aprirsi automaticamente quando si connette il Bluetooth, abilita il permesso "Mostra sopra altre app" nella schermata successiva.</string>
+    <string name="overlay_permission_description">Per consentire a Headunit Revived di aprirsi automaticamente quando si connette il Bluetooth, abilita il permesso \"Mostra sopra altre app\" nella schermata successiva.</string>
     <string name="open_settings">Impostazioni</string>
     <string name="right_hand_drive">Guida a destra</string>
     <string name="right_hand_drive_description">Posiziona l\'interfaccia utente per la guida sul lato destro</string>
@@ -495,6 +499,27 @@
     <string name="sync_media_session_aa_metadata">Brano AA corrente nella sessione multimediale</string>
     <string name="sync_media_session_aa_metadata_description">Mostra titolo, artista, durata e copertina dal telefono nella sessione multimediale di sistema e nella notifica multimediale</string>
     <string name="error_usb_permission_failed">Errore di sistema: Impossibile richiedere la finestra di dialogo del permesso USB.</string>
+
+    <!-- Custom loading screen -->
+    <string name="loading_screen">Schermata di caricamento</string>
+    <string name="loading_screen_default">Predefinita</string>
+    <string name="loading_screen_custom">Personalizzata</string>
+    <string name="loading_screen_dialog_title">Schermata di caricamento personalizzata</string>
+    <string name="loading_screen_select_file">Seleziona file</string>
+    <string name="loading_screen_remove">Rimuovi</string>
+    <string name="loading_screen_recommendation">Risoluzione consigliata: %1$dx%2$d</string>
+    <string name="loading_screen_supported_formats">Supportati: Immagini (PNG, JPG, BMP, WEBP, GIF) \u2022 Video (MP4, MKV, WEBM, 3GP) \u2022 Max: 10 MB</string>
+    <string name="loading_screen_no_media">Nessun contenuto personalizzato selezionato</string>
+    <string name="loading_screen_file_too_large">File troppo grande (max 10 MB)</string>
+    <string name="loading_screen_unsupported_format">Formato non supportato. Usa un file immagine o video</string>
+    <string name="loading_screen_file_error">Impossibile caricare il file selezionato</string>
+    <string name="loading_screen_show_text">Mostra testo \\"Android Auto si sta avviando\\"</string>
+    <string name="loading_screen_tap_preview">Tocca per anteprima</string>
+    <string name="loading_screen_tap_to_close">Tocca ovunque per chiudere</string>
+    <string name="loading_screen_keep_aspect_ratio">Mantieni proporzioni</string>
+    <string name="loading_screen_recommended_aspect_ratio">Proporzioni consigliate: %1$d:%2$d</string>
+    <string name="loading_screen_tap_fullscreen_hint">Tocca l\'anteprima per vederla a schermo intero</string>
+    <string name="loading_screen_loop_video">Ripeti animazioni brevi in loop</string>
     <string name="microphone_settings">Impostazioni Microfono</string>
     <string name="microphone_settings_description">Configura l\'ingresso del microfono e l\'elaborazione audio.</string>
     <string name="mic_echo_canceler">Cancellazione dell\'eco (AEC)</string>
@@ -503,7 +528,62 @@
     <string name="mic_noise_suppressor_description">Tenta di ridurre il rumore di fondo. Disabilita se la tua voce risulta ovattata.</string>
     <string name="mic_auto_gain_control">Controllo automatico del guadagno (AGC)</string>
     <string name="mic_auto_gain_control_description">Regola automaticamente il volume del microfono. Disabilita se il volume è instabile.</string>
+    <string name="mic_feature_unsupported">Questa funzionalità non è supportata sul tuo dispositivo.</string>
     <string name="bt_permission_denied">Autorizzazione Bluetooth negata. Impossibile scansionare i dispositivi.</string>
     <string name="wifi_autostart_title">Avvio automatico WiFi</string>
     <string name="wifi_autostart_content">Connesso a %s. Tocca per avviare Android Auto.</string>
+
+    <!-- New strings merged from 2.3.1 -->
+    <string name="use_native_ssl">Usa SSL Nativo</string>
+    <string name="use_native_ssl_description">Usa la libreria nativa OpenSSL (più veloce sui dispositivi più vecchi). Richiede il riavvio.</string>
+    <string name="bt_devices_selected">dispositivi selezionati</string>
+    <string name="static_audio_focus">Focus audio statico</string>
+    <string name="static_audio_focus_description">Forza il telefono a credere che il focus audio sia sempre attivo, prevenendo perdite di instradamento dell\'audio sulle unità principali generiche. Esegue anche l\'attenuazione software del volume (ducking) durante le istruzioni vocali di navigazione.</string>
+    <string name="bluetooth_adapter_label">Adattatore Bluetooth</string>
+    <string name="bluetooth_adapter_description">Seleziona l\'adattatore/controller Bluetooth da utilizzare per l\'handshake. Utile per i sistemi con doppio Bluetooth.</string>
+    <string name="select_bt_adapter">Seleziona adattatore Bluetooth</string>
+    <!-- QR Code Generator -->
+    <string name="share_hotspot_qr_title">Configura Wireless Helper</string>
+    <string name="share_hotspot_qr_desc">Mostra il codice QR per la connessione automatica del telefono</string>
+    <string name="hotspot_qr_description">Codice QR di configurazione di Wireless Helper</string>
+    <string name="scan_with_wireless_helper">Scansiona questo codice QR usando lo scanner QR in Wireless Helper sul tuo telefono.</string>
+    <string name="share_hotspot_qr_error">Impossibile recuperare le credenziali dell\'hotspot Wi-Fi attivo. Assicurati che l\'hotspot sia attivo e che la geolocalizzazione sia abilitata.</string>
+
+    <!-- Brightness, quick settings, key back, backup, wireless helper QR -->
+    <string name="current_brightness_reading">Luminosità attuale: %d / 255</string>
+    <string name="exit_dialog_settings">Impostazioni rapide</string>
+    <string name="key_back">Indietro</string>
+    <string name="category_backup">Backup</string>
+    <string name="export_settings">Esporta impostazioni</string>
+    <string name="export_settings_description">Salva un backup delle impostazioni come file JSON</string>
+    <string name="export_settings_app_folder">Salva nella cartella backup dell\'app</string>
+    <string name="export_settings_downloads">Salva in Download</string>
+    <string name="export_settings_choose_location">Scegli posizione di salvataggio</string>
+    <string name="settings_exported">Impostazioni esportate</string>
+    <string name="settings_export_failed">Esportazione delle impostazioni non riuscita: %1$s</string>
+    <string name="settings_backup_saved_to">Backup impostazioni salvato in:\n%1$s</string>
+    <string name="share_settings_backup">Condividi backup impostazioni</string>
+    <string name="import_settings">Importa impostazioni</string>
+    <string name="import_settings_description">Ripristina le impostazioni da un backup di Headunit Revived</string>
+    <string name="import_settings_app_folder">Importa dalla cartella backup dell\'app</string>
+    <string name="import_settings_downloads">Importa da Download</string>
+    <string name="import_settings_choose_file">Scegli file di backup</string>
+    <string name="import_settings_discard_pending">L\'importazione di un backup eliminerà le modifiche non salvate. Continuare?</string>
+    <string name="settings_imported">Impostazioni importate: %1$d applicate, %2$d saltate</string>
+    <string name="settings_import_failed">Importazione delle impostazioni non riuscita: %1$s</string>
+    <string name="no_settings_backups_title">Nessun backup trovato</string>
+    <string name="no_settings_backups_message">Nessun backup di Headunit Revived trovato nella cartella backup dell\'app. Esporta prima un backup e poi importalo da qui.</string>
+    <string name="no_settings_backups_downloads_message">Nessun backup di Headunit Revived trovato in Download. Esporta prima un backup in Download e poi importalo da qui.</string>
+    <string name="no_file_picker_title">Nessun selettore file disponibile</string>
+    <string name="no_file_picker_message">Questo dispositivo non ha un selettore file compatibile. Puoi usare Download o la cartella backup dell\'app.</string>
+    <string name="storage_permission_denied_backup">Permesso di archiviazione negato. Impossibile usare Download.</string>
+    <string name="reset_settings">Ripristina valori predefiniti</string>
+    <string name="reset_settings_description">Cancella tutte le configurazioni, i dati nella cache e le preferenze di connessione automatica. L\'app si riavvierà per applicare i valori predefiniti.</string>
+    <string name="reset_settings_confirm">Sei sicuro di voler ripristinare tutte le impostazioni ai valori predefiniti? L\'app verrà riavviata.</string>
+    <string name="reset_settings_confirm_message">Tutte le impostazioni torneranno ai valori predefiniti. I backup e i file dell\'app non saranno eliminati. Continuare?</string>
+    <string name="reset_settings_discard_pending">Il ripristino delle impostazioni eliminerà le modifiche non salvate. Continuare?</string>
+    <string name="settings_reset">Impostazioni ripristinate ai valori predefiniti</string>
+    <string name="settings_reset_failed">Ripristino delle impostazioni non riuscito: %1$s</string>
+    <string name="hotspot_ssid_hint">SSID hotspot</string>
+    <string name="hotspot_pass_hint">Password hotspot</string>
 </resources>

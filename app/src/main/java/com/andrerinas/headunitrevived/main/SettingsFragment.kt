@@ -1,6 +1,8 @@
 package com.andrerinas.headunitrevived.main
 
 import android.app.AlertDialog
+import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -14,6 +16,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,16 +26,25 @@ import com.andrerinas.headunitrevived.R
 import com.andrerinas.headunitrevived.aap.AapService
 import com.andrerinas.headunitrevived.main.settings.SettingItem
 import com.andrerinas.headunitrevived.main.settings.SettingsAdapter
+import com.andrerinas.headunitrevived.utils.AppLog
 import com.andrerinas.headunitrevived.utils.Settings
 import com.andrerinas.headunitrevived.utils.LocaleHelper
 import com.andrerinas.headunitrevived.BuildConfig
 import com.andrerinas.headunitrevived.utils.LogExporter
+import com.andrerinas.headunitrevived.utils.SettingsBackupManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.activity.result.contract.ActivityResultContracts
 import android.content.pm.PackageManager
 import com.andrerinas.headunitrevived.connection.NativeAaHandshakeManager
+import com.andrerinas.headunitrevived.utils.BluetoothHelper
+import androidx.lifecycle.lifecycleScope
+import java.io.File
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SettingsFragment : Fragment() {
     private lateinit var settings: Settings
@@ -40,6 +52,7 @@ class SettingsFragment : Fragment() {
     private lateinit var settingsAdapter: SettingsAdapter
     private lateinit var toolbar: MaterialToolbar
     private var saveButton: MaterialButton? = null
+    private var resetButton: MaterialButton? = null
 
     // Local state to hold changes before saving
     private var pendingUseGps: Boolean? = null
@@ -54,9 +67,10 @@ class SettingsFragment : Fragment() {
     private var pendingFpsLimit: Int? = null
     private var pendingBluetoothAddress: String? = null
     private var pendingEnableAudioSink: Boolean? = null
+    private var pendingStaticAudioFocus: Boolean? = null
     private var pendingSeparateAudioStreams: Boolean? = null
     private var pendingUseAacAudio: Boolean? = null
-    private var pendingUseNativeSsl: Boolean? = null
+    private var pendingMicInputSource: Int? = null
     private var pendingEnableRotary: Boolean? = null
     private var pendingAudioLatencyMultiplier: Int? = null
     private var pendingAudioQueueCapacity: Int? = null
@@ -64,12 +78,14 @@ class SettingsFragment : Fragment() {
     private var pendingScreenOrientation: Settings.ScreenOrientation? = null
     private var pendingAppLanguage: String? = null
     private var pendingFakeSpeed: Boolean? = null
-    
+    private var pendingUseNativeSsl: Boolean? = null
+
     private var pendingWifiConnectionMode: Int? = null
     private var pendingHelperConnectionStrategy: Int? = null
     private var pendingAutoEnableHotspot: Boolean? = null
     private var pendingWaitForWifi: Boolean? = null
     private var pendingWaitForWifiTimeout: Int? = null
+    private var pendingBluetoothManagerServiceName: String? = null
 
     // Flag to determine if the projection should stretch to fill the screen
     private var pendingStretchToFill: Boolean? = null
@@ -93,6 +109,8 @@ class SettingsFragment : Fragment() {
     private var requiresRestart = false
     private var hasChanges = false
     private val SAVE_ITEM_ID = 1001
+    private val RESET_ITEM_ID = 1002
+    private var pendingStorageAction: (() -> Unit)? = null
 
     private val bluetoothPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
         if (isGranted) {
@@ -100,6 +118,30 @@ class SettingsFragment : Fragment() {
         } else {
             Toast.makeText(requireContext(), R.string.bt_permission_denied, Toast.LENGTH_LONG).show()
         }
+    }
+
+    private val storagePermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+        val action = pendingStorageAction
+        pendingStorageAction = null
+        if (isGranted) {
+            action?.invoke()
+        } else {
+            Toast.makeText(requireContext(), R.string.storage_permission_denied_backup, Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private val exportSettingsLauncher = registerForActivityResult(
+        ActivityResultContracts.CreateDocument(SettingsBackupManager.MIME_TYPE)
+    ) { uri ->
+        uri?.let { exportSettingsToUri(it) }
+    }
+
+    private val importSettingsLauncher = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        uri?.let { importSettingsFromUri(it) }
+    }
+
+    private val legacyImportSettingsLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        uri?.let { importSettingsFromUri(it) }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -124,16 +166,18 @@ class SettingsFragment : Fragment() {
         pendingFpsLimit = settings.fpsLimit
         pendingBluetoothAddress = settings.bluetoothAddress
         pendingEnableAudioSink = settings.enableAudioSink
+        pendingStaticAudioFocus = settings.staticAudioFocus
         pendingSeparateAudioStreams = settings.separateAudioStreams
         pendingUseAacAudio = settings.useAacAudio
         pendingUseNativeSsl = settings.useNativeSsl
+        pendingMicInputSource = settings.micInputSource
         pendingEnableRotary = settings.enableRotary
         pendingAudioLatencyMultiplier = settings.audioLatencyMultiplier
         pendingAudioQueueCapacity = settings.audioQueueCapacity
         pendingShowFpsCounter = settings.showFpsCounter
         pendingScreenOrientation = settings.screenOrientation
         pendingAppLanguage = settings.appLanguage
-        
+
         // Initialize local state for stretch to fill
         pendingStretchToFill = settings.stretchToFill
         pendingForcedScale = settings.forcedScale
@@ -146,7 +190,8 @@ class SettingsFragment : Fragment() {
         pendingHelperConnectionStrategy = settings.helperConnectionStrategy
         pendingWaitForWifi = settings.waitForWifiBeforeWifiDirect
         pendingWaitForWifiTimeout = settings.waitForWifiTimeout
-        
+        pendingBluetoothManagerServiceName = settings.bluetoothManagerServiceName
+
         pendingInsetLeft = settings.insetLeft
         pendingInsetTop = settings.insetTop
         pendingInsetRight = settings.insetRight
@@ -158,6 +203,8 @@ class SettingsFragment : Fragment() {
         pendingMediaVolumeOffset = settings.mediaVolumeOffset
         pendingAssistantVolumeOffset = settings.assistantVolumeOffset
         pendingNavigationVolumeOffset = settings.navigationVolumeOffset
+
+        // Loading screen settings are handled in LoadingScreenFragment (saves directly)
 
         // Intercept system back button
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
@@ -189,13 +236,67 @@ class SettingsFragment : Fragment() {
         }
     }
 
+    private fun reloadPendingStateFromSettings() {
+        pendingUseGps = settings.useGpsForNavigation
+        pendingShowNavigationNotifications = settings.showNavigationNotifications
+        pendingSyncMediaSessionAaMetadata = settings.syncMediaSessionWithAaMetadata
+        pendingResolution = settings.resolutionId
+        pendingDpi = settings.dpiPixelDensity
+        pendingFullscreenMode = settings.fullscreenMode
+        pendingViewMode = settings.viewMode
+        pendingForceSoftware = settings.forceSoftwareDecoding
+        pendingVideoCodec = settings.videoCodec
+        pendingFpsLimit = settings.fpsLimit
+        pendingBluetoothAddress = settings.bluetoothAddress
+        pendingEnableAudioSink = settings.enableAudioSink
+        pendingStaticAudioFocus = settings.staticAudioFocus
+        pendingSeparateAudioStreams = settings.separateAudioStreams
+        pendingUseAacAudio = settings.useAacAudio
+        pendingUseNativeSsl = settings.useNativeSsl
+        pendingEnableRotary = settings.enableRotary
+        pendingAudioLatencyMultiplier = settings.audioLatencyMultiplier
+        pendingAudioQueueCapacity = settings.audioQueueCapacity
+        pendingShowFpsCounter = settings.showFpsCounter
+        pendingScreenOrientation = settings.screenOrientation
+        pendingAppLanguage = settings.appLanguage
+        pendingStretchToFill = settings.stretchToFill
+        pendingForcedScale = settings.forcedScale
+        pendingKillOnDisconnect = settings.killOnDisconnect
+        pendingAutoEnableHotspot = settings.autoEnableHotspot
+        pendingFakeSpeed = settings.fakeSpeed
+        pendingWifiConnectionMode = settings.wifiConnectionMode
+        pendingHelperConnectionStrategy = settings.helperConnectionStrategy
+        pendingWaitForWifi = settings.waitForWifiBeforeWifiDirect
+        pendingWaitForWifiTimeout = settings.waitForWifiTimeout
+        pendingBluetoothManagerServiceName = settings.bluetoothManagerServiceName
+        pendingInsetLeft = settings.insetLeft
+        pendingInsetTop = settings.insetTop
+        pendingInsetRight = settings.insetRight
+        pendingInsetBottom = settings.insetBottom
+        pendingUiScaleHomePercent = settings.uiScaleHomePercent
+        pendingUiScaleSettingsPercent = settings.uiScaleSettingsPercent
+        pendingMediaVolumeOffset = settings.mediaVolumeOffset
+        pendingAssistantVolumeOffset = settings.assistantVolumeOffset
+        pendingNavigationVolumeOffset = settings.navigationVolumeOffset
+    }
+
     private fun setupToolbar() {
         toolbar.setNavigationOnClickListener {
             handleBackPress()
         }
-        
+
+        val resetItem = toolbar.menu.add(0, RESET_ITEM_ID, 0, getString(R.string.reset_settings))
+        resetItem.setShowAsAction(android.view.MenuItem.SHOW_AS_ACTION_ALWAYS)
+        resetItem.setActionView(R.layout.layout_reset_button)
+
+        resetButton = resetItem.actionView?.findViewById(R.id.reset_button_widget)
+        resetButton?.contentDescription = getString(R.string.reset_settings)
+        resetButton?.setOnClickListener {
+            startResetSettings()
+        }
+
         // Add the Save item with custom layout
-        val saveItem = toolbar.menu.add(0, SAVE_ITEM_ID, 0, getString(R.string.save))
+        val saveItem = toolbar.menu.add(0, SAVE_ITEM_ID, 1, getString(R.string.save))
         saveItem.setShowAsAction(android.view.MenuItem.SHOW_AS_ACTION_ALWAYS)
         saveItem.setActionView(R.layout.layout_save_button)
 
@@ -254,9 +355,11 @@ class SettingsFragment : Fragment() {
         pendingFpsLimit?.let { settings.fpsLimit = it }
         pendingBluetoothAddress?.let { settings.bluetoothAddress = it }
         pendingEnableAudioSink?.let { settings.enableAudioSink = it }
+        pendingStaticAudioFocus?.let { settings.staticAudioFocus = it }
         pendingSeparateAudioStreams?.let { settings.separateAudioStreams = it }
         pendingUseAacAudio?.let { settings.useAacAudio = it }
         pendingUseNativeSsl?.let { settings.useNativeSsl = it }
+        pendingMicInputSource?.let { settings.micInputSource = it }
         pendingEnableRotary?.let { settings.enableRotary = it }
         pendingAudioLatencyMultiplier?.let { settings.audioLatencyMultiplier = it }
         pendingAudioQueueCapacity?.let { settings.audioQueueCapacity = it }
@@ -280,19 +383,24 @@ class SettingsFragment : Fragment() {
 
         val oldWifiMode = settings.wifiConnectionMode
         val oldHelperStrategy = settings.helperConnectionStrategy
+        val oldBluetoothManagerServiceName = settings.bluetoothManagerServiceName
         pendingWifiConnectionMode?.let { settings.wifiConnectionMode = it }
         pendingHelperConnectionStrategy?.let { settings.helperConnectionStrategy = it }
         pendingWaitForWifi?.let { settings.waitForWifiBeforeWifiDirect = it }
         pendingWaitForWifiTimeout?.let { settings.waitForWifiTimeout = it }
-        
+        pendingBluetoothManagerServiceName?.let { settings.bluetoothManagerServiceName = it }
+
         pendingInsetLeft?.let { settings.insetLeft = it }
         pendingInsetTop?.let { settings.insetTop = it }
         pendingInsetRight?.let { settings.insetRight = it }
         pendingInsetBottom?.let { settings.insetBottom = it }
 
         settings.commit()
+        AppLog.init(settings, requireContext().applicationContext)
 
-        if (oldWifiMode != settings.wifiConnectionMode || oldHelperStrategy != settings.helperConnectionStrategy) {
+        if (oldWifiMode != settings.wifiConnectionMode ||
+            oldHelperStrategy != settings.helperConnectionStrategy ||
+            oldBluetoothManagerServiceName != settings.bluetoothManagerServiceName) {
             val intent = Intent(requireContext(), AapService::class.java).apply {
                 val mode = settings.wifiConnectionMode
                 action = if (mode == 1 || mode == 2 || mode == 3)
@@ -310,7 +418,7 @@ class SettingsFragment : Fragment() {
                 ContextCompat.startForegroundService(requireContext(), stopServiceIntent)
             }
         }
-        
+
         // Reset change tracking
         hasChanges = false
         requiresRestart = false
@@ -338,9 +446,10 @@ class SettingsFragment : Fragment() {
                         pendingFpsLimit != settings.fpsLimit ||
                         pendingBluetoothAddress != settings.bluetoothAddress ||
                         pendingEnableAudioSink != settings.enableAudioSink ||
+                        pendingStaticAudioFocus != settings.staticAudioFocus ||
                         pendingSeparateAudioStreams != settings.separateAudioStreams ||
                         pendingUseAacAudio != settings.useAacAudio ||
-                        pendingUseNativeSsl != settings.useNativeSsl ||
+                        pendingMicInputSource != settings.micInputSource ||
                         pendingEnableRotary != settings.enableRotary ||
                         pendingAudioLatencyMultiplier != settings.audioLatencyMultiplier ||
                         pendingAudioQueueCapacity != settings.audioQueueCapacity ||
@@ -362,7 +471,9 @@ class SettingsFragment : Fragment() {
                         pendingWifiConnectionMode != settings.wifiConnectionMode ||
                         pendingHelperConnectionStrategy != settings.helperConnectionStrategy ||
                         pendingWaitForWifi != settings.waitForWifiBeforeWifiDirect ||
-                        pendingWaitForWifiTimeout != settings.waitForWifiTimeout
+                        pendingWaitForWifiTimeout != settings.waitForWifiTimeout ||
+                        pendingUseNativeSsl != settings.useNativeSsl ||
+                        pendingBluetoothManagerServiceName != settings.bluetoothManagerServiceName
 
         hasChanges = anyChange
 
@@ -374,11 +485,12 @@ class SettingsFragment : Fragment() {
                           pendingForceSoftware != settings.forceSoftwareDecoding ||
                           pendingEnableRotary != settings.enableRotary ||
                           pendingEnableAudioSink != settings.enableAudioSink ||
+                          pendingStaticAudioFocus != settings.staticAudioFocus ||
                           pendingSeparateAudioStreams != settings.separateAudioStreams ||
                           pendingUseAacAudio != settings.useAacAudio ||
+                          pendingUseNativeSsl != settings.useNativeSsl ||
                           pendingAudioLatencyMultiplier != settings.audioLatencyMultiplier ||
                           pendingAudioQueueCapacity != settings.audioQueueCapacity ||
-                          pendingUseNativeSsl != settings.useNativeSsl ||
                           pendingInsetLeft != settings.insetLeft ||
                           pendingInsetTop != settings.insetTop ||
                           pendingInsetRight != settings.insetRight ||
@@ -402,6 +514,9 @@ class SettingsFragment : Fragment() {
             value = getString(R.string.auto_optimize_desc),
             onClick = { _ ->
                 com.andrerinas.headunitrevived.utils.SetupWizard(requireContext()) {
+                    reloadPendingStateFromSettings()
+                    checkChanges()
+                    updateSettingsList()
                     requireActivity().recreate()
                 }.start()
             }
@@ -500,7 +615,7 @@ class SettingsFragment : Fragment() {
                 }
 
                 if (newMode == 3) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && 
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S &&
                         ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
                         bluetoothPermissionLauncher.launch(android.Manifest.permission.BLUETOOTH_CONNECT)
                     } else {
@@ -513,6 +628,33 @@ class SettingsFragment : Fragment() {
                 }
             }
         ))
+
+        if (pendingWifiConnectionMode == 3) {
+            val currentServiceName = pendingBluetoothManagerServiceName ?: "bluetooth_manager"
+            items.add(SettingItem.SettingEntry(
+                stableId = "bluetoothAdapterServiceName",
+                nameResId = R.string.bluetooth_adapter_label,
+                value = BluetoothHelper.getAdapterDescription(requireContext(), currentServiceName),
+                onClick = { _ ->
+                    val serviceNames = BluetoothHelper.listBluetoothServices()
+                    val displayNames = serviceNames.map { name ->
+                        BluetoothHelper.getAdapterDescription(requireContext(), name)
+                    }.toTypedArray()
+
+                    val selectedIndex = serviceNames.indexOf(currentServiceName).coerceAtLeast(0)
+
+                    MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+                        .setTitle(R.string.select_bt_adapter)
+                        .setSingleChoiceItems(displayNames, selectedIndex) { dialog, which ->
+                            dialog.dismiss()
+                            pendingBluetoothManagerServiceName = serviceNames[which]
+                            checkChanges()
+                            updateSettingsList()
+                        }
+                        .show()
+                }
+            ))
+        }
 
         // Sub-setting for Headunit Server (Manual vs Auto)
         if (pendingWifiConnectionMode == 0 || pendingWifiConnectionMode == 1) {
@@ -557,6 +699,14 @@ class SettingsFragment : Fragment() {
             // Mode 2 only shows Hotspot toggle for Strategy 4 (Headunit Hotspot)
             if (pendingHelperConnectionStrategy == 4) {
                 addHotspotToggle(items)
+                items.add(SettingItem.SettingEntry(
+                    stableId = "shareHotspotQr",
+                    nameResId = R.string.share_hotspot_qr_title,
+                    value = getString(R.string.share_hotspot_qr_desc),
+                    onClick = { _ ->
+                        com.andrerinas.headunitrevived.utils.ShareHotspotQrDialog.show(requireContext())
+                    }
+                ))
             }
 
             if (pendingHelperConnectionStrategy == 1) { // WiFi Direct (P2P)
@@ -771,15 +921,15 @@ class SettingsFragment : Fragment() {
                     .setSingleChoiceItems(modes, pendingFullscreenMode?.value ?: 0) { dialog, which ->
                         val newMode = Settings.FullscreenMode.fromInt(which) ?: Settings.FullscreenMode.NONE
                         pendingFullscreenMode = newMode
-                        
+
                         // PERSIST IMMEDIATELY (Rescue Mode)
                         settings.fullscreenMode = newMode
                         settings.commit()
-                        
+
                         checkChanges()
                         dialog.dismiss()
                         updateSettingsList()
-                        
+
                         // Apply immediately to current UI
                         requireActivity().recreate()
                     }
@@ -824,16 +974,16 @@ class SettingsFragment : Fragment() {
                     .setSingleChoiceItems(orientationOptions, currentIdx) { dialog, whiches ->
                         val newOrientation = Settings.ScreenOrientation.fromInt(whiches) ?: Settings.ScreenOrientation.SYSTEM
                         pendingScreenOrientation = newOrientation
-                        
+
                         // Apply immediately
                         settings.screenOrientation = newOrientation
                         settings.commit()
-                        
+
                         requireActivity().requestedOrientation = newOrientation.androidOrientation
                         requireContext().sendBroadcast(Intent(AapService.ACTION_ORIENTATION_CHANGED).apply {
                             setPackage(requireContext().packageName)
                         })
-                        
+
                         checkChanges()
                         dialog.dismiss()
                         updateSettingsList()
@@ -871,6 +1021,17 @@ class SettingsFragment : Fragment() {
             ))
         }
 
+        items.add(SettingItem.SettingEntry(
+            stableId = "loadingScreen",
+            nameResId = R.string.loading_screen,
+            value = if (settings.loadingScreenMediaPath.isNullOrEmpty())
+                getString(R.string.loading_screen_default)
+            else getString(R.string.loading_screen_custom),
+            onClick = {
+                findNavController().navigate(R.id.action_settingsFragment_to_loadingScreenFragment)
+            }
+        ))
+
         // --- Video Settings ---
         items.add(SettingItem.CategoryHeader("video", R.string.category_video))
 
@@ -881,6 +1042,18 @@ class SettingsFragment : Fragment() {
             isChecked = pendingForceSoftware!!,
             onCheckedChanged = { isChecked ->
                 pendingForceSoftware = isChecked
+                checkChanges()
+                updateSettingsList()
+            }
+        ))
+
+        items.add(SettingItem.ToggleSettingEntry(
+            stableId = "useNativeSsl",
+            nameResId = R.string.use_native_ssl,
+            descriptionResId = R.string.use_native_ssl_description,
+            isChecked = pendingUseNativeSsl ?: false,
+            onCheckedChanged = { isChecked ->
+                pendingUseNativeSsl = isChecked
                 checkChanges()
                 updateSettingsList()
             }
@@ -966,6 +1139,20 @@ class SettingsFragment : Fragment() {
                 updateSettingsList()
             }
         ))
+
+        if (pendingEnableAudioSink == true) {
+            items.add(SettingItem.ToggleSettingEntry(
+                stableId = "staticAudioFocus",
+                nameResId = R.string.static_audio_focus,
+                descriptionResId = R.string.static_audio_focus_description,
+                isChecked = pendingStaticAudioFocus ?: false,
+                onCheckedChanged = { isChecked ->
+                    pendingStaticAudioFocus = isChecked
+                    checkChanges()
+                    updateSettingsList()
+                }
+            ))
+        }
 
         items.add(SettingItem.ToggleSettingEntry(
             stableId = "separateAudioStreams",
@@ -1057,6 +1244,47 @@ class SettingsFragment : Fragment() {
                         dialog.dismiss()
                         updateSettingsList()
                     }
+                .show()
+            }
+        ))
+
+        // --- Backup Settings ---
+        items.add(SettingItem.CategoryHeader("backup", R.string.category_backup))
+
+        items.add(SettingItem.SettingEntry(
+            stableId = "exportSettings",
+            nameResId = R.string.export_settings,
+            value = getString(R.string.export_settings_description),
+            onClick = { _ -> startExportSettings() }
+        ))
+
+        items.add(SettingItem.SettingEntry(
+            stableId = "importSettings",
+            nameResId = R.string.import_settings,
+            value = getString(R.string.import_settings_description),
+            onClick = { _ -> startImportSettings() }
+        ))
+
+        // --- Reset Settings ---
+        items.add(SettingItem.CategoryHeader("resetSettingsCategory", R.string.reset))
+        items.add(SettingItem.SettingEntry(
+            stableId = "resetSettings",
+            nameResId = R.string.reset_settings,
+            value = getString(R.string.reset_settings_description),
+            onClick = {
+                MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+                    .setTitle(R.string.reset_settings)
+                    .setMessage(R.string.reset_settings_confirm)
+                    .setPositiveButton(R.string.reset) { _, _ ->
+                        settings.reset()
+
+                        // Proper App Restart
+                        val intent = requireActivity().packageManager.getLaunchIntentForPackage(requireActivity().packageName)
+                        intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        requireActivity().startActivity(intent)
+                        requireActivity().finish()
+                    }
+                    .setNegativeButton(R.string.cancel, null)
                     .show()
             }
         ))
@@ -1091,7 +1319,9 @@ class SettingsFragment : Fragment() {
                         settings.exporterLogLevel = newLevel
                         if (newLevel == LogExporter.LogLevel.SILENT) {
                             settings.exporterCaptureEnabled = false
-                            if (LogExporter.isCapturing) {
+                            if (settings.logSource == Settings.LogSource.APPLOG_FILE) {
+                                AppLog.init(settings, requireContext().applicationContext)
+                            } else if (LogExporter.isCapturing) {
                                 LogExporter.stopCapture()
                             }
                         }
@@ -1102,9 +1332,44 @@ class SettingsFragment : Fragment() {
             }
         ))
 
+        val logSources = Settings.LogSource.entries
+        val logSourceNames = logSources.map {
+            when (it) {
+                Settings.LogSource.LOGCAT -> getString(R.string.log_source_logcat)
+                Settings.LogSource.APPLOG_FILE -> getString(R.string.log_source_applog_file)
+            }
+        }.toTypedArray()
+        items.add(SettingItem.SettingEntry(
+            stableId = "logSource",
+            nameResId = R.string.log_source,
+            value = when (settings.logSource) {
+                Settings.LogSource.LOGCAT -> getString(R.string.log_source_logcat)
+                Settings.LogSource.APPLOG_FILE -> getString(R.string.log_source_applog_file)
+            },
+            onClick = {
+                val currentIndex = logSources.indexOf(settings.logSource)
+                MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+                    .setTitle(R.string.log_source)
+                    .setSingleChoiceItems(logSourceNames, currentIndex) { dialog, which ->
+                        val newSource = logSources[which]
+                        settings.logSource = newSource
+                        if (newSource == Settings.LogSource.APPLOG_FILE && LogExporter.isCapturing) {
+                            LogExporter.stopCapture()
+                        }
+                        AppLog.init(settings, requireContext().applicationContext)
+                        if (newSource == Settings.LogSource.APPLOG_FILE && settings.exporterCaptureEnabled && !AppLog.isCapturing) {
+                            settings.exporterCaptureEnabled = false
+                        }
+                        dialog.dismiss()
+                        updateSettingsList()
+                    }
+                    .show()
+            }
+        ))
+
         items.add(SettingItem.SettingEntry(
             stableId = "captureLog",
-            nameResId = if (LogExporter.isCapturing) R.string.stop_log_capture else R.string.start_log_capture,
+            nameResId = if (if (settings.logSource == Settings.LogSource.APPLOG_FILE) AppLog.isCapturing else LogExporter.isCapturing) R.string.stop_log_capture else R.string.start_log_capture,
             value = when {
                 settings.exporterLogLevel == LogExporter.LogLevel.SILENT -> getString(R.string.start_log_capture_description)
                 LogExporter.isCapturing -> getString(R.string.stop_log_capture_description)
@@ -1118,12 +1383,21 @@ class SettingsFragment : Fragment() {
                     return@SettingEntry
                 }
 
-                if (LogExporter.isCapturing) {
-                    LogExporter.stopCapture()
-                    settings.exporterCaptureEnabled = false
+                if (settings.logSource == Settings.LogSource.APPLOG_FILE) {
+                    val shouldStart = !AppLog.isCapturing
+                    settings.exporterCaptureEnabled = shouldStart
+                    AppLog.init(settings, context.applicationContext)
+                    if (shouldStart && !AppLog.isCapturing) {
+                        settings.exporterCaptureEnabled = false
+                    }
                 } else {
-                    LogExporter.startCapture(context, exporterLevel)
-                    settings.exporterCaptureEnabled = true
+                    if (LogExporter.isCapturing) {
+                        LogExporter.stopCapture()
+                        settings.exporterCaptureEnabled = false
+                    } else {
+                        LogExporter.startCapture(context, exporterLevel)
+                        settings.exporterCaptureEnabled = true
+                    }
                 }
                 updateSettingsList()
             }
@@ -1141,7 +1415,12 @@ class SettingsFragment : Fragment() {
                     return@SettingEntry
                 }
 
-                if (LogExporter.isCapturing) {
+                if (settings.logSource == Settings.LogSource.APPLOG_FILE) {
+                    if (AppLog.isCapturing) {
+                        settings.exporterCaptureEnabled = false
+                        AppLog.init(settings, context.applicationContext)
+                    }
+                } else if (LogExporter.isCapturing) {
                     LogExporter.stopCapture()
                 }
                 val logFile = LogExporter.saveLogToPublicFile(context, exporterLevel)
@@ -1161,18 +1440,6 @@ class SettingsFragment : Fragment() {
                 } else {
                     Toast.makeText(context, getString(R.string.failed_export_logs), Toast.LENGTH_SHORT).show()
                 }
-            }
-        ))
-
-        items.add(SettingItem.ToggleSettingEntry(
-            stableId = "useNativeSsl",
-            nameResId = R.string.use_native_ssl,
-            descriptionResId = R.string.use_native_ssl_description,
-            isChecked = pendingUseNativeSsl!!,
-            onCheckedChanged = { isChecked ->
-                pendingUseNativeSsl = isChecked
-                checkChanges()
-                updateSettingsList()
             }
         ))
 
@@ -1213,13 +1480,450 @@ class SettingsFragment : Fragment() {
         }
     }
 
+    private data class ImportSnapshot(
+        val wifiConnectionMode: Int,
+        val helperConnectionStrategy: Int,
+        val bluetoothManagerServiceName: String,
+        val appLanguage: String,
+        val uiScaleSettingsPercent: Int,
+        val appTheme: Settings.AppTheme,
+        val useExtremeDarkMode: Boolean,
+        val useGradientBackground: Boolean,
+        val screenOrientation: Settings.ScreenOrientation
+    )
+
+    private fun startExportSettings() {
+        val options = mutableListOf<Pair<String, () -> Unit>>()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            options.add(getString(R.string.export_settings_choose_location) to { launchExportSettingsPicker() })
+        }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            options.add(getString(R.string.export_settings_downloads) to { exportSettingsDownloadsWithPermission() })
+        }
+        options.add(getString(R.string.export_settings_app_folder) to { exportSettingsLegacy() })
+        options.add(getString(R.string.share_settings_backup) to { shareNewSettingsBackup() })
+
+        MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+            .setTitle(R.string.export_settings)
+            .setItems(options.map { it.first }.toTypedArray()) { _, which ->
+                options[which].second.invoke()
+            }
+            .show()
+    }
+
+    private fun launchExportSettingsPicker() {
+        try {
+            exportSettingsLauncher.launch(SettingsBackupManager.defaultFileName())
+        } catch (e: ActivityNotFoundException) {
+            showNoFilePickerDialog(R.string.export_settings_app_folder) { exportSettingsLegacy() }
+        }
+    }
+
+    private fun exportSettingsToUri(uri: Uri) {
+        val appContext = requireContext().applicationContext
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                withContext(Dispatchers.IO) {
+                    SettingsBackupManager.exportToUri(appContext, uri)
+                }
+                Toast.makeText(requireContext(), R.string.settings_exported, Toast.LENGTH_LONG).show()
+            } catch (e: Exception) {
+                if (e is CancellationException) throw e
+                Toast.makeText(requireContext(), getString(R.string.settings_export_failed, e.localizedMessage ?: ""), Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun exportSettingsLegacy() {
+        val appContext = requireContext().applicationContext
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val file = withContext(Dispatchers.IO) {
+                    SettingsBackupManager.exportToLegacyFile(appContext)
+                }
+                showSettingsExportedDialog(file)
+            } catch (e: Exception) {
+                if (e is CancellationException) throw e
+                Toast.makeText(requireContext(), getString(R.string.settings_export_failed, e.localizedMessage ?: ""), Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun exportSettingsDownloadsWithPermission() {
+        runWithDownloadsStoragePermission {
+            exportSettingsDownloads()
+        }
+    }
+
+    private fun runWithDownloadsStoragePermission(action: () -> Unit) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
+            Build.VERSION.SDK_INT < Build.VERSION_CODES.Q &&
+            ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            pendingStorageAction = action
+            storagePermissionLauncher.launch(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        } else {
+            action()
+        }
+    }
+
+    private fun exportSettingsDownloads() {
+        val appContext = requireContext().applicationContext
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val file = withContext(Dispatchers.IO) {
+                    SettingsBackupManager.exportToDownloadsFile(appContext)
+                }
+                showSettingsExportedDialog(file)
+            } catch (e: Exception) {
+                if (e is CancellationException) throw e
+                Toast.makeText(requireContext(), getString(R.string.settings_export_failed, e.localizedMessage ?: ""), Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun showSettingsExportedDialog(file: File) {
+        MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+            .setTitle(R.string.settings_exported)
+            .setMessage(getString(R.string.settings_backup_saved_to, file.absolutePath))
+            .setPositiveButton(R.string.share) { _, _ -> shareSettingsBackup(file) }
+            .setNegativeButton(R.string.close, null)
+            .show()
+    }
+
+    private fun shareNewSettingsBackup() {
+        val appContext = requireContext().applicationContext
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val file = withContext(Dispatchers.IO) {
+                    SettingsBackupManager.exportToLegacyFile(appContext)
+                }
+                shareSettingsBackup(file)
+            } catch (e: Exception) {
+                if (e is CancellationException) throw e
+                Toast.makeText(requireContext(), getString(R.string.settings_export_failed, e.localizedMessage ?: ""), Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun shareSettingsBackup(file: File) {
+        val context = requireContext()
+        val uri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
+        val shareIntent = Intent(Intent.ACTION_SEND).apply {
+            type = SettingsBackupManager.MIME_TYPE
+            putExtra(Intent.EXTRA_STREAM, uri)
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+        try {
+            startActivity(Intent.createChooser(shareIntent, getString(R.string.share_settings_backup)))
+        } catch (e: ActivityNotFoundException) {
+            MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+                .setTitle(R.string.settings_exported)
+                .setMessage(getString(R.string.settings_backup_saved_to, file.absolutePath))
+                .setNegativeButton(R.string.close, null)
+                .show()
+        }
+    }
+
+    private fun startResetSettings() {
+        if (hasChanges) {
+            MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+                .setTitle(R.string.reset_settings)
+                .setMessage(R.string.reset_settings_discard_pending)
+                .setPositiveButton(R.string.discard) { _, _ ->
+                    hasChanges = false
+                    requiresRestart = false
+                    reloadPendingStateFromSettings()
+                    updateSaveButtonState()
+                    updateSettingsList()
+                    showResetSettingsConfirmation()
+                }
+                .setNegativeButton(R.string.cancel, null)
+                .show()
+        } else {
+            showResetSettingsConfirmation()
+        }
+    }
+
+    private fun showResetSettingsConfirmation() {
+        MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+            .setTitle(R.string.reset_settings)
+            .setMessage(R.string.reset_settings_confirm_message)
+            .setPositiveButton(R.string.reset) { _, _ -> resetSettingsToDefaults() }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
+    }
+
+    private fun resetSettingsToDefaults() {
+        val appContext = requireContext().applicationContext
+        val snapshot = createImportSnapshot()
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val result = withContext(Dispatchers.IO) {
+                    SettingsBackupManager.resetFromContext(appContext)
+                }
+                handleResetSettings(snapshot, result)
+            } catch (e: Exception) {
+                if (e is CancellationException) throw e
+                Toast.makeText(appContext, appContext.getString(R.string.settings_reset_failed, e.localizedMessage ?: ""), Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun handleResetSettings(snapshot: ImportSnapshot, result: SettingsBackupManager.ResetResult) {
+        val ctx = context ?: return
+        settings = App.provide(ctx).settings
+        applyWirelessSideEffects(snapshot, ctx)
+
+        if (SettingsBackupManager.requiresProjectionRestart(result.changedKeys) && App.provide(ctx).commManager.isConnected) {
+            Toast.makeText(ctx, ctx.getString(R.string.stopping_service), Toast.LENGTH_SHORT).show()
+            val stopServiceIntent = Intent(ctx, AapService::class.java).apply {
+                action = AapService.ACTION_STOP_SERVICE
+            }
+            ContextCompat.startForegroundService(ctx, stopServiceIntent)
+        }
+
+        hasChanges = false
+        requiresRestart = false
+        reloadPendingStateFromSettings()
+        updateSaveButtonState()
+        updateSettingsList()
+
+        Toast.makeText(ctx, R.string.settings_reset, Toast.LENGTH_LONG).show()
+
+        if (shouldRecreateAfterImport(snapshot)) {
+            activity?.recreate()
+        }
+    }
+
+    private fun startImportSettings() {
+        if (hasChanges) {
+            MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+                .setTitle(R.string.import_settings)
+                .setMessage(R.string.import_settings_discard_pending)
+                .setPositiveButton(R.string.discard) { _, _ ->
+                    hasChanges = false
+                    requiresRestart = false
+                    reloadPendingStateFromSettings()
+                    updateSaveButtonState()
+                    updateSettingsList()
+                    showImportSettingsOptions()
+                }
+                .setNegativeButton(R.string.cancel, null)
+                .show()
+        } else {
+            showImportSettingsOptions()
+        }
+    }
+
+    private fun showImportSettingsOptions() {
+        val options = mutableListOf<Pair<String, () -> Unit>>()
+        options.add(getString(R.string.import_settings_choose_file) to { launchImportSettingsPicker() })
+        if (SettingsBackupManager.canAccessDownloadsDirectory()) {
+            options.add(getString(R.string.import_settings_downloads) to { showDownloadsBackupFilePickerWithPermission() })
+        }
+        options.add(getString(R.string.import_settings_app_folder) to { showAppBackupFilePicker() })
+
+        MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+            .setTitle(R.string.import_settings)
+            .setItems(options.map { it.first }.toTypedArray()) { _, which ->
+                options[which].second.invoke()
+            }
+            .show()
+    }
+
+    private fun launchImportSettingsPicker() {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                importSettingsLauncher.launch(SettingsBackupManager.IMPORT_MIME_TYPES.copyOf())
+            } else {
+                legacyImportSettingsLauncher.launch(SettingsBackupManager.MIME_TYPE)
+            }
+        } catch (e: ActivityNotFoundException) {
+            if (SettingsBackupManager.canAccessDownloadsDirectory()) {
+                showNoFilePickerDialog(R.string.import_settings_downloads) {
+                    showDownloadsBackupFilePickerWithPermission()
+                }
+            } else {
+                showNoFilePickerDialog(R.string.import_settings_app_folder) { showAppBackupFilePicker() }
+            }
+        }
+    }
+
+    private fun showNoFilePickerDialog(fallbackLabelRes: Int, onFallback: () -> Unit) {
+        MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+            .setTitle(R.string.no_file_picker_title)
+            .setMessage(R.string.no_file_picker_message)
+            .setPositiveButton(fallbackLabelRes) { _, _ -> onFallback() }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
+    }
+
+    private fun showAppBackupFilePicker() {
+        val backupFiles = SettingsBackupManager.findBackupFiles(appBackupDirectories())
+        if (backupFiles.isEmpty()) {
+            MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+                .setTitle(R.string.no_settings_backups_title)
+                .setMessage(R.string.no_settings_backups_message)
+                .setPositiveButton(R.string.export_settings_app_folder) { _, _ -> exportSettingsLegacy() }
+                .setNegativeButton(R.string.close, null)
+                .show()
+            return
+        }
+
+        val labels = backupFiles.map { file ->
+            "${file.name}\n${file.parent ?: ""}"
+        }.toTypedArray()
+
+        MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+            .setTitle(R.string.import_settings_app_folder)
+            .setItems(labels) { _, which ->
+                importSettingsFromFile(backupFiles[which])
+            }
+            .show()
+    }
+
+    private fun showDownloadsBackupFilePickerWithPermission() {
+        runWithDownloadsStoragePermission {
+            showDownloadsBackupFilePicker()
+        }
+    }
+
+    private fun showDownloadsBackupFilePicker() {
+        val backupFiles = SettingsBackupManager.findBackupFiles(listOf(SettingsBackupManager.downloadsDirectory()))
+        if (backupFiles.isEmpty()) {
+            MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+                .setTitle(R.string.no_settings_backups_title)
+                .setMessage(R.string.no_settings_backups_downloads_message)
+                .setPositiveButton(R.string.export_settings_downloads) { _, _ -> exportSettingsDownloadsWithPermission() }
+                .setNegativeButton(R.string.close, null)
+                .show()
+            return
+        }
+
+        val labels = backupFiles.map { file ->
+            "${file.name}\n${file.parent ?: ""}"
+        }.toTypedArray()
+
+        MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+            .setTitle(R.string.import_settings_downloads)
+            .setItems(labels) { _, which ->
+                importSettingsFromFile(backupFiles[which])
+            }
+            .show()
+    }
+
+    private fun appBackupDirectories(): List<File?> {
+        return SettingsBackupManager.backupSearchDirectories(
+            requireContext().getExternalFilesDir(null),
+            requireContext().cacheDir,
+            null
+        )
+    }
+
+    private fun importSettingsFromUri(uri: Uri) {
+        val appContext = requireContext().applicationContext
+        val snapshot = createImportSnapshot()
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val result = withContext(Dispatchers.IO) {
+                    SettingsBackupManager.importFromUri(appContext, uri)
+                }
+                handleImportedSettings(snapshot, result)
+            } catch (e: Exception) {
+                if (e is CancellationException) throw e
+                Toast.makeText(requireContext(), getString(R.string.settings_import_failed, e.localizedMessage ?: ""), Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun importSettingsFromFile(file: File) {
+        val appContext = requireContext().applicationContext
+        val snapshot = createImportSnapshot()
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val result = withContext(Dispatchers.IO) {
+                    SettingsBackupManager.importFromFile(appContext, file)
+                }
+                handleImportedSettings(snapshot, result)
+            } catch (e: Exception) {
+                if (e is CancellationException) throw e
+                Toast.makeText(requireContext(), getString(R.string.settings_import_failed, e.localizedMessage ?: ""), Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun createImportSnapshot(): ImportSnapshot {
+        return ImportSnapshot(
+            wifiConnectionMode = settings.wifiConnectionMode,
+            helperConnectionStrategy = settings.helperConnectionStrategy,
+            bluetoothManagerServiceName = settings.bluetoothManagerServiceName,
+            appLanguage = settings.appLanguage,
+            uiScaleSettingsPercent = settings.uiScaleSettingsPercent,
+            appTheme = settings.appTheme,
+            useExtremeDarkMode = settings.useExtremeDarkMode,
+            useGradientBackground = settings.useGradientBackground,
+            screenOrientation = settings.screenOrientation
+        )
+    }
+
+    private fun handleImportedSettings(snapshot: ImportSnapshot, result: SettingsBackupManager.ImportResult) {
+        settings = App.provide(requireContext()).settings
+        applyWirelessSideEffects(snapshot)
+
+        if (SettingsBackupManager.requiresProjectionRestart(result.changedKeys) && App.provide(requireContext()).commManager.isConnected) {
+            Toast.makeText(requireContext(), getString(R.string.stopping_service), Toast.LENGTH_SHORT).show()
+            val stopServiceIntent = Intent(requireContext(), AapService::class.java).apply {
+                action = AapService.ACTION_STOP_SERVICE
+            }
+            ContextCompat.startForegroundService(requireContext(), stopServiceIntent)
+        }
+
+        hasChanges = false
+        requiresRestart = false
+        reloadPendingStateFromSettings()
+        updateSaveButtonState()
+        updateSettingsList()
+
+        Toast.makeText(
+            requireContext(),
+            getString(R.string.settings_imported, result.importedKeys, result.skippedKeys),
+            Toast.LENGTH_LONG
+        ).show()
+
+        if (shouldRecreateAfterImport(snapshot)) {
+            requireActivity().recreate()
+        }
+    }
+
+    private fun applyWirelessSideEffects(snapshot: ImportSnapshot, context: Context = requireContext()) {
+        if (snapshot.wifiConnectionMode != settings.wifiConnectionMode ||
+            snapshot.helperConnectionStrategy != settings.helperConnectionStrategy ||
+            snapshot.bluetoothManagerServiceName != settings.bluetoothManagerServiceName) {
+            val intent = Intent(context, AapService::class.java).apply {
+                val mode = settings.wifiConnectionMode
+                action = if (mode == 1 || mode == 2 || mode == 3)
+                    AapService.ACTION_START_WIRELESS else AapService.ACTION_STOP_WIRELESS
+            }
+            context.startService(intent)
+        }
+    }
+
+    private fun shouldRecreateAfterImport(snapshot: ImportSnapshot): Boolean {
+        return snapshot.appLanguage != settings.appLanguage ||
+            snapshot.uiScaleSettingsPercent != settings.uiScaleSettingsPercent ||
+            snapshot.appTheme != settings.appTheme ||
+            snapshot.useExtremeDarkMode != settings.useExtremeDarkMode ||
+            snapshot.useGradientBackground != settings.useGradientBackground ||
+            snapshot.screenOrientation != settings.screenOrientation
+    }
+
     private fun showAudioOffsetsDialog() {
         val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_audio_offsets, null)
-        
+
         val seekMedia = dialogView.findViewById<android.widget.SeekBar>(R.id.seek_media)
         val seekAssistant = dialogView.findViewById<android.widget.SeekBar>(R.id.seek_assistant)
         val seekNavigation = dialogView.findViewById<android.widget.SeekBar>(R.id.seek_navigation)
-        
+
         val textMedia = dialogView.findViewById<android.widget.TextView>(R.id.text_media_val)
         val textAssistant = dialogView.findViewById<android.widget.TextView>(R.id.text_assistant_val)
         val textNavigation = dialogView.findViewById<android.widget.TextView>(R.id.text_navigation_val)
@@ -1305,7 +2009,7 @@ class SettingsFragment : Fragment() {
 
     private fun showCustomInsetsDialog() {
         val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_custom_insets, null)
-        
+
         val inputLeft = dialogView.findViewById<EditText>(R.id.input_left)
         val inputTop = dialogView.findViewById<EditText>(R.id.input_top)
         val inputRight = dialogView.findViewById<EditText>(R.id.input_right)
@@ -1323,12 +2027,12 @@ class SettingsFragment : Fragment() {
             val t = inputTop.text.toString().toIntOrNull() ?: 0
             val r = inputRight.text.toString().toIntOrNull() ?: 0
             val b = inputBottom.text.toString().toIntOrNull() ?: 0
-            
+
             pendingInsetLeft = l
             pendingInsetTop = t
             pendingInsetRight = r
             pendingInsetBottom = b
-            
+
             // Live Preview: Set padding on the root view of the Activity
             val root = requireActivity().findViewById<View>(R.id.settings_nav_host)
             root?.setPadding(l, t, r, b)
@@ -1371,24 +2075,24 @@ class SettingsFragment : Fragment() {
                 val t = inputTop.text.toString().toIntOrNull() ?: 0
                 val r = inputRight.text.toString().toIntOrNull() ?: 0
                 val b = inputBottom.text.toString().toIntOrNull() ?: 0
-                
+
                 // PERSIST IMMEDIATELY (Rescue Mode)
                 settings.insetLeft = l
                 settings.insetTop = t
                 settings.insetRight = r
                 settings.insetBottom = b
                 settings.commit()
-                
+
                 // Update pending to keep UI in sync
                 pendingInsetLeft = l
                 pendingInsetTop = t
                 pendingInsetRight = r
                 pendingInsetBottom = b
-                
+
                 checkChanges()
                 updateSettingsList()
                 dialog.dismiss()
-                
+
                 // Refresh activity to apply padding immediately
                 requireActivity().recreate()
             }
@@ -1396,7 +2100,7 @@ class SettingsFragment : Fragment() {
                 // Revert Preview immediately
                 val root = requireActivity().findViewById<View>(R.id.settings_nav_host)
                 root?.setPadding(
-                    settings.insetLeft, settings.insetTop, 
+                    settings.insetLeft, settings.insetTop,
                     settings.insetRight, settings.insetBottom
                 )
                 // Reset pending to old values
@@ -1404,7 +2108,7 @@ class SettingsFragment : Fragment() {
                 pendingInsetTop = settings.insetTop
                 pendingInsetRight = settings.insetRight
                 pendingInsetBottom = settings.insetBottom
-                
+
                 dialog.dismiss()
             }
             .show()

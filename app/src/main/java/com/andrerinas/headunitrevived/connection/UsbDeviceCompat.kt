@@ -1,6 +1,8 @@
 package com.andrerinas.headunitrevived.connection
 
+import android.hardware.usb.UsbConstants
 import android.hardware.usb.UsbDevice
+import android.os.Build
 import com.andrerinas.headunitrevived.aap.Utils
 import java.util.Locale
 
@@ -21,69 +23,102 @@ class UsbDeviceCompat(val wrappedDevice: UsbDevice) {
 
     companion object {
         private const val USB_VID_GOO = 0x18D1   // 6353   Nexus or ACC mode, see PID to distinguish
-        private const val USB_VID_HTC = 0x0bb4   // 2996
-        private const val USB_VID_SAM = 0x04e8   // 1256
-        private const val USB_VID_O1A = 0xfff6   // 65526    Samsung ?
-        private const val USB_VID_SON = 0x0fce   // 4046
-        private const val USB_VID_LGE = 0x1004   // 65525
-        private const val USB_VID_MOT = 0x22b8   // 8888
-        private const val USB_VID_ACE = 0x0502
-        private const val USB_VID_HUA = 0x12d1
-        private const val USB_VID_ZTE = 0x19d2
-        private const val USB_VID_XIA = 0x2717
-        private const val USB_VID_ASU = 0x0b05
-        private const val USB_VID_MEI = 0x2a45
-        private const val USB_VID_WIL = 0x4ee7
-
         private const val USB_PID_ACC = 0x2D00      // Accessory                  100
         private const val USB_PID_ACC_ADB = 0x2D01      // Accessory + ADB            110
-
-        private val VENDOR_NAMES = mapOf(
-            USB_VID_GOO to "Google",
-            USB_VID_HTC to "HTC",
-            USB_VID_SAM to "Samsung",
-            USB_VID_SON to "Sony",
-            USB_VID_MOT to "Motorola",
-            USB_VID_LGE to "LG",
-            USB_VID_O1A to "O1A",
-            USB_VID_HUA to "Huawei",
-            USB_VID_ACE to "Acer",
-            USB_VID_ZTE to "ZTE",
-            USB_VID_XIA to "Xiaomi",
-            USB_VID_ASU to "Asus",
-            USB_VID_MEI to "Meizu",
-            USB_VID_WIL to "Wileyfox"
-        )
+        private const val APPLE_VID = 0x05AC
 
         fun getUniqueName(device: UsbDevice): String {
-            val vendorId = device.vendorId  // mVendorId=2996               HTC
-            val productId = device.productId  // mProductId=1562              OneM8
+            val vendorId = device.vendorId
+            val productId = device.productId
+            val vidPid = "${Utils.hex_get(vendorId.toShort())}:${Utils.hex_get(productId.toShort())}"
 
-//            if (App.IS_LOLLIPOP) {                                 // Android 5.0+ only
-//                try {
-//                    dev_man = usb_man_get(device).toUpperCase(Locale.getDefault())                             // mManufacturerName=HTC
-//                    dev_prod = usb_pro_get(device).toUpperCase(Locale.getDefault())                                // mProductName=Android Phone
-//                    dev_ser = usb_ser_get(device).toUpperCase(Locale.getDefault())                              // mSerialNumber=FA46RWM22264
-//                } catch (e: Throwable) {
-//                    AppLog.e(e)
-//                }
-//            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                val manufacturer = device.manufacturerName?.takeIf { it.isNotBlank() }
+                val product = device.productName?.takeIf { it.isNotBlank() }
+                if (manufacturer != null || product != null) {
+                    // Include VID:PID so devices with identical strings but different
+                    // hardware (e.g. internal multimedia module vs external phone) are
+                    // treated as distinct entries.
+                    return "${listOfNotNull(manufacturer, product).joinToString(" ")} ($vidPid)"
+                }
+            }
 
-            var usb_dev_name = ""
-            usb_dev_name += VENDOR_NAMES[vendorId] ?: "$vendorId"
-            usb_dev_name += " "
-            usb_dev_name += Utils.hex_get(vendorId.toShort())
-            usb_dev_name += ":"
-            usb_dev_name += Utils.hex_get(productId.toShort())
-
-            return usb_dev_name
+            return vidPid
         }
 
         fun isInAccessoryMode(device: UsbDevice): Boolean {
             val dev_vend_id = device.vendorId
             val dev_prod_id = device.productId
-            return dev_vend_id == UsbDeviceCompat.USB_VID_GOO &&
-                    (dev_prod_id == UsbDeviceCompat.USB_PID_ACC || dev_prod_id == UsbDeviceCompat.USB_PID_ACC_ADB)
+            return dev_vend_id == USB_VID_GOO &&
+                (dev_prod_id == USB_PID_ACC || dev_prod_id == USB_PID_ACC_ADB)
+        }
+
+        fun isAndroidDevice(device: UsbDevice): Boolean {
+            // Apple does not support Android Auto
+            if (device.vendorId == APPLE_VID) return false
+
+            if (isInAccessoryMode(device)) return true
+
+            return hasAndroidInterface(device)
+        }
+
+        /**
+         * Identifies an Android device by USB class/subclass
+         * More reliable than a VID list
+         */
+        private fun hasAndroidInterface(device: UsbDevice): Boolean {
+            for (i in 0 until device.interfaceCount) {
+                val usbInterface = device.getInterface(i)
+                val ifaceClass = usbInterface.interfaceClass
+                val ifaceSubclass = usbInterface.interfaceSubclass
+                val ifaceProtocol = usbInterface.interfaceProtocol
+
+                // AOAP (Android Open Accessory Protocol)
+                if (ifaceClass == 0xFF && ifaceSubclass == 0xFF && ifaceProtocol == 0x00) {
+                    if (hasBulkEndpoint(usbInterface)) return true
+                }
+
+                // MTP (Media Transfer Protocol)
+                if (ifaceClass == UsbConstants.USB_CLASS_MASS_STORAGE &&
+                    ifaceSubclass == 0x06 && ifaceProtocol == 0x01) {
+                    return true
+                }
+
+                // ADB (Android Debug Bridge)
+                if (ifaceClass == 0xFF && ifaceSubclass == 0x42 && ifaceProtocol == 0x01) {
+                    return true
+                }
+
+                // RNDIS (USB tethering)
+                if (ifaceClass == 0xE0 && ifaceSubclass == 0x01 && ifaceProtocol == 0x03) {
+                    return true
+                }
+
+                // IAD (Interface Association Descriptor) - современные Android
+                if (ifaceClass == 0xEF && ifaceSubclass == 0x04 && ifaceProtocol == 0x01) {
+                    return true
+                }
+
+                // PTP (Picture Transfer Protocol) - старые Android
+                if (ifaceClass == 0x06 && ifaceSubclass == 0x01 && ifaceProtocol == 0x01) {
+                    return true
+                }
+            }
+
+            return false
+        }
+
+        /**
+         * Checks for the presence of a bulk endpoint (needed for data transfer)
+         */
+        private fun hasBulkEndpoint(usbInterface: android.hardware.usb.UsbInterface): Boolean {
+            for (j in 0 until usbInterface.endpointCount) {
+                val endpoint = usbInterface.getEndpoint(j)
+                if (endpoint.type == UsbConstants.USB_ENDPOINT_XFER_BULK) {
+                    return true
+                }
+            }
+            return false
         }
     }
 }

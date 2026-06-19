@@ -45,6 +45,13 @@ dependencies {
 
     // DexMaker for runtime subclassing (Hotspot Fix)
     implementation("com.linkedin.dexmaker:dexmaker:2.28.3")
+
+    // Glide for image/GIF loading (custom loading screen)
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    kapt("com.github.bumptech.glide:compiler:4.16.0")
+
+    // ZXing for QR Code generation
+    implementation("com.google.zxing:core:3.5.3")
 }
 
 android {
@@ -100,8 +107,8 @@ android {
         applicationId = "com.andrerinas.headunitrevived"
         minSdk = 16
         targetSdk = 36
-        versionCode = 67
-        versionName = "2.3.0"
+        versionCode = 76
+        versionName = "3.0.0"
         setProperty("archivesBaseName", "${applicationId}_${versionName}")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
@@ -127,12 +134,6 @@ android {
         create("github") {
             dimension = "distribution"
             // Default minSdk 16 from defaultConfig is used
-        }
-    }
-
-    externalNativeBuild {
-        cmake {
-            path = file("CMakeLists.txt")
         }
     }
 

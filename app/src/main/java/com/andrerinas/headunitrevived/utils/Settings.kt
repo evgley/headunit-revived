@@ -11,11 +11,11 @@ import com.andrerinas.headunitrevived.aap.protocol.proto.Control
 import com.andrerinas.headunitrevived.app.UsbAttachedActivity
 import com.andrerinas.headunitrevived.connection.UsbDeviceCompat
 
-class Settings(context: Context) {
+class Settings(private val context: Context) {
 
     private val _prefs: SharedPreferences? by lazy {
         try {
-            context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         } catch (e: Exception) {
             null
         }
@@ -151,6 +151,15 @@ class Settings(context: Context) {
     var exporterLogLevel: LogExporter.LogLevel
         get() = LogExporter.LogLevel.entries.getOrElse(prefs.getInt(KEY_LOG_LEVEL, LogExporter.LogLevel.INFO.ordinal)) { LogExporter.LogLevel.INFO }
         set(value) { prefs.edit().putInt(KEY_LOG_LEVEL, value.ordinal).apply() }
+
+    enum class LogSource {
+        LOGCAT,
+        APPLOG_FILE
+    }
+
+    var logSource: LogSource
+        get() = LogSource.entries.getOrElse(prefs.getInt(KEY_LOG_SOURCE, LogSource.LOGCAT.ordinal)) { LogSource.LOGCAT }
+        set(value) { prefs.edit().putInt(KEY_LOG_SOURCE, value.ordinal).apply() }
 
     /** Whether log capture should be active across restarts. Default: false (disabled). */
     var exporterCaptureEnabled: Boolean
@@ -368,6 +377,10 @@ class Settings(context: Context) {
         get() = prefs.getBoolean("enable-audio-sink", true)
         set(value) { prefs.edit().putBoolean("enable-audio-sink", value).apply() }
 
+    var staticAudioFocus: Boolean
+        get() = prefs.getBoolean("static-audio-focus", false)
+        set(value) { prefs.edit().putBoolean("static-audio-focus", value).apply() }
+
     var separateAudioStreams: Boolean
         get() = prefs.getBoolean("separate-audio-streams", false)
         set(value) { prefs.edit().putBoolean("separate-audio-streams", value).apply() }
@@ -458,13 +471,35 @@ class Settings(context: Context) {
             prefs.edit().putString("auto-connect-priority-order", value.joinToString(",")).apply()
         }
 
+    var autoStartBluetoothDeviceMacs: Set<String>
+        get() {
+            var macs = prefs.getStringSet("auto-start-bt-macs", null)
+            if (macs == null) {
+                val legacyMac = prefs.getString("auto-start-bt-mac", "") ?: ""
+                macs = if (legacyMac.isNotEmpty()) setOf(legacyMac) else emptySet()
+                prefs.edit().putStringSet("auto-start-bt-macs", macs).apply()
+            }
+            return macs
+        }
+        set(value) {
+            prefs.edit().putStringSet("auto-start-bt-macs", value).apply()
+        }
+
     var autoStartBluetoothDeviceName: String
         get() = prefs.getString("auto-start-bt-name", "")!!
         set(value) { prefs.edit().putString("auto-start-bt-name", value).apply() }
 
     var autoStartBluetoothDeviceMac: String
-        get() = prefs.getString("auto-start-bt-mac", "")!!
-        set(value) = prefs.edit().putString("auto-start-bt-mac", value).apply()
+        get() = autoStartBluetoothDeviceMacs.firstOrNull() ?: ""
+        set(value) {
+            val current = autoStartBluetoothDeviceMacs.toMutableSet()
+            if (value.isNotEmpty()) {
+                current.add(value)
+            } else {
+                current.clear()
+            }
+            autoStartBluetoothDeviceMacs = current
+        }
 
     var appLanguage: String
         get() = prefs.getString("app-language", "")!!
@@ -482,9 +517,43 @@ class Settings(context: Context) {
         get() = prefs.getInt("navigation-volume-offset", 0)
         set(value) { prefs.edit().putInt("navigation-volume-offset", value).apply() }
 
+    // Custom loading screen
+    var loadingScreenMediaPath: String
+        get() = prefs.getString("loading-screen-media-path", "")!!
+        set(value) { prefs.edit().putString("loading-screen-media-path", value).apply() }
+
+    var loadingScreenMediaType: String
+        get() = prefs.getString("loading-screen-media-type", "")!!
+        set(value) { prefs.edit().putString("loading-screen-media-type", value).apply() }
+
+    var loadingScreenShowText: Boolean
+        get() = prefs.getBoolean("loading-screen-show-text", false)
+        set(value) { prefs.edit().putBoolean("loading-screen-show-text", value).apply() }
+
+    var loadingScreenKeepAspectRatio: Boolean
+        get() = prefs.getBoolean("loading-screen-keep-aspect-ratio", true)
+        set(value) { prefs.edit().putBoolean("loading-screen-keep-aspect-ratio", value).apply() }
+
+    var loadingScreenLoopVideo: Boolean
+        get() = prefs.getBoolean("loading-screen-loop-video", true)
+        set(value) { prefs.edit().putBoolean("loading-screen-loop-video", value).apply() }
+
     @SuppressLint("ApplySharedPref")
     fun commit() {
         prefs.edit().commit()
+    }
+
+    @SuppressLint("ApplySharedPref")
+    fun reset() {
+        prefs.edit().clear().commit()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            syncAutoStartOnBootToDeviceStorage(context, false)
+            syncAutoStartOnScreenOnToDeviceStorage(context, false)
+            syncAutoStartOnUsbToDeviceStorage(context, false)
+            syncAutoStartOnWifiToDeviceStorage(context, false)
+            syncListenForUsbDevicesToDeviceStorage(context, true)
+            syncAutoStartBtMacToDeviceStorage(context, "")
+        }
     }
 
     enum class Resolution(val id: Int, val resName: String, val width: Int, val height: Int, val codec: Control.Service.MediaSinkService.VideoConfiguration.VideoCodecResolutionType?) {
@@ -511,7 +580,8 @@ class Settings(context: Context) {
         NIGHT(2),
         MANUAL_TIME(3),
         LIGHT_SENSOR(4),
-        SCREEN_BRIGHTNESS(5);
+        SCREEN_BRIGHTNESS(5),
+        CAR_SIGNAL(6);
 
         companion object {
             private val map = NightMode.values().associateBy(NightMode::value)
@@ -554,6 +624,8 @@ class Settings(context: Context) {
         }
 
     companion object {
+        const val PREFS_NAME = "settings"
+
         const val CONNECTION_TYPE_WIFI = "wifi"
         const val CONNECTION_TYPE_USB = "usb"
         const val CONNECTION_TYPE_NEARBY = "nearby"
@@ -563,8 +635,13 @@ class Settings(context: Context) {
 
         /** SharedPreferences key; also used by [AapService] for change listener. */
         const val KEY_LOG_LEVEL = "log-level"
+        const val KEY_LOG_SOURCE = "log-source"
         /** Persist whether log capture should be active across restarts. */
         const val KEY_LOG_CAPTURE_ENABLED = "log-capture-enabled"
+
+        const val KEY_MEDIA_VOLUME_OFFSET = "media-volume-offset"
+        const val KEY_ASSISTANT_VOLUME_OFFSET = "assistant-volume-offset"
+        const val KEY_NAVIGATION_VOLUME_OFFSET = "navigation-volume-offset"
 
         const val AUTO_CONNECT_LAST_SESSION = "last-session"
         const val AUTO_CONNECT_SELF_MODE = "self-mode"
@@ -589,7 +666,7 @@ class Settings(context: Context) {
                 val deviceContext = context.createDeviceProtectedStorageContext()
                 deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
             } else {
-                context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+                context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             }
             return prefs.getBoolean(KEY_AUTO_START_ON_BOOT, false)
         }
@@ -620,7 +697,7 @@ class Settings(context: Context) {
                 val deviceContext = context.createDeviceProtectedStorageContext()
                 deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
             } else {
-                context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+                context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             }
             return prefs.getBoolean(KEY_AUTO_START_ON_SCREEN_ON, false)
         }
@@ -639,6 +716,7 @@ class Settings(context: Context) {
         const val KEY_SCREEN_ORIENTATION = "screen-orientation"
         private const val KEY_LISTEN_FOR_USB_DEVICES = "listen-for-usb-devices"
         private const val KEY_AUTO_START_BT_MAC = "auto-start-bt-mac"
+        private const val KEY_AUTO_START_BT_MACS = "auto-start-bt-macs"
 
         /**
          * Reads auto-start-on-usb from device-protected storage (API 24+),
@@ -650,7 +728,7 @@ class Settings(context: Context) {
                 val deviceContext = context.createDeviceProtectedStorageContext()
                 deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
             } else {
-                context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+                context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             }
             return prefs.getBoolean(KEY_AUTO_START_ON_USB, false)
         }
@@ -673,7 +751,7 @@ class Settings(context: Context) {
                 val deviceContext = context.createDeviceProtectedStorageContext()
                 deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
             } else {
-                context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+                context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             }
             return prefs.getBoolean(KEY_AUTO_START_ON_WIFI, false)
         }
@@ -693,7 +771,7 @@ class Settings(context: Context) {
                 val deviceContext = context.createDeviceProtectedStorageContext()
                 deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
             } else {
-                context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+                context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             }
             return prefs.getString(KEY_AUTO_START_WIFI_SSID, "") ?: ""
         }
@@ -713,7 +791,7 @@ class Settings(context: Context) {
                 val deviceContext = context.createDeviceProtectedStorageContext()
                 deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
             } else {
-                context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+                context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             }
             return prefs.getBoolean(KEY_LISTEN_FOR_USB_DEVICES, true) // Default is TRUE
         }
@@ -747,11 +825,15 @@ class Settings(context: Context) {
          * falling back to regular prefs on older devices.
          */
         fun getAutoStartBtMac(context: Context): String {
+            val macs = getAutoStartBtMacs(context)
+            if (macs.isNotEmpty()) {
+                return macs.first()
+            }
             val prefs = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 val deviceContext = context.createDeviceProtectedStorageContext()
                 deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
             } else {
-                context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+                context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             }
             return prefs.getString(KEY_AUTO_START_BT_MAC, "") ?: ""
         }
@@ -762,6 +844,31 @@ class Settings(context: Context) {
                 deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
                     .edit()
                     .putString(KEY_AUTO_START_BT_MAC, mac)
+                    .apply()
+            }
+        }
+
+        fun getAutoStartBtMacs(context: Context): Set<String> {
+            val prefs = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                val deviceContext = context.createDeviceProtectedStorageContext()
+                deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
+            } else {
+                context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            }
+            var macs = prefs.getStringSet(KEY_AUTO_START_BT_MACS, null)
+            if (macs == null) {
+                val legacyMac = prefs.getString(KEY_AUTO_START_BT_MAC, "") ?: ""
+                macs = if (legacyMac.isNotEmpty()) setOf(legacyMac) else emptySet()
+            }
+            return macs
+        }
+
+        fun syncAutoStartBtMacsToDeviceStorage(context: Context, macs: Set<String>) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                val deviceContext = context.createDeviceProtectedStorageContext()
+                deviceContext.getSharedPreferences(DEVICE_PREFS_NAME, Context.MODE_PRIVATE)
+                    .edit()
+                    .putStringSet(KEY_AUTO_START_BT_MACS, macs)
                     .apply()
             }
         }
@@ -825,7 +932,8 @@ class Settings(context: Context) {
         AUTO_SUNRISE(4),
         MANUAL_TIME(5),
         LIGHT_SENSOR(6),
-        SCREEN_BRIGHTNESS(7);
+        SCREEN_BRIGHTNESS(7),
+        CAR_SIGNAL(8);
 
         companion object {
             private val map = values().associateBy(AppTheme::value)
@@ -890,5 +998,17 @@ class Settings(context: Context) {
     var lastNearbyDeviceName: String
         get() = prefs.getString("last-nearby-device-name", "")!!
         set(value) = prefs.edit().putString("last-nearby-device-name", value).apply()
+
+    var bluetoothManagerServiceName: String
+        get() = prefs.getString("bluetooth-manager-service-name", "bluetooth_manager")!!
+        set(value) = prefs.edit().putString("bluetooth-manager-service-name", value).apply()
+
+    var hotspotSsid: String
+        get() = prefs.getString("hotspot-ssid", "")!!
+        set(value) = prefs.edit().putString("hotspot-ssid", value).apply()
+
+    var hotspotPassword: String
+        get() = prefs.getString("hotspot-password", "")!!
+        set(value) = prefs.edit().putString("hotspot-password", value).apply()
 
 }

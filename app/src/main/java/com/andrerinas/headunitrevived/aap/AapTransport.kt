@@ -54,14 +54,13 @@ import javax.net.ssl.SSLEngineResult
  * @param onAaPlaybackStatus Optional callback when the phone sends playback status/position.
  * @param externalSsl Optional singleton [AapSslContext] whose internal [javax.net.ssl.SSLContext]
  *   (and its `ClientSessionContext` session cache) survives across [AapTransport] recreations.
- *   When provided on the Java-SSL path, JSSE can resume the previous TLS session on reconnect,
- *   skipping 4–6 round-trips and saving 1–3 s of handshake time. Pass `null` to create a
- *   fresh [AapSslContext] per transport (no session resumption). Ignored when native SSL is
- *   active (`settings.useNativeSsl = true`).
+ *   When provided, JSSE can resume the previous TLS session on reconnect, skipping 4–6
+ *   round-trips and saving 1–3 s of handshake time. Pass `null` to create a fresh
+ *   [AapSslContext] per transport (no session resumption).
  */
 class AapTransport(
         audioDecoder: AudioDecoder,
-        videoDecoder: VideoDecoder,
+        private val videoDecoder: VideoDecoder,
         audioManager: AudioManager,
         internal val settings: Settings,
         private val notification: BackgroundNotification,
@@ -71,22 +70,7 @@ class AapTransport(
         private val externalSsl: AapSslContext? = null)
     : MicRecorder.Listener {
 
-    val ssl: AapSsl = if (settings.useNativeSsl) {
-        try {
-            AppLog.i("Using Native SSL implementation")
-            AapSslNative()
-        } catch (e: Throwable) {
-            AppLog.e("Failed to instantiate Native SSL, falling back to Java SSL", e)
-            // Use the shared context when available so session resumption works on fallback.
-            externalSsl ?: AapSslContext(SingleKeyKeyManager(context))
-        }
-    } else {
-        AppLog.i("Using Java SSL implementation")
-        // externalSsl is the singleton AapSslContext from AppComponent whose SSLContext
-        // (and its ClientSessionContext session cache) survives across transport recreations,
-        // enabling TLS session resumption on reconnect.
-        externalSsl ?: AapSslContext(SingleKeyKeyManager(context))
-    }
+    val ssl: AapSsl = externalSsl ?: AapSslContext(SingleKeyKeyManager(context))
 
     internal val aapAudio: AapAudio
     internal val aapVideo: AapVideo
@@ -145,11 +129,25 @@ class AapTransport(
     val isAlive: Boolean
         get() = pollThread?.isAlive ?: false
 
+    private fun triggerFocusCycleRecovery() {
+        AppLog.w("AapTransport: Requesting recovery keyframe via focus cycle.")
+        send(com.andrerinas.headunitrevived.aap.protocol.messages.VideoFocusEvent(gain = false, unsolicited = false))
+        android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
+            if (isAlive) {
+                send(com.andrerinas.headunitrevived.aap.protocol.messages.VideoFocusEvent(gain = true, unsolicited = true))
+            }
+        }, 100)
+    }
+
     init {
         micRecorder.listener = this
         aapAudio = AapAudio(audioDecoder, audioManager, settings)
         aapVideo = AapVideo(videoDecoder, settings) {
-            send(com.andrerinas.headunitrevived.aap.protocol.messages.VideoFocusEvent(gain = true, unsolicited = true))
+            triggerFocusCycleRecovery()
+        }
+
+        videoDecoder.onDecoderError = {
+            triggerFocusCycleRecovery()
         }
     }
 
@@ -197,6 +195,8 @@ class AapTransport(
         pollThread?.quit()
         sendThread?.quit()
         aapAudio.releaseAllFocus()
+
+        videoDecoder.onDecoderError = null
 
         try {            // Don't join the poll thread from within itself — it would block for the full
             // timeout since the thread can't finish while it's waiting for itself to finish.
@@ -388,14 +388,6 @@ class AapTransport(
 
     fun send(keyCode: Int, isPress: Boolean) {
         val aapKeyCode = KeyCode.convert(keyCode)
-
-        if (keyCode == KeyEvent.KEYCODE_GUIDE) {
-            // Hack for navigation button to simulate touch
-            val action = if (isPress)
-                Input.TouchEvent.PointerAction.TOUCH_ACTION_DOWN else Input.TouchEvent.PointerAction.TOUCH_ACTION_UP
-            this.send(TouchEvent(SystemClock.elapsedRealtime(), action, 99, 444))
-            return
-        }
 
         if (keyCode == KeyEvent.KEYCODE_N) {
             val intent = Intent(AapService.ACTION_REQUEST_NIGHT_MODE_UPDATE)

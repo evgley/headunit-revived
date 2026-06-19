@@ -48,22 +48,42 @@ class MainViewModel(application: Application): AndroidViewModel(application), Us
 
     private fun createDeviceList(allowDevices: Set<String>): List<UsbDeviceCompat> {
         val manager = app.getSystemService(android.content.Context.USB_SERVICE) as UsbManager
-        return manager.deviceList.entries
-                .map { (_, device) -> UsbDeviceCompat(device) }
-                .sortedWith(Comparator { lhs, rhs ->
-                    if (lhs.isInAccessoryMode) {
-                        return@Comparator -1
+        val devices = manager.deviceList.values.map { UsbDeviceCompat(it) }
+        return filterAndSort(devices, allowDevices)
+    }
+
+    companion object {
+        /**
+         * During AOA mode switching the phone briefly appears as two separate USB entries:
+         * normal mode (e.g. "Samsung Galaxy") and accessory mode ("18D1:2D00").
+         * When both are present we hide the accessory-mode entry — it requires no user
+         * action and causes the duplicate-device confusion reported as Bug 2.
+         */
+        @JvmStatic
+        internal fun shouldIncludeDevice(isInAccessoryMode: Boolean, anyNonAccessoryPresent: Boolean): Boolean =
+            !(isInAccessoryMode && anyNonAccessoryPresent)
+
+        /** Removes duplicate names — same phone can get different kernel paths on each reconnect. */
+        @JvmStatic
+        internal fun deduplicateNames(names: List<String>): List<String> = names.distinct()
+
+        @JvmStatic
+        internal fun filterAndSort(devices: List<UsbDeviceCompat>, allowDevices: Set<String>): List<UsbDeviceCompat> {
+            val anyNonAccessory = devices.any { !it.isInAccessoryMode }
+            return devices
+                .filter { shouldIncludeDevice(it.isInAccessoryMode, anyNonAccessory) }
+                .distinctBy { it.uniqueName }
+                                .sortedWith(Comparator { lhs, rhs ->
+                    if (lhs.isInAccessoryMode != rhs.isInAccessoryMode) {
+                        return@Comparator if (lhs.isInAccessoryMode) -1 else 1
                     }
-                    if (rhs.isInAccessoryMode) {
-                        return@Comparator 1
-                    }
-                    if (allowDevices.contains(lhs.uniqueName)) {
-                        return@Comparator -1
-                    }
-                    if (allowDevices.contains(rhs.uniqueName)) {
-                        return@Comparator 1
+                    val lhsAllowed = allowDevices.contains(lhs.uniqueName)
+                    val rhsAllowed = allowDevices.contains(rhs.uniqueName)
+                    if (lhsAllowed != rhsAllowed) {
+                        return@Comparator if (lhsAllowed) -1 else 1
                     }
                     lhs.uniqueName.compareTo(rhs.uniqueName)
                 })
+        }
     }
 }

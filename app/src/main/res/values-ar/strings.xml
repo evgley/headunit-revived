@@ -109,8 +109,8 @@
     <string name="debug_mode_description">تفعيل المزيد من السجلات</string>
     <string name="export_logs">تصدير السجلات</string>
     <string name="export_logs_description">حفظ السجلات لأغراض التصحيح</string>
-    <string name="use_native_ssl">استخدام SSL الأصلي</string>
-    <string name="use_native_ssl_description">استخدام مكتبة OpenSSL الأصلية (أسرع على الأجهزة القديمة). يتطلب إعادة التشغيل.</string>
+
+
     <string name="not_set">غير محدد</string>
     <string name="keymap_description">تغيير اختصارات المفاتيح لوحدة الرأس</string>
 
@@ -176,7 +176,7 @@
     <string name="bt_permission_denied_title">مطلوب إذن البلوتوث</string>
     <string name="bt_permission_denied_message">إذن البلوتوث مطلوب لاختيار الأجهزة المقترنة. يرجى منحه في إعدادات التطبيق.</string>
     <string name="overlay_permission_title">إذن البدء في الخلفية</string>
-    <string name="overlay_permission_description">للسماح لـ Headunit Revived بالفتح التلقائي عند اتصال البلوتوث، يرجى تفعيل إذن "العرض فوق التطبيقات الأخرى" في الشاشة التالية.</string>
+    <string name="overlay_permission_description">للسماح لـ Headunit Revived بالفتح التلقائي عند اتصال البلوتوث، يرجى تفعيل إذن \"العرض فوق التطبيقات الأخرى\" في الشاشة التالية.</string>
     <string name="open_settings">الإعدادات</string>
     <string name="wireless_connection_settings">اتصال لاسلكي</string>
     <string name="right_hand_drive">القيادة على اليمين</string>
@@ -225,10 +225,10 @@
     <string name="pref_stretch_screen_summary">يتجاهل نسبة العرض إلى الارتفاع لملء الشاشة بأكملها (يزيل الأشرطة السوداء)</string>
 
     <!-- Audio Settings -->
-        <string name="forced_scale">قياس إجباري (إصلاح قديم)</string>
+    <string name="forced_scale">قياس إجباري (إصلاح قديم)</string>
     <string name="forced_scale_description">يصحح مشاكل القياس على بعض الأجهزة القديمة التي تستخدم SurfaceView. استخدمه فقط إذا كانت الصورة تبدو مشوهة أو مزاحة.</string>
 
-<string name="category_audio">الصوت</string>
+    <string name="category_audio">الصوت</string>
     <string name="enable_audio_sink">مخرج الصوت</string>
     <string name="enable_audio_sink_description">إذا كان معطلا، لن تستقبل وحدة الرأس الصوت. سيشغل الصوت من الهاتف.</string>
     <string name="separate_audio_streams">فصل تيارات الصوت</string>
@@ -306,7 +306,7 @@
     <string name="success">نجاح</string>
     <string name="failed">فشل</string>
     <string name="failed_start_android_auto">فشل تشغيل Android Auto</string>
-    <string name="failed_self_mode_android10">من المحتمل أن يكون "Self-mode" محظورًا من قبل Google على Android 10 (AA 16.4+). راجع README.</string>
+    <string name="failed_self_mode_android10">من المحتمل أن يكون \"Self-mode\" محظورًا من قبل Google على Android 10 (AA 16.4+). راجع README.</string>
     <string name="android_auto_starting">جار تشغيل Android Auto…</string>
     <string name="connection_interrupted">فُقد الاتصال</string>
     <string name="connection_interrupted_detail">جارٍ إعادة المحاولة…</string>
@@ -352,15 +352,19 @@
     <string name="fullscreen_status_only">إخفاء شريط الحالة فقط</string>
     <string name="log_level">مستوى السجل</string>
     <string name="log_level_description">اختر مستوى تفصيل مخرجات السجل للتصحيح.</string>
+    <string name="log_source">مصدر السجلات</string>
+    <string name="log_source_logcat">Logcat</string>
+    <string name="log_source_applog_file">مباشرة إلى الملف</string>
     <string name="start_log_capture">بدء التقاط السجل</string>
     <string name="start_log_capture_description">يبدأ تسجيل سجلات النظام في ملف.</string>
+    <string name="start_log_capture_in_applog_file">تُكتب رسائل Log في ملف فقط أثناء تنشيط الالتقاط</string>
     <string name="start_log_capture_in_silent">تعذر بدء التسجيل: تم تحديد مستوى التسجيل الصامت</string>
     <string name="stop_log_capture">إيقاف التقاط السجل</string>
     <string name="stop_log_capture_description">يوقف التسجيل ويحفظ ملف السجل.</string>
 
     <!-- Navigation notifications -->
     <string name="show_navigation_notifications">إشعارات الملاحة</string>
-    <string name="show_navigation_notifications_description">عرض "بعد X متر Y" والشارع الحالي في الإشعارات (للتصحيح)</string>
+    <string name="show_navigation_notifications_description">عرض \"بعد X متر Y\" والشارع الحالي في الإشعارات (للتصحيح)</string>
     <string name="nav_notification_channel_name">الملاحة</string>
     <string name="nav_notification_channel_description">توجيهات الملاحة من Android Auto</string>
     <string name="nav_notification_title_format">بعد %1$d م — %2$s</string>
@@ -488,6 +492,27 @@
     <string name="sync_media_session_aa_metadata">المسار الجاري من AA في جلسة الوسائط</string>
     <string name="sync_media_session_aa_metadata_description">عرض عنوان المسار والفنان والمدة وغلاف الألبوم من الهاتف في جلسة الوسائط بالنظام وإشعار الوسائط</string>
     <string name="error_usb_permission_failed">خطأ في النظام: فشل طلب مربع حوار إذن USB.</string>
+
+    <!-- Custom loading screen -->
+    <string name="loading_screen">شاشة التحميل</string>
+    <string name="loading_screen_default">افتراضي</string>
+    <string name="loading_screen_custom">مخصص</string>
+    <string name="loading_screen_dialog_title">شاشة تحميل مخصصة</string>
+    <string name="loading_screen_select_file">اختر ملفًا</string>
+    <string name="loading_screen_remove">إزالة</string>
+    <string name="loading_screen_recommendation">الدقة الموصى بها: %1$dx%2$d</string>
+    <string name="loading_screen_supported_formats">المدعومة: صور (PNG، JPG، BMP، WEBP، GIF) \u2022 فيديو (MP4، MKV، WEBM، 3GP) \u2022 الحد الأقصى: 10 ميغابايت</string>
+    <string name="loading_screen_no_media">لم يتم تحديد وسائط مخصصة</string>
+    <string name="loading_screen_file_too_large">الملف كبير جدًا (الحد الأقصى 10 ميغابايت)</string>
+    <string name="loading_screen_unsupported_format">صيغة غير مدعومة. استخدم ملف صورة أو فيديو</string>
+    <string name="loading_screen_file_error">تعذر تحميل الملف المحدد</string>
+    <string name="loading_screen_show_text">إظهار نص \"جار تشغيل Android Auto\"</string>
+    <string name="loading_screen_tap_preview">انقر للمعاينة</string>
+    <string name="loading_screen_tap_to_close">انقر في أي مكان للإغلاق</string>
+    <string name="loading_screen_keep_aspect_ratio">الحفاظ على نسبة العرض إلى الارتفاع</string>
+    <string name="loading_screen_recommended_aspect_ratio">نسبة العرض إلى الارتفاع الموصى بها: %1$d:%2$d</string>
+    <string name="loading_screen_tap_fullscreen_hint">انقر على المعاينة لعرضها بملء الشاشة</string>
+    <string name="loading_screen_loop_video">تكرار الرسوم المتحركة القصيرة</string>
     <string name="microphone_settings">إعدادات الميكروفون</string>
     <string name="microphone_settings_description">تكوين مدخل الميكروفون ومعالجة الصوت.</string>
     <string name="mic_echo_canceler">إلغاء الصدى (AEC)</string>
@@ -496,7 +521,62 @@
     <string name="mic_noise_suppressor_description">يحاول تقليل ضوضاء الخلفية. قم بتعطيله إذا كان صوتك يبدو مكتوماً.</string>
     <string name="mic_auto_gain_control">التحكم التلقائي في الكسب (AGC)</string>
     <string name="mic_auto_gain_control_description">يضبط مستوى صوت الميكروفون تلقائياً. قم بتعطيله إذا كان مستوى الصوت غير مستقر.</string>
+    <string name="mic_feature_unsupported">هذه الميزة غير مدعومة على جهازك.</string>
     <string name="bt_permission_denied">تم رفض إذن البلوتوث. لا يمكن مسح الأجهزة.</string>
     <string name="wifi_autostart_title">بدء تشغيل WiFi تلقائياً</string>
     <string name="wifi_autostart_content">متصل بـ %s. اضغط لبدء أندرويد أوتو.</string>
+
+    <!-- New strings merged from 2.3.1 -->
+    <string name="use_native_ssl">استخدام SSL الأصلي</string>
+    <string name="use_native_ssl_description">استخدام مكتبة OpenSSL الأصلية (أسرع على الأجهزة القديمة). يتطلب إعادة التشغيل.</string>
+    <string name="bt_devices_selected">أجهزة محددة</string>
+    <string name="static_audio_focus">تركيز الصوت الثابت</string>
+    <string name="static_audio_focus_description">إجبار الهاتف على الاعتقاد بأن تركيز الصوت مستمر دائمًا، مما يمنع فقدان توجيه الصوت على وحدات الرأس العامة. يقوم أيضًا بخفض الصوت برمجيًا أثناء التوجيهات الصوتية للملاحة.</string>
+    <string name="bluetooth_adapter_label">محول البلوتوث</string>
+    <string name="bluetooth_adapter_description">اختر محول/وحدة تحكم البلوتوث لاستخدامها في المصافحة. مفيد للأنظمة التي تحتوي على منفذي بلوتوث.</string>
+    <string name="select_bt_adapter">حدد محول البلوتوث</string>
+    <!-- QR Code Generator -->
+    <string name="share_hotspot_qr_title">إعداد Wireless Helper</string>
+    <string name="share_hotspot_qr_desc">عرض رمز QR للاتصال التلقائي بالهاتف</string>
+    <string name="hotspot_qr_description">رمز QR لتكوين Wireless Helper</string>
+    <string name="scan_with_wireless_helper">امسح رمز QR هذا باستخدام ماسح QR في Wireless Helper على هاتفك.</string>
+    <string name="share_hotspot_qr_error">تعذر استرداد بيانات اعتماد نقطة اتصال Wi-Fi النشطة. يرجى التأكد من تشغيل نقطة الاتصال وتمكين الموقع.</string>
+
+    <!-- Brightness, quick settings, key back, backup, wireless helper QR -->
+    <string name="current_brightness_reading">السطوع الحالي: %d / 255</string>
+    <string name="exit_dialog_settings">إعدادات سريعة</string>
+    <string name="key_back">رجوع</string>
+    <string name="category_backup">النسخ الاحتياطي</string>
+    <string name="export_settings">تصدير الإعدادات</string>
+    <string name="export_settings_description">حفظ نسخة احتياطية من الإعدادات كملف JSON</string>
+    <string name="export_settings_app_folder">حفظ في مجلد نسخ التطبيق</string>
+    <string name="export_settings_downloads">حفظ في التنزيلات</string>
+    <string name="export_settings_choose_location">اختر موقع الحفظ</string>
+    <string name="settings_exported">تم تصدير الإعدادات</string>
+    <string name="settings_export_failed">فشل تصدير الإعدادات: %1$s</string>
+    <string name="settings_backup_saved_to">تم حفظ النسخة الاحتياطية في:\n%1$s</string>
+    <string name="share_settings_backup">مشاركة النسخة الاحتياطية</string>
+    <string name="import_settings">استيراد الإعدادات</string>
+    <string name="import_settings_description">استعادة الإعدادات من نسخة احتياطية لـ Headunit Revived</string>
+    <string name="import_settings_app_folder">استيراد من مجلد نسخ التطبيق</string>
+    <string name="import_settings_downloads">استيراد من التنزيلات</string>
+    <string name="import_settings_choose_file">اختر ملف النسخة الاحتياطية</string>
+    <string name="import_settings_discard_pending">استيراد نسخة احتياطية سيُلغي التغييرات غير المحفوظة. هل تريد المتابعة؟</string>
+    <string name="settings_imported">تم استيراد الإعدادات: %1$d مطبَّقة، %2$d تم تجاوزها</string>
+    <string name="settings_import_failed">فشل استيراد الإعدادات: %1$s</string>
+    <string name="no_settings_backups_title">لا توجد نسخ احتياطية</string>
+    <string name="no_settings_backups_message">لم يتم العثور على أي نسخ احتياطية لـ Headunit Revived في مجلد نسخ التطبيق. قم بتصدير نسخة احتياطية أولاً ثم استوردها من هنا.</string>
+    <string name="no_settings_backups_downloads_message">لم يتم العثور على أي نسخ احتياطية لـ Headunit Revived في التنزيلات. قم بتصدير نسخة احتياطية إلى التنزيلات أولاً ثم استوردها من هنا.</string>
+    <string name="no_file_picker_title">لا يوجد منتقي ملفات</string>
+    <string name="no_file_picker_message">هذا الجهاز لا يحتوي على منتقي ملفات متوافق. يمكنك استخدام التنزيلات أو مجلد نسخ التطبيق بدلاً من ذلك.</string>
+    <string name="storage_permission_denied_backup">تم رفض إذن التخزين. تعذر استخدام التنزيلات.</string>
+    <string name="reset_settings">استعادة الإعدادات الافتراضية</string>
+    <string name="reset_settings_description">يمسح كل الإعدادات والبيانات المؤقتة وتفضيلات الاتصال التلقائي. سيتم إعادة تشغيل التطبيق لتطبيق الإعدادات الافتراضية.</string>
+    <string name="reset_settings_confirm">هل أنت متأكد من إعادة تعيين كل الإعدادات إلى قيمها الافتراضية؟ سيؤدي ذلك إلى إعادة تشغيل التطبيق.</string>
+    <string name="reset_settings_confirm_message">سيؤدي هذا إلى إعادة تعيين كل الإعدادات إلى قيمها الافتراضية. لن يتم حذف النسخ الاحتياطية أو ملفات التطبيق. هل تريد المتابعة؟</string>
+    <string name="reset_settings_discard_pending">إعادة تعيين الإعدادات ستُلغي التغييرات غير المحفوظة. هل تريد المتابعة؟</string>
+    <string name="settings_reset">تمت إعادة تعيين الإعدادات</string>
+    <string name="settings_reset_failed">فشل إعادة تعيين الإعدادات: %1$s</string>
+    <string name="hotspot_ssid_hint">اسم نقطة الاتصال (SSID)</string>
+    <string name="hotspot_pass_hint">كلمة مرور نقطة الاتصال</string>
 </resources>

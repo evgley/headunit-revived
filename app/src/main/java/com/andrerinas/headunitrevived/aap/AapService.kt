@@ -67,7 +67,6 @@ import android.view.WindowManager
 import android.media.AudioManager
 import com.andrerinas.headunitrevived.utils.HotspotManager
 import com.andrerinas.headunitrevived.utils.VpnControl
-import com.andrerinas.headunitrevived.utils.SilentAudioPlayer
 import com.andrerinas.headunitrevived.connection.CarKeyReceiver
 import com.andrerinas.headunitrevived.connection.NativeAaHandshakeManager
 import com.andrerinas.headunitrevived.connection.NearbyManager
@@ -106,7 +105,6 @@ class AapService : Service(), UsbReceiver.Listener {
     private var nearbyManager: NearbyManager? = null
     private var wifiAutoStartReceiver: WifiAutoStartReceiver? = null
     private var carKeyReceiver: CarKeyReceiver? = null
-    private var silentAudioPlayer: SilentAudioPlayer? = null
     private var wirelessServer: WirelessServer? = null
     private var networkDiscovery: NetworkDiscovery? = null
     private var mediaSession: MediaSessionCompat? = null
@@ -143,29 +141,49 @@ class AapService : Service(), UsbReceiver.Listener {
                 }
             }
 
-            if (key == Settings.KEY_LOG_LEVEL || key == Settings.KEY_LOG_CAPTURE_ENABLED) {
-                serviceScope.launch(Dispatchers.Main) {
+            if (key == Settings.KEY_LOG_SOURCE || key == Settings.KEY_LOG_LEVEL || key == Settings.KEY_LOG_CAPTURE_ENABLED) {
+                serviceScope.launch(Dispatchers.IO) {
                     try {
-                        val newLogLevel = settings.exporterLogLevel
-                        val exporterCaptureEnabled = settings.exporterCaptureEnabled
-                        val isCapturing = LogExporter.isCapturing
-                        val currentLogLevel = LogExporter.currentLevel
-
-                        if (!exporterCaptureEnabled || newLogLevel == LogExporter.LogLevel.SILENT) {
-                            if (isCapturing) {
-                                LogExporter.stopCapture()
-                                AppLog.d("LogExporter: stopped (enabled=$exporterCaptureEnabled, level=${newLogLevel.name})")
-                            }
-                        } else if (!isCapturing || currentLogLevel != newLogLevel) {
-                            LogExporter.startCapture(this@AapService, newLogLevel)
-                            AppLog.d("LogExporter: started with level ${newLogLevel.name}")
-                        }
+                        syncLogBackendState()
                     } catch (e: Exception) {
                         AppLog.e("LogExporter: failed to sync state", e)
                     }
                 }
             }
+            
+            if (key == Settings.KEY_MEDIA_VOLUME_OFFSET || key == Settings.KEY_ASSISTANT_VOLUME_OFFSET || key == Settings.KEY_NAVIGATION_VOLUME_OFFSET) {
+                serviceScope.launch(Dispatchers.Main) {
+                    commManager.updateAudioGains()
+                }
+            }
         }
+
+    private fun syncLogBackendState() {
+        AppLog.init(settings, this@AapService)
+
+        if (settings.logSource == Settings.LogSource.APPLOG_FILE) {
+            if (LogExporter.isCapturing) {
+                LogExporter.stopCapture()
+                AppLog.d("LogExporter: stopped because logSource=APPLOG_FILE")
+            }
+            return
+        }
+
+        val newLogLevel = settings.exporterLogLevel
+        val exporterCaptureEnabled = settings.exporterCaptureEnabled
+        val isCapturing = LogExporter.isCapturing
+        val currentLogLevel = LogExporter.currentLevel
+
+        if (!exporterCaptureEnabled || newLogLevel == LogExporter.LogLevel.SILENT) {
+            if (isCapturing) {
+                LogExporter.stopCapture()
+                AppLog.d("LogExporter: stopped (enabled=$exporterCaptureEnabled, level=${newLogLevel.name})")
+            }
+        } else if (!isCapturing || currentLogLevel != newLogLevel) {
+            LogExporter.startCapture(this@AapService, newLogLevel)
+            AppLog.d("LogExporter: started with level ${newLogLevel.name}")
+        }
+    }
 
     /**
      * Set to `true` before calling [stopSelf] or entering [onDestroy] to suppress any
@@ -416,6 +434,19 @@ class AapService : Service(), UsbReceiver.Listener {
         }
     }
 
+    private val sensorRefreshReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            if (intent.action == ACTION_REFRESH_SENSORS) {
+                AppLog.i("AapService: Received request to refresh all sensors")
+                // Re-send current states
+                nightModeManager?.resendCurrentState()
+            } else if (intent.action == ACTION_RESTART_AUDIO) {
+                AppLog.i("AapService: Received request to restart audio")
+                commManager.restartAudio()
+            }
+        }
+    }
+
     // -------------------------------------------------------------------------
     // Wake detection for hibernate/quick boot head units
     // -------------------------------------------------------------------------
@@ -657,11 +688,8 @@ class AapService : Service(), UsbReceiver.Listener {
             prefs.registerOnSharedPreferenceChangeListener(settingsPreferenceListener)
         }
 
-        val exporterLevel = App.provide(this).settings.exporterLogLevel
-        val settings = App.provide(this).settings
-        if (settings.exporterCaptureEnabled && exporterLevel != LogExporter.LogLevel.SILENT) {
-            LogExporter.startCapture(this, exporterLevel)
-        }
+        AppLog.init(settings, this)
+        syncLogBackendState()
 
         startService(GpsLocationService.intent(this))
 
@@ -671,8 +699,8 @@ class AapService : Service(), UsbReceiver.Listener {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             try {
                 nearbyManager = NearbyManager(this, serviceScope) { socket ->
-                    val settings = App.provide(this).settings
-                    settings.saveLastConnection(Settings.CONNECTION_TYPE_NEARBY)
+                    val appSettings = App.provide(this).settings
+                    appSettings.saveLastConnection(Settings.CONNECTION_TYPE_NEARBY)
                     serviceScope.launch(Dispatchers.IO) {
                         commManager.connect(socket)
                     }
@@ -684,13 +712,14 @@ class AapService : Service(), UsbReceiver.Listener {
         
         initWifiModeWithOptionalWait()
         wifiDirectManager?.setCredentialsListener { ssid, psk, ip, bssid ->
-            val settings = App.provide(this).settings
-            if (settings.wifiConnectionMode == 3) {
+            val appSettings = App.provide(this).settings
+            if (appSettings.wifiConnectionMode == 3) {
                 AppLog.i("AapService: Received WiFi credentials from manager (SSID=$ssid, IP=$ip). Updating and Triggering Poke.")
                 nativeAaHandshakeManager?.updateWifiCredentials(ssid, psk, ip, bssid)
-                // [FIX] Only auto-poke if the user didn't explicitly exit.
-                // If they did, they must click the "WiFi" button manually to poke.
-                if (!userExitedAA) {
+                if (commManager.isConnected ||
+                    commManager.connectionState.value is CommManager.ConnectionState.Connecting) {
+                    AppLog.i("AapService: USB/other session already active. Skipping auto-poke to avoid pulling phone into wireless flow.")
+                } else if (!userExitedAA) {
                     nativeAaHandshakeManager?.triggerPoke()
                 } else {
                     AppLog.i("AapService: userExitedAA is true. Skipping auto-poke.")
@@ -702,7 +731,6 @@ class AapService : Service(), UsbReceiver.Listener {
 
 
         carKeyReceiver = CarKeyReceiver()
-        silentAudioPlayer = SilentAudioPlayer(this)
 
         checkAlreadyConnectedUsb()
         registerNetworkMonitor()
@@ -858,10 +886,7 @@ class AapService : Service(), UsbReceiver.Listener {
         updateNotification()
         acquireWifiLock()
 
-        // Start silent audio hack to keep media focus (helps with steering wheel buttons)
-        if (settings.enableAudioSink) {
-            silentAudioPlayer?.start()
-        }
+        // Silent audio hack removed to prevent mixing/resampling stuttering issues
 
         // Register the comprehensive steering wheel key receiver
         if (!isCarKeyReceiverRegistered) {
@@ -905,10 +930,51 @@ class AapService : Service(), UsbReceiver.Listener {
             AppLog.i("AapService: Skipping projection launch because PiP is active")
             return
         }
-        startActivity(AapProjectionActivity.intent(this).apply {
+
+        val intent = AapProjectionActivity.intent(this).apply {
             putExtra(AapProjectionActivity.EXTRA_FOCUS, true)
-            addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-        })
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+        }
+
+        val canOverlay = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && AndroidSettings.canDrawOverlays(this)
+        when (ActivityLaunchPolicy.chooseLaunchStrategy(Build.VERSION.SDK_INT, canOverlay)) {
+            ActivityLaunchPolicy.LaunchStrategy.DIRECT -> {
+                try { startActivity(intent) }
+                catch (e: Exception) { AppLog.e("Projection launch failed: ${e.message}") }
+            }
+            ActivityLaunchPolicy.LaunchStrategy.OVERLAY -> {
+                if (!launchViaOverlayTrampoline(intent)) {
+                    AppLog.w("Projection overlay trampoline failed, trying direct")
+                    try { startActivity(intent) }
+                    catch (e: Exception) { AppLog.e("Projection direct fallback failed: ${e.message}") }
+                }
+            }
+            ActivityLaunchPolicy.LaunchStrategy.NOTIFICATION -> launchProjectionViaNotification(intent)
+        }
+    }
+
+    private fun launchProjectionViaNotification(launchIntent: Intent) {
+        val piFlags = PendingIntent.FLAG_UPDATE_CURRENT or
+            (if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) PendingIntent.FLAG_IMMUTABLE else 0)
+        val fullScreenPi = PendingIntent.getActivity(this, PROJECTION_LAUNCH_NOTIFICATION_ID, launchIntent, piFlags)
+
+        val notification = NotificationCompat.Builder(this, App.bootStartChannel)
+            .setSmallIcon(R.drawable.ic_stat_aa)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setCategory(NotificationCompat.CATEGORY_ALARM)
+            .setContentTitle(getString(R.string.app_name))
+            .setContentText(getString(R.string.android_auto_starting))
+            .setFullScreenIntent(fullScreenPi, true)
+            .setContentIntent(fullScreenPi)
+            .setAutoCancel(true)
+            .build()
+
+        val nm = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        nm.notify(PROJECTION_LAUNCH_NOTIFICATION_ID, notification)
+        serviceScope.launch {
+            delay(5000)
+            nm.cancel(PROJECTION_LAUNCH_NOTIFICATION_ID)
+        }
     }
 
     private fun setupMediaSession() {
@@ -987,8 +1053,6 @@ class AapService : Service(), UsbReceiver.Listener {
         isSwitchingToAccessory.set(false)
         releaseWifiLock()
 
-        // Cleanup steering wheel and audio focus hacks
-        silentAudioPlayer?.stop()
         // Release any permanent audio focus we may have requested when connected
         releasePermanentAudioFocus()
         if (isCarKeyReceiverRegistered) {
@@ -1140,6 +1204,11 @@ class AapService : Service(), UsbReceiver.Listener {
         ContextCompat.registerReceiver(
             this, nightModeUpdateReceiver,
             IntentFilter(ACTION_REQUEST_NIGHT_MODE_UPDATE),
+            ContextCompat.RECEIVER_NOT_EXPORTED
+        )
+        ContextCompat.registerReceiver(
+            this, sensorRefreshReceiver,
+            IntentFilter(ACTION_REFRESH_SENSORS).apply { addAction(ACTION_RESTART_AUDIO) },
             ContextCompat.RECEIVER_NOT_EXPORTED
         )
         ContextCompat.registerReceiver(
@@ -1498,7 +1567,10 @@ class AapService : Service(), UsbReceiver.Listener {
         mediaSession = null
         commManager.destroy()
         nightModeManager?.stop()
-        try { unregisterReceiver(nightModeUpdateReceiver) } catch (_: Exception) {}
+        try {
+            unregisterReceiver(nightModeUpdateReceiver)
+            unregisterReceiver(sensorRefreshReceiver)
+        } catch (_: Exception) {}
         try { unregisterReceiver(usbReceiver) } catch (_: Exception) {}
         try { unregisterReceiver(mediaButtonReceiver) } catch (_: Exception) {}
         try { unregisterReceiver(wakeDetectReceiver) } catch (_: Exception) {}
@@ -1620,7 +1692,11 @@ class AapService : Service(), UsbReceiver.Listener {
             }
             ACTION_DISCONNECT            -> {
                 AppLog.i("Disconnect action received.")
-                if (commManager.isConnected) commManager.disconnect()
+                // disconnect() has its own early-return when already Disconnected,
+                // and unlike the previous isConnected guard it also covers the
+                // Connecting state, so the UI cancel paths work before handshake
+                // completes.
+                commManager.disconnect()
             }
             ACTION_CONNECT_SOCKET        -> {
                 // Caller already invoked commManager.connect(socket); the connectionState
@@ -1641,6 +1717,10 @@ class AapService : Service(), UsbReceiver.Listener {
     // -------------------------------------------------------------------------
 
     override fun onUsbAttach(device: UsbDevice) {
+        if (!UsbDeviceCompat.isAndroidDevice(device)) {
+            AppLog.i("Ignoring non-Android USB device attached in service (VID: ${device.vendorId}): ${device.deviceName}")
+            return
+        }
         userExitedAA = false
         if (UsbDeviceCompat.isInAccessoryMode(device)) {
             // Device already in AOA mode (re-enumerated after UsbAttachedActivity switched it).
@@ -1670,7 +1750,7 @@ class AapService : Service(), UsbReceiver.Listener {
         if (commManager.isConnectedToUsbDevice(device)) {
             // Cable physically removed — the USB connection is already dead, so skip the
             // ByeByeRequest send (which would block ~1 s trying to write to a gone device).
-            commManager.disconnect(sendByeBye = false)
+            commManager.disconnect(sendByeBye = false, isUserExit = false)
         }
     }
 
@@ -1678,7 +1758,7 @@ class AapService : Service(), UsbReceiver.Listener {
         AppLog.i("USB Accessory detached. This might be a transient state (e.g., 100% battery). Attempting to re-sync...")
         userExitedAA = false
         if (commManager.isConnected) {
-            commManager.disconnect(sendByeBye = false)
+            commManager.disconnect(sendByeBye = false, isUserExit = false)
         }
         
         // Wait a bit and check if the device is still there in normal mode
@@ -1690,6 +1770,10 @@ class AapService : Service(), UsbReceiver.Listener {
     }
 
     override fun onUsbPermission(granted: Boolean, connect: Boolean, device: UsbDevice) {
+        if (!UsbDeviceCompat.isAndroidDevice(device)) {
+            AppLog.i("Ignoring USB permission callback for non-Android device (VID: ${device.vendorId}): ${device.deviceName}")
+            return
+        }
         val deviceName = UsbDeviceCompat(device).uniqueName
         if (granted) {
             AppLog.i("USB permission granted for $deviceName")
@@ -1795,12 +1879,12 @@ class AapService : Service(), UsbReceiver.Listener {
             isSwitchingToAccessory.get()) return
 
         val usbManager = getSystemService(Context.USB_SERVICE) as UsbManager
-        val deviceList = usbManager.deviceList
+        val deviceList = usbManager.deviceList.values.filter { UsbDeviceCompat.isAndroidDevice(it) }
 
         // Check for devices already in accessory mode first.
         // After AOA switch the device re-enumerates and appears as a new USB device — we must
         // request permission for this new device before openDevice(), or SecurityException occurs.
-        for (device in deviceList.values) {
+        for (device in deviceList) {
             if (UsbDeviceCompat.isInAccessoryMode(device)) {
                 val deviceName = UsbDeviceCompat(device).uniqueName
                 AppLog.i("Found device already in accessory mode: $deviceName")
@@ -1823,7 +1907,7 @@ class AapService : Service(), UsbReceiver.Listener {
 
         // Last-session mode: reconnect to a known/allowed device
         if (lastSession) {
-            for (device in deviceList.values) {
+            for (device in deviceList) {
                 val deviceCompat = UsbDeviceCompat(device)
                 if (settings.isConnectingDevice(deviceCompat)) {
                     if (usbManager.hasPermission(device)) {
@@ -1853,7 +1937,7 @@ class AapService : Service(), UsbReceiver.Listener {
 
         // USB auto-start mode: attempt AOA switch for any single non-accessory device
         if (usbAutoStart) {
-            val nonAccessoryDevices = deviceList.values.filter { !UsbDeviceCompat.isInAccessoryMode(it) }
+            val nonAccessoryDevices = deviceList.filter { !UsbDeviceCompat.isInAccessoryMode(it) }
             if (nonAccessoryDevices.size == 1) {
                 performSingleUsbConnect(nonAccessoryDevices[0])
                 return
@@ -1866,7 +1950,7 @@ class AapService : Service(), UsbReceiver.Listener {
         // don't prevent auto-connect. Falls back to counting all devices when
         // no devices have been explicitly allowed (fresh install).
         if (singleUsb) {
-            val nonAccessoryDevices = deviceList.values.filter { !UsbDeviceCompat.isInAccessoryMode(it) }
+            val nonAccessoryDevices = deviceList.filter { !UsbDeviceCompat.isInAccessoryMode(it) }
             val allowed = settings.allowedDevices
             val candidates = if (allowed.isNotEmpty()) {
                 nonAccessoryDevices.filter { allowed.contains(UsbDeviceCompat(it).uniqueName) }
@@ -1878,6 +1962,18 @@ class AapService : Service(), UsbReceiver.Listener {
             }
             if (candidates.size == 1) {
                 performSingleUsbConnect(candidates[0])
+                return
+            }
+        }
+
+        // Fallback: if force=true and we have a single Google VID device in normal mode,
+        // switch it to accessory mode. This handles cases where UsbAttachedActivity didn't fire.
+        if (force) {
+            val nonAccessoryDevices = deviceList.filter { !UsbDeviceCompat.isInAccessoryMode(it) }
+            val googleDevices = nonAccessoryDevices.filter { it.vendorId == 0x18D1 }
+            if (googleDevices.size == 1) {
+                AppLog.i("Fallback: force=true and found single Google normal-mode device ${UsbDeviceCompat(googleDevices[0]).uniqueName}. Switching to accessory mode.")
+                performSingleUsbConnect(googleDevices[0])
             }
         }
     }
@@ -2152,6 +2248,14 @@ class AapService : Service(), UsbReceiver.Listener {
     }
 
     private fun launchViaOverlayTrampoline(): Boolean {
+        val launchIntent = Intent(this, MainActivity::class.java).apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            putExtra(MainActivity.EXTRA_LAUNCH_SOURCE, "Boot auto-start")
+        }
+        return launchViaOverlayTrampoline(launchIntent)
+    }
+
+    private fun launchViaOverlayTrampoline(launchIntent: Intent): Boolean {
         val wm = getSystemService(WINDOW_SERVICE) as WindowManager
         val overlayType = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
@@ -2169,15 +2273,11 @@ class AapService : Service(), UsbReceiver.Listener {
         val view = View(this)
         return try {
             wm.addView(view, params)
-            val launchIntent = Intent(this, MainActivity::class.java).apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                putExtra(MainActivity.EXTRA_LAUNCH_SOURCE, "Boot auto-start")
-            }
             startActivity(launchIntent)
-            AppLog.i("Boot auto-start: startActivity called from overlay context")
+            AppLog.i("Overlay trampoline: startActivity succeeded")
             true
         } catch (e: Exception) {
-            AppLog.e("Boot auto-start: overlay trampoline failed: ${e.message}")
+            AppLog.e("Overlay trampoline failed: ${e.message}")
             false
         } finally {
             try { wm.removeView(view) } catch (_: Exception) {}
@@ -2463,6 +2563,7 @@ class AapService : Service(), UsbReceiver.Listener {
         val scanningState = MutableStateFlow(false)
 
         private const val BOOT_START_NOTIFICATION_ID = 42
+        private const val PROJECTION_LAUNCH_NOTIFICATION_ID = 43
 
         // Service action strings used with startService() and sendBroadcast()
         const val ACTION_START_SELF_MODE           = "com.andrerinas.headunitrevived.ACTION_START_SELF_MODE"
@@ -2472,11 +2573,13 @@ class AapService : Service(), UsbReceiver.Listener {
         const val ACTION_NATIVE_AA_POKE            = "com.andrerinas.headunitrevived.ACTION_NATIVE_AA_POKE"
         const val ACTION_NEARBY_CONNECT             = "com.andrerinas.headunitrevived.ACTION_NEARBY_CONNECT"
         const val ACTION_CHECK_USB                 = "com.andrerinas.headunitrevived.ACTION_CHECK_USB"
-        const val ACTION_STOP_SERVICE              = "com.andrerinas.headunitrevived.ACTION_STOP_SERVICE"
+        const val ACTION_STOP_SERVICE              = "com.andrerinas.headunitrevived.aap.action.STOP_SERVICE"
         const val ACTION_DISCONNECT                = "com.andrerinas.headunitrevived.ACTION_DISCONNECT"
-        const val ACTION_REQUEST_NIGHT_MODE_UPDATE = "com.andrerinas.headunitrevived.ACTION_REQUEST_NIGHT_MODE_UPDATE"
+        const val ACTION_REQUEST_NIGHT_MODE_UPDATE = "com.andrerinas.headunitrevived.aap.action.REQUEST_NIGHT_MODE_UPDATE"
         const val ACTION_NIGHT_MODE_CHANGED      = "com.andrerinas.headunitrevived.ACTION_NIGHT_MODE_CHANGED"
         const val ACTION_ORIENTATION_CHANGED     = "com.andrerinas.headunitrevived.ACTION_ORIENTATION_CHANGED"
+        const val ACTION_REFRESH_SENSORS         = "com.andrerinas.headunitrevived.aap.action.REFRESH_SENSORS"
+        const val ACTION_RESTART_AUDIO           = "com.andrerinas.headunitrevived.aap.action.RESTART_AUDIO"
         /**
          * Sent after the caller has already invoked [CommManager.connect(socket)].
          * The [observeConnectionState] flow observer handles the result — [onStartCommand]
