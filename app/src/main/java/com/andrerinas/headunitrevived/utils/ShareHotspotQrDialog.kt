@@ -67,8 +67,8 @@ object ShareHotspotQrDialog {
 
     private fun getSystemHotspotConfig(context: Context): Pair<String, String>? {
         try {
-            val wm = context.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
-            
+            val wm = LynkCoWiFi.getWifiManager(context) as WifiManager
+
             // 1. Try modern getSoftApConfiguration (API 30+)
             if (Build.VERSION.SDK_INT >= 30) {
                 try {
@@ -87,7 +87,7 @@ object ShareHotspotQrDialog {
                     AppLog.d("ShareHotspotQrDialog: Failed to get soft ap config via reflection: ${e.message}")
                 }
             }
-            
+
             // 2. Try legacy getWifiApConfiguration (API < 30)
             try {
                 val getWifiApConfigurationMethod = wm.javaClass.getMethod("getWifiApConfiguration")
@@ -97,7 +97,7 @@ object ShareHotspotQrDialog {
                     val preSharedKeyField = wifiConfig.javaClass.getField("preSharedKey")
                     val ssid = ssidField.get(wifiConfig) as? String ?: ""
                     val pass = preSharedKeyField.get(wifiConfig) as? String ?: ""
-                    
+
                     // Clean SSID quotes if present
                     val cleanSsid = if (ssid.startsWith("\"") && ssid.endsWith("\"")) {
                         ssid.substring(1, ssid.length - 1)
