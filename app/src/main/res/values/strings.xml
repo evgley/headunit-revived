@@ -204,6 +204,11 @@
     <string name="right_hand_drive_description">Position UI for right-side driving</string>
     <string name="wireless_connection_settings">Wireless Connection</string>
     <string name="category_graphic">Graphic</string>
+
+    <string name="static_bssid_title">Static BSSID</string>
+    <string name="static_bssid_enter_value">Enter BSSID (XX:XX:XX:XX:XX:XX)</string>
+    <string name="static_bssid_desc">Manually set the BSSID for the wireless handshake if auto-detection is blocked by system permissions</string>
+
     <string name="custom_insets">Custom Insets (Margins)</string>
     <string name="inset_top">Top</string>
     <string name="inset_bottom">Bottom</string>
@@ -556,6 +561,7 @@
     <string name="loading_screen_tap_preview">Tap to preview fullscreen</string>
     <string name="loading_screen_tap_to_close">Tap anywhere to close</string>
     <string name="loading_screen_keep_aspect_ratio">Keep aspect ratio</string>
+    <string name="loading_screen_scale">Scale</string>
     <string name="loading_screen_recommended_aspect_ratio">Recommended aspect ratio: %1$d:%2$d</string>
     <string name="loading_screen_tap_fullscreen_hint">Tap the preview to see it fullscreen</string>
     <string name="loading_screen_loop_video">Loop short animations</string>
@@ -568,8 +574,6 @@
     <string name="wifi_autostart_content">Connected to %s. Tap to start Android Auto.</string>
 
     <!-- New strings merged from 2.3.1 -->
-    <string name="use_native_ssl">Use Native SSL</string>
-    <string name="use_native_ssl_description">Use native OpenSSL library (faster on older devices). Requires restart.</string>
     <string name="key_back">Back</string>
     <string name="bt_devices_selected">devices selected</string>
     <string name="bluetooth_adapter_label">Bluetooth Adapter</string>
@@ -583,4 +587,6 @@
     <string name="hotspot_qr_description">Wireless Helper Configuration QR Code</string>
     <string name="scan_with_wireless_helper">Scan this QR Code using the QR Scanner in Wireless Helper on your phone.</string>
     <string name="share_hotspot_qr_error">Could not retrieve active Wi-Fi hotspot credentials. Please ensure your hotspot is turned on and Location is enabled.</string>
+    <string name="use_libusb">Use Native USB Driver</string>
+    <string name="use_libusb_description">Use libusb for communication. Disable to use Android\'s standard USB API.</string>
 </resources>

@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.Switch
+import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -24,6 +25,7 @@ import com.andrerinas.headunitrevived.R
 import com.andrerinas.headunitrevived.utils.AppLog
 import com.andrerinas.headunitrevived.utils.PickMediaContract
 import com.andrerinas.headunitrevived.utils.Settings
+import com.andrerinas.headunitrevived.utils.SettingsBackupManager
 import com.bumptech.glide.Glide
 import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.coroutines.Dispatchers
@@ -48,6 +50,8 @@ class LoadingScreenFragment : Fragment() {
     private var fullscreenOverlay: FrameLayout? = null
     private var fullscreenImage: ImageView? = null
     private var fullscreenStatusText: View? = null
+    private var sliderScale: SeekBar? = null
+    private var txtScaleValue: TextView? = null
 
     // Video playback managed programmatically (not in XML to avoid inflation issues)
     private var previewMediaPlayer: MediaPlayer? = null
@@ -63,6 +67,16 @@ class LoadingScreenFragment : Fragment() {
 
     private val filePicker = registerForActivityResult(PickMediaContract()) { uri ->
         uri?.let { handleFileSelected(it) }
+    }
+
+    private val storagePermissionLauncher = registerForActivityResult(
+        androidx.activity.result.contract.ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        if (granted) {
+            showFallbackMediaPicker(useDownloads = true)
+        } else {
+            Toast.makeText(context, R.string.storage_permission_denied_backup, Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -130,6 +144,30 @@ class LoadingScreenFragment : Fragment() {
         toggleLoopContainer = view.findViewById(R.id.toggle_loop_container)
         toggleLoopVideo = view.findViewById(R.id.toggle_loop_video)
 
+        sliderScale = view.findViewById<SeekBar>(R.id.slider_scale)
+        txtScaleValue = view.findViewById<TextView>(R.id.txt_scale_value)
+
+        val currentScale = settings.loadingScreenScalePercent
+        txtScaleValue?.text = "$currentScale%"
+        sliderScale?.progress = currentScale
+        sliderScale?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                var actualProgress = progress
+                if (actualProgress < 10) {
+                    actualProgress = 10
+                    if (fromUser) {
+                        sliderScale?.progress = 10
+                        return
+                    }
+                }
+                settings.loadingScreenScalePercent = actualProgress
+                txtScaleValue?.text = "$actualProgress%"
+                applyPreviewScale()
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+        })
+
         // Toggles
         toggleShowText?.isChecked = settings.loadingScreenShowText
         toggleShowText?.setOnCheckedChangeListener { _, isChecked ->
@@ -157,6 +195,9 @@ class LoadingScreenFragment : Fragment() {
         view.findViewById<View>(R.id.btn_select_file)?.setOnClickListener {
             try {
                 filePicker.launch(Unit)
+            } catch (e: android.content.ActivityNotFoundException) {
+                AppLog.e("File picker failed (no activity): ${e.message}")
+                showNoFilePickerDialog()
             } catch (e: Exception) {
                 AppLog.e("File picker failed: ${e.message}")
                 Toast.makeText(context, R.string.loading_screen_file_error, Toast.LENGTH_SHORT).show()
@@ -263,15 +304,17 @@ class LoadingScreenFragment : Fragment() {
                     // added SurfaceView, mirroring setupFullscreenVideo. Glide
                     // would otherwise only show a static first-frame thumbnail.
                     previewImage?.visibility = View.GONE
-                    setupPreviewVideo(file, keepRatio)
+                    setupPreviewVideo(file)
                 }
                 "gif" -> {
                     previewImage?.visibility = View.VISIBLE
                     previewImage?.let { Glide.with(this).asGif().load(file).into(it) }
+                    applyPreviewScale()
                 }
                 else -> {
                     previewImage?.visibility = View.VISIBLE
                     previewImage?.let { Glide.with(this).load(file).into(it) }
+                    applyPreviewScale()
                     // Ken Burns matches the live loading screen for static
                     // images, so the user actually sees the slow zoom they're
                     // configuring rather than a frozen frame.
@@ -300,7 +343,7 @@ class LoadingScreenFragment : Fragment() {
         }
     }
 
-    private fun setupPreviewVideo(file: File, keepRatio: Boolean) {
+    private fun setupPreviewVideo(file: File) {
         val area = previewArea ?: return
         try {
             val surfaceView = SurfaceView(requireContext())
@@ -333,28 +376,7 @@ class LoadingScreenFragment : Fragment() {
             })
 
             mp.setOnPreparedListener { player ->
-                if (keepRatio) {
-                    try {
-                        val vw = player.videoWidth
-                        val vh = player.videoHeight
-                        val cw = area.width
-                        val ch = area.height
-                        if (vw > 0 && vh > 0 && cw > 0 && ch > 0) {
-                            val videoRatio = vw.toFloat() / vh
-                            val containerRatio = cw.toFloat() / ch
-                            val lp = surfaceView.layoutParams as FrameLayout.LayoutParams
-                            if (videoRatio > containerRatio) {
-                                lp.width = cw
-                                lp.height = (cw / videoRatio).toInt()
-                            } else {
-                                lp.height = ch
-                                lp.width = (ch * videoRatio).toInt()
-                            }
-                            lp.gravity = android.view.Gravity.CENTER
-                            surfaceView.layoutParams = lp
-                        }
-                    } catch (_: Exception) {}
-                }
+                applyPreviewScale()
                 try { player.start() } catch (_: Exception) {}
             }
             mp.setOnErrorListener { _, _, _ ->
@@ -395,7 +417,23 @@ class LoadingScreenFragment : Fragment() {
         val ctx = context ?: return
         val contentResolver = ctx.contentResolver
 
-        val mimeType = contentResolver.getType(uri)
+        var mimeType = contentResolver.getType(uri)
+        if (mimeType == null) {
+            val path = uri.path
+            if (path != null) {
+                val ext = File(path).extension.lowercase()
+                mimeType = android.webkit.MimeTypeMap.getSingleton().getMimeTypeFromExtension(ext)
+                if (mimeType == null) {
+                    mimeType = when (ext) {
+                        "png", "jpg", "jpeg", "webp", "bmp" -> "image/$ext"
+                        "gif" -> "image/gif"
+                        "mp4", "mkv", "webm", "3gp" -> "video/$ext"
+                        else -> null
+                    }
+                }
+            }
+        }
+
         val mediaType = when {
             mimeType == null -> null
             mimeType == "image/gif" -> "gif"
@@ -417,8 +455,8 @@ class LoadingScreenFragment : Fragment() {
         }
 
         val dir = File(ctx.filesDir, "loading_media")
-        val destFile = File(dir, "loading_screen.$ext")
-
+        dir.listFiles()?.forEach { it.delete() }
+        val destFile = File(dir, "loading_screen_${System.currentTimeMillis()}.$ext")
         // The media file can be up to 10 MB and may live on slow storage (SD
         // card, cloud-backed document provider). Run the size probe, the
         // previous-media cleanup and the actual copy on Dispatchers.IO so the
@@ -427,17 +465,30 @@ class LoadingScreenFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             val outcome = withContext(Dispatchers.IO) {
                 try {
-                    val size = try {
-                        contentResolver.openFileDescriptor(uri, "r")?.use { it.statSize } ?: -1L
-                    } catch (_: Exception) { -1L }
+                    val size = if (uri.scheme == "file") {
+                        uri.path?.let { File(it).length() } ?: -1L
+                    } else {
+                        try {
+                            contentResolver.openFileDescriptor(uri, "r")?.use { it.statSize } ?: -1L
+                        } catch (_: Exception) { -1L }
+                    }
                     if (size > 10L * 1024 * 1024) return@withContext CopyOutcome.TOO_LARGE
 
                     if (!dir.exists()) dir.mkdirs()
                     dir.listFiles()?.forEach { it.delete() }
 
-                    contentResolver.openInputStream(uri)?.use { input ->
-                        destFile.outputStream().use { output -> input.copyTo(output) }
-                    } ?: return@withContext CopyOutcome.FAILED
+                    if (uri.scheme == "file") {
+                        val srcFile = uri.path?.let { File(it) }
+                        if (srcFile != null && srcFile.exists()) {
+                            srcFile.inputStream().use { input ->
+                                destFile.outputStream().use { output -> input.copyTo(output) }
+                            }
+                        } else return@withContext CopyOutcome.FAILED
+                    } else {
+                        contentResolver.openInputStream(uri)?.use { input ->
+                            destFile.outputStream().use { output -> input.copyTo(output) }
+                        } ?: return@withContext CopyOutcome.FAILED
+                    }
                     CopyOutcome.OK
                 } catch (e: Exception) {
                     AppLog.e("Copy failed: ${e.message}")
@@ -462,6 +513,100 @@ class LoadingScreenFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun showNoFilePickerDialog() {
+        val builder = com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext(), R.style.DarkAlertDialog)
+            .setTitle(R.string.no_file_picker_title)
+            .setMessage(R.string.no_file_picker_message)
+            .setNegativeButton(R.string.cancel, null)
+
+        val hasDownloadsAccess = SettingsBackupManager.canAccessDownloadsDirectory()
+        if (hasDownloadsAccess) {
+            builder.setPositiveButton(R.string.import_settings_downloads) { _, _ ->
+                runWithStoragePermission {
+                    showFallbackMediaPicker(useDownloads = true)
+                }
+            }
+            builder.setNeutralButton(R.string.import_settings_app_folder) { _, _ ->
+                showFallbackMediaPicker(useDownloads = false)
+            }
+        } else {
+            builder.setPositiveButton(R.string.import_settings_app_folder) { _, _ ->
+                showFallbackMediaPicker(useDownloads = false)
+            }
+        }
+        builder.show()
+    }
+
+    private fun runWithStoragePermission(onGranted: () -> Unit) {
+        val permission = android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+        if (androidx.core.content.ContextCompat.checkSelfPermission(requireContext(), permission) == android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            onGranted()
+        } else {
+            storagePermissionLauncher.launch(permission)
+        }
+    }
+
+    private fun showFallbackMediaPicker(useDownloads: Boolean) {
+        val ctx = context ?: return
+        val dir = if (useDownloads) {
+            android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DOWNLOADS)
+        } else {
+            val appDir = File(ctx.getExternalFilesDir(null), "loading_media")
+            if (!appDir.exists()) appDir.mkdirs()
+            appDir
+        }
+
+        val mediaFiles = try {
+            dir.listFiles()?.filter { file ->
+                file.isFile && (
+                    file.name.endsWith(".png", ignoreCase = true) ||
+                    file.name.endsWith(".jpg", ignoreCase = true) ||
+                    file.name.endsWith(".jpeg", ignoreCase = true) ||
+                    file.name.endsWith(".webp", ignoreCase = true) ||
+                    file.name.endsWith(".gif", ignoreCase = true) ||
+                    file.name.endsWith(".mp4", ignoreCase = true) ||
+                    file.name.endsWith(".mkv", ignoreCase = true) ||
+                    file.name.endsWith(".webm", ignoreCase = true) ||
+                    file.name.endsWith(".3gp", ignoreCase = true)
+                )
+            }?.sortedByDescending { it.lastModified() } ?: emptyList()
+        } catch (e: Exception) {
+            emptyList()
+        }
+
+        if (mediaFiles.isEmpty()) {
+            val isGerman = java.util.Locale.getDefault().language == "de"
+            val message = if (useDownloads) {
+                if (isGerman) {
+                    "Keine Bilder oder Videos im Downloads-Ordner gefunden:\n${dir.absolutePath}\n\nBitte kopiere deine Datei in dieses Verzeichnis."
+                } else {
+                    "No images or videos found in Downloads folder:\n${dir.absolutePath}\n\nPlease copy your file to this directory."
+                }
+            } else {
+                if (isGerman) {
+                    "Keine Mediendateien im App-Ordner gefunden:\n${dir.absolutePath}\n\nBitte kopiere dein Startbild/Video in dieses Verzeichnis."
+                } else {
+                    "No media files found in app folder:\n${dir.absolutePath}\n\nPlease copy your startup image/video to this directory."
+                }
+            }
+            com.google.android.material.dialog.MaterialAlertDialogBuilder(ctx, R.style.DarkAlertDialog)
+                .setTitle("No files found")
+                .setMessage(message)
+                .setPositiveButton(android.R.string.ok, null)
+                .show()
+            return
+        }
+
+        val fileNames = mediaFiles.map { it.name }.toTypedArray()
+        com.google.android.material.dialog.MaterialAlertDialogBuilder(ctx, R.style.DarkAlertDialog)
+            .setTitle(if (useDownloads) R.string.import_settings_downloads else R.string.import_settings_app_folder)
+            .setItems(fileNames) { _, which ->
+                val selectedFile = mediaFiles[which]
+                handleFileSelected(Uri.fromFile(selectedFile))
+            }
+            .show()
     }
 
     private enum class CopyOutcome { OK, TOO_LARGE, FAILED }
@@ -524,6 +669,7 @@ class LoadingScreenFragment : Fragment() {
                     }
                     fullscreenImage?.tag = anim
                 }
+                fullscreenOverlay?.post { applyFullscreenScale() }
             }
         } catch (e: Exception) {
             AppLog.e("Fullscreen preview failed: ${e.message}")
@@ -562,30 +708,7 @@ class LoadingScreenFragment : Fragment() {
             })
 
             mp.setOnPreparedListener { player ->
-                // Resize surface to respect aspect ratio if needed
-                if (settings.loadingScreenKeepAspectRatio) {
-                    try {
-                        val vw = player.videoWidth
-                        val vh = player.videoHeight
-                        if (vw > 0 && vh > 0) {
-                            val container = fullscreenOverlay ?: return@setOnPreparedListener
-                            val cw = container.width
-                            val ch = container.height
-                            val videoRatio = vw.toFloat() / vh
-                            val containerRatio = cw.toFloat() / ch
-                            val lp = surfaceView.layoutParams as FrameLayout.LayoutParams
-                            if (videoRatio > containerRatio) {
-                                lp.width = cw
-                                lp.height = (cw / videoRatio).toInt()
-                            } else {
-                                lp.height = ch
-                                lp.width = (ch * videoRatio).toInt()
-                            }
-                            lp.gravity = android.view.Gravity.CENTER
-                            surfaceView.layoutParams = lp
-                        }
-                    } catch (_: Exception) {}
-                }
+                applyFullscreenScale()
                 player.start()
             }
             mp.setOnErrorListener { _, _, _ ->
@@ -614,6 +737,113 @@ class LoadingScreenFragment : Fragment() {
             fullscreenImage?.scaleY = 1f
             try { fullscreenImage?.let { Glide.with(this@LoadingScreenFragment).clear(it) } } catch (_: Exception) {}
         }?.start()
+    }
+
+    private fun applyPreviewScale() {
+        val area = previewArea ?: return
+        val scale = settings.loadingScreenScalePercent / 100f
+        val cw = area.width
+        val ch = area.height
+        if (cw <= 0 || ch <= 0) return
+
+        previewImage?.let { iv ->
+            val lp = iv.layoutParams as? FrameLayout.LayoutParams
+            if (lp != null) {
+                lp.width = (cw * scale).toInt()
+                lp.height = (ch * scale).toInt()
+                lp.gravity = android.view.Gravity.CENTER
+                iv.layoutParams = lp
+            }
+        }
+
+        previewSurfaceView?.let { sv ->
+            val lp = sv.layoutParams as? FrameLayout.LayoutParams
+            if (lp != null) {
+                val mp = previewMediaPlayer
+                val keepRatio = settings.loadingScreenKeepAspectRatio
+                if (keepRatio && mp != null) {
+                    try {
+                        val vw = mp.videoWidth
+                        val vh = mp.videoHeight
+                        if (vw > 0 && vh > 0) {
+                            val videoRatio = vw.toFloat() / vh
+                            val containerRatio = cw.toFloat() / ch
+                            val baseWidth: Int
+                            val baseHeight: Int
+                            if (videoRatio > containerRatio) {
+                                baseWidth = cw
+                                baseHeight = (cw / videoRatio).toInt()
+                            } else {
+                                baseHeight = ch
+                                baseWidth = (ch * videoRatio).toInt()
+                            }
+                            lp.width = (baseWidth * scale).toInt()
+                            lp.height = (baseHeight * scale).toInt()
+                        }
+                    } catch (_: Exception) {}
+                } else {
+                    lp.width = (cw * scale).toInt()
+                    lp.height = (ch * scale).toInt()
+                }
+                lp.gravity = android.view.Gravity.CENTER
+                sv.layoutParams = lp
+            }
+        }
+    }
+
+    private fun applyFullscreenScale() {
+        val overlay = fullscreenOverlay ?: return
+        val scale = settings.loadingScreenScalePercent / 100f
+        val cw = overlay.width
+        val ch = overlay.height
+        if (cw <= 0 || ch <= 0) return
+
+        fullscreenImage?.let { iv ->
+            val lp = iv.layoutParams as? FrameLayout.LayoutParams
+            if (lp != null) {
+                lp.width = (cw * scale).toInt()
+                lp.height = (ch * scale).toInt()
+                lp.gravity = android.view.Gravity.CENTER
+                iv.layoutParams = lp
+            }
+        }
+
+        for (i in 0 until overlay.childCount) {
+            val child = overlay.getChildAt(i)
+            if (child is SurfaceView) {
+                val lp = child.layoutParams as? FrameLayout.LayoutParams
+                if (lp != null) {
+                    val mp = fullscreenMediaPlayer
+                    val keepRatio = settings.loadingScreenKeepAspectRatio
+                    if (keepRatio && mp != null) {
+                        try {
+                            val vw = mp.videoWidth
+                            val vh = mp.videoHeight
+                            if (vw > 0 && vh > 0) {
+                                val videoRatio = vw.toFloat() / vh
+                                val containerRatio = cw.toFloat() / ch
+                                val baseWidth: Int
+                                val baseHeight: Int
+                                if (videoRatio > containerRatio) {
+                                    baseWidth = cw
+                                    baseHeight = (cw / videoRatio).toInt()
+                                } else {
+                                    baseHeight = ch
+                                    baseWidth = (ch * videoRatio).toInt()
+                                }
+                                lp.width = (baseWidth * scale).toInt()
+                                lp.height = (baseHeight * scale).toInt()
+                            }
+                        } catch (_: Exception) {}
+                    } else {
+                        lp.width = (cw * scale).toInt()
+                        lp.height = (ch * scale).toInt()
+                    }
+                    lp.gravity = android.view.Gravity.CENTER
+                    child.layoutParams = lp
+                }
+            }
+        }
     }
 
     private fun releaseMediaPlayers() {

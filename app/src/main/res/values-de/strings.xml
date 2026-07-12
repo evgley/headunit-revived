@@ -202,6 +202,7 @@
     <string name="right_hand_drive_description">Benutzeroberfläche für Rechtsverkehr ausrichten</string>
     <string name="wireless_connection_settings">Kabellose Verbindung</string>
     <string name="category_graphic">Grafik</string>
+
     <string name="custom_insets">Benutzerdefinierte Ränder</string>
     <string name="inset_top">Oben</string>
     <string name="inset_bottom">Unten</string>
@@ -526,6 +527,7 @@
     <string name="loading_screen_tap_preview">Tippen für Vorschau</string>
     <string name="loading_screen_tap_to_close">Tippen Sie irgendwo, um zu schließen</string>
     <string name="loading_screen_keep_aspect_ratio">Seitenverhältnis beibehalten</string>
+    <string name="loading_screen_scale">Skalierung</string>
     <string name="loading_screen_recommended_aspect_ratio">Empfohlenes Seitenverhältnis: %1$d:%2$d</string>
     <string name="loading_screen_tap_fullscreen_hint">Tippen Sie auf die Vorschau, um sie im Vollbild zu sehen</string>
     <string name="loading_screen_loop_video">Kurze Animationen wiederholen</string>
@@ -534,8 +536,6 @@
     <string name="wifi_autostart_content">Verbunden mit %s. Tippen, um Android Auto zu starten.</string>
 
     <!-- New strings merged from 2.3.1 -->
-    <string name="use_native_ssl">Native SSL nutzen</string>
-    <string name="use_native_ssl_description">Nutze native OpenSSL Bibliothek (schneller auf alten Geräten). Neustart erforderlich.</string>
     <string name="bt_devices_selected">Geräte ausgewählt</string>
     <string name="bluetooth_adapter_label">Bluetooth-Adapter</string>
     <string name="bluetooth_adapter_description">Wähle den Bluetooth-Adapter/Controller für den Handshake aus. Nützlich bei Systemen mit zwei Bluetooth-Modulen.</string>
@@ -584,4 +584,6 @@
     <string name="reset_settings_discard_pending">Beim Zurücksetzen werden ungespeicherte Änderungen verworfen. Fortfahren?</string>
     <string name="settings_reset">Einstellungen auf Standardwerte zurückgesetzt</string>
     <string name="settings_reset_failed">Zurücksetzen der Einstellungen fehlgeschlagen: %1$s</string>
+    <string name="use_libusb">Nativen USB-Treiber nutzen</string>
+    <string name="use_libusb_description">Nutzt libusb für die USB-Verbindung. Deaktivieren, um die Android-Standard-USB-API zu nutzen.</string>
 </resources>

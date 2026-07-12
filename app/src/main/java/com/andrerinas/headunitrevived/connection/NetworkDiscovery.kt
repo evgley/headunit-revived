@@ -57,6 +57,14 @@ class NetworkDiscovery(private val context: Context, private val listener: Liste
         }
     }
 
+    fun interruptScan() {
+        if (scanJob == null || scanJob?.isActive == false) return
+
+        scanJob?.cancel(null)
+
+        AppLog.i("NetworkDiscovery: Scan interrupted")
+    }
+
     private suspend fun scanGateways(): Boolean {
         var foundAny = false
         try {
@@ -154,7 +162,7 @@ class NetworkDiscovery(private val context: Context, private val listener: Liste
             }
             return true
         }
-        
+
         // Check Port 5277 (Standard Headunit)
         val serverSocket = checkPort(ip, 5277, timeout = 300)
         if (serverSocket != null) {
@@ -166,7 +174,7 @@ class NetworkDiscovery(private val context: Context, private val listener: Liste
             }
             return true
         }
-        
+
         return false
     }
 
@@ -186,7 +194,7 @@ class NetworkDiscovery(private val context: Context, private val listener: Liste
             while (interfaces.hasMoreElements()) {
                 val iface = interfaces.nextElement()
                 if (iface.isLoopback || !iface.isUp) continue
-                
+
                 val addresses = iface.inetAddresses
                 while (addresses.hasMoreElements()) {
                     val addr = addresses.nextElement()
@@ -211,7 +219,7 @@ class NetworkDiscovery(private val context: Context, private val listener: Liste
              val interfaces = Collections.list(NetworkInterface.getNetworkInterfaces())
              for (networkInterface in interfaces) {
                  if (!networkInterface.isUp || networkInterface.isLoopback) continue
-                 
+
                  for (addr in Collections.list(networkInterface.inetAddresses)) {
                      if (addr is Inet4Address) {
                          val host = addr.hostAddress

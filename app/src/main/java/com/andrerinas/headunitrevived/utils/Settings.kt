@@ -191,6 +191,12 @@ class Settings(private val context: Context) {
             prefs.edit().putInt("dpi-pixel-density", value).apply()
         }
 
+    var staticBSSID: String?
+        get() = try { prefs.getString("static-bssid", "0") } catch (e: Exception) { "0" } // Default 0 for Auto
+        set(value) {
+            prefs.edit().putString("static-bssid", value).apply()
+        }
+
     var fakeSpeed: Boolean
         get() = prefs.getBoolean("fake_speed", true)
         set(value) {
@@ -392,7 +398,7 @@ class Settings(private val context: Context) {
     var audioLatencyMultiplier: Int
         get() = prefs.getInt("audio-latency-multiplier", 8)
         set(value) { prefs.edit().putInt("audio-latency-multiplier", value).apply() }
-    
+
     var audioQueueCapacity: Int
         get() = prefs.getInt("audio-queue-capacity", 0)
         set(value) { prefs.edit().putInt("audio-queue-capacity", value).apply() }
@@ -440,7 +446,7 @@ class Settings(private val context: Context) {
     var autoStartWifiSsid: String
         get() = prefs.getString("auto-start-wifi-ssid", "")!!
         set(value) { prefs.edit().putString("auto-start-wifi-ssid", value).apply() }
-        
+
     var listenForUsbDevices: Boolean
         get() = prefs.getBoolean("listen-for-usb-devices", true)
         set(value) { prefs.edit().putBoolean("listen-for-usb-devices", value).apply() }
@@ -537,6 +543,10 @@ class Settings(private val context: Context) {
     var loadingScreenLoopVideo: Boolean
         get() = prefs.getBoolean("loading-screen-loop-video", true)
         set(value) { prefs.edit().putBoolean("loading-screen-loop-video", value).apply() }
+
+    var loadingScreenScalePercent: Int
+        get() = prefs.getInt("loading-screen-scale-percent", 100)
+        set(value) { prefs.edit().putInt("loading-screen-scale-percent", value).apply() }
 
     @SuppressLint("ApplySharedPref")
     fun commit() {
@@ -785,7 +795,7 @@ class Settings(private val context: Context) {
                     .apply()
             }
         }
-        
+
         fun isListenForUsbDevicesEnabled(context: Context): Boolean {
             val prefs = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 val deviceContext = context.createDeviceProtectedStorageContext()
@@ -1010,5 +1020,9 @@ class Settings(private val context: Context) {
     var hotspotPassword: String
         get() = prefs.getString("hotspot-password", "")!!
         set(value) = prefs.edit().putString("hotspot-password", value).apply()
+
+    var useLibusb: Boolean
+        get() = prefs.getBoolean("use-libusb", false)
+        set(value) = prefs.edit().putBoolean("use-libusb", value).apply()
 
 }

@@ -126,8 +126,6 @@
     <string name="stop_log_capture_description">Đang ghi… chạm để dừng</string>
     <string name="export_logs">Xuất log</string>
     <string name="export_logs_description">Lưu log để gỡ lỗi</string>
-    <string name="use_native_ssl">Dùng SSL gốc (Native)</string>
-    <string name="use_native_ssl_description">Dùng thư viện OpenSSL gốc (nhanh hơn trên máy cũ). Cần khởi động lại.</string>
     <string name="not_set">Chưa đặt</string>
     <string name="keymap_description">Đổi gán phím cho Headunit</string>
 
@@ -572,6 +570,7 @@
     <string name="loading_screen_tap_to_close">Chạm vào bất kỳ đâu để đóng</string>
     <string name="loading_screen_show_text">Hiển thị dòng chữ \"Android Auto đang khởi động\"</string>
     <string name="loading_screen_keep_aspect_ratio">Giữ tỷ lệ khung hình</string>
+    <string name="loading_screen_scale">Tỷ lệ</string>
     <string name="loading_screen_loop_video">Lặp lại các hoạt ảnh ngắn</string>
     <string name="loading_screen_recommendation">Độ phân giải đề xuất: %1$dx%2$d</string>
     <string name="loading_screen_recommended_aspect_ratio">Tỷ lệ khung hình đề xuất: %1$d:%2$d</string>
@@ -585,4 +584,7 @@
     <string name="log_source_logcat">Logcat</string>
     <string name="log_source_applog_file">Trực tiếp vào tệp</string>
     <string name="start_log_capture_in_applog_file">Tin nhắn nhật ký chỉ được ghi vào tệp khi quá trình thu thập đang hoạt động</string>
+    <!-- Native USB Driver -->
+    <string name="use_libusb">Sử dụng trình điều khiển USB gốc</string>
+    <string name="use_libusb_description">Sử dụng libusb để giao tiếp. Tắt để sử dụng API USB tiêu chuẩn của Android.</string>
 </resources>

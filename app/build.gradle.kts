@@ -63,6 +63,13 @@ android {
         buildConfig = true
     }
 
+    externalNativeBuild {
+        cmake {
+            path("src/main/cpp/CMakeLists.txt")
+            version = "3.22.1"
+        }
+    }
+
     val copyRootAssets = tasks.register<Copy>("copyRootAssets") {
         from("${project.rootDir}/CHANGELOG.md", "${project.rootDir}/LICENSE")
         into("${project.layout.buildDirectory.get().asFile}/generated/assets/root")
@@ -107,8 +114,8 @@ android {
         applicationId = "com.andrerinas.headunitrevived"
         minSdk = 16
         targetSdk = 36
-        versionCode = 76
-        versionName = "3.0.0"
+        versionCode = 80
+        versionName = "3.1.0"
         setProperty("archivesBaseName", "${applicationId}_${versionName}")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true

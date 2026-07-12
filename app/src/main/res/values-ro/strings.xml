@@ -511,6 +511,7 @@
     <string name="loading_screen_tap_preview">Atingeți pentru previzualizare</string>
     <string name="loading_screen_tap_to_close">Atingeți oriunde pentru a închide</string>
     <string name="loading_screen_keep_aspect_ratio">Păstrează raportul de aspect</string>
+    <string name="loading_screen_scale">Scalare</string>
     <string name="loading_screen_recommended_aspect_ratio">Raport de aspect recomandat: %1$d:%2$d</string>
     <string name="loading_screen_tap_fullscreen_hint">Atingeți previzualizarea pentru a o vedea pe tot ecranul</string>
     <string name="loading_screen_loop_video">Repetă animațiile scurte în buclă</string>
@@ -528,8 +529,6 @@
     <string name="wifi_autostart_content">Conectat la %s. Atingeți pentru a porni Android Auto.</string>
 
     <!-- New strings merged from 2.3.1 -->
-    <string name="use_native_ssl">Folosește SSL Nativ</string>
-    <string name="use_native_ssl_description">Folosește librăria nativă OpenSSL (mai rapidă pe dispozitive vechi). Necesită repornire.</string>
     <string name="bt_devices_selected">dispozitive selectate</string>
     <string name="static_audio_focus">Focus audio static</string>
     <string name="static_audio_focus_description">Forțează telefonul să creadă că focusul audio este menținut mereu, prevenind pierderile de rutare audio pe unitățile auto generice. De asemenea, efectuează atenuarea volumului prin software (ducking) în timpul instrucțiunilor vocale de navigare.</string>
@@ -580,4 +579,7 @@
     <string name="settings_reset_failed">Resetarea setărilor a eșuat: %1$s</string>
     <string name="hotspot_ssid_hint">SSID hotspot</string>
     <string name="hotspot_pass_hint">Parola hotspot</string>
+    <!-- Native USB Driver -->
+    <string name="use_libusb">Utilizați driverul USB nativ</string>
+    <string name="use_libusb_description">Utilizează libusb pentru comunicare. Dezactivați pentru a utiliza API-ul USB standard Android.</string>
 </resources>

@@ -10,6 +10,8 @@ import android.widget.*
 import android.view.View
 import android.view.ViewGroup
 import android.view.LayoutInflater
+import android.view.ViewTreeObserver
+import androidx.constraintlayout.widget.ConstraintLayout
 import android.net.VpnService
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.activity.result.contract.ActivityResultContracts
@@ -101,6 +103,12 @@ class HomeFragment : Fragment() {
         wifi_text_view = view.findViewById(R.id.wifi_text)
         exitButton = view.findViewById(R.id.exit_button)
         self_mode_text = view.findViewById(R.id.self_mode_text)
+
+        // Portrait layout: cap grid width so square buttons never overflow
+        // into the WiFi-pill or Exit-button areas on compact/square devices.
+        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            constrainPortraitGridWidth(view)
+        }
 
         setupListeners()
         updateProjectionButtonText()
@@ -228,17 +236,21 @@ class HomeFragment : Fragment() {
 
         return when (connectionType) {
             Settings.CONNECTION_TYPE_WIFI -> {
-                val ip = appSettings.lastConnectionIp
-                if (ip.isNotEmpty()) {
-                    AppLog.i("Auto-connect: Attempting WiFi connection to $ip")
-                    Toast.makeText(requireContext(), getString(R.string.auto_connecting_to, ip), Toast.LENGTH_SHORT).show()
-                    val ctx = requireContext()
-                    lifecycleScope.launch(Dispatchers.IO) { App.provide(ctx).commManager.connect(ip, 5277) }
-                    ContextCompat.startForegroundService(ctx, Intent(ctx, AapService::class.java).apply {
-                        action = AapService.ACTION_CONNECT_SOCKET
-                    })
-                    true
-                } else false
+                if (appSettings.wifiConnectionMode == 1) {
+                    val ip = appSettings.lastConnectionIp
+                    if (ip.isNotEmpty()) {
+                        AppLog.i("Auto-connect: Attempting WiFi connection to $ip")
+                        Toast.makeText(ctx, getString(R.string.auto_connecting_to, ip), Toast.LENGTH_SHORT).show()
+                        lifecycleScope.launch(Dispatchers.IO) { App.provide(ctx).commManager.connect(ip, 5277) }
+                        ContextCompat.startForegroundService(ctx, Intent(ctx, AapService::class.java).apply {
+                            action = AapService.ACTION_CONNECT_SOCKET
+                        })
+                        true
+                    } else false
+                } else {
+                    AppLog.i("Auto-connect: Last session was WiFi, but connection mode is not Headunit Server. Skipping active connect.")
+                    false
+                }
             }
             Settings.CONNECTION_TYPE_USB -> {
                 val lastUsbDevice = appSettings.lastConnectionUsbDevice
@@ -395,8 +407,9 @@ class HomeFragment : Fragment() {
                 } else {
                     if (usbManager.hasPermission(device.wrappedDevice)) {
                         val usbMode = UsbAccessoryMode(usbManager)
+                        val useLibusb = App.provide(requireContext()).settings.useLibusb
                         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-                            val success = usbMode.connectAndSwitch(device.wrappedDevice)
+                            val success = usbMode.connectAndSwitch(device.wrappedDevice, useLibusb)
                             withContext(Dispatchers.Main) {
                                 context?.let { ctx ->
                                     if (success) {
@@ -515,6 +528,62 @@ class HomeFragment : Fragment() {
             }
             true
         }
+    }
+
+    /**
+     * Portrait-only: after the first layout pass we know the exact pixel
+     * dimensions of the screen and the reserved areas (WiFi-pill spacer at
+     * the top, Exit button at the bottom).  We calculate the largest square
+     * button that fits in a 2-row grid and constrain the grid's max-width
+     * accordingly.  This prevents overflow on square / wide-portrait tablets
+     * while allowing full-width buttons on tall phones.
+     *
+     * Formula:
+     *   availableH  = containerH − topSpacerH − exitButtonH
+     *   maxBtnSize  = min(containerW / 2, availableH / 2) − cell-padding
+     *   maxGridW    = maxBtnSize * 2 + cell-padding * 4   (2 cols, padding each side)
+     */
+    private fun constrainPortraitGridWidth(rootView: View) {
+        val gridLayout = rootView.findViewById<android.widget.LinearLayout>(R.id.main_buttons_layout)
+            ?: return
+        // Capture density before the callback — accessing `resources` inside onGlobalLayout
+        // is unsafe if the fragment has been detached by the time the layout pass fires.
+        val density = resources.displayMetrics.density
+        gridLayout.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                gridLayout.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                if (!isAdded) return
+
+                val container = gridLayout.parent as? View ?: return
+                val containerW = container.width
+                val containerH = container.height
+                if (containerW == 0 || containerH == 0) return
+
+                // Reserved vertical space: 64 dp top-spacer + ~56 dp exit button (margin incl.)
+                val reservedPx = (64 + 56) * density
+                // Extra per-row overhead: label (~20 sp≈20dp) + marginTop (6 dp) + cell padding top+bottom (24 dp)
+                val rowOverheadPx = 50 * density
+
+                val availableH = containerH - reservedPx
+                // Max button edge that fits in one row without labels overflowing
+                val maxBtnFromH = ((availableH / 2f) - rowOverheadPx).toInt()
+                val maxBtnFromW = containerW / 2
+                val maxBtn = minOf(maxBtnFromH, maxBtnFromW)
+
+                if (maxBtn <= 0) return
+
+                // Grid max-width = 2 buttons + 4 × cell-horizontal-padding (12 dp each side)
+                val cellPadPx = (12 * 2 * 2 * density).toInt() // 2 cols × 2 sides × 12 dp
+                val maxGridW = maxBtn * 2 + cellPadPx
+
+                // Only shrink, never grow beyond what the existing constraints allow
+                if (maxGridW < containerW) {
+                    val params = gridLayout.layoutParams as? ConstraintLayout.LayoutParams ?: return
+                    params.matchConstraintMaxWidth = maxGridW
+                    gridLayout.layoutParams = params
+                }
+            }
+        })
     }
 
     private fun updateProjectionButtonText() {

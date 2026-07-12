@@ -496,6 +496,26 @@ class MainActivity : BaseActivity() {
         }
 
         val keepRatio = settings.loadingScreenKeepAspectRatio
+        val scalePercent = settings.loadingScreenScalePercent
+        val scale = scalePercent / 100f
+
+        val ov = overlay
+        val img = customImage
+        if (ov != null && img != null) {
+            ov.post {
+                val cw = ov.width
+                val ch = ov.height
+                if (cw > 0 && ch > 0) {
+                    val lp = img.layoutParams as? FrameLayout.LayoutParams
+                    if (lp != null) {
+                        lp.width = (cw * scale).toInt()
+                        lp.height = (ch * scale).toInt()
+                        lp.gravity = android.view.Gravity.CENTER
+                        img.layoutParams = lp
+                    }
+                }
+            }
+        }
         customImage?.scaleType = if (keepRatio) ImageView.ScaleType.FIT_CENTER else ImageView.ScaleType.FIT_XY
 
         try {
@@ -535,31 +555,38 @@ class MainActivity : BaseActivity() {
                         mp.isLooping = settings.loadingScreenLoopVideo
                         mp.setVolume(0f, 0f)
 
-                        if (keepRatio) {
-                            try {
-                                val vw = mp.videoWidth
-                                val vh = mp.videoHeight
-                                if (vw > 0 && vh > 0 && overlay != null) {
-                                    val cw = overlay.width
-                                    val ch = overlay.height
-                                    if (cw > 0 && ch > 0) {
+                        try {
+                            val vw = mp.videoWidth
+                            val vh = mp.videoHeight
+                            if (overlay != null) {
+                                val cw = overlay.width
+                                val ch = overlay.height
+                                if (cw > 0 && ch > 0) {
+                                    val lp = customVideo.layoutParams as FrameLayout.LayoutParams
+                                    if (keepRatio && vw > 0 && vh > 0) {
                                         val videoRatio = vw.toFloat() / vh
                                         val containerRatio = cw.toFloat() / ch
-                                        val lp = customVideo.layoutParams as FrameLayout.LayoutParams
+                                        val baseWidth: Int
+                                        val baseHeight: Int
                                         if (videoRatio > containerRatio) {
-                                            lp.width = cw
-                                            lp.height = (cw / videoRatio).toInt()
+                                            baseWidth = cw
+                                            baseHeight = (cw / videoRatio).toInt()
                                         } else {
-                                            lp.height = ch
-                                            lp.width = (ch * videoRatio).toInt()
+                                            baseHeight = ch
+                                            baseWidth = (ch * videoRatio).toInt()
                                         }
-                                        lp.gravity = android.view.Gravity.CENTER
-                                        customVideo.layoutParams = lp
+                                        lp.width = (baseWidth * scale).toInt()
+                                        lp.height = (baseHeight * scale).toInt()
+                                    } else {
+                                        lp.width = (cw * scale).toInt()
+                                        lp.height = (ch * scale).toInt()
                                     }
+                                    lp.gravity = android.view.Gravity.CENTER
+                                    customVideo.layoutParams = lp
                                 }
-                            } catch (e: Exception) {
-                                AppLog.w("Auto-connect overlay: could not resize video: ${e.message}")
                             }
+                        } catch (e: Exception) {
+                            AppLog.w("Auto-connect overlay: could not resize video: ${e.message}")
                         }
                     }
                     customVideo?.setOnErrorListener { _, _, _ ->

@@ -47,6 +47,7 @@ import com.andrerinas.headunitrevived.connection.UsbDeviceCompat
 import com.andrerinas.headunitrevived.connection.UsbReceiver
 import com.andrerinas.headunitrevived.location.GpsLocationService
 import com.andrerinas.headunitrevived.utils.AppLog
+import com.andrerinas.headunitrevived.utils.HeadUnitScreenConfig
 import com.andrerinas.headunitrevived.utils.LocaleHelper
 import com.andrerinas.headunitrevived.utils.LogExporter
 import com.andrerinas.headunitrevived.utils.NightModeManager
@@ -150,7 +151,7 @@ class AapService : Service(), UsbReceiver.Listener {
                     }
                 }
             }
-            
+
             if (key == Settings.KEY_MEDIA_VOLUME_OFFSET || key == Settings.KEY_ASSISTANT_VOLUME_OFFSET || key == Settings.KEY_NAVIGATION_VOLUME_OFFSET) {
                 serviceScope.launch(Dispatchers.Main) {
                     commManager.updateAudioGains()
@@ -659,17 +660,23 @@ class AapService : Service(), UsbReceiver.Listener {
         super.onCreate()
         AppLog.i("AapService creating...")
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            startForeground(1, createNotification(),
-                ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE or ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK)
-        } else {
-            startForeground(1, createNotification())
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                startForeground(1, createNotification(),
+                    ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE or ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK)
+            } else {
+                startForeground(1, createNotification())
+            }
+        } catch (e: Exception) {
+            AppLog.e("ForegroundServiceStartNotAllowedException/Exception caught in onCreate: ${e.message}", e)
+            stopSelf()
+            return
         }
         setupCarMode()
         setupNightMode()
         observeConnectionState()
         registerReceivers()
-        
+
         // Handle immediate WiFi auto-start check (e.g. if already connected on boot/wake)
         WifiAutoStartReceiver.checkAndStart(this)
 
@@ -695,7 +702,7 @@ class AapService : Service(), UsbReceiver.Listener {
 
         nativeAaHandshakeManager = NativeAaHandshakeManager(this, serviceScope)
         wifiDirectManager = WifiDirectManager(this)
-        
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             try {
                 nearbyManager = NearbyManager(this, serviceScope) { socket ->
@@ -709,7 +716,7 @@ class AapService : Service(), UsbReceiver.Listener {
                 AppLog.e("AapService: Failed to init NearbyManager: ${e.message}")
             }
         }
-        
+
         initWifiModeWithOptionalWait()
         wifiDirectManager?.setCredentialsListener { ssid, psk, ip, bssid ->
             val appSettings = App.provide(this).settings
@@ -997,7 +1004,7 @@ class AapService : Service(), UsbReceiver.Listener {
                             commManager.sendKey(keyEvent.keyCode, false)
                             return true
                         }
-                        
+
                         // Consume ACTION_UP to prevent fallback
                         if (keyEvent.action == android.view.KeyEvent.ACTION_UP) {
                             return true
@@ -1082,7 +1089,7 @@ class AapService : Service(), UsbReceiver.Listener {
         updateMediaSessionState(false)
         serviceScope.launch(Dispatchers.IO) {
             nearbyManager?.stop() // Disconnect Nearby tunnel
-            
+
             val settings = App.provide(this@AapService).settings
             if (settings.wifiConnectionMode == 3) {
                 if (state.isUserExit) {
@@ -1226,7 +1233,7 @@ class AapService : Service(), UsbReceiver.Listener {
             ContextCompat.RECEIVER_EXPORTED
         )
         AppLog.i("Registered runtime MEDIA_BUTTON receiver")
-        
+
         // WiFi Auto-start: Dynamic registration for reliability on Android 8+
         wifiAutoStartReceiver = WifiAutoStartReceiver()
         ContextCompat.registerReceiver(
@@ -1279,6 +1286,15 @@ class AapService : Service(), UsbReceiver.Listener {
         val callback = object : ConnectivityManager.NetworkCallback() {
             override fun onAvailable(network: Network) {
                 AppLog.i("NetworkMonitor: Network available: $network")
+
+                // force start scan, now that we are connected
+                if (networkDiscovery != null) {
+                    serviceScope.launch {
+                        delay(500)
+                        networkDiscovery?.interruptScan()
+                        networkDiscovery?.startScan()
+                    }
+                }
             }
             override fun onLost(network: Network) {
                 AppLog.w("NetworkMonitor: Network lost: $network")
@@ -1317,7 +1333,7 @@ class AapService : Service(), UsbReceiver.Listener {
     private fun initWifiModeWithOptionalWait() {
         val settings = App.provide(this).settings
 
-        if (settings.wifiConnectionMode != 2 || !settings.waitForWifiBeforeWifiDirect) {
+        if (settings.wifiConnectionMode != 2 || settings.helperConnectionStrategy != 1 || !settings.waitForWifiBeforeWifiDirect) {
             initWifiMode()
             return
         }
@@ -1437,7 +1453,7 @@ class AapService : Service(), UsbReceiver.Listener {
                     }
                     3, 4 -> { /* Host/Passive - just wait for connection on WirelessServer port */ }
                 }
-                
+
                 // Hotspot logic for Helper mode if enabled
                 if (settings.autoEnableHotspot) {
                     Thread {
@@ -1452,12 +1468,12 @@ class AapService : Service(), UsbReceiver.Listener {
                 // Start WiFi Direct as a "quiet host" (P2P Group for phone to join)
                 // We let WifiDirectManager handle the WiFi state (enabling if needed)
                 wifiDirectManager?.startNativeAaQuietHost()
-                
+
                 // Start the official Bluetooth handshake servers
                 nativeAaHandshakeManager?.start()
             }
         }
-        
+
         activeWifiMode = mode
         activeHelperStrategy = strategy
     }
@@ -1590,11 +1606,17 @@ class AapService : Service(), UsbReceiver.Listener {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            startForeground(1, createNotification(),
-                ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE or ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK)
-        } else {
-            startForeground(1, createNotification())
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                startForeground(1, createNotification(),
+                    ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE or ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK)
+            } else {
+                startForeground(1, createNotification())
+            }
+        } catch (e: Exception) {
+            AppLog.e("ForegroundServiceStartNotAllowedException/Exception caught in onStartCommand: ${e.message}", e)
+            stopSelf()
+            return START_NOT_STICKY
         }
 
         // Handle stop before re-posting the notification to avoid a flash
@@ -1639,7 +1661,7 @@ class AapService : Service(), UsbReceiver.Listener {
                 val settings = App.provide(this).settings
                 val mode = settings.wifiConnectionMode
                 val strategy = settings.helperConnectionStrategy
-                
+
                 // [FIX] Reset exit flags on manual scan start
                 userExitedAA = false
                 userExitCooldownUntil = 0L
@@ -1668,7 +1690,7 @@ class AapService : Service(), UsbReceiver.Listener {
                     // [FIX] Reset exit flags so the subsequent connection is accepted
                     userExitedAA = false
                     userExitCooldownUntil = 0L
-                    
+
                     val settings = App.provide(this).settings
                     if (activeWifiMode != 3 || settings.wifiConnectionMode != 3) {
                         AppLog.i("AapService: Initializing Native AA mode before poke...")
@@ -1676,10 +1698,10 @@ class AapService : Service(), UsbReceiver.Listener {
                     } else {
                         AppLog.d("AapService: Already in Native AA mode, skipping re-init.")
                         // Just ensure servers are running if they were stopped for some reason
-                        startWirelessServer() 
+                        startWirelessServer()
                         nativeAaHandshakeManager?.start()
                     }
-                    
+
                     nativeAaHandshakeManager?.manualPoke(mac)
                 }
             }
@@ -1760,7 +1782,7 @@ class AapService : Service(), UsbReceiver.Listener {
         if (commManager.isConnected) {
             commManager.disconnect(sendByeBye = false, isUserExit = false)
         }
-        
+
         // Wait a bit and check if the device is still there in normal mode
         serviceScope.launch {
             delay(1500) // Give the phone/system time to settle its USB state
@@ -1789,10 +1811,11 @@ class AapService : Service(), UsbReceiver.Listener {
             } else {
                 isSwitchingToAccessory.set(true)
                 val usbManager = getSystemService(Context.USB_SERVICE) as UsbManager
+                val settings = App.provide(this).settings
                 val usbMode = UsbAccessoryMode(usbManager)
                 serviceScope.launch(Dispatchers.IO) {
                     try {
-                        if (usbMode.connectAndSwitch(device)) {
+                        if (usbMode.connectAndSwitch(device, settings.useLibusb)) {
                             AppLog.i("Successfully requested switch to accessory mode for $deviceName")
                         } else {
                             AppLog.w("USB permission granted but connectAndSwitch failed for $deviceName")
@@ -1840,11 +1863,12 @@ class AapService : Service(), UsbReceiver.Listener {
         if (accessoryHandshakeFailures > MAX_STALE_ACCESSORY_RETRIES) {
             AppLog.i("Stale accessory detected: forcing re-enumeration via AOA descriptors for $deviceName")
             accessoryHandshakeFailures = 0
+            val settings = App.provide(this).settings
             val usbMode = UsbAccessoryMode(usbManager)
             isSwitchingToAccessory.set(true)
             serviceScope.launch(Dispatchers.IO) {
                 try {
-                    if (usbMode.connectAndSwitch(accessoryDevice)) {
+                    if (usbMode.connectAndSwitch(accessoryDevice, settings.useLibusb)) {
                         AppLog.i("AOA re-enumeration requested for stale device $deviceName")
                     } else {
                         AppLog.w("AOA re-enumeration failed for $deviceName")
@@ -1916,7 +1940,7 @@ class AapService : Service(), UsbReceiver.Listener {
                         val usbMode = UsbAccessoryMode(usbManager)
                         serviceScope.launch(Dispatchers.IO) {
                             try {
-                                if (usbMode.connectAndSwitch(device)) {
+                                if (usbMode.connectAndSwitch(device, settings.useLibusb)) {
                                     AppLog.i("Successfully requested switch to accessory mode for ${deviceCompat.uniqueName}")
                                 } else {
                                     AppLog.w("connectAndSwitch failed for ${deviceCompat.uniqueName}")
@@ -1987,7 +2011,7 @@ class AapService : Service(), UsbReceiver.Listener {
             val usbMode = UsbAccessoryMode(usbManager)
             serviceScope.launch(Dispatchers.IO) {
                 try {
-                    if (usbMode.connectAndSwitch(device)) {
+                    if (usbMode.connectAndSwitch(device, settings.useLibusb)) {
                         AppLog.i("Successfully requested switch to accessory mode for single USB device. Waiting for re-enumeration...")
                     } else {
                         AppLog.w("Single USB auto-connect: connectAndSwitch failed for $deviceName")
@@ -2472,7 +2496,7 @@ class AapService : Service(), UsbReceiver.Listener {
                                 }
                             } else if (android.os.SystemClock.elapsedRealtime() < userExitCooldownUntil) {
                                 // [FIX] User just exited AA — reject the instant reconnection.
-                                AppLog.w("WirelessServer: Rejecting connection from ${clientSocket.inetAddress} — user exit cooldown active (${userExitCooldownUntil - System.currentTimeMillis()}ms remaining)")
+                                AppLog.w("WirelessServer: Rejecting connection from ${clientSocket.inetAddress} — user exit cooldown active (${userExitCooldownUntil - android.os.SystemClock.elapsedRealtime()}ms remaining)")
                                 withContext(Dispatchers.IO) {
                                     try { clientSocket.close() } catch (e: Exception) {}
                                 }

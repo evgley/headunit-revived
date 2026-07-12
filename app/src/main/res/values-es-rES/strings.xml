@@ -510,6 +510,7 @@
     <string name="loading_screen_tap_preview">Toca para vista previa</string>
     <string name="loading_screen_tap_to_close">Toca en cualquier lugar para cerrar</string>
     <string name="loading_screen_keep_aspect_ratio">Mantener relación de aspecto</string>
+    <string name="loading_screen_scale">Escala</string>
     <string name="loading_screen_recommended_aspect_ratio">Relación de aspecto recomendada: %1$d:%2$d</string>
     <string name="loading_screen_tap_fullscreen_hint">Toca la vista previa para verla en pantalla completa</string>
     <string name="loading_screen_loop_video">Repetir animaciones cortas en bucle</string>
@@ -527,8 +528,6 @@
     <string name="wifi_autostart_content">Conectado a %s. Pulsa para iniciar Android Auto.</string>
 
     <!-- New strings merged from 2.3.1 -->
-    <string name="use_native_ssl">Usar SSL nativo</string>
-    <string name="use_native_ssl_description">Usar biblioteca OpenSSL nativa (más rápido). Requiere reinicio.</string>
     <string name="bt_devices_selected">dispositivos seleccionados</string>
     <string name="static_audio_focus">Enfoque de audio estático</string>
     <string name="static_audio_focus_description">Fuerza al móvil a creer que el enfoque de audio se mantiene siempre, evitando pérdidas de enrutamiento de audio en unidades principales genéricas. También realiza atenuación de volumen por software durante las indicaciones de voz de navegación.</string>
@@ -587,4 +586,7 @@
     <!-- Wireless Helper hotspot QR -->
     <string name="hotspot_ssid_hint">SSID del punto de acceso</string>
     <string name="hotspot_pass_hint">Contraseña del punto de acceso</string>
+    <!-- Native USB Driver -->
+    <string name="use_libusb">Usar controlador USB nativo</string>
+    <string name="use_libusb_description">Usa libusb para la comunicación. Desactívalo para usar la API USB estándar de Android.</string>
 </resources>

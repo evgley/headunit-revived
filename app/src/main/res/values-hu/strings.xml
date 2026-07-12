@@ -509,6 +509,7 @@
     <string name="loading_screen_tap_preview">Érintse meg az előnézethez</string>
     <string name="loading_screen_tap_to_close">Érintse meg bárhol a bezáráshoz</string>
     <string name="loading_screen_keep_aspect_ratio">Képarány megőrzése</string>
+    <string name="loading_screen_scale">Méretezés</string>
     <string name="loading_screen_recommended_aspect_ratio">Ajánlott képarány: %1$d:%2$d</string>
     <string name="loading_screen_tap_fullscreen_hint">Érintse meg az előnézetet a teljes képernyős megjelenítéshez</string>
     <string name="loading_screen_loop_video">Rövid animációk ismétlése</string>
@@ -526,8 +527,6 @@
     <string name="wifi_autostart_content">Csatlakozva a következőhöz: %s. Koppintson az Android Auto indításához.</string>
 
     <!-- New strings merged from 2.3.1 -->
-    <string name="use_native_ssl">Natív SSL használata</string>
-    <string name="use_native_ssl_description">Natív OpenSSL könyvtár használata (régebbi eszközökön gyorsabb).</string>
     <string name="bt_devices_selected">kiválasztott eszköz</string>
     <string name="static_audio_focus">Statikus audió fókusz</string>
     <string name="static_audio_focus_description">Arra kényszeríti a telefont, hogy azt higgye, az audió fókusz mindig aktív, megakadályozva az audió útvonalválasztási hibákat az univerzális fejegységeken. Szoftveres hangerő-csökkentést (ducking) is végez a navigációs hangutasítások alatt.</string>
@@ -578,4 +577,7 @@
     <string name="hotspot_qr_description">Wireless Helper konfigurációs QR-kód</string>
     <string name="scan_with_wireless_helper">Szkenneld be ezt a QR-kódot a telefonodon lévő Wireless Helper QR-szkennerével.</string>
     <string name="share_hotspot_qr_error">Nem sikerült lekérni az aktív Wi-Fi hotspot adatait. Győződj meg róla, hogy a hotspot be van kapcsolva, és a helyszolgáltatás engedélyezett.</string>
+    <!-- Native USB Driver -->
+    <string name="use_libusb">Natív USB-illesztőprogram használata</string>
+    <string name="use_libusb_description">Libusb használata a kommunikációhoz. Kapcsolja ki az Android szabványos USB API-jának használatához.</string>
 </resources>

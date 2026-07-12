@@ -1,4 +1,17 @@
 # Changelog
+### v.3.1.0
+- Added libusb as alternative to the native usb stack for better compatibility with some devices
+- Fixed Layout in Portrait Mode in nearly square devices
+- Added Scale Slider for loading screen media
+
+### v.3.0.1
+- Fixed: App Exit on Disconnect
+- Enhanced: USB Workflow. This will hopefully eliminate some random usb disconnects
+- Fixed keyboard input on Android < 6 Devices
+- Enhanced WiFi Direct-Mode
+- Enhanced File Selector for some devices
+- Fixed some fatal errors, showing in play console
+
 ### v.3.0.0
 - Added: Custom loading screen (image/GIF/video), thanks to @andrecuellar
 - Added: Settings-Reset Button, if you mess up something in the settings, you can now reset them to default

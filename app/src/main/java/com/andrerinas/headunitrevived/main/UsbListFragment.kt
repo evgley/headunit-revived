@@ -148,7 +148,11 @@ class UsbListFragment : Fragment() {
             }
             lastClickTime = SystemClock.elapsedRealtime()
 
-            val device = deviceList.get(v.tag as Int)
+            val position = v.tag as? Int ?: return
+            if (position < 0 || position >= deviceList.size) {
+                return
+            }
+            val device = deviceList[position]
             if (v.id == android.R.id.button1) {
                 if (allowedDevices.contains(device.uniqueName)) {
                     allowedDevices.remove(device.uniqueName)
@@ -182,7 +186,7 @@ class UsbListFragment : Fragment() {
                     val usbManager = mContext.getSystemService(Context.USB_SERVICE) as UsbManager
                     if (usbManager.hasPermission(device.wrappedDevice)) {
                         val usbMode = UsbAccessoryMode(usbManager)
-                        if (usbMode.connectAndSwitch(device.wrappedDevice)) {
+                        if (usbMode.connectAndSwitch(device.wrappedDevice, mSettings.useLibusb)) {
                             Toast.makeText(mContext, R.string.switching_to_android_auto, Toast.LENGTH_SHORT).show()
                             (mContext as? MainActivity)?.beginAutoConnect(
                                 "manual USB list (AOA switch)",

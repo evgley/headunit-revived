@@ -14,12 +14,16 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.andrerinas.headunitrevived.App
 import com.andrerinas.headunitrevived.R
 import com.andrerinas.headunitrevived.aap.AapService
 import com.andrerinas.headunitrevived.utils.AppLog
-import com.andrerinas.headunitrevived.utils.LynkCoWiFi
+import com.andrerinas.headunitrevived.utils.Settings
 import java.net.InetSocketAddress
 import java.net.Socket
+import com.andrerinas.headunitrevived.utils.LynkCoWiFi
+
+
 
 class WifiDirectManager(private val context: Context) : WifiP2pManager.ConnectionInfoListener, WifiP2pManager.GroupInfoListener {
 
@@ -27,6 +31,10 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
     private var channel: WifiP2pManager.Channel? = null
     private var isGroupOwner = false
     private var isConnected = false
+    // [FIX] Tracks whether a phone has actually joined the P2P group (not just that a group exists).
+    // The discoveryRunnable uses this instead of isConnected so advertisements keep retrying
+    // even after the group forms on boot when the chip may have been BUSY initially.
+    private var isClientConnected = false
     private val handler = Handler(Looper.getMainLooper())
     private var localDeviceAddress: String? = null
     private var lastKnownBssid: String? = null
@@ -41,7 +49,10 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
 
     private val discoveryRunnable = object : Runnable {
         override fun run() {
-            if (!isConnected) {
+            // [FIX] Continue advertising until a client has actually joined the group,
+            // not just until the group itself is formed. This ensures boot-time chip BUSY
+            // failures are retried even though isConnected is already true.
+            if (!isClientConnected) {
                 startDiscovery()
                 handler.postDelayed(this, 10000L) // Repeat every 10s to stay visible
             }
@@ -52,6 +63,27 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
         @SuppressLint("MissingPermission")
         override fun onReceive(context: Context, intent: Intent) {
             when (intent.action) {
+                WifiP2pManager.WIFI_P2P_STATE_CHANGED_ACTION -> {
+                    val state = intent.getIntExtra(WifiP2pManager.EXTRA_WIFI_STATE, -1)
+                    AppLog.i("WifiDirectManager: WIFI_P2P_STATE_CHANGED_ACTION state=$state")
+                    if (state == WifiP2pManager.WIFI_P2P_STATE_ENABLED) {
+                        val appSettings = com.andrerinas.headunitrevived.App.provide(context).settings
+                        val commManager = com.andrerinas.headunitrevived.App.provide(context).commManager
+                        val isConnectingOrConnected = commManager.isConnected ||
+                            commManager.connectionState.value is com.andrerinas.headunitrevived.connection.CommManager.ConnectionState.Connecting
+
+                        if (!isConnected && !isConnectingOrConnected) {
+                            if (appSettings.wifiConnectionMode == 2 && appSettings.helperConnectionStrategy == 1) {
+                                AppLog.i("WifiDirectManager: P2P enabled, auto-starting WiFi Direct visibility")
+                                makeVisible()
+                            } else if (appSettings.wifiConnectionMode == 3) {
+                                AppLog.i("WifiDirectManager: P2P enabled, auto-starting Native AA quiet host")
+                                startNativeAaQuietHost()
+                            }
+                        }
+                    }
+                }
+
                 WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION -> {
                     val device = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                         intent.getParcelableExtra(WifiP2pManager.EXTRA_WIFI_P2P_DEVICE, WifiP2pDevice::class.java)
@@ -80,8 +112,10 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
                             }
                         }
                         manager?.requestConnectionInfo(channel, this@WifiDirectManager)
+                        AapService.scanningState.value = false
                     } else {
                         isConnected = false
+                        isClientConnected = false
                     }
                 }
             }
@@ -94,7 +128,7 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
                 AppLog.i("WifiDirectManager: Device supports WiFi Direct. Initializing...")
                 manager?.let { mgr ->
                     channel = mgr.initialize(context, context.mainLooper, null)
-                    
+
                     WifiDirectCompat.requestDeviceInfo(manager, channel) { address ->
                         AppLog.i("WifiDirectManager: requestDeviceInfo success: $address")
                         localDeviceAddress = address
@@ -118,6 +152,7 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
         if (isReceiverRegistered) return
         try {
             val filter = IntentFilter().apply {
+                addAction(WifiP2pManager.WIFI_P2P_STATE_CHANGED_ACTION)
                 addAction(WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION)
                 addAction(WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION)
             }
@@ -133,8 +168,9 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
     override fun onConnectionInfoAvailable(info: WifiP2pInfo) {
         if (info.groupFormed) {
             isConnected = true
+            AapService.scanningState.value = false
             isGroupOwner = info.isGroupOwner
-            
+
             val goIp = info.groupOwnerAddress?.hostAddress ?: "unknown"
             AppLog.i("WifiDirectManager: Group formed. Owner: $isGroupOwner, GO IP: $goIp")
 
@@ -174,8 +210,9 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
 
     @SuppressLint("MissingPermission")
     override fun onGroupInfoAvailable(group: android.net.wifi.p2p.WifiP2pGroup?) {
+        val appSettings = com.andrerinas.headunitrevived.App.provide(context).settings
         if (group != null) {
-            // [FIX] Check if Location Services (GPS) are enabled. 
+            // [FIX] Check if Location Services (GPS) are enabled.
             // On Android 10+, BSSID is often masked if GPS is OFF.
             try {
                 val lm = context.getSystemService(android.content.Context.LOCATION_SERVICE) as android.location.LocationManager
@@ -194,6 +231,24 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
             val psk = group.passphrase ?: ""
             val isOwner = group.isGroupOwner
 
+            // [FIX] Track whether a phone client has actually joined our group.
+            // If we are the Group Owner and the client list is empty, no phone has connected yet.
+            // If the client list becomes non-empty, a phone joined — stop the discovery loop.
+            // If the client list becomes empty again (phone disconnected), restart the loop.
+            if (isOwner) {
+                val clients = group.clientList
+                val hadClient = isClientConnected
+                isClientConnected = clients != null && clients.isNotEmpty()
+                if (hadClient && !isClientConnected) {
+                    // Phone disconnected from the P2P group — restart discovery so it can reconnect
+                    AppLog.i("WifiDirectManager: Client disconnected from P2P group. Restarting discovery loop.")
+                    startDiscoveryLoop()
+                }
+            } else {
+                // We are a client (not the Group Owner) — consider ourselves connected
+                isClientConnected = true
+            }
+
             // [FIX] Robust interface detection. group.interface is often null on Android 11+ (hidden API)
             var iface = group.`interface`
             if (iface.isNullOrEmpty()) {
@@ -203,13 +258,25 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
                 }
             }
             discoveredInterface = iface
-            var bssid = getWifiDirectMac(iface)
-            AppLog.i("WifiDirectManager: Initial BSSID from scan: $bssid")
+            val isBssidSet = appSettings.staticBSSID != "0"
+
+            var bssid = if (appSettings.staticBSSID == "0" || appSettings.staticBSSID == null) {
+                getWifiDirectMac(iface)
+            } else {
+                appSettings.staticBSSID
+            }
+            if (isBssidSet) {
+                AppLog.i("WifiDirectManager: Initial BSSID from App settings: $bssid")
+            } else {
+                AppLog.i("WifiDirectManager: Initial BSSID from scan: $bssid")
+            }
+
+
 
             // [FIX] Robust BSSID detection for masked MACs (00:00 or 02:00)
             if (bssid == "00:00:00:00:00:00" || bssid == "02:00:00:00:00:00") {
                 AppLog.i("WifiDirectManager: BSSID is masked. Starting fallbacks...")
-                
+
                 // Fallback 1: Use last known valid BSSID
                 if (!lastKnownBssid.isNullOrEmpty() && lastKnownBssid != "00:00:00:00:00:00" && lastKnownBssid != "02:00:00:00:00:00") {
                     AppLog.i("WifiDirectManager: Fallback 1 - Using lastKnownBssid: $lastKnownBssid")
@@ -219,7 +286,7 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
                 else if (!localDeviceAddress.isNullOrEmpty() && localDeviceAddress != "00:00:00:00:00:00" && localDeviceAddress != "02:00:00:00:00:00") {
                     AppLog.i("WifiDirectManager: Fallback 2 - Using localDeviceAddress: $localDeviceAddress")
                     bssid = localDeviceAddress!!
-                } 
+                }
                 // Fallback 3: Use group.owner.deviceAddress
                 else {
                     val ownerAddr = group.owner?.deviceAddress
@@ -288,7 +355,7 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
 
                         // For Native AA, we almost always expect 192.168.49.1 if we are GO
                         val finalIp = ip ?: (if (isOwner) "192.168.49.1" else null)
-                        if (finalIp != null) {
+                        if (finalIp != null && bssid != null) {
                             AppLog.i("WifiDirectManager: SUCCESS - Providing credentials to listener. SSID=$ssid, IP=$finalIp, BSSID=$bssid")
                             onCredentialsReady?.invoke(ssid, psk, finalIp, bssid)
                         } else {
@@ -343,12 +410,12 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
                     }
                     sb.toString()
                 } else "null"
-                
+
                 AppLog.i("WifiDirectManager: Found interface: ${iface.name}, MAC: $macStr")
 
                 // If we have a name, it must match.
                 if (ifaceName != null && iface.name != ifaceName) continue
-                
+
                 // If we don't have a name, look for common P2P interface patterns
                 if (ifaceName == null) {
                     val name = iface.name.lowercase()
@@ -378,7 +445,7 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
                     if (!addr.isLoopbackAddress && addr is java.net.Inet4Address) {
                         // Prioritize explicitly requested interface
                         if (ifaceName != null && iface.name == ifaceName) return addr.hostAddress
-                        
+
                         // Fallback: search for 192.168.49.1 (Standard P2P GO IP)
                         if (addr.hostAddress == "192.168.49.1") return addr.hostAddress
 
@@ -438,7 +505,7 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
     private fun createNewGroup(retryCount: Int) {
         val mgr = manager ?: return
         val ch = channel ?: return
-        
+
         mgr.createGroup(ch, object : WifiP2pManager.ActionListener {
             override fun onSuccess() {
                 AppLog.i("WifiDirectManager: P2P Group created.")
@@ -465,9 +532,25 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
     private fun startDiscovery() {
         val ch = channel
         if (ch != null) {
+            val appSettings = com.andrerinas.headunitrevived.App.provide(context).settings
+            if (appSettings.wifiConnectionMode == 2 && appSettings.helperConnectionStrategy == 1) {
+                AapService.scanningState.value = true
+            }
             manager?.discoverPeers(ch, object : WifiP2pManager.ActionListener {
-                override fun onSuccess() { AppLog.d("WifiDirectManager: Discovery active") }
-                override fun onFailure(reason: Int) { AppLog.w("WifiDirectManager: Discovery failed: $reason") }
+                override fun onSuccess() {
+                    AppLog.d("WifiDirectManager: Discovery active")
+                    if (appSettings.wifiConnectionMode == 2 && appSettings.helperConnectionStrategy == 1) {
+                        handler.postDelayed({
+                            if (!isClientConnected) {
+                                AapService.scanningState.value = false
+                            }
+                        }, 2500L)
+                    }
+                }
+                override fun onFailure(reason: Int) {
+                    AppLog.w("WifiDirectManager: Discovery failed: $reason")
+                    AapService.scanningState.value = false
+                }
             })
         }
     }
@@ -651,7 +734,7 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
     private fun getMacFromShell(iface: String?): String? {
         // Fallback: If iface is null, try to find a p2p interface name
         val targetIface = iface ?: getInterfaceByIp("192.168.49.1") ?: discoveredInterface
-        
+
         if (targetIface != null) {
             // Try reading directly from sysfs
             try {
@@ -707,7 +790,9 @@ class WifiDirectManager(private val context: Context) : WifiP2pManager.Connectio
 
     fun stop() {
         AppLog.i("WifiDirectManager: Stopping and cleaning up...")
-        handler.removeCallbacks(discoveryRunnable)
+        handler.removeCallbacksAndMessages(null)
+        isClientConnected = false
+        AapService.scanningState.value = false
         try { context.unregisterReceiver(receiver) } catch (e: Exception) {}
         if (isGroupOwner) {
             manager?.removeGroup(channel, object : WifiP2pManager.ActionListener {
