@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Headunit Revived</string>
+    <string name="app_name">Open Headunit</string>
     <string name="menu">Menu</string>
     <string name="settings">Nastavení</string>
 
@@ -12,7 +12,7 @@
     <string name="video">Android Auto</string>
     <string name="self_mode">Self Mode</string>
     <string name="to_android_auto">Do Android Auto</string>
-    <string name="title">Headunit Revived</string>
+    <string name="title">Open Headunit</string>
     <string name="remove">Odstranit</string>
     <string name="usb">USB</string>
     <string name="wifi">WiFi</string>
@@ -151,9 +151,9 @@
     <string name="usb_auto_connect">Auto-connect USB</string>
     <string name="usb_auto_connect_description">Automatically connect to a known USB device when the application is opened.</string>
     <string name="auto_start_bt_label">Automaticky spustit při Bluetooth</string>
-    <string name="auto_start_bt_description">Automaticky otevřít Headunit Revived při připojení konkrétního Bluetooth zařízení.</string>
+    <string name="auto_start_bt_description">Automaticky otevřít Open Headunit při připojení konkrétního Bluetooth zařízení.</string>
     <string name="auto_start_wifi_label">Automatické spuštění přes Wi-Fi</string>
-    <string name="auto_start_wifi_description">Automaticky otevřít Headunit Revived při připojení k určité Wi-Fi síti (SSID).</string>
+    <string name="auto_start_wifi_description">Automaticky otevřít Open Headunit při připojení k určité Wi-Fi síti (SSID).</string>
     <string name="auto_start_wifi_ssid_label">SSID Wi-Fi</string>
     <string name="auto_start_wifi_ssid_description">Připojovat se pouze při spojení s touto Wi-Fi sítí (SSID)</string>
     <string name="auto_start_wifi_warning">Zastaralá funkce: na Androidu 8+ může kvůli omezením na pozadí fungovat nespolehlivě. Ujistěte se, že aplikace je vyloučena z optimalizace baterie.</string>
@@ -161,12 +161,14 @@
     <string name="wifi_ssid_not_set">Nenastaveno</string>
 
     <string name="listen_for_usb_devices_label">Naslouchat zařízením USB</string>
-    <string name="listen_for_usb_devices_description">Zobrazit systémovou výzvu Androidu po připojení zařízení USB.</string>
+    <string name="listen_for_usb_devices_description">Zobrazit výzvu systému Android při připojení zařízení USB.</string>
+    <string name="show_toast_messages">Zobrazovat oznamovací zprávy (Toast)</string>
+    <string name="show_toast_messages_description">Zobrazit vyskakovací zprávy o stavu při připojení, odpojení a změně režimu.</string>
     <string name="auto_start_usb_label">Automatické spuštění přes USB</string>
     <string name="auto_start_usb_description">Automaticky otevřít aplikaci a pokusit se o připojení při zapojení USB zařízení</string>
     <string name="auto_start_settings">Nastavení automatického spouštění</string>
     <string name="auto_start_settings_description">Nastavte, kdy se aplikace spouští automaticky</string>
-    <string name="auto_start_oem_warning">Toto zařízení může vyžadovat povolení automatického spuštění a odebrání optimalizace baterie nebo omezení na pozadí pro tuto aplikaci.\n\nNa autorádiích s Quick Boot (rychlé spuštění) nemusí automatické spuštění fungovat. Hledejte \"DuraSpeed\" v nastavení systému a povolte tam tuto aplikaci. Na některých autorádiích je DuraSpeed skrytý a možná budete potřebovat aplikaci jako \"Hidden Settings\" k jeho nalezení. Pokud nemáte DuraSpeed, zkuste vypnout Quick Boot.</string>
+    <string name="auto_start_oem_warning">Toto zařízení může vyžadovat povolení automatického spuštění a odebrání optimalizace baterie nebo omezení na pozadí pro této aplikaci.\n\nNa autorádiích s Quick Boot (rychlé spuštění) nemusí automatické spuštění fungovat. Hledejte \"DuraSpeed\" v nastavení systému a povolte tam tuto aplikaci. Na některých autorádiích je DuraSpeed skrytý a možná budete potřebovat aplikaci jako \"Hidden Settings\" k jeho nalezení. Pokud nemáte DuraSpeed, zkuste vypnout Quick Boot.</string>
     <string name="auto_start_on_boot_label">Spustit při startu</string>
     <string name="auto_start_on_boot_description">Automaticky otevřít aplikaci při spuštění zařízení. Vyžaduje oprávnění \'Zobrazit přes jiné aplikace\' na Android 10+</string>
     <string name="auto_start_screen_on_label">Spustit při zapnutí obrazovky</string>
@@ -176,7 +178,7 @@
     <string name="bt_permission_denied_title">Vyžadováno oprávnění Bluetooth</string>
     <string name="bt_permission_denied_message">Pro výběr spárovaných zařízení je vyžadováno oprávnění Bluetooth. Povolte ho prosím v nastavení aplikace.</string>
     <string name="overlay_permission_title">Oprávnění pro spuštění na pozadí</string>
-    <string name="overlay_permission_description">Pro automatické otevření Headunit Revived při připojení Bluetooth povolte prosím oprávnění \"Zobrazit přes ostatní aplikace\" na další obrazovce.</string>
+    <string name="overlay_permission_description">Pro automatické otevření Open Headunit při připojení Bluetooth povolte prosím oprávnění \"Zobrazit přes ostatní aplikace\" na další obrazovce.</string>
     <string name="open_settings">Nastavení</string>
     <string name="wireless_connection_settings">Bezdrátové připojení</string>
     <string name="right_hand_drive">Pravostranné řízení</string>
@@ -227,6 +229,8 @@
     <!-- Audio Settings -->
     <string name="forced_scale">Vynucené měřítko (Legacy oprava)</string>
     <string name="forced_scale_description">Opravuje problémy s měřítkem u některých starších zařízení používajících SurfaceView. Používejte pouze v případě, že obraz vypadá zkresleně nebo posunutě.</string>
+    <string name="hud_mirroring">Režim HUD (Horizontální převrácení)</string>
+    <string name="hud_mirroring_description">Horizontálně převrátí displej pro odraz na čelním skle (Head-Up Display). Vyžaduje režim zobrazení TextureView nebo GLES20 (nefunguje s SurfaceView).</string>
 
     <string name="category_audio">Audio</string>
     <string name="enable_audio_sink">Povolit audio výstup (Sink)</string>
@@ -235,6 +239,8 @@
     <string name="separate_audio_streams_description">Odděluje zvukové kanály pro hudbu, hovory a oznámení místo jednoho multimediálního streamu (nemusí na některých zařízeních fungovat správně).</string>
     <string name="use_aac_audio">Použít AAC audio</string>
     <string name="use_aac_audio_description">Použít kodek AAC pro zvuk pro úsporu šířky pásma (experimentální).</string>
+    <string name="attach_hw_dsp_equalizer">Spouštěč HW DSP ekvalizéru</string>
+    <string name="attach_hw_dsp_equalizer_description">Připojí k relaci zvuku virtuální ekvalizér pro vynucení směrování přes HW DSP na specifických autorádiích. Ponechte vypnuté, pokud používáte ViPER4Android / ViperFX nebo pokud je zvuk na starších verzích Androidu tlumený.</string>
     <string name="audio_volume_offset">Posun hlasitosti</string>
     <string name="media_volume_offset">Média</string>
     <string name="assistant_volume_offset">Asistent</string>
@@ -252,9 +258,9 @@
     <!-- Info Settings -->
     <string name="category_info">Informace</string>
     <string name="about">O aplikaci a podpora</string>
-    <string name="about_description">Získat více informací o Headunit Revived</string>
+    <string name="about_description">Získat více informací o Open Headunit</string>
     <string name="version">Verze</string>
-    <string name="about_title">O aplikaci Headunit Revived</string>
+    <string name="about_title">O aplikaci Open Headunit</string>
     <string name="copyright">© 2025-%d André Rinas</string>
 
     <!-- Safety Disclaimer -->
@@ -265,7 +271,7 @@
         <b>1. Věnujte se řízení</b><br/>
         Ovládání tohoto softwaru během jízdy může být rozptylující a nebezpečné. Vždy upřednostňujte bezpečnou jízdu a dodržujte všechny místní dopravní předpisy. Tuto aplikaci používejte pouze tehdy, když je to bezpečné.<br/><br/>
         <b>2. Omezení odpovědnosti</b><br/>
-        Headunit Revived je poskytován „tak jak je“, bez záruky jakéhokoli druhu. Vývojáři nenesou žádnou odpovědnost za nehody, poškození vašeho vozidla/zařízení ani právní následky vyplývající z používání tohoto softwaru.<br/><br/>
+        Open Headunit je poskytován „tak jak je“, bez záruky jakéhokoli druhu. Vývojáři nenesou žádnou odpovědnost za nehody, poškození vašeho vozidla/zařízení ani právní následky vyplývající z používání tohoto softwaru.<br/><br/>
         <b>3. Žádná spojitost</b><br/>
         Tento projekt je nezávislá open-source iniciativa a není spojen se společností Google LLC ani značkou Android Auto, není jimi podporován ani s nimi nijak nesouvisí.
     ]]></string>
@@ -311,7 +317,7 @@
     <string name="connection_interrupted">Spojení ztraceno</string>
     <string name="connection_interrupted_detail">Opětovné připojování…</string>
     <string name="wifi_disconnect_toast">Android Auto odpojeno: Pokud používáte bezdrátové AA, vypněte \"Přepínání mezi sítěmi\" nebo \"Zrychlení sítě\" v nastavení WiFi telefonu</string>
-    <string name="notification_service_running">Headunit Revived je spuštěna</string>
+    <string name="notification_service_running">Open Headunit je spuštěna</string>
     <string name="notification_projection_active">Android Auto je promítáno</string>
     <string name="shortcut_connect_title">Připojit</string>
     <string name="shortcut_connect_desc">Připojit k poslednímu známému zařízení</string>
@@ -355,6 +361,9 @@
     <string name="log_source">Zdroj logů</string>
     <string name="log_source_logcat">Logcat</string>
     <string name="log_source_applog_file">Přímo do souboru</string>
+<string name="log_location">Uložiště protokolů</string>
+    <string name="log_location_default">Výchozí (Úložiště aplikace)</string>
+    <string name="log_location_downloads">Složka Ke stažení</string>
     <string name="start_log_capture">Spustit záznam protokolu</string>
     <string name="start_log_capture_description">Spustí nahrávání systémových protokolů do souboru.</string>
     <string name="start_log_capture_in_applog_file">Zprávy Log se zapisují do souboru pouze během aktivního záznamu</string>
@@ -556,7 +565,7 @@
     <string name="settings_backup_saved_to">Záloha nastavení uložena do:\n%1$s</string>
     <string name="share_settings_backup">Sdílet zálohu nastavení</string>
     <string name="import_settings">Importovat nastavení</string>
-    <string name="import_settings_description">Obnovit nastavení ze zálohy Headunit Revived</string>
+    <string name="import_settings_description">Obnovit nastavení ze zálohy Open Headunit</string>
     <string name="import_settings_app_folder">Importovat ze složky záloh aplikace</string>
     <string name="import_settings_downloads">Importovat ze Stažených souborů</string>
     <string name="import_settings_choose_file">Vyberte soubor zálohy</string>
@@ -564,8 +573,8 @@
     <string name="settings_imported">Nastavení importováno: %1$d použito, %2$d přeskočeno</string>
     <string name="settings_import_failed">Import nastavení selhal: %1$s</string>
     <string name="no_settings_backups_title">Žádné zálohy nenalezeny</string>
-    <string name="no_settings_backups_message">Ve složce záloh aplikace nebyly nalezeny žádné zálohy Headunit Revived. Nejprve exportujte zálohu a poté ji odtud importujte.</string>
-    <string name="no_settings_backups_downloads_message">Ve Stažených souborech nebyly nalezeny žádné zálohy Headunit Revived. Nejprve exportujte zálohu do Stažených souborů a poté ji odtud importujte.</string>
+    <string name="no_settings_backups_message">Ve složce záloh aplikace nebyly nalezeny žádné zálohy Open Headunit. Nejprve exportujte zálohu a poté ji odtud importujte.</string>
+    <string name="no_settings_backups_downloads_message">Ve Stažených souborech nebyly nalezeny žádné zálohy Open Headunit. Nejprve exportujte zálohu do Stažených souborů a poté ji odtud importujte.</string>
     <string name="no_file_picker_title">Není k dispozici výběr souborů</string>
     <string name="no_file_picker_message">Toto zařízení nemá kompatibilní výběr souborů. Místo toho můžete použít Stažené soubory nebo složku záloh aplikace.</string>
     <string name="storage_permission_denied_backup">Oprávnění k úložišti zamítnuto. Stažené soubory nebylo možné použít.</string>
@@ -581,4 +590,300 @@
     <!-- Native USB Driver -->
     <string name="use_libusb">Použít nativní USB ovladač</string>
     <string name="use_libusb_description">Použít libusb pro komunikaci. Vypnutím použijete standardní USB API pro Android.</string>
+
+    <string name="software_video_decoder">Zdroj softwarového dekodéru</string>
+    <string name="software_video_decoder_bundled">Integrovaný FFmpeg</string>
+    <string name="software_video_decoder_device">MediaCodec zařízení</string>
+
+    <string name="btn_show_qr">Zobrazit QR kód</string>
+    <string name="renderer_fallback_surface">Video se pořád zasekávalo, proto bylo zobrazení pro tuto relaci přepnuto na SurfaceView. Pokud je to stabilní, nastavte Režim zobrazení na SurfaceView v Nastavení.</string>
+    <string name="dpi_resolution_over_panel_warning">Vámi zvolené rozlišení (%1$s) je vyšší než váš panel. Je omezeno na %2$s a DPI se počítá pro tuto hodnotu. Pokud to vypadá špatně, použijte doporučené rozlišení (%2$s).</string>
+    <string name="renderer_confirm_question">Vidíte obrazovku Android Auto?</string>
+    <string name="renderer_confirm_yes">Ano</string>
+    <string name="renderer_confirm_switch">Přepnout vykreslování</string>
+    <string name="renderer_switched_to">Vykreslování: %1$s</string>
+
+    <string name="self_mode_overlay_permission_description">Chcete-li umožnit spolehlivé spuštění vlastního režimu na pozadí, povolte v další obrazovce oprávnění „Zobrazit nad ostatními aplikacemi“.</string>
+
+    <string name="delete">Smazat</string>
+    <string name="night_mode_coordinates">Souřadnice</string>
+    <string name="geofence_locations_title">Místa</string>
+    <string name="geofence_none">Žádné</string>
+    <string name="geofence_count_summary">%1$d oblastí</string>
+    <string name="geofence_empty_hint">Zatím žádná místa. Přidejte jedno pro vynucení dne nebo noci podle oblasti, nebo pro omezení automatického spuštění na zónu.</string>
+    <string name="geofence_unnamed">Nepojmenované místo</string>
+    <string name="geofence_add">Přidat místo</string>
+    <string name="geofence_pick_location">Vybrat místo</string>
+    <string name="geofence_name_hint">Název (např. Domov)</string>
+    <string name="geofence_force_dark">Vynutit tmavý režim v této oblasti</string>
+    <string name="geofence_allow_automation">Automaticky spustit / připojit pouze v této oblasti</string>
+    <string name="geofence_use_gps">Použít moji aktuální polohu</string>
+    <string name="geofence_no_location">Zatím není k dispozici žádná poloha</string>
+    <string name="geofence_saved">Místo uloženo</string>
+    <string name="geofence_delete_title">Smazat místo?</string>
+    <string name="geofence_delete_message">Toto místo bude odstraněno.</string>
+    <string name="geofence_internet_title">Vyžadován internet</string>
+    <string name="geofence_internet_message">Mapa potřebuje ke svému načtení připojení k internetu. Dlaždice mapy se stahují pouze během nastavování polohy.</string>
+    <string name="geofence_radius_summary">Poloměr: %1$d m</string>
+    <string name="geofence_mode_dark">Tmavý</string>
+    <string name="geofence_mode_light">Světlý</string>
+    <string name="geofence_gate_on">Automatické spuštění omezeno</string>
+    <string name="location_section">Poloha</string>
+    <string name="sunrise_location_title">Poloha východu/západu slunce</string>
+    <string name="sunrise_location_gps">GPS (automaticky)</string>
+    <string name="sunrise_location_fixed">Pevný bod</string>
+    <string name="geofence_pick_on_map">Vybrat na mapě</string>
+    <string name="geofence_overridden_note">Uložené místo má přednost, dokud jste uvnitř něj.</string>
+    <string name="geofence_current_status_label">Aktuálně</string>
+    <string name="geofence_current_status">%1$s (uvnitř %2$s)</string>
+    <string name="geofence_override_theme">Vynutit zde motiv</string>
+    <string name="geofence_dark_inside">Tmavý v této oblasti</string>
+    <string name="geofence_scope_label">Platí pro</string>
+    <string name="geofence_scope_app">Aplikace</string>
+    <string name="geofence_scope_aa">Android Auto</string>
+    <string name="geofence_scope_both">Obojí</string>
+    <string name="geofence_gate_here">Automatické spuštění / připojení pouze zde</string>
+    <string name="dont_show_again">Příště nezobrazovat</string>
+    <string name="location_open_entry">Místa a bod východu slunce</string>
+    <string name="sunrise_section">Východ / západ slunce</string>
+    <string name="location_places_hint">Vynutí světlý nebo tmavý vzhled v oblasti a volitelně automatické spuštění pouze tam. Používá GPS.</string>
+    <string name="appearance_label">Když jste uvnitř, nastavte vzhled</string>
+    <string name="appearance_off">Vypnuto</string>
+    <string name="location_manage_places">Uložená místa</string>
+    <string name="location_outside_label">Mimo uložená místa</string>
+    <string name="location_places_desc">Nastavte v oblasti světlý nebo tmavý vzhled, dokud jste uvnitř. Používá GPS.</string>
+    <string name="coordinates_enter">Zadejte souřadnice</string>
+    <string name="coordinate_latitude">Zeměpisná šířka</string>
+    <string name="coordinate_longitude">Zeměpisná délka</string>
+    <string name="coordinates_invalid">Neplatné souřadnice</string>
+    <string name="coordinates_format_help">Desetinné stupně, tečka nebo čárka. Příklad: 40.4168, -3.7038</string>
+
+    <!-- Settings tabs, search, connection mode, onboarding -->
+    <string name="settings_tab_basic">Základní</string>
+    <string name="settings_tab_advanced">Pokročilé</string>
+    <string name="settings_search_hint">Hledat v nastavení</string>
+    <string name="connection_mode">Režim připojení</string>
+    <string name="connection_kind_usb_cable">USB kabel (přímé)</string>
+    <string name="connection_kind_usb_wireless_adapter">Bezdrátový USB adaptér</string>
+    <string name="connection_kind_wifi">WiFi</string>
+    <string name="connection_kind_unset">Nenastaveno</string>
+    <string name="onb_next">Další</string>
+    <string name="onb_skip">Přeskočit</string>
+    <string name="onb_ready_finish">Dokončit</string>
+    <string name="onb_welcome_title">Vítejte v Open Headunit</string>
+    <string name="onb_welcome_body">Toto rychlé nastavení prohlédne vaše zařízení a vybere pro vás nejlepší nastavení videa, displeje a nočního režimu. Vše můžete později změnit v Nastavení.</string>
+    <string name="onb_safety_title">Bezpečnost především</string>
+    <string name="onb_safety_accept">Přečetl/a jsem si podmínky a souhlasím s nimi</string>
+    <string name="onb_connection_title">Jak se připojujete?</string>
+    <string name="onb_connection_help">Vyberte, jak se váš telefon připojuje. Obrazovka nastavení tak zůstane zaměřená na to, co se vás týká.</string>
+    <string name="onb_connection_cable_detail">Telefon zapojený přímo do autorádia pomocí USB kabelu. Bezdrátové možnosti se nezobrazují.</string>
+    <string name="onb_connection_adapter_detail">USB adaptér přemosťuje kabel na bezdrátové spojení. Bezdrátové možnosti se zobrazují.</string>
+    <string name="onb_connection_wifi_detail">Telefon se připojuje přes WiFi.</string>
+    <string name="onb_display_title">Displej</string>
+    <string name="onb_display_detected">Detekovaný panel: %1$d x %2$d px, %3$d dpi, hardware %4$s.</string>
+    <string name="onb_display_size_label">Velikost obrazovky</string>
+    <string name="onb_display_orientation_label">Orientace</string>
+    <string name="onb_display_apply">Použít doporučené nastavení</string>
+    <string name="onb_display_result">Použito: %1$s, %2$d dpi, %3$s, zobrazení %4$s.</string>
+    <string name="onb_appearance_title">Vzhled</string>
+    <string name="onb_appearance_theme_label">Téma aplikace</string>
+    <string name="onb_theme_auto">Automaticky</string>
+    <string name="onb_theme_light">Světlé</string>
+    <string name="onb_theme_dark">Tmavé</string>
+    <string name="onb_appearance_night_label">Tmavý režim (Android Auto)</string>
+    <string name="onb_night_auto">Automaticky</string>
+    <string name="onb_night_day">Den</string>
+    <string name="onb_night_night">Noc</string>
+    <string name="onb_night_light_sensor_available">Byl detekován světelný senzor, takže automatický režim může sledovat okolní světlo.</string>
+    <string name="onb_night_no_light_sensor">Nebyl detekován žádný světelný senzor, takže automatický režim se řídí východem a západem slunce.</string>
+    <string name="onb_ready_title">Vše je připraveno</string>
+    <string name="onb_ready_summary">Připojení: %1$s\nRozlišení: %2$s\nKodek: %3$s\n\nVše můžete doladit v Nastavení.</string>
+    <string name="onb_language_help">Vyberte jazyk aplikace.</string>
+    <string name="connection_kind_usb">USB</string>
+    <string name="onb_connection_usb_detail">Telefon připojený přes USB, kabelem nebo bezdrátovým USB adaptérem.</string>
+    <string name="onb_more_appearance">Další nastavení vzhledu</string>
+    <string name="onb_automation_title">Automatizace</string>
+    <string name="onb_automation_help">Vyberte, jak se aplikace sama spouští a připojuje. Otevřete nastavení automatického připojení a přetažením nastavte pořadí priorit.</string>
+    <string name="onb_gps_title">Poloha</string>
+    <string name="onb_gps_help">Kterou GPS má Android Auto používat pro navigaci?</string>
+    <string name="onb_gps_this_device">Toto zařízení</string>
+    <string name="onb_gps_phone">Připojený telefon</string>
+    <string name="onb_do_it_later">Udělat později</string>
+    <string name="onb_display_dpi_label">Velikost Android Auto</string>
+    <string name="onb_dpi_small">Malá</string>
+    <string name="onb_dpi_medium">Střední</string>
+    <string name="onb_dpi_large">Velká</string>
+    <string name="onb_appearance_more_hint">Další možnosti tmavého režimu najdete v Nastavení.</string>
+    <string name="onb_automation_more_hint">Další možnosti najdete v nastavení automatického připojení a automatického spuštění.</string>
+    <string name="onb_dpi_help">Vyšší DPI zvětší ikony a text Android Auto, takže se na obrazovku vejde méně. Nižší DPI je zmenší a vejde se více. Projeví se po připojení Android Auto.</string>
+    <string name="onb_change_later">Toto můžete změnit později v Nastavení.</string>
+    <string name="dpi_automatic">Automaticky</string>
+    <string name="dpi_automatic_desc">Použít hustotu zařízení</string>
+    <string name="onb_conn_usb_label">USB (nebo adaptér)</string>
+    <string name="onb_connection_self_detail">Samostatný režim spouští Android Auto v tomto zařízení bez telefonu.</string>
+    <string name="connection_kind_all">Vše</string>
+    <string name="onb_connection_all_detail">Zobrazí nastavení USB i WiFi.</string>
+    <string name="onb_connection_warning">Výběr typu připojení skryje nepoužitelná nastavení v základním i pokročilém režimu. Chcete-li je znovu zobrazit, zvolte později jiný režim v nastavení připojení.</string>
+    <string name="resolution_recommended_format">%1$s (Doporučeno)</string>
+    <string name="resolution_high_bandwidth_format">%1$s · vysoký datový tok</string>
+    <string name="resolution_too_high_title">Rozlišení vyšší než obrazovka</string>
+    <string name="resolution_too_high_message">Toto je vyšší, než váš panel podporuje. Obraz je omezen na to, co váš panel dokáže zobrazit (%1$s), takže vyšší rozlišení jen spotřebuje více dat bez zlepšení kvality.</string>
+    <string name="resolution_high_bandwidth_title">Potřeba vyšší datový tok</string>
+    <string name="resolution_high_bandwidth_message">Toto rozlišení spotřebuje mnohem více dat a vyžaduje silné připojení: kvalitní WiFi 5GHz nebo stabilní USB. Pokud zaznamenáte lagy, zvolte nižší rozlišení.</string>
+    <string name="resolution_use_anyway">Přesto použít</string>
+    <string name="resolution_use_recommended">Použít doporučené</string>
+    <string name="dpi_automatic_desc_format">Použije hustotu zařízení (%1$d DPI)</string>
+    <string name="dpi_input_hint">DPI</string>
+    <string name="onb_dpi_huge">Obrovský</string>
+    <string name="onb_vehicle_title">Vaše auto</string>
+    <string name="onb_vehicle_input_hint">Značka nebo název</string>
+    <string name="onb_vehicle_help_aa">Tento název se odesílá do Android Auto. Zobrazuje se v historii připojení telefonu a na uvítací obrazovce Android Auto.</string>
+    <string name="onb_vehicle_help_advanced">Další podrobnosti o vozidle můžete upravit na kartě Pokročilé. Tato data nepoužíváme; odesílají se pouze do Android Auto, protože je vyžaduje.</string>
+    <string name="onb_summary_vehicle_format">Vozidlo: %1$s</string>
+    <string name="sunrise_reference_help">Referenční bod používaný pro výpočet východu a západu slunce. Vyberte svou polohu jednou; funguje to bez GPS.</string>
+
+    <!-- Permissions / Onboarding -->
+    <string name="onb_summary_permissions_format">Oprávnění: %1$d z %2$d uděleno</string>
+    <string name="onb_permissions_title">Povolit oprávnění</string>
+    <string name="onb_permissions_help">Zapněte oprávnění, která aplikace potřebuje, aby vše fungovalo bez nečekaných výzev později. Tato oprávnění můžete kdykoli změnit.</string>
+    <string name="onb_perms_enable_all">Povolit vše</string>
+    <string name="perm_allow">Povolit</string>
+    <string name="perm_granted">Uděleno</string>
+    <string name="perm_optional_format">%1$s (volitelné)</string>
+    <string name="permissions">Oprávnění</string>
+    <string name="permissions_desc">Zkontrolujte a udělte oprávnění, která aplikace potřebuje</string>
+    <string name="perm_mic_title">Mikrofon</string>
+    <string name="perm_mic_help">Umožňuje Android Auto používat hlasové příkazy, Google Assistant a telefonní hovory.</string>
+    <string name="perm_location_title">Poloha</string>
+    <string name="perm_location_help">Odesílá GPS do telefonu pro navigaci, vyhledává bezdrátová připojení a řídí noční režim na základě polohy.</string>
+    <string name="perm_nearby_title">Zařízení v okolí</string>
+    <string name="perm_nearby_help">Potřebné pro připojení přes Bluetooth a Wi-Fi, směrování zvuku Bluetooth a automatické spuštění na spárovaném zařízení.</string>
+    <string name="perm_notifications_title">Oznámení</string>
+    <string name="perm_notifications_help">Zobrazuje průběžné oznámení, když běží Android Auto.</string>
+    <string name="perm_overlay_title">Zobrazit přes jiné aplikace</string>
+    <string name="perm_overlay_help">Umožňuje aplikaci otevřít obrazovku autorádia přes jiné aplikace, včetně automatického spuštění.</string>
+    <string name="perm_write_settings_title">Změna systémových nastavení</string>
+    <string name="perm_write_settings_help">Umožňuje aplikaci automaticky zapnout hotspot pro bezdrátová připojení.</string>
+    <string name="perm_storage_title">Úložiště</string>
+    <string name="perm_storage_help">Potřebné pro zálohování a obnovu nastavení a pro výběr vlastního obrázku načítání.</string>
+    <string name="onb_dpi_recommended">Doporučeno pro vaši obrazovku: %1$d dpi</string>
+    <string name="onb_ready_loading_intro">Ještě jedna věc: nyní můžete nastavit vlastní načítací obrazovku, která se zobrazí při připojování auta.</string>
+    <string name="onb_ready_loading_button">Nastavit načítací obrazovku</string>
+
+    <string name="support">Nahlásit chybu</string>
+    <string name="support_description">Hledejte nebo nahlašujte chyby na GitHubu</string>
+    <string name="support_title">Nahlásit chybu</string>
+    <string name="support_help">Pokud narazíte na chybu nebo problém, nejprve ho vyhledejte v seznamu hlášení na GitHubu. Pokud ho ještě nikdo nenahlásil, vytvořte nové hlášení a popište, co se stalo, vaše autorádio a postup, jak chybu zopakovat.</string>
+    <string name="support_open_issues">Otevřít hlášení na GitHubu</string>
+    <string name="support_scan_qr">Nebo naskenujte tento QR kód a otevřete seznam hlášení na jiném zařízení.</string>
+    <string name="support_github_account_warning">Poznámka: k vytvoření hlášení potřebujete bezplatný účet na GitHubu.</string>
+    <string name="onb_ready_extras_title">Než dokončíte, můžete také nastavit:</string>
+    <string name="onb_extra_loading_desc">Vlastní obrázek zobrazený při připojování auta</string>
+
+    <!-- Support / reporting rules -->
+    <string name="support_rules_button">Pravidla hlášení</string>
+    <string name="support_rules_english_desc">Pište prosím vždy anglicky. Angličtina je jediný jazyk, který správce a většina lidí, kteří zde pomáhají, sdílejí, a vlákno v mnoha jazycích se rychle promění v malou babylonskou věž, kde si nikdo nemůže pomoci. Nikdo vás nesoudí — ani vaši angličtinu, ani způsob, jakým píšete, takže si nedělejte starosti s chybami. Pokud to pomůže, překladač jako Google Translate nebo DeepL, nebo AI jako ChatGPT nebo Claude, za vás zprávu v angličtině napíše a upraví.</string>
+    <string name="support_rules_device_title">Řekněte, na čem aplikaci spouštíte</string>
+    <string name="support_rules_device_desc">Verze Androidu zařízení, které promítá Android Auto (vaše autorádio nebo obrazovka), a jeho značka a model, pokud je znáte.</string>
+    <string name="support_rules_connection_title">Řekněte, jak se připojujete</string>
+    <string name="support_rules_connection_desc">USB kabel, bezdrátový USB adaptér, WiFi Direct, WiFi (headunit server) nebo Self Mode. Pokud jde o bezdrátové připojení, uveďte model adaptéru nebo donglu.</string>
+    <string name="support_rules_appversion_title">Uveďte verzi aplikace</string>
+    <string name="support_rules_appversion_desc">Verzi Open Headunit najdete na obrazovce O aplikaci a podpora.</string>
+    <string name="support_rules_logs_title">Přiložte protokoly, hned po tom, co se to stane</string>
+    <string name="support_rules_logs_desc">V Nastavení přejděte na záložku Pokročilé, v sekci Ladění zapněte Režim ladění, zopakujte problém a hned poté klepněte na Exportovat protokoly, aby protokol zachytil okamžik selhání, a ne jen start. Přiložte tento soubor k hlášení.</string>
+    <string name="support_rules_search_title">Žádné duplicity</string>
+    <string name="support_rules_search_desc">Nejprve prohledejte existující hlášení. Pokud už otevřené hlášení váš problém popisuje, přidejte své podrobnosti jako komentář tam, místo abyste otevírali nové. Nové hlášení otevřete, jen pokud žádné neodpovídá.</string>
+    <string name="support_rules_phone_title">Záleží i na vašem telefonu</string>
+    <string name="support_rules_phone_desc">Model vašeho telefonu, jeho verze Androidu a verze aplikace Android Auto v telefonu. Některé problémy jsou způsobeny konkrétní verzí Android Auto.</string>
+    <string name="support_rules_describe_title">Popište to jasně</string>
+    <string name="support_rules_describe_desc">Co jste udělali, co jste očekávali a co se skutečně stalo. Screenshot nebo krátké video velmi pomáhá u vizuálních problémů.</string>
+    <string name="support_rules_oneissue_title">Jeden problém na jedno hlášení</string>
+    <string name="support_rules_oneissue_desc">Každé hlášení nechte pro jediný problém, aby bylo možné ho sledovat a opravit. Pro nesouvisející problémy otevřete samostatná hlášení.</string>
+
+    <string name="support_rules_intro">Jsou vyžadovány jen dvě věci. Vše ostatní je volitelné, ale pomůže to váš problém vyřešit mnohem rychleji.</string>
+    <string name="support_rules_section_required">Povinné</string>
+    <string name="support_rules_section_recommend">Doporučení (volitelné)</string>
+    <string name="rename_notice_title">Naše jméno se mění na Open Headunit</string>
+    <string name="rename_notice_message">Headunit Revived díky vám roste a stává se z něj něco vlastního: Open Headunit. Nový název zavádíme postupně během dalších aktualizací, takže na některých místech můžete ještě chvíli vidět starý název.\n\nStejná aplikace, stejní lidé za ní a všechna vaše nastavení zůstávají přesně tak, jak jsou.</string>
+    <string name="rename_notice_button">Rozumím</string>
+
+    <string name="onb_vehicle_help_sideload">Picking a real car brand also shows that brand\'s logo on the Android Auto exit button, but Android Auto then stops listing apps you installed from outside the Play Store. Keep \"Google\" or \"Open Headunit\" if you use those apps.</string>
+    <string-array name="vehicle_brands">
+        <item>Google</item>
+        <item>Android</item>
+        <item>Audi</item>
+        <item>BMW</item>
+        <item>Chevrolet</item>
+        <item>Chrysler</item>
+        <item>Fiat</item>
+        <item>Ford</item>
+        <item>Honda</item>
+        <item>Hyundai</item>
+        <item>Jeep</item>
+        <item>Kia</item>
+        <item>Mazda</item>
+        <item>Mercedes-Benz</item>
+        <item>Nissan</item>
+        <item>Peugeot</item>
+        <item>Renault</item>
+        <item>Subaru</item>
+        <item>Suzuki</item>
+        <item>Tesla</item>
+        <item>Toyota</item>
+        <item>Volkswagen</item>
+        <item>Volvo</item>
+    </string-array>
+    <string name="dpi_size_s">S</string>
+    <string name="dpi_size_m">M</string>
+    <string name="dpi_size_l">L</string>
+    <string name="dpi_size_xl">XL</string>
+    <string name="dpi_value_format">%1$d DPI</string>
+    <string name="pixel_aspect_ratio">Pixel aspect ratio</string>
+    <string name="enter_pixel_aspect_ratio_value">Pixel aspect ratio x10000 (10000 = square pixels)</string>
+    <string name="cannot_open_settings">Could not open system settings</string>
+    <string name="static_bssid_title">Static BSSID</string>
+    <string name="static_bssid_enter_value">Enter BSSID (XX:XX:XX:XX:XX:XX)</string>
+    <string name="static_bssid_desc">Manually set the BSSID for the wireless handshake if auto-detection is blocked by system permissions</string>
+    <string name="use_measured_touch_surface">Experimental touch alignment fix</string>
+    <string name="use_measured_touch_surface_description">Normalize touch input against the measured projection overlay. May help when small Android Auto controls feel shifted.</string>
+    <string name="media_key_routing">Send Media Buttons To Android Auto</string>
+    <string name="media_key_routing_always">Always</string>
+    <string name="media_key_routing_auto">Automatic</string>
+    <string name="media_key_routing_never">Never</string>
+    <string name="media_key_routing_always_hint">Next, previous and play/pause are always sent to Android Auto. Use this unless one press skips two tracks.</string>
+    <string name="media_key_routing_auto_hint">Stops sending them while this headunit has a Bluetooth media connection to the phone, because that connection already performs the action. Choose this if one press skips two tracks and your phone is paired to this headunit.</string>
+    <string name="media_key_routing_never_hint">Never sends them, leaving the buttons to Bluetooth. Choose this if one press skips two tracks and your phone is paired to the car\'s own system rather than to this headunit — Automatic cannot detect that connection.</string>
+    <string name="media_key_routing_hint_common">Only the media buttons are affected. Rotary controllers, D-pad, Back and Enter always reach Android Auto.</string>
+    <string name="playback_focus_mode">Pause Other Audio During Playback</string>
+    <string name="playback_focus_mode_auto">Automatic</string>
+    <string name="playback_focus_mode_always">Always</string>
+    <string name="playback_focus_mode_never">Never</string>
+    <string name="playback_focus_mode_auto_hint">Pauses another player on the headunit (for example the radio) while Android Auto audio plays, but not while a Bluetooth audio link is connected — that link is usually the same phone, and pausing it would stop Android Auto\'s own sound.</string>
+    <string name="playback_focus_mode_always_hint">Always pauses other audio while Android Auto plays. If your music stops after a second or two whenever Bluetooth is on, switch back to Automatic.</string>
+    <string name="playback_focus_mode_never_hint">Never touches system audio focus. Other audio on the headunit may keep playing over Android Auto.</string>
+    <string name="playback_focus_mode_static_hint">With Static Audio Focus on, this applies from the moment the phone connects and lasts the whole session, rather than only while audio is playing.</string>
+    <string name="github_issues_url">https://github.com/andreknieriem/open-headunit/issues</string>
+    <string name="support_rules_english_title">All posts in English</string>
+    <string name="boot_loop_paused_title">Wireless start-up paused</string>
+    <string name="boot_loop_paused_generic">This device restarted three times in a row shortly after Open Headunit started wireless, so wireless was left off this time. USB still works. Open the app to turn it back on.</string>
+    <string name="boot_loop_paused_native_wifi_direct">This device restarted three times in a row shortly after Open Headunit started wireless, so wireless was left off this time. On some head units the WiFi chipset takes the whole system down when a phone joins a WiFi Direct network. Try switching Android Auto mode to the head unit hotspot. USB still works.</string>
+    <string name="vehicle_make_hint">A real car brand shows that brand\'s logo on the Android Auto exit button, but Android Auto then stops listing apps installed from outside the Play Store. Set it back to \"Google\" to get those apps listed again.</string>
+    <string name="external_bt_nativeaa">Native Wireless cannot work on this head unit</string>
+    <string name="external_bt_nativeaa_desc">This head unit uses its own Bluetooth module (%1$s) instead of the one Android exposes to apps. Your phone pairs with that module, so anything this app sends over Bluetooth never reaches it — the connection will look like it is working and then stall.\n\nThis is a hardware limitation and cannot be worked around from the app. Please use USB, or the \"Wireless Helper\" or \"Auto (Headunit Server)\" mode, which do not need the Bluetooth handshake.</string>
+    <string name="manual_secondary_bt_service_title">Manual Secondary Radio</string>
+    <string name="manual_secondary_bt_service_message">Advanced: force an extra Bluetooth radio, for dual-radio units whose second radio isn\'t found automatically. Find it via \"adb shell service list\" (look for a Bluetooth-sounding entry besides bluetooth_manager) or an engineering menu, then paste either the name before the colon or the interface shown in brackets - both work. Not guaranteed to help on every unit: some head units run a customized Bluetooth stack that this can\'t bridge to no matter what you enter here. Leave blank to disable.</string>
+    <string name="native_ap_transport">Network transport</string>
+    <string name="native_ap_transport_wifi_direct">WiFi Direct</string>
+    <string name="native_ap_transport_hotspot">Hotspot</string>
+    <string name="native_ap_transport_hint">Experimental. The phone joins this device\'s own hotspot instead of a WiFi Direct group. Switch the hotspot on yourself before connecting, and set it to 5 GHz if you can - over 2.4 GHz the phone connects and then drops the session repeatedly without any picture, unless you lower the resolution and frame rate. If the network name cannot be read automatically, enter it below.</string>
+    <string name="hotspot_interface_override">Hotspot network interface</string>
+    <string name="hotspot_interface_override_message">Leave blank to work it out automatically. Set this if the log says more than one interface could be the access point, or picks the wrong one. The name is the one the log reports after &quot;Providing credentials from&quot;, or the entry holding your hotspot\'s address in &quot;ip -brief addr&quot; from a shell. Common names: ap0, wlan0, wlan1, wlan2, softap0, ra0.</string>
+    <string name="hotspot_ssid_override">Hotspot name (manual)</string>
+    <string name="hotspot_ssid_override_message">Leave blank to read the name from this device\'s hotspot settings automatically. Some devices do not let apps read it - if the log says the name could not be read, type it here exactly as it appears in your hotspot settings.</string>
+    <string name="hotspot_password_override">Hotspot password (manual)</string>
+    <string name="hotspot_password_override_message">Leave blank to read the password automatically. Needed on devices that do not let apps read the hotspot configuration. The phone will be given this password to join.</string>
+    <string name="hotspot_config_unreadable_toast">Can\'t read this device\'s hotspot name. Set it manually under Hotspot name/password in Settings.</string>
+    <string name="native_wifi_version_exchange">Modern handshake (version exchange)</string>
+    <string name="native_wifi_version_exchange_description">Opens the Bluetooth handshake by telling the phone which protocol version this head unit speaks, the way factory head units do, instead of going straight to the connection details. Off by default. Worth trying if wireless worked before an Android Auto update and has failed since; if it makes no difference, turn it back off.</string>
+    <string name="su_needed_keymaps_warning">Warning: Your headunit must be either rooted, or have Shizuku installed. If that\'s the case, you must allow SU rights, once prompted. Steering keys likely are not functional until this is fixed.</string>
 </resources>

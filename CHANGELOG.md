@@ -1,4 +1,62 @@
 # Changelog
+### v.3.3.0-alpha
+- Begin for theming of the App.
+- Refactor WiFi-Code from AapService into their own classes for better maintenance, thanks to @MrEAlderson
+- USB-Blacklist Filter to prevent the app from asking for non Android phones
+
+### v.3.2.4
+- Fix: Video and audio never catch up after a wireless link stall, thanks to @o-jcardenass
+- Fix: Native AA wake poke takes down the head unit's own hands-free link, thanks to @o-jcardenass
+- Stop the setup wizard from overwriting the reported manufacturer, thanks to @o-jcardenass
+- Added: Let the Bluetooth side keep the media buttons,  thanks to @o-jcardenass
+
+### v.3.2.3
+- Adding custom log location (App folder or Download folder)
+- additional fixing for the fps/freeze problems. Thanks to @o-jcardenass and @andrecuellar for helping
+- Fix/hotspot unreadable config
+- NativeAA: show when a P2P group that lands on channel 12 or 13
+
+### v.3.2.2
+- Fixing location jumping, especially on lower speeds
+- Fixing screen flicker again in video decoder
+- Fix/video throughput telemetry and keyframe lockout, thanks to @o-jcardenass
+- Fix Steering Wheel Buttons not working anymore
+- added new native mode without WiFi-Direct creation, thanks to @o-jcardenass
+
+### v.3.2.1
+- Fixing new welcome screen, thanks to @andrecuellar
+- Fixing HW decoding on kitkat thanks to @o-jcardenass
+- Fixing 2 Fatal errors shown in play console
+- fix: move mic timestamp inside encrypted payload (byte 4), thanks to @bruno303
+- making native mode work better and on more devices, thanks to @o-jcardenass
+
+### v.3.2.0
+- Don't grab audio focus on connect in dynamic mode, thanks to @bnayahu
+- Acquire transient audio focus while AA audio plays, thanks to @bnayahu
+- Add GitHub Actions CI (build + unit tests), thanks to @bnayahu
+- Fix picture stuck if used within DUDU's PiP, thanks to @MrEAlderson
+- Fix(wifi): use public API for frequency, thanks to @DerTeufel
+- Added pixel aspect ratio setting, thanks to @axel92b
+- Added more audio features to gain audio focus and work with dsp headunits as setting
+- Added display over other apps permission for better compatibility with some headunits, espacially with self mode
+- Fix transport get stucked on multiple reconnects, thanks to @notathf
+- Add car keys support for FYT headunits, thanks to @MrEAlderson
+- Added Option to flip projection horizontal for Headup-Displays
+- Recover automatically from post-first-frame video display stalls, thanks to @andrecuellar
+- Settings and Onboarding Wizard redesign for better usability, thanks to @andrecuellar
+- Fixing mulitiple WiFi-Direct and Native AA connection issues, thanks to @o-jcardenass, @andrecuellar and @notathf
+- Various fixes PR, thanks to @MrEAlderson
+- Selfmode on AA 17.4 now connects to the headunit dev server or opens the AA settings to start it
+- Rename the app to Open Headunit because of confusion with Headunit Reloaded (HUR)
+
+### v.3.1.1
+- Reduce pressure on sensor events like night and gps and start/stop these events in onConnected, onDisconnect and onDestroy
+- Merged ffmpeg PR #625 by @mmwtl. This added ffmpeg software decoder for h265, which old devives could benefit a lot. Thank you!
+- Wi-Fi Direct changes. Prevent duplicate start, graceful resets, cleaned up stale groups
+- Remove Automatic Play Integrity Checks, so Playstore won't check the license and link to the playstore in headunits
+- Added manual bssid for native Mode. This should help for users where the bssid is hidden for the app, thanks to @rakshan-kumr
+- Added immediately network scan with wifi connection, thanks to @MrEAlderson for the PR
+
 ### v.3.1.0
 - Added libusb as alternative to the native usb stack for better compatibility with some devices
 - Fixed Layout in Portrait Mode in nearly square devices
@@ -8,7 +66,9 @@
 - Fixed: App Exit on Disconnect
 - Enhanced: USB Workflow. This will hopefully eliminate some random usb disconnects
 - Fixed keyboard input on Android < 6 Devices
-- Enhanced WiFi Direct-Mode
+- Enhanced Wi-Fi Direct-Mode
+- Added: Bundled FFmpeg HEVC decoder with decoder source setting and FPS/performance overlay
+- Enhanced: HEVC GLES/YUV rendering latency, audio buffering, and Wi-Fi Direct fallback reliability
 - Enhanced File Selector for some devices
 - Fixed some fatal errors, showing in play console
 
@@ -35,7 +95,7 @@
 
 ### v.2.3.1
 - Fixed a connection lost on for example borders
-- Binding socket to wifi network if available to prevent connection drops on carrier lost
+- Binding socket to Wi-Fi network if available to prevent connection drops on carrier lost
 - Added Static Audio Focus Toggle to prevent audio focus loss on some devices
 - Fixing samsung routines and modes
 - Fixing wrong orientation on start if holding the phone wrong. Now uses the orientation from settings
@@ -171,7 +231,7 @@
 
 ### v.1.14.3
 - New Feature: Added **App Shortcuts** for quick Connect/Disconnect. Now compatible with Samsung Modes & Routines.
-- New Feature: Registered HURev as an official system navigation provider (Category: Maps).
+- New Feature: Registered OpenHU as an official system navigation provider (Category: Maps).
 - Improvement: Added `headunit://disconnect` intent for remote session termination.
 - Fixed: Resolved potential app freezes during long-running sessions by optimizing memory hygiene and FIFO handling.
 - Compatibility: Improved support for Amazon Fire Tablets and devices without GPS hardware by marking hardware features as optional.
@@ -188,7 +248,7 @@
 - Major Improvement: Audio focus and routing overhaul. Added `MediaSession` support and immediate focus response to phone. Fixes issues where background apps on the tablet would block Android Auto audio.
 - Improvement: Robust Task Switching. Leaving the app via Home button or clicking the Launcher icon no longer breaks the connection. Music continues in background, and clicking the icon/notification correctly returns to the projection.
 - New Feature: Enhanced Key Debugger ("Key-Sniffer"). Prominent display of all key events, including special characters (ö, ü, ß) and proprietary steering wheel intents (MTC, FYT).
-- New Feature: Official Navigation App Registration. HURev is now recognized as a navigation provider (`geo:`, `google.navigation:`, `android.intent.action.NAVIGATE`). Compatible with hardware "NAV" buttons.
+- New Feature: Official Navigation App Registration. OpenHU is now recognized as a navigation provider (`geo:`, `google.navigation:`, `android.intent.action.NAVIGATE`). Compatible with hardware "NAV" buttons.
 - Bugfix: Removed redundant "Already connected" and "Reconnection required" alerts for a smoother user experience.
 - Localization: All new strings translated into 10 languages.
 

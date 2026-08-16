@@ -1,4 +1,4 @@
-# Headunit Revived
+# Open Headunit
 
 <a href='https://play.google.com/store/apps/details?id=com.andrerinas.headunitrevived'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="200"/></a>
 <a href='http://www.amazon.com/gp/mas/dl/android?p=com.andrerinas.headunitrevived'><img alt='Available at Amazon Appstore' src='https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/devportal2/res/images/amazon-appstore-badge-english-black.png' width="200"/></a>
@@ -9,8 +9,12 @@
     height="200">
 </p>
 
-Headunit Revived is an Android app that allows you to turn your Android tablet or phone into an Android Auto receiver. This project is a revived version of the original headunit project by the great Michael Reid. The original project can be found here:
+Open Headunit is an Android app that allows you to turn your Android tablet or phone into an Android Auto receiver. This project is a revived version of the original headunit project by the great Michael Reid. The original project can be found here:
 https://github.com/mikereidis/headunit
+
+## NOTE!
+**Android Auto 17.4 will break nearly every wireless connection with self mode included, which is not native or with the headunit server. So Wireless Helper won't work anymore.
+We hope, that Google will take back these changes in the next Android Auto update, but until then, we have to wait. If you want to use wireless connection, please use the native connection method or the headunit server on your phone or buy a wireless Android Auto USB Dongle.**
 
 ## Screenshots
 <img width="1280" height="800" alt="image" src="https://github.com/user-attachments/assets/22abbc13-75d5-436f-b0ae-2e92b7648d50" />
@@ -18,13 +22,13 @@ https://github.com/mikereidis/headunit
 <img width="1280" height="800" alt="image" src="https://github.com/user-attachments/assets/140bbfdb-5b4f-4d49-a419-85aa91b48371" />
 
 ## How to use
-**Check out the [Wiki](https://github.com/andreknieriem/headunit-revived/wiki) for detailed documentation, setup guides and troubleshooting!**
+**Check out the [Wiki](https://github.com/andreknieriem/open-headunit/wiki) for detailed documentation, setup guides and troubleshooting!**
 
 ### Wired USB Connection
-- Connect your Android device (phone) to the tablet running Headunit Revived via USB cable.
+- Connect your Android device (phone) to the tablet running Open Headunit via USB cable.
 - Make sure that Android Auto is installed on your phone.
 - Set your phone to Host-Mode if nescessary and select Android Auto
-- Click the USB Button in Headunit Revived, find your phone and click the right button to allow connection
+- Click the USB Button in Open Headunit, find your phone and click the right button to allow connection
 - Click on your phone in the list and wait for Android Auto to start
 
 ### Wireless Helper (Recommended)
@@ -34,7 +38,7 @@ This is the most reliable way to connect wirelessly. It uses our companion app o
 - **Features:** Minimal configuration, supports NSD, Wi-Fi Direct Auto-Connect, and Bluetooth Auto-Start.
 
 **Setup:**
-- In Headunit Revived Settings: Set **Wireless Mode** to **Helper Mode**.
+- In Open Headunit Settings: Set **Wireless Mode** to **Helper Mode**.
 - Ensure both devices are in the same network (Hotspot or WiFi).
 - Open the Wireless Helper app on your phone and start the service.
 - The helper will find your headunit and initiate the connection automatically.
@@ -56,14 +60,73 @@ adb shell am start -a android.intent.action.VIEW -d "headunit://connect?ip=192.1
 ## Known Issues
 - **Google Maps in Portrait Mode:** Touch interactions (searching, scrolling) within Google Maps may not work as expected when using Portrait Mode on some devices. **Fix:** Try reducing the **Pixel density (DPI)** setting to **below 200** (e.g., 190) in the app settings. This often restores full functionality.
 - **Wireless Connection Drops:** If the connection drops frequently, disable **"WiFi Assistant"** or **"Switch between networks"** in your phone's WiFi settings to prevent it from killing the connection due to "no internet." Check battery saving options.
-- **Self-mode on Android 10 (Q) and below:** Google has disabled the automatic wireless projection startup for Android 10 and below in Android Auto versions 16.4 and higher. While Self-mode still works on newer Android versions, it is normally impossible to trigger projection on Android 10 and below directly with recent Google app updates. **Workaround:** You can still use Self-mode on these devices by starting the built-in Android Auto Headunit Server and connecting via Wi-Fi mode (loopback). See the [Troubleshooting Guide](https://github.com/andreknieriem/headunit-revived/wiki/Troubleshooting#self-mode-on-android-10-q-and-below) for step-by-step instructions.
+- **Self-mode on Android 10 (Q) and below:** Google has disabled the automatic wireless projection startup for Android 10 and below in Android Auto versions 16.4 and higher. While Self-mode still works on newer Android versions, it is normally impossible to trigger projection on Android 10 and below directly with recent Google app updates. **Workaround:** You can still use Self-mode on these devices by starting the built-in Android Auto Headunit Server and connecting via Wi-Fi mode (loopback). See the [Troubleshooting Guide](https://github.com/andreknieriem/open-headunit/wiki/Troubleshooting#self-mode-on-android-10-q-and-below) for step-by-step instructions.
 - **WiFi-Direct needs long to connect:** A user finds that this is related to Google Assistant instead of Gemini for AA. If you use Gemini on newer AA versions it just runs smooth again. No idea why this happens.
+- **Stuck on Android is starting** Check your video codec in the settings and set it to h264 if you have a device which does not support h265. Some devices have a broken h265 decoder and this will cause the app to stuck on "Android is starting" and never start the projection.
 
 ## Planned
-- add libusb as alternative to the native usb stack for better compatibility with some devices
 - more customization options for the UI and the app itself
 
 ## Changelog
+### v.3.3.0-alpha
+- Begin for theming of the App.
+- Refactor WiFi-Code from AapService into their own classes for better maintenance, thanks to @MrEAlderson
+- USB-Blacklist Filter to prevent the app from asking for non Android phones
+
+### v.3.2.4
+- Fix: Video and audio never catch up after a wireless link stall, thanks to @o-jcardenass
+- Fix: Native AA wake poke takes down the head unit's own hands-free link, thanks to @o-jcardenass
+- Stop the setup wizard from overwriting the reported manufacturer, thanks to @o-jcardenass
+- Added: Let the Bluetooth side keep the media buttons,  thanks to @o-jcardenass
+
+### v.3.2.3
+- Adding custom log location (App folder or Download folder)
+- additional fixing for the fps/freeze problems. Thanks to @o-jcardenass and @andrecuellar for helping
+- Fix/hotspot unreadable config
+- NativeAA: show when a P2P group that lands on channel 12 or 13
+
+### v.3.2.2
+- Fixing location jumping, especially on lower speeds
+- Fixing screen flicker again in video decoder
+- Fix/video throughput telemetry and keyframe lockout, thanks to @o-jcardenass
+- Fix Steering Wheel Buttons not working anymore
+- added new native mode without WiFi-Direct creation, thanks to @o-jcardenass
+
+### v.3.2.1
+- Fixing new welcome screen reappears, thanks to @andrecuellar
+- Fixing screen flicker every 10s thanks to @o-jcardenass
+- Fixing HW decoding on kitkat thanks to @o-jcardenass
+- Fixing 2 Fatal errors shown in play console
+- fix: move mic timestamp inside encrypted payload (byte 4), thanks to @bruno303
+- making native mode work better and on more devices, thanks to @o-jcardenass
+
+### v.3.2.0
+- Don't grab audio focus on connect in dynamic mode, thanks to @bnayahu
+- Acquire transient audio focus while AA audio plays, thanks to @bnayahu
+- Add GitHub Actions CI (build + unit tests), thanks to @bnayahu
+- Fix picture stuck if used within DUDU's PiP, thanks to @MrEAlderson
+- Fix(wifi): use public API for frequency, thanks to @DerTeufel
+- Added pixel aspect ratio setting, thanks to @axel92b
+- Added more audio features to gain audio focus and work with dsp headunits as setting
+- Added display over other apps permission for better compatibility with some headunits, espacially with self mode
+- Fix transport get stucked on multiple reconnects, thanks to @notathf
+- Add car keys support for FYT headunits, thanks to @MrEAlderson
+- Added Option to flip projection horizontal for Headup-Displays
+- Recover automatically from post-first-frame video display stalls, thanks to @andrecuellar
+- Settings and Onboarding Wizard redesign for better usability, thanks to @andrecuellar
+- Fixing mulitiple WiFi-Direct and Native AA connection issues, thanks to @o-jcardenass, @andrecuellar and @notathf
+- Various fixes PR, thanks to @MrEAlderson
+- Selfmode on AA 17.4 now connects to the headunit dev server or opens the AA settings to start it
+- Rename the app to Open Headunit because of confusion with Headunit Reloaded (HUR)
+
+### v.3.1.1
+- Reduce pressure on sensor events like night and gps and start/stop these events in onConnected, onDisconnect and onDestroy
+- Merged ffmpeg PR #625 by @mmwtl. This added ffmpeg software decoder for h265, which old devives could benefit a lot. Thank you!
+- Wi-Fi Direct changes. Prevent duplicate start, graceful resets, cleaned up stale groups
+- Remove Automatic Play Integrity Checks, so Playstore won't check the license and link to the playstore in headunits
+- Added manual bssid for native Mode. This should help for users where the bssid is hidden for the app, thanks to @rakshan-kumr
+- Added immediately network scan with wifi connection, thanks to @MrEAlderson for the PR
+
 ### v.3.1.0
 - Added libusb as alternative to the native usb stack for better compatibility with some devices
 - Fixed Layout in Portrait Mode in nearly square devices
@@ -252,7 +315,7 @@ adb shell am start -a android.intent.action.VIEW -d "headunit://connect?ip=192.1
 - Major Improvement: Audio focus and routing overhaul. Added `MediaSession` support and immediate focus response to phone. Fixes issues where background apps on the tablet would block Android Auto audio.
 - Improvement: Robust Task Switching. Leaving the app via Home button or clicking the Launcher icon no longer breaks the connection. Music continues in background, and clicking the icon/notification correctly returns to the projection.
 - New Feature: Enhanced Key Debugger ("Key-Sniffer"). Prominent display of all key events, including special characters (ö, ü, ß) and proprietary steering wheel intents (MTC, FYT).
-- New Feature: Official Navigation App Registration. HURev is now recognized as a navigation provider (`geo:`, `google.navigation:`, `android.intent.action.NAVIGATE`). Compatible with hardware "NAV" buttons.
+- New Feature: Official Navigation App Registration. OpenHU is now recognized as a navigation provider (`geo:`, `google.navigation:`, `android.intent.action.NAVIGATE`). Compatible with hardware "NAV" buttons.
 - Bugfix: Removed redundant "Already connected" and "Reconnection required" alerts for a smoother user experience.
 - Localization: All new strings translated into 10 languages.
 

@@ -10,6 +10,13 @@
         android:padding="24dp"
         android:gravity="center_horizontal">
 
+        <Switch
+            android:id="@+id/switch_show_qr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_show_qr"
+            android:layout_marginBottom="16dp"/>
+
         <FrameLayout
             android:id="@+id/layout_qr_container"
             android:layout_width="220dp"
@@ -17,7 +24,8 @@
             android:background="@android:color/white"
             android:padding="10dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/img_qr_code"
@@ -44,6 +52,7 @@
             android:gravity="center"
             android:text="@string/scan_with_wireless_helper"
             android:textColor="?attr/colorOnSurface"
+            android:visibility="gone"
             android:textSize="12sp"/>
 
     </LinearLayout>
